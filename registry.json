@@ -1,0 +1,1080 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "beste-ui",
+  "homepage": "https://ui.beste.co",
+  "items": [
+    {
+      "name": "hero7",
+      "type": "registry:block",
+      "title": "Hero 7",
+      "description": "Centered hero section with badge, heading, buttons and media",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "class-variance-authority",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "button",
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/hero7.tsx",
+          "type": "registry:component",
+          "target": "components/beste/hero7.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero19",
+      "type": "registry:block",
+      "title": "Hero 19",
+      "description": "Cinematic fullscreen carousel with bottom content and next slide preview",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/hero19.tsx",
+          "type": "registry:component",
+          "target": "components/beste/hero19.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero20",
+      "type": "registry:block",
+      "title": "Hero 20",
+      "description": "Split layout carousel with thumbnails and vertical progress indicator",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/hero20.tsx",
+          "type": "registry:component",
+          "target": "components/beste/hero20.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero21",
+      "type": "registry:block",
+      "title": "Hero 21",
+      "description": "Full-screen carousel hero with slides, navigation and progress bar",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/hero21.tsx",
+          "type": "registry:component",
+          "target": "components/beste/hero21.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero24",
+      "type": "registry:block",
+      "title": "Hero 24",
+      "description": "Split hero with social proof, floating cards and progress indicator",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/hero24.tsx",
+          "type": "registry:component",
+          "target": "components/beste/hero24.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature22",
+      "type": "registry:block",
+      "title": "Feature 22",
+      "description": "Progress checklist with steps, stats sidebar and completion tracking",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button",
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature22.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature22.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature23",
+      "type": "registry:block",
+      "title": "Feature 23",
+      "description": "Quality score cards with progress bars and metrics",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button",
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature23.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature23.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature24",
+      "type": "registry:block",
+      "title": "Feature 24",
+      "description": "Hover-to-preview workflow cards with list and preview layout",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature24.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature24.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature26",
+      "type": "registry:block",
+      "title": "Feature 26",
+      "description": "Features grid with icon cards and hover effects",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature26.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature26.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature28",
+      "type": "registry:block",
+      "title": "Feature 28",
+      "description": "Horizontal timeline with steps, icons and duration badges",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature28.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature28.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature29",
+      "type": "registry:block",
+      "title": "Feature 29",
+      "description": "Feature cards grid with icons, descriptions and stat highlights",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature29.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature29.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature30",
+      "type": "registry:block",
+      "title": "Feature 30",
+      "description": "Before/After comparison columns with highlighted differences",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature30.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature30.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature34",
+      "type": "registry:block",
+      "title": "Feature 34",
+      "description": "Numbered feature list with two-column grid layout",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/feature34.tsx",
+          "type": "registry:component",
+          "target": "components/beste/feature34.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial1",
+      "type": "registry:block",
+      "title": "Testimonial 1",
+      "description": "Swipeable carousel testimonials with autoplay",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "embla-carousel-react",
+        "embla-carousel-autoplay"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/testimonial1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/testimonial1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial6",
+      "type": "registry:block",
+      "title": "Testimonial 6",
+      "description": "Single centered quote with author info",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/testimonial6.tsx",
+          "type": "registry:component",
+          "target": "components/beste/testimonial6.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial8",
+      "type": "registry:block",
+      "title": "Testimonial 8",
+      "description": "Quote-style testimonial cards with highlighted text",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/testimonial8.tsx",
+          "type": "registry:component",
+          "target": "components/beste/testimonial8.tsx"
+        }
+      ]
+    },
+    {
+      "name": "health1",
+      "type": "registry:block",
+      "title": "Health 1",
+      "description": "Health metrics dashboard with vitals, progress rings and trends",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/health1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/health1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "health2",
+      "type": "registry:block",
+      "title": "Health 2",
+      "description": "Wellness goals tracker with progress bars and completion badges",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/health2.tsx",
+          "type": "registry:component",
+          "target": "components/beste/health2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "health3",
+      "type": "registry:block",
+      "title": "Health 3",
+      "description": "Medical specialists grid with ratings and appointment booking",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/health3.tsx",
+          "type": "registry:component",
+          "target": "components/beste/health3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "health4",
+      "type": "registry:block",
+      "title": "Health 4",
+      "description": "Minimal zen hero with large typography and serene imagery",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/health4.tsx",
+          "type": "registry:component",
+          "target": "components/beste/health4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "health5",
+      "type": "registry:block",
+      "title": "Health 5",
+      "description": "Healthcare services grid with icons, durations and feature lists",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/health5.tsx",
+          "type": "registry:component",
+          "target": "components/beste/health5.tsx"
+        }
+      ]
+    },
+    {
+      "name": "health6",
+      "type": "registry:block",
+      "title": "Health 6",
+      "description": "Editorial content section with rich text, highlights and CTA",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "@tailwindcss/typography"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/health6.tsx",
+          "type": "registry:component",
+          "target": "components/beste/health6.tsx"
+        }
+      ]
+    },
+    {
+      "name": "health16",
+      "type": "registry:block",
+      "title": "Health 16",
+      "description": "Health statistics display with large numbers and dynamic grid",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/beste/health16.tsx",
+          "type": "registry:component",
+          "target": "components/beste/health16.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reveal1",
+      "type": "registry:block",
+      "title": "Reveal 1",
+      "description": "Before/After image comparison slider with draggable divider",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "components/beste/reveal1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/reveal1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reveal2",
+      "type": "registry:block",
+      "title": "Reveal 2",
+      "description": "Before/After split layout with highlights and draggable slider",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/reveal2.tsx",
+          "type": "registry:component",
+          "target": "components/beste/reveal2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase2",
+      "type": "registry:block",
+      "title": "Use Case 2",
+      "description": "Grid-based use case cards with images, descriptions and feature lists",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase2.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase3",
+      "type": "registry:block",
+      "title": "Use Case 3",
+      "description": "Numbered steps layout with alternating image positions",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase3.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase4",
+      "type": "registry:block",
+      "title": "Use Case 4",
+      "description": "Grid cards with icons, images and feature tags",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase4.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase5",
+      "type": "registry:block",
+      "title": "Use Case 5",
+      "description": "Icon grid with centered icons and descriptions",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase5.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase5.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase7",
+      "type": "registry:block",
+      "title": "Use Case 7",
+      "description": "Accordion FAQ layout with expandable items and images",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase7.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase7.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase8",
+      "type": "registry:block",
+      "title": "Use Case 8",
+      "description": "Timeline layout with alternating content and images",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase8.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase8.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase9",
+      "type": "registry:block",
+      "title": "Use Case 9",
+      "description": "Masonry grid with variable card sizes and background images",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase9.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase9.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usecase10",
+      "type": "registry:block",
+      "title": "Use Case 10",
+      "description": "Split layout with content and image side by side",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/usecase10.tsx",
+          "type": "registry:component",
+          "target": "components/beste/usecase10.tsx"
+        }
+      ]
+    },
+    {
+      "name": "showcase2",
+      "type": "registry:block",
+      "title": "Showcase 2",
+      "description": "Split layout showcase with hotspots and action buttons",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "components/beste/showcase2.tsx",
+          "type": "registry:component",
+          "target": "components/beste/showcase2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal1",
+      "type": "registry:block",
+      "title": "Terminal 1",
+      "description": "Terminal typewriter animation with commands and outputs",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/terminal1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/terminal1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comingsoon1",
+      "type": "registry:block",
+      "title": "Coming Soon 1",
+      "description": "Coming soon page with countdown timer",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/comingsoon1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/comingsoon1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comingsoon2",
+      "type": "registry:block",
+      "title": "Coming Soon 2",
+      "description": "Coming soon page with progress milestones",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [
+        "badge",
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "components/beste/comingsoon2.tsx",
+          "type": "registry:component",
+          "target": "components/beste/comingsoon2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comingsoon3",
+      "type": "registry:block",
+      "title": "Coming Soon 3",
+      "description": "Coming soon page with social links",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/comingsoon3.tsx",
+          "type": "registry:component",
+          "target": "components/beste/comingsoon3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comingsoon4",
+      "type": "registry:block",
+      "title": "Coming Soon 4",
+      "description": "Coming soon page with floating animated icons",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/comingsoon4.tsx",
+          "type": "registry:component",
+          "target": "components/beste/comingsoon4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ecommerce1",
+      "type": "registry:block",
+      "title": "Ecommerce 1",
+      "description": "Product card grid with ratings, prices and add to cart",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/ecommerce1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/ecommerce1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ecommerce4",
+      "type": "registry:block",
+      "title": "Ecommerce 4",
+      "description": "Product category cards with images and product counts",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "components/beste/ecommerce4.tsx",
+          "type": "registry:component",
+          "target": "components/beste/ecommerce4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ecommerce5",
+      "type": "registry:block",
+      "title": "Ecommerce 5",
+      "description": "Featured product showcase with split layout and details",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/ecommerce5.tsx",
+          "type": "registry:component",
+          "target": "components/beste/ecommerce5.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ecommerce6",
+      "type": "registry:block",
+      "title": "Ecommerce 6",
+      "description": "Product reviews list with ratings and helpful votes",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/ecommerce6.tsx",
+          "type": "registry:component",
+          "target": "components/beste/ecommerce6.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crypto1",
+      "type": "registry:block",
+      "title": "Crypto 1",
+      "description": "Token hero with live price stats and market data",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/crypto1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/crypto1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crypto24",
+      "type": "registry:block",
+      "title": "Crypto 24",
+      "description": "DAO governance proposals with vote bars and status badges",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/beste/crypto24.tsx",
+          "type": "registry:component",
+          "target": "components/beste/crypto24.tsx"
+        }
+      ]
+    },
+    {
+      "name": "crypto35",
+      "type": "registry:block",
+      "title": "Crypto 35",
+      "description": "Smart contract addresses list with copy buttons and verification badges",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/crypto35.tsx",
+          "type": "registry:component",
+          "target": "components/beste/crypto35.tsx"
+        }
+      ]
+    },
+    {
+      "name": "onboarding1",
+      "type": "registry:block",
+      "title": "Onboarding 1",
+      "description": "Welcome hero screen with image, CTA and step indicator",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/onboarding1.tsx",
+          "type": "registry:component",
+          "target": "components/beste/onboarding1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "onboarding3",
+      "type": "registry:block",
+      "title": "Onboarding 3",
+      "description": "Minimal centered welcome with icon and single CTA",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/onboarding3.tsx",
+          "type": "registry:component",
+          "target": "components/beste/onboarding3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "onboarding4",
+      "type": "registry:block",
+      "title": "Onboarding 4",
+      "description": "Video intro onboarding with play button and skip option",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/onboarding4.tsx",
+          "type": "registry:component",
+          "target": "components/beste/onboarding4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "onboarding9",
+      "type": "registry:block",
+      "title": "Onboarding 9",
+      "description": "Step-by-step onboarding wizard with numbered indicators",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/onboarding9.tsx",
+          "type": "registry:component",
+          "target": "components/beste/onboarding9.tsx"
+        }
+      ]
+    }
+  ]
+}
