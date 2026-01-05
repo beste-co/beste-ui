@@ -4,6 +4,8 @@ Production-ready shadcn/ui blocks for your next project. Beautiful, accessible T
 
 **[Browse All Blocks](https://ui.beste.co)**
 
+![Beste UI Blocks](https://raw.githubusercontent.com/beste-co/beste-ui/refs/heads/main/public/beste-ui.webp)
+
 ## Installation
 
 Install any block directly into your project using the shadcn CLI:
@@ -17,23 +19,6 @@ For example, to install the `hero7` block:
 ```bash
 npx shadcn@latest add https://ui.beste.co/r/hero7
 ```
-
-## Available Blocks
-
-![Beste UI Blocks](https://raw.githubusercontent.com/beste-co/beste-ui/refs/heads/main/public/beste-ui.webp)
-
-Browse all blocks at [ui.beste.co](https://ui.beste.co)
-
-## Tech Stack
-
-- **Framework:** [Next.js 16](https://nextjs.org/) with App Router
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **Components:** [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
-- **Animations:** [Framer Motion](https://www.framer.com/motion/)
-- **Icons:** [Lucide React](https://lucide.dev/)
-- **Carousel:** [Embla Carousel](https://www.embla-carousel.com/)
-- **Syntax Highlighting:** [Shiki](https://shiki.style/)
 
 ## Development
 
