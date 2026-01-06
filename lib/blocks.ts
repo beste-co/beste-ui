@@ -5,7 +5,10 @@ import { ComingSoon4, comingsoon4Demo } from "@/components/beste/comingsoon4";
 import { Crypto1, crypto1Demo } from "@/components/beste/crypto1";
 import { Crypto24, crypto24Demo } from "@/components/beste/crypto24";
 import { Crypto35, crypto35Demo } from "@/components/beste/crypto35";
+import { Devtools3, devtools3Demo } from "@/components/beste/devtools3";
 import { Ecommerce1, ecommerce1Demo } from "@/components/beste/ecommerce1";
+import { Ecommerce11, ecommerce11Demo } from "@/components/beste/ecommerce11";
+import { Ecommerce15, ecommerce15Demo } from "@/components/beste/ecommerce15";
 import { Ecommerce4, ecommerce4Demo } from "@/components/beste/ecommerce4";
 import { Ecommerce5, ecommerce5Demo } from "@/components/beste/ecommerce5";
 import { Ecommerce6, ecommerce6Demo } from "@/components/beste/ecommerce6";
@@ -36,6 +39,7 @@ import { Onboarding4, onboarding4Demo } from "@/components/beste/onboarding4";
 import { Onboarding9, onboarding9Demo } from "@/components/beste/onboarding9";
 import { Reveal1, reveal1Demo } from "@/components/beste/reveal1";
 import { Reveal2, reveal2Demo } from "@/components/beste/reveal2";
+import { Settings64, settings64Demo } from "@/components/beste/settings64";
 import { Showcase2, showcase2Demo } from "@/components/beste/showcase2";
 import { Terminal1, terminal1Demo } from "@/components/beste/terminal1";
 import {
@@ -491,6 +495,39 @@ const _blocks: BlockMeta[] = [
     category: "Onboarding",
     component: Onboarding9,
     demoProps: onboarding9Demo,
+  },
+  {
+    name: "devtools3",
+    title: "DevTools 3",
+    description: "Code block with multi-language tabs and syntax highlighting",
+    category: "DevTools",
+    component: Devtools3,
+    demoProps: devtools3Demo,
+  },
+  {
+    name: "ecommerce11",
+    title: "Ecommerce 11",
+    description: "Size guide table with measurements for clothing products",
+    category: "Ecommerce",
+    component: Ecommerce11,
+    demoProps: ecommerce11Demo,
+  },
+  {
+    name: "ecommerce15",
+    title: "Ecommerce 15",
+    description: "Shipping and returns info cards with icons",
+    category: "Ecommerce",
+    component: Ecommerce15,
+    demoProps: ecommerce15Demo,
+  },
+  {
+    name: "settings64",
+    title: "Settings 64",
+    description:
+      "Billing history table with status badges and download actions",
+    category: "Settings",
+    component: Settings64,
+    demoProps: settings64Demo,
   },
 ];
 

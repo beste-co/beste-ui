@@ -1075,6 +1075,91 @@
           "target": "components/beste/onboarding9.tsx"
         }
       ]
+    },
+    {
+      "name": "devtools3",
+      "type": "registry:block",
+      "title": "DevTools 3",
+      "description": "Code block with multi-language tabs and syntax highlighting",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "shiki"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/beste/devtools3.tsx",
+          "type": "registry:component",
+          "target": "components/beste/devtools3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ecommerce11",
+      "type": "registry:block",
+      "title": "Ecommerce 11",
+      "description": "Size guide table with measurements for clothing products",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "table"
+      ],
+      "files": [
+        {
+          "path": "components/beste/ecommerce11.tsx",
+          "type": "registry:component",
+          "target": "components/beste/ecommerce11.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ecommerce15",
+      "type": "registry:block",
+      "title": "Ecommerce 15",
+      "description": "Shipping and returns info cards with icons",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "components/beste/ecommerce15.tsx",
+          "type": "registry:component",
+          "target": "components/beste/ecommerce15.tsx"
+        }
+      ]
+    },
+    {
+      "name": "settings64",
+      "type": "registry:block",
+      "title": "Settings 64",
+      "description": "Billing history table with status badges and download actions",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button",
+        "table"
+      ],
+      "files": [
+        {
+          "path": "components/beste/settings64.tsx",
+          "type": "registry:component",
+          "target": "components/beste/settings64.tsx"
+        }
+      ]
     }
   ]
 }
