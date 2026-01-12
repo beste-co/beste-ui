@@ -12,6 +12,10 @@ import { Ecommerce15, ecommerce15Demo } from "@/components/beste/ecommerce15";
 import { Ecommerce4, ecommerce4Demo } from "@/components/beste/ecommerce4";
 import { Ecommerce5, ecommerce5Demo } from "@/components/beste/ecommerce5";
 import { Ecommerce6, ecommerce6Demo } from "@/components/beste/ecommerce6";
+import { Feature126, feature126Demo } from "@/components/beste/feature126";
+import { Feature144, feature144Demo } from "@/components/beste/feature144";
+import { Feature146, feature146Demo } from "@/components/beste/feature146";
+import { Feature152, feature152Demo } from "@/components/beste/feature152";
 import { Feature22, feature22Demo } from "@/components/beste/feature22";
 import { Feature23, feature23Demo } from "@/components/beste/feature23";
 import { Feature24, feature24Demo } from "@/components/beste/feature24";
@@ -31,6 +35,10 @@ import { Hero19, hero19Demo } from "@/components/beste/hero19";
 import { Hero20, hero20Demo } from "@/components/beste/hero20";
 import { Hero21, hero21Demo } from "@/components/beste/hero21";
 import { Hero24, hero24Demo } from "@/components/beste/hero24";
+import { Hero57, hero57Demo } from "@/components/beste/hero57";
+import { Hero65, hero65Demo } from "@/components/beste/hero65";
+import { Hero68, hero68Demo } from "@/components/beste/hero68";
+import { Hero69, hero69Demo } from "@/components/beste/hero69";
 // Available components
 import { Hero7, hero7Demo } from "@/components/beste/hero7";
 import { Onboarding1, onboarding1Demo } from "@/components/beste/onboarding1";
@@ -41,6 +49,7 @@ import { Reveal1, reveal1Demo } from "@/components/beste/reveal1";
 import { Reveal2, reveal2Demo } from "@/components/beste/reveal2";
 import { Settings64, settings64Demo } from "@/components/beste/settings64";
 import { Showcase2, showcase2Demo } from "@/components/beste/showcase2";
+import { Showcase3, showcase3Demo } from "@/components/beste/showcase3";
 import { Terminal1, terminal1Demo } from "@/components/beste/terminal1";
 import {
   Testimonial1,
@@ -95,6 +104,38 @@ const _blocks: BlockMeta[] = [
     category: "Hero",
     component: Hero24,
     demoProps: hero24Demo,
+  },
+  {
+    name: "feature126",
+    title: "Feature 126",
+    description: "Stats grid with large numbers",
+    category: "Feature",
+    component: Feature126,
+    demoProps: feature126Demo,
+  },
+  {
+    name: "feature144",
+    title: "Feature 144",
+    description: "Service offerings list with arrows",
+    category: "Feature",
+    component: Feature144,
+    demoProps: feature144Demo,
+  },
+  {
+    name: "feature146",
+    title: "Feature 146",
+    description: "Benefits list with checkmarks",
+    category: "Feature",
+    component: Feature146,
+    demoProps: feature146Demo,
+  },
+  {
+    name: "feature152",
+    title: "Feature 152",
+    description: "Icon badge pills row",
+    category: "Feature",
+    component: Feature152,
+    demoProps: feature152Demo,
   },
   {
     name: "feature22",
@@ -184,6 +225,38 @@ const _blocks: BlockMeta[] = [
     category: "Testimonial",
     component: Testimonial8,
     demoProps: testimonial8Demo,
+  },
+  {
+    name: "hero65",
+    title: "Hero 65",
+    description: "Split hero with embedded YouTube video",
+    category: "Hero",
+    component: Hero65,
+    demoProps: hero65Demo,
+  },
+  {
+    name: "hero68",
+    title: "Hero 68",
+    description: "Hero with feature cards grid below",
+    category: "Hero",
+    component: Hero68,
+    demoProps: hero68Demo,
+  },
+  {
+    name: "hero69",
+    title: "Hero 69",
+    description: "Hero with email signup form",
+    category: "Hero",
+    component: Hero69,
+    demoProps: hero69Demo,
+  },
+  {
+    name: "hero57",
+    title: "Hero 57",
+    description: "Full-height hero with animated scroll indicator",
+    category: "Hero",
+    component: Hero57,
+    demoProps: hero57Demo,
   },
   {
     name: "health1",
@@ -366,6 +439,14 @@ const _blocks: BlockMeta[] = [
     category: "Showcase",
     component: Showcase2,
     demoProps: showcase2Demo,
+  },
+  {
+    name: "showcase3",
+    title: "Showcase 3",
+    description: "Image gallery grid with captions",
+    category: "Showcase",
+    component: Showcase3,
+    demoProps: showcase3Demo,
   },
   {
     name: "terminal1",

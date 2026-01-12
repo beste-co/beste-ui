@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "oud.pics",
       },
+      {
+        hostname: "i.pravatar.cc",
+      },
     ],
   },
 };

@@ -20,7 +20,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" asChild>
               <a
-                href="https://github.com/beste"
+                href="https://github.com/beste-co/beste-ui"
                 target="_blank"
                 rel="noopener noreferrer"
               >
