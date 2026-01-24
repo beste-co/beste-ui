@@ -12,6 +12,9 @@ import { Ecommerce15, ecommerce15Demo } from "@/components/beste/ecommerce15";
 import { Ecommerce4, ecommerce4Demo } from "@/components/beste/ecommerce4";
 import { Ecommerce5, ecommerce5Demo } from "@/components/beste/ecommerce5";
 import { Ecommerce6, ecommerce6Demo } from "@/components/beste/ecommerce6";
+import { Education100, education100Demo } from "@/components/beste/education100";
+import { Education86, education86Demo } from "@/components/beste/education86";
+import { Education99, education99Demo } from "@/components/beste/education99";
 import { Feature126, feature126Demo } from "@/components/beste/feature126";
 import { Feature144, feature144Demo } from "@/components/beste/feature144";
 import { Feature146, feature146Demo } from "@/components/beste/feature146";
@@ -41,10 +44,14 @@ import { Hero68, hero68Demo } from "@/components/beste/hero68";
 import { Hero69, hero69Demo } from "@/components/beste/hero69";
 // Available components
 import { Hero7, hero7Demo } from "@/components/beste/hero7";
+import { Navbar30, navbar30Demo } from "@/components/beste/navbar30";
 import { Onboarding1, onboarding1Demo } from "@/components/beste/onboarding1";
 import { Onboarding3, onboarding3Demo } from "@/components/beste/onboarding3";
 import { Onboarding4, onboarding4Demo } from "@/components/beste/onboarding4";
 import { Onboarding9, onboarding9Demo } from "@/components/beste/onboarding9";
+import { Portfolio62, portfolio62Demo } from "@/components/beste/portfolio62";
+import { Portfolio70, portfolio70Demo } from "@/components/beste/portfolio70";
+import { Portfolio84, portfolio84Demo } from "@/components/beste/portfolio84";
 import { Reveal1, reveal1Demo } from "@/components/beste/reveal1";
 import { Reveal2, reveal2Demo } from "@/components/beste/reveal2";
 import { Settings64, settings64Demo } from "@/components/beste/settings64";
@@ -610,6 +617,70 @@ const _blocks: BlockMeta[] = [
     component: Settings64,
     demoProps: settings64Demo,
   },
+
+  {
+  name: "navbar30",
+  title: "Navbar 30",
+  description: "Centered logo navbar with split navigation on left and right sides",
+  category: "Navigation",
+  component: Navbar30,
+  demoProps: navbar30Demo
+  },
+
+  {
+  name: "education86",
+  title: "Education 86",
+  description:
+    "Social media connect section with platform links and follower counts",
+  category: "Education",
+  component: Education86,
+  demoProps: education86Demo,
+},
+ {
+  name: "education99",
+  title: "Education 99",
+  description:
+    "Global partnerships section showcasing international collaborations and exchange statistics",
+  category: "Education",
+  component: Education99,
+  demoProps: education99Demo,
+},
+ {
+  name: "education100",
+  title: "Education 100",
+  description:
+    "Quick facts section displaying key institutional statistics and achievements",
+  category: "Education",
+  component: Education100,
+  demoProps: education100Demo,
+},
+{
+  name: "portfolio62",
+  title: "Portfolio 62",
+  description: "Social links grid with follower counts and platform icons",
+  category: "Portfolio",
+  component: Portfolio62,
+  demoProps: portfolio62Demo
+},
+{
+  name: "portfolio70",
+  title: "Portfolio 70",
+  description:
+    "Reading list showcase with book covers, ratings, and categories",
+  category: "Portfolio",
+  component: Portfolio70,
+  demoProps: portfolio70Demo
+},
+{
+  name: "portfolio84",
+  title: "Portfolio 84",
+  description: "Process steps section with numbered timeline layout",
+  category: "Portfolio",
+  component: Portfolio84,
+  demoProps: portfolio84Demo
+}
+
+
 ];
 
 export const blocks = _blocks;
