@@ -1,3 +1,5 @@
+import { Auth2, auth2Demo } from "@/components/beste/auth2";
+import { Auth7, auth7Demo } from "@/components/beste/auth7";
 import { ComingSoon1, comingsoon1Demo } from "@/components/beste/comingsoon1";
 import { ComingSoon2, comingsoon2Demo } from "@/components/beste/comingsoon2";
 import { ComingSoon3, comingsoon3Demo } from "@/components/beste/comingsoon3";
@@ -95,6 +97,23 @@ export interface BlockMeta {
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 const _blocks: BlockMeta[] = [
+  {
+    name: "auth2",
+    title: "Auth 2",
+    description: "Login form with social login buttons and password reset link",
+    category: "Auth",
+    component: Auth2,
+    demoProps: auth2Demo,
+  },
+  {
+    name: "auth7",
+      title: "Account Chooser",
+  description:
+    "Full-height account picker that lists saved accounts with avatars, names, and emails, plus a use-another-account row. Perfect for multi-account apps, SSO hubs, and returning-user sign-in.",
+    category: "Auth",
+    component: Auth7,
+    demoProps: auth7Demo,
+  },
   {
     name: "hero7",
     title: "Hero 7",
