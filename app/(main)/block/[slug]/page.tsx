@@ -227,7 +227,7 @@ export default async function BlockPage({ params }: PageProps) {
                   href={PRICING_HREF}
                   {...hostedLinkProps}
                   aria-label="Pro block — see pricing"
-                  className="transition-opacity hover:opacity-80"
+                  className="inline-flex shrink-0 items-center leading-none transition-opacity hover:opacity-80"
                 >
                   <ProBadge size="md" className="rounded-full px-2.5 py-1 text-sm" />
                 </Link>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ui.beste.co/blocks/about</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/blocks/auth</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -20,6 +26,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/blocks/cta</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/blocks/careers</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -91,6 +103,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/blocks/logos</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/blocks/navigation</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -128,6 +146,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/blocks/showcase</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/blocks/stats</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

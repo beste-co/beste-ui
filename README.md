@@ -25,7 +25,7 @@
 
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-black" />
-  <img alt="Blocks" src="https://img.shields.io/badge/blocks-128-black" />
+  <img alt="Blocks" src="https://img.shields.io/badge/blocks-135-black" />
   <img alt="Pieces" src="https://img.shields.io/badge/pieces-968-black" />
   <img alt="Components" src="https://img.shields.io/badge/components-138-black" />
   <img alt="Tailwind" src="https://img.shields.io/badge/Tailwind-v4-black" />
@@ -57,7 +57,7 @@ npx shadcn@latest add https://ui.beste.co/component/r/button12
 
 | | Count | What it is |
 | --- | --- | --- |
-| **Blocks** | 128 | Full page sections: heroes, pricing tables, FAQs, footers, auth screens |
+| **Blocks** | 135 | Full page sections: heroes, pricing tables, FAQs, footers, auth screens |
 | **Pieces** | 968 | Small visual widgets that sit inside a block's media slot: mini cards, charts, stat tiles, terminals |
 | **Components** | 138 | Design-system primitives: buttons, badges, filters, inspector controls |
 

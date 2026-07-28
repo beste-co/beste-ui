@@ -21,6 +21,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 
 ## Components
 
+### About
+
+- [Mission Band With Principles](https://ui.beste.co/block/about69): A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as monospace-numbered hairline columns underneath.
+
 ### Auth
 
 - [Centered Sign In Card](https://ui.beste.co/block/auth1): Full-height centered sign-in screen with social login providers, email and password fields, a show/hide password toggle, remember-me checkbox, and forgot-password link. Perfect for SaaS apps, dashboards, and member portals.
@@ -45,6 +49,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Service Selector](https://ui.beste.co/block/booking4): Service selection grid with category filter tabs, service cards showing icon, name, description, duration, price, and selected state. Ideal for spa, salon, clinic, and fitness booking flows.
 - [Provider Picker](https://ui.beste.co/block/booking5): Staff/provider selection cards with avatar, name, specialty, star rating, review count, availability badge, experience years, and selected state. Grid layout with "Any Provider" option.
 - [Booking Confirmation Receipt](https://ui.beste.co/block/booking15): Post-booking success screen with animated check icon, confirmation number, booking summary (service, date/time, location, total), scannable QR code ticket, action buttons (calendar, receipt, directions), and email confirmation note.
+
+### Careers
+
+- [Filterable Open Roles List](https://ui.beste.co/block/careers51): A light editorial careers section with a monospace eyebrow over a hairline rule, a two-column heading, and a sticky culture photo with a gradient caption beside team filter pills and hairline job rows showing location, contract type, and a hover arrow.
 
 ### Coming Soon
 
@@ -93,10 +101,12 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [404 Notice Card](https://ui.beste.co/block/error7): Compact bordered 404 card with a circular icon, status label, heading, one-line explanation, and stacked full-width buttons. Sized for app shells and modals as well as full pages.
 - [404 With Redirect Countdown](https://ui.beste.co/block/error8): 404 page that counts down to an automatic redirect and calls onRedirect once it reaches zero, with a cancel button that stops the timer and a manual go-now link.
 - [404 Did You Mean](https://ui.beste.co/block/error9): Left-aligned 404 for documentation and marketing sites: the requested path is shown struck through in monospace above a did-you-mean box linking to the closest matching page.
+- [Editorial Not Found Split](https://ui.beste.co/block/error34): A calm not-found page with an error eyebrow, an oversized light heading and recovery actions on the left, beside a hairline list of the destinations people usually need instead.
 
 ### FAQ
 
 - [Numbered FAQ Index](https://ui.beste.co/block/faq77): A type-forward FAQ with a sticky heading rail and a numbered accordion list of expandable questions.
+- [Two Column Answer Grid](https://ui.beste.co/block/faq80): An always-open FAQ laid out as a two-column grid of numbered, hairline-separated question and answer entries, closing with a soft support panel that pairs a short prompt with two actions.
 
 ### Feature
 
@@ -153,6 +163,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Medical Services Grid](https://ui.beste.co/block/health5): Service cards displaying medical specialties with appointment durations, feature lists, and CTAs. Perfect for hospitals, clinics, and healthcare provider websites.
 - [Wellness Editorial Section](https://ui.beste.co/block/health6): Long-form content section with rich text, bullet point highlights, and call-to-action buttons. Perfect for wellness blogs, healing journey stories, and health philosophy pages.
 - [Health Statistics Display](https://ui.beste.co/block/health16): Large-format statistics grid showcasing key metrics like member counts, satisfaction rates, and years of service. Perfect for healthcare organizations and wellness brands.
+- [Care Programme Cards](https://ui.beste.co/block/health18): Three hairline programme cards, each pairing a light programme name with a muted duration line, a short explanation, a checked list of what is included, and a link into the full programme.
 
 ### Hero
 
@@ -167,6 +178,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Split Hero with YouTube Video](https://ui.beste.co/block/hero65): Two-column hero with embedded YouTube video player in responsive aspect ratio container. Perfect for product demos and explainer video landing pages.
 - [Centered Hero with Feature Icons](https://ui.beste.co/block/hero68): Centered hero with three feature highlights displayed as icon cards with descriptions below the CTA. Perfect for platform and infrastructure products.
 - [Email Signup Hero](https://ui.beste.co/block/hero69): Minimal centered hero with inline email input field and submit button for newsletter or waitlist signups. Perfect for coming-soon pages and early access campaigns.
+
+### Other
+
+- [Hairline Client Wall](https://ui.beste.co/block/logos12): A client wall that sets six greyscale logos in a hairline cell grid, each lifting to full colour on hover, with an eyebrow and a short claim on the left, a reach line on the right, and a credit note underneath.
 
 ### Navbar
 
@@ -203,6 +218,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 
 - [Split Hotspot Feature Section](https://ui.beste.co/block/showcase2): Two-column layout with text content, CTA buttons, and interactive image with clickable hotspot popovers. Perfect for SaaS feature pages with reversible layout option.
 - [Project Gallery Grid](https://ui.beste.co/block/showcase3): Responsive three-column image gallery with hover zoom effects, captions, and optional clickable cards. Perfect for showcasing project portfolios or work samples.
+
+### Stats
+
+- [Outcome Metric Rows](https://ui.beste.co/block/stats66): A results section that stacks each metric on its own hairline row, pairing an oversized figure with a short label, a sentence of context, and an optional year-over-year delta.
 
 ### Terminal
 

@@ -6,6 +6,55 @@
     <description>Subscribe to @beste-ui updates</description>
     <atom:link href="https://ui.beste.co/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Mission Band With Principles</title>
+      <link>https://ui.beste.co/block/about69</link>
+      <guid>https://ui.beste.co/block/about69</guid>
+      <description>A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as monospace-numbered hairline columns underneath.</description>
+      <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Filterable Open Roles List</title>
+      <link>https://ui.beste.co/block/careers51</link>
+      <guid>https://ui.beste.co/block/careers51</guid>
+      <description>A light editorial careers section with a monospace eyebrow over a hairline rule, a two-column heading, and a sticky culture photo with a gradient caption beside team filter pills and hairline job rows showing location, contract type, and a hover arrow.</description>
+      <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Editorial Not Found Split</title>
+      <link>https://ui.beste.co/block/error34</link>
+      <guid>https://ui.beste.co/block/error34</guid>
+      <description>A calm not-found page with an error eyebrow, an oversized light heading and recovery actions on the left, beside a hairline list of the destinations people usually need instead.</description>
+      <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Two Column Answer Grid</title>
+      <link>https://ui.beste.co/block/faq80</link>
+      <guid>https://ui.beste.co/block/faq80</guid>
+      <description>An always-open FAQ laid out as a two-column grid of numbered, hairline-separated question and answer entries, closing with a soft support panel that pairs a short prompt with two actions.</description>
+      <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Care Programme Cards</title>
+      <link>https://ui.beste.co/block/health18</link>
+      <guid>https://ui.beste.co/block/health18</guid>
+      <description>Three hairline programme cards, each pairing a light programme name with a muted duration line, a short explanation, a checked list of what is included, and a link into the full programme.</description>
+      <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Hairline Client Wall</title>
+      <link>https://ui.beste.co/block/logos12</link>
+      <guid>https://ui.beste.co/block/logos12</guid>
+      <description>A client wall that sets six greyscale logos in a hairline cell grid, each lifting to full colour on hover, with an eyebrow and a short claim on the left, a reach line on the right, and a credit note underneath.</description>
+      <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Outcome Metric Rows</title>
+      <link>https://ui.beste.co/block/stats66</link>
+      <guid>https://ui.beste.co/block/stats66</guid>
+      <description>A results section that stacks each metric on its own hairline row, pairing an oversized figure with a short label, a sentence of context, and an optional year-over-year delta.</description>
+      <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Centered 404 Message</title>
       <link>https://ui.beste.co/block/error1</link>
       <guid>https://ui.beste.co/block/error1</guid>

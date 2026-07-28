@@ -12,7 +12,7 @@ Beste is the site builder with strong constraints. No drag and drop, no inline c
 
 ## About beste-ui
 
-beste-ui is a curated collection of 128 production-ready UI components designed for modern web applications. Built on top of shadcn/ui, each component combines the power of:
+beste-ui is a curated collection of 135 production-ready UI components designed for modern web applications. Built on top of shadcn/ui, each component combines the power of:
 
 - **React 19** - Latest React features and patterns
 - **Tailwind CSS 4** - Utility-first styling
@@ -41,6 +41,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 ```
 
 ## Component Reference
+
+### About
+
+#### Mission Band With Principles
+
+- **URL**: https://ui.beste.co/block/about69
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/about69.json"` (Radix: `/r/about69.json`)
+- **Description**: A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as monospace-numbered hairline columns underneath.
 
 ### Auth
 
@@ -143,6 +151,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/booking15
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/booking15.json"` (Radix: `/r/booking15.json`)
 - **Description**: Post-booking success screen with animated check icon, confirmation number, booking summary (service, date/time, location, total), scannable QR code ticket, action buttons (calendar, receipt, directions), and email confirmation note.
+
+### Careers
+
+#### Filterable Open Roles List
+
+- **URL**: https://ui.beste.co/block/careers51
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/careers51.json"` (Radix: `/r/careers51.json`)
+- **Description**: A light editorial careers section with a monospace eyebrow over a hairline rule, a two-column heading, and a sticky culture photo with a gradient caption beside team filter pills and hairline job rows showing location, contract type, and a hover arrow.
 
 ### Coming Soon
 
@@ -320,6 +336,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/error9.json"` (Radix: `/r/error9.json`)
 - **Description**: Left-aligned 404 for documentation and marketing sites: the requested path is shown struck through in monospace above a did-you-mean box linking to the closest matching page.
 
+#### Editorial Not Found Split
+
+- **URL**: https://ui.beste.co/block/error34
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/error34.json"` (Radix: `/r/error34.json`)
+- **Description**: A calm not-found page with an error eyebrow, an oversized light heading and recovery actions on the left, beside a hairline list of the destinations people usually need instead.
+
 ### FAQ
 
 #### Numbered FAQ Index
@@ -327,6 +349,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/faq77
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq77.json"` (Radix: `/r/faq77.json`)
 - **Description**: A type-forward FAQ with a sticky heading rail and a numbered accordion list of expandable questions.
+
+#### Two Column Answer Grid
+
+- **URL**: https://ui.beste.co/block/faq80
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq80.json"` (Radix: `/r/faq80.json`)
+- **Description**: An always-open FAQ laid out as a two-column grid of numbered, hairline-separated question and answer entries, closing with a soft support panel that pairs a short prompt with two actions.
 
 ### Feature
 
@@ -600,6 +628,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/health16.json"` (Radix: `/r/health16.json`)
 - **Description**: Large-format statistics grid showcasing key metrics like member counts, satisfaction rates, and years of service. Perfect for healthcare organizations and wellness brands.
 
+#### Care Programme Cards
+
+- **URL**: https://ui.beste.co/block/health18
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/health18.json"` (Radix: `/r/health18.json`)
+- **Description**: Three hairline programme cards, each pairing a light programme name with a muted duration line, a short explanation, a checked list of what is included, and a link into the full programme.
+
 ### Hero
 
 #### Centered Hero with Media
@@ -667,6 +701,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/hero69
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/hero69.json"` (Radix: `/r/hero69.json`)
 - **Description**: Minimal centered hero with inline email input field and submit button for newsletter or waitlist signups. Perfect for coming-soon pages and early access campaigns.
+
+### Other
+
+#### Hairline Client Wall
+
+- **URL**: https://ui.beste.co/block/logos12
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/logos12.json"` (Radix: `/r/logos12.json`)
+- **Description**: A client wall that sets six greyscale logos in a hairline cell grid, each lifting to full colour on hover, with an eyebrow and a short claim on the left, a reach line on the right, and a credit note underneath.
 
 ### Navbar
 
@@ -771,6 +813,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/showcase3
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/showcase3.json"` (Radix: `/r/showcase3.json`)
 - **Description**: Responsive three-column image gallery with hover zoom effects, captions, and optional clickable cards. Perfect for showcasing project portfolios or work samples.
+
+### Stats
+
+#### Outcome Metric Rows
+
+- **URL**: https://ui.beste.co/block/stats66
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/stats66.json"` (Radix: `/r/stats66.json`)
+- **Description**: A results section that stacks each metric on its own hairline row, pairing an oversized figure with a short label, a sentence of context, and an optional year-over-year delta.
 
 ### Terminal
 
