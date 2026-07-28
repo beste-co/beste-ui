@@ -1,0 +1,71 @@
+import type { Theme } from "@/lib/themes/types";
+
+// Realmorphism — by Lo TeknowledG, imported from tweakcn.
+export const realmorphismTheme: Theme = {
+  name: "realmorphism",
+  displayName: "Realmorphism",
+  author: "Lo TeknowledG",
+  category: "light",
+  colors: {
+    background: "oklch(0.9374 0.0083 157.0838)",
+    foreground: "oklch(0.1892 0.0098 158.9884)",
+    card: "oklch(0.9733 0.0041 157.1784)",
+    cardForeground: "oklch(0.1892 0.0098 158.9884)",
+    popover: "oklch(0.9733 0.0041 157.1784)",
+    popoverForeground: "oklch(0.1892 0.0098 158.9884)",
+    primary: "oklch(0.4764 0.0803 169.3231)",
+    primaryForeground: "oklch(0.9884 0.0164 162.7661)",
+    secondary: "oklch(0.8686 0.0195 162.8671)",
+    secondaryForeground: "oklch(0.1892 0.0098 158.9884)",
+    muted: "oklch(0.9038 0.0127 164.7718)",
+    mutedForeground: "oklch(0.4787 0.0197 167.7920)",
+    accent: "oklch(0.5718 0.0960 169.8470)",
+    accentForeground: "oklch(0.9884 0.0164 162.7661)",
+    destructive: "oklch(0.4041 0.1120 23.5585)",
+    destructiveForeground: "oklch(0.9757 0.0118 17.3595)",
+    border: "oklch(0.6950 0.0289 169.8778)",
+    input: "oklch(0.9733 0.0041 157.1784)",
+    ring: "oklch(0.5718 0.0960 169.8470)",
+    chart1: "oklch(0.4764 0.0803 169.3231)",
+    chart2: "oklch(0.5337 0.0845 74.0079)",
+    chart3: "oklch(0.3170 0.0173 165.9690)",
+    chart4: "oklch(0.5687 0.0152 166.8119)",
+    chart5: "oklch(0.5955 0.0953 168.0699)",
+    sidebar: "oklch(0.1892 0.0098 158.9884)",
+    sidebarForeground: "oklch(0.9457 0.0091 161.3462)",
+    sidebarPrimary: "oklch(0.5718 0.0960 169.8470)",
+    sidebarPrimaryForeground: "oklch(0.9884 0.0164 162.7661)",
+    sidebarAccent: "oklch(0.2201 0.0095 159.2095)",
+    sidebarAccentForeground: "oklch(0.9457 0.0091 161.3462)",
+    sidebarBorder: "oklch(0.3170 0.0173 165.9690)",
+    sidebarRing: "oklch(0.5955 0.0953 168.0699)",
+  },
+  fonts: {
+    sans: "inter",
+    serif: "georgia",
+    mono: "jetbrains-mono",
+  },
+  radius: "0.5rem",
+  trackingNormal: 0,
+  shadows: {
+    shadow2xs: "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 0.50)",
+    shadowXs: "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 0.50)",
+    shadowSm:
+      "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 1.00), 2px 1px 2px 0px hsl(160.6154 43.6242% 29.2157% / 1.00)",
+    shadow:
+      "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 1.00), 2px 1px 2px 0px hsl(160.6154 43.6242% 29.2157% / 1.00)",
+    shadowMd:
+      "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 1.00), 2px 2px 4px 0px hsl(160.6154 43.6242% 29.2157% / 1.00)",
+    shadowLg:
+      "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 1.00), 2px 4px 6px 0px hsl(160.6154 43.6242% 29.2157% / 1.00)",
+    shadowXl:
+      "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 1.00), 2px 8px 10px 0px hsl(160.6154 43.6242% 29.2157% / 1.00)",
+    shadow2xl: "2px 2px 0px 1px hsl(160.6154 43.6242% 29.2157% / 2.50)",
+    shadowX: 2,
+    shadowY: 2,
+    shadowBlur: 0,
+    shadowSpread: 1,
+    shadowColor: "oklch(0.479 0.075 168.94)",
+    shadowOpacity: 1,
+  },
+};

@@ -1,0 +1,44 @@
+"use client";
+
+import { cn } from "@/lib/utils";
+
+interface Shapes70Props {
+  className?: string;
+}
+
+export const shapes70Demo: Shapes70Props = {};
+
+export function Shapes70({ className }: Shapes70Props) {
+  return (
+    <div
+      className={cn(
+        "relative flex size-full items-center justify-center p-4",
+        className
+      )}
+    >
+      <div className="grid w-48 grid-cols-3 items-stretch gap-1.5" aria-hidden="true">
+        <div className="flex flex-col gap-1 rounded-md border border-border bg-card p-2">
+          <span className="h-1 w-8 rounded-full bg-muted" />
+          <span className="h-3 w-10 rounded-sm bg-foreground/70" />
+          <span className="mt-1 h-px w-full bg-border" />
+          <span className="h-1 w-3/4 rounded-full bg-muted" />
+          <span className="h-1 w-2/3 rounded-full bg-muted" />
+        </div>
+        <div className="flex flex-col gap-1 rounded-md border-2 border-foreground bg-card p-2">
+          <span className="h-1 w-8 rounded-full bg-foreground/70" />
+          <span className="h-3 w-10 rounded-sm bg-foreground" />
+          <span className="mt-1 h-px w-full bg-border" />
+          <span className="h-1 w-3/4 rounded-full bg-muted" />
+          <span className="h-1 w-2/3 rounded-full bg-muted" />
+        </div>
+        <div className="flex flex-col gap-1 rounded-md border border-border bg-card p-2">
+          <span className="h-1 w-8 rounded-full bg-muted" />
+          <span className="h-3 w-10 rounded-sm bg-foreground/70" />
+          <span className="mt-1 h-px w-full bg-border" />
+          <span className="h-1 w-3/4 rounded-full bg-muted" />
+          <span className="h-1 w-2/3 rounded-full bg-muted" />
+        </div>
+      </div>
+    </div>
+  );
+}

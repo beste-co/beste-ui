@@ -1,0 +1,71 @@
+import type { Theme } from "@/lib/themes/types";
+
+// Awesome Child — by Niklas Salarp, imported from tweakcn.
+export const awesomeChildTheme: Theme = {
+  name: "awesome-child",
+  displayName: "Awesome Child",
+  author: "Niklas Salarp",
+  category: "light",
+  colors: {
+    background: "oklch(0.9926 0.0146 98.2779)",
+    foreground: "oklch(0.3211 0 0)",
+    card: "oklch(1.0000 0 0)",
+    cardForeground: "oklch(0.3211 0 0)",
+    popover: "oklch(1.0000 0 0)",
+    popoverForeground: "oklch(0.3211 0 0)",
+    primary: "oklch(0.7116 0.1812 22.8389)",
+    primaryForeground: "oklch(1.0000 0 0)",
+    secondary: "oklch(0.8925 0.1667 94.5471)",
+    secondaryForeground: "oklch(0.3211 0 0)",
+    muted: "oklch(0.9551 0 0)",
+    mutedForeground: "oklch(0.5486 0 0)",
+    accent: "oklch(0.7626 0.1496 146.6234)",
+    accentForeground: "oklch(1.0000 0 0)",
+    destructive: "oklch(0.6730 0.2146 25.0397)",
+    destructiveForeground: "oklch(1.0000 0 0)",
+    border: "oklch(0.9128 0 0)",
+    input: "oklch(0.9128 0 0)",
+    ring: "oklch(0.7116 0.1812 22.8389)",
+    chart1: "oklch(0.7116 0.1812 22.8389)",
+    chart2: "oklch(0.8925 0.1667 94.5471)",
+    chart3: "oklch(0.7626 0.1496 146.6234)",
+    chart4: "oklch(0.6770 0.1720 257.7649)",
+    chart5: "oklch(0.7373 0.0909 300.4624)",
+    sidebar: "oklch(1.0000 0 0)",
+    sidebarForeground: "oklch(0.3211 0 0)",
+    sidebarPrimary: "oklch(0.7116 0.1812 22.8389)",
+    sidebarPrimaryForeground: "oklch(1.0000 0 0)",
+    sidebarAccent: "oklch(0.9551 0 0)",
+    sidebarAccentForeground: "oklch(0.3211 0 0)",
+    sidebarBorder: "oklch(0.9128 0 0)",
+    sidebarRing: "oklch(0.7116 0.1812 22.8389)",
+  },
+  fonts: {
+    sans: "quicksand",
+    serif: "georgia",
+    mono: "courier-prime",
+  },
+  radius: "1.5rem",
+  trackingNormal: 0.02,
+  shadows: {
+    shadow2xs: "0px 4px 10px 0px hsl(0 0% 0% / 0.05)",
+    shadowXs: "0px 4px 10px 0px hsl(0 0% 0% / 0.05)",
+    shadowSm:
+      "0px 4px 10px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10)",
+    shadow:
+      "0px 4px 10px 0px hsl(0 0% 0% / 0.10), 0px 1px 2px -1px hsl(0 0% 0% / 0.10)",
+    shadowMd:
+      "0px 4px 10px 0px hsl(0 0% 0% / 0.10), 0px 2px 4px -1px hsl(0 0% 0% / 0.10)",
+    shadowLg:
+      "0px 4px 10px 0px hsl(0 0% 0% / 0.10), 0px 4px 6px -1px hsl(0 0% 0% / 0.10)",
+    shadowXl:
+      "0px 4px 10px 0px hsl(0 0% 0% / 0.10), 0px 8px 10px -1px hsl(0 0% 0% / 0.10)",
+    shadow2xl: "0px 4px 10px 0px hsl(0 0% 0% / 0.25)",
+    shadowX: 0,
+    shadowY: 4,
+    shadowBlur: 10,
+    shadowSpread: 0,
+    shadowColor: "oklch(0 0 0)",
+    shadowOpacity: 0.1,
+  },
+};

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Content-Signal: search=yes, ai-train=no, ai-input=yes
+
+Sitemap: https://ui.beste.co/sitemap.xml

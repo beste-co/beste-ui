@@ -1,0 +1,71 @@
+import type { Theme } from "@/lib/themes/types";
+
+// Enterprise Blue — by Alexeey, imported from tweakcn.
+export const enterpriseBlueTheme: Theme = {
+  name: "enterprise-blue",
+  displayName: "Enterprise Blue",
+  author: "Alexeey",
+  category: "light",
+  colors: {
+    background: "oklch(0.9946 0.0026 286.3519)",
+    foreground: "oklch(0.1615 0.0105 285.1663)",
+    card: "oklch(1.0000 0 0)",
+    cardForeground: "oklch(0.1615 0.0105 285.1663)",
+    popover: "oklch(1.0000 0 0)",
+    popoverForeground: "oklch(0.1615 0.0105 285.1663)",
+    primary: "oklch(0.5828 0.2188 258.8797)",
+    primaryForeground: "oklch(0.9670 0.0029 264.5419)",
+    secondary: "oklch(0.9518 0.0231 277.9569)",
+    secondaryForeground: "oklch(0.4446 0.0983 268.5283)",
+    muted: "oklch(0.9601 0.0093 286.2229)",
+    mutedForeground: "oklch(0.5052 0.0379 284.9640)",
+    accent: "oklch(0.9712 0.0136 258.3446)",
+    accentForeground: "oklch(0.6081 0.2114 266.2130)",
+    destructive: "oklch(0.6368 0.2078 25.3313)",
+    destructiveForeground: "oklch(0.9842 0.0034 247.8575)",
+    border: "oklch(0.9163 0.0162 286.0759)",
+    input: "oklch(0.9163 0.0162 286.0759)",
+    ring: "oklch(0.5565 0.2430 261.9529)",
+    chart1: "oklch(0.5553 0.2554 283.4559)",
+    chart2: "oklch(0.6037 0.2141 267.5162)",
+    chart3: "oklch(0.7495 0.1297 210.9704)",
+    chart4: "oklch(0.8023 0.1492 175.5763)",
+    chart5: "oklch(0.6945 0.1422 167.0638)",
+    sidebar: "oklch(0.9946 0.0026 286.3519)",
+    sidebarForeground: "oklch(0.1615 0.0105 285.1663)",
+    sidebarPrimary: "oklch(0.5828 0.2188 258.8797)",
+    sidebarPrimaryForeground: "oklch(1.0000 0 0)",
+    sidebarAccent: "oklch(0.9634 0.0175 279.0619)",
+    sidebarAccentForeground: "oklch(0.6256 0.2009 264.0684)",
+    sidebarBorder: "oklch(0.9163 0.0162 286.0759)",
+    sidebarRing: "oklch(0.5828 0.2188 258.8797)",
+  },
+  fonts: {
+    sans: "inter",
+    serif: "lora",
+    mono: "jetbrains-mono",
+  },
+  radius: "1.4rem",
+  trackingNormal: -0.01,
+  shadows: {
+    shadow2xs: "0px 4px 15px 0px hsl(0 0% 0% / 0.07)",
+    shadowXs: "0px 4px 15px 0px hsl(0 0% 0% / 0.07)",
+    shadowSm:
+      "0px 4px 15px 0px hsl(0 0% 0% / 0.15), 0px 1px 2px -1px hsl(0 0% 0% / 0.15)",
+    shadow:
+      "0px 4px 15px 0px hsl(0 0% 0% / 0.15), 0px 1px 2px -1px hsl(0 0% 0% / 0.15)",
+    shadowMd:
+      "0px 4px 15px 0px hsl(0 0% 0% / 0.15), 0px 2px 4px -1px hsl(0 0% 0% / 0.15)",
+    shadowLg:
+      "0px 4px 15px 0px hsl(0 0% 0% / 0.15), 0px 4px 6px -1px hsl(0 0% 0% / 0.15)",
+    shadowXl:
+      "0px 4px 15px 0px hsl(0 0% 0% / 0.15), 0px 8px 10px -1px hsl(0 0% 0% / 0.15)",
+    shadow2xl: "0px 4px 15px 0px hsl(0 0% 0% / 0.38)",
+    shadowX: 0,
+    shadowY: 4,
+    shadowBlur: 15,
+    shadowSpread: 0,
+    shadowColor: "oklch(0 0 0)",
+    shadowOpacity: 0.15,
+  },
+};

@@ -1,0 +1,71 @@
+import type { Theme } from "@/lib/themes/types";
+
+// Lime Green (dark) — by Ashkar P M, imported from tweakcn.
+export const limeGreenDarkTheme: Theme = {
+  name: "lime-green-dark",
+  displayName: "Lime Green",
+  author: "Ashkar P M",
+  category: "dark",
+  colors: {
+    background: "oklch(0.1591 0 0)",
+    foreground: "oklch(0.9674 0.0013 286.3752)",
+    card: "oklch(0.2002 0 0)",
+    cardForeground: "oklch(0.9851 0 0)",
+    popover: "oklch(0.1591 0 0)",
+    popoverForeground: "oklch(0.9851 0 0)",
+    primary: "oklch(0.8974 0.1487 115.6236)",
+    primaryForeground: "oklch(0.2069 0.0098 285.5081)",
+    secondary: "oklch(0.3092 0 0)",
+    secondaryForeground: "oklch(0.9851 0 0)",
+    muted: "oklch(0.2178 0 0)",
+    mutedForeground: "oklch(0.7118 0.0129 286.0665)",
+    accent: "oklch(0.2488 0.0015 17.2584)",
+    accentForeground: "oklch(0.9851 0 0)",
+    destructive: "oklch(0.3958 0.1331 25.7230)",
+    destructiveForeground: "oklch(0.9851 0 0)",
+    border: "oklch(0.2739 0.0055 286.0326)",
+    input: "oklch(0.2488 0.0015 17.2584)",
+    ring: "oklch(0.8974 0.1487 115.6236)",
+    chart1: "oklch(0.8974 0.1487 115.6236)",
+    chart2: "oklch(0.6858 0.1175 167.2538)",
+    chart3: "oklch(0.5851 0.0996 193.0165)",
+    chart4: "oklch(0.4864 0.0754 214.9921)",
+    chart5: "oklch(0.3883 0.0410 237.3246)",
+    sidebar: "oklch(0.1591 0 0)",
+    sidebarForeground: "oklch(0.9851 0 0)",
+    sidebarPrimary: "oklch(0.8974 0.1487 115.6236)",
+    sidebarPrimaryForeground: "oklch(0.2069 0.0098 285.5081)",
+    sidebarAccent: "oklch(0.2178 0 0)",
+    sidebarAccentForeground: "oklch(0.9851 0 0)",
+    sidebarBorder: "oklch(0.2739 0.0055 286.0326)",
+    sidebarRing: "oklch(0.8974 0.1487 115.6236)",
+  },
+  fonts: {
+    sans: "chakra-petch",
+    serif: "georgia",
+    mono: "ibm-plex-mono",
+  },
+  radius: "0.2rem",
+  trackingNormal: 0.04,
+  shadows: {
+    shadow2xs: "0 1px 5px 0px hsl(0 0% 0% / 0.03)",
+    shadowXs: "0 1px 5px 0px hsl(0 0% 0% / 0.03)",
+    shadowSm:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 1px 2px -1px hsl(0 0% 0% / 0.05)",
+    shadow:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 1px 2px -1px hsl(0 0% 0% / 0.05)",
+    shadowMd:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 2px 4px -1px hsl(0 0% 0% / 0.05)",
+    shadowLg:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 4px 6px -1px hsl(0 0% 0% / 0.05)",
+    shadowXl:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 8px 10px -1px hsl(0 0% 0% / 0.05)",
+    shadow2xl: "0 1px 5px 0px hsl(0 0% 0% / 0.13)",
+    shadowX: 0,
+    shadowY: 1,
+    shadowBlur: 5,
+    shadowSpread: 0,
+    shadowColor: "oklch(0 0 0)",
+    shadowOpacity: 0.05,
+  },
+};

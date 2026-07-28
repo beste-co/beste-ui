@@ -1,0 +1,15 @@
+node_modules
+.next
+.turbo
+.env*
+.DS_Store
+
+# Written by the export, for the export
+manifest.json
+
+# Rebuilt by `bun run codegen`
+registry.json
+lib/blocks.ts
+lib/components.ts
+lib/block-sets.ts
+public/r

@@ -1,0 +1,71 @@
+import type { Theme } from "@/lib/themes/types";
+
+// Lime Green — by Ashkar P M, imported from tweakcn.
+export const limeGreenTheme: Theme = {
+  name: "lime-green",
+  displayName: "Lime Green",
+  author: "Ashkar P M",
+  category: "light",
+  colors: {
+    background: "oklch(1.0000 0 0)",
+    foreground: "oklch(0.2069 0.0098 285.5081)",
+    card: "oklch(0.9670 0.0030 264.5420)",
+    cardForeground: "oklch(0.2069 0.0098 285.5081)",
+    popover: "oklch(1.0000 0 0)",
+    popoverForeground: "oklch(0.2069 0.0098 285.5081)",
+    primary: "oklch(0.8974 0.1487 115.6236)",
+    primaryForeground: "oklch(0.2069 0.0098 285.5081)",
+    secondary: "oklch(0.9197 0.0040 286.3202)",
+    secondaryForeground: "oklch(0.2103 0.0059 285.8852)",
+    muted: "oklch(0.9674 0.0013 286.3752)",
+    mutedForeground: "oklch(0.5517 0.0138 285.9385)",
+    accent: "oklch(0.9851 0 0)",
+    accentForeground: "oklch(0.2103 0.0059 285.8852)",
+    destructive: "oklch(0.6368 0.2078 25.3313)",
+    destructiveForeground: "oklch(0.9851 0 0)",
+    border: "oklch(0.9197 0.0040 286.3202)",
+    input: "oklch(0.9851 0 0)",
+    ring: "oklch(0.2103 0.0059 285.8852)",
+    chart1: "oklch(0.8974 0.1487 115.6236)",
+    chart2: "oklch(0.8603 0.1606 125.0566)",
+    chart3: "oklch(0.8202 0.1699 135.0719)",
+    chart4: "oklch(0.7790 0.1643 145.1458)",
+    chart5: "oklch(0.7411 0.1604 155.0073)",
+    sidebar: "oklch(1.0000 0 0)",
+    sidebarForeground: "oklch(0.2103 0.0059 285.8852)",
+    sidebarPrimary: "oklch(0.8974 0.1487 115.6236)",
+    sidebarPrimaryForeground: "oklch(0.2069 0.0098 285.5081)",
+    sidebarAccent: "oklch(0.9674 0.0013 286.3752)",
+    sidebarAccentForeground: "oklch(0.2103 0.0059 285.8852)",
+    sidebarBorder: "oklch(0.9197 0.0040 286.3202)",
+    sidebarRing: "oklch(0.2103 0.0059 285.8852)",
+  },
+  fonts: {
+    sans: "chakra-petch",
+    serif: "georgia",
+    mono: "ibm-plex-mono",
+  },
+  radius: "0.2rem",
+  trackingNormal: 0.04,
+  shadows: {
+    shadow2xs: "0 1px 5px 0px hsl(0 0% 0% / 0.03)",
+    shadowXs: "0 1px 5px 0px hsl(0 0% 0% / 0.03)",
+    shadowSm:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 1px 2px -1px hsl(0 0% 0% / 0.05)",
+    shadow:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 1px 2px -1px hsl(0 0% 0% / 0.05)",
+    shadowMd:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 2px 4px -1px hsl(0 0% 0% / 0.05)",
+    shadowLg:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 4px 6px -1px hsl(0 0% 0% / 0.05)",
+    shadowXl:
+      "0 1px 5px 0px hsl(0 0% 0% / 0.05), 0 8px 10px -1px hsl(0 0% 0% / 0.05)",
+    shadow2xl: "0 1px 5px 0px hsl(0 0% 0% / 0.13)",
+    shadowX: 0,
+    shadowY: 1,
+    shadowBlur: 5,
+    shadowSpread: 0,
+    shadowColor: "oklch(0 0 0)",
+    shadowOpacity: 0.05,
+  },
+};

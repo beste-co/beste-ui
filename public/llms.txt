@@ -1,0 +1,235 @@
+# beste-ui
+
+> A modern React component library built on shadcn/ui. Copy and paste beautiful, accessible UI blocks into your Next.js and React projects. Production-ready and free to start.
+
+## About beste.co
+
+Beste is the site builder with strong constraints. No drag and drop, no inline chaos, no code. Just structured blocks designed to work together.
+
+- **Website**: [beste.co](https://beste.co)
+- **Philosophy**: Opinionated, block-based website building
+- **Approach**: Pre-designed blocks that compose into complete pages
+
+## About beste-ui
+
+beste-ui provides production-ready UI blocks that you can install directly using the shadcn CLI. Each component is built with React, Tailwind CSS, and follows accessibility best practices.
+
+## Documentation
+
+- [Homepage](https://ui.beste.co/blocks): Browse all available components
+- [Installation](https://ui.beste.co/docs/installation): How to install components using shadcn CLI
+
+## Components
+
+### Auth
+
+- [Centered Sign In Card](https://ui.beste.co/block/auth1): Full-height centered sign-in screen with social login providers, email and password fields, a show/hide password toggle, remember-me checkbox, and forgot-password link. Perfect for SaaS apps, dashboards, and member portals.
+- [Split-Screen Sign Up](https://ui.beste.co/block/auth2): Two-column registration screen pairing a sign-up form (social providers, name, email, password with show/hide, terms checkbox) with a full-bleed image showcase and customer testimonial. Includes a left/right image position toggle.
+- [Email Verification Code](https://ui.beste.co/block/auth3): Full-height OTP verification screen with a centered icon, segmented six-digit code input, a verify button that unlocks once the code is complete, and a live resend countdown timer. Perfect for two-factor auth, magic links, and email confirmation flows.
+- [Forgot Password Request](https://ui.beste.co/block/auth4): Full-height password recovery screen with a centered icon, single email field built on the shadcn Field primitives, a send-reset-link button, and a back-to-sign-in link. Perfect for the first step of any password reset flow.
+- [Set New Password](https://ui.beste.co/block/auth5): Full-height reset-password screen with new and confirm password fields (each with a show/hide toggle) and a live requirements checklist that ticks off rules as the user types. Perfect for the final step of a password reset or invite flow.
+- [Magic Link Sign In](https://ui.beste.co/block/auth6): Full-height passwordless sign-in screen with a single email field, a send-magic-link button, a helper note, and social login providers below a divider. Perfect for passwordless and email-link authentication flows.
+- [Account Chooser](https://ui.beste.co/block/auth7): Full-height account picker that lists saved accounts with avatars, names, and emails, plus a use-another-account row. Perfect for multi-account apps, SSO hubs, and returning-user sign-in.
+- [Centered Sign Up Card](https://ui.beste.co/block/auth13): Full-height centered registration card with social providers, name, email, and password fields (with show/hide), a terms checkbox, and a sign-in link. Perfect for SaaS sign-up pages that don't need a split layout.
+- [PIN Keypad Unlock](https://ui.beste.co/block/auth30): Full-height numeric keypad lock screen with PIN dots, a biometric shortcut, and a backspace key. Perfect for mobile app locks and quick re-authentication.
+- [Pattern Lock Unlock](https://ui.beste.co/block/auth38): Full-height pattern unlock screen with a tappable 3x3 dot grid that draws connecting lines as dots are selected, plus clear and unlock controls. Perfect for app lock screens and quick re-authentication.
+
+### Blog
+
+- [Card Grid with Authors](https://ui.beste.co/block/blog3): Three-column responsive grid of blog cards featuring author avatars, tag badges, and hover zoom effects. Clean card design with date and read time metadata.
+- [Featured Hero with Grid](https://ui.beste.co/block/blog4): Large featured article with side-by-side image and content, followed by a three-column grid of secondary posts. Read more buttons and author details included.
+- [Split Image with List](https://ui.beste.co/block/blog25): Two-column layout with featured image on left and article list on right. Divider-separated entries with arrow hover effects.
+
+### Booking
+
+- [Service Selector](https://ui.beste.co/block/booking4): Service selection grid with category filter tabs, service cards showing icon, name, description, duration, price, and selected state. Ideal for spa, salon, clinic, and fitness booking flows.
+- [Provider Picker](https://ui.beste.co/block/booking5): Staff/provider selection cards with avatar, name, specialty, star rating, review count, availability badge, experience years, and selected state. Grid layout with "Any Provider" option.
+- [Booking Confirmation Receipt](https://ui.beste.co/block/booking15): Post-booking success screen with animated check icon, confirmation number, booking summary (service, date/time, location, total), scannable QR code ticket, action buttons (calendar, receipt, directions), and email confirmation note.
+
+### Coming Soon
+
+- [Countdown Timer Launch](https://ui.beste.co/block/comingsoon1): Coming soon section with a live countdown timer showing days, hours, minutes, and seconds until launch. Perfect for product launches, event announcements, or building anticipation for new features.
+- [Development Progress Milestones](https://ui.beste.co/block/comingsoon2): Coming soon section with a progress bar and milestone tracker showing development stages like Design, Backend, Frontend, and Testing. Perfect for keeping users informed about product development progress.
+- [Social Connect Launch](https://ui.beste.co/block/comingsoon3): Coming soon section featuring social media links with icons for Twitter, GitHub, LinkedIn, and Email in pill-style buttons. Perfect for building a community and keeping followers engaged before launch.
+- [Animated Icons Preview](https://ui.beste.co/block/comingsoon4): Coming soon section with floating animated icons and a pulsing status indicator using Framer Motion animations. Perfect for creating visual excitement and a dynamic atmosphere before a product launch.
+
+### Crypto
+
+- [Token Price Hero](https://ui.beste.co/block/crypto1): Hero section with token price card showing live market stats. Price change indicator, market cap, volume, and circulating supply grid. Trending up/down icons.
+- [DAO Governance Proposals](https://ui.beste.co/block/crypto24): Governance proposal cards with for/against vote bars and quorum progress. Status badges (active, passed, rejected), countdown timers, and proposer addresses.
+- [Contract Address List](https://ui.beste.co/block/crypto35): Smart contract addresses with copy-to-clipboard and explorer link buttons. Verified badge indicator, chain name, and truncated addresses with monospace font.
+
+### CTA
+
+- [Centered Newsletter CTA](https://ui.beste.co/block/cta8): Minimal centered call-to-action with heading, description, and action buttons. Perfect for newsletter signups and conversion sections.
+- [Banner CTA](https://ui.beste.co/block/cta11): Horizontal banner call-to-action with heading and action buttons side by side. Perfect for inline conversion sections between content blocks.
+- [Worth Keeping CTA](https://ui.beste.co/block/cta69): Full-bleed monochrome closing CTA with a giant scrolling marquee behind a single centered seal button.
+
+### DevTools
+
+- [Multi-Language Code Tabs](https://ui.beste.co/block/devtools3): Code block with language tabs (JavaScript, Python, cURL, Go) and Shiki syntax highlighting. Dark theme with copy-to-clipboard and active tab indicator.
+
+### E-commerce
+
+- [Product Card Grid](https://ui.beste.co/block/ecommerce1): Responsive product grid with ratings, sale badges, and add to cart buttons. Perfect for shop pages and product catalogs.
+- [Shop by Category Grid](https://ui.beste.co/block/ecommerce4): Product category browsing with image cards, product counts, and featured badges. Responsive grid layout with hover effects. Perfect for storefront navigation and collection showcases.
+- [Featured Product Showcase](https://ui.beste.co/block/ecommerce5): Full-featured product presentation with pricing, ratings, feature list, and add to cart. Split layout with configurable image position. Perfect for highlighting premium products and limited editions.
+- [Product Reviews Section](https://ui.beste.co/block/ecommerce6): Customer reviews with star ratings, verified badges, helpful voting, and load more functionality. Displays average rating summary. Perfect for building trust and social proof on product pages.
+- [Size Guide Table](https://ui.beste.co/block/ecommerce11): Measurement chart table with chest, waist, hips, and length columns. Perfect for clothing product pages and sizing reference.
+- [Shipping Info Cards](https://ui.beste.co/block/ecommerce15): Icon cards displaying shipping, delivery, tracking, and returns policies. Perfect for product pages and checkout information.
+- [Shop by Brand Grid](https://ui.beste.co/block/ecommerce32): Brand logo cards with product counts and hover effects linking to brand pages. Perfect for multi-brand stores and brand discovery.
+
+### Education
+
+- [Social Media Links Grid](https://ui.beste.co/block/education86): A social media connection section with platform cards showing handles and follower counts. Perfect for university marketing and student community building.
+- [Global Partnerships Grid](https://ui.beste.co/block/education99): A global partnerships section showcasing partner institutions with location details and exchange statistics. Perfect for universities highlighting international collaborations.
+- [Institutional Quick Facts](https://ui.beste.co/block/education100): A quick facts grid displaying key institutional statistics with values, labels, and descriptions. Perfect for university at-a-glance pages and prospective student information.
+
+### Error
+
+- [Centered 404 Message](https://ui.beste.co/block/error1): Minimal centered 404 page with a large error code, a heading, a short explanation, two call-to-action buttons, and a divided row of popular page links underneath.
+- [404 With Site Search](https://ui.beste.co/block/error2): Search-first 404 page: a controlled search field with a submit handler, plus a bordered list of suggested pages with titles, descriptions, and hover arrows.
+- [Inline 404 Line](https://ui.beste.co/block/error6): The smallest possible 404: the status code and the message sit on one line separated by a vertical rule, stacking on mobile, with a single outline button underneath.
+- [404 Notice Card](https://ui.beste.co/block/error7): Compact bordered 404 card with a circular icon, status label, heading, one-line explanation, and stacked full-width buttons. Sized for app shells and modals as well as full pages.
+- [404 With Redirect Countdown](https://ui.beste.co/block/error8): 404 page that counts down to an automatic redirect and calls onRedirect once it reaches zero, with a cancel button that stops the timer and a manual go-now link.
+- [404 Did You Mean](https://ui.beste.co/block/error9): Left-aligned 404 for documentation and marketing sites: the requested path is shown struck through in monospace above a did-you-mean box linking to the closest matching page.
+
+### FAQ
+
+- [Numbered FAQ Index](https://ui.beste.co/block/faq77): A type-forward FAQ with a sticky heading rail and a numbered accordion list of expandable questions.
+
+### Feature
+
+- [Accordion With Live Media](https://ui.beste.co/block/feature1): Accordion on the left, swappable media surface on the right. Each row picks its own media kind: image, video, or live registry-component asset.
+- [Alternating Rows With Mixed Media](https://ui.beste.co/block/feature2): Hero header with a CTA, then alternating image-left / image-right rows. Each row's media slot accepts an image, video, or live registry-component asset.
+- [Service Grid With Icons](https://ui.beste.co/block/feature3): Centered header, three-column grid of capability cards, and an optional CTA with bottom text. Each card leads with a Lucide icon.
+- [Two-By-Two With Icon Tiles](https://ui.beste.co/block/feature4): Centered headline, four feature tiles in a 2x2 grid, and a CTA. Each tile leads with a large Lucide icon and a short description.
+- [Compact Two-Column Capabilities](https://ui.beste.co/block/feature5): Left-aligned headline followed by a compact two-column grid of capability rows. Each row leads with a Lucide icon.
+- [Capability Carousel](https://ui.beste.co/block/feature8): Looping carousel of capability cards with a centered media slot per card. Each slot accepts an image, video, or live registry-component asset.
+- [Three-Step How-To](https://ui.beste.co/block/feature9): Three side-by-side step cards with a media surface anchored to the bottom of each card. Each slot accepts an image, video, or live registry-component asset.
+- [Setup Checklist with Progress Sidebar](https://ui.beste.co/block/feature22): Multi-step checklist with status indicators, ETAs, and a sticky sidebar showing completion progress and key stats. Perfect for onboarding flows, implementation guides, or setup wizards.
+- [Quality Scorecard Grid](https://ui.beste.co/block/feature23): Six-card grid displaying quality metrics with icons, progress bars, and numeric scores for performance, security, and reliability. Perfect for system health dashboards or compliance overviews.
+- [Interactive Workflow Preview](https://ui.beste.co/block/feature24): Hover-activated tabs on the left reveal detailed workflow previews with images, bullet points, and action links on the right. Perfect for showcasing product capabilities or multi-step features.
+- [Feature Card Grid with Hover Effects](https://ui.beste.co/block/feature26): Six-card grid with icons in rounded containers that animate on hover, plus titles and descriptions. Perfect for wellness platforms, health apps, or service benefit showcases.
+- [Process Timeline with Duration Badges](https://ui.beste.co/block/feature28): Responsive timeline showing sequential steps with icons, descriptions, and time estimates (horizontal on desktop, vertical on mobile). Perfect for onboarding flows, how-to guides, or getting-started sections.
+- [Platform Feature Cards with Metrics](https://ui.beste.co/block/feature29): Six-card grid featuring icons, descriptions, and highlighted stats (latency, uptime, user counts) with animated hover effects. Perfect for showcasing SaaS capabilities or enterprise platform features.
+- [Before/After Comparison Cards](https://ui.beste.co/block/feature30): Side-by-side comparison cards with bullet lists showing pain points vs. solutions after transformation. Perfect for demonstrating product value, workflow improvements, or competitive advantages.
+- [Numbered Reasons List](https://ui.beste.co/block/feature34): Two-column grid of numbered items (01, 02, etc.) with circular badges, titles, and descriptions. Perfect for why-choose-us sections, benefits lists, or key differentiators.
+- [Use Case Image Cards](https://ui.beste.co/block/feature63): 3-column grid of image cards with text overlay, hover zoom effect, and arrow indicators. Perfect for showcasing team use cases, industry solutions, or department-specific features.
+- [Icon-Centered Grid Cards](https://ui.beste.co/block/feature107): 3-column grid of centered feature cards with large icons and brief descriptions. Perfect for capability highlights, service features, or platform offerings.
+- [Tabbed Feature Cards](https://ui.beste.co/block/feature112): Tab-based interface showing 3 cards per tab, with button toggles at top. Excellent for segmented features by department, plan, or use case.
+- [Impact Stats with Large Numbers](https://ui.beste.co/block/feature126): Responsive grid of large stat numbers with labels and descriptions. Perfect for impact metrics, company statistics, or scale indicators.
+- [Integration Logos Grid](https://ui.beste.co/block/feature135): Centered flexbox grid of company/product logos with grayscale hover effects. Excellent for customer logos, integrations, or partnerships showcase.
+- [Service Offerings with Arrows](https://ui.beste.co/block/feature144): Responsive grid of service cards with descriptions and arrow icons. Ideal for services listing, solutions overview, or offering showcase.
+- [Benefits Checklist](https://ui.beste.co/block/feature146): Responsive grid of benefit items with checkmark icons and descriptions. Perfect for benefits list, value proposition, or key advantages.
+- [Icon Badge Pills Row](https://ui.beste.co/block/feature152): Centered flexbox row of inline feature badges with icons. Perfect for quick feature list, key benefits, or inline feature highlights.
+- [Bento Feature Cards](https://ui.beste.co/block/feature177): Feature cards with 3+2 bento layout and flush media
+- [Sticky Benefits Timeline](https://ui.beste.co/block/feature178): Two-column benefits section with sticky left content and scrollable timeline
+- [Sticky Stats Scroller](https://ui.beste.co/block/feature179): Two-column layout with sticky stats and scrollable feature cards
+- [Sticky Image Scroller](https://ui.beste.co/block/feature180): Two-column layout with sticky image and scrollable feature cards
+- [Three Cards With Asset Media](https://ui.beste.co/block/feature194): Three feature cards that swap an icon for a real micro-asset: a bar chart, a before/after stat, and a terminal prompt. Demonstrates how registry-pieces drop into block media slots.
+- [Four Cards With Centered Icon](https://ui.beste.co/block/feature195): Four equal feature cards on a clean background, each with a large circular icon badge above a bold h3 title. Ideal for outlining the steps or pillars of a service offering.
+- [Three editorial pillar columns](https://ui.beste.co/block/feature230): Three tall portrait images in a row, each paired with a padded numeral, title, and description — a monochrome statement of guiding principles.
+- [Feature & Testimonial Hybrid](https://ui.beste.co/block/feature235): Feature and testimonial hybrid: a quote card on bg-muted beside a 2x2 grid of icon feature highlights.
+
+### Fitness
+
+- [Gym Location Finder](https://ui.beste.co/block/fitness32): Location section with map preview, address, hours, parking, and public transit info. Perfect for gym contact pages and multi-location fitness centers.
+
+### Footer
+
+- [Minimal Inline Footer](https://ui.beste.co/block/footer9): Compact single-row footer with logo, horizontal navigation links, and copyright text. Perfect for landing pages and minimal websites that need simple site-wide navigation.
+- [Split Brand Footer](https://ui.beste.co/block/footer10): Two-column footer with brand logo, tagline, and copyright on left, navigation links on right. Perfect for startups and SaaS products wanting clean brand presentation.
+- [Centered Social Footer](https://ui.beste.co/block/footer11): Vertically stacked footer with centered logo, navigation links, social media icons, and copyright. Perfect for portfolios and personal brands wanting a symmetrical layout.
+- [Compact E-commerce Footer](https://ui.beste.co/block/footer21): Centered minimal footer with horizontal navigation, trust badges, and payment method icons. Perfect for smaller online stores wanting a clean checkout-focused layout.
+- [Social Media Showcase Footer](https://ui.beste.co/block/footer23): Centered footer with prominent heading, large circular social media icon buttons, and minimal navigation. Perfect for creators and influencers driving social engagement.
+
+### Health
+
+- [Vitals Dashboard](https://ui.beste.co/block/health1): Health metrics dashboard displaying vital signs like heart rate, blood oxygen, activity, and sleep with trend indicators. Perfect for wellness apps and health tracking platforms.
+- [Wellness Goals Tracker](https://ui.beste.co/block/health2): Daily wellness goals tracker with progress bars showing current vs target for water intake, steps, mindfulness, and meals. Perfect for habit tracking and fitness apps.
+- [Medical Specialists Directory](https://ui.beste.co/block/health3): Doctor cards grid showing specialists with ratings, availability status, and next appointment slots. Perfect for healthcare platforms and telemedicine booking systems.
+- [Wellness Hero Section](https://ui.beste.co/block/health4): Split-layout hero with large typography, serene imagery, and floating testimonial card. Perfect for yoga studios, meditation apps, and wellness retreat websites.
+- [Medical Services Grid](https://ui.beste.co/block/health5): Service cards displaying medical specialties with appointment durations, feature lists, and CTAs. Perfect for hospitals, clinics, and healthcare provider websites.
+- [Wellness Editorial Section](https://ui.beste.co/block/health6): Long-form content section with rich text, bullet point highlights, and call-to-action buttons. Perfect for wellness blogs, healing journey stories, and health philosophy pages.
+- [Health Statistics Display](https://ui.beste.co/block/health16): Large-format statistics grid showcasing key metrics like member counts, satisfaction rates, and years of service. Perfect for healthcare organizations and wellness brands.
+
+### Hero
+
+- [Centered Hero with Media](https://ui.beste.co/block/hero7): Centered hero with optional badge, heading, description, dual action buttons, and a featured image below. Perfect for product launches and landing pages.
+- [Cinematic Fullscreen Carousel](https://ui.beste.co/block/hero19): Full-screen animated carousel with multiple transition effects, next slide preview, and progress bar. Perfect for immersive storytelling and portfolio showcases.
+- [Split Carousel with Thumbnails](https://ui.beste.co/block/hero20): Two-column carousel with animated content transitions, thumbnail strip navigation, and vertical progress indicator. Perfect for product showcases and feature highlights.
+- [Fullscreen Vertical Carousel](https://ui.beste.co/block/hero21): Full-screen carousel with vertical slide transitions, decorative grid lines, and customizable accent colors. Perfect for creative agencies and modern brand showcases.
+- [Wellness Hero with Stats Cards](https://ui.beste.co/block/hero24): Split-layout hero with avatar stack social proof, floating heart rate card, and progress indicator overlay on image. Perfect for health, fitness, and wellness apps.
+- [Centered Hero with Logo Cloud](https://ui.beste.co/block/hero36): Centered hero with gradient-highlighted heading text and trusted-by logo cloud below CTA buttons. Perfect for B2B SaaS and enterprise products.
+- [Full-height Hero with Scroll Indicator](https://ui.beste.co/block/hero57): Vertically centered hero with animated scroll-down indicator featuring bouncing dot and arrow. Perfect for single-page sites and immersive landing pages.
+- [Changelog Hero with Updates List](https://ui.beste.co/block/hero63): Centered hero with checklist of recent updates showing new badges and completion icons. Perfect for changelog pages and product update announcements.
+- [Split Hero with YouTube Video](https://ui.beste.co/block/hero65): Two-column hero with embedded YouTube video player in responsive aspect ratio container. Perfect for product demos and explainer video landing pages.
+- [Centered Hero with Feature Icons](https://ui.beste.co/block/hero68): Centered hero with three feature highlights displayed as icon cards with descriptions below the CTA. Perfect for platform and infrastructure products.
+- [Email Signup Hero](https://ui.beste.co/block/hero69): Minimal centered hero with inline email input field and submit button for newsletter or waitlist signups. Perfect for coming-soon pages and early access campaigns.
+
+### Navbar
+
+- [Centered Logo Split Nav](https://ui.beste.co/block/navbar30): Symmetrical navbar with centered logo flanked by navigation links on both sides and dropdown menus. Perfect for fashion brands and lifestyle sites wanting balanced visual hierarchy.
+
+### Onboarding
+
+- [Welcome Hero with Step Indicator](https://ui.beste.co/block/onboarding1): Centered welcome screen featuring a hero image, step counter, and dual CTAs. Perfect for app onboarding flows that guide users through a multi-step setup process.
+- [Minimal Welcome with Icon](https://ui.beste.co/block/onboarding3): Clean, centered welcome screen with a branded icon, heading, and single call-to-action. Perfect for simple app introductions that prioritize clarity over complexity.
+- [Video Introduction Screen](https://ui.beste.co/block/onboarding4): Welcome screen featuring a video thumbnail with play overlay and duration badge. Perfect for product tours that use video content to demonstrate features.
+- [Step Cards with Numbered Indicators](https://ui.beste.co/block/onboarding9): Animated step wizard with square numbered indicators and content cards for each step. Perfect for product walkthroughs that guide users through key features.
+
+### Portfolio
+
+- [Social Media Connect Grid](https://ui.beste.co/block/portfolio62): Responsive grid of social media platform buttons with follower counts and platform icons. Perfect for creators and influencers showcasing their social media presence.
+- [Book Recommendations Grid](https://ui.beste.co/block/portfolio70): Grid of book cards displaying cover images, titles, authors, star ratings, and category badges. Perfect for sharing reading lists and book recommendations on personal sites.
+- [Work Process Steps](https://ui.beste.co/block/portfolio84): Four-column numbered workflow section showing project phases like Discovery, Strategy, Design, and Deliver. Perfect for freelancers and agencies explaining their project methodology.
+
+### Reveal
+
+- [Before/After Image Slider](https://ui.beste.co/block/reveal1): Interactive image comparison component with a draggable divider supporting horizontal and vertical orientations. Perfect for showcasing transformations, photo editing results, or design improvements.
+- [Comparison Slider with Highlights](https://ui.beste.co/block/reveal2): Split-layout image comparison with a sidebar featuring benefit highlights and icons alongside a draggable before/after slider. Perfect for demonstrating product improvements with detailed feature callouts.
+
+### SaaS
+
+- [Changelog Timeline](https://ui.beste.co/block/saas16): Version history cards with version badges, dates, and update type labels (Feature, Improvement, Fix). Perfect for product update pages and release notes.
+- [Job Listings](https://ui.beste.co/block/saas31): Career openings list with job title, department badge, location, and employment type. Perfect for company career pages with clickable job postings.
+
+### Settings
+
+- [Invoice History Table](https://ui.beste.co/block/settings64): Billing history table displaying invoices with date, description, amount, payment status badges, and download buttons. Perfect for account billing pages and payment management dashboards.
+
+### Showcase
+
+- [Split Hotspot Feature Section](https://ui.beste.co/block/showcase2): Two-column layout with text content, CTA buttons, and interactive image with clickable hotspot popovers. Perfect for SaaS feature pages with reversible layout option.
+- [Project Gallery Grid](https://ui.beste.co/block/showcase3): Responsive three-column image gallery with hover zoom effects, captions, and optional clickable cards. Perfect for showcasing project portfolios or work samples.
+
+### Terminal
+
+- [CLI Installation Typewriter](https://ui.beste.co/block/terminal1): Animated terminal that types commands character-by-character with output responses. Perfect for showcasing CLI installation steps or quick-start guides.
+
+### Testimonial
+
+- [Carousel Testimonials](https://ui.beste.co/block/testimonial1): Full-width swipeable testimonial carousel with autoplay and dot navigation. Perfect for highlighting multiple customer quotes on landing pages.
+- [Centered Quote](https://ui.beste.co/block/testimonial6): Minimalist single testimonial with centered quote and author details. Perfect for hero sections or standalone social proof elements.
+- [Quote Cards Grid](https://ui.beste.co/block/testimonial8): Grid of testimonial cards with decorative quote marks and HTML-supported text highlighting. Perfect for showcasing multiple customer reviews with emphasis on key phrases.
+
+### Travel
+
+- [Tour Type Categories](https://ui.beste.co/block/travel19): Visual category grid showing tour types like adventure, cultural, beach, and safari with images and tour counts. Perfect for travel agencies organizing trips by experience style.
+- [Custom Trip Builder CTA](https://ui.beste.co/block/travel21): Split-layout card promoting custom trip planning with feature bullet points and a large image. Perfect for travel agencies offering personalized itinerary design services.
+
+### Use Case
+
+- [Use Case Card Grid](https://ui.beste.co/block/usecase2): Responsive grid of use case cards with hover effects, images, descriptions, and feature checklists. Perfect for displaying solutions for different industries or customer segments.
+- [Numbered Steps Process](https://ui.beste.co/block/usecase3): Vertical numbered steps with alternating left-right image positions, descriptions, and feature lists. Perfect for explaining multi-step processes or onboarding flows.
+- [Industry Solutions Grid](https://ui.beste.co/block/usecase4): Card grid showcasing industry-specific solutions with icons, images, descriptions, and feature tags. Perfect for highlighting how your platform serves different verticals.
+- [Feature Icon Grid](https://ui.beste.co/block/usecase5): Centered icon grid with titles and descriptions, featuring hover animations on icon containers. Perfect for showcasing product features or capabilities in a clean layout.
+- [Solutions Accordion](https://ui.beste.co/block/usecase7): Expandable accordion layout with icons, images, descriptions, and feature lists inside each panel. Perfect for detailed solution explanations with visual content.
+- [Vertical Timeline](https://ui.beste.co/block/usecase8): Centered timeline with alternating left-right content cards, icons, images, and feature lists. Perfect for showing project phases, company history, or process stages.
+- [Masonry Bento Grid](https://ui.beste.co/block/usecase9): CSS columns-based masonry layout with variable-height cards featuring background images and gradient overlays. Perfect for showcasing diverse use cases with visual hierarchy.
+- [Split Content Card](https://ui.beste.co/block/usecase10): Two-column card with text content, bullet list, and CTA buttons alongside a full-height image. Perfect for feature highlights or promotional sections.
+
+## Optional
+
+- [GitHub](https://github.com/beste-co/beste-ui): Source code and contributions

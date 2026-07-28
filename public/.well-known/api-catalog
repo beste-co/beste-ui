@@ -1,0 +1,45 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://ui.beste.co/r",
+      "service-doc": [
+        {
+          "href": "https://ui.beste.co/llms-full.txt",
+          "type": "text/plain",
+          "title": "Full registry documentation in markdown for LLMs"
+        },
+        {
+          "href": "https://ui.beste.co/llms.txt",
+          "type": "text/plain",
+          "title": "Compact registry documentation for LLMs"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://ui.beste.co/r/registry.json",
+          "type": "application/json",
+          "title": "shadcn registry index"
+        }
+      ],
+      "item": [
+        {
+          "href": "https://ui.beste.co/r/{name}",
+          "type": "application/json",
+          "title": "Block registry entry by name"
+        },
+        {
+          "href": "https://ui.beste.co/component/r/{name}",
+          "type": "application/json",
+          "title": "Component registry entry by name"
+        }
+      ],
+      "alternate": [
+        {
+          "href": "https://ui.beste.co/sitemap.xml",
+          "type": "application/xml",
+          "title": "Sitemap index"
+        }
+      ]
+    }
+  ]
+}

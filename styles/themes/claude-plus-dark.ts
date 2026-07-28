@@ -1,0 +1,71 @@
+import type { Theme } from "@/lib/themes/types";
+
+// Claude+ (dark) — by Luis Llanes, imported from tweakcn.
+export const claudePlusDarkTheme: Theme = {
+  name: "claude-plus-dark",
+  displayName: "Claude+",
+  author: "Luis Llanes",
+  category: "dark",
+  colors: {
+    background: "oklch(0.2679 0.0036 106.6427)",
+    foreground: "oklch(0.9576 0.0027 106.4494)",
+    card: "oklch(0.2928 0.0018 106.5092)",
+    cardForeground: "oklch(0.9818 0.0054 95.0986)",
+    popover: "oklch(0.3085 0.0035 106.6039)",
+    popoverForeground: "oklch(0.9211 0.0040 106.4781)",
+    primary: "oklch(0.6724 0.1308 38.7559)",
+    primaryForeground: "oklch(0.1908 0.0020 106.5859)",
+    secondary: "oklch(0.9818 0.0054 95.0986)",
+    secondaryForeground: "oklch(0.3085 0.0035 106.6039)",
+    muted: "oklch(0.2213 0.0038 106.7070)",
+    mutedForeground: "oklch(0.7713 0.0169 99.0657)",
+    accent: "oklch(0.2130 0.0078 95.4245)",
+    accentForeground: "oklch(0.9663 0.0080 98.8792)",
+    destructive: "oklch(0.6368 0.2078 25.3313)",
+    destructiveForeground: "oklch(1.0000 0 0)",
+    border: "oklch(0.3618 0.0101 106.8928)",
+    input: "oklch(0.4336 0.0113 100.2195)",
+    ring: "oklch(0.6724 0.1308 38.7559)",
+    chart1: "oklch(0.5583 0.1276 42.9956)",
+    chart2: "oklch(0.6898 0.1581 290.4107)",
+    chart3: "oklch(0.2130 0.0078 95.4245)",
+    chart4: "oklch(0.3074 0.0516 289.3230)",
+    chart5: "oklch(0.5608 0.1348 42.0584)",
+    sidebar: "oklch(0.2357 0.0024 67.7077)",
+    sidebarForeground: "oklch(0.8074 0.0142 93.0137)",
+    sidebarPrimary: "oklch(0.3250 0 0)",
+    sidebarPrimaryForeground: "oklch(0.9881 0 0)",
+    sidebarAccent: "oklch(0.1680 0.0020 106.6177)",
+    sidebarAccentForeground: "oklch(0.8074 0.0142 93.0137)",
+    sidebarBorder: "oklch(0.9401 0 0)",
+    sidebarRing: "oklch(0.7731 0 0)",
+  },
+  fonts: {
+    sans: "outfit",
+    serif: "georgia",
+    mono: "geist-mono",
+  },
+  radius: "1rem",
+  trackingNormal: 0,
+  shadows: {
+    shadow2xs: "0 1px 3px 0px hsl(0 0% 0% / 0.05)",
+    shadowXs: "0 1px 3px 0px hsl(0 0% 0% / 0.05)",
+    shadowSm:
+      "0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10)",
+    shadow:
+      "0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10)",
+    shadowMd:
+      "0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10)",
+    shadowLg:
+      "0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10)",
+    shadowXl:
+      "0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10)",
+    shadow2xl: "0 1px 3px 0px hsl(0 0% 0% / 0.25)",
+    shadowX: 0,
+    shadowY: 1,
+    shadowBlur: 3,
+    shadowSpread: 0,
+    shadowColor: "oklch(0 0 0)",
+    shadowOpacity: 0.1,
+  },
+};
