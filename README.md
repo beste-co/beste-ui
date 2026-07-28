@@ -1,14 +1,9 @@
 <!--
-  Placeholder cover. To use your own: drop the file at
-  scripts/publish-oss/templates/cover.png in the source repo (it is copied to
-  the root of this one) and change the src below to ./cover.png
+  The cover ships with the export: public/assets is copied over whole, so this
+  path resolves inside the public repo without a separate copy step.
 -->
 <p align="center">
-  <img
-    src="https://ui.beste.co/og?title=Beste%20UI&description=Production-ready%20sections%2C%20pieces%20and%20primitives%20for%20shadcn%2Fui%20and%20Tailwind%20CSS."
-    alt="Beste UI"
-    width="100%"
-  />
+  <img src="./public/assets/images/beste-ui.png" alt="Beste UI" width="100%" />
 </p>
 
 <h1 align="center">Beste UI</h1>
