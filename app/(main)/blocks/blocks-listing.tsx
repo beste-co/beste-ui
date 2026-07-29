@@ -9,7 +9,8 @@ import {
   BrowsePagerArrow,
   BrowsePagination,
 } from "@/components/browse-filters";
-import { type BlockMeta, blocks } from "@/lib/blocks";
+import type { BlockMeta } from "@/lib/blocks";
+import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { matchesQuery } from "@/lib/search-lexical";
 import { cn } from "@/lib/utils";
 import type { CategoryCount } from "./_lib/paginate";

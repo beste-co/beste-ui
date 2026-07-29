@@ -53,11 +53,7 @@ export function RelatedBlocksGrid({ blocks }: { blocks: BlockMeta[] }) {
             className="relative flex h-84 items-center justify-center overflow-hidden rounded-md bg-background md:h-48"
           >
             {mounted ? (
-              <BlockPreview
-                component={block.component}
-                demoProps={block.demoProps}
-                previewAlign={block.previewAlign}
-              />
+              <BlockPreview name={block.name} />
             ) : (
               <div className="size-full animate-pulse bg-foreground/5" />
             )}

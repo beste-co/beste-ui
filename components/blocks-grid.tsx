@@ -14,20 +14,28 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { type BlockMeta, blocks } from "@/lib/blocks";
+import type { BlockMeta } from "@/lib/blocks";
+import { getBlockObfuscated } from "@/lib/blocks-obfuscated";
 import { useFavorites } from "@/lib/favorites-context";
 
-// Block preview component - renders the component scaled down
-export const BlockPreview = ({
-  component: Component,
-  demoProps,
-  previewAlign = "top",
-}: {
-  component: ComponentType<any>;
-  demoProps: any;
-  previewAlign?: "top" | "bottom";
-}) => {
-  const isBottom = previewAlign === "bottom";
+/**
+ * Card thumbnail — the block, rendered scaled down. It resolves the component
+ * itself, from the obfuscated build, so a card never puts a Pro block's real
+ * classes in the DOM and the live registry stays out of the browse bundles.
+ * Obfuscation only mangles class names, so one build serves every visitor.
+ * Cards therefore follow `pro:obfuscate`, not the last edit; the preview you
+ * author against, /block/<name>, still hot-reloads.
+ */
+export const BlockPreview = ({ name }: { name: string }) => {
+  const block = getBlockObfuscated(name);
+
+  if (!block) {
+    return null;
+  }
+
+  const Component: ComponentType<any> = block.component;
+  const demoProps = block.demoProps;
+  const isBottom = block.previewAlign === "bottom";
 
   try {
     return (
@@ -167,11 +175,7 @@ export function BlocksGrid({
             </div>
           )}
           {shouldRenderPreview ? (
-            <BlockPreview
-              component={block.component}
-              demoProps={block.demoProps}
-              previewAlign={block.previewAlign}
-            />
+            <BlockPreview name={block.name} />
           ) : (
             // Skeleton loader - mimics a typical block layout
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 gap-3">

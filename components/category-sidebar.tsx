@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { blocks } from "@/lib/blocks";
+import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { categoryInfoMap } from "@/lib/category-info";
 import { useSearch } from "@/lib/search-store";
 import { cn } from "@/lib/utils";

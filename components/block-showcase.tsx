@@ -7,7 +7,6 @@ import {
   SparklesIcon,
   Tick02Icon,
 } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,9 +22,10 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { IconButton } from "@/components/icon-button";
 import { CodeBlock } from "@/components/code-block";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { ICON_ACTION_CLASS } from "@/components/icon-action";
+import { IconButton } from "@/components/icon-button";
 import { Spinner } from "@/components/ui/spinner";
 import { ThemedPreview } from "@/components/theme/themed-preview";
 import { cn } from "@/lib/utils";
@@ -306,10 +306,7 @@ export function BlockShowcase({
     }
   };
 
-  // Resolve the block render (non-fullscreen path). In development always use
-  // the live block so edits hot-reload — the obfuscated build is a generated
-  // snapshot that only refreshes on `pro:obfuscate`. It renders identically.
-  const useLiveBlock = isUserPro || process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
+  const useLiveBlock = isUserPro || process.env.NODE_ENV === "development";
   const block = useLiveBlock ? getBlock(name) : getBlockObfuscated(name);
   const Component = block?.component;
   const mergedProps = block
@@ -437,7 +434,13 @@ export function BlockShowcase({
                   {copied && (
                     <span className="col-start-1 row-start-1 flex items-center gap-2 font-mono">
                       Copied!
-                      <HugeiconsIcon icon={Tick02Icon} size={14} strokeWidth={2} className="shrink-0 text-emerald-600" aria-hidden="true" />
+                      <HugeiconsIcon
+                        icon={Tick02Icon}
+                        size={14}
+                        strokeWidth={2}
+                        className="shrink-0 text-emerald-600"
+                        aria-hidden="true"
+                      />
                     </span>
                   )}
                 </span>
@@ -453,7 +456,9 @@ export function BlockShowcase({
                     : "Switch to desktop preview"
                 }
                 icon={previewMode === "desktop" ? SmartPhone01Icon : ComputerIcon}
-                onClick={() => setPreviewMode((prev) => (prev === "desktop" ? "mobile" : "desktop"))}
+                onClick={() =>
+                  setPreviewMode((prev) => (prev === "desktop" ? "mobile" : "desktop"))
+                }
                 className={ICON_ACTION_CLASS}
               />
             </span>

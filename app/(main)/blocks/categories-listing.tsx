@@ -1,7 +1,7 @@
 "use client";
 
 import { BrowseFilters } from "@/components/browse-filters";
-import { blocks, getBlock } from "@/lib/blocks";
+import { blocksObfuscated, getBlockObfuscated } from "@/lib/blocks-obfuscated";
 import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 
 import type { ComponentType } from "react";
@@ -78,7 +78,7 @@ const LazyPreview = ({ name }: { name: string | undefined }) => {
     if (inView) setShouldRender(true);
   }, [inView]);
 
-  const block = name ? getBlock(name) : undefined;
+  const block = name ? getBlockObfuscated(name) : undefined;
 
   return (
     <div ref={ref} className="absolute inset-0">
@@ -124,7 +124,7 @@ export function CategoriesListing({ categories }: CategoriesListingProps) {
         <h1 className="flex flex-wrap items-center gap-x-3 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
           <span>Blocks</span>
           <span className="text-2xl font-semibold text-primary md:text-3xl">
-            ({blocks.length})
+            ({blocksObfuscated.length})
           </span>
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
@@ -139,7 +139,7 @@ export function CategoriesListing({ categories }: CategoriesListingProps) {
         options={filterOptions}
         value={null}
         onValueChange={handleCategoryChange}
-        allCount={blocks.length}
+        allCount={blocksObfuscated.length}
         disabled={isPending}
       >
         <p className="text-base text-muted-foreground">{categories.length} categories</p>

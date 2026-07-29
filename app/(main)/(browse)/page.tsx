@@ -12,7 +12,7 @@ import type { Metadata } from "next";
 import { RegistryComponentDemo } from "@/components/registry-component-demo";
 import { STUDIO_SET_BLOCKS } from "@/lib/block-sets";
 import { components as allComponents } from "@/lib/components";
-import { blocks } from "@/lib/blocks";
+import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { registryComponents } from "@/lib/registry-components";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
