@@ -390,6 +390,29 @@ export const categoryInfoMap: Record<string, CategoryInfo> = {
     keywords: ["metrics", "numbers"],
     icon: "TrendingUp",
   },
+  gallery: {
+    title: "Gallery",
+    fullTitle: "Image Gallery & Lightbox Blocks for React & Next.js",
+    description:
+      "Photo galleries, masonry grids, lightboxes, and image carousels for visual pages.",
+    metaTitle: "Gallery shadcn blocks - Beste UI",
+    metaDescription:
+      "Production-ready shadcn/tailwind gallery blocks: masonry grids, lightbox overlays, thumbnail rails, filterable albums, and scrolling image strips.",
+    keywords: ["gallery", "lightbox"],
+    icon: "Images",
+    isNew: true,
+  },
+  logos: {
+    title: "Logos",
+    fullTitle: "Logo Cloud & Client Wall Blocks for React & Next.js",
+    description:
+      "Trusted-by logo clouds, client walls, and partner strips for social proof.",
+    metaTitle: "Logos shadcn blocks - Beste UI",
+    metaDescription:
+      "Production-ready shadcn/tailwind logo cloud blocks for trusted-by strips, client walls, partner grids, and logo marquees.",
+    keywords: ["logo cloud", "clients"],
+    icon: "Handshake",
+  },
   chat: {
     title: "Chat",
     description:

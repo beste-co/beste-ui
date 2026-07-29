@@ -43,6 +43,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Card Grid with Authors](https://ui.beste.co/block/blog3): Three-column responsive grid of blog cards featuring author avatars, tag badges, and hover zoom effects. Clean card design with date and read time metadata.
 - [Featured Hero with Grid](https://ui.beste.co/block/blog4): Large featured article with side-by-side image and content, followed by a three-column grid of secondary posts. Read more buttons and author details included.
 - [Split Image with List](https://ui.beste.co/block/blog25): Two-column layout with featured image on left and article list on right. Divider-separated entries with arrow hover effects.
+- [Journal Lead And Index](https://ui.beste.co/block/blog57): Editorial journal preview pairing one lead entry with a wide image, category, title, excerpt and date against a ruled index of three shorter entries, headed by an eyebrow, a display heading and an outline pill CTA.
 
 ### Booking
 
@@ -72,6 +73,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Centered Newsletter CTA](https://ui.beste.co/block/cta8): Minimal centered call-to-action with heading, description, and action buttons. Perfect for newsletter signups and conversion sections.
 - [Banner CTA](https://ui.beste.co/block/cta11): Horizontal banner call-to-action with heading and action buttons side by side. Perfect for inline conversion sections between content blocks.
 - [Worth Keeping CTA](https://ui.beste.co/block/cta69): Full-bleed monochrome closing CTA with a giant scrolling marquee behind a single centered seal button.
+- [Studio Booking Split CTA](https://ui.beste.co/block/cta78): Closing call to action splitting a tall photo against an oversized heading, a short pitch, a pill CTA beside a plain email link, and a ruled two-column row stating reply time and next availability.
 
 ### DevTools
 
@@ -179,9 +181,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Centered Hero with Feature Icons](https://ui.beste.co/block/hero68): Centered hero with three feature highlights displayed as icon cards with descriptions below the CTA. Perfect for platform and infrastructure products.
 - [Email Signup Hero](https://ui.beste.co/block/hero69): Minimal centered hero with inline email input field and submit button for newsletter or waitlist signups. Perfect for coming-soon pages and early access campaigns.
 
-### Other
+### Logos
 
 - [Hairline Client Wall](https://ui.beste.co/block/logos12): A client wall that sets six greyscale logos in a hairline cell grid, each lifting to full colour on hover, with an eyebrow and a short claim on the left, a reach line on the right, and a credit note underneath.
+- [Ruled Client Roster](https://ui.beste.co/block/logos13): Client proof band with a parenthetical eyebrow, a display heading beside a supporting paragraph, and a ruled grid of grayscale logos where each one carries a plain caption naming the work, closed by a footnote and a pill CTA.
 
 ### Navbar
 

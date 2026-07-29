@@ -6,6 +6,6 @@ export const meta: BlockMeta = {
   description:
     "A type-forward FAQ with a sticky heading rail and a numbered accordion list of expandable questions.",
   category: "FAQ",
-  registryDependencies: [],
+  registryDependencies: ["accordion"],
   registryComponents: ["badge7", "button12"],
 };

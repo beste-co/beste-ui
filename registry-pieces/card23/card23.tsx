@@ -54,7 +54,7 @@ export function Card23({
                 className="size-3 text-muted-foreground"
                 aria-hidden="true"
               />
-              <span className="truncate font-mono text-card-foreground">
+              <span className="truncate text-card-foreground">
                 {email}
               </span>
             </div>
@@ -65,7 +65,7 @@ export function Card23({
                 className="size-3 text-muted-foreground"
                 aria-hidden="true"
               />
-              <span className="font-mono text-card-foreground">{phone}</span>
+              <span className="text-card-foreground">{phone}</span>
             </div>
           )}
           {website && (
@@ -74,7 +74,7 @@ export function Card23({
                 className="size-3 text-muted-foreground"
                 aria-hidden="true"
               />
-              <span className="truncate font-mono text-card-foreground">
+              <span className="truncate text-card-foreground">
                 {website}
               </span>
             </div>

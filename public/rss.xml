@@ -6,6 +6,27 @@
     <description>Subscribe to @beste-ui updates</description>
     <atom:link href="https://ui.beste.co/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Journal Lead And Index</title>
+      <link>https://ui.beste.co/block/blog57</link>
+      <guid>https://ui.beste.co/block/blog57</guid>
+      <description>Editorial journal preview pairing one lead entry with a wide image, category, title, excerpt and date against a ruled index of three shorter entries, headed by an eyebrow, a display heading and an outline pill CTA.</description>
+      <pubDate>Tue, 28 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Studio Booking Split CTA</title>
+      <link>https://ui.beste.co/block/cta78</link>
+      <guid>https://ui.beste.co/block/cta78</guid>
+      <description>Closing call to action splitting a tall photo against an oversized heading, a short pitch, a pill CTA beside a plain email link, and a ruled two-column row stating reply time and next availability.</description>
+      <pubDate>Tue, 28 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Ruled Client Roster</title>
+      <link>https://ui.beste.co/block/logos13</link>
+      <guid>https://ui.beste.co/block/logos13</guid>
+      <description>Client proof band with a parenthetical eyebrow, a display heading beside a supporting paragraph, and a ruled grid of grayscale logos where each one carries a plain caption naming the work, closed by a footnote and a pill CTA.</description>
+      <pubDate>Tue, 28 Jul 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Mission Band With Principles</title>
       <link>https://ui.beste.co/block/about69</link>
       <guid>https://ui.beste.co/block/about69</guid>
