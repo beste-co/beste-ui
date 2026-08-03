@@ -1,7 +1,9 @@
 "use client";
 
 import { BrowseFilters } from "@/components/browse-filters";
+import { NewBadge, useIsNew } from "@/components/new-badge";
 import { blocksObfuscated, getBlockObfuscated } from "@/lib/blocks-obfuscated";
+import { COLLECTIONS } from "@/lib/collections";
 import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 
 import type { ComponentType } from "react";
@@ -18,6 +20,8 @@ export interface CategoryCard {
 
 interface CategoriesListingProps {
   categories: readonly CategoryCard[];
+  /** Ship dates for recently added blocks, for the cards' NEW tally. */
+  addedDates?: Readonly<Record<string, string>>;
 }
 
 // Sample component preview - renders the representative component scaled down.
@@ -99,9 +103,42 @@ const LazyPreview = ({ name }: { name: string | undefined }) => {
   );
 };
 
-export function CategoriesListing({ categories }: CategoriesListingProps) {
+export function CategoriesListing({ categories, addedDates }: CategoriesListingProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const isNew = useIsNew(addedDates);
+
+  /** Which category each recently added block belongs to, looked up once. */
+  const categoryOf = useMemo(() => {
+    const bySlug = new Map<string, string>();
+    for (const b of blocksObfuscated) {
+      bySlug.set(b.name, b.category.toLowerCase().replace(/\s+/g, "-"));
+    }
+    return bySlug;
+  }, []);
+
+  /*
+   * How many blocks each category has added inside the badge's window. Counted
+   * here rather than on the server because the window is decided in the browser
+   * — see `useIsNew` — so the tally and the badges on the cards behind it always
+   * agree, however old the build is.
+   */
+  const newCounts = new Map<string, number>();
+  for (const name of Object.keys(addedDates ?? {})) {
+    if (!isNew(name)) continue;
+    const slug = categoryOf.get(name);
+    if (slug) newCounts.set(slug, (newCounts.get(slug) ?? 0) + 1);
+  }
+
+  /*
+   * Alphabetical, except that anything with new blocks in it comes first, most
+   * new first. A category that gained ten blocks this morning is the answer to
+   * "what is there?" far more than "About" being early in the alphabet is.
+   */
+  const ordered = [...categories].sort((a, b) => {
+    const diff = (newCounts.get(b.slug) ?? 0) - (newCounts.get(a.slug) ?? 0);
+    return diff !== 0 ? diff : a.category.localeCompare(b.category);
+  });
 
   const handleCategoryChange = useCallback(
     (slug: string | null) => {
@@ -111,10 +148,23 @@ export function CategoriesListing({ categories }: CategoriesListingProps) {
     [router]
   );
 
+  const handleCollectionChange = useCallback(
+    (slug: string | null) => {
+      const href = slug ? `/blocks/collection/${slug}` : "/blocks";
+      startTransition(() => router.push(href));
+    },
+    [router]
+  );
+
   /** The categories in the shape the filter bar takes them. */
   const filterOptions = useMemo(
     () => categories.map((c) => ({ label: c.category, value: c.slug, count: c.count })),
     [categories]
+  );
+
+  const collectionOptions = useMemo(
+    () => COLLECTIONS.map((c) => ({ label: c.label, value: c.slug, count: c.count })),
+    []
   );
 
   return (
@@ -134,19 +184,32 @@ export function CategoriesListing({ categories }: CategoriesListingProps) {
       </header>
 
       {/* No search field here: this page lists the categories themselves, and
-          the picker is a shortcut into one of them. */}
+          the pickers are shortcuts into one category, or into one collection —
+          the set of blocks that share a design language, which no category page
+          can show you because a collection runs across all of them. */}
       <BrowseFilters
         options={filterOptions}
         value={null}
         onValueChange={handleCategoryChange}
         allCount={blocksObfuscated.length}
+        label="Category"
+        extra={[
+          {
+            options: collectionOptions,
+            value: null,
+            onValueChange: handleCollectionChange,
+            allLabel: "All collections",
+            allCount: blocksObfuscated.length,
+            label: "Collection",
+          },
+        ]}
         disabled={isPending}
       >
         <p className="text-base text-muted-foreground">{categories.length} categories</p>
       </BrowseFilters>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {categories.map((c) => (
+        {ordered.map((c) => (
           <div
             key={c.category}
             className="group relative flex h-full flex-col gap-3 rounded-xl bg-muted p-3 transition-colors hover:bg-muted-foreground/15 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-ring"
@@ -167,6 +230,13 @@ export function CategoriesListing({ categories }: CategoriesListingProps) {
             */}
             <div className="relative h-84 overflow-hidden rounded-md bg-background md:h-48">
               <LazyPreview name={c.sampleName} />
+              {/* The tally in the corner the preview keeps clear, above the
+                  overlay link so it is not dimmed by the card's hover. */}
+              {newCounts.has(c.slug) && (
+                <div className="pointer-events-none absolute right-3 top-3 z-10">
+                  <NewBadge count={newCounts.get(c.slug)} />
+                </div>
+              )}
             </div>
 
             {/*

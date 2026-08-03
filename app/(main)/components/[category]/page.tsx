@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { buildBreadcrumbJsonLd, buildItemListJsonLd, SITE_URL } from "@/lib/breadcrumb-jsonld";
+import { parseSort, sortByAdded } from "@/lib/browse-sort";
+import { getComponentAddedDate, recentComponentDates } from "@/lib/changelog-dates";
 import { components as pieces } from "@/lib/components";
 import type { RegistryComponentMeta } from "@/lib/registry-components";
 import { registryComponents } from "@/lib/registry-components";
@@ -68,6 +70,7 @@ export default async function RegistryComponentsCategoryPage({
   const { category: slug } = await params;
   const sp = await searchParams;
   const requestedPage = parsePage(sp.page);
+  const sort = parseSort(sp.sort);
 
   const filtered = filterByCategorySlug(registryComponents, slug);
   if (filtered.length === 0) {
@@ -79,7 +82,11 @@ export default async function RegistryComponentsCategoryPage({
     notFound();
   }
 
-  const page = paginate(filtered, requestedPage, PAGE_SIZE);
+  const page = paginate(
+    sortByAdded(filtered, sort, getComponentAddedDate),
+    requestedPage,
+    PAGE_SIZE
+  );
   const currentCategory = page.items[0]?.category;
 
   if (!currentCategory || categorySlug(currentCategory) !== slug) {
@@ -115,6 +122,8 @@ export default async function RegistryComponentsCategoryPage({
         totalItems={page.totalItems}
         currentCategory={currentCategory}
         currentCategorySlug={slug}
+        currentSort={sort}
+        addedDates={recentComponentDates()}
         description={categoryDescription(currentCategory)}
         categories={buildCategoryCounts(registryComponents)}
         pageSize={PAGE_SIZE}

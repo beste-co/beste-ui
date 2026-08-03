@@ -1,5 +1,8 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+// Generated next door by sets:generate; only its keys are used here, so the
+// collection archives appear in the sitemap without a second list to maintain.
+import { BLOCK_SETS } from "../lib/block-sets";
 
 const SITE_URL = "https://ui.beste.co";
 const PUBLIC_DIR = join(import.meta.dirname, "..", "public");
@@ -169,6 +172,15 @@ function generate() {
     { loc: `${SITE_URL}/changelog`, lastmod: today, changefreq: "weekly", priority: "0.7" },
     { loc: `${SITE_URL}/license`, lastmod: today, changefreq: "yearly", priority: "0.5" },
   ];
+
+  for (const collection of Object.keys(BLOCK_SETS)) {
+    pages.push({
+      loc: `${SITE_URL}/blocks/collection/${collection}`,
+      lastmod: today,
+      changefreq: "weekly",
+      priority: "0.8",
+    });
+  }
 
   // 2. Category listing pages (blocks + components)
   const categories: SitemapEntry[] = [];

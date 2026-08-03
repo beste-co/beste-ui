@@ -14,6 +14,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { BlocksGrid } from "@/components/blocks-grid";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
+import { DEFAULT_SORT, sortByAdded } from "@/lib/browse-sort";
+import { getBlockAddedDate, recentBlockDates } from "@/lib/changelog-dates";
 import { getCategoryInfo } from "@/lib/category-info";
 import { getAllTags, getBlocksForTag, getTag } from "@/lib/tags";
 import { PAGE_SIZE, paginate, parsePage } from "../../_lib/paginate";
@@ -64,7 +66,13 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
   const all = getBlocksForTag(slug);
   if (all.length === 0) notFound();
 
-  const page = paginate(all, requestedPage, PAGE_SIZE);
+  // Newest first, like every other block listing. No picker here: this page has
+  // no filter bar, and one control on its own would be a bar for its own sake.
+  const page = paginate(
+    sortByAdded(all, DEFAULT_SORT, getBlockAddedDate),
+    requestedPage,
+    PAGE_SIZE
+  );
   const pageItems = [...page.items];
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
@@ -132,7 +140,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
           </div>
         </header>
 
-        <BlocksGrid blocks={pageItems} />
+        <BlocksGrid blocks={pageItems} addedDates={recentBlockDates()} />
 
         {page.totalPages > 1 && (
           <nav

@@ -3,19 +3,25 @@
 import { SourceCodeIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useTransition } from "react";
 import { FitScale } from "@/components/fit-scale";
 import {
   BrowseFilters,
   BrowsePagerArrow,
   BrowsePagination,
 } from "@/components/browse-filters";
+import { NewBadge, useIsNew } from "@/components/new-badge";
+import { type BrowseSort, DEFAULT_SORT, SORT_OPTIONS } from "@/lib/browse-sort";
 import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { type RegistryComponentMeta, registryComponents } from "@/lib/registry-components";
-import { matchesQuery } from "@/lib/search-lexical";
-import { cn } from "@/lib/utils";
 import type { CategoryCount } from "./_lib/paginate";
+
+/** The category picks the route; the sort is only ever a query. */
+function browseHref(category: string | null, sort: BrowseSort = DEFAULT_SORT): string {
+  const path = category ? `/components/${category}` : "/components";
+  return sort === DEFAULT_SORT ? path : `${path}?sort=${sort}`;
+}
 
 interface RegistryComponentsContentProps {
   itemNames: readonly string[];
@@ -24,6 +30,10 @@ interface RegistryComponentsContentProps {
   totalItems: number;
   currentCategory: string | undefined;
   currentCategorySlug: string | undefined;
+  /** The order the server sorted `itemNames` into. */
+  currentSort?: BrowseSort;
+  /** Ship dates for recently added components, for the cards' NEW badge. */
+  addedDates?: Readonly<Record<string, string>>;
   categories: readonly CategoryCount[];
   pageSize: number;
   /**
@@ -33,8 +43,6 @@ interface RegistryComponentsContentProps {
    */
   description?: string;
 }
-
-const SEARCH_RESULT_CAP = 48;
 
 function buildPageHref(basePath: string, page: number): string {
   if (page <= 1) return basePath;
@@ -49,56 +57,36 @@ export function RegistryComponentsContent({
   totalItems,
   currentCategory,
   currentCategorySlug,
+  currentSort = DEFAULT_SORT,
+  addedDates,
   categories,
   pageSize,
   description,
 }: RegistryComponentsContentProps) {
   const router = useRouter();
-  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
+  const isNewComponent = useIsNew(addedDates);
 
-  const [rawQuery, setRawQuery] = useState("");
-  const [query, setQuery] = useState("");
-
-  // Debounce rawQuery → query (200ms)
-  useEffect(() => {
-    const handle = setTimeout(() => setQuery(rawQuery.trim().toLowerCase()), 200);
-    return () => clearTimeout(handle);
-  }, [rawQuery]);
-
-  const searchResults = useMemo<readonly RegistryComponentMeta[] | null>(() => {
-    if (!query) return null;
-    const matched: RegistryComponentMeta[] = [];
-    for (const c of registryComponents) {
-      if (matchesQuery(c, query)) {
-        matched.push(c);
-        if (matched.length >= SEARCH_RESULT_CAP) break;
-      }
-    }
-    return matched;
-  }, [query]);
-
-  const searchTotal = useMemo(() => {
-    if (!query) return 0;
-    let total = 0;
-    for (const c of registryComponents) if (matchesQuery(c, query)) total++;
-    return total;
-  }, [query]);
-
-  const items = useMemo<readonly RegistryComponentMeta[]>(() => {
+  const gridItems = useMemo<readonly RegistryComponentMeta[]>(() => {
     const map = new Map(registryComponents.map((c) => [c.name, c]));
     return itemNames
       .map((name) => map.get(name))
       .filter((c): c is RegistryComponentMeta => Boolean(c));
   }, [itemNames]);
 
-  const gridItems = searchResults ?? items;
   const handleCategoryChange = useCallback(
     (slug: string | null) => {
-      const href = slug ? `/components/${slug}` : "/components";
-      startTransition(() => router.push(href));
+      startTransition(() => router.push(browseHref(slug, currentSort)));
     },
-    [router]
+    [router, currentSort]
+  );
+
+  const handleSortChange = useCallback(
+    (value: string | null) => {
+      const sort = (value ?? DEFAULT_SORT) as BrowseSort;
+      startTransition(() => router.push(browseHref(currentCategorySlug ?? null, sort)));
+    },
+    [router, currentCategorySlug]
   );
 
   /** The categories in the shape the filter bar takes them. */
@@ -107,9 +95,11 @@ export function RegistryComponentsContent({
     [categories]
   );
 
-  const showPagination = !query && totalPages > 1;
+  const showPagination = totalPages > 1;
   const rangeStart = totalItems === 0 ? 0 : (currentPage - 1) * pageSize + 1;
   const rangeEnd = Math.min(currentPage * pageSize, totalItems);
+  // Page 2 has to carry the sort with it, or the list silently reorders.
+  const basePath = browseHref(currentCategorySlug ?? null, currentSort);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
@@ -144,37 +134,40 @@ export function RegistryComponentsContent({
         </p>
       </header>
 
+      {/* No search field: the site's own search (⌘K, and /ai/search behind it)
+          already looks across blocks, pieces and components, and a second one
+          scoped to this page competed with it while finding less. */}
       <BrowseFilters
-        query={rawQuery}
-        onQueryChange={setRawQuery}
-        searchPlaceholder="Search components…"
-        searchLabel="Search components"
         options={filterOptions}
         value={currentCategorySlug ?? null}
         onValueChange={handleCategoryChange}
         allCount={registryComponents.length}
+        label="Category"
+        extra={[
+          {
+            options: SORT_OPTIONS.map((o) => ({ label: o.label, value: o.value })),
+            value: currentSort,
+            onValueChange: handleSortChange,
+            label: "Sort",
+            allowAll: false,
+          },
+        ]}
         disabled={isPending}
       >
           <p className="text-base text-muted-foreground">
-            {query
-              ? `${searchTotal} match${searchTotal === 1 ? "" : "es"}${
-                  searchTotal > SEARCH_RESULT_CAP ? ` (showing first ${SEARCH_RESULT_CAP})` : ""
-                }`
-              : totalItems === 0
-                ? "No components"
-                : `${rangeStart}–${rangeEnd} of ${totalItems}`}
+            {totalItems === 0 ? "No components" : `${rangeStart}–${rangeEnd} of ${totalItems}`}
           </p>
           {showPagination && (
             <div className="flex items-center gap-1">
               <BrowsePagerArrow
                 direction="prev"
                 label="Previous page"
-                href={currentPage > 1 ? buildPageHref(pathname, currentPage - 1) : undefined}
+                href={currentPage > 1 ? buildPageHref(basePath, currentPage - 1) : undefined}
               />
               <BrowsePagerArrow
                 direction="next"
                 label="Next page"
-                href={currentPage < totalPages ? buildPageHref(pathname, currentPage + 1) : undefined}
+                href={currentPage < totalPages ? buildPageHref(basePath, currentPage + 1) : undefined}
               />
             </div>
           )}
@@ -182,7 +175,7 @@ export function RegistryComponentsContent({
 
       {gridItems.length === 0 ? (
         <div className="rounded-lg border border-dashed p-10 text-center text-base text-muted-foreground">
-          {query ? `No components match "${rawQuery}".` : "No components in this category."}
+          No components in this category.
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -216,11 +209,17 @@ export function RegistryComponentsContent({
                   ) : (
                     <Component {...c.demoProps} />
                   )}
-                  <div
-                    className="pointer-events-none absolute right-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-md border bg-background opacity-0 transition-opacity group-hover:opacity-100"
-                    aria-hidden="true"
-                  >
-                    <HugeiconsIcon icon={SourceCodeIcon} size={14} strokeWidth={2} />
+                  {/* The corner marks as one cluster: the badge holds the
+                      corner and the source-code hint fades in beside it, rather
+                      than the two landing on the same spot. */}
+                  <div className="pointer-events-none absolute right-2 top-2 flex items-center gap-1.5">
+                    <div
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-md border bg-background opacity-0 transition-opacity group-hover:opacity-100"
+                      aria-hidden="true"
+                    >
+                      <HugeiconsIcon icon={SourceCodeIcon} size={14} strokeWidth={2} />
+                    </div>
+                    {isNewComponent(c.name) && <NewBadge />}
                   </div>
                 </div>
                 <div className="relative flex flex-col gap-1 px-1 pb-1">
@@ -241,7 +240,7 @@ export function RegistryComponentsContent({
       )}
 
       {showPagination && (
-        <BrowsePagination currentPage={currentPage} totalPages={totalPages} basePath={pathname} />
+        <BrowsePagination currentPage={currentPage} totalPages={totalPages} basePath={basePath} />
       )}
     </div>
   );

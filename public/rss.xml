@@ -6,6 +6,104 @@
     <description>Subscribe to @beste-ui updates</description>
     <atom:link href="https://ui.beste.co/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Company History Rows</title>
+      <link>https://ui.beste.co/block/about70</link>
+      <guid>https://ui.beste.co/block/about70</guid>
+      <description>A company story told as hairline rows keyed by a light year figure, set against a media column that sticks while they scroll and stacks an image tile floating a live growth metric over a captioned photograph.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Filterable Archive Index</title>
+      <link>https://ui.beste.co/block/blog61</link>
+      <guid>https://ui.beste.co/block/blog61</guid>
+      <description>A dense blog archive whose subject pills are derived from the posts themselves and carry live counts, filtering a two-column list of hairline rows stamped with a date and a reading time.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Full Release Notes By Month</title>
+      <link>https://ui.beste.co/block/changelog28</link>
+      <guid>https://ui.beste.co/block/changelog28</guid>
+      <description>A complete changelog grouped by month, each version on a hairline row beside its entries, every line tagged added, changed, fixed, or removed with its own tone.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Maintenance Window Notice</title>
+      <link>https://ui.beste.co/block/comingsoon79</link>
+      <guid>https://ui.beste.co/block/comingsoon79</guid>
+      <description>A scheduled downtime notice with a light heading, a hairline table of what is affected and what is not, two actions, and an image tile floating a live uptime strip.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Server Error With Live Status</title>
+      <link>https://ui.beste.co/block/error35</link>
+      <guid>https://ui.beste.co/block/error35</guid>
+      <description>A calm server-error page with a monospace code, an oversized light heading, recovery actions, an image tile floating a live uptime strip, and a hairline table carrying the incident reference.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Hairline Answer Ledger</title>
+      <link>https://ui.beste.co/block/faq84</link>
+      <guid>https://ui.beste.co/block/faq84</guid>
+      <description>A compact FAQ with nothing hidden behind a click: three labelled groups of question and answer pairs set as two-column hairline rows, closing on a link to longer reading.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Good Fit Qualifier</title>
+      <link>https://ui.beste.co/block/faq88</link>
+      <guid>https://ui.beste.co/block/faq88</guid>
+      <description>A qualifying FAQ that sets a checked good-fit column against a crossed not-for-you column, then answers the three questions that follow from them on two-column hairline rows.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Filterable Glossary</title>
+      <link>https://ui.beste.co/block/faq89</link>
+      <guid>https://ui.beste.co/block/faq89</guid>
+      <description>A jargon glossary whose letter filter is derived from the terms themselves, narrowing a two-column hairline definition list with an empty state and a suggest-a-term action.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Plain Words Terms Table</title>
+      <link>https://ui.beste.co/block/legal55</link>
+      <guid>https://ui.beste.co/block/legal55</guid>
+      <description>A legal section that sets each binding clause against a plain-language reading of it on hairline rows, keyed by clause references, with a precedence disclaimer under the last row.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Filterable Newsroom Index</title>
+      <link>https://ui.beste.co/block/news37</link>
+      <guid>https://ui.beste.co/block/news37</guid>
+      <description>A newsroom whose kind pills are derived from the announcements and carry live counts, narrowing a chronological list of hairline rows that align the kind, the date, and the headline with its summary.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Go-Live Day Agenda</title>
+      <link>https://ui.beste.co/block/onboarding36</link>
+      <guid>https://ui.beste.co/block/onboarding36</guid>
+      <description>A first-day agenda held in one bordered panel, with timestamped hairline rows naming what happens, who is needed, how long it takes, and which parts are optional.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Community Channels</title>
+      <link>https://ui.beste.co/block/social48</link>
+      <guid>https://ui.beste.co/block/social48</guid>
+      <description>A community section listing four linked places to join as full-width hairline rows, each with an icon tile, a description, a light membership figure, and an arrow that shifts on hover.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Community Photo Wall</title>
+      <link>https://ui.beste.co/block/social57</link>
+      <guid>https://ui.beste.co/block/social57</guid>
+      <description>A community gallery laid out as a masonry of customer photographs at mixed heights, each captioned with what is happening and the practice it came from.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Segmented Total Breakdown</title>
+      <link>https://ui.beste.co/block/stats68</link>
+      <guid>https://ui.beste.co/block/stats68</guid>
+      <description>A results section that leads on one oversized total, splits it across a segmented accent bar, then legends each segment on a hairline row aligning its value, share, and what it covers.</description>
+      <pubDate>Sun, 02 Aug 2026 22:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Journal Lead And Index</title>
       <link>https://ui.beste.co/block/blog57</link>
       <guid>https://ui.beste.co/block/blog57</guid>
@@ -30,7 +128,7 @@
       <title>Mission Band With Principles</title>
       <link>https://ui.beste.co/block/about69</link>
       <guid>https://ui.beste.co/block/about69</guid>
-      <description>A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as monospace-numbered hairline columns underneath.</description>
+      <description>A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as numbered hairline columns underneath.</description>
       <pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
     </item>
     <item>

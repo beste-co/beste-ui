@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { components } from "@/lib/components";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
+import { parseSort, sortByAdded } from "@/lib/browse-sort";
+import { getPieceAddedDate, recentPieceDates } from "@/lib/changelog-dates";
 import { ComponentsContent } from "./components-content";
 import {
   buildCategoryCounts,
@@ -45,8 +47,13 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 export default async function ComponentsPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const requestedPage = parsePage(params.page);
+  const sort = parseSort(params.sort);
 
-  const page = paginate(components, requestedPage, PAGE_SIZE);
+  const page = paginate(
+    sortByAdded(components, sort, getPieceAddedDate),
+    requestedPage,
+    PAGE_SIZE
+  );
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Home", url: `${SITE_URL}/` },
@@ -75,6 +82,8 @@ export default async function ComponentsPage({ searchParams }: PageProps) {
         totalItems={page.totalItems}
         currentCategory={undefined}
         currentCategorySlug={undefined}
+        currentSort={sort}
+        addedDates={recentPieceDates()}
         categories={buildCategoryCounts(components)}
         pageSize={PAGE_SIZE}
       />

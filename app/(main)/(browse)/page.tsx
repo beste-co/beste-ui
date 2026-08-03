@@ -13,6 +13,7 @@ import { RegistryComponentDemo } from "@/components/registry-component-demo";
 import { STUDIO_SET_BLOCKS } from "@/lib/block-sets";
 import { components as allComponents } from "@/lib/components";
 import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
+import { recentBlockDates } from "@/lib/changelog-dates";
 import { registryComponents } from "@/lib/registry-components";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
@@ -221,7 +222,7 @@ export default async function HomePage() {
             </Button12>
           </div>
 
-          <BlocksGrid blocks={sixBlocks} skeletonCount={6} />
+          <BlocksGrid blocks={sixBlocks} addedDates={recentBlockDates()} skeletonCount={6} />
         </section>
 
         {/* Components preview */}

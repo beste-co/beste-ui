@@ -23,7 +23,8 @@ beste-ui provides production-ready UI blocks that you can install directly using
 
 ### About
 
-- [Mission Band With Principles](https://ui.beste.co/block/about69): A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as monospace-numbered hairline columns underneath.
+- [Mission Band With Principles](https://ui.beste.co/block/about69): A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as numbered hairline columns underneath.
+- [Company History Rows](https://ui.beste.co/block/about70): A company story told as hairline rows keyed by a light year figure, set against a media column that sticks while they scroll and stacks an image tile floating a live growth metric over a captioned photograph.
 
 ### Auth
 
@@ -44,6 +45,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Featured Hero with Grid](https://ui.beste.co/block/blog4): Large featured article with side-by-side image and content, followed by a three-column grid of secondary posts. Read more buttons and author details included.
 - [Split Image with List](https://ui.beste.co/block/blog25): Two-column layout with featured image on left and article list on right. Divider-separated entries with arrow hover effects.
 - [Journal Lead And Index](https://ui.beste.co/block/blog57): Editorial journal preview pairing one lead entry with a wide image, category, title, excerpt and date against a ruled index of three shorter entries, headed by an eyebrow, a display heading and an outline pill CTA.
+- [Filterable Archive Index](https://ui.beste.co/block/blog61): A dense blog archive whose subject pills are derived from the posts themselves and carry live counts, filtering a two-column list of hairline rows stamped with a date and a reading time.
 
 ### Booking
 
@@ -55,12 +57,17 @@ beste-ui provides production-ready UI blocks that you can install directly using
 
 - [Filterable Open Roles List](https://ui.beste.co/block/careers51): A light editorial careers section with a monospace eyebrow over a hairline rule, a two-column heading, and a sticky culture photo with a gradient caption beside team filter pills and hairline job rows showing location, contract type, and a hover arrow.
 
+### Changelog
+
+- [Full Release Notes By Month](https://ui.beste.co/block/changelog28): A complete changelog grouped by month, each version on a hairline row beside its entries, every line tagged added, changed, fixed, or removed with its own tone.
+
 ### Coming Soon
 
 - [Countdown Timer Launch](https://ui.beste.co/block/comingsoon1): Coming soon section with a live countdown timer showing days, hours, minutes, and seconds until launch. Perfect for product launches, event announcements, or building anticipation for new features.
 - [Development Progress Milestones](https://ui.beste.co/block/comingsoon2): Coming soon section with a progress bar and milestone tracker showing development stages like Design, Backend, Frontend, and Testing. Perfect for keeping users informed about product development progress.
 - [Social Connect Launch](https://ui.beste.co/block/comingsoon3): Coming soon section featuring social media links with icons for Twitter, GitHub, LinkedIn, and Email in pill-style buttons. Perfect for building a community and keeping followers engaged before launch.
 - [Animated Icons Preview](https://ui.beste.co/block/comingsoon4): Coming soon section with floating animated icons and a pulsing status indicator using Framer Motion animations. Perfect for creating visual excitement and a dynamic atmosphere before a product launch.
+- [Maintenance Window Notice](https://ui.beste.co/block/comingsoon79): A scheduled downtime notice with a light heading, a hairline table of what is affected and what is not, two actions, and an image tile floating a live uptime strip.
 
 ### Crypto
 
@@ -104,11 +111,15 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [404 With Redirect Countdown](https://ui.beste.co/block/error8): 404 page that counts down to an automatic redirect and calls onRedirect once it reaches zero, with a cancel button that stops the timer and a manual go-now link.
 - [404 Did You Mean](https://ui.beste.co/block/error9): Left-aligned 404 for documentation and marketing sites: the requested path is shown struck through in monospace above a did-you-mean box linking to the closest matching page.
 - [Editorial Not Found Split](https://ui.beste.co/block/error34): A calm not-found page with an error eyebrow, an oversized light heading and recovery actions on the left, beside a hairline list of the destinations people usually need instead.
+- [Server Error With Live Status](https://ui.beste.co/block/error35): A calm server-error page with a monospace code, an oversized light heading, recovery actions, an image tile floating a live uptime strip, and a hairline table carrying the incident reference.
 
 ### FAQ
 
 - [Numbered FAQ Index](https://ui.beste.co/block/faq77): A type-forward FAQ with a sticky heading rail and a numbered accordion list of expandable questions.
 - [Two Column Answer Grid](https://ui.beste.co/block/faq80): An always-open FAQ laid out as a two-column grid of numbered, hairline-separated question and answer entries, closing with a soft support panel that pairs a short prompt with two actions.
+- [Hairline Answer Ledger](https://ui.beste.co/block/faq84): A compact FAQ with nothing hidden behind a click: three labelled groups of question and answer pairs set as two-column hairline rows, closing on a link to longer reading.
+- [Good Fit Qualifier](https://ui.beste.co/block/faq88): A qualifying FAQ that sets a checked good-fit column against a crossed not-for-you column, then answers the three questions that follow from them on two-column hairline rows.
+- [Filterable Glossary](https://ui.beste.co/block/faq89): A jargon glossary whose letter filter is derived from the terms themselves, narrowing a two-column hairline definition list with an empty state and a suggest-a-term action.
 
 ### Feature
 
@@ -181,6 +192,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Centered Hero with Feature Icons](https://ui.beste.co/block/hero68): Centered hero with three feature highlights displayed as icon cards with descriptions below the CTA. Perfect for platform and infrastructure products.
 - [Email Signup Hero](https://ui.beste.co/block/hero69): Minimal centered hero with inline email input field and submit button for newsletter or waitlist signups. Perfect for coming-soon pages and early access campaigns.
 
+### Legal
+
+- [Plain Words Terms Table](https://ui.beste.co/block/legal55): A legal section that sets each binding clause against a plain-language reading of it on hairline rows, keyed by clause references, with a precedence disclaimer under the last row.
+
 ### Logos
 
 - [Hairline Client Wall](https://ui.beste.co/block/logos12): A client wall that sets six greyscale logos in a hairline cell grid, each lifting to full colour on hover, with an eyebrow and a short claim on the left, a reach line on the right, and a credit note underneath.
@@ -190,12 +205,17 @@ beste-ui provides production-ready UI blocks that you can install directly using
 
 - [Centered Logo Split Nav](https://ui.beste.co/block/navbar30): Symmetrical navbar with centered logo flanked by navigation links on both sides and dropdown menus. Perfect for fashion brands and lifestyle sites wanting balanced visual hierarchy.
 
+### News
+
+- [Filterable Newsroom Index](https://ui.beste.co/block/news37): A newsroom whose kind pills are derived from the announcements and carry live counts, narrowing a chronological list of hairline rows that align the kind, the date, and the headline with its summary.
+
 ### Onboarding
 
 - [Welcome Hero with Step Indicator](https://ui.beste.co/block/onboarding1): Centered welcome screen featuring a hero image, step counter, and dual CTAs. Perfect for app onboarding flows that guide users through a multi-step setup process.
 - [Minimal Welcome with Icon](https://ui.beste.co/block/onboarding3): Clean, centered welcome screen with a branded icon, heading, and single call-to-action. Perfect for simple app introductions that prioritize clarity over complexity.
 - [Video Introduction Screen](https://ui.beste.co/block/onboarding4): Welcome screen featuring a video thumbnail with play overlay and duration badge. Perfect for product tours that use video content to demonstrate features.
 - [Step Cards with Numbered Indicators](https://ui.beste.co/block/onboarding9): Animated step wizard with square numbered indicators and content cards for each step. Perfect for product walkthroughs that guide users through key features.
+- [Go-Live Day Agenda](https://ui.beste.co/block/onboarding36): A first-day agenda held in one bordered panel, with timestamped hairline rows naming what happens, who is needed, how long it takes, and which parts are optional.
 
 ### Portfolio
 
@@ -222,9 +242,15 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Split Hotspot Feature Section](https://ui.beste.co/block/showcase2): Two-column layout with text content, CTA buttons, and interactive image with clickable hotspot popovers. Perfect for SaaS feature pages with reversible layout option.
 - [Project Gallery Grid](https://ui.beste.co/block/showcase3): Responsive three-column image gallery with hover zoom effects, captions, and optional clickable cards. Perfect for showcasing project portfolios or work samples.
 
+### Social
+
+- [Community Channels](https://ui.beste.co/block/social48): A community section listing four linked places to join as full-width hairline rows, each with an icon tile, a description, a light membership figure, and an arrow that shifts on hover.
+- [Community Photo Wall](https://ui.beste.co/block/social57): A community gallery laid out as a masonry of customer photographs at mixed heights, each captioned with what is happening and the practice it came from.
+
 ### Stats
 
 - [Outcome Metric Rows](https://ui.beste.co/block/stats66): A results section that stacks each metric on its own hairline row, pairing an oversized figure with a short label, a sentence of context, and an optional year-over-year delta.
+- [Segmented Total Breakdown](https://ui.beste.co/block/stats68): A results section that leads on one oversized total, splits it across a segmented accent bar, then legends each segment on a hairline row aligning its value, share, and what it covers.
 
 ### Terminal
 

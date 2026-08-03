@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildBreadcrumbJsonLd, buildItemListJsonLd, SITE_URL } from "@/lib/breadcrumb-jsonld";
-import type { RegistryComponentMeta } from "@/lib/registry-components";
+import { parseSort, sortByAdded } from "@/lib/browse-sort";
+import { getComponentAddedDate, recentComponentDates } from "@/lib/changelog-dates";
 import { registryComponents } from "@/lib/registry-components";
 import { buildCategoryCounts, PAGE_SIZE, paginate, parsePage } from "./_lib/paginate";
 import { RegistryComponentsContent } from "./registry-components-content";
@@ -41,8 +42,13 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 export default async function RegistryComponentsPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const requestedPage = parsePage(params.page);
+  const sort = parseSort(params.sort);
 
-  const page = paginate(registryComponents, requestedPage, PAGE_SIZE);
+  const page = paginate(
+    sortByAdded(registryComponents, sort, getComponentAddedDate),
+    requestedPage,
+    PAGE_SIZE
+  );
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Home", url: `${SITE_URL}/` },
@@ -71,6 +77,8 @@ export default async function RegistryComponentsPage({ searchParams }: PageProps
         totalItems={page.totalItems}
         currentCategory={undefined}
         currentCategorySlug={undefined}
+        currentSort={sort}
+        addedDates={recentComponentDates()}
         categories={buildCategoryCounts(registryComponents)}
         pageSize={PAGE_SIZE}
       />

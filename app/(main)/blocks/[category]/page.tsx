@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blocks } from "@/lib/blocks";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
+import { parseSort, sortByAdded } from "@/lib/browse-sort";
+import { getBlockAddedDate, recentBlockDates } from "@/lib/changelog-dates";
 import { getCategoryInfo } from "@/lib/category-info";
 import {
   buildCategoryCounts,
@@ -60,13 +62,18 @@ export default async function CategoryPage({
   const { category: slug } = await params;
   const sp = await searchParams;
   const requestedPage = parsePage(sp.page);
+  const sort = parseSort(sp.sort);
 
   const filtered = filterByCategorySlug(blocks, slug);
   if (filtered.length === 0) {
     notFound();
   }
 
-  const page = paginate(filtered, requestedPage, PAGE_SIZE);
+  const page = paginate(
+    sortByAdded(filtered, sort, getBlockAddedDate),
+    requestedPage,
+    PAGE_SIZE
+  );
   // Recover the original (non-slugged) category name from the first block.
   const currentCategory = page.items[0]?.category;
 
@@ -111,6 +118,8 @@ export default async function CategoryPage({
         totalItems={page.totalItems}
         currentCategory={currentCategory}
         currentCategorySlug={slug}
+        currentSort={sort}
+        addedDates={recentBlockDates()}
         categories={buildCategoryCounts(blocks)}
         pageSize={PAGE_SIZE}
         description={info.description}

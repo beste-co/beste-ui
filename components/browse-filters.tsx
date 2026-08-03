@@ -30,6 +30,25 @@ export interface BrowseFilterOption {
   count?: number;
 }
 
+export interface BrowsePicker {
+  options: readonly BrowseFilterOption[];
+  /** The option in force, by `value`. Null is "all". */
+  value?: string | null;
+  onValueChange: (value: string | null) => void;
+  allLabel?: string;
+  allCount?: number;
+  /**
+   * What the picker picks, spoken. Once there are two of them, "Auralis (260)"
+   * on its own does not say which list it is cutting. Falls back to `allLabel`.
+   */
+  label?: string;
+  /**
+   * False for a picker that is always set to something — a sort order has no
+   * "all", and offering one would only be a way to ask for no order.
+   */
+  allowAll?: boolean;
+}
+
 interface BrowseFiltersProps {
   /** Leave both out to drop the search field (a page that only filters). */
   query?: string;
@@ -44,6 +63,15 @@ interface BrowseFiltersProps {
   onValueChange: (value: string | null) => void;
   allLabel?: string;
   allCount?: number;
+  /** Spoken name for the picker. See `BrowsePicker.label`. */
+  label?: string;
+
+  /**
+   * More pickers beside the first, cutting or ordering the same list a
+   * different way (collection, sort). Left out, the bar is the one-picker bar it
+   * has always been.
+   */
+  extra?: readonly BrowsePicker[];
 
   /** Dims the picker while a navigation is in flight. */
   disabled?: boolean;
@@ -52,9 +80,126 @@ interface BrowseFiltersProps {
   className?: string;
 }
 
+interface FilterPickerProps extends BrowsePicker {
+  disabled: boolean;
+  /** How wide the trigger is allowed to be, which depends on how many there are. */
+  triggerClassName: string;
+}
+
+/** One picker: a filled pill that opens a checked list of options. */
+function FilterPicker({
+  options,
+  value = null,
+  onValueChange,
+  allLabel = "All categories",
+  allCount,
+  label,
+  allowAll = true,
+  disabled,
+  triggerClassName,
+}: FilterPickerProps) {
+  const active = value ? options.find((option) => option.value === value) : undefined;
+  const activeCount = active ? active.count : (allCount ?? (allowAll ? options.length : undefined));
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        disabled={disabled}
+        aria-label={label ?? allLabel}
+        className={cn(
+          "flex h-11 shrink-0 cursor-pointer items-center justify-between gap-2 rounded-full bg-muted/60 px-4 text-base text-foreground",
+          "outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50",
+          "disabled:pointer-events-none disabled:opacity-60",
+          triggerClassName
+        )}
+      >
+        <span className="flex min-w-0 items-center gap-2">
+          <span className="truncate">{active?.label ?? allLabel}</span>
+          {/* The count in monospace, in parentheses: the eyebrow the studio
+              set uses, and a number that then never shifts the label as it
+              changes width. Dropped on a phone, where the label itself is
+              already fighting for the room, and on a picker whose options are
+              not quantities of anything. */}
+          {activeCount !== undefined && (
+            <span className="hidden font-mono text-sm text-foreground/50 sm:inline">
+              ({activeCount})
+            </span>
+          )}
+        </span>
+        <HugeiconsIcon
+          icon={ArrowDown01Icon}
+          size={16}
+          strokeWidth={2}
+          className="shrink-0 text-foreground/50"
+          aria-hidden="true"
+        />
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent
+        align="start"
+        className="max-h-[380px] w-[240px] overflow-y-auto rounded-xl"
+      >
+        {allowAll && (
+          <>
+            <DropdownMenuItem
+              onSelect={() => onValueChange(null)}
+              className="flex cursor-pointer items-center justify-between gap-3 text-base"
+            >
+              <span className="flex min-w-0 items-center gap-2">
+                <HugeiconsIcon
+                  icon={Tick02Icon}
+                  size={16}
+                  strokeWidth={2}
+                  className={cn("shrink-0", value && "invisible")}
+                  aria-hidden="true"
+                />
+                <span className="truncate">{allLabel}</span>
+              </span>
+              <span className="font-mono text-sm text-foreground/50">
+                {allCount ?? options.length}
+              </span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </>
+        )}
+        {options.map((option) => {
+          const selected = value === option.value;
+          return (
+            <DropdownMenuItem
+              key={option.value}
+              onSelect={() => onValueChange(option.value)}
+              className="flex cursor-pointer items-center justify-between gap-3 text-base"
+            >
+              <span className="flex min-w-0 items-center gap-2">
+                {/* Kept in the layout rather than added to it, so a row does
+                    not move sideways when it becomes the selected one. */}
+                <HugeiconsIcon
+                  icon={Tick02Icon}
+                  size={16}
+                  strokeWidth={2}
+                  className={cn("shrink-0", !selected && "invisible")}
+                  aria-hidden="true"
+                />
+                <span className="truncate">{option.label}</span>
+              </span>
+              {option.count !== undefined && (
+                <span className="font-mono text-sm text-foreground/50">{option.count}</span>
+              )}
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 /**
  * The filter bar every listing page wears: a search field and a category picker
  * on the left, whatever the page counts on the right.
+ *
+ * A page that cuts its list more than one way (categories, the collection a
+ * block was designed into, the order they come in) passes those as `extra` and
+ * gets them beside the first.
  *
  * Both controls are pills on a filled surface rather than bordered boxes, which
  * is the language the rest of the site moved to — a control reads as something
@@ -75,23 +220,39 @@ export function BrowseFilters({
   onValueChange,
   allLabel = "All categories",
   allCount,
+  label,
+  extra,
   disabled = false,
   children,
   className,
 }: BrowseFiltersProps) {
   const showSearch = typeof query === "string" && typeof onQueryChange === "function";
-  const active = value ? options.find((option) => option.value === value) : undefined;
+  const multiple = Boolean(extra?.length);
+
+  /*
+   * One row at every width, until there is more than one picker. A field and a
+   * picker fit across a phone: the field takes what is left and the picker keeps
+   * only the width its label needs. More than that does not, and shaving them
+   * all to fit leaves controls too narrow to read, so they wrap: each keeps a
+   * legible floor, takes an equal share of its row, and the one that no longer
+   * fits drops to the next.
+   */
+  const pickerWidth = multiple
+    ? "min-w-[8.5rem] shrink basis-0 flex-1 px-4 sm:min-w-[180px] sm:shrink-0 sm:flex-none sm:gap-3 sm:px-5"
+    : "max-w-[45%] sm:max-w-none sm:min-w-[200px] sm:gap-3 sm:px-5";
 
   return (
     <div
       className={cn("mb-8 flex items-center gap-1.5 sm:justify-between", className)}
     >
-      {/* One row at every width. Stacked, the two controls ate a third of a phone
-          screen before a single card showed; side by side the field takes what is
-          left and the picker keeps only the width its label needs. */}
-      <div className="flex flex-1 items-center gap-1.5">
+      <div className="flex flex-1 flex-wrap items-center gap-1.5">
         {showSearch && (
-          <div className="relative min-w-0 flex-1 sm:max-w-xs">
+          <div
+            className={cn(
+              "relative min-w-0 flex-1 sm:max-w-xs",
+              multiple && "basis-full sm:basis-0"
+            )}
+          >
             <HugeiconsIcon
               icon={Search01Icon}
               size={16}
@@ -127,85 +288,25 @@ export function BrowseFilters({
           </div>
         )}
 
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            disabled={disabled}
-            className={cn(
-              "flex h-11 shrink-0 cursor-pointer items-center justify-between gap-2 rounded-full bg-muted/60 px-4 text-base text-foreground",
-              // Room for a label on a phone, the full width once there is one.
-              "max-w-[45%] sm:max-w-none sm:min-w-[200px] sm:gap-3 sm:px-5",
-              "outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50",
-              "disabled:pointer-events-none disabled:opacity-60"
-            )}
-          >
-            <span className="flex min-w-0 items-center gap-2">
-              <span className="truncate">{active?.label ?? allLabel}</span>
-              {/* The count in monospace, in parentheses: the eyebrow the studio
-                  set uses, and a number that then never shifts the label as it
-                  changes width. Dropped on a phone, where the label itself is
-                  already fighting for the room. */}
-              <span className="hidden font-mono text-sm text-foreground/50 sm:inline">
-                ({active ? (active.count ?? 0) : (allCount ?? options.length)})
-              </span>
-            </span>
-            <HugeiconsIcon
-              icon={ArrowDown01Icon}
-              size={16}
-              strokeWidth={2}
-              className="shrink-0 text-foreground/50"
-              aria-hidden="true"
-            />
-          </DropdownMenuTrigger>
+        <FilterPicker
+          options={options}
+          value={value}
+          onValueChange={onValueChange}
+          allLabel={allLabel}
+          allCount={allCount}
+          label={label}
+          disabled={disabled}
+          triggerClassName={pickerWidth}
+        />
 
-          <DropdownMenuContent
-            align="start"
-            className="max-h-[380px] w-[240px] overflow-y-auto rounded-xl"
-          >
-            <DropdownMenuItem
-              onSelect={() => onValueChange(null)}
-              className="flex cursor-pointer items-center justify-between gap-3 text-base"
-            >
-              <span className="flex min-w-0 items-center gap-2">
-                <HugeiconsIcon
-                  icon={Tick02Icon}
-                  size={16}
-                  strokeWidth={2}
-                  className={cn("shrink-0", value && "invisible")}
-                  aria-hidden="true"
-                />
-                <span className="truncate">{allLabel}</span>
-              </span>
-              <span className="font-mono text-sm text-foreground/50">
-                {allCount ?? options.length}
-              </span>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            {options.map((option) => {
-              const selected = value === option.value;
-              return (
-                <DropdownMenuItem
-                  key={option.value}
-                  onSelect={() => onValueChange(option.value)}
-                  className="flex cursor-pointer items-center justify-between gap-3 text-base"
-                >
-                  <span className="flex min-w-0 items-center gap-2">
-                    {/* Kept in the layout rather than added to it, so a row does
-                        not move sideways when it becomes the selected one. */}
-                    <HugeiconsIcon
-                      icon={Tick02Icon}
-                      size={16}
-                      strokeWidth={2}
-                      className={cn("shrink-0", !selected && "invisible")}
-                      aria-hidden="true"
-                    />
-                    <span className="truncate">{option.label}</span>
-                  </span>
-                  <span className="font-mono text-sm text-foreground/50">{option.count}</span>
-                </DropdownMenuItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {extra?.map((picker) => (
+          <FilterPicker
+            key={picker.label ?? picker.allLabel}
+            {...picker}
+            disabled={disabled}
+            triggerClassName={pickerWidth}
+          />
+        ))}
       </div>
 
       {children ? (

@@ -238,7 +238,7 @@ export function Careers51({
                     <span className="text-xl font-light tracking-tight text-foreground transition-colors group-hover/careers51:text-primary md:text-2xl">
                       {role.title}
                     </span>
-                    <span className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
+                    <span className="text-sm text-muted-foreground">
                       {role.team}
                     </span>
                   </div>

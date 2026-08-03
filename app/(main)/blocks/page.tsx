@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { blocks } from "@/lib/blocks";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
 import { getCategoryInfo } from "@/lib/category-info";
+import { DEFAULT_SORT, sortByAdded } from "@/lib/browse-sort";
+import { getBlockAddedDate, recentBlockDates } from "@/lib/changelog-dates";
 import { CategoriesListing, type CategoryCard } from "./categories-listing";
 import { buildCategoryCounts, categorySlug } from "./_lib/paginate";
 
@@ -28,9 +30,12 @@ export const metadata: Metadata = {
 };
 
 export default function BlocksPage() {
+  // The card previews show each category's newest block rather than its
+  // alphabetically first, which is what the listing behind the card opens on.
+  const newest = sortByAdded(blocks, DEFAULT_SORT, getBlockAddedDate);
   const categories: CategoryCard[] = buildCategoryCounts(blocks).map((c) => ({
     ...c,
-    sampleName: blocks.find((b) => categorySlug(b.category) === c.slug)?.name,
+    sampleName: newest.find((b) => categorySlug(b.category) === c.slug)?.name,
   }));
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
@@ -55,7 +60,7 @@ export default function BlocksPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
-      <CategoriesListing categories={categories} />
+      <CategoriesListing categories={categories} addedDates={recentBlockDates()} />
     </>
   );
 }

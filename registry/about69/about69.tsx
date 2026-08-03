@@ -97,7 +97,7 @@ export function About69({
         <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-12">
           {items.map((item, index) => (
             <div key={index} className="border-t border-border pt-6">
-              <span className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
+              <span className="text-sm text-muted-foreground">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-3 text-xl font-light tracking-tight text-foreground md:text-2xl">

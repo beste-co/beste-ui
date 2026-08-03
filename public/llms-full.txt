@@ -12,7 +12,7 @@ Beste is the site builder with strong constraints. No drag and drop, no inline c
 
 ## About beste-ui
 
-beste-ui is a curated collection of 138 production-ready UI components designed for modern web applications. Built on top of shadcn/ui, each component combines the power of:
+beste-ui is a curated collection of 152 production-ready UI components designed for modern web applications. Built on top of shadcn/ui, each component combines the power of:
 
 - **React 19** - Latest React features and patterns
 - **Tailwind CSS 4** - Utility-first styling
@@ -48,7 +48,13 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 
 - **URL**: https://ui.beste.co/block/about69
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/about69.json"` (Radix: `/r/about69.json`)
-- **Description**: A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as monospace-numbered hairline columns underneath.
+- **Description**: A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as numbered hairline columns underneath.
+
+#### Company History Rows
+
+- **URL**: https://ui.beste.co/block/about70
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/about70.json"` (Radix: `/r/about70.json`)
+- **Description**: A company story told as hairline rows keyed by a light year figure, set against a media column that sticks while they scroll and stacks an image tile floating a live growth metric over a captioned photograph.
 
 ### Auth
 
@@ -138,6 +144,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/blog57.json"` (Radix: `/r/blog57.json`)
 - **Description**: Editorial journal preview pairing one lead entry with a wide image, category, title, excerpt and date against a ruled index of three shorter entries, headed by an eyebrow, a display heading and an outline pill CTA.
 
+#### Filterable Archive Index
+
+- **URL**: https://ui.beste.co/block/blog61
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/blog61.json"` (Radix: `/r/blog61.json`)
+- **Description**: A dense blog archive whose subject pills are derived from the posts themselves and carry live counts, filtering a two-column list of hairline rows stamped with a date and a reading time.
+
 ### Booking
 
 #### Service Selector
@@ -166,6 +178,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/careers51.json"` (Radix: `/r/careers51.json`)
 - **Description**: A light editorial careers section with a monospace eyebrow over a hairline rule, a two-column heading, and a sticky culture photo with a gradient caption beside team filter pills and hairline job rows showing location, contract type, and a hover arrow.
 
+### Changelog
+
+#### Full Release Notes By Month
+
+- **URL**: https://ui.beste.co/block/changelog28
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/changelog28.json"` (Radix: `/r/changelog28.json`)
+- **Description**: A complete changelog grouped by month, each version on a hairline row beside its entries, every line tagged added, changed, fixed, or removed with its own tone.
+
 ### Coming Soon
 
 #### Countdown Timer Launch
@@ -191,6 +211,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/comingsoon4
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/comingsoon4.json"` (Radix: `/r/comingsoon4.json`)
 - **Description**: Coming soon section with floating animated icons and a pulsing status indicator using Framer Motion animations. Perfect for creating visual excitement and a dynamic atmosphere before a product launch.
+
+#### Maintenance Window Notice
+
+- **URL**: https://ui.beste.co/block/comingsoon79
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/comingsoon79.json"` (Radix: `/r/comingsoon79.json`)
+- **Description**: A scheduled downtime notice with a light heading, a hairline table of what is affected and what is not, two actions, and an image tile floating a live uptime strip.
 
 ### Crypto
 
@@ -354,6 +380,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/error34.json"` (Radix: `/r/error34.json`)
 - **Description**: A calm not-found page with an error eyebrow, an oversized light heading and recovery actions on the left, beside a hairline list of the destinations people usually need instead.
 
+#### Server Error With Live Status
+
+- **URL**: https://ui.beste.co/block/error35
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/error35.json"` (Radix: `/r/error35.json`)
+- **Description**: A calm server-error page with a monospace code, an oversized light heading, recovery actions, an image tile floating a live uptime strip, and a hairline table carrying the incident reference.
+
 ### FAQ
 
 #### Numbered FAQ Index
@@ -367,6 +399,24 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/faq80
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq80.json"` (Radix: `/r/faq80.json`)
 - **Description**: An always-open FAQ laid out as a two-column grid of numbered, hairline-separated question and answer entries, closing with a soft support panel that pairs a short prompt with two actions.
+
+#### Hairline Answer Ledger
+
+- **URL**: https://ui.beste.co/block/faq84
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq84.json"` (Radix: `/r/faq84.json`)
+- **Description**: A compact FAQ with nothing hidden behind a click: three labelled groups of question and answer pairs set as two-column hairline rows, closing on a link to longer reading.
+
+#### Good Fit Qualifier
+
+- **URL**: https://ui.beste.co/block/faq88
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq88.json"` (Radix: `/r/faq88.json`)
+- **Description**: A qualifying FAQ that sets a checked good-fit column against a crossed not-for-you column, then answers the three questions that follow from them on two-column hairline rows.
+
+#### Filterable Glossary
+
+- **URL**: https://ui.beste.co/block/faq89
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq89.json"` (Radix: `/r/faq89.json`)
+- **Description**: A jargon glossary whose letter filter is derived from the terms themselves, narrowing a two-column hairline definition list with an empty state and a suggest-a-term action.
 
 ### Feature
 
@@ -714,6 +764,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/hero69.json"` (Radix: `/r/hero69.json`)
 - **Description**: Minimal centered hero with inline email input field and submit button for newsletter or waitlist signups. Perfect for coming-soon pages and early access campaigns.
 
+### Legal
+
+#### Plain Words Terms Table
+
+- **URL**: https://ui.beste.co/block/legal55
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/legal55.json"` (Radix: `/r/legal55.json`)
+- **Description**: A legal section that sets each binding clause against a plain-language reading of it on hairline rows, keyed by clause references, with a precedence disclaimer under the last row.
+
 ### Logos
 
 #### Hairline Client Wall
@@ -735,6 +793,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/navbar30
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/navbar30.json"` (Radix: `/r/navbar30.json`)
 - **Description**: Symmetrical navbar with centered logo flanked by navigation links on both sides and dropdown menus. Perfect for fashion brands and lifestyle sites wanting balanced visual hierarchy.
+
+### News
+
+#### Filterable Newsroom Index
+
+- **URL**: https://ui.beste.co/block/news37
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/news37.json"` (Radix: `/r/news37.json`)
+- **Description**: A newsroom whose kind pills are derived from the announcements and carry live counts, narrowing a chronological list of hairline rows that align the kind, the date, and the headline with its summary.
 
 ### Onboarding
 
@@ -761,6 +827,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/onboarding9
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/onboarding9.json"` (Radix: `/r/onboarding9.json`)
 - **Description**: Animated step wizard with square numbered indicators and content cards for each step. Perfect for product walkthroughs that guide users through key features.
+
+#### Go-Live Day Agenda
+
+- **URL**: https://ui.beste.co/block/onboarding36
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/onboarding36.json"` (Radix: `/r/onboarding36.json`)
+- **Description**: A first-day agenda held in one bordered panel, with timestamped hairline rows naming what happens, who is needed, how long it takes, and which parts are optional.
 
 ### Portfolio
 
@@ -832,6 +904,20 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/showcase3.json"` (Radix: `/r/showcase3.json`)
 - **Description**: Responsive three-column image gallery with hover zoom effects, captions, and optional clickable cards. Perfect for showcasing project portfolios or work samples.
 
+### Social
+
+#### Community Channels
+
+- **URL**: https://ui.beste.co/block/social48
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/social48.json"` (Radix: `/r/social48.json`)
+- **Description**: A community section listing four linked places to join as full-width hairline rows, each with an icon tile, a description, a light membership figure, and an arrow that shifts on hover.
+
+#### Community Photo Wall
+
+- **URL**: https://ui.beste.co/block/social57
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/social57.json"` (Radix: `/r/social57.json`)
+- **Description**: A community gallery laid out as a masonry of customer photographs at mixed heights, each captioned with what is happening and the practice it came from.
+
 ### Stats
 
 #### Outcome Metric Rows
@@ -839,6 +925,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/stats66
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/stats66.json"` (Radix: `/r/stats66.json`)
 - **Description**: A results section that stacks each metric on its own hairline row, pairing an oversized figure with a short label, a sentence of context, and an optional year-over-year delta.
+
+#### Segmented Total Breakdown
+
+- **URL**: https://ui.beste.co/block/stats68
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/stats68.json"` (Radix: `/r/stats68.json`)
+- **Description**: A results section that leads on one oversized total, splits it across a segmented accent bar, then legends each segment on a hairline row aligning its value, share, and what it covers.
 
 ### Terminal
 

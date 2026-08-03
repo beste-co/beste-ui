@@ -1,6 +1,6 @@
 # About69: Mission Band With Principles
 
-Company story section that runs a two-column heading over a wide photo band, then sets the founding principles as monospace-numbered hairline columns underneath, each one a short title and the reasoning behind it.
+Company story section that runs a two-column heading over a wide photo band, then sets the founding principles as numbered hairline columns underneath, each one a short title and the reasoning behind it.
 
 <FreeCta />
 

@@ -119,7 +119,7 @@ export function Faq80({ badge, heading, description, items = [], support, classN
         <div className="mt-12 grid gap-x-12 md:mt-16 md:grid-cols-2">
           {items.map((item, index) => (
             <div key={index} className="border-t border-border py-6 md:py-8">
-              <span className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
+              <span className="text-sm text-muted-foreground">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="mt-3 text-lg font-medium text-foreground">

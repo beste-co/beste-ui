@@ -1,19 +1,14 @@
 "use client";
 
-import { Bookmark02Icon, SearchRemoveIcon } from "@hugeicons/core-free-icons";
+import { Bookmark02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
 import type { ComponentType } from "react";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { NewBadge, useIsNew } from "@/components/new-badge";
 import { ProBadge } from "@/components/pro-badge";
-import {
-  Empty,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/components/ui/empty";
+import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
 import type { BlockMeta } from "@/lib/blocks";
 import { getBlockObfuscated } from "@/lib/blocks-obfuscated";
 import { useFavorites } from "@/lib/favorites-context";
@@ -126,7 +121,11 @@ const LazyBlock = ({
 
 interface BlocksGridProps {
   blocks: BlockMeta[];
-  searchQuery?: string;
+  /**
+   * Ship dates, by block name, for anything recent enough to be worth a badge —
+   * `recentBlockDates()` from a server component. Left out, no card is badged.
+   */
+  addedDates?: Readonly<Record<string, string>>;
   showFavoriteIndicator?: boolean;
   loading?: boolean;
   skeletonCount?: number;
@@ -134,15 +133,17 @@ interface BlocksGridProps {
 
 export function BlocksGrid({
   blocks,
-  searchQuery = "",
+  addedDates,
   showFavoriteIndicator = true,
   loading = false,
   skeletonCount = 9,
 }: BlocksGridProps) {
   const { isFavorite } = useFavorites();
+  const isNewBlock = useIsNew(addedDates);
 
   const renderBlockCard = (block: BlockMeta, shouldRenderPreview: boolean) => {
     const isBlockFavorite = showFavoriteIndicator && isFavorite(block.name);
+    const isNew = isNewBlock(block.name);
     return (
       /*
         The whole card is a link, and the link is a sibling of the card's contents
@@ -168,10 +169,15 @@ export function BlocksGrid({
           under it used to do.
         */}
         <div className="relative flex h-84 items-center justify-center overflow-hidden rounded-md bg-background md:h-48">
-          {/* Favorite indicator */}
-          {isBlockFavorite && (
-            <div className="absolute top-3 right-3 z-10 pointer-events-none">
-              <HugeiconsIcon icon={Bookmark02Icon} size={20} strokeWidth={2} className="fill-primary text-primary" />
+          {/* The card's own marks, in the corner the preview keeps clear: the
+              badge takes the corner itself and the bookmark sits inside it, so a
+              block that is both new and saved reads as one cluster. */}
+          {(isBlockFavorite || isNew) && (
+            <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 pointer-events-none">
+              {isBlockFavorite && (
+                <HugeiconsIcon icon={Bookmark02Icon} size={20} strokeWidth={2} className="fill-primary text-primary" />
+              )}
+              {isNew && <NewBadge />}
             </div>
           )}
           {shouldRenderPreview ? (
@@ -248,23 +254,6 @@ export function BlocksGrid({
   }
 
   if (blocks.length === 0) {
-    // Different message based on whether user is searching
-    if (searchQuery.trim()) {
-      return (
-        <Empty className="h-64">
-          <EmptyHeader>
-            <EmptyMedia variant="icon">
-              <HugeiconsIcon icon={SearchRemoveIcon} size={20} strokeWidth={2} />
-            </EmptyMedia>
-            <EmptyTitle>No results found</EmptyTitle>
-            <EmptyDescription>
-              No blocks match &quot;{searchQuery}&quot;. Try a different search term.
-            </EmptyDescription>
-          </EmptyHeader>
-        </Empty>
-      );
-    }
-
     return (
       <Empty className="h-64">
         <EmptyHeader>

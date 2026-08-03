@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { components } from "@/lib/components";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
+import { parseSort, sortByAdded } from "@/lib/browse-sort";
+import { getPieceAddedDate, recentPieceDates } from "@/lib/changelog-dates";
 import { ComponentsContent } from "../components-content";
 import {
   buildCategoryCounts,
@@ -64,13 +66,18 @@ export default async function ComponentsCategoryPage({
   const { category: slug } = await params;
   const sp = await searchParams;
   const requestedPage = parsePage(sp.page);
+  const sort = parseSort(sp.sort);
 
   const filtered = filterByCategorySlug(components, slug);
   if (filtered.length === 0) {
     notFound();
   }
 
-  const page = paginate(filtered, requestedPage, PAGE_SIZE);
+  const page = paginate(
+    sortByAdded(filtered, sort, getPieceAddedDate),
+    requestedPage,
+    PAGE_SIZE
+  );
   const currentCategory = page.items[0]?.category;
 
   if (!currentCategory || categorySlug(currentCategory) !== slug) {
@@ -106,6 +113,8 @@ export default async function ComponentsCategoryPage({
         totalItems={page.totalItems}
         currentCategory={currentCategory}
         currentCategorySlug={slug}
+        currentSort={sort}
+        addedDates={recentPieceDates()}
         description={categoryDescription(currentCategory)}
         categories={buildCategoryCounts(components)}
         pageSize={PAGE_SIZE}
