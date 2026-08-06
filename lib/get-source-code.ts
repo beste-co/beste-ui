@@ -42,6 +42,28 @@ export function getSourceCode(blockName: string, isUserPro = false): string {
 }
 
 /**
+ * Get source code for a page.
+ *
+ * There is no obfuscated twin here: the file is the composition itself, so a
+ * reader without a license is shown the upgrade panel instead of a mangled
+ * copy. The blocks it composes keep their own gating on their own pages.
+ */
+export function getPageSource(pageName: string): string {
+  const filePath = path.join(
+    process.cwd(),
+    "registry-pages",
+    pageName,
+    `${pageName}.tsx`
+  );
+
+  try {
+    return fs.readFileSync(filePath, "utf-8");
+  } catch {
+    return `// Source code not found for ${pageName}`;
+  }
+}
+
+/**
  * Get the docs (README.md markdown) for a block, if it ships one.
  * Returns the raw markdown, or null when the block has no README.
  */

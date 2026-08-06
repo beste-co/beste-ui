@@ -188,10 +188,12 @@ export default async function HomePage() {
         // The last child is the content column; the two before it are the image and
         // its overlay, and capping those would stop the picture short of the edges.
         className="-mt-12 md:-mt-16 [&>div:last-child]:max-w-6xl md:py-16"
-        heading="Copy, paste, ship."
-        subheading="Blocks, pieces and components for shadcn/ui and Tailwind."
+        // Not a description of the product: the counts sit two rows below and the
+        // page title carries the search terms, so the hero is free to be a poster.
+        heading="Already built."
+        subheading="Every screen a website needs. Yours to take."
         backgroundImage={{
-          src: "https://images.unsplash.com/photo-1698899114761-3a154520c816?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          src: "https://images.unsplash.com/photo-1757582781169-51cb388e4061?q=80&w=2932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           alt: "",
         }}
       />

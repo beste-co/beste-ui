@@ -885,7 +885,7 @@ const _changelog: ChangelogEntryInput[] = [
     date: "2026-06-23",
     title: "Auralis gets navbars & footers",
     description:
-      "Two foundational categories join the Auralis set: 12 navbars and 12 footers in the same monochrome editorial language. Up top — a plain studio bar, mega menus, a fullscreen overlay and a search-forward bar; down below — newsletter, contact, oversized-wordmark and a live studio-clock footer.",
+      "Two foundational categories join the Auralis set: 12 navbars and 13 footers in the same monochrome editorial language. Up top — a plain studio bar, mega menus, a fullscreen overlay and a search-forward bar; down below — newsletter, contact, brand-column, oversized-wordmark and a live studio-clock footer.",
     blocks: [
       { name: "navbar59", isNew: true },
       { name: "navbar60", isNew: true },
@@ -911,6 +911,7 @@ const _changelog: ChangelogEntryInput[] = [
       { name: "footer116", isNew: true },
       { name: "footer117", isNew: true },
       { name: "footer118", isNew: true },
+      { name: "footer122", isNew: true },
     ],
   },
   {

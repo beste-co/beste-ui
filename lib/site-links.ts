@@ -40,6 +40,7 @@ export const REFERRALS_HREF = `${HOSTED_SITE}/referrals`;
 export const ACCOUNT_HREF = `${HOSTED_SITE}/account`;
 export const FAVORITES_HREF = `${HOSTED_SITE}/favorites`;
 
+export const PAGES_HREF = `${HOSTED_SITE}/pages`;
 export const BLOG_HREF = `${HOSTED_SITE}/blog`;
 export const DOCS_HREF = `${HOSTED_SITE}/docs`;
 export const DOCS_INSTALLATION_HREF = `${HOSTED_SITE}/docs/installation`;
@@ -61,6 +62,10 @@ export const HOSTED_ONLY_PATHS: readonly string[] = [
   "/docs",
   "/changelog",
   "/blog",
+  // The pages tier composes Pro blocks, so it is hosted-only in full: the
+  // listing, the detail route and the embed all live on ui.beste.co.
+  "/pages",
+  "/page",
   // Most of the catalogue is Pro, so a block detail page that is missing here
   // is almost always one that exists on the hosted site rather than a typo.
   // Pieces and components are all present, so a miss there is a real 404.

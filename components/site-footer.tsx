@@ -3,6 +3,7 @@ import {
   CHANGELOG_HREF,
   DOCS_HREF,
   DOCS_MCP_HREF,
+  PAGES_HREF,
   PRICING_HREF,
   REFERRALS_HREF,
   hostedLinkProps,
@@ -31,6 +32,7 @@ const COLUMNS: {
     title: "Library",
     links: [
       { label: "Blocks", href: "/blocks" },
+      { label: "Pages", href: PAGES_HREF, hosted: true },
       { label: "Pieces", href: "/pieces" },
       { label: "Components", href: "/components" },
       { label: "Search", href: "/search" },

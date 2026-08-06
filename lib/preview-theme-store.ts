@@ -4,12 +4,37 @@ import type { Theme, ThemeName } from "@/lib/themes";
 import { themes } from "@/styles/themes";
 import { createContext, useContext } from "react";
 
-const STORAGE_KEY = "blocks-preview-theme";
-/** Cookie mirroring the selected theme name so the server can SSR embeds with it. */
-export const THEME_NAME_COOKIE = "blocks-preview-theme-name";
+import { THEME_NAME_COOKIE } from "@/lib/preview-theme-cookie";
 
-export const DEFAULT_LIGHT_PREVIEW_THEME: ThemeName = "claude-plus";
-export const DEFAULT_DARK_PREVIEW_THEME: ThemeName = "claude-plus-dark";
+// Both keys carry a version suffix. Changing the default theme does nothing for
+// anyone who has already picked one — their stored value wins forever — so a new
+// default only reaches returning visitors if the old key stops being read. Bump
+// the suffix whenever a default change should override existing picks.
+const STORAGE_KEY = "blocks-preview-theme-v2";
+export { THEME_NAME_COOKIE };
+
+const LEGACY_STORAGE_KEYS = ["blocks-preview-theme"];
+const LEGACY_THEME_COOKIES = ["blocks-preview-theme-name"];
+
+/**
+ * Drop the pre-v2 pick so it cannot come back, and so the old year-long cookie
+ * does not sit in the jar being sent on every request.
+ */
+export function clearLegacyPreviewTheme(): void {
+  if (typeof window === "undefined") return;
+
+  try {
+    for (const key of LEGACY_STORAGE_KEYS) localStorage.removeItem(key);
+    for (const name of LEGACY_THEME_COOKIES) {
+      document.cookie = `${name}=; path=/; max-age=0; samesite=lax`;
+    }
+  } catch (error) {
+    console.warn("Failed to clear legacy preview theme:", error);
+  }
+}
+
+export const DEFAULT_LIGHT_PREVIEW_THEME: ThemeName = "minimal-neutral";
+export const DEFAULT_DARK_PREVIEW_THEME: ThemeName = "minimal-neutral-dark";
 
 export function getPreviewThemeForSiteMode(mode: string | undefined): ThemeName {
   return mode === "dark" ? DEFAULT_DARK_PREVIEW_THEME : DEFAULT_LIGHT_PREVIEW_THEME;

@@ -33,23 +33,27 @@ import { generateGradient } from "@/lib/generate-avatar";
 import { useLicense } from "@/lib/license-context";
 import {
   ACCOUNT_HREF,
-  BLOG_HREF,
   CHANGELOG_HREF,
   DOCS_HREF,
   DOCS_MCP_HREF,
   FAVORITES_HREF,
+  PAGES_HREF,
   PRICING_HREF,
   REFERRALS_HREF,
   hostedLinkProps,
 } from "@/lib/site-links";
 import { cn } from "@/lib/utils";
 
-/** The bar's own links. Everything else lives in the menu. */
+/**
+ * The bar's own links: the four things you can browse. Everything else lives in
+ * the menu, and the blog lives in the footer — the bar's last slot pays for
+ * itself better as the Pro call to action.
+ */
 const NAV: { href: string; label: string; hosted?: boolean }[] = [
   { href: "/blocks", label: "Blocks" },
+  { href: PAGES_HREF, label: "Pages", hosted: true },
   { href: "/pieces", label: "Pieces" },
   { href: "/components", label: "Components" },
-  { href: BLOG_HREF, label: "Blog", hosted: true },
 ];
 
 /** The rest, shown in the menu and in the mobile panel. */
@@ -260,6 +264,26 @@ export function SiteHeader() {
                 );
               })}
             </div>
+
+            {/*
+              The one thing in the bar asking for something. Hidden from people who
+              already bought it — the same test the panel's upgrade link uses, and
+              for the same reason: hasPro starts false and resolves a moment later,
+              so a Pro reader sees this briefly rather than an empty slot widening
+              on every page load, which is the trade the majority case wins.
+
+              Below sm it drops out and the panel carries the price instead, since
+              a phone bar already holds a search and a menu.
+            */}
+            {!hasPro && (
+              <Link
+                href={PRICING_HREF}
+                {...hostedLinkProps}
+                className="hidden h-11 shrink-0 cursor-pointer items-center rounded-full bg-foreground px-5 text-base font-semibold text-background transition-opacity hover:opacity-90 sm:inline-flex"
+              >
+                GET PRO
+              </Link>
+            )}
 
             {/*
               The round controls are one cluster: GitHub, search on a phone, and the

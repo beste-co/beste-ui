@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   DEFAULT_LIGHT_PREVIEW_THEME,
   PreviewThemeContext,
+  clearLegacyPreviewTheme,
   getPreviewThemeForSiteMode,
   loadStoredTheme,
   resolveTheme,
@@ -45,6 +46,8 @@ export function PreviewThemeProvider({
   // corrects to the stored value. SSR + first client render both use
   // initialThemeName, so hydration matches and the theme actually applies.
   useEffect(() => {
+    clearLegacyPreviewTheme();
+
     const stored = loadStoredTheme();
     if (stored.hasStored) {
       setThemeNameState(stored.themeName);
@@ -61,7 +64,7 @@ export function PreviewThemeProvider({
 
   // Site mode (light/dark) drives the preview theme default.
   // - First-time visitors (no saved pick) get the mode-appropriate default
-  //   (claude-plus / perpetuity-dark).
+  //   (DEFAULT_LIGHT_PREVIEW_THEME / DEFAULT_DARK_PREVIEW_THEME).
   // - Only an actual mode toggle afterwards switches (and re-saves) the preview
   //   theme — so a saved pick is never clobbered on load.
   useEffect(() => {

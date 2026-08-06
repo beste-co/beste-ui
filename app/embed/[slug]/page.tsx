@@ -2,9 +2,7 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { getBlock } from "@/lib/blocks";
 
-// Mirror of THEME_NAME_COOKIE in lib/preview-theme-store.ts (kept as a literal
-// here so this server component doesn't import the "use client" store module).
-const THEME_NAME_COOKIE = "blocks-preview-theme-name";
+import { THEME_NAME_COOKIE } from "@/lib/preview-theme-cookie";
 import { BlockPreview } from "./block-preview";
 import { EmbedClient } from "./embed-client";
 import { getViewer } from "@/lib/entitlements";

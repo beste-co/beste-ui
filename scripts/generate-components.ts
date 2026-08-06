@@ -10,7 +10,14 @@
  * Usage: bun run scripts/generate-components.ts
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { join } from "node:path";
 import type { ComponentMeta } from "../lib/component-types";
 
@@ -107,6 +114,31 @@ function writeIfChanged(path: string, content: string): boolean {
   if (existsSync(path) && readFileSync(path, "utf-8") === content) return false;
   writeFileSync(path, content, "utf-8");
   return true;
+}
+
+/**
+ * Deletes proxies whose source is gone.
+ *
+ * Without this, deleting a component leaves its proxy behind forever, and the
+ * leftover is invisible twice over: `components/beste/component/` is gitignored,
+ * so `git status` never mentions it, and the empty source directory git left
+ * behind is not tracked either — git does not track directories. The file then
+ * ships, because `components/` is copied whole into the public build.
+ *
+ * `shader-mesh-gradient.tsx` reached the open-source export exactly this way.
+ */
+function pruneProxies(proxyDir: string, keep: ReadonlySet<string>): number {
+  if (!existsSync(proxyDir)) return 0;
+
+  let pruned = 0;
+  for (const file of readdirSync(proxyDir)) {
+    if (!file.endsWith(".tsx")) continue;
+    if (keep.has(file.slice(0, -4))) continue;
+    unlinkSync(join(proxyDir, file));
+    pruned++;
+  }
+
+  return pruned;
 }
 
 async function collectMetadata(registryDir: string): Promise<CollectedMeta[]> {
@@ -374,6 +406,10 @@ async function main() {
     const proxy = `${PROXY_HEADER}\nexport * from "@/registry-pieces/${m.componentDir}/${m.componentDir}";\n`;
     writeIfChanged(proxyPath, proxy);
   }
+  const prunedPieces = pruneProxies(
+    PROXY_DIR,
+    new Set(metas.map((m) => m.componentDir))
+  );
 
   console.log("Collecting metadata from registry-components/*/*.meta.ts...");
   const uiMetas = await collectMetadata(UI_REGISTRY_DIR);
@@ -383,6 +419,7 @@ async function main() {
 
   console.log("Generating components/beste/component/*.tsx proxies...");
   let uiProxyCount = 0;
+  const kept = new Set<string>();
   if (existsSync(UI_REGISTRY_DIR)) {
     if (!existsSync(UI_PROXY_DIR)) {
       mkdirSync(UI_PROXY_DIR, { recursive: true });
@@ -397,14 +434,20 @@ async function main() {
       const proxy = `${UI_PROXY_HEADER}\nexport * from "@/registry-components/${dir}/${dir}";\n`;
       writeIfChanged(proxyPath, proxy);
       uiProxyCount++;
+      kept.add(dir);
     }
   }
+  const prunedUi = pruneProxies(UI_PROXY_DIR, kept);
 
   console.log("Done! Generated:");
   console.log(`  - lib/components.ts (${metas.length} components)`);
   console.log(`  - lib/registry-components.ts (${uiMetas.length} components)`);
-  console.log(`  - components/beste/piece/*.tsx (${metas.length} proxies)`);
-  console.log(`  - components/beste/component/*.tsx (${uiProxyCount} proxies)`);
+  console.log(
+    `  - components/beste/piece/*.tsx (${metas.length} proxies${prunedPieces ? `, ${prunedPieces} pruned` : ""})`
+  );
+  console.log(
+    `  - components/beste/component/*.tsx (${uiProxyCount} proxies${prunedUi ? `, ${prunedUi} pruned` : ""})`
+  );
 }
 
 main().catch(console.error);

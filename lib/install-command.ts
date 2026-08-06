@@ -61,6 +61,22 @@ export function personalizeDocs(
     .replaceAll("YOUR_KEY", encodeURIComponent(license.licenseKey));
 }
 
+/**
+ * Pages ship only in the canonical flavor for now: the command carries the
+ * license the same way a Pro block's does, since a page is Pro whenever one of
+ * the blocks inside it is.
+ */
+export function pageInstallCommand(
+  name: string,
+  license?: { email: string; licenseKey: string }
+): string {
+  const url = `${registryBaseUrl()}/page/r/${name}`;
+  if (!license) return `npx shadcn add ${url}`;
+  return `npx shadcn add "${url}?email=${encodeURIComponent(
+    license.email
+  )}&license_key=${encodeURIComponent(license.licenseKey)}"`;
+}
+
 export function pieceInstallCommand(name: string): string {
   return `npx shadcn add ${registryBaseUrl()}/piece/r/${name}`;
 }
