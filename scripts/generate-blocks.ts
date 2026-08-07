@@ -134,6 +134,9 @@ function generateBlocksTs(metas: CollectedMeta[]): string {
     if (m.fullscreen) props.push(`    fullscreen: true`);
     if (m.previewAlign) props.push(`    previewAlign: "${m.previewAlign}"`);
     if (m.isPro) props.push(`    isPro: true`);
+    if (m.tags?.length) {
+      props.push(`    tags: [${m.tags.map((t) => `"${escapeString(t)}"`).join(", ")}]`);
+    }
 
     return `  {\n${props.join(",\n")},\n  }`;
   });
@@ -173,6 +176,8 @@ export interface BlockMeta {
   previewAlign?: "top" | "bottom";
   /** If true, the block is a Pro block with obfuscated source code */
   isPro?: boolean;
+  /** Cross-category hub labels, surfaced at /blocks/tag/{slug} */
+  tags?: string[];
 }
 
 ${chunkDeclarations}

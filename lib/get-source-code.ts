@@ -80,3 +80,16 @@ export function getBlockDocs(blockName: string): string | null {
     return null;
   }
 }
+
+/**
+ * The same, for a page. Separate from `getBlockDocs` only because the two read
+ * from different roots; the README itself follows the block house standard.
+ */
+export function getPageDocs(pageName: string): string | null {
+  const filePath = path.join(process.cwd(), "registry-pages", pageName, "README.md");
+  try {
+    return fs.readFileSync(filePath, "utf-8");
+  } catch {
+    return null;
+  }
+}

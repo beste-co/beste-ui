@@ -59,6 +59,14 @@ export interface BlockMeta {
 
   /** If true, the block is a Pro block with obfuscated source code */
   isPro?: boolean;
+
+  /**
+   * Cross-category hub labels this block belongs to, e.g. ["questionnaire"].
+   * Category keywords already generate tag archives on their own; this is for
+   * a set of blocks that share a mechanic rather than a category, which no
+   * keyword could gather. Each one gets a page at /blocks/tag/{slug}.
+   */
+  tags?: string[];
 }
 
 /**

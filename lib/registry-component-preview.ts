@@ -6,4 +6,5 @@
 export const FRAME_PREVIEW_CATEGORIES: ReadonlySet<string> = new Set([
   "Card",
   "Dashboard",
+  "Questionnaire",
 ]);

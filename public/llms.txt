@@ -26,6 +26,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Mission Band With Principles](https://ui.beste.co/block/about69): A company story section that runs a two-column heading over a wide photo band, then sets three founding principles as numbered hairline columns underneath.
 - [Company History Rows](https://ui.beste.co/block/about70): A company story told as hairline rows keyed by a light year figure, set against a media column that sticks while they scroll and stacks an image tile floating a live growth metric over a captioned photograph.
 
+### Agency
+
+- [Studio Brief With Changing Plate](https://ui.beste.co/block/agency24): A four-step studio brief where the tall photograph beside it changes with the question on screen, each with its own caption, and sending the brief swaps the plate for the studio and the form for a ledger of the answers.
+
 ### Auth
 
 - [Centered Sign In Card](https://ui.beste.co/block/auth1): Full-height centered sign-in screen with social login providers, email and password fields, a show/hide password toggle, remember-me checkbox, and forgot-password link. Perfect for SaaS apps, dashboards, and member portals.
@@ -52,10 +56,12 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Service Selector](https://ui.beste.co/block/booking4): Service selection grid with category filter tabs, service cards showing icon, name, description, duration, price, and selected state. Ideal for spa, salon, clinic, and fitness booking flows.
 - [Provider Picker](https://ui.beste.co/block/booking5): Staff/provider selection cards with avatar, name, specialty, star rating, review count, availability badge, experience years, and selected state. Grid layout with "Any Provider" option.
 - [Booking Confirmation Receipt](https://ui.beste.co/block/booking15): Post-booking success screen with animated check icon, confirmation number, booking summary (service, date/time, location, total), scannable QR code ticket, action buttons (calendar, receipt, directions), and email confirmation note.
+- [Appointment Intake Match](https://ui.beste.co/block/booking29): Three intake questions that land on a real appointment type instead of a drop-down: the answers pick a route with its length, its facts, and the clinician you will sit with, and the image tile beside them swaps its floated availability card to match.
 
 ### Careers
 
 - [Filterable Open Roles List](https://ui.beste.co/block/careers51): A light editorial careers section with a monospace eyebrow over a hairline rule, a two-column heading, and a sticky culture photo with a gradient caption beside team filter pills and hairline job rows showing location, contract type, and a hover arrow.
+- [Role Fit Finder](https://ui.beste.co/block/careers56): A hiring section that answers three questions instead of listing a job board: the answers land on one open role with its team, its location, and its published pay band, and the photograph beside it changes to the part of the studio that role sits in.
 
 ### Changelog
 
@@ -81,6 +87,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Banner CTA](https://ui.beste.co/block/cta11): Horizontal banner call-to-action with heading and action buttons side by side. Perfect for inline conversion sections between content blocks.
 - [Worth Keeping CTA](https://ui.beste.co/block/cta69): Full-bleed monochrome closing CTA with a giant scrolling marquee behind a single centered seal button.
 - [Studio Booking Split CTA](https://ui.beste.co/block/cta78): Closing call to action splitting a tall photo against an oversized heading, a short pitch, a pill CTA beside a plain email link, and a ruled two-column row stating reply time and next availability.
+- [Tailored Subscription](https://ui.beste.co/block/cta92): A newsletter CTA that asks before it asks for an address: subjects, then cadence, then the email, and the column swaps itself for a confirmation that reads back exactly what was chosen.
 
 ### DevTools
 
@@ -95,12 +102,14 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Size Guide Table](https://ui.beste.co/block/ecommerce11): Measurement chart table with chest, waist, hips, and length columns. Perfect for clothing product pages and sizing reference.
 - [Shipping Info Cards](https://ui.beste.co/block/ecommerce15): Icon cards displaying shipping, delivery, tracking, and returns policies. Perfect for product pages and checkout information.
 - [Shop by Brand Grid](https://ui.beste.co/block/ecommerce32): Brand logo cards with product counts and hover effects linking to brand pages. Perfect for multi-brand stores and brand discovery.
+- [Product Finder Quiz](https://ui.beste.co/block/ecommerce46): A finder that replaces a filter sidebar: three questions score every product against the traits the answers ask for, and the winner takes over the plate beside them with its photograph, its price, and the reasons it came out on top.
 
 ### Education
 
 - [Social Media Links Grid](https://ui.beste.co/block/education86): A social media connection section with platform cards showing handles and follower counts. Perfect for university marketing and student community building.
 - [Global Partnerships Grid](https://ui.beste.co/block/education99): A global partnerships section showcasing partner institutions with location details and exchange statistics. Perfect for universities highlighting international collaborations.
 - [Institutional Quick Facts](https://ui.beste.co/block/education100): A quick facts grid displaying key institutional statistics with values, labels, and descriptions. Perfect for university at-a-glance pages and prospective student information.
+- [Lesson Check Quiz](https://ui.beste.co/block/education102): An end-of-lesson knowledge check: a two-column header, a three-figure strip for questions, pass mark, and attempts, a graded quiz that swaps itself for a score and a per-question review, and a list of readings for whatever went wrong.
 
 ### Error
 
@@ -113,6 +122,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Editorial Not Found Split](https://ui.beste.co/block/error34): A calm not-found page with an error eyebrow, an oversized light heading and recovery actions on the left, beside a hairline list of the destinations people usually need instead.
 - [Server Error With Live Status](https://ui.beste.co/block/error35): A calm server-error page with a monospace code, an oversized light heading, recovery actions, an image tile floating a live uptime strip, and a hairline table carrying the incident reference.
 
+### Event
+
+- [Slot By Slot Day Builder](https://ui.beste.co/block/event101): A programme picker that builds the day beside the questions: one choice per time slot drops a session card with its room, its length, and its photograph into a running plan, and the hours left open stay on the page instead of being hidden.
+
 ### FAQ
 
 - [Numbered FAQ Index](https://ui.beste.co/block/faq77): A type-forward FAQ with a sticky heading rail and a numbered accordion list of expandable questions.
@@ -120,6 +133,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Hairline Answer Ledger](https://ui.beste.co/block/faq84): A compact FAQ with nothing hidden behind a click: three labelled groups of question and answer pairs set as two-column hairline rows, closing on a link to longer reading.
 - [Good Fit Qualifier](https://ui.beste.co/block/faq88): A qualifying FAQ that sets a checked good-fit column against a crossed not-for-you column, then answers the three questions that follow from them on two-column hairline rows.
 - [Filterable Glossary](https://ui.beste.co/block/faq89): A jargon glossary whose letter filter is derived from the terms themselves, narrowing a two-column hairline definition list with an empty state and a suggest-a-term action.
+- [Answer Router](https://ui.beste.co/block/faq92): A help section that asks two questions instead of offering a search box: the answers pick one written answer from a list of routes, an image tile beside them floats the answer as a live assistant card and changes with it, and a soft panel underneath keeps a way through to a person.
 
 ### Feature
 
@@ -158,6 +172,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 ### Fitness
 
 - [Gym Location Finder](https://ui.beste.co/block/fitness32): Location section with map preview, address, hours, parking, and public transit info. Perfect for gym contact pages and multi-location fitness centers.
+- [Honest Programme Match](https://ui.beste.co/block/fitness40): A programme finder that argues with you: three questions land on one training block, and the card overlapping the photographic band answers in two columns, who it is for beside who should not take it, before the practical facts.
 
 ### Footer
 
@@ -166,6 +181,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Centered Social Footer](https://ui.beste.co/block/footer11): Vertically stacked footer with centered logo, navigation links, social media icons, and copyright. Perfect for portfolios and personal brands wanting a symmetrical layout.
 - [Compact E-commerce Footer](https://ui.beste.co/block/footer21): Centered minimal footer with horizontal navigation, trust badges, and payment method icons. Perfect for smaller online stores wanting a clean checkout-focused layout.
 - [Social Media Showcase Footer](https://ui.beste.co/block/footer23): Centered footer with prominent heading, large circular social media icon buttons, and minimal navigation. Perfect for creators and influencers driving social engagement.
+
+### Gallery
+
+- [Pick The Frames Taste Profile](https://ui.beste.co/block/gallery25): A gallery finder whose questions are photographs rather than sentences: three rows of frames are chosen by eye, and the result names the leading way of looking, shows the series that goes with it, and breaks the picks down as a share bar.
 
 ### Health
 
@@ -216,12 +235,21 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Video Introduction Screen](https://ui.beste.co/block/onboarding4): Welcome screen featuring a video thumbnail with play overlay and duration badge. Perfect for product tours that use video content to demonstrate features.
 - [Step Cards with Numbered Indicators](https://ui.beste.co/block/onboarding9): Animated step wizard with square numbered indicators and content cards for each step. Perfect for product walkthroughs that guide users through key features.
 - [Go-Live Day Agenda](https://ui.beste.co/block/onboarding36): A first-day agenda held in one bordered panel, with timestamped hairline rows naming what happens, who is needed, how long it takes, and which parts are optional.
+- [Guided Workspace Setup](https://ui.beste.co/block/onboarding43): A two-column setup section: the pitch and what each answer changes on the left, and a one-question-at-a-time wizard on the right that ends in a review of everything it is about to create.
+
+### Podcast
+
+- [Listening Path Builder](https://ui.beste.co/block/podcast54): An entry point for a back catalogue: three questions score the listening paths, and the winner is handed over as an ordered run of three episodes with cover art, numbers, and a total runtime added up from the episodes themselves.
 
 ### Portfolio
 
 - [Social Media Connect Grid](https://ui.beste.co/block/portfolio62): Responsive grid of social media platform buttons with follower counts and platform icons. Perfect for creators and influencers showcasing their social media presence.
 - [Book Recommendations Grid](https://ui.beste.co/block/portfolio70): Grid of book cards displaying cover images, titles, authors, star ratings, and category badges. Perfect for sharing reading lists and book recommendations on personal sites.
 - [Work Process Steps](https://ui.beste.co/block/portfolio84): Four-column numbered workflow section showing project phases like Discovery, Strategy, Design, and Deliver. Perfect for freelancers and agencies explaining their project methodology.
+
+### Product
+
+- [Live Made To Order Configurator](https://ui.beste.co/block/product12): A made-to-order configurator that answers as you go: every option takes over the plate beside it, writes its own line into a running specification, and moves a total that is visible from the first question rather than revealed at the end.
 
 ### Reveal
 
@@ -232,6 +260,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 
 - [Changelog Timeline](https://ui.beste.co/block/saas16): Version history cards with version badges, dates, and update type labels (Feature, Improvement, Fix). Perfect for product update pages and release notes.
 - [Job Listings](https://ui.beste.co/block/saas31): Career openings list with job title, department badge, location, and employment type. Perfect for company career pages with clickable job postings.
+- [Branching Scoping Form](https://ui.beste.co/block/saas108): A contact section that asks a branching set of questions instead of one long form: a rail lists the steps that currently apply and lets you jump between them, and answering the first question adds or removes the steps below it.
 
 ### Settings
 
@@ -266,6 +295,7 @@ beste-ui provides production-ready UI blocks that you can install directly using
 
 - [Tour Type Categories](https://ui.beste.co/block/travel19): Visual category grid showing tour types like adventure, cultural, beach, and safari with images and tour counts. Perfect for travel agencies organizing trips by experience style.
 - [Custom Trip Builder CTA](https://ui.beste.co/block/travel21): Split-layout card promoting custom trip planning with feature bullet points and a large image. Perfect for travel agencies offering personalized itinerary design services.
+- [Narrowing Destination Shortlist](https://ui.beste.co/block/travel42): A destination finder that eliminates in the open: a grid of six photographs sits beside the questions and dims the places each answer rules out, with a live count under it, before the survivors are listed with their notes and links.
 
 ### Use Case
 
@@ -277,6 +307,10 @@ beste-ui provides production-ready UI blocks that you can install directly using
 - [Vertical Timeline](https://ui.beste.co/block/usecase8): Centered timeline with alternating left-right content cards, icons, images, and feature lists. Perfect for showing project phases, company history, or process stages.
 - [Masonry Bento Grid](https://ui.beste.co/block/usecase9): CSS columns-based masonry layout with variable-height cards featuring background images and gradient overlays. Perfect for showcasing diverse use cases with visual hierarchy.
 - [Split Content Card](https://ui.beste.co/block/usecase10): Two-column card with text content, bullet list, and CTA buttons alongside a full-height image. Perfect for feature highlights or promotional sections.
+
+### Workflow
+
+- [Process Weight Spectrum](https://ui.beste.co/block/workflow55): A process sizer that answers with a position rather than a verdict: a photographic band opens the section, four weighted questions sit beside an avatar cluster of the people a heavier answer pulls in, they add up to a score, and the band that score falls in takes the page over with its title, its summary, and the practices it asks for.
 
 ## Optional
 

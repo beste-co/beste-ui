@@ -28,6 +28,16 @@ interface ChangelogEntryInput {
   blocks?: ChangelogBlockInput[];
   pieces?: ChangelogPieceInput[];
   components?: ChangelogComponentInput[];
+  /**
+   * Page names only, deliberately not enriched here.
+   *
+   * Blocks, pieces and components are resolved in this file, but a page cannot
+   * be: this module is copied into the open-source build (it dates the "New"
+   * badges), while the pages tier is not, so importing `@/lib/pages` here would
+   * break that build. The changelog route resolves these names instead, and it
+   * is excluded from the export.
+   */
+  pages?: string[];
   isCategoryLaunch?: boolean;
   categoryCount?: number;
   /** Override the category name shown on the category launch CTA card. Useful when blocks/pieces arrays are empty. */
@@ -84,6 +94,8 @@ export interface ChangelogEntry {
   blocks: ChangelogBlock[];
   pieces: ChangelogPiece[];
   components: ChangelogComponent[];
+  /** Page names; resolved by the changelog route, not here. See ChangelogEntryInput. */
+  pages: string[];
   isCategoryLaunch?: boolean;
   categoryCount?: number;
   categoryName?: string;
@@ -98,6 +110,62 @@ export interface ChangelogEntry {
 
 // Simplified changelog data - only name and flags needed
 const _changelog: ChangelogEntryInput[] = [
+  {
+    version: "v1.20.0",
+    date: "2026-08-07",
+    title: "Questionnaire: 16 blocks that ask first",
+    description:
+      "**16** new blocks on the shadcn **questionnaire** primitive, across **16 categories** and all three studio languages. One question on screen at a time, and an answer at the end that does something. All **free**.",
+    blocks: [
+      { name: "agency24", isNew: true },
+      { name: "booking29", isNew: true },
+      { name: "careers56", isNew: true },
+      { name: "cta92", isNew: true },
+      { name: "ecommerce46", isNew: true },
+      { name: "education102", isNew: true },
+      { name: "event101", isNew: true },
+      { name: "faq92", isNew: true },
+      { name: "fitness40", isNew: true },
+      { name: "gallery25", isNew: true },
+      { name: "onboarding43", isNew: true },
+      { name: "podcast54", isNew: true },
+      { name: "product12", isNew: true },
+      { name: "saas108", isNew: true },
+      { name: "travel42", isNew: true },
+      { name: "workflow55", isNew: true },
+    ],
+  },
+  {
+    version: "v1.19.0",
+    date: "2026-08-06",
+    title: "Introducing Pages",
+    description:
+      "A fourth tier: whole screens, composed from blocks you already have. **18** to start, across **Home**, **Landing**, **Pricing**, **Careers**, **About**, **Work**, **Gallery**, **Contact**, **Platform** and **Security**. Each one installs with a single command and brings every block, piece and primitive behind it, so a page lands working rather than as a list of things to wire up. Six of them are single-page sites, with the navbar anchored to the sections below it. 📄",
+    isFeatureLaunch: true,
+    featureLink: "/pages",
+    featureEyebrow: "New Tier",
+    featureSubtitle: "18 full pages, one command each",
+    pages: [
+      "home1",
+      "home2",
+      "home3",
+      "landing1",
+      "landing2",
+      "landing3",
+      "landing4",
+      "landing5",
+      "landing6",
+      "pricing1",
+      "platform1",
+      "security1",
+      "services1",
+      "jobs1",
+      "story1",
+      "work1",
+      "exhibition1",
+      "contact1",
+    ],
+  },
   {
     version: "v1.18.0",
     date: "2026-08-03",
@@ -3055,6 +3123,7 @@ function enrichChangelog(entries: ChangelogEntryInput[]): ChangelogEntry[] {
       blocks: enrichedBlocks,
       pieces: enrichedPieces,
       components: enrichedComponents,
+      pages: entry.pages ?? [],
       isCategoryLaunch: entry.isCategoryLaunch,
       categoryCount: entry.categoryCount,
       categoryName: entry.categoryName,

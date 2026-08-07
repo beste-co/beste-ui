@@ -41,9 +41,13 @@ export async function generateMetadata({ params, searchParams }: TagPageProps): 
     page > 1 ? `${SITE_URL}/blocks/tag/${slug}?page=${page}` : `${SITE_URL}/blocks/tag/${slug}`;
 
   const title = `${tag.label} shadcn blocks - Beste UI`;
-  const description = `Production-ready shadcn/tailwind ${tag.label} blocks across ${tag.categories
-    .map((c) => getCategoryInfo(c).title)
-    .join(", ")}. Copy, paste, and customize.`;
+  // A curated tag spans too many categories to list one by one, and the list
+  // would push the description past what a search result shows anyway.
+  const description = tag.blocks
+    ? `Production-ready shadcn/tailwind ${tag.label} blocks, spread across ${tag.categories.length} categories. Copy, paste, and customize.`
+    : `Production-ready shadcn/tailwind ${tag.label} blocks across ${tag.categories
+        .map((c) => getCategoryInfo(c).title)
+        .join(", ")}. Copy, paste, and customize.`;
   const ogImage = `/og?title=${encodeURIComponent(`${tag.label} blocks`)}&description=${encodeURIComponent(description)}`;
 
   return {
@@ -124,20 +128,32 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
           <h1 className="text-3xl font-semibold capitalize leading-tight tracking-tight md:text-4xl">
             {tag.label} blocks
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            {page.totalItems} production-ready {tag.label} blocks across these categories:
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tag.categories.map((c) => (
-              <Link
-                key={c}
-                href={`/blocks/${c}`}
-                className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
-              >
-                {getCategoryInfo(c).title}
-              </Link>
-            ))}
-          </div>
+          {/* A curated tag lists the blocks that declared it, so naming its
+              categories would promise a sweep that never happened. A keyword
+              tag really is the union of its categories, and links to them. */}
+          {tag.blocks ? (
+            <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+              {page.totalItems} production-ready {tag.label} blocks, spread across{" "}
+              {tag.categories.length} categories.
+            </p>
+          ) : (
+            <>
+              <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                {page.totalItems} production-ready {tag.label} blocks across these categories:
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {tag.categories.map((c) => (
+                  <Link
+                    key={c}
+                    href={`/blocks/${c}`}
+                    className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+                  >
+                    {getCategoryInfo(c).title}
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </header>
 
         <BlocksGrid blocks={pageItems} addedDates={recentBlockDates()} />

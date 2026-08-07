@@ -12,7 +12,7 @@ Beste is the site builder with strong constraints. No drag and drop, no inline c
 
 ## About beste-ui
 
-beste-ui is a curated collection of 152 production-ready UI components designed for modern web applications. Built on top of shadcn/ui, each component combines the power of:
+beste-ui is a curated collection of 168 production-ready UI components designed for modern web applications. Built on top of shadcn/ui, each component combines the power of:
 
 - **React 19** - Latest React features and patterns
 - **Tailwind CSS 4** - Utility-first styling
@@ -55,6 +55,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/about70
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/about70.json"` (Radix: `/r/about70.json`)
 - **Description**: A company story told as hairline rows keyed by a light year figure, set against a media column that sticks while they scroll and stacks an image tile floating a live growth metric over a captioned photograph.
+
+### Agency
+
+#### Studio Brief With Changing Plate
+
+- **URL**: https://ui.beste.co/block/agency24
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/agency24.json"` (Radix: `/r/agency24.json`)
+- **Description**: A four-step studio brief where the tall photograph beside it changes with the question on screen, each with its own caption, and sending the brief swaps the plate for the studio and the form for a ledger of the answers.
 
 ### Auth
 
@@ -170,6 +178,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/booking15.json"` (Radix: `/r/booking15.json`)
 - **Description**: Post-booking success screen with animated check icon, confirmation number, booking summary (service, date/time, location, total), scannable QR code ticket, action buttons (calendar, receipt, directions), and email confirmation note.
 
+#### Appointment Intake Match
+
+- **URL**: https://ui.beste.co/block/booking29
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/booking29.json"` (Radix: `/r/booking29.json`)
+- **Description**: Three intake questions that land on a real appointment type instead of a drop-down: the answers pick a route with its length, its facts, and the clinician you will sit with, and the image tile beside them swaps its floated availability card to match.
+
 ### Careers
 
 #### Filterable Open Roles List
@@ -177,6 +191,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/careers51
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/careers51.json"` (Radix: `/r/careers51.json`)
 - **Description**: A light editorial careers section with a monospace eyebrow over a hairline rule, a two-column heading, and a sticky culture photo with a gradient caption beside team filter pills and hairline job rows showing location, contract type, and a hover arrow.
+
+#### Role Fit Finder
+
+- **URL**: https://ui.beste.co/block/careers56
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/careers56.json"` (Radix: `/r/careers56.json`)
+- **Description**: A hiring section that answers three questions instead of listing a job board: the answers land on one open role with its team, its location, and its published pay band, and the photograph beside it changes to the part of the studio that role sits in.
 
 ### Changelog
 
@@ -264,6 +284,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/cta78.json"` (Radix: `/r/cta78.json`)
 - **Description**: Closing call to action splitting a tall photo against an oversized heading, a short pitch, a pill CTA beside a plain email link, and a ruled two-column row stating reply time and next availability.
 
+#### Tailored Subscription
+
+- **URL**: https://ui.beste.co/block/cta92
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/cta92.json"` (Radix: `/r/cta92.json`)
+- **Description**: A newsletter CTA that asks before it asks for an address: subjects, then cadence, then the email, and the column swaps itself for a confirmation that reads back exactly what was chosen.
+
 ### DevTools
 
 #### Multi-Language Code Tabs
@@ -316,6 +342,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/ecommerce32.json"` (Radix: `/r/ecommerce32.json`)
 - **Description**: Brand logo cards with product counts and hover effects linking to brand pages. Perfect for multi-brand stores and brand discovery.
 
+#### Product Finder Quiz
+
+- **URL**: https://ui.beste.co/block/ecommerce46
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/ecommerce46.json"` (Radix: `/r/ecommerce46.json`)
+- **Description**: A finder that replaces a filter sidebar: three questions score every product against the traits the answers ask for, and the winner takes over the plate beside them with its photograph, its price, and the reasons it came out on top.
+
 ### Education
 
 #### Social Media Links Grid
@@ -335,6 +367,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/education100
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/education100.json"` (Radix: `/r/education100.json`)
 - **Description**: A quick facts grid displaying key institutional statistics with values, labels, and descriptions. Perfect for university at-a-glance pages and prospective student information.
+
+#### Lesson Check Quiz
+
+- **URL**: https://ui.beste.co/block/education102
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/education102.json"` (Radix: `/r/education102.json`)
+- **Description**: An end-of-lesson knowledge check: a two-column header, a three-figure strip for questions, pass mark, and attempts, a graded quiz that swaps itself for a score and a per-question review, and a list of readings for whatever went wrong.
 
 ### Error
 
@@ -386,6 +424,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/error35.json"` (Radix: `/r/error35.json`)
 - **Description**: A calm server-error page with a monospace code, an oversized light heading, recovery actions, an image tile floating a live uptime strip, and a hairline table carrying the incident reference.
 
+### Event
+
+#### Slot By Slot Day Builder
+
+- **URL**: https://ui.beste.co/block/event101
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/event101.json"` (Radix: `/r/event101.json`)
+- **Description**: A programme picker that builds the day beside the questions: one choice per time slot drops a session card with its room, its length, and its photograph into a running plan, and the hours left open stay on the page instead of being hidden.
+
 ### FAQ
 
 #### Numbered FAQ Index
@@ -417,6 +463,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/faq89
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq89.json"` (Radix: `/r/faq89.json`)
 - **Description**: A jargon glossary whose letter filter is derived from the terms themselves, narrowing a two-column hairline definition list with an empty state and a suggest-a-term action.
+
+#### Answer Router
+
+- **URL**: https://ui.beste.co/block/faq92
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/faq92.json"` (Radix: `/r/faq92.json`)
+- **Description**: A help section that asks two questions instead of offering a search box: the answers pick one written answer from a list of routes, an image tile beside them floats the answer as a live assistant card and changes with it, and a soft panel underneath keeps a way through to a person.
 
 ### Feature
 
@@ -614,6 +666,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/fitness32.json"` (Radix: `/r/fitness32.json`)
 - **Description**: Location section with map preview, address, hours, parking, and public transit info. Perfect for gym contact pages and multi-location fitness centers.
 
+#### Honest Programme Match
+
+- **URL**: https://ui.beste.co/block/fitness40
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/fitness40.json"` (Radix: `/r/fitness40.json`)
+- **Description**: A programme finder that argues with you: three questions land on one training block, and the card overlapping the photographic band answers in two columns, who it is for beside who should not take it, before the practical facts.
+
 ### Footer
 
 #### Minimal Inline Footer
@@ -645,6 +703,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/footer23
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/footer23.json"` (Radix: `/r/footer23.json`)
 - **Description**: Centered footer with prominent heading, large circular social media icon buttons, and minimal navigation. Perfect for creators and influencers driving social engagement.
+
+### Gallery
+
+#### Pick The Frames Taste Profile
+
+- **URL**: https://ui.beste.co/block/gallery25
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/gallery25.json"` (Radix: `/r/gallery25.json`)
+- **Description**: A gallery finder whose questions are photographs rather than sentences: three rows of frames are chosen by eye, and the result names the leading way of looking, shows the series that goes with it, and breaks the picks down as a share bar.
 
 ### Health
 
@@ -834,6 +900,20 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/onboarding36.json"` (Radix: `/r/onboarding36.json`)
 - **Description**: A first-day agenda held in one bordered panel, with timestamped hairline rows naming what happens, who is needed, how long it takes, and which parts are optional.
 
+#### Guided Workspace Setup
+
+- **URL**: https://ui.beste.co/block/onboarding43
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/onboarding43.json"` (Radix: `/r/onboarding43.json`)
+- **Description**: A two-column setup section: the pitch and what each answer changes on the left, and a one-question-at-a-time wizard on the right that ends in a review of everything it is about to create.
+
+### Podcast
+
+#### Listening Path Builder
+
+- **URL**: https://ui.beste.co/block/podcast54
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/podcast54.json"` (Radix: `/r/podcast54.json`)
+- **Description**: An entry point for a back catalogue: three questions score the listening paths, and the winner is handed over as an ordered run of three episodes with cover art, numbers, and a total runtime added up from the episodes themselves.
+
 ### Portfolio
 
 #### Social Media Connect Grid
@@ -853,6 +933,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/portfolio84
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/portfolio84.json"` (Radix: `/r/portfolio84.json`)
 - **Description**: Four-column numbered workflow section showing project phases like Discovery, Strategy, Design, and Deliver. Perfect for freelancers and agencies explaining their project methodology.
+
+### Product
+
+#### Live Made To Order Configurator
+
+- **URL**: https://ui.beste.co/block/product12
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/product12.json"` (Radix: `/r/product12.json`)
+- **Description**: A made-to-order configurator that answers as you go: every option takes over the plate beside it, writes its own line into a running specification, and moves a total that is visible from the first question rather than revealed at the end.
 
 ### Reveal
 
@@ -881,6 +969,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/saas31
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/saas31.json"` (Radix: `/r/saas31.json`)
 - **Description**: Career openings list with job title, department badge, location, and employment type. Perfect for company career pages with clickable job postings.
+
+#### Branching Scoping Form
+
+- **URL**: https://ui.beste.co/block/saas108
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/saas108.json"` (Radix: `/r/saas108.json`)
+- **Description**: A contact section that asks a branching set of questions instead of one long form: a rail lists the steps that currently apply and lets you jump between them, and answering the first question adds or removes the steps below it.
 
 ### Settings
 
@@ -974,6 +1068,12 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/travel21.json"` (Radix: `/r/travel21.json`)
 - **Description**: Split-layout card promoting custom trip planning with feature bullet points and a large image. Perfect for travel agencies offering personalized itinerary design services.
 
+#### Narrowing Destination Shortlist
+
+- **URL**: https://ui.beste.co/block/travel42
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/travel42.json"` (Radix: `/r/travel42.json`)
+- **Description**: A destination finder that eliminates in the open: a grid of six photographs sits beside the questions and dims the places each answer rules out, with a live count under it, before the survivors are listed with their notes and links.
+
 ### Use Case
 
 #### Use Case Card Grid
@@ -1023,6 +1123,14 @@ npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
 - **URL**: https://ui.beste.co/block/usecase10
 - **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/usecase10.json"` (Radix: `/r/usecase10.json`)
 - **Description**: Two-column card with text content, bullet list, and CTA buttons alongside a full-height image. Perfect for feature highlights or promotional sections.
+
+### Workflow
+
+#### Process Weight Spectrum
+
+- **URL**: https://ui.beste.co/block/workflow55
+- **Install**: `npx shadcn@latest add "https://ui.beste.co/r-base/workflow55.json"` (Radix: `/r/workflow55.json`)
+- **Description**: A process sizer that answers with a position rather than a verdict: a photographic band opens the section, four weighted questions sit beside an avatar cluster of the people a heavier answer pulls in, they add up to a score, and the band that score falls in takes the page over with its title, its summary, and the practices it asks for.
 
 ## Links
 

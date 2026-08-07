@@ -1,11 +1,17 @@
-// Lightweight tag archives derived from the per-category `keywords` already
-// defined in category-info.ts. No block-meta regeneration required.
+// Lightweight tag archives, from two sources.
 //
-// A tag only becomes an archive page when its keyword appears in TWO OR MORE
-// categories -- a single-category tag would just duplicate that category page
-// (thin/duplicate content), whereas a cross-category tag is a genuinely new
-// hub that aggregates related blocks across categories (e.g. "showcase"
-// gathers use-case + product + bento).
+// 1. The per-category `keywords` already defined in category-info.ts. A keyword
+//    only becomes an archive page when it appears in TWO OR MORE categories --
+//    a single-category tag would just duplicate that category page
+//    (thin/duplicate content), whereas a cross-category tag is a genuinely new
+//    hub that aggregates related blocks across categories (e.g. "showcase"
+//    gathers use-case + product + bento).
+//
+// 2. A `tags` array on a block's own meta. Some sets share a mechanic rather
+//    than a category -- the questionnaire blocks run from Education to Travel --
+//    so no keyword could ever gather them. Those tags list exactly the blocks
+//    that declare them, and they earn a page on their own because the curation
+//    is explicit rather than inferred.
 import { categoryInfoMap } from "@/lib/category-info";
 import { type BlockMeta, blocks } from "@/lib/blocks";
 
@@ -13,6 +19,8 @@ export interface TagInfo {
   slug: string;
   label: string; // human label, from the source keyword
   categories: string[]; // category slugs this tag spans
+  /** Set when blocks declare the tag themselves; those blocks are the archive. */
+  blocks?: string[];
 }
 
 export function tagSlug(keyword: string): string {
@@ -23,29 +31,68 @@ export function tagSlug(keyword: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+/** A block's `category` as it appears in a category URL. */
+function categorySlug(category: string): string {
+  return category.toLowerCase().replace(/\s+/g, "-");
+}
+
 let cached: Map<string, TagInfo> | null = null;
 
 function buildRegistry(): Map<string, TagInfo> {
-  const acc = new Map<string, { label: string; cats: Set<string> }>();
+  const result = new Map<string, TagInfo>();
+
+  // 1. Category keywords, cross-category only.
+  const fromKeywords = new Map<string, { label: string; cats: Set<string> }>();
   for (const [catSlug, info] of Object.entries(categoryInfoMap)) {
     if (catSlug === "all") continue; // "all" is the catch-all, not a real category
     for (const keyword of info.keywords) {
       const slug = tagSlug(keyword);
       if (!slug) continue;
-      const existing = acc.get(slug);
+      const existing = fromKeywords.get(slug);
       if (existing) {
         existing.cats.add(catSlug);
       } else {
-        acc.set(slug, { label: keyword, cats: new Set([catSlug]) });
+        fromKeywords.set(slug, { label: keyword, cats: new Set([catSlug]) });
       }
     }
   }
 
-  const result = new Map<string, TagInfo>();
-  for (const [slug, { label, cats }] of acc) {
-    if (cats.size < 2) continue; // only cross-category tags earn an archive page
+  for (const [slug, { label, cats }] of fromKeywords) {
+    if (cats.size < 2) continue; // only cross-category keywords earn an archive page
     result.set(slug, { slug, label, categories: Array.from(cats).sort() });
   }
+
+  // 2. Tags declared on the blocks themselves. These win where the slugs
+  //    collide: an explicit list of blocks is more precise than a category
+  //    sweep, so the archive lists exactly what was curated.
+  const fromBlocks = new Map<string, { label: string; cats: Set<string>; names: string[] }>();
+  for (const block of blocks) {
+    for (const keyword of block.tags ?? []) {
+      const slug = tagSlug(keyword);
+      if (!slug) continue;
+      const existing = fromBlocks.get(slug);
+      if (existing) {
+        existing.cats.add(categorySlug(block.category));
+        existing.names.push(block.name);
+      } else {
+        fromBlocks.set(slug, {
+          label: keyword,
+          cats: new Set([categorySlug(block.category)]),
+          names: [block.name],
+        });
+      }
+    }
+  }
+
+  for (const [slug, { label, cats, names }] of fromBlocks) {
+    result.set(slug, {
+      slug,
+      label,
+      categories: Array.from(cats).sort(),
+      blocks: names,
+    });
+  }
+
   return result;
 }
 
@@ -62,15 +109,30 @@ export function getTag(slug: string): TagInfo | undefined {
   return registry().get(slug);
 }
 
-/** Tags that apply to a given category slug (for chips on detail/category pages). */
+/**
+ * Tags that apply to a given category slug (for chips on detail/category
+ * pages). Block-level tags are left out: only a handful of a category's blocks
+ * carry one, so a chip on the category page would promise the whole category.
+ */
 export function getTagsForCategory(categorySlug: string): TagInfo[] {
-  return getAllTags().filter((t) => t.categories.includes(categorySlug));
+  return getAllTags().filter((t) => !t.blocks && t.categories.includes(categorySlug));
 }
 
-/** Every block whose category is one of the tag's categories. */
+/** The hubs a single block belongs to, for chips on its detail page. */
+export function getTagsForBlock(name: string): TagInfo[] {
+  return getAllTags().filter((t) => t.blocks?.includes(name));
+}
+
+/** The blocks a tag archives. */
 export function getBlocksForTag(slug: string): BlockMeta[] {
   const tag = getTag(slug);
   if (!tag) return [];
+
+  if (tag.blocks) {
+    const names = new Set(tag.blocks);
+    return blocks.filter((b) => names.has(b.name));
+  }
+
   const cats = new Set(tag.categories);
-  return blocks.filter((b) => cats.has(b.category.toLowerCase().replace(/\s+/g, "-")));
+  return blocks.filter((b) => cats.has(categorySlug(b.category)));
 }
