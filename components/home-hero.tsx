@@ -8,11 +8,20 @@ import { LoginModal } from "@/components/login-modal";
 import { useAuth } from "@/lib/auth-context";
 import { DOCS_MCP_HREF, PRICING_HREF, hostedLinkProps } from "@/lib/site-links";
 
+interface HomeHeroRelease {
+  /** Title of the newest changelog entry. */
+  title: string;
+  /** Already formatted on the server: a date formatted here would hydrate twice. */
+  date: string;
+}
+
 interface HomeHeroProps {
   /** How many blocks, pieces and components the library holds right now. */
   blocks: number;
   pieces: number;
   components: number;
+  /** The newest release, shown as a badge above the title. */
+  release?: HomeHeroRelease;
 }
 
 /**
@@ -22,7 +31,7 @@ interface HomeHeroProps {
  * the real inventory at build time, not a number someone has to remember to update:
  * a landing page that overstates what is behind it is found out on the next click.
  */
-export function HomeHero({ blocks, pieces, components }: HomeHeroProps) {
+export function HomeHero({ blocks, pieces, components, release }: HomeHeroProps) {
   const router = useRouter();
   const { session, refreshSession } = useAuth();
   const [loginOpen, setLoginOpen] = React.useState(false);
@@ -53,7 +62,26 @@ export function HomeHero({ blocks, pieces, components }: HomeHeroProps) {
         and two first-level headings would leave a reader skimming by heading unable
         to tell which one the page is actually about.
       */}
-      <h2 className="animate-in fade-in-0 slide-in-from-bottom-3 fill-mode-both max-w-3xl text-balance text-4xl font-semibold tracking-tight duration-700 md:text-6xl motion-reduce:animate-none">
+      {/*
+        What shipped most recently, straight from the changelog rather than a
+        line someone has to remember to change. It reads as one sentence, the
+        release then the day it landed, and the whole pill is the link.
+      */}
+      {release && (
+        <Link
+          href="/changelog"
+          {...hostedLinkProps}
+          className="animate-in fade-in-0 slide-in-from-bottom-3 fill-mode-both group mb-6 inline-flex max-w-full items-center gap-2.5 rounded-full border bg-background py-1.5 pr-4 pl-1.5 text-sm transition-colors duration-700 hover:bg-muted/50 motion-reduce:animate-none"
+        >
+          <span className="rounded-full bg-foreground px-2.5 py-0.5 font-medium text-background">
+            New
+          </span>
+          <span className="truncate font-medium text-foreground">{release.title}</span>
+          <span className="hidden shrink-0 text-muted-foreground sm:inline">{release.date}</span>
+        </Link>
+      )}
+
+      <h2 className="animate-in fade-in-0 slide-in-from-bottom-3 fill-mode-both max-w-3xl text-balance text-4xl font-semibold tracking-tight delay-75 duration-700 md:text-6xl motion-reduce:animate-none">
         Your agent&rsquo;s favorite component library.
       </h2>
 

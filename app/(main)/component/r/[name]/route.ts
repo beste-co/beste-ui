@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { getRegistryComponent } from "@/lib/registry-components";
-import { buildComponentItemJson } from "@/lib/registry-serving";
+import { buildComponentItemJson, normalizeItemName } from "@/lib/registry-serving";
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ name: string }> }
 ) {
-  const { name } = await params;
+  const { name: rawName } = await params;
+  const name = normalizeItemName(rawName);
   const component = getRegistryComponent(name);
 
   if (!component) {

@@ -1,20 +1,21 @@
-import { BlocksGrid } from "@/components/blocks-grid";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { Button12 } from "@/components/beste/component/button12";
+import { BlocksGrid } from "@/components/blocks-grid";
 import { ComponentDemo } from "@/components/component-demo";
-import { Cta69 } from "@/registry/cta69/cta69";
-import { Faq77 } from "@/registry/faq77/faq77";
-import { Feature230 } from "@/registry/feature230/feature230";
 import { HomeHero } from "@/components/home-hero";
 import { HomeHeroSearch } from "@/components/home-hero-search";
 import { HomeWhy } from "@/components/home-why";
-import Link from "next/link";
-import type { Metadata } from "next";
 import { RegistryComponentDemo } from "@/components/registry-component-demo";
+import { changelog } from "@/data/changelog";
 import { STUDIO_SET_BLOCKS } from "@/lib/block-sets";
-import { components as allComponents } from "@/lib/components";
 import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { recentBlockDates } from "@/lib/changelog-dates";
+import { components as allComponents } from "@/lib/components";
 import { registryComponents } from "@/lib/registry-components";
+import { Cta69 } from "@/registry/cta69/cta69";
+import { Faq77 } from "@/registry/faq77/faq77";
+import { Feature230 } from "@/registry/feature230/feature230";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
 const SITE_DESCRIPTION =
@@ -173,6 +174,23 @@ export default async function HomePage() {
   const sixBlocks = pickSix(blockPool, seed, null);
   const sixRegistryComponents = seededShuffle(registryComponents, seed).slice(0, 6);
 
+  /*
+   * The newest release, formatted here rather than in the hero: the hero is a
+   * client component, and a date formatted there would render one way on the
+   * server and another in the browser.
+   */
+  const newest = changelog[0];
+  const latestRelease = newest
+    ? {
+        title: newest.title,
+        date: new Date(`${newest.date}T00:00:00`).toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }),
+      }
+    : undefined;
+
   return (
     <div>
       {/*
@@ -193,7 +211,7 @@ export default async function HomePage() {
         heading="Already built."
         subheading="Every screen a website needs. Yours to take."
         backgroundImage={{
-          src: "https://images.unsplash.com/photo-1757582781169-51cb388e4061?q=80&w=2932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          src: "https://images.unsplash.com/photo-1755126623866-0d612c7dc801?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           alt: "",
         }}
       />
@@ -203,6 +221,7 @@ export default async function HomePage() {
           blocks={blocks.length}
           pieces={allComponents.length}
           components={registryComponents.length}
+          release={latestRelease}
         />
 
         {/* Blocks preview */}

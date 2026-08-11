@@ -8,15 +8,27 @@ import { type RegistryVariant, blockJsonPath } from "@/lib/registry-paths";
 export type { RegistryVariant };
 
 /**
+ * shadcn URLs are normally written with a `.json` suffix
+ * (`shadcn add https://ui.beste.co/r/hero170.json`), and the route segment
+ * carries it through. Both spellings address the same item, so the suffix is
+ * stripped before anything is looked up. Without this a Pro block requested as
+ * `.json` fell through to a 404 instead of the license error.
+ */
+export function normalizeItemName(name: string): string {
+  return name.endsWith(".json") ? name.slice(0, -".json".length) : name;
+}
+
+/**
  * Serves a prebuilt block registry-item JSON. Pro blocks require a valid
  * license via URL params (CLI) or session cookie (browser). Behavior is
  * identical for both variants; only the source directories differ.
  */
 export async function serveBlockJson(
   request: Request,
-  name: string,
+  rawName: string,
   variant: RegistryVariant
 ): Promise<NextResponse> {
+  const name = normalizeItemName(rawName);
   const block = getBlock(name);
 
   if (!block) {
