@@ -124,7 +124,9 @@ export function InspectorAction({
           data-slot="inspector-action-label"
           className={cn(
             "flex min-w-0 max-w-full items-center gap-1.5 text-sm font-medium select-none",
-            destructive ? "text-destructive" : "text-foreground",
+            // Dimmed like every other label in the family: in a settings row the
+            // value is what the eye looks for, the label is standing chrome.
+            destructive ? "text-destructive" : "text-foreground/70",
           )}
         >
           {Icon ? <Icon className="size-4 shrink-0" /> : null}
@@ -143,7 +145,10 @@ export function InspectorAction({
       {hint !== undefined && hint !== null ? (
         <span
           data-slot="inspector-action-hint"
-          className="min-w-0 shrink truncate text-sm text-foreground/70 select-none"
+          // Same weight as a value elsewhere in the family: inspector-select's
+          // trigger carries `font-medium`, so its value reads medium. The root
+          // here sets no weight, so the hint has to say it.
+          className="min-w-0 shrink truncate text-sm font-medium text-foreground select-none"
         >
           {hint}
         </span>

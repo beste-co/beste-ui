@@ -1,10 +1,10 @@
 "use client";
 
 import type { Theme, ThemeName } from "@/lib/themes";
-import { themes } from "@/styles/themes";
 import { createContext, useContext } from "react";
 
 import { THEME_NAME_COOKIE } from "@/lib/preview-theme-cookie";
+import { themes } from "@/styles/themes";
 
 // Both keys carry a version suffix. Changing the default theme does nothing for
 // anyone who has already picked one — their stored value wins forever — so a new
@@ -33,8 +33,8 @@ export function clearLegacyPreviewTheme(): void {
   }
 }
 
-export const DEFAULT_LIGHT_PREVIEW_THEME: ThemeName = "minimal-neutral";
-export const DEFAULT_DARK_PREVIEW_THEME: ThemeName = "minimal-neutral-dark";
+export const DEFAULT_LIGHT_PREVIEW_THEME: ThemeName = "default";
+export const DEFAULT_DARK_PREVIEW_THEME: ThemeName = "claude-plus-dark";
 
 export function getPreviewThemeForSiteMode(mode: string | undefined): ThemeName {
   return mode === "dark" ? DEFAULT_DARK_PREVIEW_THEME : DEFAULT_LIGHT_PREVIEW_THEME;

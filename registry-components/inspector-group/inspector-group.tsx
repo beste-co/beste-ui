@@ -1,7 +1,8 @@
 "use client";
 
-import { ChevronDownIcon, type LucideIcon, RotateCcwIcon } from "lucide-react";
+import { ChevronDownIcon, InfoIcon, type LucideIcon, RotateCcwIcon } from "lucide-react";
 import * as React from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 /** Surface treatment of the group. Mirrors inspector-slider. */
@@ -22,6 +23,10 @@ const toneStyles: Record<Tone, string> = {
  * same height by design, so their labels started two pixels apart on what the eye
  * reads as one edge.
  */
+/** The look of the info mark, shared by its two spellings below. */
+const INFO_MARK =
+  "shrink-0 cursor-help text-foreground/40 transition-colors hover:text-foreground/70";
+
 const sizeStyles: Record<Size, string> = {
   sm: "[--inspector-height:--spacing(8)] [--inspector-pad:--spacing(2.5)]",
   default: "[--inspector-height:--spacing(9)] [--inspector-pad:--spacing(3)]",
@@ -33,6 +38,15 @@ interface InspectorGroupProps {
   label: string;
   /** Optional leading icon shown before the label. */
   icon?: LucideIcon;
+  /**
+   * A note the header does not have room for, behind a mark next to the label.
+   *
+   * For what the group is *for*, or what turning something in it on will cost —
+   * the kind of thing worth having but not worth a line of prose above every
+   * group. Anything a reader needs before they can answer a row belongs in that
+   * row's label instead.
+   */
+  info?: string;
 
   /** The rows. */
   children?: React.ReactNode;
@@ -106,6 +120,7 @@ export const inspectorGroupDemo: InspectorGroupProps = {
 export function InspectorGroup({
   label,
   icon: Icon,
+  info,
   children,
   summary,
   alwaysShowSummary = false,
@@ -143,6 +158,47 @@ export function InspectorGroup({
         <span className="truncate">{label}</span>
       </span>
 
+      {/*
+        Right beside the name it belongs to, which means inside the header — and
+        the header is a button when the group folds, so the mark can only be a
+        button when it is not. Pressing it then folds the group, which is what
+        pressing anywhere in that header does; hovering still reads the note.
+
+        Two whole tooltips rather than one with the element chosen inside it: a
+        trigger that borrows its child has to be handed a single element written
+        out, not an expression that resolves to one.
+      */}
+      {info && collapsible ? (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span
+              title={info}
+              data-slot="inspector-group-info"
+              className={INFO_MARK}
+            >
+              <InfoIcon className="size-3.5" />
+            </span>
+          </TooltipTrigger>
+          <TooltipContent className="max-w-64">{info}</TooltipContent>
+        </Tooltip>
+      ) : null}
+
+      {info && !collapsible ? (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              type="button"
+              aria-label={`About ${label}`}
+              data-slot="inspector-group-info"
+              className={cn(INFO_MARK, "focus-visible:text-foreground/70 focus-visible:outline-none")}
+            >
+              <InfoIcon className="size-3.5" />
+            </button>
+          </TooltipTrigger>
+          <TooltipContent className="max-w-64">{info}</TooltipContent>
+        </Tooltip>
+      ) : null}
+
       {showSummary ? (
         <span
           data-slot="inspector-group-summary"
@@ -179,7 +235,6 @@ export function InspectorGroup({
         // a 38px group. The vertical space belongs to the body, which is the part
         // that is sometimes there.
         "rounded-(--inspector-radius) px-(--inspector-pad)",
-        !open && "h-(--inspector-height)",
         "[--inspector-radius:var(--radius-xl)]",
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         sizeStyles[size],
@@ -193,13 +248,17 @@ export function InspectorGroup({
         clickable. A group that cannot collapse gets a plain heading instead, so
         nothing offers a gesture it will not answer.
 
-        `h-full` while closed is what centres the row in the pill. The root is a
-        column flex box, so this strip was sized by its own text and packed against
-        the top of a 36px group, leaving the label high with all the slack beneath
-        it. The trigger's own `h-full` could not answer for that either: it was a
-        percentage of a parent that had no height to take a percentage of.
+        The header carries the height, in both states and to the pixel, because
+        anything else moves the title when the group opens. The root used to be
+        pinned to the row height while closed and left to its contents once open,
+        and those two are not the same number: the pin is a border box, so the
+        strip inside it was two pixels shorter than the row it became on opening.
+
+        Hence the `-2px`: the group's tone always draws a 1px border, so a header
+        of `height - 2` inside it is a closed group that measures exactly what a
+        row measures, and a title that does not move.
       */}
-      <div className={cn("flex items-center gap-2", !open && "h-full")}>
+      <div className="flex h-[calc(var(--inspector-height)-2px)] items-center gap-2">
         {collapsible ? (
           <button
             type="button"
@@ -209,12 +268,8 @@ export function InspectorGroup({
             aria-controls={bodyId}
             data-slot="inspector-group-trigger"
             className={cn(
-              "flex min-w-0 flex-1 cursor-pointer items-center gap-2",
+              "flex h-full min-w-0 flex-1 cursor-pointer items-center gap-2",
               "rounded-md text-left outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
-              // Fills the strip above while closed — which is a definite height now —
-              // and takes the row height itself once the group is open and the root
-              // sizes to its contents.
-              open ? "h-(--inspector-height)" : "h-full",
             )}
           >
             {header}

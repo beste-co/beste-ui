@@ -1,4 +1,4 @@
-import type { FontDefinition, FontName, FontSet } from "./types";
+import type { FontDefinition, FontId, FontName, FontSet } from "./types";
 
 export const fontDefinitions: Record<FontName, FontDefinition> = {
   // Sans-serif fonts (29)
@@ -1075,11 +1075,23 @@ export const getAllFonts = (): FontDefinition[] => {
   return Object.values(fontDefinitions);
 };
 
-export const getFontByName = (name: FontName): FontDefinition => {
-  const font = fontDefinitions[name];
+/**
+ * Looks a name up in the catalogue, and says so when it is not there.
+ *
+ * A site can add its own Google families, and those are legitimate names this
+ * catalogue has never heard of. Anything holding the whole definition already
+ * needs to be told "not mine" rather than handed Inter, or a font the user
+ * added would quietly render as Inter forever.
+ */
+export const findFontByName = (name: FontId): FontDefinition | undefined =>
+  fontDefinitions[name as FontName];
+
+/** The catalogue font, or Inter for a name that is not in it. */
+export const getFontByName = (name: FontId): FontDefinition => {
+  const font = findFontByName(name);
   if (!font) {
     console.warn(`Font not found: ${name}, falling back to default`);
-    return fontDefinitions.inter; // Fallback to default sans font
+    return fontDefinitions.inter;
   }
   return font;
 };

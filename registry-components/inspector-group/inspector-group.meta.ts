@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "The container the rows go in: a named, collapsible section that says what it is currently set to while it is closed, with an optional reset in its header. A drawer of twenty settings becomes a drawer of five groups.",
   category: "Inspector",
+  registryDependencies: ["tooltip"],
   usage: `import { InspectorGroup } from "@/components/beste/component/inspector-group";
 
 // A section of rows

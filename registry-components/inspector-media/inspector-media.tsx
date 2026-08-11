@@ -119,21 +119,34 @@ export function InspectorMedia({
   };
 
   const FallbackIcon = kind === "video" ? FilmIcon : ImageIcon;
-  const showPreview = Boolean(value) && !broken && kind === "image";
+  const showPreview = Boolean(value) && !broken;
 
-  // A plain img, never a framework image component: the registry has to stay
-  // framework-agnostic, and a 24px thumbnail leaves an optimiser nothing to do.
-  const thumbnail = showPreview ? (
+  // A plain img or video, never a framework media component: the registry has to
+  // stay framework-agnostic, and a 24px thumbnail leaves an optimiser nothing to
+  // do. A video shows its own first frame rather than a film icon — the icon
+  // says "a video", the frame says which one.
+  const thumbnail = !showPreview ? (
+    <FallbackIcon
+      className={cn("size-4", broken ? "text-destructive" : "text-muted-foreground/60")}
+    />
+  ) : kind === "video" ? (
+    <video
+      src={value}
+      muted
+      playsInline
+      preload="metadata"
+      onError={() => setBroken(true)}
+      className="size-full rounded-[5px] object-cover"
+    >
+      <track kind="captions" />
+    </video>
+  ) : (
     <img
       src={value}
       alt=""
       loading="lazy"
       onError={() => setBroken(true)}
       className="size-full rounded-[5px] object-cover"
-    />
-  ) : (
-    <FallbackIcon
-      className={cn("size-4", broken ? "text-destructive" : "text-muted-foreground/60")}
     />
   );
 

@@ -35,12 +35,17 @@ export interface ThemeColors {
   sidebarRing: string;
 }
 
-import type { FontName } from "@/lib/fonts/types";
+import type { FontDefinition, FontName } from "@/lib/fonts/types";
 
+/**
+ * The built-in themes name catalogue fonts. A custom theme may also point at a
+ * family the site added for itself, and that one has to carry its definition:
+ * a name only resolves against the catalogue, which has never heard of it.
+ */
 export interface ThemeFonts {
-  sans: FontName;
-  serif: FontName;
-  mono: FontName;
+  sans: FontName | FontDefinition;
+  serif: FontName | FontDefinition;
+  mono: FontName | FontDefinition;
 }
 
 export interface ThemeShadows {

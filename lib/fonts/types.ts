@@ -103,8 +103,21 @@ export type FontName =
   | "ibm-plex-mono"
   | "anonymous-pro";
 
+/**
+ * What a font may be called.
+ *
+ * `FontName` is the catalogue: the families that ship with the product, and the
+ * only ones a definition can be looked up by name for. A site can add its own
+ * Google families, and those carry their whole definition rather than a name to
+ * resolve — so anywhere a stored font is read, the name is a plain string.
+ *
+ * `string & {}` rather than plain `string`: the union survives for editor
+ * completion, which is the reason to keep it.
+ */
+export type FontId = FontName | (string & {});
+
 export interface FontDefinition {
-  name: FontName;
+  name: FontId;
   displayName: string;
   category: "sans-serif" | "serif" | "monospace";
   weights: number[];

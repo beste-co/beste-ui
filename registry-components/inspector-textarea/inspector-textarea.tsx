@@ -71,6 +71,34 @@ interface InspectorTextareaProps {
    * which is the only reason a reader can tell how much room is left.
    */
   maxLength?: number;
+  /**
+   * The length the text reads best at. Shown as a count beside the label, which
+   * turns to a warning once it is passed.
+   *
+   * Advice, not a limit: unlike `maxLength` nothing stops at the number, because
+   * the cases this is for — a meta title, a share description — are ones where
+   * going long costs you something later rather than being impossible now.
+   */
+  recommendedLength?: number;
+  /**
+   * Give the field a surface of its own inside the block.
+   *
+   * Bare, the text sits directly on the block and a long value reads as the
+   * panel's own prose rather than as something you typed. Inset, it is plainly a
+   * field: somewhere to write, with an edge and room inside it.
+   * @defaultValue false
+   */
+  inset?: boolean;
+  /**
+   * Refuse line breaks. Enter does nothing and a pasted newline folds into a
+   * space.
+   *
+   * The field still grows as the text wraps, so a long value gets taller — it
+   * just never gets a second paragraph. For the one-line things that want this
+   * block rather than a row: a page title, a subject line, anything whose value
+   * is one sentence but too long to sit at the right of a row.
+   */
+  singleLine?: boolean;
 
   /** Block interaction and dim the block. */
   disabled?: boolean;
@@ -118,6 +146,9 @@ export function InspectorTextarea({
   defaultOpen = true,
   onOpenChange,
   maxLength,
+  recommendedLength,
+  inset = false,
+  singleLine = false,
   disabled = false,
   readOnly = false,
   tone = "muted",
@@ -146,7 +177,10 @@ export function InspectorTextarea({
   /** Last value handed to `onValueCommit`, so a commit only reports real edits. */
   const committedRef = React.useRef(value);
 
-  const setValue = (next: string) => {
+  const setValue = (raw: string) => {
+    // Typing a break is already blocked below; this is the paste that carries
+    // one in, and it is folded rather than refused so nothing is lost.
+    const next = singleLine ? raw.replace(/[\r\n]+/g, " ") : raw;
     if (valueProp === undefined) setInternalValue(next);
     onValueChange?.(next);
   };
@@ -157,15 +191,24 @@ export function InspectorTextarea({
     onValueCommit?.(value);
   };
 
-  const count = maxLength ? (
+  /* Past the recommendation, not past the limit: `maxLength` cannot be exceeded,
+     so only a recommendation has an "over" to warn about. */
+  const over = recommendedLength !== undefined && value.length > recommendedLength;
+  const target = maxLength ?? recommendedLength;
+
+  const count = target ? (
     /* A limit nobody can see is a trap, so the count comes with it. It is also the
        one thing worth reading while the block is folded. */
     <span
       data-slot="inspector-textarea-count"
       aria-hidden="true"
-      className="ml-auto shrink-0 font-mono text-sm tabular-nums text-foreground/70 select-none"
+      data-over={over || undefined}
+      className={cn(
+        "ml-auto shrink-0 font-mono text-xs tabular-nums select-none",
+        over ? "text-destructive" : "text-foreground/70",
+      )}
     >
-      {`${value.length}/${maxLength}`}
+      {`${value.length}/${target}`}
     </span>
   ) : null;
 
@@ -268,15 +311,29 @@ export function InspectorTextarea({
         id={fieldId}
         aria-label={ariaLabel}
         onChange={(event) => setValue(event.target.value)}
+        onKeyDown={
+          singleLine
+            ? (event) => {
+                if (event.key === "Enter") event.preventDefault();
+              }
+            : undefined
+        }
         onBlur={commit}
         data-slot="inspector-textarea-field"
         className={cn(
           "w-full resize-none bg-transparent text-sm font-medium text-foreground",
           "outline-none placeholder:font-normal placeholder:text-muted-foreground",
           "read-only:cursor-default",
+          // A surface of its own, so the block reads as somewhere to write. The
+          // ring stays on the block: the field is inside it, and two rings
+          // nested one inside the other is a box in a box.
+          inset && "rounded-lg bg-background px-3 py-2",
           // Grows with its content where the browser supports it, and falls back
           // to exactly `rows` lines where it does not.
-          fixedHeight ? "field-sizing-fixed" : "field-sizing-content",
+          // `singleLine` overrides a fixed height: refusing breaks is about what
+          // can be typed, not about pinning the box while the text wraps out of
+          // sight.
+          fixedHeight && !singleLine ? "field-sizing-fixed" : "field-sizing-content",
         )}
       />
     </div>

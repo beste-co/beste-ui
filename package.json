@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Production-ready shadcn/ui blocks, pieces and components.",
   "author": "Beste",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "bun run codegen && next dev --turbopack",
