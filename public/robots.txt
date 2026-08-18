@@ -2,4 +2,42 @@ User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-train=no, ai-input=yes
 
+# Answer engines are welcome to crawl and to cite. Content-Signal above says
+# the same thing, but it is new enough that most of these agents do not read
+# it yet, so the permission is repeated in the form they do read.
+#
+# Every page is also available as Markdown at the same address with a .md
+# suffix (or by sending Accept: text/markdown). Those renditions carry
+# X-Robots-Tag: noindex so they stay out of search results as duplicates,
+# which is deliberate: they are meant to be fetched, not indexed.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://ui.beste.co/sitemap.xml

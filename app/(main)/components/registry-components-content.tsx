@@ -13,6 +13,7 @@ import {
 } from "@/components/browse-filters";
 import { NewBadge, useIsNew } from "@/components/new-badge";
 import { type BrowseSort, DEFAULT_SORT, SORT_OPTIONS } from "@/lib/browse-sort";
+import { componentInstallCommand } from "@/lib/install-command";
 import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { type RegistryComponentMeta, registryComponents } from "@/lib/registry-components";
 import type { CategoryCount } from "./_lib/paginate";
@@ -178,7 +179,10 @@ export function RegistryComponentsContent({
           No components in this category.
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <>
+        <ComponentTable items={gridItems} />
+
+        <div data-md-omit="" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {gridItems.map((c) => {
             const Component = c.component;
             return (
@@ -237,11 +241,52 @@ export function RegistryComponentsContent({
             );
           })}
         </div>
+        </>
       )}
 
       {showPagination && (
         <BrowsePagination currentPage={currentPage} totalPages={totalPages} basePath={basePath} />
       )}
     </div>
+  );
+}
+
+/**
+ * The listing as a table, for the Markdown rendition.
+ *
+ * Every card is a live demo behind a full-card overlay link, so the grid
+ * converts to a run of bare links and loose lines. The same items fit in one
+ * row each, and the row carries the install command the page never prints.
+ * `hidden` keeps it out of the browser and out of the accessibility tree,
+ * where the cards say all of it already; the Markdown route strips `hidden`
+ * before converting, and the grid carries `data-md-omit` so only one of the
+ * two ever appears.
+ */
+function ComponentTable({ items }: { items: readonly RegistryComponentMeta[] }) {
+  return (
+    <table hidden data-md-only="">
+      <thead>
+        <tr>
+          <th scope="col">Component</th>
+          <th scope="col">Title</th>
+          <th scope="col">Category</th>
+          <th scope="col">Install</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((item) => (
+          <tr key={item.name}>
+            <th scope="row">
+              <a href={`/component/${item.name}`}>{item.name}</a>
+            </th>
+            <td>{item.title}</td>
+            <td>{item.category}</td>
+            <td>
+              <code>{componentInstallCommand(item.name)}</code>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

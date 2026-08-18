@@ -11,6 +11,7 @@ import { ProBadge } from "@/components/pro-badge";
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty";
 import type { BlockMeta } from "@/lib/blocks";
 import { getBlockObfuscated } from "@/lib/blocks-obfuscated";
+import { blockInstallCommand } from "@/lib/install-command";
 import { useFavorites } from "@/lib/favorites-context";
 
 /**
@@ -265,10 +266,61 @@ export function BlocksGrid({
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {blocks.map((block, index) => (
-        <LazyBlock key={block.name} block={block} renderCard={renderBlockCard} index={index} />
-      ))}
-    </div>
+    <>
+      <BlockTable blocks={blocks} />
+
+      <div data-md-omit="" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {blocks.map((block, index) => (
+          <LazyBlock key={block.name} block={block} renderCard={renderBlockCard} index={index} />
+        ))}
+      </div>
+    </>
+  );
+}
+
+/**
+ * The same blocks as a table, for the Markdown rendition of any page that
+ * shows this grid: the category archives, the collection and tag archives, and
+ * the hub.
+ *
+ * A card is a live preview wrapped around a title link, and it converts to a
+ * run of loose lines — an empty link, the word PRO, the name, the heading,
+ * the description — repeated once per block. The same twenty-four blocks fit
+ * in twenty-four table rows that also carry the install command, which is the
+ * one thing a reader of the Markdown actually wants and the page never says.
+ *
+ * `hidden` keeps it out of the browser and out of the accessibility tree,
+ * where the cards say all of this already; the Markdown route strips `hidden`
+ * before converting. The grid above carries `data-md-omit` so only one of the
+ * two ever appears.
+ */
+function BlockTable({ blocks }: { blocks: BlockMeta[] }) {
+  return (
+    <table hidden data-md-only="">
+      <thead>
+        <tr>
+          <th scope="col">Block</th>
+          <th scope="col">Title</th>
+          <th scope="col">Category</th>
+          <th scope="col">Access</th>
+          <th scope="col">Install</th>
+        </tr>
+      </thead>
+      <tbody>
+        {blocks.map((block) => (
+          <tr key={block.name}>
+            <th scope="row">
+              <a href={`/block/${block.name}`}>{block.name}</a>
+            </th>
+            <td>{block.title}</td>
+            <td>{block.category}</td>
+            <td>{block.isPro ? "Pro" : "Free"}</td>
+            <td>
+              <code>{blockInstallCommand(block.name)}</code>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

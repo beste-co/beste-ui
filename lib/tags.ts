@@ -12,8 +12,10 @@
 //    so no keyword could ever gather them. Those tags list exactly the blocks
 //    that declare them, and they earn a page on their own because the curation
 //    is explicit rather than inferred.
-import { categoryInfoMap } from "@/lib/category-info";
 import { type BlockMeta, blocks } from "@/lib/blocks";
+import { keywordTags, tagSlug } from "@/lib/tag-slugs";
+
+export { tagSlug };
 
 export interface TagInfo {
   slug: string;
@@ -21,14 +23,6 @@ export interface TagInfo {
   categories: string[]; // category slugs this tag spans
   /** Set when blocks declare the tag themselves; those blocks are the archive. */
   blocks?: string[];
-}
-
-export function tagSlug(keyword: string): string {
-  return keyword
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
 }
 
 /** A block's `category` as it appears in a category URL. */
@@ -41,25 +35,10 @@ let cached: Map<string, TagInfo> | null = null;
 function buildRegistry(): Map<string, TagInfo> {
   const result = new Map<string, TagInfo>();
 
-  // 1. Category keywords, cross-category only.
-  const fromKeywords = new Map<string, { label: string; cats: Set<string> }>();
-  for (const [catSlug, info] of Object.entries(categoryInfoMap)) {
-    if (catSlug === "all") continue; // "all" is the catch-all, not a real category
-    for (const keyword of info.keywords) {
-      const slug = tagSlug(keyword);
-      if (!slug) continue;
-      const existing = fromKeywords.get(slug);
-      if (existing) {
-        existing.cats.add(catSlug);
-      } else {
-        fromKeywords.set(slug, { label: keyword, cats: new Set([catSlug]) });
-      }
-    }
-  }
-
-  for (const [slug, { label, cats }] of fromKeywords) {
-    if (cats.size < 2) continue; // only cross-category keywords earn an archive page
-    result.set(slug, { slug, label, categories: Array.from(cats).sort() });
+  // 1. Category keywords, cross-category only. Shared with the sitemap
+  //    generator, which cannot import this module.
+  for (const tag of keywordTags()) {
+    result.set(tag.slug, tag);
   }
 
   // 2. Tags declared on the blocks themselves. These win where the slugs

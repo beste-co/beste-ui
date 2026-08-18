@@ -12,6 +12,7 @@ import {
   Settings01Icon,
   SparklesIcon,
   TerminalIcon,
+  Wrench01Icon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
@@ -40,6 +41,7 @@ import {
   PAGES_HREF,
   PRICING_HREF,
   REFERRALS_HREF,
+  TOOLS_HREF,
   hostedLinkProps,
 } from "@/lib/site-links";
 import { cn } from "@/lib/utils";
@@ -67,7 +69,8 @@ const MORE: {
 }[] = [
   { href: CHANGELOG_HREF, label: "What's new?", icon: <HugeiconsIcon icon={SparklesIcon} size={16} strokeWidth={2} />, hosted: true },
   { href: DOCS_HREF, label: "Docs", icon: <HugeiconsIcon icon={Book02Icon} size={16} strokeWidth={2} />, hosted: true },
-  { href: DOCS_MCP_HREF, label: "AI & MCP", icon: <HugeiconsIcon icon={TerminalIcon} size={16} strokeWidth={2} />, badge: "New", hosted: true },
+  { href: DOCS_MCP_HREF, label: "AI & MCP", icon: <HugeiconsIcon icon={TerminalIcon} size={16} strokeWidth={2} />, hosted: true },
+  { href: TOOLS_HREF, label: "Free tools", icon: <HugeiconsIcon icon={Wrench01Icon} size={16} strokeWidth={2} />, hosted: true },
   { href: REFERRALS_HREF, label: "Referrals", icon: <HugeiconsIcon icon={GiftIcon} size={16} strokeWidth={2} />, hosted: true },
 ];
 
@@ -217,7 +220,9 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="w-full border-b bg-background">
+      {/* Chrome, not content: the Markdown rendition drops it and opens with
+          the site preamble instead. See lib/html-to-markdown.ts. */}
+      <header data-md-omit="" className="w-full border-b bg-background">
         <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-5 px-4 md:px-6">
           <Link
             href="/"
@@ -244,7 +249,7 @@ export function SiteHeader() {
             {search}
           </div>
 
-          <div className="flex items-center gap-2 lg:gap-5">
+          <div className="flex items-center gap-2">
             <div className="hidden items-center gap-5 lg:flex">
               {NAV.map((item) => {
                 const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
@@ -279,7 +284,7 @@ export function SiteHeader() {
               <Link
                 href={PRICING_HREF}
                 {...hostedLinkProps}
-                className="hidden h-11 shrink-0 cursor-pointer items-center rounded-full bg-foreground px-5 text-base font-semibold text-background transition-opacity hover:opacity-90 sm:inline-flex"
+                className="ml-4 hidden h-10 shrink-0 cursor-pointer items-center rounded-full bg-foreground px-5 text-base font-semibold text-background transition-opacity hover:opacity-90 sm:inline-flex"
               >
                 GET PRO
               </Link>

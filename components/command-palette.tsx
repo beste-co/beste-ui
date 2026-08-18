@@ -1,12 +1,13 @@
 "use client";
 
-// Global ⌘K palette. Semantic + lexical search across blocks/pieces/components
+// Global ⌘K palette. Semantic + lexical search across blocks/pieces/components/pages
 // via /api/search, plus static navigation. cmdk's own filtering is disabled
 // (shouldFilter={false}) so semantic hits that lack the literal query still show.
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Book02Icon,
+  BrowserIcon,
   Clock01Icon,
   DashboardSquare01Icon,
   GridIcon,
@@ -33,7 +34,7 @@ import { cn } from "@/lib/utils";
 import { useCommandPalette } from "@/lib/command-palette-store";
 
 interface Hit {
-  type: "block" | "piece" | "component";
+  type: "block" | "piece" | "component" | "page";
   name: string;
   title: string;
   description: string;
@@ -55,12 +56,14 @@ const STATIC_NAV: { label: string; href: string; icon: React.ReactNode }[] = [
 
 const GROUP_LABEL: Record<Hit["type"], string> = {
   block: "Blocks",
+  page: "Pages",
   piece: "Pieces",
   component: "Components",
 };
 
 const TYPE_ICON: Record<Hit["type"], React.ReactNode> = {
   block: <HugeiconsIcon icon={GridIcon} size={20} strokeWidth={2} />,
+  page: <HugeiconsIcon icon={BrowserIcon} size={20} strokeWidth={2} />,
   piece: <HugeiconsIcon icon={PuzzleIcon} size={20} strokeWidth={2} />,
   component: <HugeiconsIcon icon={DashboardSquare01Icon} size={20} strokeWidth={2} />,
 };
@@ -151,7 +154,7 @@ export function CommandPalette() {
 
   const trimmed = query.trim();
   const seeAllHref = `/search?q=${encodeURIComponent(trimmed)}`;
-  const groups: Hit["type"][] = ["block", "piece", "component"];
+  const groups: Hit["type"][] = ["block", "page", "piece", "component"];
 
   return (
     <Dialog
@@ -167,7 +170,7 @@ export function CommandPalette() {
           <CommandInput
             value={query}
             onValueChange={setQuery}
-            placeholder="Search blocks, pieces, components…"
+            placeholder="Search blocks, pages, pieces, components…"
           />
           <CommandList>
             {!query && (

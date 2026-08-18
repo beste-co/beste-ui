@@ -315,7 +315,10 @@ const mapFontName = (fontName: string): FontName => {
   );
 
   if (matchedFont) {
-    return matchedFont.name;
+    // Catalogue entries type their name as FontId (which admits any string, for
+    // fonts a site adds itself), but everything in fontDefinitions is a
+    // catalogue name by construction.
+    return matchedFont.name as FontName;
   }
 
   // Fallback to default

@@ -6,8 +6,10 @@
 // same live-preview grids used elsewhere. Reached via ⌘K "See all results",
 // Enter, or /search?q=...
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search01Icon } from "@hugeicons/core-free-icons";
+import { ProBadge } from "@/components/pro-badge";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { BlockMeta } from "@/lib/blocks";
 import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
@@ -18,7 +20,7 @@ import { RelatedPreviewGrid, type RelatedPreviewItem } from "@/components/relate
 import { cn } from "@/lib/utils";
 
 interface Hit {
-  type: "block" | "piece" | "component";
+  type: "block" | "piece" | "component" | "page";
   name: string;
   title: string;
   description: string;
@@ -27,7 +29,7 @@ interface Hit {
   href: string;
 }
 
-type TypeFilter = "all" | "block" | "piece" | "component";
+type TypeFilter = "all" | "block" | "page" | "piece" | "component";
 
 const blockByName = new Map(blocks.map((b) => [b.name, b] as const));
 const pieceByName = new Map(components.map((c) => [c.name, c] as const));
@@ -36,6 +38,7 @@ const componentByName = new Map(registryComponents.map((c) => [c.name, c] as con
 const FACETS: { key: TypeFilter; label: string }[] = [
   { key: "all", label: "All" },
   { key: "block", label: "Blocks" },
+  { key: "page", label: "Pages" },
   { key: "piece", label: "Pieces" },
   { key: "component", label: "Components" },
 ];
@@ -102,7 +105,7 @@ export function SearchResults() {
   }, [input]);
 
   const counts = useMemo(() => {
-    const c = { all: hits.length, block: 0, piece: 0, component: 0 };
+    const c = { all: hits.length, block: 0, page: 0, piece: 0, component: 0 };
     for (const h of hits) c[h.type]++;
     return c;
   }, [hits]);
@@ -136,8 +139,18 @@ export function SearchResults() {
 
   const pieceItems = useMemo(() => previewItems("piece"), [hits]);
   const componentItems = useMemo(() => previewItems("component"), [hits]);
+  /*
+   * Pages are rendered from the search hit itself rather than from a meta and a
+   * preview card. The other three types need their meta because their grids
+   * mount a live demo; a page is a whole screen and has no card small enough to
+   * be one. It also keeps this file clear of `lib/pages` and the page card,
+   * which the open-source export leaves behind — importing either here would
+   * make the public tree fail on a dangling import.
+   */
+  const pageHits = useMemo(() => hits.filter((h) => h.type === "page"), [hits]);
 
   const showBlocks = (type === "all" || type === "block") && blockMetas.length > 0;
+  const showPages = (type === "all" || type === "page") && pageHits.length > 0;
   const showPieces = (type === "all" || type === "piece") && pieceItems.length > 0;
   const showComponents = (type === "all" || type === "component") && componentItems.length > 0;
   const nothing = activeQuery && !loading && counts.all === 0;
@@ -187,7 +200,7 @@ export function SearchResults() {
 
       {!activeQuery && !loading && (
         <p className="py-16 text-center text-lg text-muted-foreground">
-          Start typing to search across {blocks.length + components.length + registryComponents.length}+ blocks, pieces, and components.
+          Start typing to search across {blocks.length + components.length + registryComponents.length}+ blocks, pages, pieces, and components.
         </p>
       )}
 
@@ -202,6 +215,29 @@ export function SearchResults() {
           <section>
             <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-tight">Blocks</h2>
             <RelatedBlocksGrid blocks={blockMetas} />
+          </section>
+        )}
+        {showPages && (
+          <section>
+            <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-tight">Pages</h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {pageHits.map((hit) => (
+                <Link
+                  key={hit.name}
+                  href={hit.href}
+                  className="flex flex-col rounded-xl bg-muted p-5 transition-colors hover:bg-muted-foreground/15"
+                >
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-base font-semibold tracking-tight">{hit.title}</h3>
+                    {hit.isPro && <ProBadge />}
+                  </div>
+                  <p className="mt-2 line-clamp-2 text-base text-muted-foreground">
+                    {hit.description}
+                  </p>
+                  <span className="mt-4 text-base text-muted-foreground">{hit.category}</span>
+                </Link>
+              ))}
+            </div>
           </section>
         )}
         {showPieces && (

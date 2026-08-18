@@ -69,6 +69,34 @@ export function buildSoftwareSourceCodeJsonLd(input: SoftwareSourceCodeInput) {
   };
 }
 
+export interface SoftwareApplicationInput {
+  name: string;
+  description: string;
+  url: string;
+  /** Schema.org applicationCategory, e.g. "DeveloperApplication" */
+  category?: string;
+  keywords?: readonly string[];
+}
+
+/** SoftwareApplication node for the free tools at /tools. */
+export function buildSoftwareApplicationJsonLd(input: SoftwareApplicationInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    applicationCategory: input.category ?? "DeveloperApplication",
+    operatingSystem: "Any",
+    browserRequirements: "Requires JavaScript",
+    ...(input.keywords?.length ? { keywords: input.keywords.join(", ") } : {}),
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    isAccessibleForFree: true,
+    author: { "@type": "Organization", name: "Beste UI", url: SITE_URL },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export interface FaqEntry {
   question: string;
   answer: string;

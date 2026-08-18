@@ -4,7 +4,8 @@ import { SearchResults } from "./search-results";
 
 export const metadata: Metadata = {
   title: "Search - Beste UI",
-  description: "Search across every block, piece, and component by name or natural language.",
+  description:
+    "Search across every block, page, piece, and component by name or natural language.",
   // Query pages are per-user and infinite; keep them out of the index.
   robots: { index: false, follow: true },
 };

@@ -13,7 +13,7 @@ import { registryComponents } from "@/lib/registry-components";
  * consumer is untouched.
  */
 
-export type AssetType = "block" | "piece" | "component";
+export type AssetType = "block" | "piece" | "component" | "page";
 
 export interface IndexItem {
   type: AssetType;
@@ -35,6 +35,7 @@ const HREF_PREFIX: Record<AssetType, string> = {
   block: "/block",
   piece: "/piece",
   component: "/component",
+  page: "/page",
 };
 
 interface CatalogEntry {
@@ -47,6 +48,7 @@ interface CatalogEntry {
 function catalog(type: AssetType): CatalogEntry[] {
   if (type === "block") return blocks as unknown as CatalogEntry[];
   if (type === "piece") return components as unknown as CatalogEntry[];
+  if (type === "page") return []; // no pages tier in the public build
   return registryComponents as unknown as CatalogEntry[];
 }
 

@@ -12,6 +12,7 @@ import {
 } from "@/components/browse-filters";
 import { NewBadge, useIsNew } from "@/components/new-badge";
 import { type BrowseSort, DEFAULT_SORT, SORT_OPTIONS } from "@/lib/browse-sort";
+import { pieceInstallCommand } from "@/lib/install-command";
 import { type ComponentMeta, components } from "@/lib/components";
 import type { CategoryCount } from "./_lib/paginate";
 
@@ -176,7 +177,10 @@ export function ComponentsContent({
           No pieces in this category.
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <>
+        <PieceTable items={gridItems} />
+
+        <div data-md-omit="" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {gridItems.map((c) => {
             const Component = c.component;
             return (
@@ -226,6 +230,7 @@ export function ComponentsContent({
             );
           })}
         </div>
+        </>
       )}
 
       {showPagination && (
@@ -233,5 +238,45 @@ export function ComponentsContent({
       )}
 
     </div>
+  );
+}
+
+/**
+ * The listing as a table, for the Markdown rendition.
+ *
+ * Every card is a live demo behind a full-card overlay link, so the grid
+ * converts to a run of bare links and loose lines. The same items fit in one
+ * row each, and the row carries the install command the page never prints.
+ * `hidden` keeps it out of the browser and out of the accessibility tree,
+ * where the cards say all of it already; the Markdown route strips `hidden`
+ * before converting, and the grid carries `data-md-omit` so only one of the
+ * two ever appears.
+ */
+function PieceTable({ items }: { items: readonly ComponentMeta[] }) {
+  return (
+    <table hidden data-md-only="">
+      <thead>
+        <tr>
+          <th scope="col">Piece</th>
+          <th scope="col">Title</th>
+          <th scope="col">Category</th>
+          <th scope="col">Install</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((item) => (
+          <tr key={item.name}>
+            <th scope="row">
+              <a href={`/piece/${item.name}`}>{item.name}</a>
+            </th>
+            <td>{item.title}</td>
+            <td>{item.category}</td>
+            <td>
+              <code>{pieceInstallCommand(item.name)}</code>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

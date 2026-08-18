@@ -74,6 +74,15 @@ const organizationJsonLd = {
     width: 180,
     height: 180,
   },
+  description:
+    "A library of production-ready blocks, pieces and components for shadcn/ui and Tailwind CSS, built for React and Next.js and installed with the shadcn CLI.",
+  foundingDate: "2025",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "hello@beste.co",
+    availableLanguage: ["English"],
+  },
   sameAs: [
     "https://x.com/withbeste",
     "https://linkedin.com/company/bestestudio",
@@ -87,7 +96,19 @@ const webSiteJsonLd = {
   "@id": "https://ui.beste.co/#website",
   name: "Beste UI",
   url: "https://ui.beste.co",
+  inLanguage: "en",
   publisher: { "@id": "https://ui.beste.co/#organization" },
+  // Declares the catalogue as queryable rather than only readable: a search
+  // engine can offer the box, and an agent can see there is a live endpoint
+  // behind the site instead of only a set of documents.
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://ui.beste.co/search?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

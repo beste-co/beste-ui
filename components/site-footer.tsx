@@ -6,6 +6,7 @@ import {
   PAGES_HREF,
   PRICING_HREF,
   REFERRALS_HREF,
+  TOOLS_HREF,
   hostedLinkProps,
 } from "@/lib/site-links";
 
@@ -44,6 +45,7 @@ const COLUMNS: {
       { label: "Docs", href: DOCS_HREF, hosted: true },
       { label: "AI & MCP", href: DOCS_MCP_HREF, hosted: true },
       { label: "Blog", href: BLOG_HREF, hosted: true },
+      { label: "Free tools", href: TOOLS_HREF, hosted: true },
       { label: "What's new?", href: CHANGELOG_HREF, hosted: true },
       { label: "Website Builder", href: "https://beste.co", external: true },
     ],

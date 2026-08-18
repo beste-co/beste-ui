@@ -7,7 +7,7 @@ import { hybridSearch } from "@/lib/search-core";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const VALID_TYPES: AssetType[] = ["block", "piece", "component"];
+const VALID_TYPES: AssetType[] = ["block", "piece", "component", "page"];
 
 export async function GET(request: Request) {
   const url = new URL(request.url);

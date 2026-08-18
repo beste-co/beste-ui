@@ -38,6 +38,18 @@
           "href": "https://ui.beste.co/sitemap.xml",
           "type": "application/xml",
           "title": "Sitemap index"
+        },
+        {
+          "href": "https://ui.beste.co/{path}.md",
+          "type": "text/markdown",
+          "title": "Markdown rendition of any page (or send Accept: text/markdown)"
+        }
+      ],
+      "service": [
+        {
+          "href": "https://ui.beste.co/api/mcp",
+          "type": "application/json",
+          "title": "MCP server (Streamable HTTP): search, preview, compose and install blocks"
         }
       ]
     }

@@ -1,6 +1,7 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { categoryInfoMap } from "../lib/category-info";
+import { getPopulatedCategories, getToolsByCategory, tools } from "../lib/tools";
 
 interface RegistryItem {
   name: string;
@@ -26,9 +27,143 @@ Beste is the site builder with strong constraints. No drag and drop, no inline c
 - **Approach**: Pre-designed blocks that compose into complete pages
 `;
 
+/**
+ * The free tools at /tools, grouped by their category hub. Empty in the
+ * open-source build, which stubs the registry because it does not carry the
+ * routes, so the whole section drops out rather than printing a bare heading.
+ */
+function renderToolsBlock(heading: string, intro: string, withDescriptions: boolean): string {
+  if (tools.length === 0) return "";
+
+  const sections = getPopulatedCategories()
+    .map((category) => {
+      const items = getToolsByCategory(category.id)
+        .map((tool) =>
+          withDescriptions
+            ? `- [${tool.title}](${SITE_URL}/tools/${tool.slug}): ${tool.description}`
+            : `- [${tool.title}](${SITE_URL}/tools/${tool.slug})`
+        )
+        .join("\n");
+      return `### ${category.title}\n\n${items}`;
+    })
+    .join("\n\n");
+
+  return `## ${heading}\n\n${intro}\n\n${sections}\n\n`;
+}
+
+
+/**
+ * The three tiers that live outside registry.json.
+ *
+ * registry.json is the shadcn block registry and carries blocks alone, so for
+ * years llms.txt described 1935 blocks and nothing else: the 989 pieces, the
+ * components and the whole Pages tier were invisible to anything reading it.
+ * Their metadata is read straight off disk, the way the sitemap generator does
+ * it, rather than by importing the generated barrels, which pull ~3000 React
+ * components into a script that only wants four strings from each.
+ */
+interface TierItem {
+  name: string;
+  title: string;
+  description: string;
+  category: string;
+}
+
+function collectTier(registryDir: string): TierItem[] {
+  const dir = join(import.meta.dirname, "..", registryDir);
+  if (!existsSync(dir)) return [];
+
+  const items: TierItem[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const metaPath = join(dir, entry.name, `${entry.name}.meta.ts`);
+    if (!existsSync(metaPath)) continue;
+
+    const source = readFileSync(metaPath, "utf-8");
+    const name = source.match(/name:\s*["']([^"']+)["']/)?.[1];
+    const title = source.match(/title:\s*["']([^"']+)["']/)?.[1];
+    // Descriptions routinely wrap onto their own line and run long, so the
+    // match spans newlines and tolerates escaped quotes inside the string.
+    const description = source
+      .match(/description:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1]
+      ?.replace(/\\"/g, '"');
+    const category = source.match(/category:\s*["']([^"']+)["']/)?.[1];
+    // `hidden: true` marks an engine that other items depend on but that no
+    // showcase surface lists (product-filters). Advertising it here would
+    // point agents at something with no page behind it.
+    if (/hidden:\s*true/.test(source)) continue;
+
+    if (name && title && description && category) {
+      items.push({ name, title, description, category });
+    }
+  }
+  return items.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function groupByCategory(items: TierItem[]): Record<string, TierItem[]> {
+  const grouped: Record<string, TierItem[]> = {};
+  for (const item of items) {
+    (grouped[item.category] ??= []).push(item);
+  }
+  return grouped;
+}
+
+/** One tier as a compact linked list, grouped under its categories. */
+function renderTier(
+  heading: string,
+  intro: string,
+  items: TierItem[],
+  detailPath: string
+): string {
+  if (items.length === 0) return "";
+
+  const sections = Object.entries(groupByCategory(items))
+    .map(
+      ([category, tierItems]) =>
+        `### ${category}\n\n${tierItems
+          .map(
+            (item) =>
+              `- [${item.title}](${SITE_URL}/${detailPath}/${item.name}): ${item.description}`
+          )
+          .join("\n")}`
+    )
+    .join("\n\n");
+
+  return `## ${heading}\n\n${intro}\n\n${sections}\n\n`;
+}
+
+/** The same tier for llms-full.txt: one entry each, with its install command. */
+function renderTierFull(
+  heading: string,
+  intro: string,
+  items: TierItem[],
+  detailPath: string,
+  registryPath: string
+): string {
+  if (items.length === 0) return "";
+
+  const sections = Object.entries(groupByCategory(items))
+    .map(
+      ([category, tierItems]) =>
+        `### ${category}\n\n${tierItems
+          .map(
+            (item) =>
+              `#### ${item.title}\n\n- **URL**: ${SITE_URL}/${detailPath}/${item.name}\n- **Install**: \`npx shadcn add ${SITE_URL}/${registryPath}/${item.name}\`\n- **Description**: ${item.description}`
+          )
+          .join("\n\n")}`
+    )
+    .join("\n\n");
+
+  return `## ${heading}\n\n${intro}\n\n${sections}\n\n`;
+}
+
 function generateLlmsTxt() {
   const registryPath = join(import.meta.dirname, "..", "registry.json");
   const registry: Registry = JSON.parse(readFileSync(registryPath, "utf-8"));
+
+  const pieces = collectTier("registry-pieces");
+  const uiComponents = collectTier("registry-components");
+  const pages = collectTier("registry-pages");
 
   // Group components by category
   const categories: Record<string, RegistryItem[]> = {};
@@ -70,6 +205,8 @@ ${
 
 - [Homepage](${SITE_URL}/blocks): Browse all available components
 - [Installation](${SITE_URL}/docs/installation): How to install components using shadcn CLI
+- [MCP server](${SITE_URL}/docs/mcp): Connect an agent to this catalog at ${SITE_URL}/api/mcp. Search, preview, compose a page and install, over Streamable HTTP.
+- [Markdown](${SITE_URL}/index.md): Every page on this site is available as Markdown. Add \`.md\` to any address, or send an \`Accept: text/markdown\` header.
 
 ## Components
 
@@ -85,7 +222,26 @@ ${Object.entries(categories)
   )
   .join("\n\n")}
 
-## Optional
+${renderTier(
+  "Pages",
+  `Whole pages composed from the blocks, at ${SITE_URL}/pages. Installing one installs every block it is made of.`,
+  pages,
+  "page"
+)}${renderTier(
+  "Pieces",
+  `Small composable widgets at ${SITE_URL}/pieces. They drop into the media slots inside a block. Free, no license needed.`,
+  pieces,
+  "piece"
+)}${renderTier(
+  "Components",
+  `The primitives every block is built from, at ${SITE_URL}/components. Free, no license needed.`,
+  uiComponents,
+  "component"
+)}${renderToolsBlock(
+  "Free tools",
+  `Browser-based developer tools at ${SITE_URL}/tools. No signup, nothing uploaded.`,
+  false
+)}## Optional
 
 - [GitHub](https://github.com/beste-co/beste-ui): Source code and contributions
 `;
@@ -148,7 +304,29 @@ ${items
   )
   .join("\n\n")}
 
-## Links
+${renderTierFull(
+  "Pages",
+  "Whole pages composed from the blocks. Installing a page installs every block inside it. Pro.",
+  pages,
+  "page",
+  "page/r"
+)}${renderTierFull(
+  "Pieces",
+  "Small composable widgets that drop into the media slots inside a block. Free, no license needed.",
+  pieces,
+  "piece",
+  "piece/r"
+)}${renderTierFull(
+  "Components",
+  "The primitives every block is built from. Free, no license needed.",
+  uiComponents,
+  "component",
+  "component/r"
+)}${renderToolsBlock(
+  "Free Tools",
+  "Every tool runs in the browser, is free and needs no account.",
+  true
+)}## Links
 
 - [Homepage](${SITE_URL})
 - [GitHub](https://github.com/beste-co/beste-ui)
@@ -161,7 +339,9 @@ ${items
   writeFileSync(join(outputDir, "llms-full.txt"), llmsFullTxt, "utf-8");
 
   console.log(
-    `Generated llms.txt and llms-full.txt with ${registry.items.length} components`
+    `Generated llms.txt and llms-full.txt with ${registry.items.length} blocks, ` +
+      `${pages.length} pages, ${pieces.length} pieces, ${uiComponents.length} components ` +
+      `and ${tools.length} tools`
   );
 }
 

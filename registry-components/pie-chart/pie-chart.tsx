@@ -80,8 +80,7 @@ export function PieChart({
         </Pie>
         {showLegend && (
           <ChartLegend
-            content={<ChartLegendContent nameKey={nameKey} />}
-            className="flex-wrap gap-2"
+            content={<ChartLegendContent nameKey={nameKey} className="flex-wrap gap-2" />}
           />
         )}
       </RechartsPieChart>
