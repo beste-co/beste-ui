@@ -36,6 +36,10 @@ const HREF_PREFIX: Record<AssetType, string> = {
   block: "/block",
   piece: "/piece",
   component: "/component",
+  // `AssetType` keeps "page" so callers passing `types: ["page"]` still
+  // typecheck; CATALOGS below has no pages tier, so nothing is ever built
+  // from this prefix in the public build.
+  page: "/page",
 };
 
 interface CatalogEntry {

@@ -51,10 +51,6 @@ export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
               // clicks still fall through to the card's navigation.
               inert
               className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background"
-              style={{
-                backgroundImage: "radial-gradient(circle, var(--border) 1px, transparent 1px)",
-                backgroundSize: "16px 16px",
-              }}
             >
               {/* Large-surface categories (Card) get fit-scaled so the whole
                   demo shows at its natural proportions, matching the catalog

@@ -234,6 +234,11 @@ async function generateRegistryJson(metas: CollectedMeta[]): Promise<string> {
       ];
 
       const aggregatedDeps = new Set(m.registryDependencies ?? []);
+      // npm deps of everything bundled with the block count as the block's own:
+      // shipping a motion piece or component means the install needs framer-motion
+      const npmDeps = new Set(
+        m.dependencies?.length ? m.dependencies : DEFAULT_DEPENDENCIES
+      );
 
       for (const componentName of m.componentDependencies ?? []) {
         const componentDir = join(COMPONENTS_DIR, componentName);
@@ -253,6 +258,9 @@ async function generateRegistryJson(metas: CollectedMeta[]): Promise<string> {
         const componentMeta = await loadComponentMeta(componentName);
         for (const dep of componentMeta?.registryDependencies ?? []) {
           aggregatedDeps.add(dep);
+        }
+        for (const dep of componentMeta?.dependencies ?? []) {
+          npmDeps.add(dep);
         }
       }
 
@@ -286,6 +294,9 @@ async function generateRegistryJson(metas: CollectedMeta[]): Promise<string> {
         for (const dep of componentMeta?.registryDependencies ?? []) {
           aggregatedDeps.add(dep);
         }
+        for (const dep of componentMeta?.dependencies ?? []) {
+          npmDeps.add(dep);
+        }
         componentQueue.push(...(componentMeta?.registryComponents ?? []));
       }
 
@@ -294,9 +305,7 @@ async function generateRegistryJson(metas: CollectedMeta[]): Promise<string> {
         type: "registry:block",
         title: m.title,
         description: m.description,
-        dependencies: m.dependencies?.length
-          ? m.dependencies
-          : DEFAULT_DEPENDENCIES,
+        dependencies: Array.from(npmDeps),
         registryDependencies: Array.from(aggregatedDeps),
         files,
       };

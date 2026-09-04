@@ -3,6 +3,7 @@
 import { type ReactNode, createContext, useContext } from "react";
 import { CommandPalette } from "@/components/command-palette";
 import { MarkdownVersionLink } from "@/components/markdown-version-link";
+import { SaleBanner } from "@/components/sale-banner";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PreviewThemeProvider } from "@/components/theme/preview-theme-provider";
@@ -37,6 +38,7 @@ export function MainProviders({ children }: { children: ReactNode }) {
       <PreviewThemeProvider>
         <PreviewVariantsProvider>
           <CommandPaletteProvider>
+            <SaleBanner />
             <SiteHeader />
             {children}
             <SiteFooter />

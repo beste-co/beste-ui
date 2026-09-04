@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Settings row for the four corners of a box: the row carries a border-radius shorthand summary and a glyph rounded to match, and opens a square where each field sits on the corner it rounds.",
   category: "Inspector",
+  registryDependencies: ["popover"],
   usage: `import { InspectorCorners } from "@/components/beste/component/inspector-corners";
 
 // Uncontrolled. The row reads "12 12 4 4 px"; the link toggle in the middle of the

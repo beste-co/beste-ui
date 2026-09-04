@@ -222,6 +222,10 @@ function buildEntries(metas: CollectedMeta[], withPlayground = false): string {
         `    component: ${m.componentName}`,
         `    demoProps: ${m.demoName}`,
       ];
+      if (m.dependencies?.length) {
+        const npm = m.dependencies.map((d) => `"${d}"`).join(", ");
+        props.push(`    dependencies: [${npm}]`);
+      }
       if (m.registryDependencies?.length) {
         const deps = m.registryDependencies.map((d) => `"${d}"`).join(", ");
         props.push(`    registryDependencies: [${deps}]`);
@@ -239,6 +243,7 @@ function buildEntries(metas: CollectedMeta[], withPlayground = false): string {
       if (m.usage) props.push(`    usage: ${JSON.stringify(m.usage)}`);
       if (m.usageBase) props.push(`    usageBase: ${JSON.stringify(m.usageBase)}`);
       if (m.isPro) props.push(`    isPro: true`);
+      if (m.isAnimated) props.push(`    isAnimated: true`);
       // Only registry-components import their playgrounds, so only that file may
       // name one. A piece with a playground file would otherwise emit an
       // identifier nothing imported.
@@ -275,6 +280,8 @@ export interface ComponentMeta {
   category: string;
   component: ComponentType<any>;
   demoProps: any;
+  /** NPM dependencies the install has to add (e.g., ["framer-motion"]) */
+  dependencies?: string[];
   /** shadcn/ui component dependencies (e.g., ["avatar"]) */
   registryDependencies?: string[];
   /** Live-tweakable variants exposed in the preview (e.g., tone) */
@@ -289,6 +296,8 @@ export interface ComponentMeta {
   registryComponents?: string[];
   /** If true, excluded from showcase listings (still installable) */
   hidden?: boolean;
+  /** If true, plays a one-shot animation on mount; showcases offer a replay */
+  isAnimated?: boolean;
 }
 
 const _components: ComponentMeta[] = [
@@ -341,6 +350,8 @@ export interface RegistryComponentMeta {
   category: string;
   component: ComponentType<any>;
   demoProps: any;
+  /** NPM dependencies the install has to add (e.g., ["framer-motion"]) */
+  dependencies?: string[];
   /** shadcn/ui component dependencies (e.g., ["button"]) */
   registryDependencies?: string[];
   /** Live-tweakable variants exposed in the preview (e.g., tone) */
@@ -355,6 +366,8 @@ export interface RegistryComponentMeta {
   registryComponents?: string[];
   /** If true, excluded from showcase listings (still installable) */
   hidden?: boolean;
+  /** If true, plays a one-shot animation on mount; showcases offer a replay */
+  isAnimated?: boolean;
   /** Docs playground, from {name}.playground.ts beside the component */
   playground?: PlaygroundConfig;
 }

@@ -26,6 +26,14 @@ export interface CollectionInfo {
 }
 
 const COLLECTION_COPY: Record<BlockSet, Omit<CollectionInfo, "slug" | "count">> = {
+  altair: {
+    label: "Altair",
+    description:
+      "Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care.",
+    metaTitle: "Altair collection - Beste UI",
+    metaDescription:
+      "The Altair collection: calm, motion-led shadcn/tailwind blocks with parallax photography, serif display type and soft pill buttons. Heroes and sections for therapy, wellness and care practices.",
+  },
   auralis: {
     label: "Auralis",
     description:
@@ -56,7 +64,7 @@ const COLLECTION_COPY: Record<BlockSet, Omit<CollectionInfo, "slug" | "count">> 
 export const COLLECTIONS: readonly CollectionInfo[] = (
   Object.keys(COLLECTION_COPY) as BlockSet[]
 )
-  .map((slug) => ({ slug, ...COLLECTION_COPY[slug], count: BLOCK_SETS[slug].length }))
+  .map((slug) => ({ slug, ...COLLECTION_COPY[slug], count: BLOCK_SETS[slug]?.length ?? 0 }))
   .sort((a, b) => a.label.localeCompare(b.label));
 
 export function getCollection(slug: string): CollectionInfo | undefined {

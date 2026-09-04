@@ -1,21 +1,22 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Button12 } from "@/components/beste/component/button12";
 import { BlocksGrid } from "@/components/blocks-grid";
+import { Button12 } from "@/components/beste/component/button12";
+import { COLLECTION_BY_BLOCK } from "@/lib/collections";
 import { ComponentDemo } from "@/components/component-demo";
-import { HomeHero } from "@/components/home-hero";
-import { HomeHeroSearch } from "@/components/home-hero-search";
-import { HomeWhy } from "@/components/home-why";
-import { RegistryComponentDemo } from "@/components/registry-component-demo";
-import { changelog } from "@/data/changelog";
-import { STUDIO_SET_BLOCKS } from "@/lib/block-sets";
-import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
-import { recentBlockDates } from "@/lib/changelog-dates";
-import { components as allComponents } from "@/lib/components";
-import { registryComponents } from "@/lib/registry-components";
 import { Cta69 } from "@/registry/cta69/cta69";
 import { Faq77 } from "@/registry/faq77/faq77";
 import { Feature230 } from "@/registry/feature230/feature230";
+import { HomeHero } from "@/components/home-hero";
+import { HomeHeroAltair } from "@/components/home-hero-altair";
+import { HomeWhy } from "@/components/home-why";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { RegistryComponentDemo } from "@/components/registry-component-demo";
+import { STUDIO_SET_BLOCKS } from "@/lib/block-sets";
+import { components as allComponents } from "@/lib/components";
+import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
+import { changelog } from "@/data/changelog";
+import { recentBlockDates } from "@/lib/changelog-dates";
+import { registryComponents } from "@/lib/registry-components";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
 const SITE_DESCRIPTION =
@@ -65,6 +66,51 @@ function seededShuffle<T>(array: readonly T[], seed: number): T[] {
 }
 
 // Rotates every 3 hours so the homepage stays fresh without re-deploys
+/**
+ * Six blocks that show every studio set, rather than six from whichever set
+ * happens to cover the most categories.
+ *
+ * `pickSix` walks categories, so a set is picked in proportion to how many
+ * categories it spans: Altair covers 25 where Auralis covers 60, and it turned
+ * up in about half the slots its share of the catalogue deserved. This walks the
+ * sets first and the categories second, so every set is represented before any
+ * set takes a second slot, and no two blocks share a category.
+ */
+function pickSixAcrossSets<T extends { name: string; category: string }>(
+  items: readonly T[],
+  seed: number
+): T[] {
+  const bySet = new Map<string, T[]>();
+  for (const item of items) {
+    const set = COLLECTION_BY_BLOCK.get(item.name);
+    if (!set) continue;
+    const pool = bySet.get(set) ?? [];
+    pool.push(item);
+    bySet.set(set, pool);
+  }
+
+  const sets = seededShuffle(Array.from(bySet.keys()), seed);
+  const picked: T[] = [];
+  const usedCategories = new Set<string>();
+
+  // Round-robin: one from each set, then round again for the remaining slots.
+  // The round cap is a floor guard for when a set runs out of fresh categories.
+  for (let round = 0; picked.length < 6 && round < 6; round++) {
+    for (const set of sets) {
+      if (picked.length === 6) break;
+      const pool = (bySet.get(set) ?? []).filter(
+        (block) => !usedCategories.has(block.category)
+      );
+      const choice = seededShuffle(pool, seed + picked.length)[0];
+      if (!choice) continue;
+      picked.push(choice);
+      usedCategories.add(choice.category);
+    }
+  }
+
+  return picked;
+}
+
 function getRotatingSeed(): number {
   const now = new Date();
   const threeHourBlock = Math.floor(now.getUTCHours() / 3);
@@ -140,7 +186,7 @@ const FAQS = [
   },
   {
     q: "Is there a referral program?",
-    a: "Yes. Every account gets a referral link and earns 15% commission whenever someone you refer upgrades to Pro. You can copy your link and track your referrals and earnings on the Referrals page.",
+    a: "Yes. Every account gets a referral link and earns 30% commission on every payment from someone you refer, for 12 months after they sign up. You can copy your link and track your referrals and earnings on the Referrals page.",
   },
 ];
 
@@ -166,12 +212,13 @@ export default async function HomePage() {
    * random from the whole catalogue read as six unrelated screenshots, while six
    * from the sets read as a design language someone thought about. The
    * membership list is generated from the sets' own demo copy — see
-   * scripts/generate-block-sets.ts, and rerun it when a set grows.
+   * scripts/generate-block-sets.ts, and rerun it when a set grows. A new set is
+   * live the moment that script has run; nothing here names one.
    */
   const blockPool = blocks.filter(
     (b) => b.category !== "Coming Soon" && STUDIO_SET_BLOCKS.has(b.name)
   );
-  const sixBlocks = pickSix(blockPool, seed, null);
+  const sixBlocks = pickSixAcrossSets(blockPool, seed);
   const sixRegistryComponents = seededShuffle(registryComponents, seed).slice(0, 6);
 
   /*
@@ -198,20 +245,18 @@ export default async function HomePage() {
         to reach both edges, and the negative top margin cancels the layout's own
         padding so it starts flush under the bar rather than floating below it.
 
-        It is hero130's shape with the announcement ticker replaced by the search —
-        our own copy of the block (see `home-hero-search`), since a search field is
-        not something the catalogue's studio hero should grow.
+        It is hero187's shape as the site's own copy (`home-hero-altair`): the
+        type sits a step smaller and heavier than the catalogue block, and the
+        field hands its click to the ⌘K palette.
       */}
-      <HomeHeroSearch
-        // The last child is the content column; the two before it are the image and
-        // its overlay, and capping those would stop the picture short of the edges.
-        className="-mt-12 md:-mt-16 [&>div:last-child]:max-w-6xl md:py-16"
-        // Not a description of the product: the counts sit two rows below and the
-        // page title carries the search terms, so the hero is free to be a poster.
-        heading="Already built."
-        subheading="Every screen a website needs. Yours to take."
-        backgroundImage={{
-          src: "https://images.unsplash.com/photo-1755126623866-0d612c7dc801?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      <HomeHeroAltair
+        className="-mt-12 md:-mt-16"
+        // The counts sit two rows below and the page title carries the search
+        // terms, so the hero is free to say the one thing that sets the library apart.
+        heading="Built for your agent."
+        description="Every screen a website needs, reachable over MCP."
+        image={{
+          src: "https://images.unsplash.com/photo-1504093428647-19ae13b11ff2?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           alt: "",
         }}
       />
@@ -282,10 +327,6 @@ export default async function HomePage() {
                 <div
                   inert
                   className="pointer-events-none relative flex aspect-[4/3] select-none items-center justify-center overflow-hidden rounded-md bg-background"
-                  style={{
-                    backgroundImage: "radial-gradient(circle, var(--border) 1px, transparent 1px)",
-                    backgroundSize: "16px 16px",
-                  }}
                 >
                   <RegistryComponentDemo name={c.name} />
                 </div>
@@ -348,10 +389,6 @@ export default async function HomePage() {
                 <div
                   inert
                   className="pointer-events-none relative flex aspect-[4/3] select-none items-center justify-center overflow-hidden rounded-md bg-background"
-                  style={{
-                    backgroundImage: "radial-gradient(circle, var(--border) 1px, transparent 1px)",
-                    backgroundSize: "16px 16px",
-                  }}
                 >
                   <ComponentDemo name={c.name} />
                 </div>

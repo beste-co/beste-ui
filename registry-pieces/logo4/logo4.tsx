@@ -62,7 +62,7 @@ export function Logo4({
                 className={cn(
                   "absolute inset-0 size-full object-cover transition-all duration-700 ease-out",
                   i === index
-                    ? "opacity-100 blur-0"
+                    ? "opacity-100 blur-none"
                     : "opacity-0 blur-md"
                 )}
               />
@@ -75,7 +75,7 @@ export function Logo4({
                 className={cn(
                   "absolute inset-0 transition-all duration-700 ease-out",
                   i === index
-                    ? "opacity-100 blur-0"
+                    ? "opacity-100 blur-none"
                     : "opacity-0 blur-sm"
                 )}
               >

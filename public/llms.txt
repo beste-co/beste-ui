@@ -1491,6 +1491,7 @@ The primitives every block is built from, at https://ui.beste.co/components. Fre
 - [Underline Arrow Button](https://ui.beste.co/component/button2): A minimal text button with an animated underline and arrow for lightweight calls to action.
 - [Magnetic Button](https://ui.beste.co/component/button20): A magnetic button that is pulled toward the cursor on hover and springs back on leave.
 - [Soft Action Button](https://ui.beste.co/component/button21): A compact, softly rounded action button with a solid accent, soft neutral, or hairline outline tone and an optional trailing icon.
+- [Sliding Marker Pill](https://ui.beste.co/component/button22): An uppercase, letter-spaced pill with a small marker at its end. On hover the marker slips out on the right while the label slides over and a twin marker arrives from the left, in one smooth motion.
 - [Async Loading Button](https://ui.beste.co/component/button3): An async loading button that shows a spinner and disables itself while a promise resolves.
 - [Icon Button](https://ui.beste.co/component/button4): An accessible icon button with a required label, three sizes, and circle or square shape.
 - [Split Button](https://ui.beste.co/component/button5): A split button with a main action and a separate secondary trigger for menus and options.
@@ -1603,6 +1604,28 @@ The primitives every block is built from, at https://ui.beste.co/components. Fre
 - [Inspector Transition](https://ui.beste.co/component/inspector-transition): How long a change takes, when it starts, and the shape of it, in one row instead of three that drift apart. The editor runs the real transition on a loop rather than drawing its curve, since what a reader needs to know is whether 300ms feels slow.
 - [Inspector Unit](https://ui.beste.co/component/inspector-unit): A number and the unit that gives it meaning, in one row: px, rem, a percentage, or a keyword like auto that is the whole value on its own. Each unit may bring its own range, so a percentage stops at 100 while pixels do not.
 - [Inspector Variants](https://ui.beste.co/component/inspector-variants): The choice that has to be seen to be made: a template, a layout, a chart type. Each option is a picture, normally a rendered screenshot passed as a URL, or markup for the choices no photograph would show. The row is the trigger, the grid is width-matched to it, and the captions under the pictures can be dropped for a set whose pictures say everything.
+
+### Text
+
+- [Word Stagger](https://ui.beste.co/component/text1): Text that settles in one word at a time, each word rising a few pixels out of a soft blur. Plays on scroll by default, or immediately for heroes.
+- [Photo Fill](https://ui.beste.co/component/text10): Large serif letters filled with a photograph that drifts slowly inside them as the page scrolls, the picture showing through the type.
+- [Ink Drying](https://ui.beste.co/component/text11): Words that begin as soft, spread blots of ink, wide-set and out of focus, and dry into crisp, tightly set type one after another.
+- [Slow Wave](https://ui.beste.co/component/text12): A word whose letters rise and fall on one slow, continuous swell, each a beat behind the last, like a line of type resting on water. Stays still when reduced motion is preferred.
+- [Fog Clearing](https://ui.beste.co/component/text13): Text hidden behind fog that clears across it from left to right along one soft edge, so the words emerge in reading order without moving at all.
+- [Letters Settling](https://ui.beste.co/component/text14): A short word whose letters begin scattered and slightly turned, then drift home on a soft spring one after another, like type settling onto a page.
+- [Running Line](https://ui.beste.co/component/text15): A single line of text that runs across its container without end, fading at both edges and pausing under the pointer. Small caps for announcements, tracked serif for statements.
+- [Highlight Sweep](https://ui.beste.co/component/text16): An inline phrase that gets a soft highlight swept in behind it from the left when it scrolls into view, like a marker drawn across the words, without the text moving.
+- [Rolling Digits](https://ui.beste.co/component/text17): A number whose digits roll like an odometer, each column sliding to its new figure a beat after the last, whenever the value changes. For prices that switch with a toggle, years, and live counters that climb on their own.
+- [Circle Text](https://ui.beste.co/component/text18): A line of text set around a circle that turns slowly, with room in the middle for an initial, an icon or a short word. A seal for corners, footers and hero edges.
+- [Strike and Replace](https://ui.beste.co/component/text19): A sentence that corrects itself: a line is drawn through the old word from left to right, and the better word settles in beside it out of a soft blur.
+- [Line Reveal](https://ui.beste.co/component/text2): Lines of text that rise into view out of their own clipped rows, one after another, the way a heading is unmasked line by line.
+- [Letter Cascade](https://ui.beste.co/component/text3): Short text whose characters arrive one by one out of a light blur, for eyebrows, labels and single words. The element keeps the whole string as its accessible name.
+- [Turning Word](https://ui.beste.co/component/text4): A sentence whose one word takes turns: each candidate blurs up into place as the last blurs out, on a timer that stops when reduced motion is preferred.
+- [Scroll Highlight](https://ui.beste.co/component/text5): A passage whose words brighten one after another in reading order as it scrolls through the viewport, and dim again on the way back, like a finger following the line.
+- [Typewriter](https://ui.beste.co/component/text6): Text typed out one character at a time behind a thin caret that keeps a slow pulse once the line is finished. The element keeps the whole string as its accessible name.
+- [Count Up](https://ui.beste.co/component/text7): A figure that counts up from zero to its value the first time it scrolls into view, with a prefix, a suffix, decimals and thousands grouping, in tabular numerals so nothing shifts.
+- [Underline Draw](https://ui.beste.co/component/text8): An inline phrase whose hairline underline draws itself in from the left when it scrolls into view. Drop it inside a heading or a sentence to mark the words that matter.
+- [Soft Blur In](https://ui.beste.co/component/text9): A paragraph or heading that arrives as one piece, rising a few pixels out of a soft blur when it scrolls into view. The quiet companion to the word stagger, for body copy and descriptions.
 
 ## Optional
 

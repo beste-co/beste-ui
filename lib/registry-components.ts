@@ -44,6 +44,7 @@ import { Button18, button18Demo } from "@/registry-components/button18/button18"
 import { Button19, button19Demo } from "@/registry-components/button19/button19";
 import { Button20, button20Demo } from "@/registry-components/button20/button20";
 import { Button21, button21Demo } from "@/registry-components/button21/button21";
+import { Button22, button22Demo } from "@/registry-components/button22/button22";
 import { CalendarMonth, calendarMonthDemo } from "@/registry-components/calendar-month/calendar-month";
 import { Card1, card1Demo } from "@/registry-components/card1/card1";
 import { Card2, card2Demo } from "@/registry-components/card2/card2";
@@ -143,6 +144,25 @@ import { RadialChart, radialChartDemo } from "@/registry-components/radial-chart
 import { ScheduleTimeline, scheduleTimelineDemo } from "@/registry-components/schedule-timeline/schedule-timeline";
 import { SidebarNav, sidebarNavDemo } from "@/registry-components/sidebar-nav/sidebar-nav";
 import { TalentCard, talentCardDemo } from "@/registry-components/talent-card/talent-card";
+import { Text1, text1Demo } from "@/registry-components/text1/text1";
+import { Text2, text2Demo } from "@/registry-components/text2/text2";
+import { Text3, text3Demo } from "@/registry-components/text3/text3";
+import { Text4, text4Demo } from "@/registry-components/text4/text4";
+import { Text5, text5Demo } from "@/registry-components/text5/text5";
+import { Text6, text6Demo } from "@/registry-components/text6/text6";
+import { Text7, text7Demo } from "@/registry-components/text7/text7";
+import { Text8, text8Demo } from "@/registry-components/text8/text8";
+import { Text9, text9Demo } from "@/registry-components/text9/text9";
+import { Text10, text10Demo } from "@/registry-components/text10/text10";
+import { Text11, text11Demo } from "@/registry-components/text11/text11";
+import { Text12, text12Demo } from "@/registry-components/text12/text12";
+import { Text13, text13Demo } from "@/registry-components/text13/text13";
+import { Text14, text14Demo } from "@/registry-components/text14/text14";
+import { Text15, text15Demo } from "@/registry-components/text15/text15";
+import { Text16, text16Demo } from "@/registry-components/text16/text16";
+import { Text17, text17Demo } from "@/registry-components/text17/text17";
+import { Text18, text18Demo } from "@/registry-components/text18/text18";
+import { Text19, text19Demo } from "@/registry-components/text19/text19";
 import { UserMenu, userMenuDemo } from "@/registry-components/user-menu/user-menu";
 import { playground as areaChartPlayground } from "@/registry-components/area-chart/area-chart.playground";
 import { playground as badge6Playground } from "@/registry-components/badge6/badge6.playground";
@@ -276,6 +296,25 @@ import { playground as pieChartPlayground } from "@/registry-components/pie-char
 import { playground as radarChartPlayground } from "@/registry-components/radar-chart/radar-chart.playground";
 import { playground as radialChartPlayground } from "@/registry-components/radial-chart/radial-chart.playground";
 import { playground as talentCardPlayground } from "@/registry-components/talent-card/talent-card.playground";
+import { playground as text1Playground } from "@/registry-components/text1/text1.playground";
+import { playground as text2Playground } from "@/registry-components/text2/text2.playground";
+import { playground as text3Playground } from "@/registry-components/text3/text3.playground";
+import { playground as text4Playground } from "@/registry-components/text4/text4.playground";
+import { playground as text5Playground } from "@/registry-components/text5/text5.playground";
+import { playground as text6Playground } from "@/registry-components/text6/text6.playground";
+import { playground as text7Playground } from "@/registry-components/text7/text7.playground";
+import { playground as text8Playground } from "@/registry-components/text8/text8.playground";
+import { playground as text9Playground } from "@/registry-components/text9/text9.playground";
+import { playground as text10Playground } from "@/registry-components/text10/text10.playground";
+import { playground as text11Playground } from "@/registry-components/text11/text11.playground";
+import { playground as text12Playground } from "@/registry-components/text12/text12.playground";
+import { playground as text13Playground } from "@/registry-components/text13/text13.playground";
+import { playground as text14Playground } from "@/registry-components/text14/text14.playground";
+import { playground as text15Playground } from "@/registry-components/text15/text15.playground";
+import { playground as text16Playground } from "@/registry-components/text16/text16.playground";
+import { playground as text17Playground } from "@/registry-components/text17/text17.playground";
+import { playground as text18Playground } from "@/registry-components/text18/text18.playground";
+import { playground as text19Playground } from "@/registry-components/text19/text19.playground";
 import { playground as userMenuPlayground } from "@/registry-components/user-menu/user-menu.playground";
 
 export interface RegistryComponentMeta {
@@ -285,6 +324,8 @@ export interface RegistryComponentMeta {
   category: string;
   component: ComponentType<any>;
   demoProps: any;
+  /** NPM dependencies the install has to add (e.g., ["framer-motion"]) */
+  dependencies?: string[];
   /** shadcn/ui component dependencies (e.g., ["button"]) */
   registryDependencies?: string[];
   /** Live-tweakable variants exposed in the preview (e.g., tone) */
@@ -299,6 +340,8 @@ export interface RegistryComponentMeta {
   registryComponents?: string[];
   /** If true, excluded from showcase listings (still installable) */
   hidden?: boolean;
+  /** If true, plays a one-shot animation on mount; showcases offer a replay */
+  isAnimated?: boolean;
   /** Docs playground, from {name}.playground.ts beside the component */
   playground?: PlaygroundConfig;
 }
@@ -311,6 +354,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Chart",
     component: AreaChart,
     demoProps: areaChartDemo,
+    dependencies: ["recharts"],
     registryDependencies: ["chart"],
     usage: "import { AreaChart } from \"@/components/beste/component/area-chart\";\n\n<AreaChart\n  xKey=\"month\"\n  stacked\n  config={{\n    revenue: { label: \"Revenue\", color: \"var(--chart-1)\" },\n    orders: { label: \"Orders\", color: \"var(--chart-2)\" },\n  }}\n  data={[\n    { month: \"Jan\", revenue: 4200, orders: 2400 },\n    { month: \"Feb\", revenue: 3800, orders: 2100 },\n  ]}\n/>",
     playground: areaChartPlayground,
@@ -522,6 +566,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Chart",
     component: BarChart,
     demoProps: barChartDemo,
+    dependencies: ["recharts"],
     registryDependencies: ["chart"],
     usage: "import { BarChart } from \"@/components/beste/component/bar-chart\";\n\n<BarChart\n  xKey=\"month\"\n  config={{\n    desktop: { label: \"Desktop\", color: \"var(--chart-1)\" },\n    mobile: { label: \"Mobile\", color: \"var(--chart-2)\" },\n  }}\n  data={[\n    { month: \"Jan\", desktop: 186, mobile: 80 },\n    { month: \"Feb\", desktop: 305, mobile: 200 },\n  ]}\n/>",
     playground: barChartPlayground,
@@ -740,6 +785,18 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     usage: "import { Button21 } from \"@/components/beste/component/button21\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button21 asChild label=\"Book a demo\">\n  <Link href=\"/demo\" />\n</Button21>\n\n<Button21\n  label=\"Start free\"\n  icon={ArrowRight}   // optional trailing icon\n  tone=\"outline\"      // \"primary\" (default) | \"neutral\" | \"outline\"\n  onClick={() => console.log(\"clicked\")}\n/>",
     usageBase: "import { Button21 } from \"@/components/beste/component/button21\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button21 label=\"Book a demo\" render={<Link href=\"/demo\" />} nativeButton={false} />\n\n<Button21\n  label=\"Start free\"\n  icon={ArrowRight}   // optional trailing icon\n  tone=\"outline\"      // \"primary\" (default) | \"neutral\" | \"outline\"\n  onClick={() => console.log(\"clicked\")}\n/>",
     playground: button21Playground,
+  },
+  {
+    name: "button22",
+    title: "Sliding Marker Pill",
+    description: "An uppercase, letter-spaced pill with a small marker at its end. On hover the marker slips out on the right while the label slides over and a twin marker arrives from the left, in one smooth motion.",
+    category: "Button",
+    component: Button22,
+    demoProps: button22Demo,
+    registryDependencies: ["button"],
+    variants: { tone: ["primary", "light", "dark", "outline"] },
+    usage: "import { Button22 } from \"@/components/beste/component/button22\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button22 asChild label=\"Start your journey\">\n  <Link href=\"/contact\" />\n</Button22>\n\n<Button22\n  label=\"See how it works\"\n  icon={ArrowRight}   // replaces the dot marker\n  tone=\"outline\"      // \"primary\" (default) | \"light\" | \"dark\" | \"outline\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    usageBase: "import { Button22 } from \"@/components/beste/component/button22\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button22 label=\"Start your journey\" render={<Link href=\"/contact\" />} nativeButton={false} />\n\n<Button22\n  label=\"See how it works\"\n  icon={ArrowRight}   // replaces the dot marker\n  tone=\"outline\"      // \"primary\" (default) | \"light\" | \"dark\" | \"outline\"\n  onClick={() => console.log(\"clicked\")}\n/>",
   },
   {
     name: "calendar-month",
@@ -1360,6 +1417,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Inspector",
     component: InspectorCorners,
     demoProps: inspectorCornersDemo,
+    registryDependencies: ["popover"],
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { InspectorCorners } from \"@/components/beste/component/inspector-corners\";\n\n// Uncontrolled. The row reads \"12 12 4 4 px\"; the link toggle in the middle of the\n// square starts on when all four corners already match.\n<InspectorCorners label=\"Radius\" defaultValue={{ topLeft: 12, topRight: 12, bottomRight: 4, bottomLeft: 4 }} suffix=\"px\" />\n\n// Controlled, with a separate commit for expensive work\n<InspectorCorners\n  label=\"Radius\"\n  value={radius}\n  onValueChange={setRadius}                             // every accepted keystroke\n  onValueCommit={(value) => console.log(\"persist\", value)} // Enter or blur\n  max={48}\n  step={2}\n  suffix=\"px\"\n/>\n\n<InspectorCorners\n  label=\"Corners\"\n  icon={Squircle}        // optional leading icon\n  linked={linked}        // take the link state over, if it belongs to your state\n  onLinkedChange={setLinked}\n  onOpenChange={(open) => console.log(\"editor open:\", open)}\n  tone=\"outline\"         // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n  value={radius}\n  onValueChange={setRadius}\n/>\n\n// Always four corners, no tie-together toggle\n<InspectorCorners label=\"Radius\" hideLink value={radius} onValueChange={setRadius} />",
     playground: inspectorCornersPlayground,
@@ -1643,6 +1701,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Inspector",
     component: InspectorSpacing,
     demoProps: inspectorSpacingDemo,
+    registryDependencies: ["popover"],
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { InspectorSpacing } from \"@/components/beste/component/inspector-spacing\";\n\n// Uncontrolled. The row reads \"16 24 px\"; the cross opens on click, and the link\n// toggle in its middle starts on when all four edges already match.\n<InspectorSpacing label=\"Padding\" defaultValue={{ top: 16, right: 24, bottom: 16, left: 24 }} suffix=\"px\" />\n\n// Controlled, with a separate commit for expensive work\n<InspectorSpacing\n  label=\"Margin\"\n  value={margin}\n  onValueChange={setMargin}                             // every accepted keystroke\n  onValueCommit={(value) => console.log(\"persist\", value)} // Enter or blur\n  min={0}\n  max={128}\n  step={4}\n  suffix=\"px\"\n/>\n\n<InspectorSpacing\n  label=\"Inset\"\n  icon={Frame}           // optional leading icon\n  linked={linked}        // take the link state over, if it belongs to your state\n  onLinkedChange={setLinked}\n  onOpenChange={(open) => console.log(\"editor open:\", open)}\n  value={inset}\n  onValueChange={setInset}\n  tone=\"outline\"         // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n/>\n\n// Always four edges, no tie-together toggle\n<InspectorSpacing label=\"Border width\" hideLink max={12} value={border} onValueChange={setBorder} />",
     playground: inspectorSpacingPlayground,
@@ -1770,6 +1829,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Chart",
     component: LineChart,
     demoProps: lineChartDemo,
+    dependencies: ["recharts"],
     registryDependencies: ["chart"],
     usage: "import { LineChart } from \"@/components/beste/component/line-chart\";\n\n<LineChart\n  xKey=\"day\"\n  config={{\n    thisMonth: { label: \"This month\", color: \"var(--chart-1)\" },\n    lastMonth: { label: \"Last month\", color: \"var(--chart-2)\" },\n  }}\n  data={[\n    { day: \"1 Jan\", thisMonth: 5200, lastMonth: 4300 },\n    { day: \"8 Jan\", thisMonth: 6100, lastMonth: 5200 },\n  ]}\n/>",
     playground: lineChartPlayground,
@@ -1792,6 +1852,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Chart",
     component: PieChart,
     demoProps: pieChartDemo,
+    dependencies: ["recharts"],
     registryDependencies: ["chart"],
     usage: "import { PieChart } from \"@/components/beste/component/pie-chart\";\n\n<PieChart\n  dataKey=\"value\"\n  nameKey=\"segment\"\n  donut={0.55}\n  showLegend\n  config={{\n    retailers: { label: \"Retailers\", color: \"var(--chart-1)\" },\n    distributors: { label: \"Distributors\", color: \"var(--chart-2)\" },\n  }}\n  data={[\n    { segment: \"retailers\", value: 2884 },\n    { segment: \"distributors\", value: 1432 },\n  ]}\n/>",
     playground: pieChartPlayground,
@@ -1815,6 +1876,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Chart",
     component: RadarChart,
     demoProps: radarChartDemo,
+    dependencies: ["recharts"],
     registryDependencies: ["chart"],
     usage: "import { RadarChart } from \"@/components/beste/component/radar-chart\";\n\n<RadarChart\n  angleKey=\"metric\"\n  config={{\n    desktop: { label: \"Desktop\", color: \"var(--chart-1)\" },\n    mobile: { label: \"Mobile\", color: \"var(--chart-2)\" },\n  }}\n  data={[\n    { metric: \"Speed\", desktop: 186, mobile: 120 },\n    { metric: \"Comfort\", desktop: 237, mobile: 190 },\n  ]}\n/>",
     playground: radarChartPlayground,
@@ -1826,6 +1888,7 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     category: "Chart",
     component: RadialChart,
     demoProps: radialChartDemo,
+    dependencies: ["recharts"],
     registryDependencies: ["chart"],
     usage: "import { RadialChart } from \"@/components/beste/component/radial-chart\";\n\n<RadialChart\n  value={68}\n  max={100}\n  label=\"On track for 80% target\"\n  color=\"var(--chart-1)\"\n/>",
     playground: radialChartPlayground,
@@ -1859,6 +1922,225 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     registryDependencies: ["button", "avatar"],
     usage: "import { TalentCard } from \"@/components/beste/component/talent-card\";\n\n<TalentCard\n  name=\"Selin Aydar\"\n  verified\n  rating={4.6}\n  reviews={18}\n  location=\"Porto, PT\"\n  distance=\"820 miles away\"\n  rate=\"$142\"\n  availability=\"Recently active — Available\"\n  onWishlist={(saved) => console.log(\"wishlist:\", saved)}\n  onInvite={(invited) => console.log(\"invite:\", invited)}\n/>",
     playground: talentCardPlayground,
+  },
+  {
+    name: "text1",
+    title: "Word Stagger",
+    description: "Text that settles in one word at a time, each word rising a few pixels out of a soft blur. Plays on scroll by default, or immediately for heroes.",
+    category: "Text",
+    component: Text1,
+    demoProps: text1Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text1 } from \"@/components/beste/component/text1\";\n\n<Text1\n  as=\"h2\"                       // \"h1\" | \"h2\" | \"h3\" | \"p\" | \"blockquote\" | \"span\"\n  text=\"Room to breathe, and a way forward.\"\n  className=\"font-serif text-5xl\"\n/>\n\n<Text1\n  as=\"h1\"\n  text=\"A steady hour in an unsteady week.\"\n  trigger=\"mount\"   // play at once instead of on scroll\n  delay={0.3}       // seconds before the first word\n  stagger={0.07}    // seconds between words\n/>",
+    isAnimated: true,
+    playground: text1Playground,
+  },
+  {
+    name: "text2",
+    title: "Line Reveal",
+    description: "Lines of text that rise into view out of their own clipped rows, one after another, the way a heading is unmasked line by line.",
+    category: "Text",
+    component: Text2,
+    demoProps: text2Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text2 } from \"@/components/beste/component/text2\";\n\n<Text2\n  as=\"h2\"\n  lines={[\"Nothing changes all at once.\", \"Everything changes a little at a time.\"]}\n  className=\"font-serif text-5xl leading-[1.05]\"\n/>\n\n<Text2\n  as=\"h1\"\n  lines={[\"Come as you are.\", \"Stay as long as it takes.\"]}\n  trigger=\"mount\"\n  stagger={0.18}\n/>",
+    isAnimated: true,
+    playground: text2Playground,
+  },
+  {
+    name: "text3",
+    title: "Letter Cascade",
+    description: "Short text whose characters arrive one by one out of a light blur, for eyebrows, labels and single words. The element keeps the whole string as its accessible name.",
+    category: "Text",
+    component: Text3,
+    demoProps: text3Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text3 } from \"@/components/beste/component/text3\";\n\n<Text3\n  as=\"p\"\n  text=\"Therapy and coaching, Lisbon\"\n  className=\"text-sm uppercase tracking-[0.25em] text-muted-foreground\"\n/>\n\n<Text3 text=\"Altair\" as=\"span\" trigger=\"mount\" stagger={0.05} className=\"font-serif text-6xl\" />",
+    isAnimated: true,
+    playground: text3Playground,
+  },
+  {
+    name: "text4",
+    title: "Turning Word",
+    description: "A sentence whose one word takes turns: each candidate blurs up into place as the last blurs out, on a timer that stops when reduced motion is preferred.",
+    category: "Text",
+    component: Text4,
+    demoProps: text4Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text4 } from \"@/components/beste/component/text4\";\n\n<Text4\n  as=\"h1\"\n  before=\"Room to\"\n  words={[\"breathe.\", \"think.\", \"rest.\", \"begin again.\"]}\n  interval={2800}                      // ms per word\n  className=\"font-serif text-7xl\"\n  wordClassName=\"text-muted-foreground\"\n/>",
+    playground: text4Playground,
+  },
+  {
+    name: "text5",
+    title: "Scroll Highlight",
+    description: "A passage whose words brighten one after another in reading order as it scrolls through the viewport, and dim again on the way back, like a finger following the line.",
+    category: "Text",
+    component: Text5,
+    demoProps: text5Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text5 } from \"@/components/beste/component/text5\";\n\n<Text5\n  as=\"p\"\n  text=\"Progress rarely feels like progress while it is happening. Sometimes it is showing up.\"\n  dim={0.2}                         // opacity before the reader reaches a word\n  className=\"font-serif text-5xl leading-[1.15]\"\n/>",
+    playground: text5Playground,
+  },
+  {
+    name: "text6",
+    title: "Typewriter",
+    description: "Text typed out one character at a time behind a thin caret that keeps a slow pulse once the line is finished. The element keeps the whole string as its accessible name.",
+    category: "Text",
+    component: Text6,
+    demoProps: text6Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text6 } from \"@/components/beste/component/text6\";\n\n<Text6\n  as=\"h2\"\n  text=\"Come as you are.\"\n  speed={45}          // ms per character\n  delay={200}         // ms before the first one\n  caret              // keep the caret after the last character\n  className=\"font-serif text-5xl\"\n/>",
+    isAnimated: true,
+    playground: text6Playground,
+  },
+  {
+    name: "text7",
+    title: "Count Up",
+    description: "A figure that counts up from zero to its value the first time it scrolls into view, with a prefix, a suffix, decimals and thousands grouping, in tabular numerals so nothing shifts.",
+    category: "Text",
+    component: Text7,
+    demoProps: text7Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text7 } from \"@/components/beste/component/text7\";\n\n<Text7 value={2400} suffix=\"+\" as=\"p\" className=\"font-serif text-6xl\" />\n\n<Text7\n  value={4.9}\n  decimals={1}\n  prefix=\"\"\n  duration={2}         // seconds\n  grouping={false}     // no thousands separators (years, codes)\n/>",
+    isAnimated: true,
+    playground: text7Playground,
+  },
+  {
+    name: "text8",
+    title: "Underline Draw",
+    description: "An inline phrase whose hairline underline draws itself in from the left when it scrolls into view. Drop it inside a heading or a sentence to mark the words that matter.",
+    category: "Text",
+    component: Text8,
+    demoProps: text8Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text8 } from \"@/components/beste/component/text8\";\n\n<h2 className=\"font-serif text-5xl\">\n  A practice where you are <Text8 text=\"listened to the end\" />.\n</h2>\n\n<Text8\n  text=\"in the room or online\"\n  offset={0.25}            // gap under the text, in em\n  thickness={2}            // line thickness in px\n  lineClassName=\"bg-primary\"\n  delay={0.5}\n/>",
+    isAnimated: true,
+    playground: text8Playground,
+  },
+  {
+    name: "text9",
+    title: "Soft Blur In",
+    description: "A paragraph or heading that arrives as one piece, rising a few pixels out of a soft blur when it scrolls into view. The quiet companion to the word stagger, for body copy and descriptions.",
+    category: "Text",
+    component: Text9,
+    demoProps: text9Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text9 } from \"@/components/beste/component/text9\";\n\n<Text9\n  as=\"p\"\n  text=\"Forty minutes to see whether this feels like a place you could talk.\"\n  className=\"text-lg text-muted-foreground\"\n/>\n\n<Text9 as=\"h2\" text=\"Still here.\" trigger=\"mount\" blur={16} y={20} delay={0.4} />",
+    isAnimated: true,
+    playground: text9Playground,
+  },
+  {
+    name: "text10",
+    title: "Photo Fill",
+    description: "Large serif letters filled with a photograph that drifts slowly inside them as the page scrolls, the picture showing through the type.",
+    category: "Text",
+    component: Text10,
+    demoProps: text10Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text10 } from \"@/components/beste/component/text10\";\n\n<Text10\n  as=\"h1\"\n  text=\"Breathe\"\n  image={{ src: \"/photos/hills.jpg\", alt: \"Fog over green hills\" }}\n  drift={30}                          // percent the photo travels while scrolling\n  className=\"font-serif text-9xl\"\n/>",
+    playground: text10Playground,
+  },
+  {
+    name: "text11",
+    title: "Ink Drying",
+    description: "Words that begin as soft, spread blots of ink, wide-set and out of focus, and dry into crisp, tightly set type one after another.",
+    category: "Text",
+    component: Text11,
+    demoProps: text11Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text11 } from \"@/components/beste/component/text11\";\n\n<Text11 as=\"h2\" text=\"Slow, on purpose.\" className=\"font-serif text-6xl\" />\n\n<Text11\n  as=\"h1\"\n  text=\"Come as you are.\"\n  trigger=\"mount\"\n  stagger={0.15}      // seconds between words\n  duration={2}        // seconds each word takes to dry\n/>",
+    isAnimated: true,
+    playground: text11Playground,
+  },
+  {
+    name: "text12",
+    title: "Slow Wave",
+    description: "A word whose letters rise and fall on one slow, continuous swell, each a beat behind the last, like a line of type resting on water. Stays still when reduced motion is preferred.",
+    category: "Text",
+    component: Text12,
+    demoProps: text12Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text12 } from \"@/components/beste/component/text12\";\n\n<Text12 as=\"h1\" text=\"Altair\" className=\"font-serif text-9xl\" />\n\n<Text12\n  text=\"breathe\"\n  amplitude={0.12}   // wave height in em\n  period={6}         // seconds per swell\n/>",
+    playground: text12Playground,
+  },
+  {
+    name: "text13",
+    title: "Fog Clearing",
+    description: "Text hidden behind fog that clears across it from left to right along one soft edge, so the words emerge in reading order without moving at all.",
+    category: "Text",
+    component: Text13,
+    demoProps: text13Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text13 } from \"@/components/beste/component/text13\";\n\n<Text13 as=\"h2\" text=\"The fog lifts a little later each morning.\" className=\"font-serif text-5xl\" />\n\n<Text13\n  as=\"p\"\n  text=\"Come as you are, stay as long as it takes.\"\n  softness={50}      // width of the soft edge, percent\n  duration={3}\n  trigger=\"mount\"\n/>",
+    isAnimated: true,
+    playground: text13Playground,
+  },
+  {
+    name: "text14",
+    title: "Letters Settling",
+    description: "A short word whose letters begin scattered and slightly turned, then drift home on a soft spring one after another, like type settling onto a page.",
+    category: "Text",
+    component: Text14,
+    demoProps: text14Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text14 } from \"@/components/beste/component/text14\";\n\n<Text14 as=\"h1\" text=\"settle\" className=\"font-serif text-9xl\" />\n\n<Text14\n  text=\"Altair\"\n  spread={1.4}        // how far the letters start from home, in em\n  stagger={0.08}\n  trigger=\"mount\"\n/>",
+    isAnimated: true,
+    playground: text14Playground,
+  },
+  {
+    name: "text15",
+    title: "Running Line",
+    description: "A single line of text that runs across its container without end, fading at both edges and pausing under the pointer. Small caps for announcements, tracked serif for statements.",
+    category: "Text",
+    component: Text15,
+    demoProps: text15Demo,
+    usage: "import { Text15 } from \"@/components/beste/component/text15\";\n\n<Text15\n  text=\"Therapy and coaching, in the room or online\"\n  separator=\"·\"\n  duration={28}          // seconds per pass\n  direction=\"left\"       // or \"right\"\n  className=\"text-sm uppercase tracking-[0.25em] text-muted-foreground\"\n/>",
+    playground: text15Playground,
+  },
+  {
+    name: "text16",
+    title: "Highlight Sweep",
+    description: "An inline phrase that gets a soft highlight swept in behind it from the left when it scrolls into view, like a marker drawn across the words, without the text moving.",
+    category: "Text",
+    component: Text16,
+    demoProps: text16Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text16 } from \"@/components/beste/component/text16\";\n\n<h2 className=\"font-serif text-5xl\">\n  A practice where you are <Text16 text=\"listened to\" />, all the way through.\n</h2>\n\n<Text16 text=\"on purpose\" highlightClassName=\"bg-primary/20\" delay={0.6} />",
+    isAnimated: true,
+    playground: text16Playground,
+  },
+  {
+    name: "text17",
+    title: "Rolling Digits",
+    description: "A number whose digits roll like an odometer, each column sliding to its new figure a beat after the last, whenever the value changes. For prices that switch with a toggle, years, and live counters that climb on their own.",
+    category: "Text",
+    component: Text17,
+    demoProps: text17Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text17 } from \"@/components/beste/component/text17\";\nimport { useState } from \"react\";\n\nconst [season, setSeason] = useState(false);\n\n<Text17 value={season ? 62 : 70} prefix=\"$\" className=\"font-serif text-6xl\" />\n\n<Text17 value={2026} grouping={false} duration={1} />\n\n// Or let it climb on its own: one every second, for a live counter\n<Text17 value={1240} suffix=\"+\" tick={1} />",
+    playground: text17Playground,
+  },
+  {
+    name: "text18",
+    title: "Circle Text",
+    description: "A line of text set around a circle that turns slowly, with room in the middle for an initial, an icon or a short word. A seal for corners, footers and hero edges.",
+    category: "Text",
+    component: Text18,
+    demoProps: text18Demo,
+    usage: "import { Text18 } from \"@/components/beste/component/text18\";\n\n<Text18 text=\"Altair · Lisbon · since 2019 · \" size={180} className=\"text-sm uppercase tracking-[0.3em]\">\n  <span className=\"font-serif text-3xl\">A</span>\n</Text18>\n\n<Text18\n  text=\"Book a first call · Book a first call · \"\n  size={140}\n  duration={16}            // seconds per turn, 0 holds still\n  direction=\"counter\"\n/>",
+    playground: text18Playground,
+  },
+  {
+    name: "text19",
+    title: "Strike and Replace",
+    description: "A sentence that corrects itself: a line is drawn through the old word from left to right, and the better word settles in beside it out of a soft blur.",
+    category: "Text",
+    component: Text19,
+    demoProps: text19Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text19 } from \"@/components/beste/component/text19\";\n\n<Text19\n  as=\"h2\"\n  before=\"Not\"\n  struck=\"fixed.\"\n  replacement=\"heard.\"\n  struckClassName=\"text-muted-foreground\"\n  className=\"font-serif text-6xl\"\n/>\n\n<Text19 before=\"Slow\" struck=\"change.\" replacement=\"change, on purpose.\" trigger=\"mount\" delay={0.6} />",
+    isAnimated: true,
+    playground: text19Playground,
   },
   {
     name: "user-menu",

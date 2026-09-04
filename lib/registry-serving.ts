@@ -121,19 +121,23 @@ const DEFAULT_ITEM_DEPENDENCIES = ["clsx", "tailwind-merge", "lucide-react"];
  * Shapes the registry-item JSON for a registry-component, shipping the
  * component's own file plus the transitive closure of the components it
  * declares via `registryComponents` (e.g. the product-filters engine ships
- * every filter control it composes). shadcn/ui deps are aggregated across
- * the closure. Returns null when any source in the closure is unreadable.
+ * every filter control it composes). shadcn/ui deps and npm deps are both
+ * aggregated across the closure, on top of the defaults every item needs, so
+ * installing a motion component pulls framer-motion and a chart pulls
+ * recharts. Returns null when any source in the closure is unreadable.
  */
 export async function buildComponentItemJson(options: {
   component: {
     name: string;
     title: string;
     description: string;
+    dependencies?: string[];
     registryDependencies?: string[];
     registryComponents?: string[];
   };
   variant: RegistryVariant;
   resolve: (name: string) => {
+    dependencies?: string[];
     registryDependencies?: string[];
     registryComponents?: string[];
   } | undefined;
@@ -141,6 +145,7 @@ export async function buildComponentItemJson(options: {
   const { component, variant, resolve } = options;
 
   const registryDependencies = new Set(component.registryDependencies ?? []);
+  const dependencies = new Set(DEFAULT_ITEM_DEPENDENCIES);
   const files: Array<{
     path: string;
     content: string;
@@ -169,6 +174,9 @@ export async function buildComponentItemJson(options: {
     for (const dep of meta?.registryDependencies ?? []) {
       registryDependencies.add(dep);
     }
+    for (const dep of meta?.dependencies ?? []) {
+      dependencies.add(dep);
+    }
     queue.push(...(meta?.registryComponents ?? []));
   }
 
@@ -177,7 +185,7 @@ export async function buildComponentItemJson(options: {
     name: component.name,
     title: component.title,
     description: component.description,
-    dependencies: DEFAULT_ITEM_DEPENDENCIES,
+    dependencies: Array.from(dependencies),
     registryDependencies: Array.from(registryDependencies),
     files,
     type: "registry:component",

@@ -28,6 +28,7 @@ import Link from "next/link";
 
 import { CodeBlock } from "@/components/code-block";
 import { FitScale } from "@/components/fit-scale";
+import { ReplayButton } from "@/components/replay-button";
 import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { ThemedPreview } from "@/components/theme/themed-preview";
 import { DOCS_INSTALLATION_HREF, hostedLinkProps } from "@/lib/site-links";
@@ -187,6 +188,8 @@ export function RegistryComponentShowcase({
   const [toneOverride, setToneOverride] = useState<string | undefined>(undefined);
   /** Which of the two the documentation layout is showing. */
   const [view, setView] = useState("preview");
+  // Remounts the live demo so a one-shot animation plays again
+  const [replay, setReplay] = useState(0);
 
   // Reset tone override when the component changes
   useEffect(() => {
@@ -301,13 +304,16 @@ export function RegistryComponentShowcase({
                 */}
                 <div className="relative flex size-full items-center justify-center p-8">
                   {fitToStage ? (
-                    <FitScale className="size-full" padding={0}>
+                    <FitScale key={replay} className="size-full" padding={0}>
                       <Component {...livePreviewProps} />
                     </FitScale>
                   ) : (
-                    <Component {...livePreviewProps} />
+                    <Component key={replay} {...livePreviewProps} />
                   )}
                 </div>
+                {entry.isAnimated && (
+                  <ReplayButton label="Reanimate" onClick={() => setReplay((value) => value + 1)} className="absolute right-3 top-3 z-20" />
+                )}
               </ThemedPreview>
             </div>
           ) : (
@@ -447,8 +453,11 @@ export function RegistryComponentShowcase({
         >
           <ThemedPreview className="relative size-full">
             <div className="relative flex size-full items-center justify-center">
-              <Component {...livePreviewProps} />
+              <Component key={replay} {...livePreviewProps} />
             </div>
+            {entry.isAnimated && (
+              <ReplayButton label="Reanimate" onClick={() => setReplay((value) => value + 1)} className="absolute right-3 top-3 z-20" />
+            )}
           </ThemedPreview>
         </div>
       </div>

@@ -200,10 +200,6 @@ export function ComponentsContent({
                 />
                 <div
                   className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background"
-                  style={{
-                    backgroundImage: "radial-gradient(circle, var(--border) 1px, transparent 1px)",
-                    backgroundSize: "16px 16px",
-                  }}
                 >
                   <Component {...c.demoProps} />
                   {/* The corner marks as one cluster: the badge holds the

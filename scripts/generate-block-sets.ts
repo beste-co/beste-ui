@@ -31,6 +31,7 @@ const OUTPUT = join(import.meta.dirname, "..", "lib", "block-sets.ts");
  * it in demo copy.
  */
 const SETS = [
+  { key: "altair", brand: "Altair", components: ["button22"] },
   { key: "auralis", brand: "Auralis", components: ["badge7", "button12"] },
   { key: "polaris", brand: "Polaris", components: ["badge6", "button1"] },
   { key: "sirius", brand: "Sirius", components: ["badge23", "button21"] },
@@ -38,6 +39,7 @@ const SETS = [
 
 /** Blocks that belong to a set but carry neither its components nor its name. */
 const EXTRA: Record<string, string[]> = {
+  altair: [],
   auralis: [],
   polaris: [],
   sirius: [],

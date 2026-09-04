@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Settings row for the four edges of a box: the row carries a CSS-shorthand summary, and opens a cross where each field sits on the edge it sets, tied together or not.",
   category: "Inspector",
+  registryDependencies: ["popover"],
   usage: `import { InspectorSpacing } from "@/components/beste/component/inspector-spacing";
 
 // Uncontrolled. The row reads "16 24 px"; the cross opens on click, and the link

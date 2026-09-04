@@ -63,6 +63,13 @@ export interface ComponentMeta {
 
   /** If true, the component is Pro with obfuscated source code */
   isPro?: boolean;
+
+  /**
+   * If true, the component plays a one-shot animation on mount. Showcase
+   * surfaces then offer a replay control that remounts the demo, so a reader
+   * can watch it again without reloading the page.
+   */
+  isAnimated?: boolean;
 }
 
 /**
