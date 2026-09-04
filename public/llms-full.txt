@@ -1378,11 +1378,47 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai45`
 - **Description**: Two-line before/after suggestion with a rose strike-through original and an emerald accepted revision.
 
+#### Streaming Reply
+
+- **URL**: https://ui.beste.co/piece/ai46
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai46`
+- **Description**: Chat exchange that thinks with bouncing dots, streams the answer character by character behind a blinking caret, then rests and plays again.
+
+#### Tool Calls
+
+- **URL**: https://ui.beste.co/piece/ai47
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai47`
+- **Description**: A plain ledger of tool calls: a hairline fills under the step that is running, its duration lands on the right when it finishes, and the answer settles in below.
+
+#### Image Generating
+
+- **URL**: https://ui.beste.co/piece/ai48
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai48`
+- **Description**: Square preview that starts as a blurred, washed-out photo and sharpens in stages while the percentage climbs and the step label moves from sketching to done, then starts over.
+
+#### Voice States
+
+- **URL**: https://ui.beste.co/piece/ai49
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai49`
+- **Description**: Five dots carry the whole assistant: they breathe softly while listening, bob in sequence while thinking, and stretch into dashes while speaking.
+
 #### Token Counter
 
 - **URL**: https://ui.beste.co/piece/ai5
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai5`
 - **Description**: Token-usage card with used of total readout and a fill bar that shifts emerald to amber to rose.
+
+#### Token Stream
+
+- **URL**: https://ui.beste.co/piece/ai50
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai50`
+- **Description**: Reply that arrives as word chips popping in one at a time while the footer counts tokens and updates a tokens-per-second figure, then holds and streams again.
+
+#### Thinking Steps
+
+- **URL**: https://ui.beste.co/piece/ai51
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/ai51`
+- **Description**: Reasoning panel whose numbered steps stagger in once while a thin connector draws down between them, finishing on a final answer row that stays in place.
 
 #### Temperature Control
 
@@ -1488,6 +1524,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/automation20`
 - **Description**: Autocomplete variables card grouped by source (Trigger, Customer, Order) with monospaced handlebars-wrapped violet chips for each path.
 
+#### Pipeline Run
+
+- **URL**: https://ui.beste.co/piece/automation21
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/automation21`
+- **Description**: Each step runs, then a packet crosses the connector and fills it behind itself before the next step lights up, ending in a full row of checks.
+
 #### Schedule Chip
 
 - **URL**: https://ui.beste.co/piece/automation3
@@ -1556,6 +1598,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/badge4`
 - **Description**: Display name followed by a filled badge-check icon and an optional handle. Tone colors the check.
 
+#### Level Up
+
+- **URL**: https://ui.beste.co/piece/badge5
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/badge5`
+- **Description**: The unlock line rises into place while the points count up beside it and the bar fills toward the next level, then everything holds.
+
 ### Ticket
 
 #### Boarding Pass
@@ -1563,6 +1611,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/boarding1
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/boarding1`
 - **Description**: Airline boarding card with FROM and TO airport codes, a flight line, and a dashed divider above date, flight, and seat.
+
+#### Gate Countdown
+
+- **URL**: https://ui.beste.co/piece/boarding2
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/boarding2`
+- **Description**: Boarding pass with a plane tracing the route between the two airports while the countdown to the gate call ticks down beside it.
 
 #### Receipt Stub
 
@@ -1581,6 +1635,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/ticket10
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/ticket10`
 - **Description**: Name-tag layout with bold visitor name and company up top, then an inverted Visitor footer with host and valid date.
+
+#### Ticket Scan
+
+- **URL**: https://ui.beste.co/piece/ticket11
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/ticket11`
+- **Description**: Event ticket whose barcode is swept by a scanner line until it clears, flips to a checked in confirmation, then resets for the next guest.
 
 #### Movie Ticket
 
@@ -1806,6 +1866,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/browser35`
 - **Description**: A narrow phone-shaped frame with a status bar, a back-titled header, a confirmation pill, detail rows, and a full-width action.
 
+#### Page Load
+
+- **URL**: https://ui.beste.co/piece/browser36
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/browser36`
+- **Description**: Browser frame that sweeps a loading bar under the toolbar while shimmering skeleton blocks resolve into a heading, copy and a button, then reloads.
+
+#### Page Load
+
+- **URL**: https://ui.beste.co/piece/browser37
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/browser37`
+- **Description**: Browser frame that loads on repeat: the progress line runs across the top, skeletons pulse in the body, then the real copy settles into place.
+
 #### Secure URL Bar
 
 - **URL**: https://ui.beste.co/piece/browser4
@@ -2000,6 +2072,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/calendar32`
 - **Description**: A one-week day picker with seven compact cells, an accent-filled selection, muted fully booked days, and a caption for the chosen day.
 
+#### Booking Confirm
+
+- **URL**: https://ui.beste.co/piece/calendar33
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/calendar33`
+- **Description**: A week strip where the selection highlight glides to a new day, one of three time slots fills in, and a confirmed row with a check fades in before the flow resets.
+
+#### Slot Booking
+
+- **URL**: https://ui.beste.co/piece/calendar34
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/calendar34`
+- **Description**: Available times light up one after another until one is chosen, the button spins through booking, and the slot locks in green before the demo resets.
+
 #### Date Pill
 
 - **URL**: https://ui.beste.co/piece/calendar4
@@ -2188,6 +2272,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/card31`
 - **Description**: A person card pairing a portrait with a name and role, a colour-coded availability line, and a few hairline facts about the call.
 
+#### Card Flip
+
+- **URL**: https://ui.beste.co/piece/card32
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/card32`
+- **Description**: Payment card that turns on its axis every few seconds to show the magnetic stripe and security code, then turns back to the front.
+
 #### User Profile Card
 
 - **URL**: https://ui.beste.co/piece/card4
@@ -2267,6 +2357,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/chart7
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/chart7`
 - **Description**: A compact chart card that splits a total across labelled horizontal bars, each with its own percentage.
+
+#### Line Draw
+
+- **URL**: https://ui.beste.co/piece/chart8
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/chart8`
+- **Description**: Sparkline that draws itself on mount, fades in the area beneath, then marks the last point with its value and a gently pulsing dot.
+
+#### Bar Race
+
+- **URL**: https://ui.beste.co/piece/chart9
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/chart9`
+- **Description**: Horizontal bars whose values keep drifting, so rows glide up and down to their new rank while the bars stretch and shrink underneath.
 
 ### Chat
 
@@ -2438,6 +2540,36 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/chat34`
 - **Description**: An assistant exchange showing the question as a right-aligned bubble, the answer beside an accent icon tile, and the records it was drawn from as chips under a hairline.
 
+#### Typing Conversation
+
+- **URL**: https://ui.beste.co/piece/chat35
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/chat35`
+- **Description**: Two-person thread that plays out once: a typing indicator bounces before each incoming reply, bubbles slide up as they land, and the finished conversation stays put.
+
+#### Reaction Burst
+
+- **URL**: https://ui.beste.co/piece/chat36
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/chat36`
+- **Description**: Emoji reactions spring onto a message one after another while their counts tick upward, hold for a beat, then clear and play again.
+
+#### Voice Message
+
+- **URL**: https://ui.beste.co/piece/chat37
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/chat37`
+- **Description**: Voice note bubble with a fine waveform that swells to full height near the end, taking the accent color bar by bar as the playhead and timer advance.
+
+#### Delivery Ticks
+
+- **URL**: https://ui.beste.co/piece/chat38
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/chat38`
+- **Description**: Outgoing bubble that walks through sending, sent, delivered and read: ticks swap in under the timestamp and a small seen-by row slides in at the end before the cycle restarts.
+
+#### Presence Roster
+
+- **URL**: https://ui.beste.co/piece/chat39
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/chat39`
+- **Description**: Compact team list where one member at a time changes presence: dots recolor, status text fades in, and the online count in the header keeps pace.
+
 #### Poll Message
 
 - **URL**: https://ui.beste.co/piece/chat4
@@ -2505,6 +2637,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/code13
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/code13`
 - **Description**: A code card with a filename header and copy affordance over syntax-toned, line-numbered source.
+
+#### Diff Reveal
+
+- **URL**: https://ui.beste.co/piece/code14
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/code14`
+- **Description**: Code diff whose removed and added lines slide into place one after another on mount, with the header tallying added and removed counts as they land.
+
+#### Test Runner
+
+- **URL**: https://ui.beste.co/piece/code15
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/code15`
+- **Description**: Test list that runs top to bottom, each spinner resolving into a green check or a red cross while the summary counts passes and failures and a thin bar tracks progress.
 
 #### Code Snippet Card
 
@@ -2699,6 +2843,30 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/commerce30
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/commerce30`
 - **Description**: Region selector with a globe header showing flag, country, and currency, and a list of regions with flags and currency codes plus a check on the active one.
+
+#### Add to Cart
+
+- **URL**: https://ui.beste.co/piece/commerce31
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/commerce31`
+- **Description**: Product row whose Add button presses itself, sends a dot arcing up to the cart icon, and bumps the badge count on every landing before the cart empties again.
+
+#### Checkout Steps
+
+- **URL**: https://ui.beste.co/piece/commerce32
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/commerce32`
+- **Description**: Four-step checkout stepper: the connector fills toward the next node while each summary panel slides in from the right, ending on a placed order with a check.
+
+#### Stock Countdown
+
+- **URL**: https://ui.beste.co/piece/commerce33
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/commerce33`
+- **Description**: Product card whose stock bar shrinks a few units at a time as the Only N left badge warms from neutral to amber to rose, sells out, then restocks.
+
+#### Order Tracking
+
+- **URL**: https://ui.beste.co/piece/commerce34
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/commerce34`
+- **Description**: Vertical delivery timeline where each stop lights up in turn as the connector fills downward and a timestamp fades in, pausing on Delivered before it replays.
 
 #### Stock Alert
 
@@ -2899,6 +3067,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/dashboard33
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/dashboard33`
 - **Description**: A wide panel with a titled header row and three metrics split by vertical hairlines, each carrying its own signed change.
+
+#### Donut Sweep
+
+- **URL**: https://ui.beste.co/piece/dashboard34
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/dashboard34`
+- **Description**: The total counts up while the donut draws one slice after another, each legend row sliding in as its arc lands.
 
 #### Activity Feed
 
@@ -3196,6 +3370,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/editor48`
 - **Description**: Compact deploy card pairing a live URL row, domain verification badge, unpublished-change hint, and a recolorable publish button.
 
+#### Collab Cursors
+
+- **URL**: https://ui.beste.co/piece/editor49
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/editor49`
+- **Description**: Two named carets share a document: one hops between finished lines while the other types a new sentence at the bottom, over and over.
+
 #### File Tree
 
 - **URL**: https://ui.beste.co/piece/editor5
@@ -3434,6 +3614,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/event12`
 - **Description**: A countdown card with a short label over three light figures split by hairlines, closing on a caption.
 
+#### Flip Countdown
+
+- **URL**: https://ui.beste.co/piece/event13
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/event13`
+- **Description**: Split-flap countdown on a dark panel: each second the changing digits fold over with a top-half flip, then the clock rests at zero and starts again.
+
 #### RSVP Row
 
 - **URL**: https://ui.beste.co/piece/event2
@@ -3557,6 +3743,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/food10
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/food10`
 - **Description**: Sommelier pairings panel with a dish header and rose-ruled wine or cocktail suggestion blocks.
+
+#### Kitchen Ticket
+
+- **URL**: https://ui.beste.co/piece/food11
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/food11`
+- **Description**: A kitchen order walks itself from received to ready, swapping the status pill and puffing steam over the tile while it cooks.
 
 #### Restaurant Card
 
@@ -3788,6 +3980,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/form36`
 - **Description**: A single-row capture card with a labelled email field, an accent submit button beside it, and fine print underneath.
 
+#### Form Autofill
+
+- **URL**: https://ui.beste.co/piece/form37
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/form37`
+- **Description**: Name, email and company get typed in one after another behind a caret, then the Continue button spins through a loading state and morphs into an emerald check that says you're in.
+
+#### Rating Prompt
+
+- **URL**: https://ui.beste.co/piece/form38
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/form38`
+- **Description**: A pointer sweeps across five stars, lighting them up as it passes, pops the fourth one to choose it, and the prompt crossfades into a thank-you line before the loop restarts.
+
 #### Required Field
 
 - **URL**: https://ui.beste.co/piece/form4
@@ -3970,6 +4174,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/health30`
 - **Description**: Upcoming telemedicine visit card with a provider byline, amber starts-in pill, and a sky Join button.
 
+#### Heartbeat Trace
+
+- **URL**: https://ui.beste.co/piece/health31
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/health31`
+- **Description**: A bpm figure drifting the way a real reading does, a heart glyph beating beside it, and an ECG line scrolling past underneath without a seam.
+
 #### Steps Tracker
 
 - **URL**: https://ui.beste.co/piece/health4
@@ -4043,6 +4253,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/indicator14
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/indicator14`
 - **Description**: A status card showing one service's uptime percentage above a dense strip of daily bars tinted by how that day went.
+
+#### Status Morph
+
+- **URL**: https://ui.beste.co/piece/indicator15
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/indicator15`
+- **Description**: Deployment pill that morphs from Building to Deploying to Live, its width easing to fit each label while the text cross-fades and the colour shifts.
 
 #### Step Dots
 
@@ -4238,6 +4454,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/input30`
 - **Description**: Crypto address field with a gradient Ξ avatar, shortened mono address, and an ENS lookup chip.
 
+#### OTP Autofill
+
+- **URL**: https://ui.beste.co/piece/input31
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/input31`
+- **Description**: Six code boxes fill one by one behind a moving caret, shake in rose when the first code is wrong, then refill with the right one and settle into an emerald verified state.
+
+#### Password Strength
+
+- **URL**: https://ui.beste.co/piece/input32
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/input32`
+- **Description**: Masked characters type into the field while a four-segment meter climbs from rose through amber to emerald and each rule in the checklist ticks green, then it clears and starts over.
+
 #### Range Slider
 
 - **URL**: https://ui.beste.co/piece/input4
@@ -4329,6 +4557,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/keyboard16
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/keyboard16`
 - **Description**: Row of tactile transport keycaps with the center play/pause lit in primary, flanked by track name and elapsed time.
+
+#### Shortcut Press
+
+- **URL**: https://ui.beste.co/piece/keyboard17
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/keyboard17`
+- **Description**: Keycaps press down one after another, their shadows shrinking as they sink, and the matching action label fades in beside them before the next shortcut takes a turn.
 
 #### Command Palette Row
 
@@ -4524,6 +4758,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/legal30`
 - **Description**: Class-action settlement tile with a matter header, emerald amount band, and fee-share plus approval status.
 
+#### Signature Draw
+
+- **URL**: https://ui.beste.co/piece/legal31
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/legal31`
+- **Description**: A contract signs itself: the signature strokes onto the dotted line, then the signed badge and timestamp fade in behind it.
+
 #### NDA Card
 
 - **URL**: https://ui.beste.co/piece/legal4
@@ -4610,6 +4850,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/location8`
 - **Description**: A coverage card listing each site with its city and capacity, closing on a combined figure under a hairline.
 
+#### Live Tracking
+
+- **URL**: https://ui.beste.co/piece/location9
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/location9`
+- **Description**: Map card on a faint street grid where a courier dot follows the plotted route while the ETA counts down to Arrived, pauses, and sets off again.
+
 ### Logo
 
 #### Brand Chip
@@ -4617,6 +4863,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/logo1
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/logo1`
 - **Description**: Square icon tile paired with a bold wordmark. Pick from four icons and three tones.
+
+#### Logo Marquee
+
+- **URL**: https://ui.beste.co/piece/logo10
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/logo10`
+- **Description**: Customer logos drift past in one endless seamless lane, softened at both edges so nothing pops in or out.
 
 #### Brand Lockup
 
@@ -4775,6 +5027,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/media25
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/media25`
 - **Description**: A video card with a cover image, a duration chip in the corner, and a short kicker over the title.
+
+#### Now Playing
+
+- **URL**: https://ui.beste.co/piece/media26
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/media26`
+- **Description**: Compact player whose progress bar creeps forward in time with the elapsed clock, then fades the title over to the next track when one finishes.
+
+#### Waveform Scrub
+
+- **URL**: https://ui.beste.co/piece/media27
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/media27`
+- **Description**: Player whose waveform fills in bar by bar as the track plays, with the elapsed time keeping pace, then starts the take over.
 
 #### Polaroid Photo
 
@@ -4960,6 +5224,36 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/money23`
 - **Description**: A savings card leading on a large figure and a change chip, then comparing the old and new spend on two aligned rows.
 
+#### Payment Processing
+
+- **URL**: https://ui.beste.co/piece/money24
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/money24`
+- **Description**: Checkout sheet whose pay button turns into a spinner, then a green check with a ring rippling out of it, before resetting for the next run.
+
+#### Balance Reveal
+
+- **URL**: https://ui.beste.co/piece/money25
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/money25`
+- **Description**: Balance card that counts its big figure up from zero with an ease-out curve, then brings income and spending in behind it, each counting up to its own total.
+
+#### Transfer Flow
+
+- **URL**: https://ui.beste.co/piece/money26
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/money26`
+- **Description**: The amount hops out of the sender's tile and arcs along a filling track, then lands with a ring and floats a credit chip above the recipient.
+
+#### Price Ticker
+
+- **URL**: https://ui.beste.co/piece/money27
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/money27`
+- **Description**: Three market rows that drift on a random walk, each updated price flashing green or red for a beat while its percent pill pops to the new value.
+
+#### Card Reveal
+
+- **URL**: https://ui.beste.co/piece/money28
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/money28`
+- **Description**: Payment card that swings in from a slight 3D angle, uncovers its masked number one group at a time, and fades in the holder name and expiry last.
+
 ### Monitoring
 
 #### Service Status
@@ -5039,6 +5333,24 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/monitoring20
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/monitoring20`
 - **Description**: Two-tone success-versus-error split bar that prints the percentage of each side directly inside its segment.
+
+#### Live Latency Bars
+
+- **URL**: https://ui.beste.co/piece/monitoring21
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/monitoring21`
+- **Description**: Streaming bar chart that pushes a fresh sample every few hundred milliseconds, flags spikes in amber, and keeps a rolling p95 in the corner.
+
+#### Uptime Grid
+
+- **URL**: https://ui.beste.co/piece/monitoring22
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/monitoring22`
+- **Description**: Grid of uptime cells that light up green in reading order with a couple of amber and red blips at fixed spots, then holds, fades, and fills again.
+
+#### Server Pulse
+
+- **URL**: https://ui.beste.co/piece/monitoring23
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/monitoring23`
+- **Description**: Three server rows whose CPU and memory bars breathe with fresh readings every second, turning amber and red past their thresholds beside a live status dot.
 
 #### Incident Alert
 
@@ -5228,6 +5540,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/nav33`
 - **Description**: Numbered pagination with prev/next arrows and ellipses for long ranges. Active page flips to foreground.
 
+#### Sliding Tabs
+
+- **URL**: https://ui.beste.co/piece/nav34
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/nav34`
+- **Description**: Segmented tab bar whose active pill glides from tab to tab on a timer while the summary line beneath cross-fades to match.
+
 #### Underline Tabs
 
 - **URL**: https://ui.beste.co/piece/nav4
@@ -5344,6 +5662,24 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/notification20`
 - **Description**: An actionable notification card with an icon tile, a request line, and a pair of approve and decline buttons.
 
+#### Incoming Stack
+
+- **URL**: https://ui.beste.co/piece/notification21
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/notification21`
+- **Description**: Notifications drop in from the top and push the older ones back into a shrinking, fading stack, the way a phone lock screen piles them up.
+
+#### Toast Queue
+
+- **URL**: https://ui.beste.co/piece/notification22
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/notification22`
+- **Description**: Bottom-right toasts slide in from the edge, stack three high, and the oldest slides out and collapses to make room as new ones keep arriving.
+
+#### Bell Bump
+
+- **URL**: https://ui.beste.co/piece/notification23
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/notification23`
+- **Description**: Every couple of seconds the bell wiggles, the unread badge pops up by one, and a one-line preview fades in beneath, resetting once it reaches five.
+
 #### Push Notification
 
 - **URL**: https://ui.beste.co/piece/notification3
@@ -5435,6 +5771,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/progress16
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/progress16`
 - **Description**: A horizontal progress card with numbered nodes joined by connectors, marking finished, current, and upcoming steps.
+
+#### Ring Fill
+
+- **URL**: https://ui.beste.co/piece/progress17
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/progress17`
+- **Description**: Circular progress ring that draws itself from zero to the target on mount while the centre percentage counts up in step, then holds.
+
+#### Segment Loader
+
+- **URL**: https://ui.beste.co/piece/progress18
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/progress18`
+- **Description**: A row of pill segments fills left to right beside a live percentage, flashes a check at one hundred, holds for a beat, and starts over.
 
 #### Progress Ring
 
@@ -5560,6 +5908,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/receipt3`
 - **Description**: A settlement card led by a success mark and the amount taken, with the method, reference, and clearing time listed under a hairline.
 
+#### Printing Receipt
+
+- **URL**: https://ui.beste.co/piece/receipt4
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/receipt4`
+- **Description**: A paper slip that slides out of a printer slot, revealing line items down to a serrated edge, then highlights the total once the print finishes.
+
 ### Search
 
 #### Grouped Results
@@ -5657,6 +6011,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/search24
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/search24`
 - **Description**: A search panel showing a typed query above a labelled group of results, each with a title, a meta line, and a kind chip, closing on a match count.
+
+#### Typing Search
+
+- **URL**: https://ui.beste.co/piece/search25
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/search25`
+- **Description**: A query gets typed out letter by letter while the list filters live, highlighting the matched text and collapsing rows that no longer fit, then clears and tries another search. Rows take a photo when one is given and fall back to initials.
 
 #### Command Palette
 
@@ -6170,6 +6530,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/shapes8`
 - **Description**: Five vertical bars with one taller emerald bar marking the peak.
 
+#### Orbit Loader
+
+- **URL**: https://ui.beste.co/piece/shapes80
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/shapes80`
+- **Description**: Three dots circle a breathing core at their own speeds inside a slowly counter turning dashed ring, a calm stand in for a busy state.
+
 #### Donut Ring
 
 - **URL**: https://ui.beste.co/piece/shapes9
@@ -6342,6 +6708,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/socialproof27`
 - **Description**: A social post with an avatar, name and handle, a timestamp, the post body, and reply, repost, and like counts under a hairline.
 
+#### Signup Feed
+
+- **URL**: https://ui.beste.co/piece/socialproof28
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/socialproof28`
+- **Description**: Recent-activity feed where a new signup card drops in at the top every couple of seconds, nudging the older ones down until the oldest fades away. Rows take a photo when one is given and fall back to initials.
+
 ### Stats
 
 #### Big Stat
@@ -6397,6 +6769,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/stats17
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/stats17`
 - **Description**: A comparison card putting a muted starting figure and an accented result either side of an arrow, with a footnote explaining the sample.
+
+#### Rolling Counter
+
+- **URL**: https://ui.beste.co/piece/stats18
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/stats18`
+- **Description**: Live metric whose digits roll like an odometer each time the value changes, with a delta pill that pops in beside the number.
+
+#### KPI Ticker
+
+- **URL**: https://ui.beste.co/piece/stats19
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/stats19`
+- **Description**: Single-row stat card that flips through revenue, signups, churn and NPS like a departure board, each row sliding up and out as the next one rises in with its delta pill.
 
 #### Trend Delta
 
@@ -6477,6 +6861,18 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/terminal13
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/terminal13`
 - **Description**: A dark terminal card with traffic-light dots, a prompted command, and a success output line.
+
+#### Command Run
+
+- **URL**: https://ui.beste.co/piece/terminal14
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/terminal14`
+- **Description**: Dark terminal that types a command after the prompt, prints its output line by line up to a green success line behind a blinking block cursor, then clears and runs again.
+
+#### Deploy Log
+
+- **URL**: https://ui.beste.co/piece/terminal15
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/terminal15`
+- **Description**: Streaming build log where timestamped lines append every half second and older ones slide up out of view, with warnings in amber and successes in green until the deploy lands.
 
 #### Copy Command
 
@@ -6611,6 +7007,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/toolbar21
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/toolbar21`
 - **Description**: A control bar with a segmented view switcher on a soft track, a live result count, and a filter chip on the row beneath.
+
+#### Recording Bar
+
+- **URL**: https://ui.beste.co/piece/toolbar22
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/toolbar22`
+- **Description**: Floating capture bar with a pulsing record dot, a timer counting the take, and a level meter whose bars keep dancing.
 
 #### Zoom Controls
 
@@ -6868,6 +7270,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/travel30`
 - **Description**: Step-by-step driving panel with emerald start, sky turn, and rose end markers linked by a vertical rail.
 
+#### Flight Progress
+
+- **URL**: https://ui.beste.co/piece/travel31
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/travel31`
+- **Description**: Flight card with a small plane gliding along the arc between two airports as the dotted trail fills behind it and the landing countdown ticks toward Landed.
+
 #### Flight Status
 
 - **URL**: https://ui.beste.co/piece/travel4
@@ -7062,6 +7470,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/upload32`
 - **Description**: A dashed dropzone with an upload chip and hint, over a single file row with a live progress bar.
 
+#### Upload Queue
+
+- **URL**: https://ui.beste.co/piece/upload33
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/upload33`
+- **Description**: Three queued files whose progress bars fill one after another, each settling into a green check while the header counts up to all files uploaded.
+
 #### Drag Over State
 
 - **URL**: https://ui.beste.co/piece/upload4
@@ -7111,6 +7525,12 @@ Small composable widgets that drop into the media slots inside a block. Free, no
 - **URL**: https://ui.beste.co/piece/weather10
 - **Install**: `npx shadcn add https://ui.beste.co/piece/r/weather10`
 - **Description**: Severity-colored triangle alert with title, severity badge, descriptive detail, and an Until line.
+
+#### Forecast Cycle
+
+- **URL**: https://ui.beste.co/piece/weather11
+- **Install**: `npx shadcn add https://ui.beste.co/piece/r/weather11`
+- **Description**: Forecast card that walks through the next few hours on its own, swapping the temperature with a soft rise while the sun turns, clouds drift, and rain falls.
 
 #### Weekly Forecast
 

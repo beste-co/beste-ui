@@ -4,13 +4,14 @@ import { SourceCodeIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useMemo, useTransition } from "react";
+import { useCallback, useMemo, useState, useTransition } from "react";
 import {
   BrowseFilters,
   BrowsePagerArrow,
   BrowsePagination,
 } from "@/components/browse-filters";
 import { NewBadge, useIsNew } from "@/components/new-badge";
+import { ReplayButton } from "@/components/replay-button";
 import { type BrowseSort, DEFAULT_SORT, SORT_OPTIONS } from "@/lib/browse-sort";
 import { pieceInstallCommand } from "@/lib/install-command";
 import { type ComponentMeta, components } from "@/lib/components";
@@ -65,6 +66,8 @@ export function ComponentsContent({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const isNewPiece = useIsNew(addedDates);
+  // Remounts a one-shot piece demo so its entrance plays again
+  const [replays, setReplays] = useState<Record<string, number>>({});
 
   const gridItems = useMemo<readonly ComponentMeta[]>(() => {
     const map = new Map(components.map((c) => [c.name, c]));
@@ -201,11 +204,18 @@ export function ComponentsContent({
                 <div
                   className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background"
                 >
-                  <Component {...c.demoProps} />
+                  <Component key={replays[c.name] ?? 0} {...c.demoProps} />
                   {/* The corner marks as one cluster: the badge holds the
                       corner and the source-code hint fades in beside it, rather
-                      than the two landing on the same spot. */}
-                  <div className="pointer-events-none absolute right-2 top-2 flex items-center gap-1.5">
+                      than the two landing on the same spot. It sits above the
+                      card's overlay link so the replay can be clicked. */}
+                  <div className="pointer-events-none absolute right-2 top-2 z-20 flex items-center gap-1.5">
+                    {c.isAnimated && (
+                      <ReplayButton
+                        onClick={() => setReplays((value) => ({ ...value, [c.name]: (value[c.name] ?? 0) + 1 }))}
+                        className="pointer-events-auto opacity-0 transition-opacity focus-visible:opacity-100 group-hover:opacity-100"
+                      />
+                    )}
                     <div
                       className="inline-flex h-8 w-8 items-center justify-center rounded-md border bg-background opacity-0 transition-opacity group-hover:opacity-100"
                       aria-hidden="true"

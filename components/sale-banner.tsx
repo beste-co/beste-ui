@@ -4,17 +4,19 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useLicense } from "@/lib/license-context";
 import { isSaleActive, salePercent } from "@/lib/pricing";
 import { PRICING_HREF, hostedLinkProps } from "@/lib/site-links";
 
 /**
  * A thin ink band above the header on the home page while a sale
- * runs. The whole band is the link. Decided after mount so the server, which
- * has no idea what the reader's clock says, never renders a band the client
- * then takes down.
+ * runs, for readers who have not bought yet. The whole band is the link.
+ * Decided after mount so the server, which has no idea what the reader's
+ * clock says, never renders a band the client then takes down.
  */
 export function SaleBanner() {
   const pathname = usePathname();
+  const { hasPro, ready } = useLicense();
   const reduce = useReducedMotion() ?? false;
   const [active, setActive] = useState(false);
 
@@ -22,7 +24,9 @@ export function SaleBanner() {
     setActive(isSaleActive());
   }, []);
 
-  if (pathname !== "/" || !active) return null;
+  // Nothing until the licence answer is final: a Pro reader must never see
+  // the band appear and then go away.
+  if (pathname !== "/" || !active || !ready || hasPro) return null;
 
   return (
     <Link

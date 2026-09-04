@@ -271,26 +271,6 @@ export function SiteHeader() {
             </div>
 
             {/*
-              The one thing in the bar asking for something. Hidden from people who
-              already bought it — the same test the panel's upgrade link uses, and
-              for the same reason: hasPro starts false and resolves a moment later,
-              so a Pro reader sees this briefly rather than an empty slot widening
-              on every page load, which is the trade the majority case wins.
-
-              Below sm it drops out and the panel carries the price instead, since
-              a phone bar already holds a search and a menu.
-            */}
-            {!hasPro && (
-              <Link
-                href={PRICING_HREF}
-                {...hostedLinkProps}
-                className="ml-4 hidden h-10 shrink-0 cursor-pointer items-center rounded-full bg-foreground px-5 text-base font-semibold text-background transition-opacity hover:opacity-90 sm:inline-flex"
-              >
-                GET PRO
-              </Link>
-            )}
-
-            {/*
               The round controls are one cluster: GitHub, search on a phone, and the
               menu. A nav-sized gap between them would read as three separate things
               rather than one set of controls at the end of the bar.

@@ -346,7 +346,7 @@ export interface RegistryComponentMeta {
   playground?: PlaygroundConfig;
 }
 
-const _allRegistryComponents: RegistryComponentMeta[] = [
+const _allRegistryComponents_0: RegistryComponentMeta[] = [
   {
     name: "area-chart",
     title: "Area Chart",
@@ -2154,6 +2154,8 @@ const _allRegistryComponents: RegistryComponentMeta[] = [
     playground: userMenuPlayground,
   }
 ];
+
+const _allRegistryComponents: RegistryComponentMeta[] = [..._allRegistryComponents_0];
 
 /** Every registry-component, including hidden infrastructure ones. */
 export const allRegistryComponents = _allRegistryComponents;

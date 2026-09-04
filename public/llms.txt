@@ -360,7 +360,13 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Export JSON](https://ui.beste.co/piece/ai43): Mini code viewer for a structured response, with a filename header, copy button, and a preformatted JSON preview body.
 - [Batch Job](https://ui.beste.co/piece/ai44): Batch inference progress card with completed/failed counts and a stacked bar where the error segment shows in rose.
 - [Diff Suggestion](https://ui.beste.co/piece/ai45): Two-line before/after suggestion with a rose strike-through original and an emerald accepted revision.
+- [Streaming Reply](https://ui.beste.co/piece/ai46): Chat exchange that thinks with bouncing dots, streams the answer character by character behind a blinking caret, then rests and plays again.
+- [Tool Calls](https://ui.beste.co/piece/ai47): A plain ledger of tool calls: a hairline fills under the step that is running, its duration lands on the right when it finishes, and the answer settles in below.
+- [Image Generating](https://ui.beste.co/piece/ai48): Square preview that starts as a blurred, washed-out photo and sharpens in stages while the percentage climbs and the step label moves from sketching to done, then starts over.
+- [Voice States](https://ui.beste.co/piece/ai49): Five dots carry the whole assistant: they breathe softly while listening, bob in sequence while thinking, and stretch into dashes while speaking.
 - [Token Counter](https://ui.beste.co/piece/ai5): Token-usage card with used of total readout and a fill bar that shifts emerald to amber to rose.
+- [Token Stream](https://ui.beste.co/piece/ai50): Reply that arrives as word chips popping in one at a time while the footer counts tokens and updates a tokens-per-second figure, then holds and streams again.
+- [Thinking Steps](https://ui.beste.co/piece/ai51): Reasoning panel whose numbered steps stagger in once while a thin connector draws down between them, finishing on a final answer row that stays in place.
 - [Temperature Control](https://ui.beste.co/piece/ai6): Slider card with a sky-to-rose gradient track, a circular handle, and Focused to Creative end labels.
 - [System Prompt](https://ui.beste.co/piece/ai7): Dashed-border card with a violet scroll icon, uppercase label, and an edit button for the system instructions.
 - [Chat Exchange](https://ui.beste.co/piece/ai8): Paired bubbles: a primary-tinted user message above an assistant reply fronted by a gradient sparkle avatar.
@@ -381,6 +387,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Version Tags](https://ui.beste.co/piece/automation19): Workflow version history with a colored status dot, monospace tag, emerald active, amber draft, and muted archived pills, and author with date on the right.
 - [Workflow Node](https://ui.beste.co/piece/automation2): Single workflow step card with a kind-colored icon header (trigger, action, filter), the app/event label, configured field rows, and a configure footer.
 - [Variable Chips](https://ui.beste.co/piece/automation20): Autocomplete variables card grouped by source (Trigger, Customer, Order) with monospaced handlebars-wrapped violet chips for each path.
+- [Pipeline Run](https://ui.beste.co/piece/automation21): Each step runs, then a packet crosses the connector and fills it behind itself before the next step lights up, ending in a full row of checks.
 - [Schedule Chip](https://ui.beste.co/piece/automation3): Cron-based schedule card with a sky repeat tile, human-readable cadence, monospace cron expression, next run countdown, and timezone.
 - [Run Log](https://ui.beste.co/piece/automation4): Workflow execution log with rows for each run showing a semantic status icon, run id, duration, and relative time.
 - [If-Then Branch](https://ui.beste.co/piece/automation5): Conditional branch card with a dashed condition row and side-by-side true and false outcome cards labeled with emerald and rose pills.
@@ -395,13 +402,16 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Version Badge](https://ui.beste.co/piece/badge2): Split chip with a monospace version string and a colored stage tag like NEW or BETA.
 - [Coupon Code](https://ui.beste.co/piece/badge3): Dashed-border tag with a monospace code on the left and a colored discount callout on the right.
 - [Verified Handle](https://ui.beste.co/piece/badge4): Display name followed by a filled badge-check icon and an optional handle. Tone colors the check.
+- [Level Up](https://ui.beste.co/piece/badge5): The unlock line rises into place while the points count up beside it and the bar fills toward the next level, then everything holds.
 
 ### Ticket
 
 - [Boarding Pass](https://ui.beste.co/piece/boarding1): Airline boarding card with FROM and TO airport codes, a flight line, and a dashed divider above date, flight, and seat.
+- [Gate Countdown](https://ui.beste.co/piece/boarding2): Boarding pass with a plane tracing the route between the two airports while the countdown to the gate call ticks down beside it.
 - [Receipt Stub](https://ui.beste.co/piece/receipt1): Thermal receipt with a merchant header, itemized lines, a total row, and a jagged torn edge at the bottom.
 - [Event Ticket](https://ui.beste.co/piece/ticket1): Ticket with event name, date, time, and seat on the main stub, and a dashed tear-off Admit One side.
 - [Visitor Badge](https://ui.beste.co/piece/ticket10): Name-tag layout with bold visitor name and company up top, then an inverted Visitor footer with host and valid date.
+- [Ticket Scan](https://ui.beste.co/piece/ticket11): Event ticket whose barcode is swept by a scanner line until it clears, flips to a checked in confirmation, then resets for the next guest.
 - [Movie Ticket](https://ui.beste.co/piece/ticket2): Cinema stub with title and seat on top, then a dashed split into a date row and a screen format pill.
 - [Transit Ticket](https://ui.beste.co/piece/ticket3): Train or bus stub with departure and arrival stations bridged by an arrow, plus service and platform.
 - [Raffle Ticket](https://ui.beste.co/piece/ticket4): Numbered stub on the left with a tabular-nums draw number, paired with the raffle title and draw date.
@@ -442,6 +452,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Bookmark Added](https://ui.beste.co/piece/browser33): Bookmark confirmation popover with a name field, folder picker, and actions.
 - [App Window Frame](https://ui.beste.co/piece/browser34): A browser window chrome with traffic-light dots and a locked URL bar, framing a short list of member rows with status pills.
 - [Mobile App Frame](https://ui.beste.co/piece/browser35): A narrow phone-shaped frame with a status bar, a back-titled header, a confirmation pill, detail rows, and a full-width action.
+- [Page Load](https://ui.beste.co/piece/browser36): Browser frame that sweeps a loading bar under the toolbar while shimmering skeleton blocks resolve into a heading, copy and a button, then reloads.
+- [Page Load](https://ui.beste.co/piece/browser37): Browser frame that loads on repeat: the progress line runs across the top, skeletons pulse in the body, then the real copy settles into place.
 - [Secure URL Bar](https://ui.beste.co/piece/browser4): Address pill with an emerald padlock, full URL, and a reload button on the right.
 - [Bookmark Bar](https://ui.beste.co/piece/browser5): Row of bookmark chips with folder or star icons. Short labels with soft hover states.
 - [Nav Controls](https://ui.beste.co/piece/browser6): Pill of four navigation buttons: back, forward, reload, and home. Back/forward can be disabled.
@@ -477,6 +489,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Sunrise Sunset](https://ui.beste.co/piece/calendar30): Sun-schedule card with sunrise and sunset mono times flanking a large daylight duration in the center.
 - [Daily Agenda Card](https://ui.beste.co/piece/calendar31): A day view listing time-stamped agenda rows, each with a colored marker and a truncating title.
 - [Week Availability Strip](https://ui.beste.co/piece/calendar32): A one-week day picker with seven compact cells, an accent-filled selection, muted fully booked days, and a caption for the chosen day.
+- [Booking Confirm](https://ui.beste.co/piece/calendar33): A week strip where the selection highlight glides to a new day, one of three time slots fills in, and a confirmed row with a check fades in before the flow resets.
+- [Slot Booking](https://ui.beste.co/piece/calendar34): Available times light up one after another until one is chosen, the button spins through booking, and the slot locks in green before the demo resets.
 - [Date Pill](https://ui.beste.co/piece/calendar4): Horizontal pill combining a relative label, weekday, mono date, and an optional time separated by thin rules.
 - [Range Picker](https://ui.beste.co/piece/calendar5): Month grid with a tinted range band, solid start and end chips, and a nights chip in the header.
 - [Week Strip](https://ui.beste.co/piece/calendar6): Seven-day strip of bordered day tiles, each showing the weekday, number, and a dot row of event counts.
@@ -511,6 +525,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Pricing Tag](https://ui.beste.co/piece/card3): Sale price next to a struck-through original, with a rose discount badge.
 - [Empty State](https://ui.beste.co/piece/card30): Dashed empty-state panel with an inbox tile, headline, supporting copy, and a dark CTA button.
 - [Who You Will Meet Card](https://ui.beste.co/piece/card31): A person card pairing a portrait with a name and role, a colour-coded availability line, and a few hairline facts about the call.
+- [Card Flip](https://ui.beste.co/piece/card32): Payment card that turns on its axis every few seconds to show the magnetic stripe and security code, then turns back to the front.
 - [User Profile Card](https://ui.beste.co/piece/card4): Avatar with name, role, and a presence dot in emerald, amber, or slate.
 - [Task Card](https://ui.beste.co/piece/card5): Checkable todo row with priority chip and due caption. Done tasks strike through.
 - [Notification Bell](https://ui.beste.co/piece/card6): Bell icon with a rose count badge and an optional label. Counts over 99 clamp to 99+.
@@ -527,6 +542,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 
 - [Weekday Peak Bars](https://ui.beste.co/piece/chart6): A dark analytics card with weekday bars, a highlighted peak column carrying a callout pill above a dashed threshold, and an on-track footnote.
 - [Breakdown Bars Card](https://ui.beste.co/piece/chart7): A compact chart card that splits a total across labelled horizontal bars, each with its own percentage.
+- [Line Draw](https://ui.beste.co/piece/chart8): Sparkline that draws itself on mount, fades in the area beneath, then marks the last point with its value and a gently pulsing dot.
+- [Bar Race](https://ui.beste.co/piece/chart9): Horizontal bars whose values keep drifting, so rows glide up and down to their new rank while the bars stretch and shrink underneath.
 
 ### Chat
 
@@ -558,6 +575,11 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Failed Message](https://ui.beste.co/piece/chat32): Struck-through outgoing bubble with a rose alert dot, Not delivered label, and retry / delete actions.
 - [Team Thread Card](https://ui.beste.co/piece/chat33): A short message thread with a header contact, an online marker, and alternating incoming and outgoing bubbles.
 - [Assistant Answer Card](https://ui.beste.co/piece/chat34): An assistant exchange showing the question as a right-aligned bubble, the answer beside an accent icon tile, and the records it was drawn from as chips under a hairline.
+- [Typing Conversation](https://ui.beste.co/piece/chat35): Two-person thread that plays out once: a typing indicator bounces before each incoming reply, bubbles slide up as they land, and the finished conversation stays put.
+- [Reaction Burst](https://ui.beste.co/piece/chat36): Emoji reactions spring onto a message one after another while their counts tick upward, hold for a beat, then clear and play again.
+- [Voice Message](https://ui.beste.co/piece/chat37): Voice note bubble with a fine waveform that swells to full height near the end, taking the accent color bar by bar as the playhead and timer advance.
+- [Delivery Ticks](https://ui.beste.co/piece/chat38): Outgoing bubble that walks through sending, sent, delivered and read: ticks swap in under the timestamp and a small seen-by row slides in at the end before the cycle restarts.
+- [Presence Roster](https://ui.beste.co/piece/chat39): Compact team list where one member at a time changes presence: dots recolor, status text fades in, and the online count in the header keeps pace.
 - [Poll Message](https://ui.beste.co/piece/chat4): Chat bubble with a question and voting options. Each row fills proportionally to its vote count.
 - [Reaction Bubble](https://ui.beste.co/piece/chat5): Message bubble with a small floating reaction chip tucked into the bottom corner.
 - [Call In Progress](https://ui.beste.co/piece/chat6): Live-call banner with a pinging video glyph, caller name, running duration, mute toggle, and end-call button.
@@ -572,6 +594,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [cURL Command](https://ui.beste.co/piece/code11): HTTP request rendered as a curl invocation with method, URL, headers, and body across continued lines.
 - [Env File](https://ui.beste.co/piece/code12): Dotenv listing with sky keys, italic muted comments, and grouped sections separated by blank lines.
 - [SDK Snippet Card](https://ui.beste.co/piece/code13): A code card with a filename header and copy affordance over syntax-toned, line-numbered source.
+- [Diff Reveal](https://ui.beste.co/piece/code14): Code diff whose removed and added lines slide into place one after another on mount, with the header tallying added and removed counts as they land.
+- [Test Runner](https://ui.beste.co/piece/code15): Test list that runs top to bottom, each spinner resolving into a green check or a red cross while the summary counts passes and failures and a thin bar tracks progress.
 - [Code Snippet Card](https://ui.beste.co/piece/code2): Dark editor card with three traffic-light dots, a filename tab, and line-numbered code.
 - [Shell Command](https://ui.beste.co/piece/code3): Single-line install or run command, prefixed with a dollar sign in monospace.
 - [Diff Snippet](https://ui.beste.co/piece/code4): Compact diff card with added, removed, and context lines tinted in emerald and rose.
@@ -607,6 +631,10 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Compare Products](https://ui.beste.co/piece/commerce29): Two-column comparison with product photos, names, prices, an emerald Pick badge on the recommended one, and attribute rows with text or check/X cells.
 - [Size Picker](https://ui.beste.co/piece/commerce3): Six-slot size grid with a tone-filled selected cell and a diagonal line over sold-out sizes, plus an optional size guide link.
 - [Region Currency](https://ui.beste.co/piece/commerce30): Region selector with a globe header showing flag, country, and currency, and a list of regions with flags and currency codes plus a check on the active one.
+- [Add to Cart](https://ui.beste.co/piece/commerce31): Product row whose Add button presses itself, sends a dot arcing up to the cart icon, and bumps the badge count on every landing before the cart empties again.
+- [Checkout Steps](https://ui.beste.co/piece/commerce32): Four-step checkout stepper: the connector fills toward the next node while each summary panel slides in from the right, ending on a placed order with a check.
+- [Stock Countdown](https://ui.beste.co/piece/commerce33): Product card whose stock bar shrinks a few units at a time as the Only N left badge warms from neutral to amber to rose, sells out, then restocks.
+- [Order Tracking](https://ui.beste.co/piece/commerce34): Vertical delivery timeline where each stop lights up in turn as the connector fills downward and a timestamp fades in, pausing on Delivered before it replays.
 - [Stock Alert](https://ui.beste.co/piece/commerce4): Urgency row with a pulsing dot that flips emerald, amber, or rose by remaining stock, a watchers count, and a thin stock bar.
 - [Price Stack](https://ui.beste.co/piece/commerce5): Pricing card with the sale price in rose, the original price struck through, a percent-off badge, and a countdown to sale end.
 - [Add to Cart](https://ui.beste.co/piece/commerce6): Mini cart-line card with product photo, name, variant, price, a minus/plus quantity stepper, and a tone-filled Add to cart button.
@@ -643,6 +671,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Drive File List](https://ui.beste.co/piece/dashboard31): A floating files panel listing document rows, each with a colored file-type chip and a truncating filename.
 - [KPI Sparkline Card](https://ui.beste.co/piece/dashboard32): A single metric with a headline value, a signed trend, and an area sparkline of its recent trajectory.
 - [KPI Trio Card](https://ui.beste.co/piece/dashboard33): A wide panel with a titled header row and three metrics split by vertical hairlines, each carrying its own signed change.
+- [Donut Sweep](https://ui.beste.co/piece/dashboard34): The total counts up while the donut draws one slice after another, each legend row sliding in as its arc lands.
 - [Activity Feed](https://ui.beste.co/piece/dashboard4): Recent-events list with semantic action icons (create, update, delete, signup) and a relative timestamp on the right.
 - [Top List](https://ui.beste.co/piece/dashboard5): Ranked list where each row's background bar fills proportionally to its value, with index and count on either end.
 - [Funnel](https://ui.beste.co/piece/dashboard6): Conversion funnel stages where each row's bar narrows against the top stage and a rose drop-off percentage marks churn.
@@ -695,6 +724,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Content Panel](https://ui.beste.co/piece/editor46): Side-panel content editor with a header chip row, locale and history pills, and stacked rich-text fields for heading and description.
 - [Empty Page](https://ui.beste.co/piece/editor47): Centered editor placeholder with a soft icon tile, headline, hint line, and a recolorable call-to-action pill.
 - [Publish Panel](https://ui.beste.co/piece/editor48): Compact deploy card pairing a live URL row, domain verification badge, unpublished-change hint, and a recolorable publish button.
+- [Collab Cursors](https://ui.beste.co/piece/editor49): Two named carets share a document: one hops between finished lines while the other types a new sentence at the bottom, over and over.
 - [File Tree](https://ui.beste.co/piece/editor5): Nested file explorer with folder chevrons, amber folder icons, and a highlighted active file.
 - [Editor Tab Bar](https://ui.beste.co/piece/editor6): Row of filename tabs with active styling. Dirty tabs show a sky dot in place of the close button.
 - [Hover Popover](https://ui.beste.co/piece/editor7): Wavy-underlined symbol above a type-hover card showing signature, one-line description, and source path.
@@ -740,6 +770,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Entry QR](https://ui.beste.co/piece/event10): Scannable entry card with a fake QR grid on the left and attendee, code, seat, and gate info on the right.
 - [Appointment Card](https://ui.beste.co/piece/event11): A single appointment row with a date block, a title and time-and-room line, and an accent join action.
 - [Countdown Card](https://ui.beste.co/piece/event12): A countdown card with a short label over three light figures split by hairlines, closing on a caption.
+- [Flip Countdown](https://ui.beste.co/piece/event13): Split-flap countdown on a dark panel: each second the changing digits fold over with a top-half flip, then the clock rests at zero and starts again.
 - [RSVP Row](https://ui.beste.co/piece/event2): Invitation card with three emerald/amber/rose response buttons and a footer tallying current responses.
 - [Speaker Lineup](https://ui.beste.co/piece/event3): Two-by-two speaker grid with gradient avatars, name and company-role lines per tile.
 - [Event Countdown](https://ui.beste.co/piece/event4): Dark foreground countdown with event title, start time, and a four-unit time tile grid below.
@@ -766,6 +797,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 
 - [Menu Item](https://ui.beste.co/piece/food1): Menu row with a warm gradient thumbnail, dish name and price pair, description, and dietary tag chips.
 - [Drink Pairing](https://ui.beste.co/piece/food10): Sommelier pairings panel with a dish header and rose-ruled wine or cocktail suggestion blocks.
+- [Kitchen Ticket](https://ui.beste.co/piece/food11): A kitchen order walks itself from received to ready, swapping the status pill and puffing steam over the tile while it cooks.
 - [Restaurant Card](https://ui.beste.co/piece/food2): Venue tile with a warm gradient cover, floating cuisine and rating pills, and a neighborhood-ETA row.
 - [Reservation Card](https://ui.beste.co/piece/food3): Emerald-bordered reservation summary with when/guests/seating/code arranged on a four-cell grid.
 - [Delivery Tracker](https://ui.beste.co/piece/food4): Four-step delivery progress with icon tiles, a ringed active step, ETA pill, and a courier footer.
@@ -807,6 +839,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Email Capture Card](https://ui.beste.co/piece/form34): A compact signup card with a title, an email field, an accent submit button, and a small reassurance note.
 - [Preferences Toggles](https://ui.beste.co/piece/form35): A compact settings card listing labeled rows, each with an accent on/off toggle switch.
 - [Inline Subscribe Row](https://ui.beste.co/piece/form36): A single-row capture card with a labelled email field, an accent submit button beside it, and fine print underneath.
+- [Form Autofill](https://ui.beste.co/piece/form37): Name, email and company get typed in one after another behind a caret, then the Continue button spins through a loading state and morphs into an emerald check that says you're in.
+- [Rating Prompt](https://ui.beste.co/piece/form38): A pointer sweeps across five stars, lighting them up as it passes, pops the fourth one to choose it, and the prompt crossfades into a thank-you line before the loop restarts.
 - [Required Field](https://ui.beste.co/piece/form4): Labeled input flanked by a red asterisk and a Required pill, plus an explanatory hint below.
 - [Affixed Input](https://ui.beste.co/piece/form5): Input that sandwiches a value between a muted prefix and suffix for URLs, currencies, or domains.
 - [Floating Label](https://ui.beste.co/piece/form6): Focused input with the label shrunk to the top-left corner and a blinking caret after the value.
@@ -840,6 +874,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Cycle Tracker](https://ui.beste.co/piece/health29): Cycle ring with day fraction in the middle, a phase label, next-period forecast, and a mood note.
 - [Workout Set](https://ui.beste.co/piece/health3): Lift tracker with an exercise header, set progress bar segments, and a rest-timer chip on the right.
 - [Telehealth Visit](https://ui.beste.co/piece/health30): Upcoming telemedicine visit card with a provider byline, amber starts-in pill, and a sky Join button.
+- [Heartbeat Trace](https://ui.beste.co/piece/health31): A bpm figure drifting the way a real reading does, a heart glyph beating beside it, and an ECG line scrolling past underneath without a seam.
 - [Steps Tracker](https://ui.beste.co/piece/health4): Daily steps card with a gradient progress bar, percent chip, and a distance and calorie footer.
 - [Activity Rings](https://ui.beste.co/piece/health5): Three concentric progress rings for move, exercise, and stand goals with a color-keyed legend.
 - [Water Tracker](https://ui.beste.co/piece/health6): Eight-cup water grid that fills sky-tinted glasses as you log ml toward a daily hydration goal.
@@ -855,6 +890,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Stock Level](https://ui.beste.co/piece/indicator12): Stock status chip with a dot and auto-phrased copy across in-stock, low, out, and preorder states.
 - [Status List Card](https://ui.beste.co/piece/indicator13): A compact status panel listing services, each with a colored dot and an operational state.
 - [Uptime Strip Card](https://ui.beste.co/piece/indicator14): A status card showing one service's uptime percentage above a dense strip of daily bars tinted by how that day went.
+- [Status Morph](https://ui.beste.co/piece/indicator15): Deployment pill that morphs from Building to Deploying to Live, its width easing to fit each label while the text cross-fades and the colour shifts.
 - [Step Dots](https://ui.beste.co/piece/indicator2): Row of small dots showing progress through N steps, with a trailing fraction count.
 - [Spinner Pill](https://ui.beste.co/piece/indicator3): Spinning loader icon paired with a status label inside a rounded pill.
 - [Battery Level](https://ui.beste.co/piece/indicator4): Battery glyph with a tinted fill that colors rose, amber, or emerald by level.
@@ -890,6 +926,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Serial Input](https://ui.beste.co/piece/input29): ID-style mono input with a leading hash, wide letter spacing, and a muted Auto-generated pill.
 - [Toggle Row](https://ui.beste.co/piece/input3): Row with a bold label, secondary description, and a switch that slides on or off.
 - [Wallet Input](https://ui.beste.co/piece/input30): Crypto address field with a gradient Ξ avatar, shortened mono address, and an ENS lookup chip.
+- [OTP Autofill](https://ui.beste.co/piece/input31): Six code boxes fill one by one behind a moving caret, shake in rose when the first code is wrong, then refill with the right one and settle into an emerald verified state.
+- [Password Strength](https://ui.beste.co/piece/input32): Masked characters type into the field while a four-segment meter climbs from rose through amber to emerald and each rule in the checklist ticks green, then it clears and starts over.
 - [Range Slider](https://ui.beste.co/piece/input4): Label and readout above a filled track with a circular handle positioned by the current value.
 - [Text Field](https://ui.beste.co/piece/input5): Bare text input atom with a focused state that adds a primary ring and a blinking caret after the value.
 - [Number Stepper](https://ui.beste.co/piece/input6): Compact number control with minus and plus buttons flanking a centered mono value.
@@ -908,6 +946,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Spacebar](https://ui.beste.co/piece/keyboard14): Long-format spacebar keycap with a soft shadow, bracketed by a prompt above and a hint caption below.
 - [WASD Cluster](https://ui.beste.co/piece/keyboard15): Gaming movement cluster with W on top and A S D on the second row, lighting the active key in primary.
 - [Media Keys](https://ui.beste.co/piece/keyboard16): Row of tactile transport keycaps with the center play/pause lit in primary, flanked by track name and elapsed time.
+- [Shortcut Press](https://ui.beste.co/piece/keyboard17): Keycaps press down one after another, their shadows shrinking as they sink, and the matching action label fades in beside them before the next shortcut takes a turn.
 - [Command Palette Row](https://ui.beste.co/piece/keyboard2): Raycast-style action row with leading icon, description, and a trailing shortcut combo.
 - [Shortcut Cheatsheet](https://ui.beste.co/piece/keyboard3): Titled panel listing several actions with their key combos stacked on the right.
 - [Hero Keycap](https://ui.beste.co/piece/keyboard4): Large tactile keycap with subtle shadow and a caption reading underneath.
@@ -943,6 +982,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Regulatory Update](https://ui.beste.co/piece/legal29): Regulatory-change card tinted by severity info, warning, or critical, with an effective-date footer.
 - [Signed Block](https://ui.beste.co/piece/legal3): Completed signature panel with an italic cursive autograph, emerald Signed pill, and a printed footer.
 - [Settlement Summary](https://ui.beste.co/piece/legal30): Class-action settlement tile with a matter header, emerald amount band, and fee-share plus approval status.
+- [Signature Draw](https://ui.beste.co/piece/legal31): A contract signs itself: the signature strokes onto the dotted line, then the signed badge and timestamp fade in behind it.
 - [NDA Card](https://ui.beste.co/piece/legal4): Mutual NDA summary card with a shield tile, Confidential eyebrow, party split, term, and jurisdiction.
 - [Clause Snippet](https://ui.beste.co/piece/legal5): Left-ruled clause card pairing a section chip with a heading, statutory body text, and a source footer.
 - [Document Status](https://ui.beste.co/piece/legal6): Document row whose icon and pill shift across draft, review, signed, expired, and voided states.
@@ -960,10 +1000,12 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Place Rating](https://ui.beste.co/piece/location6): Place name with star rating, review count, and category, finished by an open or closed status pill and hours.
 - [Location Card](https://ui.beste.co/piece/location7): A compact location card with a pin chip, a site name and address, and an open-status line.
 - [Multi-Site Coverage Card](https://ui.beste.co/piece/location8): A coverage card listing each site with its city and capacity, closing on a combined figure under a hairline.
+- [Live Tracking](https://ui.beste.co/piece/location9): Map card on a faint street grid where a courier dot follows the plotted route while the ETA counts down to Arrived, pauses, and sets off again.
 
 ### Logo
 
 - [Brand Chip](https://ui.beste.co/piece/logo1): Square icon tile paired with a bold wordmark. Pick from four icons and three tones.
+- [Logo Marquee](https://ui.beste.co/piece/logo10): Customer logos drift past in one endless seamless lane, softened at both edges so nothing pops in or out.
 - [Brand Lockup](https://ui.beste.co/piece/logo2): Larger brand mark with an icon tile, bold wordmark, and a small tagline underneath.
 - [Logo Marquee](https://ui.beste.co/piece/logo3): Slow-scrolling horizontal logo strip with edge fades that loops forever, set via a duration prop.
 - [Logo Rotator](https://ui.beste.co/piece/logo4): Lead phrase paired with a logo and name that blur-fade to the next brand on a fixed interval.
@@ -993,6 +1035,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Trading Card](https://ui.beste.co/piece/media23): Collectible card with a holographic border, a light sheen, a stat badge, and a name plate.
 - [Podcast Player Card](https://ui.beste.co/piece/media24): A compact audio player with a play button, an episode title and series line, a waveform progress bar, and elapsed and total times.
 - [Video Thumbnail Card](https://ui.beste.co/piece/media25): A video card with a cover image, a duration chip in the corner, and a short kicker over the title.
+- [Now Playing](https://ui.beste.co/piece/media26): Compact player whose progress bar creeps forward in time with the elapsed clock, then fades the title over to the next track when one finishes.
+- [Waveform Scrub](https://ui.beste.co/piece/media27): Player whose waveform fills in bar by bar as the track plays, with the elapsed time keeping pace, then starts the take over.
 - [Polaroid Photo](https://ui.beste.co/piece/media3): White-bordered photo frame with a gradient still and an italic caption below. Tilts slightly left.
 - [Album Cover](https://ui.beste.co/piece/media4): Square artwork with a bold title and artist name below. Gradient tone fallback when no image.
 - [Photo Stack](https://ui.beste.co/piece/media5): Three polaroid photos fanned out at different rotations and offsets, stacking left to right.
@@ -1029,6 +1073,11 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 
 - [Plan Price Card](https://ui.beste.co/piece/money22): A compact plan card with a name, an optional highlight badge, a price with period, and a short list of included features.
 - [Savings Readout Card](https://ui.beste.co/piece/money23): A savings card leading on a large figure and a change chip, then comparing the old and new spend on two aligned rows.
+- [Payment Processing](https://ui.beste.co/piece/money24): Checkout sheet whose pay button turns into a spinner, then a green check with a ring rippling out of it, before resetting for the next run.
+- [Balance Reveal](https://ui.beste.co/piece/money25): Balance card that counts its big figure up from zero with an ease-out curve, then brings income and spending in behind it, each counting up to its own total.
+- [Transfer Flow](https://ui.beste.co/piece/money26): The amount hops out of the sender's tile and arcs along a filling track, then lands with a ring and floats a credit chip above the recipient.
+- [Price Ticker](https://ui.beste.co/piece/money27): Three market rows that drift on a random walk, each updated price flashing green or red for a beat while its percent pill pops to the new value.
+- [Card Reveal](https://ui.beste.co/piece/money28): Payment card that swings in from a slight 3D angle, uncovers its masked number one group at a time, and fades in the holder name and expiry last.
 
 ### Monitoring
 
@@ -1045,6 +1094,9 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Range Marker](https://ui.beste.co/piece/monitoring19): Horizontal scale that drops a marker on the current reading and tints the expected window behind it.
 - [Resource Meter](https://ui.beste.co/piece/monitoring2): Utilization bar for CPU, memory, disk, or network with a recolorable fill and matching percentage label.
 - [Diff Bar](https://ui.beste.co/piece/monitoring20): Two-tone success-versus-error split bar that prints the percentage of each side directly inside its segment.
+- [Live Latency Bars](https://ui.beste.co/piece/monitoring21): Streaming bar chart that pushes a fresh sample every few hundred milliseconds, flags spikes in amber, and keeps a rolling p95 in the corner.
+- [Uptime Grid](https://ui.beste.co/piece/monitoring22): Grid of uptime cells that light up green in reading order with a couple of amber and red blips at fixed spots, then holds, fades, and fills again.
+- [Server Pulse](https://ui.beste.co/piece/monitoring23): Three server rows whose CPU and memory bars breathe with fresh readings every second, turning amber and red past their thresholds beside a live status dot.
 - [Incident Alert](https://ui.beste.co/piece/monitoring3): Incident card pairing a bell glyph, label tag, title, and service line with a configurable accent tone.
 - [Uptime Heartbeat](https://ui.beste.co/piece/monitoring4): Thirty-tick history strip in the style of a status page, with pass, slow, and fail segments and a rolling availability number.
 - [SLO Gauge](https://ui.beste.co/piece/monitoring5): Semicircular gauge that renders a remaining-budget percentage along a single recolorable arc.
@@ -1079,6 +1131,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Breadcrumb](https://ui.beste.co/piece/nav31): Breadcrumb trail with a home icon, chevron separators, and a bold final crumb.
 - [Tab Bar Pill](https://ui.beste.co/piece/nav32): Four-tab navigation pill that expands the active tab to show its label, with a count badge on alerts.
 - [Pagination](https://ui.beste.co/piece/nav33): Numbered pagination with prev/next arrows and ellipses for long ranges. Active page flips to foreground.
+- [Sliding Tabs](https://ui.beste.co/piece/nav34): Segmented tab bar whose active pill glides from tab to tab on a timer while the summary line beneath cross-fades to match.
 - [Underline Tabs](https://ui.beste.co/piece/nav4): Horizontal tabs with a thin bottom rail and a primary underline under the active label.
 - [Pill Tabs](https://ui.beste.co/piece/nav5): Rounded segmented tabs riding a muted track, with a raised card sliding under the active label.
 - [Enclosed Tabs](https://ui.beste.co/piece/nav6): Classic folder-style tabs that sit on a rail, with the active tab bordered and notched into the panel.
@@ -1101,6 +1154,9 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Single Toast Card](https://ui.beste.co/piece/notification19): A compact single-line toast with a tinted icon chip, a title and meta line, and a relative timestamp.
 - [Alert Toast](https://ui.beste.co/piece/notification2): Tinted alert with error, warning, or info severities. Optional dismiss × on the right.
 - [Approval Request Toast](https://ui.beste.co/piece/notification20): An actionable notification card with an icon tile, a request line, and a pair of approve and decline buttons.
+- [Incoming Stack](https://ui.beste.co/piece/notification21): Notifications drop in from the top and push the older ones back into a shrinking, fading stack, the way a phone lock screen piles them up.
+- [Toast Queue](https://ui.beste.co/piece/notification22): Bottom-right toasts slide in from the edge, stack three high, and the oldest slides out and collapses to make room as new ones keep arriving.
+- [Bell Bump](https://ui.beste.co/piece/notification23): Every couple of seconds the bell wiggles, the unread badge pops up by one, and a one-line preview fades in beneath, resetting once it reaches five.
 - [Push Notification](https://ui.beste.co/piece/notification3): Mobile-style push toast with app icon tile, timestamp, and a two-line preview.
 - [Message Preview](https://ui.beste.co/piece/notification4): Chat notification showing sender avatar, message snippet, timestamp, and an unread dot.
 - [Mention Alert](https://ui.beste.co/piece/notification5): You-were-mentioned card with the channel context and the quoted message.
@@ -1119,6 +1175,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [XP Level Bar](https://ui.beste.co/piece/progress14): Trophy tile beside a level badge and an XP fraction over a sunset gradient fill bar.
 - [Setup Checklist Card](https://ui.beste.co/piece/progress15): An onboarding checklist with a completion bar, a done count, and steps that strike through as they are finished.
 - [Horizontal Step Tracker](https://ui.beste.co/piece/progress16): A horizontal progress card with numbered nodes joined by connectors, marking finished, current, and upcoming steps.
+- [Ring Fill](https://ui.beste.co/piece/progress17): Circular progress ring that draws itself from zero to the target on mount while the centre percentage counts up in step, then holds.
+- [Segment Loader](https://ui.beste.co/piece/progress18): A row of pill segments fills left to right beside a live percentage, flashes a check at one hundred, holds for a beat, and starts over.
 - [Progress Ring](https://ui.beste.co/piece/progress2): Circular SVG ring with a centered percentage. Tone sets the stroke color.
 - [Linear Progress](https://ui.beste.co/piece/progress3): Labelled progress bar with a percent readout above and a tonal fill.
 - [Loading Dots](https://ui.beste.co/piece/progress4): Three staggered pulsing dots inside a pill, paired with an optional label.
@@ -1145,6 +1203,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 
 - [Invoice Summary Card](https://ui.beste.co/piece/receipt2): An invoice card with a reference and paid status, itemized line amounts, and a bold total row.
 - [Payment Confirmed Card](https://ui.beste.co/piece/receipt3): A settlement card led by a success mark and the amount taken, with the method, reference, and clearing time listed under a hairline.
+- [Printing Receipt](https://ui.beste.co/piece/receipt4): A paper slip that slides out of a printer slot, revealing line items down to a serrated edge, then highlights the total once the print finishes.
 
 ### Search
 
@@ -1164,6 +1223,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Search Shortcut](https://ui.beste.co/piece/search22): Ghost pill button with a leading search icon, placeholder text, and a trailing keyboard shortcut badge. Useful as a header command-palette trigger.
 - [Command Search Bar](https://ui.beste.co/piece/search23): A single-line search field with a leading magnifier, placeholder, and a monospace keyboard shortcut chip.
 - [Search Results Panel](https://ui.beste.co/piece/search24): A search panel showing a typed query above a labelled group of results, each with a title, a meta line, and a kind chip, closing on a match count.
+- [Typing Search](https://ui.beste.co/piece/search25): A query gets typed out letter by letter while the list filters live, highlighting the matched text and collapsing rows that no longer fit, then clears and tries another search. Rows take a photo when one is given and fall back to initials.
 - [Command Palette](https://ui.beste.co/piece/search3): ⌘K modal with a query bar, three typed results, and a keyboard-hint footer at the bottom.
 - [Typeahead Dropdown](https://ui.beste.co/piece/search4): Search input with a dropdown of autocompletions that bolds the matched substring.
 - [Filter Chips](https://ui.beste.co/piece/search5): Multi-filter search bar with removable token chips inline with the placeholder.
@@ -1252,6 +1312,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Image Gallery](https://ui.beste.co/piece/shapes78): Featured tile beside a stacked column where the last cell carries a more-overlay badge.
 - [Empty State](https://ui.beste.co/piece/shapes79): Faded inbox glyph above a heading, helper line, and a primary action button.
 - [Bar Chart](https://ui.beste.co/piece/shapes8): Five vertical bars with one taller emerald bar marking the peak.
+- [Orbit Loader](https://ui.beste.co/piece/shapes80): Three dots circle a breathing core at their own speeds inside a slowly counter turning dashed ring, a calm stand in for a busy state.
 - [Donut Ring](https://ui.beste.co/piece/shapes9): Muted ring with a foreground arc covering roughly a quarter turn.
 
 ### Social Proof
@@ -1286,6 +1347,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Star Rating Card](https://ui.beste.co/piece/socialproof25): A compact rating card pairing a headline score with a filled star row and a short review caption.
 - [Quote Card](https://ui.beste.co/piece/socialproof26): A compact testimonial card with an accent quote mark, a short line of praise, and an avatar with name and role under a hairline.
 - [Social Post Card](https://ui.beste.co/piece/socialproof27): A social post with an avatar, name and handle, a timestamp, the post body, and reply, repost, and like counts under a hairline.
+- [Signup Feed](https://ui.beste.co/piece/socialproof28): Recent-activity feed where a new signup card drops in at the top every couple of seconds, nudging the older ones down until the oldest fades away. Rows take a photo when one is given and fall back to initials.
 
 ### Stats
 
@@ -1298,6 +1360,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Radial Capacity Ring](https://ui.beste.co/piece/stats15): A compact card pairing a radial progress ring with its percentage, a label, and a short caption.
 - [Trend Stat Card](https://ui.beste.co/piece/stats16): A compact metric card pairing a large figure with a signed change chip, a small bar history, and a comparison caption.
 - [Before And After Pair](https://ui.beste.co/piece/stats17): A comparison card putting a muted starting figure and an accented result either side of an arrow, with a footnote explaining the sample.
+- [Rolling Counter](https://ui.beste.co/piece/stats18): Live metric whose digits roll like an odometer each time the value changes, with a delta pill that pops in beside the number.
+- [KPI Ticker](https://ui.beste.co/piece/stats19): Single-row stat card that flips through revenue, signups, churn and NPS like a departure board, each row sliding up and out as the next one rises in with its delta pill.
 - [Trend Delta](https://ui.beste.co/piece/stats2): Headline value with a signed trend arrow, percentage, and period caption.
 - [Triple Stat Grid](https://ui.beste.co/piece/stats3): Three stats side by side inside one card, separated by vertical dividers.
 - [KPI Sparkline](https://ui.beste.co/piece/stats4): Uppercase caption over a big value on the left, paired with a tone-colored sparkline on the right.
@@ -1314,6 +1378,8 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [REPL](https://ui.beste.co/piece/terminal11): Interactive prompt showing an evaluated expression and its result.
 - [Test Summary](https://ui.beste.co/piece/terminal12): Test run output with pass and fail markers and a totals bar.
 - [CLI Command Card](https://ui.beste.co/piece/terminal13): A dark terminal card with traffic-light dots, a prompted command, and a success output line.
+- [Command Run](https://ui.beste.co/piece/terminal14): Dark terminal that types a command after the prompt, prints its output line by line up to a green success line behind a blinking block cursor, then clears and runs again.
+- [Deploy Log](https://ui.beste.co/piece/terminal15): Streaming build log where timestamped lines append every half second and older ones slide up out of view, with warnings in amber and successes in green until the deploy lands.
 - [Copy Command](https://ui.beste.co/piece/terminal2): CLI code line with a chevron prefix and a copy button that flips to a check.
 - [Output Window](https://ui.beste.co/piece/terminal3): Window-chrome shell showing a command and its output ending in a success line.
 - [Install Tabs](https://ui.beste.co/piece/terminal4): Package manager tabs that swap the install command, with a copy button.
@@ -1339,6 +1405,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Media Controls](https://ui.beste.co/piece/toolbar2): Skip, play/pause, and skip controls inside a pill. Toggle the playing flag to flip the center button.
 - [Quick Actions Bar](https://ui.beste.co/piece/toolbar20): A floating pill toolbar of round icon actions with one accent-highlighted primary action.
 - [View Switcher Bar](https://ui.beste.co/piece/toolbar21): A control bar with a segmented view switcher on a soft track, a live result count, and a filter chip on the row beneath.
+- [Recording Bar](https://ui.beste.co/piece/toolbar22): Floating capture bar with a pulsing record dot, a timer counting the take, and a level meter whose bars keep dancing.
 - [Zoom Controls](https://ui.beste.co/piece/toolbar3): Segmented zoom control with minus, a monospace percentage readout, and plus.
 - [Text Align](https://ui.beste.co/piece/toolbar4): Left / center / right / justify alignment buttons. Active state fills muted.
 - [Table Controls](https://ui.beste.co/piece/toolbar5): Three button groups for table editing: add row/column, merge/split, and a rose delete button.
@@ -1387,6 +1454,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [eSIM Plan](https://ui.beste.co/piece/travel29): Traveler eSIM card showing carrier, plan, data-used fraction pill, and a progress bar toward the total allowance.
 - [Itinerary Day](https://ui.beste.co/piece/travel3): Day-of-trip card with a destination header and a vertical timeline of timed stops linked by a rail.
 - [Driving Directions](https://ui.beste.co/piece/travel30): Step-by-step driving panel with emerald start, sky turn, and rose end markers linked by a vertical rail.
+- [Flight Progress](https://ui.beste.co/piece/travel31): Flight card with a small plane gliding along the arc between two airports as the dotted trail fills behind it and the landing countdown ticks toward Landed.
 - [Flight Status](https://ui.beste.co/piece/travel4): Live status card with a colored pill for on-time, delayed, boarding, or cancelled flights.
 - [Route Arc](https://ui.beste.co/piece/travel5): Visual route card with origin and destination framing an SVG dashed great-circle arc in a selectable tone.
 - [Trip Segments](https://ui.beste.co/piece/travel6): Multi-leg journey card with stacked segment rows and an amber layover strip between them.
@@ -1422,6 +1490,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 - [Archive Bundle](https://ui.beste.co/piece/upload30): Zip bundle card with an amber archive tile, file count, compressed savings line, and a Download button.
 - [OCR Result](https://ui.beste.co/piece/upload31): Post-scan card summarizing pages parsed, language, and an emerald confidence pill with its own bar.
 - [Import Dropzone Card](https://ui.beste.co/piece/upload32): A dashed dropzone with an upload chip and hint, over a single file row with a live progress bar.
+- [Upload Queue](https://ui.beste.co/piece/upload33): Three queued files whose progress bars fill one after another, each settling into a green check while the header counts up to all files uploaded.
 - [Drag Over State](https://ui.beste.co/piece/upload4): Highlighted drop surface tinted sky with a pulsing wash, download chip, and release-to-upload cue.
 - [Avatar Uploader](https://ui.beste.co/piece/upload5): Circular avatar with a dark camera button on the corner that invites a new profile photo.
 - [Cover Uploader](https://ui.beste.co/piece/upload6): Gradient banner placeholder that prompts a cover image with size hint and inset dashed border.
@@ -1433,6 +1502,7 @@ Small composable widgets at https://ui.beste.co/pieces. They drop into the media
 
 - [Weather Card](https://ui.beste.co/piece/weather1): City name, big temperature, condition label, and a high/low line with an icon tile that colors by condition.
 - [Weather Alert](https://ui.beste.co/piece/weather10): Severity-colored triangle alert with title, severity badge, descriptive detail, and an Until line.
+- [Forecast Cycle](https://ui.beste.co/piece/weather11): Forecast card that walks through the next few hours on its own, swapping the temperature with a soft rise while the sun turns, clouds drift, and rain falls.
 - [Weekly Forecast](https://ui.beste.co/piece/weather2): Row of day columns with weekday label, condition icon, and a high/low temperature pair.
 - [Hourly Forecast](https://ui.beste.co/piece/weather3): Six-column hourly strip pairing each label with a condition icon and a tabular temperature.
 - [Hero Weather](https://ui.beste.co/piece/weather4): Big tabular temperature anchored under a city header and condition icon, with high, low, and feels-like below.

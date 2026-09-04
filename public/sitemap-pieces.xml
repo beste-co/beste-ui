@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ui.beste.co/piece/card32</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/monitoring10</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -61,6 +67,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/monitoring21</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/socialproof2</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -91,6 +103,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/food11</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/chat33</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -98,6 +116,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/toolbar13</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/logo10</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -146,6 +170,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/code10</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/toolbar22</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -218,6 +248,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/form33</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/boarding2</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -313,7 +349,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/chat35</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/toolbar15</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/legal31</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -391,6 +439,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/input32</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/calendar26</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -439,6 +493,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/dashboard34</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/terminal9</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -470,6 +530,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/health4</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/search25</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -572,6 +638,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/shapes46</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/browser37</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -907,6 +979,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/automation21</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/shapes71</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -938,6 +1016,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/commerce15</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/browser36</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1004,6 +1088,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/commerce12</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/money27</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1411,6 +1501,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/progress17</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/input27</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -1418,6 +1514,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/shapes31</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/calendar33</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1472,6 +1574,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/code2</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/calendar34</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1603,7 +1711,25 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/ticket11</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/money28</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/editor45</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/notification21</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1639,6 +1765,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/health31</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/notification17</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -1658,6 +1790,18 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/browser12</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/commerce31</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/money26</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1987,6 +2131,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/progress18</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/progress4</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2078,6 +2228,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/ai8</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/badge5</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2293,6 +2449,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/chart8</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/travel20</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2347,6 +2509,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/terminal14</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/upload1</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2366,6 +2534,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/card29</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/ai47</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2437,6 +2611,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/media26</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/form18</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2497,6 +2677,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/ai49</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/tooltip5</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2510,6 +2696,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/media21</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/socialproof28</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2534,6 +2726,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/travel21</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/chart9</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2612,6 +2810,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/ai12</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/indicator15</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2815,6 +3019,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/ai48</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/tooltip4</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2875,6 +3085,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/media27</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/form19</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2882,6 +3098,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/card28</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/ai46</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2959,6 +3181,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/terminal15</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/form28</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -2977,7 +3205,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/chat37</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/tooltip11</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/travel31</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3013,6 +3253,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/code14</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/search6</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -3026,6 +3272,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/realestate3</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/chat39</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3157,6 +3409,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/monitoring22</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/form38</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/ai51</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/socialproof1</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -3205,7 +3475,25 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/code15</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/chat38</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/realestate2</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/nav34</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3230,6 +3518,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/tooltip10</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/chat36</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3271,7 +3565,25 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/monitoring23</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/ai50</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/calendar5</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/receipt4</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3307,7 +3619,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/form37</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/socialproof9</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/weather11</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3469,6 +3793,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/shapes80</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/commerce26</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -3494,6 +3824,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/monitoring1</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/stats19</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3548,6 +3884,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/shapes27</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/input31</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3715,6 +4057,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/stats18</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/commerce20</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -3740,6 +4088,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/dashboard7</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/location9</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -4129,6 +4483,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/upload33</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/weather8</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -4375,6 +4735,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/commerce34</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/browser17</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -4423,6 +4789,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/money24</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/shapes61</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -4435,7 +4807,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/editor49</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/browser10</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/commerce33</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -4556,6 +4940,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/editor47</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/notification23</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -4891,6 +5281,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/notification22</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/editor46</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -4957,6 +5353,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ui.beste.co/piece/commerce32</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ui.beste.co/piece/editor48</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -4964,6 +5366,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/browser11</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/money25</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -5300,6 +5708,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/chat14</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/keyboard17</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -5792,6 +6206,12 @@
   </url>
   <url>
     <loc>https://ui.beste.co/piece/nav21</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ui.beste.co/piece/event13</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

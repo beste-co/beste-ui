@@ -13,6 +13,8 @@ interface LicenseContextType {
   expiresAt: string | null;
   licenseKey: string | null;
   loading: boolean;
+  /** Always final here: there is no session to wait for. */
+  ready: boolean;
   refreshLicense: () => Promise<void>;
 }
 
@@ -22,6 +24,7 @@ const NO_LICENSE: LicenseContextType = {
   expiresAt: null,
   licenseKey: null,
   loading: false,
+  ready: true,
   refreshLicense: async () => {},
 };
 
