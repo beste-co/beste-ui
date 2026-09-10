@@ -24,6 +24,18 @@ interface ComponentPlaygroundProps {
   /** Registry name, e.g. `inspector-slider`. */
   name: string;
   config: PlaygroundConfig;
+  /**
+   * Passed by callers whose entry is not in the registry-components family, so
+   * this file never imports the piece registry: it is a client component, and
+   * every page that renders a playground would carry all of it.
+   */
+  component?: React.ComponentType<Record<string, unknown>>;
+  demoProps?: Record<string, unknown>;
+  /**
+   * Fill the stage rather than being scaled into it. A piece is built to fill a
+   * media slot, so the stage is the slot.
+   */
+  fill?: boolean;
   className?: string;
 }
 
@@ -137,25 +149,46 @@ function snippetFor(name: string, props: Record<string, unknown>, config: Playgr
 /** A framed, themed stage. Every preview on the page sits on the same one. */
 function Stage({
   children,
+  backdrop,
   className,
 }: {
   children: React.ReactNode;
+  /** Preview-only picture behind the component. Never reaches its props. */
+  backdrop?: string;
   className?: string;
 }) {
   return (
     <div className={cn("relative overflow-hidden rounded-lg border", className)}>
       <ThemedPreview className="relative size-full">
+        {backdrop ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={backdrop}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 size-full object-cover"
+          />
+        ) : null}
         <div className="relative flex size-full items-center justify-center p-6">{children}</div>
       </ThemedPreview>
     </div>
   );
 }
 
-export function ComponentPlayground({ name, config, className }: ComponentPlaygroundProps) {
-  const entry = registryComponents.find((component) => component.name === name);
+export function ComponentPlayground({
+  name,
+  config,
+  component,
+  demoProps,
+  fill = false,
+  className,
+}: ComponentPlaygroundProps) {
+  const entry = registryComponents.find((item) => item.name === name);
+  const Given = component ?? (entry?.component as typeof component);
+  const fallbackProps = demoProps ?? entry?.demoProps;
   const initial = React.useMemo(
-    () => ({ ...(config.props ?? entry?.demoProps ?? {}) }) as Record<string, unknown>,
-    [config.props, entry?.demoProps],
+    () => ({ ...(config.props ?? fallbackProps ?? {}) }) as Record<string, unknown>,
+    [config.props, fallbackProps],
   );
 
   const [props, setProps] = React.useState<Record<string, unknown>>(initial);
@@ -185,9 +218,19 @@ export function ComponentPlayground({ name, config, className }: ComponentPlaygr
     return [...map.entries()];
   }, [config.controls]);
 
-  if (!entry) return null;
-  const Component = entry.component as React.ComponentType<Record<string, unknown>>;
-  const largeSurface = FRAME_PREVIEW_CATEGORIES.has(entry.category);
+  if (!Given) return null;
+  const Component = Given as React.ComponentType<Record<string, unknown>>;
+  const largeSurface = !fill && FRAME_PREVIEW_CATEGORIES.has(entry?.category ?? "");
+
+  /*
+   * The backdrop answers to the props the reader has set, so switching the
+   * surface to glass puts something behind the panel to actually be frosted.
+   */
+  const backdrop =
+    config.stage &&
+    Object.entries(config.stage.when ?? {}).every(([prop, value]) => props[prop] === value)
+      ? config.stage.image
+      : undefined;
 
   const renderControl = (control: PlaygroundControl) => {
     const value = props[control.prop];
@@ -317,8 +360,15 @@ export function ComponentPlayground({ name, config, className }: ComponentPlaygr
             squeezed into a fifth of its natural size — so those get a taller
             stage, the full width, and a scale that fits them into it.
           */}
-          <Stage className={largeSurface ? "h-[420px]" : "h-[220px]"}>
-            {largeSurface ? (
+          <Stage
+            backdrop={backdrop}
+            className={fill || largeSurface ? "h-[420px]" : "h-[220px]"}
+          >
+            {fill ? (
+              <div key={previewKey} className="size-full">
+                <Component {...props} />
+              </div>
+            ) : largeSurface ? (
               <FitScale key={previewKey} className="size-full" padding={0}>
                 <Component {...props} />
               </FitScale>

@@ -18,10 +18,12 @@ import { Stage } from "@/components/stage";
 import { pieceInstallCommand } from "@/lib/install-command";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { PiecePlayground } from "@/components/piece-playground";
 import { RelatedSection } from "@/components/related-section";
 import { RelatedPreviewByName } from "@/components/related-preview-by-name";
 import { buildSoftwareSourceCodeJsonLd } from "@/lib/breadcrumb-jsonld";
 import { getPieceDate } from "@/lib/changelog-dates";
+import { getPlayground } from "@/lib/playgrounds";
 import { getRelated } from "@/lib/search-index";
 import { notFound } from "next/navigation";
 import path from "node:path";
@@ -90,6 +92,12 @@ export default async function ComponentDetailPage({ params }: PageProps) {
   }
 
   const source = await loadSource(slug);
+
+  /*
+   * Page-only, like the meta: a piece that ships a `{name}.playground.ts` gets a
+   * panel here, and one that does not is unchanged.
+   */
+  const playground = getPlayground(component.name);
 
   const idx = components.findIndex((c) => c.name === slug);
   const prev = idx > 0 ? components[idx - 1] : null;
@@ -213,6 +221,14 @@ export default async function ComponentDetailPage({ params }: PageProps) {
               </h2>
               <p className="mt-4 text-lg text-muted-foreground md:text-xl">{component.description}</p>
             </header>
+
+            {playground ? (
+              <PiecePlayground
+                name={component.name}
+                config={playground}
+                className="mb-12 md:mb-16"
+              />
+            ) : null}
 
             <PieceUsage name={component.name} className="mb-12 md:mb-16" />
           </div>

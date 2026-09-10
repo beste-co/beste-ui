@@ -3,7 +3,7 @@
 import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import { IconButton } from "@/components/icon-button";
-import { ICON_ACTION_CLASS } from "@/components/icon-action";
+import { ICON_ACTION_CLASS_SM } from "@/components/icon-action";
 
 interface NavArrowButtonProps {
   /** Where it goes. Left out, this is the end of the run and the button dims. */
@@ -29,13 +29,13 @@ export function NavArrowButton({ href, direction, label }: NavArrowButtonProps) 
   if (!href) {
     return (
       <span aria-hidden="true" className="pointer-events-none opacity-40">
-        <IconButton label={label} icon={icon} className={ICON_ACTION_CLASS} />
+        <IconButton label={label} icon={icon} className={ICON_ACTION_CLASS_SM} />
       </span>
     );
   }
 
   return (
-    <IconButton asChild label={label} icon={icon} className={ICON_ACTION_CLASS}>
+    <IconButton asChild label={label} icon={icon} className={ICON_ACTION_CLASS_SM}>
       <Link href={href} />
     </IconButton>
   );

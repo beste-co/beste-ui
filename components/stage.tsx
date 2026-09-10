@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { type ReactNode, useState } from "react";
 
 import { CodeBlock } from "@/components/code-block";
-import { ICON_ACTION_CLASS } from "@/components/icon-action";
+import { ICON_ACTION_CLASS_SM } from "@/components/icon-action";
 import { IconButton } from "@/components/icon-button";
 import { ProUnlockContent, ProUnlockModal } from "@/components/pro-unlock-modal";
 import {
@@ -273,29 +273,29 @@ export function Stage({
             {detailsLabel}
           </span>
         </div>
-        <div className="pb-28">{details}</div>
+        <div className="pb-24">{details}</div>
         <SiteFooter />
       </div>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 flex justify-center px-4">
-        <div className="pointer-events-auto flex max-w-full items-center gap-1.5 rounded-full border bg-background/90 p-1.5 shadow-xl shadow-foreground/10 backdrop-blur-md">
+      <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
+        <div className="pointer-events-auto flex max-w-full items-center gap-1 rounded-full border bg-background/90 p-1 shadow-xl shadow-foreground/10 backdrop-blur-md">
           {/* The catalogue, not "back": the arrows on the right already walk
               the neighbours, and this always lands on the listing. */}
-          <IconButton asChild label={backLabel} icon={GridViewIcon} className={ICON_ACTION_CLASS}>
+          <IconButton asChild label={backLabel} icon={GridViewIcon} className={ICON_ACTION_CLASS_SM}>
             <Link href={backHref} />
           </IconButton>
 
           <Tabs value={activeTab} onValueChange={(v) => switchTab(v as "view" | "code")}>
-            <TabsList className="h-11 rounded-full bg-muted/60 p-1">
+            <TabsList className="h-9 rounded-full bg-muted/60 p-1">
               <TabsTrigger
                 value="view"
-                className="cursor-pointer rounded-full px-4 text-base data-[state=active]:bg-background"
+                className="cursor-pointer rounded-full px-3 text-sm data-[state=active]:bg-background"
               >
                 View
               </TabsTrigger>
               <TabsTrigger
                 value="code"
-                className="cursor-pointer rounded-full px-4 text-base data-[state=active]:bg-background"
+                className="cursor-pointer rounded-full px-3 text-sm data-[state=active]:bg-background"
               >
                 Code
               </TabsTrigger>
@@ -303,13 +303,18 @@ export function Stage({
           </Tabs>
 
           {hasFlavor && (
-            <RegistryFlavorSelect flavor={flavor} onChange={setFlavor} className="hidden lg:flex" />
+            <RegistryFlavorSelect
+              flavor={flavor}
+              onChange={setFlavor}
+              size="sm"
+              className="hidden lg:flex"
+            />
           )}
 
-          <div className="hidden h-11 items-center rounded-full bg-muted/60 pl-1 text-base sm:flex">
+          <div className="hidden h-9 items-center rounded-full bg-muted/60 pl-1 text-sm sm:flex">
             <DropdownMenu>
               <DropdownMenuTrigger
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+                className="flex size-7 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
                 aria-label={`Select package manager (current: ${PM_LABELS[pm]})`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -332,7 +337,7 @@ export function Stage({
             <button
               type="button"
               onClick={handleCopy}
-              className="flex h-full min-w-0 cursor-pointer select-none items-center gap-2 rounded-full px-3 transition-colors hover:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+              className="flex h-full min-w-0 cursor-pointer select-none items-center gap-2 rounded-full px-2.5 transition-colors hover:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
               aria-label={copied ? "Copied" : "Copy install command"}
             >
               <span className="grid min-w-0 items-center">
@@ -360,7 +365,7 @@ export function Stage({
             </button>
           </div>
 
-          <ThemePicker className="hidden md:inline-flex" />
+          <ThemePicker size="sm" className="hidden md:inline-flex" />
 
           {actions}
         </div>

@@ -222,10 +222,12 @@ export function RegistryFlavorToggle({
 export function RegistryFlavorSelect({
   flavor,
   onChange,
+  size = "default",
   className,
 }: {
   flavor: RegistryFlavor;
   onChange: (flavor: RegistryFlavor) => void;
+  size?: "default" | "sm";
   className?: string;
 }) {
   if (!HAS_CHOICE) return null;
@@ -236,7 +238,8 @@ export function RegistryFlavorSelect({
       <DropdownMenuTrigger
         className={cn(
           // The same filled pill the search field, the picker and the pager wear.
-          "flex h-11 cursor-pointer items-center gap-2 rounded-full bg-muted/60 px-4 text-base text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+          "flex cursor-pointer items-center gap-2 rounded-full bg-muted/60 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+          size === "sm" ? "h-9 px-3 text-sm" : "h-11 px-4 text-base",
           className
         )}
         aria-label={`Primitive library: ${active.label}`}

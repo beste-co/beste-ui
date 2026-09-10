@@ -28,6 +28,7 @@ export const playground: PlaygroundConfig = {
     { prop: "unit", label: "Unit", kind: "text", placeholder: "px" },
     { prop: "ticks", label: "Ticks", kind: "switch", default: true },
     { prop: "snap", label: "Snap on click", kind: "switch", default: true },
+    { prop: "revealed", label: "Always show handle", kind: "switch", default: false },
     ...SURFACE_CONTROLS,
   ],
 };

@@ -39,7 +39,7 @@ const SETS = [
 
 /** Blocks that belong to a set but carry neither its components nor its name. */
 const EXTRA: Record<string, string[]> = {
-  altair: [],
+  altair: ["hero188", "feature294", "feature295", "feature298", "post89", "feature306", "usecase62", "showcase53"],
   auralis: [],
   polaris: [],
   sirius: [],

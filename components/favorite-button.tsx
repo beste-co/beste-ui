@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Bookmark02Icon } from "@hugeicons/core-free-icons";
 import { IconButton } from "@/components/icon-button";
-import { ICON_ACTION_CLASS } from "@/components/icon-action";
+import { ICON_ACTION_CLASS_SM } from "@/components/icon-action";
 import { LoginModal } from "@/components/login-modal";
 import { useAuth } from "@/lib/auth-context";
 import { useFavorites } from "@/lib/favorites-context";
@@ -84,7 +84,7 @@ export function FavoriteButton({
         icon={Bookmark02Icon}
         onClick={handleClick}
         className={cn(
-          ICON_ACTION_CLASS,
+          ICON_ACTION_CLASS_SM,
           favorited && "text-primary [&_svg]:fill-current",
           className
         )}

@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "inspector-slider",
   title: "Inspector Slider",
   description:
-    "Compact settings row where the label and the live value sit inside the track: magnetic tick snapping, a rubber band when you overdrag, Shift for precision, Alt-click to reset, wheel and typed input, on a native range input for full accessibility.",
+    "Compact settings row where the label and the live value sit inside the track: magnetic tick snapping, a rubber band when you overdrag, Shift for precision, Alt-click to reset, wheel and typed input, an option to keep the handle on show while idle, on a native range input for full accessibility.",
   category: "Inspector",
   usage: `import { InspectorSlider } from "@/components/beste/component/inspector-slider";
 
@@ -45,6 +45,9 @@ export const meta: ComponentMeta = {
   formatValue={(value) => \`\${value}px\`}
   defaultValue={8}
 />
+
+// Handle and ticks stay on show while idle, instead of appearing on hover
+<InspectorSlider label="Opacity" revealed min={0} max={100} defaultValue={60} unit="%" />
 
 // Snapping off, plain scrolling never hijacked, disabled state
 <InspectorSlider label="Speed" snap={false} wheel={false} disabled min={0} max={2} />

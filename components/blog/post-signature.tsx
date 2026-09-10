@@ -13,13 +13,13 @@ export function PostSignature() {
     <div className="mt-6 flex items-center gap-4">
       <Image
         src="/assets/images/zieg.jpg"
-        alt="zieg"
+        alt="uğur"
         width={48}
         height={48}
         className="size-12 rounded-full object-cover"
       />
       <div className="flex flex-col leading-tight">
-        <span className="font-semibold text-foreground">zieg</span>
+        <span className="font-semibold text-foreground">uğur</span>
         <span className="text-sm text-muted-foreground">building beste.co</span>
       </div>
       <div className="ml-auto flex items-center gap-3">
@@ -30,7 +30,7 @@ export function PostSignature() {
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           <GlobeLogo className="size-4" />
-          <span className="sr-only">zieg's website</span>
+          <span className="sr-only">uğur's website</span>
         </a>
         <a
           href="https://x.com/forwardset"
@@ -39,7 +39,7 @@ export function PostSignature() {
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           <XLogo className="size-4" />
-          <span className="sr-only">zieg on X</span>
+          <span className="sr-only">uğur on X</span>
         </a>
         <a
           href="https://linkedin.com/in/ziegfiroyt"
@@ -48,7 +48,7 @@ export function PostSignature() {
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           <LinkedInLogo className="size-4" />
-          <span className="sr-only">zieg on LinkedIn</span>
+          <span className="sr-only">uğur on LinkedIn</span>
         </a>
       </div>
     </div>

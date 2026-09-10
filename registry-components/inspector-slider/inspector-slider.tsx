@@ -189,6 +189,12 @@ interface InspectorSliderProps {
   resetValue?: number;
   /** Block every interaction and dim the row. */
   disabled?: boolean;
+  /**
+   * Keep the handle and the tick marks on show while the row sits idle, instead
+   * of revealing them on hover. For a row whose value has to read at a glance,
+   * or a panel where every row should look the same before it is touched.
+   * @defaultValue false */
+  revealed?: boolean;
 
   /**
    * Surface treatment: filled (default), hairline outline, or bare until hover.
@@ -253,6 +259,7 @@ export function InspectorSlider({
   wheel = true,
   resetValue,
   disabled = false,
+  revealed = false,
   tone = "muted",
   size = "default",
   name,
@@ -398,7 +405,7 @@ export function InspectorSlider({
     const root = rootRef.current;
     if (!root) return;
     const flags = flagsRef.current;
-    const active = flags.hover || flags.focus || flags.press;
+    const active = flags.hover || flags.focus || flags.press || revealed;
     root.dataset.active = active ? "true" : "false";
     root.dataset.dragging = flags.drag ? "true" : "false";
     root.dataset.handle = !active
@@ -408,7 +415,7 @@ export function InspectorSlider({
         : flags.drag
           ? "dragging"
           : "idle";
-  }, []);
+  }, [revealed]);
 
   /**
    * Move the fill and the handle. One custom property drives both, as
@@ -885,9 +892,9 @@ export function InspectorSlider({
     <div
       ref={rootRef}
       data-slot="inspector-slider"
-      data-active="false"
+      data-active={revealed ? "true" : "false"}
       data-dragging="false"
-      data-handle="hidden"
+      data-handle={revealed ? "idle" : "hidden"}
       data-disabled={disabled}
       className={cn(
         "group/inspector-slider relative h-(--inspector-height) touch-none select-none",

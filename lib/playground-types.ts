@@ -67,6 +67,25 @@ export interface PlaygroundKey {
   does: string;
 }
 
+/**
+ * A backdrop for the preview, and only for the preview.
+ *
+ * Some props only read against something: a frosted surface is a plain panel
+ * over a flat stage, and a reader who cannot see through it cannot see what the
+ * option does. This puts a picture behind the component on the documentation
+ * page without any of it reaching the component, which takes no such prop and
+ * should not: what sits behind a piece is the section's business.
+ */
+export interface PlaygroundStage {
+  /** Shown behind the component, covering the stage. */
+  image: string;
+  /**
+   * Props that must hold these values for the backdrop to appear. Left out, it
+   * is always there. `{ surface: "glass" }` is the case this was written for.
+   */
+  when?: Record<string, unknown>;
+}
+
 export interface PlaygroundConfig {
   /**
    * What the playground opens with. Left out, the component's demo props are used —
@@ -83,7 +102,46 @@ export interface PlaygroundConfig {
    * this table existed. Each line is taken from the component's own key handler.
    */
   keys?: PlaygroundKey[];
+  /** A picture behind the preview, for props that only read against something. */
+  stage?: PlaygroundStage;
 }
+
+/**
+ * The three surface props every piece carries, described once.
+ *
+ * A piece is a panel that sits in a media slot, so the same three questions come
+ * up for all of them: what it is made of, whether it keeps its hairline, and
+ * whether it reads light on dark. Spelling them out in seventeen config files
+ * would be seventeen places for the wording to drift.
+ */
+export const PIECE_SURFACE_CONTROLS: PlaygroundControl[] = [
+  {
+    prop: "surface",
+    label: "Surface",
+    kind: "segmented",
+    options: [
+      { value: "card", label: "Card" },
+      { value: "glass", label: "Glass" },
+    ],
+    default: "card",
+    group: "Surface",
+  },
+  { prop: "bordered", label: "Border", kind: "switch", default: true, group: "Surface" },
+  { prop: "inverted", label: "Invert", kind: "switch", default: false, group: "Surface" },
+];
+
+/**
+ * The backdrop the frosted surface is shown against.
+ *
+ * Only under glass, because that is the one option a flat stage cannot show. The
+ * picture is one of the gradient backdrops the sections these pieces sit in
+ * already carry, so the preview is the situation rather than a demonstration of it.
+ */
+export const PIECE_GLASS_STAGE: PlaygroundStage = {
+  image:
+    "https://images.unsplash.com/photo-1701979399033-1f720add6b91?q=80&w=2400&auto=format&fit=crop",
+  when: { surface: "glass" },
+};
 
 /** Shared by every row in the inspector family, so it is described once. */
 export const SURFACE_CONTROLS: PlaygroundControl[] = [
