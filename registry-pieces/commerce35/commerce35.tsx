@@ -93,7 +93,7 @@ export function Commerce35({
     return () => clearTimeout(id);
   }, [landed, products.length, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -107,15 +107,15 @@ export function Commerce35({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         <div className="flex items-baseline justify-between gap-3">
           {title && (
-            <h3 className="truncate text-sm font-semibold">
+            <span className="truncate text-sm font-semibold">
               {title}
-            </h3>
+            </span>
           )}
           <span className="shrink-0 text-xl font-light leading-none tabular-nums">
             {landed}
@@ -139,7 +139,7 @@ export function Commerce35({
                   className="flex size-8 shrink-0 items-center justify-center rounded-md bg-current/10"
                   aria-hidden="true"
                 >
-                  <Package className="size-3.5 opacity-60" />
+                  <Package className="size-3.5 text-current/60" />
                 </div>
 
                 <div className="min-w-0 flex-1">
@@ -155,7 +155,7 @@ export function Commerce35({
                       {product.title}
                     </span>
                   </div>
-                  <p className="truncate text-xs opacity-60">
+                  <p className="truncate text-xs text-current/60">
                     {product.price}
                     {product.variants
                       ? ` · ${product.variants} ${variantsWord}`

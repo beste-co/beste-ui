@@ -4,6 +4,8 @@ import type { LucideIcon } from "lucide-react";
 import { AtSign, Bell, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Channel = "email" | "slack" | "push";
 
 interface Dashboard27Props {
@@ -14,6 +16,9 @@ interface Dashboard27Props {
   pushLabel?: string;
   emptySymbol?: string;
   counts?: Record<Channel, number>;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -35,7 +40,26 @@ const CHANNELS: Record<
   },
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard27Demo: Dashboard27Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   heading: "Unread",
   totalSuffix: "total",
   emailLabel: "Email",
@@ -53,6 +77,9 @@ export function Dashboard27({
   pushLabel = "Push",
   emptySymbol = "—",
   counts = { email: 0, slack: 0, push: 0 },
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard27Props) {
   const order: Channel[] = ["email", "slack", "push"];
@@ -63,6 +90,8 @@ export function Dashboard27({
   };
   const total = order.reduce((s, k) => s + (counts[k] ?? 0), 0);
 
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -70,12 +99,12 @@ export function Dashboard27({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
             {heading}
           </span>
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className="font-mono text-xs text-current/60">
             {total} {totalSuffix}
           </span>
         </div>
@@ -95,7 +124,7 @@ export function Dashboard27({
                 >
                   <Icon className="size-3.5" />
                 </span>
-                <span className="flex-1 text-xs text-card-foreground">
+                <span className="flex-1 text-xs">
                   {labels[k]}
                 </span>
                 {n > 0 ? (
@@ -103,7 +132,7 @@ export function Dashboard27({
                     {n}
                   </span>
                 ) : (
-                  <span className="text-xs text-muted-foreground">{emptySymbol}</span>
+                  <span className="text-xs text-current/60">{emptySymbol}</span>
                 )}
               </li>
             );

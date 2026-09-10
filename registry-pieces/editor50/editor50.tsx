@@ -77,7 +77,7 @@ export function Editor50({
     return () => clearTimeout(id);
   }, [loadMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -91,7 +91,7 @@ export function Editor50({
       <div
         className={cn(
           "w-full max-w-72 overflow-hidden rounded-xl shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
@@ -123,11 +123,11 @@ export function Editor50({
 
         <div className="flex flex-col gap-1 p-4">
           {sectionId && (
-            <p className="font-mono text-xs opacity-60">{sectionId}</p>
+            <p className="font-mono text-xs text-current/60">{sectionId}</p>
           )}
-          {title && <h3 className="text-sm font-semibold">{title}</h3>}
+          {title && <span className="block text-sm font-semibold">{title}</span>}
           {description && (
-            <p className="line-clamp-2 text-xs opacity-60">{description}</p>
+            <p className="line-clamp-2 text-xs text-current/60">{description}</p>
           )}
           {addLabel && (
             <button

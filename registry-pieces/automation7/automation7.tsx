@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type StepPreset =
   | "trigger"
   | "email"
@@ -29,6 +31,9 @@ interface Automation7Step {
 interface Automation7Props {
   steps?: Automation7Step[];
   headerLabel?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -44,7 +49,26 @@ const PRESETS: Record<StepPreset, { icon: LucideIcon; tile: string }> = {
   discord: { icon: MessageSquare, tile: "bg-indigo-600 text-white" },
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const automation7Demo: Automation7Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   headerLabel: "Workflow",
   steps: [
     {
@@ -77,7 +101,7 @@ export const automation7Demo: Automation7Props = {
 function StepTile({ step }: { step: Automation7Step }) {
   if (step.image) {
     return (
-      <span className="relative size-7 shrink-0 overflow-hidden rounded-md bg-muted">
+      <span className="relative size-7 shrink-0 overflow-hidden rounded-md bg-current/10">
         <img
           src={step.image}
           alt={step.alt ?? ""}
@@ -101,14 +125,19 @@ function StepTile({ step }: { step: Automation7Step }) {
       </span>
     );
   }
-  return <span className="size-7 shrink-0 rounded-md bg-muted" aria-hidden="true" />;
+  return <span className="size-7 shrink-0 rounded-md bg-current/10" aria-hidden="true" />;
 }
 
 export function Automation7({
   steps = [],
   headerLabel = "Workflow",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Automation7Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -116,8 +145,8 @@ export function Automation7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span className="pb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <span className="pb-1 text-xs font-semibold uppercase tracking-wide text-current/60">
           {headerLabel}
         </span>
         <ol className="flex flex-col">
@@ -135,10 +164,10 @@ export function Automation7({
                   )}
                 </div>
                 <div className="flex flex-1 flex-col pb-3 pt-0.5">
-                  <span className="text-xs font-medium text-card-foreground">
+                  <span className="text-xs font-medium">
                     {s.label}
                   </span>
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-current/60">
                     {s.detail}
                   </span>
                 </div>

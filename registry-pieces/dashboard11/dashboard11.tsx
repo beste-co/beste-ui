@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Dashboard11Entry {
   name: string;
   score: string;
@@ -10,6 +12,9 @@ interface Dashboard11Entry {
 interface Dashboard11Props {
   title?: string;
   entries?: Dashboard11Entry[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -19,7 +24,26 @@ const MEDALS = [
   "bg-orange-700 text-orange-50",
 ];
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard11Demo: Dashboard11Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Top performers",
   entries: [
     { name: "Ada L.", score: "12,840" },
@@ -31,8 +55,13 @@ export const dashboard11Demo: Dashboard11Props = {
 export function Dashboard11({
   title = "Leaderboard",
   entries = [],
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard11Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -40,8 +69,8 @@ export function Dashboard11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
           {title}
         </span>
         <div className="flex flex-col gap-1.5">
@@ -56,10 +85,10 @@ export function Dashboard11({
               >
                 {i + 1}
               </span>
-              <span className="flex-1 truncate text-xs font-medium text-card-foreground">
+              <span className="flex-1 truncate text-xs font-medium">
                 {e.name}
               </span>
-              <span className="shrink-0 font-mono text-sm font-semibold tabular-nums text-card-foreground">
+              <span className="shrink-0 font-mono text-sm font-semibold tabular-nums">
                 {e.score}
               </span>
             </div>

@@ -29,12 +29,12 @@ const headingClasses: Record<Character, string> = {
 };
 
 const eyebrowClasses: Record<Character, string> = {
-  serif: "text-xs uppercase tracking-widest opacity-60",
+  serif: "text-xs uppercase tracking-widest text-current/60",
   hairline:
-    "rounded-full border border-current/15 px-2 py-0.5 text-xs opacity-60",
-  mono: "font-mono text-xs lowercase opacity-60",
+    "rounded-full border border-current/15 px-2 py-0.5 text-xs text-current/60",
+  mono: "font-mono text-xs lowercase text-current/60",
   editorial:
-    "text-xs font-semibold uppercase tracking-wider opacity-60",
+    "text-xs font-semibold uppercase tracking-wider text-current/60",
 };
 
 /* The two solid buttons flip with the surface: a foreground fill on a foreground
@@ -114,7 +114,7 @@ export function Editor51({
   const step = (index: number) =>
     settled > index ? "editor51-in" : "invisible";
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -128,7 +128,7 @@ export function Editor51({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-2.5 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
@@ -141,14 +141,14 @@ export function Editor51({
         )}
 
         {heading && (
-          <h3
+          <span
             className={cn(
               headingClasses[character],
               step(1)
             )}
           >
             {heading}
-          </h3>
+          </span>
         )}
 
         {traits.length > 0 && (
@@ -157,7 +157,7 @@ export function Editor51({
               <p
                 key={trait}
                 className={cn(
-                  "text-xs opacity-60",
+                  "text-xs text-current/60",
                   step(2 + index)
                 )}
               >

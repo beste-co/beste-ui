@@ -3,16 +3,40 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Money22Props {
   name?: string;
   badge?: string;
   price?: string;
   period?: string;
   items?: string[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const money22Demo: Money22Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   name: "Practice",
   badge: "Popular",
   price: "$79",
@@ -26,8 +50,13 @@ export function Money22({
   price = "—",
   period,
   items = [],
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Money22Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -35,9 +64,15 @@ export function Money22({
         className
       )}
     >
-      <div className="w-full max-w-72 rounded-md border border-border bg-card p-5 shadow-xl">
+      <div
+        className={cn(
+          "w-full max-w-72 rounded-md p-5 shadow-xl",
+          surfaceTone,
+          bordered && "border border-current/15"
+        )}
+      >
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-medium text-card-foreground">{name}</p>
+          <p className="text-sm font-medium">{name}</p>
           {badge && (
             <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
               {badge}
@@ -45,11 +80,11 @@ export function Money22({
           )}
         </div>
         <div className="mt-2 flex items-baseline gap-1">
-          <span className="text-3xl font-semibold tracking-tight text-card-foreground">
+          <span className="text-3xl font-semibold tracking-tight">
             {price}
           </span>
           {period && (
-            <span className="text-sm text-muted-foreground">/{period}</span>
+            <span className="text-sm text-current/60">/{period}</span>
           )}
         </div>
         {items.length > 0 && (
@@ -60,7 +95,7 @@ export function Money22({
                   className="size-3.5 shrink-0 text-primary"
                   aria-hidden="true"
                 />
-                <span className="text-muted-foreground">{item}</span>
+                <span className="text-current/60">{item}</span>
               </div>
             ))}
           </div>

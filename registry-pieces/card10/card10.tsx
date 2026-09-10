@@ -3,6 +3,8 @@
 import { Heart, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -19,6 +21,9 @@ interface Card10Props {
   original?: string;
   image?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -35,7 +40,26 @@ const thumbClasses: Record<Tone, string> = {
   rose: "bg-gradient-to-br from-rose-200 via-pink-200 to-orange-200 text-rose-800/60",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const card10Demo: Card10Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   name: "Linen boucle cushion",
   tag: "Limited run",
   price: "$48",
@@ -52,8 +76,13 @@ export function Card10({
   original,
   image,
   tone = "amber",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Card10Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -61,7 +90,7 @@ export function Card10({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col overflow-hidden rounded-xl shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div
           className={cn(
             "relative flex aspect-video items-center justify-center",
@@ -92,18 +121,18 @@ export function Card10({
         </div>
         <div className="flex flex-col gap-1 p-3">
           {name && (
-            <span className="truncate text-sm font-semibold text-card-foreground">
+            <span className="truncate text-sm font-semibold">
               {name}
             </span>
           )}
           <div className="flex items-baseline gap-2">
             {price && (
-              <span className="font-mono text-base font-bold text-card-foreground">
+              <span className="font-mono text-base font-bold">
                 {price}
               </span>
             )}
             {original && (
-              <span className="font-mono text-xs text-muted-foreground line-through">
+              <span className="font-mono text-xs text-current/60 line-through">
                 {original}
               </span>
             )}

@@ -79,7 +79,7 @@ export function Dashboard35({
     return () => clearTimeout(id);
   }, [landed, projects.length, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -93,7 +93,7 @@ export function Dashboard35({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
@@ -101,11 +101,11 @@ export function Dashboard35({
           <span className="text-xl font-light leading-none tabular-nums">
             {landed}
           </span>
-          <span className="text-xs opacity-60">
+          <span className="text-xs text-current/60">
             {ofWord} {limit}
           </span>
           {billingValue && (
-            <span className="ml-auto shrink-0 text-xs opacity-60">
+            <span className="ml-auto shrink-0 text-xs text-current/60">
               {billingValue}
             </span>
           )}
@@ -124,7 +124,7 @@ export function Dashboard35({
                 {project.domain}
               </span>
               {project.planLabel && (
-                <span className="shrink-0 rounded-full bg-current/10 px-2 py-0.5 text-xs font-medium opacity-60">
+                <span className="shrink-0 rounded-full bg-current/10 px-2 py-0.5 text-xs font-medium text-current/60">
                   {project.planLabel}
                 </span>
               )}

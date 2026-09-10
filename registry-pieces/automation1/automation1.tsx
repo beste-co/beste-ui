@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type AppPreset =
   | "slack"
   | "gmail"
@@ -33,6 +35,9 @@ interface Automation1Props {
   action?: Automation1Step;
   triggerLabel?: string;
   actionLabel?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -69,7 +74,26 @@ const APPS: Record<
   },
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const automation1Demo: Automation1Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   triggerLabel: "When",
   actionLabel: "Then",
   trigger: {
@@ -87,7 +111,7 @@ export const automation1Demo: Automation1Props = {
 function Tile({ step }: { step: Automation1Step }) {
   if (step.src) {
     return (
-      <span className="relative size-9 shrink-0 overflow-hidden rounded-md bg-muted">
+      <span className="relative size-9 shrink-0 overflow-hidden rounded-md bg-current/10">
         <img
           src={step.src}
           alt={step.alt ?? ""}
@@ -111,7 +135,7 @@ function Tile({ step }: { step: Automation1Step }) {
       </span>
     );
   }
-  return <span className="size-9 shrink-0 rounded-md bg-muted" aria-hidden="true" />;
+  return <span className="size-9 shrink-0 rounded-md bg-current/10" aria-hidden="true" />;
 }
 
 function labelFor(step: Automation1Step) {
@@ -122,18 +146,18 @@ function labelFor(step: Automation1Step) {
 
 function Row({ kind, step }: { kind: string; step: Automation1Step }) {
   return (
-    <div className="flex items-center gap-2 rounded-md border border-border p-2">
+    <div className="flex items-center gap-2 rounded-md border border-current/15 p-2">
       <Tile step={step} />
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex items-baseline gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
             {kind}
           </span>
-          <span className="truncate text-xs font-semibold text-card-foreground">
+          <span className="truncate text-xs font-semibold">
             {labelFor(step)}
           </span>
         </div>
-        <span className="truncate text-xs text-muted-foreground">
+        <span className="truncate text-xs text-current/60">
           {step.event}
         </span>
       </div>
@@ -146,8 +170,13 @@ export function Automation1({
   action = { preset: "gmail", event: "Action event" },
   triggerLabel = "When",
   actionLabel = "Then",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Automation1Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -155,14 +184,14 @@ export function Automation1({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <Row kind={triggerLabel} step={trigger} />
         <div className="flex items-center justify-center py-0.5">
           <span
-            className="flex size-5 items-center justify-center rounded-full border border-border bg-muted"
+            className="flex size-5 items-center justify-center rounded-full border border-current/15 bg-current/10"
             aria-hidden="true"
           >
-            <ArrowDown className="size-3 text-muted-foreground" />
+            <ArrowDown className="size-3 text-current/60" />
           </span>
         </div>
         <Row kind={actionLabel} step={action} />

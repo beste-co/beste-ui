@@ -1,6 +1,8 @@
 "use client";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Speaker {
   name: string;
   role: string;
@@ -11,10 +13,32 @@ interface Speaker {
 interface Event3Props {
   heading?: string;
   speakers?: Speaker[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const event3Demo: Event3Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   heading: "Opening-day speakers",
   speakers: [
     {
@@ -34,18 +58,20 @@ export const event3Demo: Event3Props = {
   ],
 };
 
-export function Event3({ heading, speakers = [], className }: Event3Props) {
+export function Event3({ heading, speakers = [], surface = "card", bordered = true, inverted = false, className }: Event3Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
             {heading}
           </span>
         )}
         <div className="grid grid-cols-2 gap-2">
           {speakers.map((s, idx) => (
-            <div key={idx} className="flex items-center gap-2 rounded-md bg-muted p-2">
+            <div key={idx} className="flex items-center gap-2 rounded-md bg-current/10 p-2">
               <div className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-fuchsia-500 to-rose-500 text-xs font-bold text-white">
                 {s.image ? (
                   <img src={s.image} alt={s.name} className="absolute inset-0 size-full object-cover" />
@@ -54,10 +80,10 @@ export function Event3({ heading, speakers = [], className }: Event3Props) {
                 )}
               </div>
               <div className="flex min-w-0 flex-1 flex-col">
-                <span className="truncate text-xs font-semibold text-card-foreground">
+                <span className="truncate text-xs font-semibold">
                   {s.name}
                 </span>
-                <span className="truncate text-xs text-muted-foreground">{s.role}</span>
+                <span className="truncate text-xs text-current/60">{s.role}</span>
               </div>
             </div>
           ))}

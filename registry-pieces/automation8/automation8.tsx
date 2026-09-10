@@ -2,6 +2,8 @@
 import { Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -21,6 +23,9 @@ interface Automation8Props {
   pausedLabel?: string;
   runsLabel?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -42,7 +47,26 @@ const switchTextOn: Record<Tone, string> = {
   amber: "text-amber-600 dark:text-amber-400",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const automation8Demo: Automation8Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   name: "Stripe → Slack revenue alerts",
   description: "Posts a message in #revenue when a payment over $500 lands.",
   image: "https://oud.pics/sm/l/stripe.jpeg",
@@ -66,8 +90,13 @@ export function Automation8({
   pausedLabel = "Paused",
   runsLabel = "runs today",
   tone = "emerald",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Automation8Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -75,9 +104,9 @@ export function Automation8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-start gap-2.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-start gap-2.5 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {image ? (
-          <span className="relative size-8 shrink-0 overflow-hidden rounded-md bg-muted">
+          <span className="relative size-8 shrink-0 overflow-hidden rounded-md bg-current/10">
             <img
               src={image}
               alt={alt ?? name}
@@ -94,7 +123,7 @@ export function Automation8({
         )}
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <div className="flex items-center justify-between gap-2">
-            <span className="truncate text-xs font-semibold text-card-foreground">
+            <span className="truncate text-xs font-semibold">
               {name}
             </span>
             <button
@@ -103,7 +132,7 @@ export function Automation8({
               aria-checked={active}
               className={cn(
                 "relative inline-flex h-4 w-7 shrink-0 items-center rounded-full transition-colors",
-                active ? switchOnClasses[tone] : "bg-muted-foreground/30"
+                active ? switchOnClasses[tone] : "bg-current/10"
               )}
             >
               <span
@@ -116,7 +145,7 @@ export function Automation8({
             </button>
           </div>
           {description && (
-            <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+            <p className="line-clamp-2 text-xs leading-snug text-current/60">
               {description}
             </p>
           )}
@@ -124,13 +153,13 @@ export function Automation8({
             <span
               className={cn(
                 "font-medium",
-                active ? switchTextOn[tone] : "text-muted-foreground"
+                active ? switchTextOn[tone] : "text-current/60"
               )}
             >
               {active ? activeLabel : pausedLabel}
             </span>
             {typeof runsToday === "number" && (
-              <span className="font-mono tabular-nums text-muted-foreground">
+              <span className="font-mono tabular-nums text-current/60">
                 {runsToday} {runsLabel}
               </span>
             )}

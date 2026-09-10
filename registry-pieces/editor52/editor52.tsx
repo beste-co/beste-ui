@@ -95,7 +95,7 @@ export function Editor52({
 
   let cursor = -1;
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -109,19 +109,19 @@ export function Editor52({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         {title && (
-          <h3 className="text-sm font-semibold">
+          <span className="block text-sm font-semibold">
             {title}
-          </h3>
+          </span>
         )}
 
         {groups.map((group) => (
           <div key={group.label} className="flex flex-col gap-1">
-            <p className="text-xs font-medium opacity-60">
+            <p className="text-xs font-medium text-current/60">
               {group.label}
             </p>
             {group.rows.map((row) => {
@@ -138,7 +138,7 @@ export function Editor52({
                   </span>
                   <span
                     className={cn(
-                      "flex shrink-0 items-center gap-1 text-xs opacity-60",
+                      "flex shrink-0 items-center gap-1 text-xs text-current/60",
                       shown ? "editor52-in" : "invisible"
                     )}
                   >

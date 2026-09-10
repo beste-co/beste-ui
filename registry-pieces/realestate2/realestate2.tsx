@@ -3,6 +3,8 @@
 import { PiggyBank } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -25,6 +27,9 @@ interface Realestate2Props {
   rateLabel?: string;
   termLabel?: string;
   paymentLabel?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -38,7 +43,26 @@ const iconClasses: Record<Tone, string> = {
   rose: "bg-rose-500 text-white",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const realestate2Demo: Realestate2Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   price: "$1,240,000",
   downPayment: "20% · $248,000",
   rate: "6.25% APR · 30-yr fixed",
@@ -66,8 +90,13 @@ export function Realestate2({
   rateLabel = "Rate",
   termLabel = "Term",
   paymentLabel = "Est. payment",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Realestate2Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -75,7 +104,7 @@ export function Realestate2({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
           <div
             className={cn(
@@ -85,35 +114,35 @@ export function Realestate2({
           >
             <PiggyBank className="size-4" aria-hidden="true" />
           </div>
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
             {eyebrowLabel}
           </span>
         </div>
-        <div className="grid grid-cols-2 gap-1.5 rounded-md bg-muted p-2 text-xs">
+        <div className="grid grid-cols-2 gap-1.5 rounded-md bg-current/10 p-2 text-xs">
           <div className="flex flex-col">
-            <span className="text-muted-foreground">{priceLabel}</span>
-            <span className="font-mono font-semibold text-card-foreground">
+            <span className="text-current/60">{priceLabel}</span>
+            <span className="font-mono font-semibold">
               {price}
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-muted-foreground">{downLabel}</span>
-            <span className="font-mono font-semibold text-card-foreground">
+            <span className="text-current/60">{downLabel}</span>
+            <span className="font-mono font-semibold">
               {downPayment}
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-muted-foreground">{rateLabel}</span>
-            <span className="font-mono text-card-foreground">{rate}</span>
+            <span className="text-current/60">{rateLabel}</span>
+            <span className="font-mono">{rate}</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-muted-foreground">{termLabel}</span>
-            <span className="font-mono text-card-foreground">{term}</span>
+            <span className="text-current/60">{termLabel}</span>
+            <span className="font-mono">{term}</span>
           </div>
         </div>
-        <div className="flex items-baseline justify-between border-t border-border pt-2">
-          <span className="text-sm text-muted-foreground">{paymentLabel}</span>
-          <span className="font-mono text-xl font-bold text-card-foreground">
+        <div className="flex items-baseline justify-between border-t border-current/15 pt-2">
+          <span className="text-sm text-current/60">{paymentLabel}</span>
+          <span className="font-mono text-xl font-bold">
             {monthly}
           </span>
         </div>

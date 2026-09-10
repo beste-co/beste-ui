@@ -3,16 +3,40 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Automation12Props {
   status?: "success" | "failed";
   runLabel?: string;
   statusCode?: string;
   duration?: string;
   body?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const automation12Demo: Automation12Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   status: "success",
   runLabel: "Test run",
   statusCode: "200 OK",
@@ -31,9 +55,14 @@ export function Automation12({
   statusCode = "200 OK",
   duration,
   body = "{}",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Automation12Props) {
   const success = status === "success";
+
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -42,8 +71,8 @@ export function Automation12({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
-        <div className="flex items-center justify-between gap-2 border-b border-border px-3 py-2">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <div className="flex items-center justify-between gap-2 border-b border-current/15 px-3 py-2">
           <div className="flex items-center gap-1.5">
             <span
               className={cn(
@@ -56,7 +85,7 @@ export function Automation12({
             >
               <Check className="size-2.5" strokeWidth={3} />
             </span>
-            <span className="text-xs font-semibold text-card-foreground">
+            <span className="text-xs font-semibold">
               {runLabel}
             </span>
             <span
@@ -71,12 +100,12 @@ export function Automation12({
             </span>
           </div>
           {duration && (
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className="font-mono text-xs text-current/60">
               {duration}
             </span>
           )}
         </div>
-        <pre className="max-h-28 overflow-hidden whitespace-pre bg-muted/40 px-3 py-2 font-mono text-xs leading-relaxed text-card-foreground">
+        <pre className="max-h-28 overflow-hidden whitespace-pre bg-current/5 px-3 py-2 font-mono text-xs leading-relaxed">
           {body}
         </pre>
       </div>

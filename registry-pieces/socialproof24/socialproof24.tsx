@@ -3,6 +3,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Member {
   src: string;
   alt: string;
@@ -11,10 +13,32 @@ interface Member {
 
 interface Socialproof24Props {
   items?: Member[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const socialproof24Demo: Socialproof24Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   items: [
     {
       src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&h=160&fit=crop",
@@ -36,7 +60,9 @@ export const socialproof24Demo: Socialproof24Props = {
   ],
 };
 
-export function Socialproof24({ items = [], className }: Socialproof24Props) {
+export function Socialproof24({ items = [], surface = "card", bordered = true, inverted = false, className }: Socialproof24Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -49,11 +75,11 @@ export function Socialproof24({ items = [], className }: Socialproof24Props) {
           <div key={index} className="relative">
             {member.name && (
               <div className="absolute -top-9 left-1/2 z-10 -translate-x-1/2">
-                <div className="whitespace-nowrap rounded-md border border-border bg-card px-2.5 py-1 text-xs font-medium text-card-foreground shadow-md">
+                <div className={cn("whitespace-nowrap rounded-md px-2.5 py-1 text-xs font-medium shadow-md", surfaceTone, bordered && "border border-current/15")}>
                   {member.name}
                 </div>
                 <span
-                  className="absolute left-1/2 top-full size-2 -translate-x-1/2 -translate-y-1 rotate-45 border-b border-r border-border bg-card"
+                  className={cn("absolute left-1/2 top-full size-2 -translate-x-1/2 -translate-y-1 rotate-45 border-b border-r border-current/15 ", surfaceTone)}
                   aria-hidden="true"
                 />
               </div>

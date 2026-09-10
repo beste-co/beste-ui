@@ -2,13 +2,40 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Shapes31Props {
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
-export const shapes31Demo: Shapes31Props = {};
 
-export function Shapes31({ className }: Shapes31Props) {
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
+export const shapes31Demo: Shapes31Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
+};
+
+export function Shapes31({ surface = "card", bordered = true, inverted = false, className }: Shapes31Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -17,15 +44,15 @@ export function Shapes31({ className }: Shapes31Props) {
       )}
     >
       <div
-        className="grid w-48 grid-cols-3 gap-3 rounded-md border border-border bg-card p-3 shadow-sm"
+        className={cn("grid w-48 grid-cols-3 gap-3 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}
         aria-hidden="true"
       >
         {Array.from({ length: 3 }).map((_, i) => (
           <div key={i} className="flex flex-col items-center gap-1.5">
-            <span className="size-6 rounded-md bg-muted" />
-            <span className="h-1 w-full rounded-full bg-foreground/70" />
-            <span className="h-1 w-3/4 rounded-full bg-muted" />
-            <span className="h-1 w-2/3 rounded-full bg-muted" />
+            <span className="size-6 rounded-md bg-current/10" />
+            <span className="h-1 w-full rounded-full bg-current/70" />
+            <span className="h-1 w-3/4 rounded-full bg-current/10" />
+            <span className="h-1 w-2/3 rounded-full bg-current/10" />
           </div>
         ))}
       </div>

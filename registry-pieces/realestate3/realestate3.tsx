@@ -3,6 +3,8 @@
 import { Calendar, DoorOpen, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -20,6 +22,9 @@ interface Realestate3Props {
   label?: string;
   tone?: Tone;
   rsvpsSuffix?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -43,7 +48,26 @@ const labelClasses: Record<Tone, string> = {
   rose: "text-rose-700 dark:text-rose-300",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const realestate3Demo: Realestate3Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Open house · 221B Riverside",
   when: "Sat, May 4 · 11:00 – 14:00",
   rsvpCount: 18,
@@ -61,8 +85,13 @@ export function Realestate3({
   label,
   tone = "primary",
   rsvpsSuffix = "RSVPs",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Realestate3Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -70,7 +99,7 @@ export function Realestate3({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
           <div
             className={cn(
@@ -92,11 +121,11 @@ export function Realestate3({
           )}
         </div>
         {title && (
-          <span className="text-sm font-semibold text-card-foreground">
+          <span className="text-sm font-semibold">
             {title}
           </span>
         )}
-        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+        <div className="flex items-center gap-3 text-xs text-current/60">
           <span className="inline-flex items-center gap-1">
             <Calendar className="size-3" aria-hidden="true" />
             {when}
@@ -107,7 +136,7 @@ export function Realestate3({
           </span>
         </div>
         {hostedBy && (
-          <span className="border-t border-border pt-2 text-sm italic text-muted-foreground">
+          <span className="border-t border-current/15 pt-2 text-sm italic text-current/60">
             {hostedBy}
           </span>
         )}

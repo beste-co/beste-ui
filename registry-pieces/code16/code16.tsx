@@ -70,7 +70,7 @@ export function Code16({
     return () => clearTimeout(id);
   }, [written, files.length, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -84,14 +84,14 @@ export function Code16({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         {command && (
           <div className="flex items-start gap-2 rounded-md bg-current/10 p-2.5">
             <span
-              className="shrink-0 font-mono text-xs opacity-60"
+              className="shrink-0 font-mono text-xs text-current/60"
               aria-hidden="true"
             >
               $
@@ -100,7 +100,7 @@ export function Code16({
               {command}
             </code>
             <Copy
-              className="size-3 shrink-0 opacity-60"
+              className="size-3 shrink-0 text-current/60"
               aria-hidden="true"
             />
           </div>
@@ -129,7 +129,7 @@ export function Code16({
                 <span
                   className={cn(
                     "truncate font-mono text-xs transition-colors duration-300 motion-reduce:transition-none",
-                    done ? "" : "opacity-60"
+                    done ? "" : "text-current/60"
                   )}
                 >
                   {file}
@@ -139,7 +139,7 @@ export function Code16({
           })}
         </div>
 
-        {note && <p className="text-xs opacity-60">{note}</p>}
+        {note && <p className="text-xs text-current/60">{note}</p>}
       </div>
     </div>
   );

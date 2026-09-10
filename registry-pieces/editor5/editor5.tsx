@@ -3,6 +3,8 @@
 import { ChevronDown, File, Folder, FolderOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface TreeItem {
   label: string;
   depth: number;
@@ -12,10 +14,32 @@ interface TreeItem {
 
 interface Editor5Props {
   items?: TreeItem[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const editor5Demo: Editor5Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   items: [
     { label: "components", depth: 0, kind: "folderOpen" },
     { label: "beste", depth: 1, kind: "folderOpen" },
@@ -27,7 +51,9 @@ export const editor5Demo: Editor5Props = {
   ],
 };
 
-export function Editor5({ items = [], className }: Editor5Props) {
+export function Editor5({ items = [], surface = "card", bordered = true, inverted = false, className }: Editor5Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -35,7 +61,13 @@ export function Editor5({ items = [], className }: Editor5Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-56 flex-col gap-0.5 rounded-md border border-border bg-card py-1.5 font-mono text-xs shadow-sm">
+      <div
+        className={cn(
+          "flex w-full max-w-56 flex-col gap-0.5 rounded-md py-1.5 font-mono text-xs shadow-sm",
+          surfaceTone,
+          bordered && "border border-current/15"
+        )}
+      >
         {items.map((item, i) => {
           const Icon =
             item.kind === "file"
@@ -50,8 +82,8 @@ export function Editor5({ items = [], className }: Editor5Props) {
               className={cn(
                 "flex items-center gap-1.5 px-2 py-0.5 text-left transition-colors",
                 item.active
-                  ? "bg-muted text-card-foreground"
-                  : "text-muted-foreground hover:bg-muted hover:text-card-foreground"
+                  ? "bg-current/10"
+                  : "text-current/60 hover:bg-current/10 hover:text-current"
               )}
               style={{ paddingLeft: `${0.5 + item.depth * 1}rem` }}
             >
@@ -70,7 +102,7 @@ export function Editor5({ items = [], className }: Editor5Props) {
                 className={cn(
                   "size-3 shrink-0",
                   item.kind === "file"
-                    ? "text-muted-foreground"
+                    ? "text-current/60"
                     : "text-amber-500"
                 )}
                 aria-hidden="true"

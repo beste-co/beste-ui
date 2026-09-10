@@ -3,6 +3,8 @@
 import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "neutral"
   | "primary"
@@ -20,11 +22,14 @@ interface Health1Props {
   label?: string;
   unitLabel?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
+  neutral: "bg-current/10 text-foreground",
   primary: "bg-primary text-primary-foreground",
   foreground: "bg-foreground text-background",
   sky: "bg-sky-500 text-white",
@@ -45,7 +50,26 @@ const traceClasses: Record<Tone, string> = {
   rose: "text-rose-500",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const health1Demo: Health1Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   bpm: 72,
   status: "Resting · Normal",
   updated: "2 min ago",
@@ -61,8 +85,13 @@ export function Health1({
   label = "Heart rate",
   unitLabel = "bpm",
   tone = "primary",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Health1Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -70,7 +99,7 @@ export function Health1({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
           <div
             className={cn(
@@ -83,15 +112,15 @@ export function Health1({
               aria-hidden="true"
             />
           </div>
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
             {label}
           </span>
         </div>
         <div className="flex items-baseline gap-1.5">
-          <span className="font-mono text-3xl font-bold text-card-foreground">
+          <span className="font-mono text-3xl font-bold">
             {bpm}
           </span>
-          <span className="text-xs font-medium text-muted-foreground">
+          <span className="text-xs font-medium text-current/60">
             {unitLabel}
           </span>
         </div>
@@ -110,7 +139,7 @@ export function Health1({
             strokeLinejoin="round"
           />
         </svg>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <div className="flex items-center justify-between text-xs text-current/60">
           {status && <span>{status}</span>}
           {updated && <span>{updated}</span>}
         </div>

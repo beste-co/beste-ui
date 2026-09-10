@@ -3,6 +3,8 @@
 import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone = "primary" | "foreground" | "sky" | "emerald" | "violet" | "amber" | "rose";
 
 interface Tooltip10Props {
@@ -12,6 +14,9 @@ interface Tooltip10Props {
   imageSrc?: string;
   alt?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -28,7 +33,26 @@ const fallbackClasses: Record<Tone, string> = {
 const defaultImage =
   "https://images.unsplash.com/photo-1686172932808-870de06c5b8a?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const tooltip10Demo: Tooltip10Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "hero-dashboard-dark.png",
   subtitle: "Uploaded by Mira · 2 days ago",
   dimensions: "2560 × 1440",
@@ -44,12 +68,17 @@ export function Tooltip10({
   imageSrc = defaultImage,
   alt,
   tone = "violet",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Tooltip10Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
       <div className="relative">
-        <div className="flex w-52 flex-col gap-2 rounded-lg border border-border bg-card p-2 shadow-xl">
+        <div className={cn("flex w-52 flex-col gap-2 rounded-lg p-2 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
           <div
             className={cn(
               "relative flex aspect-video items-center justify-center overflow-hidden rounded-md",
@@ -66,20 +95,20 @@ export function Tooltip10({
               <ImageIcon className="size-6 opacity-80" aria-hidden="true" />
             )}
             {dimensions && (
-              <span className="absolute bottom-1 right-1 rounded bg-background/90 px-1.5 py-0.5 font-mono text-xs text-card-foreground">
+              <span className="absolute bottom-1 right-1 rounded bg-background/90 px-1.5 py-0.5 font-mono text-xs text-foreground">
                 {dimensions}
               </span>
             )}
           </div>
           <div className="flex flex-col gap-0.5 px-1 pb-1">
             {title && (
-              <span className="truncate text-xs font-semibold text-card-foreground">{title}</span>
+              <span className="truncate text-xs font-semibold">{title}</span>
             )}
-            {subtitle && <span className="truncate text-xs text-muted-foreground">{subtitle}</span>}
+            {subtitle && <span className="truncate text-xs text-current/60">{subtitle}</span>}
           </div>
         </div>
         <div
-          className="absolute -bottom-1 left-8 size-2 rotate-45 border-b border-r border-border bg-card"
+          className={cn("absolute -bottom-1 left-8 size-2 rotate-45 border-b border-r border-current/15 ", surfaceTone)}
           aria-hidden="true"
         />
       </div>

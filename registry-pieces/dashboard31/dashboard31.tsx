@@ -3,6 +3,8 @@
 import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type FileTone = "doc" | "pdf" | "sheet";
 
 interface FileRow {
@@ -13,6 +15,9 @@ interface FileRow {
 interface Dashboard31Props {
   title?: string;
   items?: FileRow[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -22,7 +27,26 @@ const toneStyles: Record<FileTone, string> = {
   sheet: "bg-emerald-500 text-white",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard31Demo: Dashboard31Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Shared Drive",
   items: [
     { name: "Northwind_Brand_Guidelines.pdf", tone: "pdf" },
@@ -36,8 +60,13 @@ export const dashboard31Demo: Dashboard31Props = {
 export function Dashboard31({
   title = "Files",
   items = [],
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard31Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -45,15 +74,15 @@ export function Dashboard31({
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-4 shadow-xl">
-        <p className="mb-3 text-sm font-semibold text-card-foreground">
+      <div className={cn("w-full max-w-80 rounded-md p-4 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
+        <p className="mb-3 text-sm font-semibold">
           {title}
         </p>
         <div className="flex flex-col gap-2">
           {items.map((item, index) => (
             <div
               key={index}
-              className="flex items-center gap-2.5 rounded-md border border-border px-2.5 py-2"
+              className="flex items-center gap-2.5 rounded-md border border-current/15 px-2.5 py-2"
             >
               <span
                 className={cn(
@@ -64,7 +93,7 @@ export function Dashboard31({
               >
                 <FileText className="size-4" />
               </span>
-              <span className="truncate text-sm text-card-foreground">
+              <span className="truncate text-sm">
                 {item.name}
               </span>
             </div>

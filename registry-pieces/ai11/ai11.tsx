@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -13,6 +15,9 @@ type Tone =
 interface Ai11Props {
   label?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -25,7 +30,26 @@ const dotClasses: Record<Tone, string> = {
   amber: "bg-gradient-to-br from-amber-500 to-orange-500",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const ai11Demo: Ai11Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   label: "Thinking",
   tone: "violet",
 };
@@ -33,8 +57,13 @@ export const ai11Demo: Ai11Props = {
 export function Ai11({
   label = "Thinking",
   tone = "violet",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Ai11Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -42,7 +71,7 @@ export function Ai11({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-full px-3 py-1.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-1" aria-hidden="true">
           {[0, 1, 2].map((i) => (
             <span
@@ -58,7 +87,7 @@ export function Ai11({
             />
           ))}
         </div>
-        <span className="text-xs font-medium text-muted-foreground">
+        <span className="text-xs font-medium text-current/60">
           {label}
         </span>
       </div>

@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Availability = "free" | "soon" | "busy";
 
 interface MetaRow {
@@ -21,6 +23,9 @@ interface Card31Props {
   status?: string;
   availability?: Availability;
   rows?: MetaRow[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -30,7 +35,26 @@ const dotStyles: Record<Availability, string> = {
   busy: "bg-rose-500",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const card31Demo: Card31Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   avatar: {
     src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=160&h=160&fit=crop",
     alt: "Portrait of Priya Nandan",
@@ -53,11 +77,16 @@ export function Card31({
   status,
   availability = "free",
   rows = [],
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Card31Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-5 shadow-xl">
+      <div className={cn("w-full max-w-80 rounded-md p-5 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-3">
           {avatar && (
             <img
@@ -68,14 +97,14 @@ export function Card31({
           )}
           <div className="min-w-0 flex-1">
             {name && (
-              <p className="truncate text-sm font-semibold text-card-foreground">{name}</p>
+              <p className="truncate text-sm font-semibold">{name}</p>
             )}
-            {role && <p className="truncate text-sm text-muted-foreground">{role}</p>}
+            {role && <p className="truncate text-sm text-current/60">{role}</p>}
           </div>
         </div>
 
         {status && (
-          <p className="mt-3 flex items-center gap-2 text-sm text-card-foreground">
+          <p className="mt-3 flex items-center gap-2 text-sm">
             <span
               className={cn("size-1.5 shrink-0 rounded-full", dotStyles[availability])}
               aria-hidden="true"
@@ -85,11 +114,11 @@ export function Card31({
         )}
 
         {rows.length > 0 && (
-          <div className="mt-3 flex flex-col gap-2 border-t border-border pt-3">
+          <div className="mt-3 flex flex-col gap-2 border-t border-current/15 pt-3">
             {rows.map((row, index) => (
               <div key={index} className="flex items-baseline justify-between gap-3">
-                <span className="shrink-0 text-sm text-muted-foreground">{row.label}</span>
-                <span className="truncate text-sm text-card-foreground">{row.value}</span>
+                <span className="shrink-0 text-sm text-current/60">{row.label}</span>
+                <span className="truncate text-sm">{row.value}</span>
               </div>
             ))}
           </div>

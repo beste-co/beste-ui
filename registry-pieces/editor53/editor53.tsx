@@ -73,7 +73,7 @@ export function Editor53({
   inverted = false,
   className,
 }: Editor53Props) {
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -87,7 +87,7 @@ export function Editor53({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
@@ -97,7 +97,7 @@ export function Editor53({
             aria-hidden="true"
           >
             <span className="editor53-demo absolute inset-0 flex items-center justify-center bg-current/10">
-              <ImageIcon className="size-5 opacity-60" />
+              <ImageIcon className="size-5 text-current/60" />
             </span>
           </div>
           <div className="flex min-w-0 flex-col">
@@ -107,7 +107,7 @@ export function Editor53({
               </span>
             )}
             {slotLabel && (
-              <span className="truncate text-xs opacity-60">
+              <span className="truncate text-xs text-current/60">
                 {slotLabel}
               </span>
             )}
@@ -123,7 +123,7 @@ export function Editor53({
               <span className="truncate text-xs">
                 {row.label}
               </span>
-              <span className="shrink-0 text-xs opacity-60">
+              <span className="shrink-0 text-xs text-current/60">
                 {row.value}
               </span>
             </div>

@@ -90,7 +90,7 @@ export function Monitoring24({
 
   const total = rows.reduce((sum, row) => sum + row.kb, 0);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -104,13 +104,13 @@ export function Monitoring24({
       <div
         className={cn(
           "monitoring24-in flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         <div className="flex items-baseline justify-between gap-3">
           {title && (
-            <span className="truncate text-xs font-medium opacity-60">
+            <span className="truncate text-xs font-medium text-current/60">
               {title}
             </span>
           )}
@@ -157,7 +157,7 @@ export function Monitoring24({
                       ? inverted
                         ? "text-emerald-400"
                         : "text-emerald-600 dark:text-emerald-400"
-                      : "opacity-60"
+                      : "text-current/60"
                   )}
                 >
                   {Math.round(row.kb * progress)} {unit}
@@ -168,7 +168,7 @@ export function Monitoring24({
         </div>
 
         {totalLabel && (
-          <span className="text-xs opacity-60">{totalLabel}</span>
+          <span className="text-xs text-current/60">{totalLabel}</span>
         )}
       </div>
     </div>

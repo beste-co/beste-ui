@@ -3,6 +3,8 @@
 import { AlertTriangle, Info, TriangleAlert, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Severity = "error" | "warning" | "info";
 
 interface Notification2Props {
@@ -10,6 +12,9 @@ interface Notification2Props {
   description?: string;
   severity?: Severity;
   dismissible?: boolean;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -32,7 +37,26 @@ const severityConfig: Record<
   },
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const notification2Demo: Notification2Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Your card was declined",
   description: "Update the payment method on file to retry the charge.",
   severity: "error",
@@ -44,10 +68,15 @@ export function Notification2({
   description,
   severity = "info",
   dismissible = false,
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Notification2Props) {
   const config = severityConfig[severity];
   const Icon = config.icon;
+
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -56,7 +85,7 @@ export function Notification2({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-start gap-3 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-72 items-start gap-3 rounded-lg p-3 shadow-lg", surfaceTone, bordered && "border border-current/15")}>
         <div
           className={cn(
             "flex size-8 shrink-0 items-center justify-center rounded-full",
@@ -67,12 +96,12 @@ export function Notification2({
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           {title && (
-            <span className="text-sm font-semibold text-card-foreground">
+            <span className="text-sm font-semibold">
               {title}
             </span>
           )}
           {description && (
-            <span className="text-xs leading-snug text-muted-foreground">
+            <span className="text-xs leading-snug text-current/60">
               {description}
             </span>
           )}
@@ -80,7 +109,7 @@ export function Notification2({
         {dismissible && (
           <button
             type="button"
-            className="flex size-6 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground"
+            className="flex size-6 shrink-0 items-center justify-center rounded-md text-current/60 transition-colors hover:bg-current/10 hover:text-current"
             aria-label="Dismiss"
           >
             <X className="size-3.5" aria-hidden="true" />

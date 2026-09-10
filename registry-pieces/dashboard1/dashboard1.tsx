@@ -3,15 +3,39 @@
 import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Dashboard1Props {
   label?: string;
   value?: string;
   delta?: number;
   period?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard1Demo: Dashboard1Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   label: "MRR",
   value: "$48.2K",
   delta: 12.4,
@@ -23,10 +47,15 @@ export function Dashboard1({
   value = "—",
   delta,
   period,
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard1Props) {
   const positive = typeof delta === "number" && delta >= 0;
   const TrendIcon = positive ? TrendingUp : TrendingDown;
+
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -35,11 +64,11 @@ export function Dashboard1({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-1 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-64 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
           {label}
         </span>
-        <span className="font-mono text-2xl font-semibold tabular-nums text-card-foreground">
+        <span className="font-mono text-2xl font-semibold tabular-nums">
           {value}
         </span>
         {typeof delta === "number" && (
@@ -57,7 +86,7 @@ export function Dashboard1({
               {delta.toFixed(1)}%
             </span>
             {period && (
-              <span className="truncate text-muted-foreground">{period}</span>
+              <span className="truncate text-current/60">{period}</span>
             )}
           </div>
         )}

@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Automation18Day {
   label: string;
   success: number;
@@ -13,10 +15,32 @@ interface Automation18Props {
   days?: Automation18Day[];
   runsSuffix?: string;
   failedSuffix?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const automation18Demo: Automation18Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Last 7 days",
   days: [
     { label: "Mon", success: 38, failed: 0 },
@@ -36,6 +60,9 @@ export function Automation18({
   days = [],
   runsSuffix = "runs",
   failedSuffix = "failed",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Automation18Props) {
   const total = days.reduce((s, d) => s + d.success + d.failed, 0);
@@ -44,6 +71,8 @@ export function Automation18({
     total > 0 ? ((total - totalFailed) / total) * 100 : 100;
   const max = Math.max(...days.map((d) => d.success + d.failed), 1);
 
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -51,12 +80,12 @@ export function Automation18({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
             {title}
           </span>
-          <span className="font-mono text-sm font-semibold tabular-nums text-card-foreground">
+          <span className="font-mono text-sm font-semibold tabular-nums">
             {successRate.toFixed(1)}%
           </span>
         </div>
@@ -87,14 +116,14 @@ export function Automation18({
                     />
                   </div>
                 </div>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-current/60">
                   {d.label}
                 </span>
               </div>
             );
           })}
         </div>
-        <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
+        <div className="flex items-center justify-between font-mono text-xs text-current/60">
           <span>
             {total.toLocaleString()} {runsSuffix}
           </span>

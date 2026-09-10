@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -17,6 +19,9 @@ interface Dashboard18Props {
   currentLabel?: string;
   previousLabel?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -51,7 +56,26 @@ function toPoints(values: number[], max: number, min: number) {
     .join(" ");
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard18Demo: Dashboard18Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Sessions",
   currentLabel: "This week",
   previousLabel: "Last week",
@@ -67,11 +91,16 @@ export function Dashboard18({
   currentLabel = "This period",
   previousLabel = "Previous",
   tone = "violet",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard18Props) {
   const all = [...current, ...previous];
   const max = Math.max(...all, 1);
   const min = Math.min(...all, 0);
+
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -80,8 +109,8 @@ export function Dashboard18({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
           {title}
         </span>
         <svg
@@ -107,7 +136,7 @@ export function Dashboard18({
             strokeLinecap="round"
           />
         </svg>
-        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+        <div className="flex items-center gap-3 text-xs text-current/60">
           <span className="flex items-center gap-1">
             <span
               className={cn("size-1.5 rounded-full", dotClasses[tone])}
@@ -117,7 +146,7 @@ export function Dashboard18({
           </span>
           <span className="flex items-center gap-1">
             <span
-              className="size-1.5 rounded-full bg-muted-foreground/60"
+              className="size-1.5 rounded-full bg-current/25"
               aria-hidden="true"
             />
             {previousLabel}

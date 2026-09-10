@@ -3,12 +3,36 @@
 import { Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Browser28Props {
   domains?: string[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const browser28Demo: Browser28Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   domains: [
     "customer.beste.co",
     "project.beste.co",
@@ -62,9 +86,11 @@ const LAYERS = [
 
 const TRAFFIC = ["bg-rose-400", "bg-amber-400", "bg-emerald-400"];
 
-export function Browser28({ domains = [], className }: Browser28Props) {
+export function Browser28({ domains = [], surface = "card", bordered = true, inverted = false, className }: Browser28Props) {
   const list = domains.slice(0, LAYERS.length);
   const label = `Stacked browser windows for ${list.join(", ")}`;
+
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -83,7 +109,7 @@ export function Browser28({ domains = [], className }: Browser28Props) {
             <div
               key={i}
               aria-hidden="true"
-              className="relative flex w-full items-center border border-border bg-card shadow-sm"
+              className={cn("relative flex w-full items-center shadow-sm", surfaceTone, bordered && "border border-current/15")}
               style={{
                 width: `calc(100% - ${32 * i}px)`,
                 borderRadius: `${l.radius}px ${l.radius}px 0 0`,
@@ -102,7 +128,7 @@ export function Browser28({ domains = [], className }: Browser28Props) {
                     key={d}
                     className={cn(
                       "shrink-0 rounded-full",
-                      i === 0 ? TRAFFIC[d] : "bg-muted-foreground/30"
+                      i === 0 ? TRAFFIC[d] : "bg-current/10"
                     )}
                     style={{
                       width: `${l.buttonSize}px`,
@@ -113,14 +139,14 @@ export function Browser28({ domains = [], className }: Browser28Props) {
                 ))}
               </div>
               <div
-                className="mx-auto flex items-center justify-center gap-1 rounded-full text-card-foreground"
+                className="mx-auto flex items-center justify-center gap-1 rounded-full"
                 style={{
                   height: `${l.barH}px`,
                   fontSize: `${l.fontSize}px`,
                 }}
               >
                 <Lock
-                  className="text-muted-foreground"
+                  className="text-current/60"
                   style={{
                     width: `${l.iconSize}px`,
                     height: `${l.iconSize}px`,

@@ -3,6 +3,8 @@
 import { Cpu, HardDrive, MemoryStick, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "neutral"
   | "primary"
@@ -23,6 +25,9 @@ interface Monitoring2Props {
   memoryLabel?: string;
   diskLabel?: string;
   networkLabel?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -34,7 +39,7 @@ const resourceIcons: Record<Resource, typeof Cpu> = {
 };
 
 const barClasses: Record<Tone, string> = {
-  neutral: "bg-muted-foreground",
+  neutral: "bg-current/40",
   primary: "bg-primary",
   foreground: "bg-foreground",
   emerald: "bg-emerald-500",
@@ -55,7 +60,26 @@ const textClasses: Record<Tone, string> = {
   rose: "text-rose-700 dark:text-rose-400",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const monitoring2Demo: Monitoring2Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   resource: "cpu",
   value: 72,
   tone: "emerald",
@@ -73,6 +97,9 @@ export function Monitoring2({
   memoryLabel = "Memory",
   diskLabel = "Disk",
   networkLabel = "Network",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Monitoring2Props) {
   const labels: Record<Resource, string> = {
@@ -84,6 +111,8 @@ export function Monitoring2({
   const Icon = resourceIcons[resource];
   const safe = Math.min(100, Math.max(0, value));
 
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -91,14 +120,14 @@ export function Monitoring2({
         className
       )}
     >
-      <div className="flex w-full max-w-56 flex-col gap-2 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-56 flex-col gap-2 rounded-lg px-3 py-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Icon
-              className="size-4 text-muted-foreground"
+              className="size-4 text-current/60"
               aria-hidden="true"
             />
-            <span className="text-xs font-medium text-muted-foreground">
+            <span className="text-xs font-medium text-current/60">
               {labels[resource]}
             </span>
           </div>
@@ -112,7 +141,7 @@ export function Monitoring2({
           </span>
         </div>
         <div
-          className="h-1.5 w-full overflow-hidden rounded-full bg-muted"
+          className="h-1.5 w-full overflow-hidden rounded-full bg-current/10"
           aria-hidden="true"
         >
           <span

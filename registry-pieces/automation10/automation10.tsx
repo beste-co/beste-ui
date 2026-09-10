@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -35,6 +37,9 @@ interface Automation10Props {
   installsLabel?: string;
   ctaLabel?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -51,14 +56,33 @@ const PRESETS: Record<AppPreset, { icon: LucideIcon; tile: string }> = {
 
 const ctaClasses: Record<Tone, string> = {
   primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-  foreground: "bg-foreground text-background hover:bg-foreground/90",
+  foreground: "bg-foreground text-background hover:bg-current/90",
   violet: "bg-violet-500 text-white hover:bg-violet-600",
   emerald: "bg-emerald-500 text-white hover:bg-emerald-600",
   sky: "bg-sky-500 text-white hover:bg-sky-600",
   amber: "bg-amber-500 text-white hover:bg-amber-600",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const automation10Demo: Automation10Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   apps: [
     { image: "https://oud.pics/sm/l/stripe.jpeg", alt: "Stripe" },
     { image: "https://oud.pics/sm/l/notion.png", alt: "Notion" },
@@ -76,7 +100,7 @@ export const automation10Demo: Automation10Props = {
 function AppIcon({ item }: { item: AppItem }) {
   if (item.image) {
     return (
-      <span className="relative size-7 shrink-0 overflow-hidden rounded-md bg-muted">
+      <span className="relative size-7 shrink-0 overflow-hidden rounded-md bg-current/10">
         <img
           src={item.image}
           alt={item.alt ?? ""}
@@ -102,7 +126,7 @@ function AppIcon({ item }: { item: AppItem }) {
   }
   return (
     <span
-      className="size-7 shrink-0 rounded-md bg-muted"
+      className="size-7 shrink-0 rounded-md bg-current/10"
       aria-hidden="true"
     />
   );
@@ -116,8 +140,13 @@ export function Automation10({
   installsLabel = "installs",
   ctaLabel = "Use recipe",
   tone = "primary",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Automation10Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -125,31 +154,31 @@ export function Automation10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-1">
           {apps.map((a, i) => (
             <div key={i} className="flex items-center gap-1">
               <AppIcon item={a} />
               {i < apps.length - 1 && (
                 <ArrowRight
-                  className="size-3 text-muted-foreground"
+                  className="size-3 text-current/60"
                   aria-hidden="true"
                 />
               )}
             </div>
           ))}
         </div>
-        <span className="text-sm font-semibold text-card-foreground">
+        <span className="text-sm font-semibold">
           {name}
         </span>
         {description && (
-          <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+          <p className="line-clamp-2 text-xs leading-snug text-current/60">
             {description}
           </p>
         )}
-        <div className="flex items-center justify-between border-t border-border pt-2">
+        <div className="flex items-center justify-between border-t border-current/15 pt-2">
           {typeof installs === "number" && (
-            <span className="font-mono text-xs tabular-nums text-muted-foreground">
+            <span className="font-mono text-xs tabular-nums text-current/60">
               {installs.toLocaleString()} {installsLabel}
             </span>
           )}

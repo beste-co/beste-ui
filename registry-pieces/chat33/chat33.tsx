@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type From = "them" | "me";
 
 interface Message {
@@ -13,10 +15,32 @@ interface Chat33Props {
   name?: string;
   status?: string;
   items?: Message[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const chat33Demo: Chat33Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   name: "Care team",
   status: "Online",
   items: [
@@ -26,7 +50,9 @@ export const chat33Demo: Chat33Props = {
   ],
 };
 
-export function Chat33({ name, status, items = [], className }: Chat33Props) {
+export function Chat33({ name, status, items = [], surface = "card", bordered = true, inverted = false, className }: Chat33Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -34,16 +60,16 @@ export function Chat33({ name, status, items = [], className }: Chat33Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-4 shadow-xl">
+      <div className={cn("w-full max-w-80 rounded-md p-4 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
         {name && (
-          <div className="mb-3 flex items-center gap-2 border-b border-border pb-3">
-            <span className="flex size-8 items-center justify-center rounded-full bg-muted text-sm font-semibold text-muted-foreground">
+          <div className="mb-3 flex items-center gap-2 border-b border-current/15 pb-3">
+            <span className="flex size-8 items-center justify-center rounded-full bg-current/10 text-sm font-semibold text-current/60">
               {name.charAt(0)}
             </span>
             <div className="leading-tight">
-              <p className="text-sm font-medium text-card-foreground">{name}</p>
+              <p className="text-sm font-medium">{name}</p>
               {status && (
-                <p className="flex items-center gap-1 text-xs text-muted-foreground">
+                <p className="flex items-center gap-1 text-xs text-current/60">
                   <span
                     className="size-1.5 rounded-full bg-emerald-500"
                     aria-hidden="true"
@@ -68,7 +94,7 @@ export function Chat33({ name, status, items = [], className }: Chat33Props) {
                   "max-w-56 rounded-md px-3 py-2 text-sm",
                   message.from === "me"
                     ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-card-foreground"
+                    : "bg-current/10"
                 )}
               >
                 {message.text}

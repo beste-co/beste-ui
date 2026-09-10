@@ -113,7 +113,7 @@ export function Form39({
     return () => clearTimeout(id);
   }, [decided, categories.length, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -127,14 +127,14 @@ export function Form39({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         {title && (
-          <h3 className="text-sm font-semibold">
+          <span className="block text-sm font-semibold">
             {title}
-          </h3>
+          </span>
         )}
 
         <div className="flex flex-col">
@@ -153,7 +153,7 @@ export function Form39({
                 <span className="flex min-w-0 items-center gap-1.5">
                   {category.required && (
                     <Lock
-                      className="size-3 shrink-0 opacity-60"
+                      className="size-3 shrink-0 text-current/60"
                       aria-hidden="true"
                     />
                   )}
@@ -161,7 +161,7 @@ export function Form39({
                     {category.label}
                   </span>
                   {category.required && requiredLabel && (
-                    <span className="shrink-0 text-xs opacity-60">
+                    <span className="shrink-0 text-xs text-current/60">
                       {requiredLabel}
                     </span>
                   )}

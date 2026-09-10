@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Dashboard9Slice {
   label: string;
   value: number;
@@ -11,6 +13,9 @@ interface Dashboard9Props {
   slices?: Dashboard9Slice[];
   total?: string;
   totalLabel?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -24,7 +29,26 @@ const PALETTE = [
 const RADIUS = 22;
 const CIRC = 2 * Math.PI * RADIUS;
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard9Demo: Dashboard9Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   slices: [
     { label: "Subscriptions", value: 52 },
     { label: "One-time", value: 28 },
@@ -39,10 +63,15 @@ export function Dashboard9({
   slices = [],
   total,
   totalLabel = "Total",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard9Props) {
   const sum = slices.reduce((s, x) => s + x.value, 0) || 1;
   let acc = 0;
+
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -51,7 +80,7 @@ export function Dashboard9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <svg
           className="size-16 shrink-0 -rotate-90"
           viewBox="0 0 56 56"
@@ -88,11 +117,11 @@ export function Dashboard9({
         </svg>
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex items-baseline justify-between gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
               {totalLabel}
             </span>
             {total && (
-              <span className="font-mono text-sm font-semibold tabular-nums text-card-foreground">
+              <span className="font-mono text-sm font-semibold tabular-nums">
                 {total}
               </span>
             )}
@@ -111,11 +140,11 @@ export function Dashboard9({
                       className={cn("size-2 shrink-0 rounded-sm", cls.dot)}
                       aria-hidden="true"
                     />
-                    <span className="truncate text-card-foreground">
+                    <span className="truncate">
                       {s.label}
                     </span>
                   </div>
-                  <span className="shrink-0 font-mono tabular-nums text-muted-foreground">
+                  <span className="shrink-0 font-mono tabular-nums text-current/60">
                     {pct}%
                   </span>
                 </li>

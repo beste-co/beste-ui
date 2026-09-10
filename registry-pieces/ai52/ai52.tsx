@@ -80,7 +80,7 @@ export function Ai52({
     return () => clearTimeout(id);
   }, [granted, total, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -94,18 +94,18 @@ export function Ai52({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         <div className="flex items-baseline justify-between gap-3">
           {title && (
-            <h3 className="truncate text-sm font-semibold">
+            <span className="truncate text-sm font-semibold">
               {title}
-            </h3>
+            </span>
           )}
           {subject && (
-            <span className="shrink-0 font-mono text-xs opacity-60">
+            <span className="shrink-0 font-mono text-xs text-current/60">
               {subject}
             </span>
           )}
@@ -141,11 +141,11 @@ export function Ai52({
               )}
             >
               <X
-                className="size-3.5 shrink-0 opacity-60"
+                className="size-3.5 shrink-0 text-current/60"
                 aria-hidden="true"
               />
               <span className="truncate text-xs">
-                <span className="opacity-60">{deniedLabel} </span>
+                <span className="text-current/60">{deniedLabel} </span>
                 {denied}
               </span>
             </div>
@@ -161,7 +161,7 @@ export function Ai52({
                 ? inverted
                   ? "bg-background text-foreground"
                   : "bg-foreground text-background"
-                : "bg-current/10 opacity-60"
+                : "bg-current/10 text-current/60"
             )}
           >
             {approveLabel}

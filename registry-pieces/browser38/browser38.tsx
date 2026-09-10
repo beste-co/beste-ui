@@ -68,7 +68,7 @@ export function Browser38({
 }: Browser38Props) {
   const hasChoices = Boolean(rejectLabel || customizeLabel || acceptLabel);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -82,18 +82,18 @@ export function Browser38({
       <div
         className={cn(
           "browser38-rise flex w-full max-w-72 flex-col gap-2.5 rounded-xl p-4 shadow-lg",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         {title && (
-          <h3 className="text-sm font-semibold">
+          <span className="block text-sm font-semibold">
             {title}
-          </h3>
+          </span>
         )}
 
         {description && (
-          <p className="text-xs leading-relaxed opacity-60">
+          <p className="text-xs leading-relaxed text-current/60">
             {description}
           </p>
         )}
@@ -111,7 +111,7 @@ export function Browser38({
             {customizeLabel && (
               <button
                 type="button"
-                className="px-1 text-xs font-medium opacity-60"
+                className="px-1 text-xs font-medium text-current/60"
               >
                 {customizeLabel}
               </button>

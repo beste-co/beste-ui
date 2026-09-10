@@ -3,6 +3,8 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -21,6 +23,9 @@ interface Dashboard26Props {
   steps?: Dashboard26Step[];
   current?: number;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -42,7 +47,26 @@ const lineClasses: Record<Tone, string> = {
   amber: "bg-amber-500",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard26Demo: Dashboard26Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   heading: "Milestones",
   steps: [
     { label: "Design", date: "Apr 2" },
@@ -59,8 +83,13 @@ export function Dashboard26({
   steps = [],
   current = 0,
   tone = "violet",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard26Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -68,13 +97,13 @@ export function Dashboard26({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
           {heading}
         </span>
         <div className="relative flex items-center justify-between">
           <span
-            className="absolute inset-x-2 top-2.5 h-0.5 bg-muted"
+            className="absolute inset-x-2 top-2.5 h-0.5 bg-current/10"
             aria-hidden="true"
           />
           {current > 0 && steps.length > 1 && (
@@ -110,7 +139,7 @@ export function Dashboard26({
                             "ring-2 ring-offset-2 ring-offset-card",
                             activeClasses[tone]
                           )
-                        : "bg-muted text-muted-foreground"
+                        : "bg-current/10 text-current/60"
                   )}
                   aria-hidden="true"
                 >
@@ -120,14 +149,14 @@ export function Dashboard26({
                   className={cn(
                     "text-xs",
                     active
-                      ? "font-semibold text-card-foreground"
-                      : "text-muted-foreground"
+                      ? "font-semibold"
+                      : "text-current/60"
                   )}
                 >
                   {s.label}
                 </span>
                 {s.date && (
-                  <span className="font-mono text-xs text-muted-foreground">
+                  <span className="font-mono text-xs text-current/60">
                     {s.date}
                   </span>
                 )}

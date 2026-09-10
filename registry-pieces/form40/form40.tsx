@@ -82,7 +82,7 @@ export function Form40({
 
   const filled = typed > 0;
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -96,7 +96,7 @@ export function Form40({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
@@ -105,23 +105,23 @@ export function Form40({
             className="flex size-8 items-center justify-center rounded-full bg-current/10"
             aria-hidden="true"
           >
-            <Lock className="size-3.5 opacity-60" />
+            <Lock className="size-3.5 text-current/60" />
           </span>
           {title && (
-            <h3 className="text-sm font-semibold">
+            <span className="block text-sm font-semibold">
               {title}
-            </h3>
+            </span>
           )}
           {domain && (
-            <span className="font-mono text-xs opacity-60">
+            <span className="font-mono text-xs text-current/60">
               {domain}
             </span>
           )}
         </div>
 
-        <div className="flex h-8 items-center gap-1 rounded-md border border-current/15 bg-background px-2.5">
+        <div className="flex h-8 items-center gap-1 rounded-md border border-current/15 bg-background px-2.5 text-foreground">
           {!filled && placeholder && (
-            <span className="text-xs opacity-60">{placeholder}</span>
+            <span className="text-xs text-current/60">{placeholder}</span>
           )}
           {filled &&
             Array.from({ length: typed }).map((_, index) => (
@@ -142,7 +142,7 @@ export function Form40({
                 ? inverted
                   ? "bg-background text-foreground"
                   : "bg-foreground text-background"
-                : "bg-current/10 opacity-60"
+                : "bg-current/10 text-current/60"
             )}
           >
             {submitLabel}
@@ -150,7 +150,7 @@ export function Form40({
         )}
 
         {note && (
-          <p className="text-center text-xs opacity-60">{note}</p>
+          <p className="text-center text-xs text-current/60">{note}</p>
         )}
       </div>
     </div>

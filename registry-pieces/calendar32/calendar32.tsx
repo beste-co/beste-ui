@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface DayCell {
   weekday: string;
   date: string;
@@ -14,10 +16,32 @@ interface Calendar32Props {
   days?: DayCell[];
   selectedIndex?: number;
   caption?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const calendar32Demo: Calendar32Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Pick a day",
   month: "May",
   days: [
@@ -39,14 +63,19 @@ export function Calendar32({
   days = [],
   selectedIndex = 0,
   caption,
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Calendar32Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="w-full max-w-96 rounded-md border border-border bg-card p-5 shadow-xl">
+      <div className={cn("w-full max-w-96 rounded-md p-5 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-3">
-          {title && <p className="text-base font-semibold text-card-foreground">{title}</p>}
-          {month && <span className="text-sm text-muted-foreground">{month}</span>}
+          {title && <p className="text-base font-semibold">{title}</p>}
+          {month && <span className="text-sm text-current/60">{month}</span>}
         </div>
 
         <div className="mt-4 grid grid-cols-7 gap-1.5">
@@ -60,11 +89,11 @@ export function Calendar32({
                 className={cn(
                   "flex flex-col items-center gap-1 rounded-md border py-2",
                   selected && "border-primary bg-primary text-primary-foreground",
-                  !selected && full && "border-border bg-muted text-muted-foreground",
-                  !selected && !full && "border-border bg-card text-card-foreground"
+                  !selected && full && "border-current/15 bg-current/10 text-current/60",
+                  !selected && !full && "border-current/15 bg-current/10"
                 )}
               >
-                <span className={cn("text-xs", selected ? "opacity-80" : "text-muted-foreground")}>
+                <span className={cn("text-xs", selected ? "opacity-80" : "text-current/60")}>
                   {day.weekday}
                 </span>
                 <span className="text-sm font-medium tabular-nums">{day.date}</span>
@@ -81,7 +110,7 @@ export function Calendar32({
         </div>
 
         {caption && (
-          <p className="mt-4 border-t border-border pt-3 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-4 border-t border-current/15 pt-3 text-sm leading-relaxed text-current/60">
             {caption}
           </p>
         )}

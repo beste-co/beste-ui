@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type DiffKind = "add" | "remove" | "context";
 
 interface DiffLine {
@@ -13,10 +15,32 @@ interface DiffLine {
 interface Editor4Props {
   filename?: string;
   lines?: DiffLine[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const editor4Demo: Editor4Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   filename: "button.tsx",
   lines: [
     { kind: "context", line: 12, content: "export function Button({ label }) {" },
@@ -43,15 +67,20 @@ const diffConfig: Record<
   context: {
     prefix: " ",
     row: "",
-    prefixColor: "text-muted-foreground/50",
+    prefixColor: "text-current/30",
   },
 };
 
 export function Editor4({
   filename,
   lines = [],
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Editor4Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -59,9 +88,9 @@ export function Editor4({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {filename && (
-          <div className="border-b border-border px-3 py-1.5 font-mono text-xs text-muted-foreground">
+          <div className="border-b border-current/15 px-3 py-1.5 font-mono text-xs text-current/60">
             {filename}
           </div>
         )}
@@ -74,7 +103,7 @@ export function Editor4({
                 className={cn("flex gap-3 px-3", cfg.row)}
               >
                 <span
-                  className="w-5 shrink-0 select-none text-right text-muted-foreground/50"
+                  className="w-5 shrink-0 select-none text-right text-current/30"
                   aria-hidden="true"
                 >
                   {l.line ? l.line : ""}
@@ -88,7 +117,7 @@ export function Editor4({
                 >
                   {cfg.prefix}
                 </span>
-                <code className="flex-1 text-card-foreground">
+                <code className="flex-1">
                   {l.content}
                 </code>
               </div>

@@ -3,6 +3,8 @@
 import { ArrowDownRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface CompareRow {
   label: string;
   amount: string;
@@ -15,10 +17,32 @@ interface Money23Props {
   period?: string;
   delta?: string;
   rows?: CompareRow[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const money23Demo: Money23Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   label: "Estimated saving",
   amount: "$1,840",
   period: "per month",
@@ -29,19 +53,21 @@ export const money23Demo: Money23Props = {
   ],
 };
 
-export function Money23({ label, amount, period, delta, rows = [], className }: Money23Props) {
+export function Money23({ label, amount, period, delta, rows = [], surface = "card", bordered = true, inverted = false, className }: Money23Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-5 shadow-xl">
-        {label && <p className="text-sm text-muted-foreground">{label}</p>}
+      <div className={cn("w-full max-w-80 rounded-md p-5 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
+        {label && <p className="text-sm text-current/60">{label}</p>}
 
         <div className="mt-1 flex flex-wrap items-baseline gap-x-2">
           {amount && (
-            <span className="text-3xl font-semibold tracking-tight tabular-nums text-card-foreground">
+            <span className="text-3xl font-semibold tracking-tight tabular-nums">
               {amount}
             </span>
           )}
-          {period && <span className="text-sm text-muted-foreground">{period}</span>}
+          {period && <span className="text-sm text-current/60">{period}</span>}
         </div>
 
         {delta && (
@@ -52,16 +78,16 @@ export function Money23({ label, amount, period, delta, rows = [], className }: 
         )}
 
         {rows.length > 0 && (
-          <div className="mt-4 flex flex-col gap-2 border-t border-border pt-3">
+          <div className="mt-4 flex flex-col gap-2 border-t border-current/15 pt-3">
             {rows.map((row, index) => (
               <div key={index} className="flex items-baseline justify-between gap-3">
-                <span className="truncate text-sm text-muted-foreground">{row.label}</span>
+                <span className="truncate text-sm text-current/60">{row.label}</span>
                 <span
                   className={cn(
                     "shrink-0 text-sm tabular-nums",
                     row.muted
-                      ? "text-muted-foreground line-through"
-                      : "font-medium text-card-foreground"
+                      ? "text-current/60 line-through"
+                      : "font-medium"
                   )}
                 >
                   {row.amount}

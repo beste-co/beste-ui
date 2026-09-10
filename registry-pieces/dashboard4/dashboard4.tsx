@@ -4,6 +4,8 @@ import type { LucideIcon } from "lucide-react";
 import { CircleMinus, CirclePlus, Pencil, UserPlus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type EventType = "create" | "update" | "delete" | "signup";
 
 interface Dashboard4Event {
@@ -16,6 +18,9 @@ interface Dashboard4Event {
 interface Dashboard4Props {
   events?: Dashboard4Event[];
   headerLabel?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -38,7 +43,26 @@ const EVENTS: Record<EventType, { icon: LucideIcon; classes: string }> = {
   },
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const dashboard4Demo: Dashboard4Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   headerLabel: "Activity",
   events: [
     { type: "signup", actor: "Ada Lovelace", action: "joined", time: "2m" },
@@ -61,8 +85,13 @@ export const dashboard4Demo: Dashboard4Props = {
 export function Dashboard4({
   events = [],
   headerLabel = "Activity",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Dashboard4Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -70,8 +99,8 @@ export function Dashboard4({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
           {headerLabel}
         </span>
         <div className="flex flex-col gap-2">
@@ -90,14 +119,14 @@ export function Dashboard4({
                   <Icon className="size-3" />
                 </span>
                 <div className="flex min-w-0 flex-1 items-baseline gap-1 text-xs">
-                  <span className="truncate font-medium text-card-foreground">
+                  <span className="truncate font-medium">
                     {e.actor}
                   </span>
-                  <span className="truncate text-muted-foreground">
+                  <span className="truncate text-current/60">
                     {e.action}
                   </span>
                 </div>
-                <span className="shrink-0 font-mono text-xs text-muted-foreground">
+                <span className="shrink-0 font-mono text-xs text-current/60">
                   {e.time}
                 </span>
               </div>

@@ -82,7 +82,7 @@ export function Editor54({
     return () => clearTimeout(id);
   }, [filled, total, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -96,18 +96,18 @@ export function Editor54({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         <div className="flex items-center justify-between gap-3">
           {title && (
-            <h3 className="truncate text-sm font-semibold">
+            <span className="truncate text-sm font-semibold">
               {title}
-            </h3>
+            </span>
           )}
           {status && (
-            <span className="shrink-0 rounded-full bg-current/10 px-2 py-0.5 text-xs font-medium opacity-60">
+            <span className="shrink-0 rounded-full bg-current/10 px-2 py-0.5 text-xs font-medium text-current/60">
               {status}
             </span>
           )}
@@ -119,7 +119,7 @@ export function Editor54({
               key={field.label}
               className="flex items-center justify-between gap-3 py-0.5"
             >
-              <span className="shrink-0 text-xs opacity-60">
+              <span className="shrink-0 text-xs text-current/60">
                 {field.label}
               </span>
               <span

@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Ticket2Props {
   movie?: string;
   hall?: string;
@@ -13,10 +15,32 @@ interface Ticket2Props {
   nowShowingLabel?: string;
   rowPrefix?: string;
   seatPrefix?: string;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const ticket2Demo: Ticket2Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   movie: "Dune: Part Two",
   hall: "Hall 4",
   row: "J",
@@ -40,8 +64,13 @@ export function Ticket2({
   nowShowingLabel = "Now Showing",
   rowPrefix = "Row",
   seatPrefix = "Seat",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Ticket2Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -49,28 +78,28 @@ export function Ticket2({
         className
       )}
     >
-      <div className="w-full max-w-80 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-lg shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex flex-col gap-0.5 p-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <span className="text-xs font-semibold uppercase tracking-wider text-current/60">
             {nowShowingLabel}
           </span>
-          <span className="text-base font-bold leading-tight text-card-foreground">
+          <span className="text-base font-bold leading-tight">
             {movie}
           </span>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-current/60">
             {hall} · {rowPrefix} {row} · {seatPrefix} {seat}
           </span>
         </div>
         <div
-          className="border-t border-dashed border-border"
+          className="border-t border-dashed border-current/15"
           aria-hidden="true"
         />
-        <div className="flex items-center justify-between bg-muted px-3 py-2 text-xs">
-          <span className="font-mono text-card-foreground">
+        <div className="flex items-center justify-between bg-current/10 px-3 py-2 text-xs">
+          <span className="font-mono">
             {date} · {time}
           </span>
           {format && (
-            <span className="rounded border border-border bg-card px-1.5 py-0.5 font-mono font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="rounded border border-current/15 bg-current/10 px-1.5 py-0.5 font-mono font-semibold uppercase tracking-wide text-current/60">
               {format}
             </span>
           )}

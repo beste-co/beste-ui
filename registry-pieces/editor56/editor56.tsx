@@ -80,7 +80,7 @@ export function Editor56({
     return () => clearTimeout(id);
   }, [connected, integrations.length, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -94,14 +94,14 @@ export function Editor56({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         {title && (
-          <h3 className="text-sm font-semibold">
+          <span className="block text-sm font-semibold">
             {title}
-          </h3>
+          </span>
         )}
 
         <div className="flex flex-col gap-1">

@@ -89,7 +89,7 @@ export function Search26({
     return () => clearTimeout(id);
   }, [landed, matches.length, stepMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -103,7 +103,7 @@ export function Search26({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
@@ -120,7 +120,7 @@ export function Search26({
         )}
 
         <div className="flex items-baseline justify-between gap-3">
-          <span className="truncate text-xs font-medium opacity-60">
+          <span className="truncate text-xs font-medium text-current/60">
             {scanning ? scanningLabel : resultsLabel}
             {!scanning && restLabel ? ` · ${restLabel}` : ""}
           </span>
@@ -152,7 +152,7 @@ export function Search26({
                 <code className="min-w-0 flex-1 truncate font-mono text-xs">
                   {match.id}
                 </code>
-                <span className="shrink-0 text-xs opacity-60">
+                <span className="shrink-0 text-xs text-current/60">
                   {match.kind}
                 </span>
                 <span

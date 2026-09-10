@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type ItemKind = "function" | "variable" | "class" | "interface" | "keyword";
 
 interface Completion {
@@ -14,6 +16,9 @@ interface Completion {
 interface Editor2Props {
   prefix?: string;
   items?: Completion[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -42,7 +47,26 @@ const kindConfig: Record<ItemKind, { letter: string; color: string }> = {
   },
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const editor2Demo: Editor2Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   prefix: "user.",
   items: [
     { label: "id", kind: "variable", detail: "string" },
@@ -56,8 +80,13 @@ export const editor2Demo: Editor2Props = {
 export function Editor2({
   prefix = "",
   items = [],
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Editor2Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -66,14 +95,14 @@ export function Editor2({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1">
-        <div className="flex items-center gap-0 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs shadow-sm">
-          <span className="text-card-foreground">{prefix}</span>
+        <div className={cn("flex items-center gap-0 rounded-md px-3 py-2 font-mono text-xs shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+          <span className="">{prefix}</span>
           <span
-            className="h-3.5 w-px animate-pulse bg-foreground"
+            className="h-3.5 w-px animate-pulse bg-current"
             aria-hidden="true"
           />
         </div>
-        <ul className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-md">
+        <ul className="flex flex-col overflow-hidden rounded-md border border-current/15 bg-current/10 shadow-md">
           {items.map((it, i) => {
             const cfg = kindConfig[it.kind];
             return (
@@ -81,7 +110,7 @@ export function Editor2({
                 key={i}
                 className={cn(
                   "flex items-center gap-2 px-2 py-1 font-mono text-xs",
-                  it.active && "bg-muted"
+                  it.active && "bg-current/10"
                 )}
               >
                 <span
@@ -97,14 +126,14 @@ export function Editor2({
                   className={cn(
                     "truncate",
                     it.active
-                      ? "font-semibold text-card-foreground"
-                      : "text-card-foreground"
+                      ? "font-semibold"
+                      : ""
                   )}
                 >
                   {it.label}
                 </span>
                 {it.detail && (
-                  <span className="ml-auto truncate text-muted-foreground">
+                  <span className="ml-auto truncate text-current/60">
                     {it.detail}
                   </span>
                 )}

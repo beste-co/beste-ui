@@ -3,6 +3,8 @@
 import { MoreHorizontal, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type SegmentTone = "emerald" | "amber" | "muted";
 
 interface Segment {
@@ -16,6 +18,9 @@ interface Stats14Props {
   value?: string;
   deltaLabel?: string;
   segments?: Segment[];
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -24,16 +29,35 @@ const TICKS = 44;
 const tickStyles: Record<SegmentTone, string> = {
   emerald: "bg-emerald-600",
   amber: "bg-amber-500",
-  muted: "bg-muted-foreground/25",
+  muted: "bg-current/10",
 };
 
 const dotStyles: Record<SegmentTone, string> = {
   emerald: "bg-emerald-600",
   amber: "bg-amber-500",
-  muted: "bg-muted-foreground/40",
+  muted: "bg-current/15",
+};
+
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
 };
 
 export const stats14Demo: Stats14Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   title: "Support Queue",
   value: "1,284",
   deltaLabel: "312 cleared today",
@@ -49,6 +73,9 @@ export function Stats14({
   value = "0",
   deltaLabel,
   segments = [],
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Stats14Props) {
   const total = segments.reduce((sum, s) => sum + s.value, 0) || 1;
@@ -64,6 +91,8 @@ export function Stats14({
     return "muted";
   });
 
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -71,21 +100,21 @@ export function Stats14({
         className
       )}
     >
-      <div className="w-full max-w-96 rounded-md border border-border bg-card p-5 shadow-xl">
+      <div className={cn("w-full max-w-96 rounded-md p-5 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
         <div className="mb-4 flex items-center justify-between">
-          <p className="text-base font-medium text-card-foreground">{title}</p>
+          <p className="text-base font-medium">{title}</p>
           <MoreHorizontal
-            className="size-4 text-muted-foreground"
+            className="size-4 text-current/60"
             aria-hidden="true"
           />
         </div>
 
         <div className="flex items-baseline gap-2">
-          <span className="text-4xl font-semibold tracking-tight text-card-foreground">
+          <span className="text-4xl font-semibold tracking-tight">
             {value}
           </span>
           {deltaLabel && (
-            <span className="flex items-center gap-1 text-sm text-muted-foreground">
+            <span className="flex items-center gap-1 text-sm text-current/60">
               <TrendingUp
                 className="size-4 text-emerald-600"
                 aria-hidden="true"
@@ -120,10 +149,10 @@ export function Stats14({
                 )}
                 aria-hidden="true"
               />
-              <span className="font-medium text-card-foreground">
+              <span className="font-medium">
                 {segment.value}
               </span>
-              <span className="text-muted-foreground">{segment.label}</span>
+              <span className="text-current/60">{segment.label}</span>
             </div>
           ))}
         </div>

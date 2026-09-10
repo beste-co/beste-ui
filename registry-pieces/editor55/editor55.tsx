@@ -83,7 +83,7 @@ export function Editor55({
     return () => clearInterval(id);
   }, [rows.length, dwellMs]);
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -97,13 +97,13 @@ export function Editor55({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         <div className="flex items-center gap-2">
           <PanelRight
-            className="size-3.5 shrink-0 opacity-60"
+            className="size-3.5 shrink-0 text-current/60"
             aria-hidden="true"
           />
           {sectionLabel && (
@@ -112,7 +112,7 @@ export function Editor55({
             </span>
           )}
           {sectionId && (
-            <span className="truncate font-mono text-xs opacity-60">
+            <span className="truncate font-mono text-xs text-current/60">
               {sectionId}
             </span>
           )}
@@ -130,7 +130,7 @@ export function Editor55({
               <span className="truncate text-xs">
                 {row.label}
               </span>
-              <span className="flex shrink-0 items-center gap-1 text-xs opacity-60">
+              <span className="flex shrink-0 items-center gap-1 text-xs text-current/60">
                 {row.value}
                 <ChevronDown className="size-3" aria-hidden="true" />
               </span>

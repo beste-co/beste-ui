@@ -3,6 +3,8 @@
 import { Phone, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 type Tone =
   | "primary"
   | "foreground"
@@ -21,6 +23,9 @@ interface Realestate5Props {
   phone?: string;
   image?: string;
   tone?: Tone;
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
@@ -34,7 +39,26 @@ const avatarClasses: Record<Tone, string> = {
   rose: "bg-gradient-to-br from-rose-500 via-pink-500 to-orange-500 text-white",
 };
 
+
+/* The card sets the colour and everything inside it is drawn in `current`, so
+   inverting is two classes rather than a condition on every element.
+   `glass` is a deliberate exception to the solid-surface rule: these pieces sit
+   over section background images, and a frosted panel is the point of it. */
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
+
 export const realestate5Demo: Realestate5Props = {
+  surface: "card",
+  bordered: true,
+  inverted: false,
   name: "Sofia Romano",
   firm: "Riverside Realty · Broker",
   initials: "SR",
@@ -55,8 +79,13 @@ export function Realestate5({
   phone,
   image,
   tone = "primary",
+  surface = "card",
+  bordered = true,
+  inverted = false,
   className,
 }: Realestate5Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+
   return (
     <div
       className={cn(
@@ -64,7 +93,7 @@ export function Realestate5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-3">
           <div
             className={cn(
@@ -84,12 +113,12 @@ export function Realestate5({
           </div>
           <div className="flex min-w-0 flex-1 flex-col">
             {name && (
-              <span className="truncate text-sm font-semibold text-card-foreground">
+              <span className="truncate text-sm font-semibold">
                 {name}
               </span>
             )}
             {firm && (
-              <span className="truncate text-sm text-muted-foreground">
+              <span className="truncate text-sm text-current/60">
                 {firm}
               </span>
             )}
@@ -99,11 +128,11 @@ export function Realestate5({
                   className="size-3 fill-amber-400 text-amber-400"
                   aria-hidden="true"
                 />
-                <span className="font-semibold text-card-foreground">
+                <span className="font-semibold">
                   {rating}
                 </span>
                 {deals && (
-                  <span className="text-muted-foreground">· {deals}</span>
+                  <span className="text-current/60">· {deals}</span>
                 )}
               </span>
             )}

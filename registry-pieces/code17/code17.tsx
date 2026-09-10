@@ -30,9 +30,9 @@ interface Code17Props {
 /* Amber carries the one annotation that means a change is made. It lightens on an
    inverted card, where the surface behind it is the foreground colour. */
 const accessClasses = (inverted: boolean): Record<Access, string> => ({
-  read: "opacity-60",
+  read: "text-current/60",
   write: inverted ? "text-amber-400" : "text-amber-600 dark:text-amber-400",
-  withheld: "opacity-60",
+  withheld: "text-current/60",
 });
 
 
@@ -104,7 +104,7 @@ export function Code17({
     withheld: withheldLabel,
   };
 
-  const tone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div
@@ -118,18 +118,18 @@ export function Code17({
       <div
         className={cn(
           "flex w-full max-w-72 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          tone,
+          surfaceTone,
           bordered && "border border-current/15"
         )}
       >
         <div className="flex items-baseline justify-between gap-3">
           {title && (
-            <h3 className="text-sm font-semibold">
+            <span className="block text-sm font-semibold">
               {title}
-            </h3>
+            </span>
           )}
           {countLabel && (
-            <span className="shrink-0 text-xs opacity-60">
+            <span className="shrink-0 text-xs text-current/60">
               {countLabel}
             </span>
           )}
@@ -147,7 +147,7 @@ export function Code17({
                 <code
                   className={cn(
                     "truncate font-mono text-xs transition-colors duration-300 motion-reduce:transition-none",
-                    tool.access === "withheld" && done && "opacity-60 line-through"
+                    tool.access === "withheld" && done && "text-current/60 line-through"
                   )}
                 >
                   {tool.name}
