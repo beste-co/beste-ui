@@ -3,6 +3,7 @@
 import { CheckIcon, PipetteIcon } from "lucide-react";
 import * as React from "react";
 import { InspectorSlider } from "@/components/beste/component/inspector-slider";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -43,7 +44,7 @@ const FALLBACK_COLOR: OklchColor = { l: 0.5, c: 0, h: 0, a: 1 };
 /** Hue rail: one stop per 30 degrees, at a mid lightness and chroma. */
 const HUE_RAIL = `linear-gradient(to right, ${Array.from(
   { length: 13 },
-  (_, index) => `oklch(0.72 0.17 ${index * 30})`,
+  (_, index) => `oklch(0.72 0.17 ${index * 30})`
 ).join(", ")})`;
 
 /** Checkerboard behind the alpha rail, drawn with one conic gradient. */
@@ -69,7 +70,7 @@ const RAIL_VALUE =
   "group-hover/rail:text-white group-hover/rail:group-data-[active=true]/inspector-slider:text-white group-hover/rail:[text-shadow:0_1px_3px_#000c]";
 
 /* -------------------------------------------------------------------------- */
-/* Colour maths — sRGB <-> OKLab/OKLCH, using Björn Ottosson's matrices        */
+/* Color maths — sRGB <-> OKLab/OKLCH, using Björn Ottosson's matrices        */
 /* -------------------------------------------------------------------------- */
 
 const useIsomorphicLayoutEffect =
@@ -186,9 +187,7 @@ function formatColor(color: OklchColor, format: ColorFormat, withAlpha: boolean)
 
   if (format === "oklch") {
     const base = `${trimNumber(color.l, 4)} ${trimNumber(color.c, 4)} ${trimNumber(color.h, 2)}`;
-    return withAlpha && alpha < 1
-      ? `oklch(${base} / ${trimNumber(alpha, 3)})`
-      : `oklch(${base})`;
+    return withAlpha && alpha < 1 ? `oklch(${base} / ${trimNumber(alpha, 3)})` : `oklch(${base})`;
   }
 
   const { r, g, b } = oklchToRgb(color);
@@ -227,13 +226,14 @@ function parseColor(input: string | undefined): OklchColor | null {
     const oklch = linearRgbToOklch(
       srgbToLinear(expand(r)),
       srgbToLinear(expand(g)),
-      srgbToLinear(expand(b)),
+      srgbToLinear(expand(b))
     );
     return { ...oklch, a: a === undefined ? 1 : expand(a) };
   }
 
-  const rgb =
-    /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:\s*[,/]\s*([\d.]+%?))?\s*\)$/.exec(value);
+  const rgb = /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:\s*[,/]\s*([\d.]+%?))?\s*\)$/.exec(
+    value
+  );
   if (rgb?.[1] && rgb[2] && rgb[3]) {
     const channel = (part: string) => srgbToLinear(clamp(Number.parseFloat(part) / 255, 0, 1));
     const oklch = linearRgbToOklch(channel(rgb[1]), channel(rgb[2]), channel(rgb[3]));
@@ -242,7 +242,7 @@ function parseColor(input: string | undefined): OklchColor | null {
 
   const oklch =
     /^oklch\(\s*([\d.]+%?)\s+([\d.]+%?)\s+([\d.]+)(?:deg)?(?:\s*\/\s*([\d.]+%?))?\s*\)$/.exec(
-      value,
+      value
     );
   if (oklch?.[1] && oklch[2] && oklch[3]) {
     const lightness = oklch[1].endsWith("%")
@@ -340,7 +340,7 @@ interface ColorPickerProps {
    * picker: plane, hue and the field.
    * @defaultValue true */
   oklch?: boolean;
-  /** Preset colours offered under the picker, in any supported notation. */
+  /** Preset colors offered under the picker, in any supported notation. */
   swatches?: string[];
   /** Hide the text field that accepts and displays the value. */
   hideInput?: boolean;
@@ -372,12 +372,12 @@ export function ColorPicker({
   "aria-label": ariaLabel,
 }: ColorPickerProps) {
   const [color, setColor] = React.useState<OklchColor>(
-    () => parseColor(colorProp) ?? FALLBACK_COLOR,
+    () => parseColor(colorProp) ?? FALLBACK_COLOR
   );
   const [draft, setDraft] = React.useState<string | null>(null);
   /** Which notation the field shows and the numeric rows follow. */
   const [notation, setNotation] = React.useState<"rgb" | "oklch">(
-    format === "oklch" ? "oklch" : "rgb",
+    format === "oklch" ? "oklch" : "rgb"
   );
 
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -397,8 +397,12 @@ export function ColorPicker({
   const emit = React.useCallback((next: OklchColor, complete = false) => {
     colorRef.current = next;
     setColor(next);
-    const { onChange: change, onChangeComplete: done, format: fmt, alpha: withAlpha } =
-      latest.current;
+    const {
+      onChange: change,
+      onChangeComplete: done,
+      format: fmt,
+      alpha: withAlpha,
+    } = latest.current;
     const value = formatColor(next, fmt, withAlpha);
     change?.(value);
     if (complete) done?.(value);
@@ -654,7 +658,7 @@ export function ColorPicker({
         value={draft ?? displayValue}
         spellCheck={false}
         autoComplete="off"
-        aria-label="Colour value"
+        aria-label="Color value"
         aria-invalid={!draftIsValid}
         onChange={(event) => handleDraftChange(event.target.value)}
         onBlur={commitDraft}
@@ -696,7 +700,7 @@ export function ColorPicker({
         // `max-w-full` lets the panel sit inside a narrower popover than its own
         // intrinsic width without overflowing it.
         "flex w-64 max-w-full flex-col gap-2 p-3 [--inspector-radius:var(--radius-xl)]",
-        className,
+        className
       )}
     >
       {/*
@@ -713,7 +717,7 @@ export function ColorPicker({
         aria-label={ariaLabel ?? "Lightness and chroma"}
         className={cn(
           "relative h-36 w-full cursor-crosshair touch-none overflow-hidden rounded-(--inspector-radius)",
-          "bg-muted outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "bg-muted outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         )}
         onPointerDown={handlePlanePointerDown}
         onPointerMove={handlePlanePointerMove}
@@ -840,7 +844,9 @@ export function ColorPicker({
                 className="flex aspect-square w-full cursor-pointer items-center justify-center rounded-full border border-border transition-transform hover:scale-110"
                 style={{ backgroundColor: parsed ? toCssColor(parsed) : swatch }}
               >
-                {isActive ? <CheckIcon className="size-3.5 text-white mix-blend-difference" /> : null}
+                {isActive ? (
+                  <CheckIcon className="size-3.5 text-white mix-blend-difference" />
+                ) : null}
               </button>
             );
           })}

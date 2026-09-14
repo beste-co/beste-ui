@@ -38,6 +38,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
   },
 };
 
+// The editable fields are the one solid thing inside the panel. On glass a solid
+// field reads as a white hole in the frosting, so it takes a tint of `current`.
+const fieldClasses: Record<Surface, string> = {
+  card: "bg-background text-foreground",
+  glass: "bg-current/5",
+};
+
 export const editor46Demo: Editor46Props = {
   surface: "card",
   bordered: true,
@@ -106,7 +113,7 @@ function Toolbar({
         className="flex items-center gap-0.5 rounded px-1 py-0.5 hover:bg-current/10"
         aria-label="Text color"
       >
-        <span className="border-b-2 border-foreground text-xs font-semibold leading-none">
+        <span className="border-b-2 border-current text-xs font-semibold leading-none">
           A
         </span>
         <ChevronDown className="size-3" aria-hidden="true" />
@@ -136,6 +143,7 @@ export function Editor46({
   const hasBody = hasHeading || hasDescription;
 
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const fieldTone = fieldClasses[surface];
 
   return (
     <div
@@ -201,7 +209,12 @@ export function Editor46({
                     {headingLabel}
                   </span>
                 )}
-                <div className="overflow-hidden rounded-lg border border-current/15 bg-background text-foreground">
+                <div
+                  className={cn(
+                    "overflow-hidden rounded-lg border border-current/15",
+                    fieldTone
+                  )}
+                >
                   <Toolbar leadLetter="H2" sizeLabel={sizeLabel} />
                   <div className="p-3">
                     <p className="text-lg font-medium leading-snug">
@@ -219,7 +232,12 @@ export function Editor46({
                     {descriptionLabel}
                   </span>
                 )}
-                <div className="overflow-hidden rounded-lg border border-current/15 bg-background text-foreground">
+                <div
+                  className={cn(
+                    "overflow-hidden rounded-lg border border-current/15",
+                    fieldTone
+                  )}
+                >
                   <Toolbar leadLetter="P" sizeLabel={sizeLabel} />
                   <div className="p-3">
                     <p className="text-sm leading-relaxed">

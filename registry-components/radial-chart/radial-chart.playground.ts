@@ -14,6 +14,6 @@ export const playground: PlaygroundConfig = {
     { prop: "max", label: "Max", kind: "stepper", min: 1, max: 1000, default: 100 },
     { prop: "label", label: "Label", kind: "text", placeholder: "On track for 80% target" },
     { prop: "valueLabel", label: "Value label", kind: "text", placeholder: "68%" },
-    { prop: "color", label: "Colour", kind: "text", placeholder: "var(--chart-1)" },
+    { prop: "color", label: "Color", kind: "text", placeholder: "var(--chart-1)" },
   ],
 };

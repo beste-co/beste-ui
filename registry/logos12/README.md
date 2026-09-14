@@ -76,7 +76,7 @@ type Logo = { src: string; alt: string };
 
 - The grid draws its rules from the cells: every cell carries a right and bottom rule while the container supplies the left and top, so a filled grid closes on all four sides with one hairline everywhere and no doubling.
 - That trick assumes full rows. Seven logos in a three-column grid leave the last row's missing cells without their share of the outline, so pass a count that divides by three, or by two at `sm`.
-- Logos render greyscale at half opacity and come back to full colour on hover, which keeps a wall of mismatched brand colours from competing with the copy beside it.
+- Logos render greyscale at half opacity and come back to full colour on hover, which keeps a wall of mismatched brand colors from competing with the copy beside it.
 - Each logo is capped by height (`h-7`, `md:h-8`) with `w-auto` and `object-contain`, so wordmarks of very different aspect ratios sit optically level without being stretched.
 - `alt` carries the company name, so the wall still says who these customers are when images fail or a screen reader is doing the reading.
 - The header row aligns on `md:items-end`, which drops the reach line onto the same baseline as the last line of the claim rather than centring it against the block.

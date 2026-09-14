@@ -79,7 +79,7 @@ export function CodeBlock({
   const currentTheme = theme === "system" ? resolvedTheme : theme;
 
   /*
-   * The ordinary GitHub colours, which is what a reader's editor most likely looks
+   * The ordinary GitHub colors, which is what a reader's editor most likely looks
    * like and therefore what they read fastest. The greyness comes from the surface
    * instead: the theme's own background is dropped below and the block sits on
    * `bg-muted`, so the page stays calm without the syntax having to be muted too.
@@ -88,8 +88,8 @@ export function CodeBlock({
     currentTheme === "paper"
       ? "everforest-light"
       : currentTheme === "light"
-      ? "github-light"
-      : "github-dark";
+        ? "github-light"
+        : "github-dark";
 
   useEffect(() => {
     if (!mounted) return;
@@ -126,7 +126,11 @@ export function CodeBlock({
       title={copied ? "Copied" : "Copy"}
       className="size-7 bg-muted/80 text-foreground/70 backdrop-blur hover:bg-foreground/10 hover:text-foreground"
     >
-      {copied ? <HugeiconsIcon icon={Tick02Icon} size={14} strokeWidth={2} className="text-emerald-600" /> : <HugeiconsIcon icon={Copy01Icon} size={14} strokeWidth={2} />}
+      {copied ? (
+        <HugeiconsIcon icon={Tick02Icon} size={14} strokeWidth={2} className="text-emerald-600" />
+      ) : (
+        <HugeiconsIcon icon={Copy01Icon} size={14} strokeWidth={2} />
+      )}
     </Button>
   );
 
@@ -224,9 +228,7 @@ export function CodeBlock({
         style={innerStyle}
         dangerouslySetInnerHTML={{ __html: html }}
       />
-      {!hideCopy && (
-        <div className="absolute top-2 right-2 z-10">{copyButton}</div>
-      )}
+      {!hideCopy && <div className="absolute top-2 right-2 z-10">{copyButton}</div>}
       {toggle}
     </div>
   );

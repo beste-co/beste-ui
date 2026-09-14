@@ -12,6 +12,7 @@
  * bun or plain node.
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+
 import { join } from "node:path";
 
 const ROOT = join(import.meta.dirname, "..");
@@ -70,9 +71,11 @@ function byCategory(items: Item[]): Map<string, Item[]> {
 const categoryInfo = new Map<string, { title: string; description: string }>();
 {
   const source = read("lib", "category-info.ts");
-  for (const m of source.matchAll(/\n  "?([a-z-]+)"?: \{([\s\S]*?)\n  \},/g)) {
+  for (const m of source.matchAll(/\n {2}"?([a-z-]+)"?: \{([\s\S]*?)\n {2}\},/g)) {
     const title = m[2].match(/\n\s*title: "([^"]+)"/)?.[1];
-    const description = m[2].match(/\n\s*description:\s*\n?\s*"([^"]+)"/)?.[1]?.replace(/\s*[—–]\s*/g, ": ");
+    const description = m[2]
+      .match(/\n\s*description:\s*\n?\s*"([^"]+)"/)?.[1]
+      ?.replace(/\s*[—–]\s*/g, ": ");
     if (title && description) categoryInfo.set(m[1], { title, description });
   }
 }
@@ -90,7 +93,7 @@ function collections(): Collection[] {
   const sets = read("lib", "block-sets.ts");
   const out: Collection[] = [];
   for (const m of copy.matchAll(
-    /\n  ([a-z]+): \{\s*\n\s*label: "([^"]+)",\s*\n\s*description:\s*\n?\s*"([^"]+)"/g
+    /\n {2}([a-z]+): \{\s*\n\s*label: "([^"]+)",\s*\n\s*description:\s*\n?\s*"([^"]+)"/g
   )) {
     const list = sets.match(new RegExp(`${m[1]}:\\s*\\[([^\\]]*)\\]`))?.[1] ?? "";
     out.push({
@@ -118,7 +121,7 @@ function tools(): { categories: { id: string; title: string }[]; tools: Tool[] }
   }));
   const list: Tool[] = [];
   const body = source.slice(source.indexOf("export const tools"));
-  for (const chunk of body.split(/\n  \{\n/).slice(1)) {
+  for (const chunk of body.split(/\n {2}\{\n/).slice(1)) {
     const slug = chunk.match(/slug: "([^"]+)"/)?.[1];
     const title = chunk.match(/title: "([^"]+)"/)?.[1];
     const description = chunk.match(/description:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1];
@@ -141,8 +144,14 @@ function posts(): Post[] {
     .filter((f) => f.endsWith(".mdx"))
     .map((f) => {
       const fm = readFileSync(join(dir, f), "utf-8").split("---")[1] ?? "";
-      const pick = (key: string) => fm.match(new RegExp(`\\n${key}:\\s*"?([^"\\n]+)"?`))?.[1]?.trim() ?? "";
-      return { slug: f.replace(/\.mdx$/, ""), title: pick("title"), description: pick("description"), date: pick("date") };
+      const pick = (key: string) =>
+        fm.match(new RegExp(`\\n${key}:\\s*"?([^"\\n]+)"?`))?.[1]?.trim() ?? "";
+      return {
+        slug: f.replace(/\.mdx$/, ""),
+        title: pick("title"),
+        description: pick("description"),
+        date: pick("date"),
+      };
     })
     .filter((p) => p.title)
     .sort((a, b) => b.date.localeCompare(a.date));
@@ -156,7 +165,9 @@ interface Release {
 function releases(limit: number): Release[] {
   const source = read("data", "changelog.ts");
   const out: Release[] = [];
-  for (const m of source.matchAll(/version: "([^"]+)",\s*\n\s*date: "([^"]+)",\s*\n\s*title: "([^"]+)"/g)) {
+  for (const m of source.matchAll(
+    /version: "([^"]+)",\s*\n\s*date: "([^"]+)",\s*\n\s*title: "([^"]+)"/g
+  )) {
     out.push({ version: m[1], date: m[2], title: m[3] });
     if (out.length === limit) break;
   }
@@ -166,10 +177,12 @@ function releases(limit: number): Release[] {
 function tags(): { slug: string; label: string }[] {
   const path = join(ROOT, "public", "sitemap-tags.xml");
   if (!existsSync(path)) return [];
-  return [...readFileSync(path, "utf-8").matchAll(/<loc>[^<]*\/blocks\/tag\/([^<]+)<\/loc>/g)].map((m) => ({
-    slug: m[1],
-    label: m[1].replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase()),
-  }));
+  return [...readFileSync(path, "utf-8").matchAll(/<loc>[^<]*\/blocks\/tag\/([^<]+)<\/loc>/g)].map(
+    (m) => ({
+      slug: m[1],
+      label: m[1].replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase()),
+    })
+  );
 }
 
 function pricing() {
@@ -182,12 +195,16 @@ function pricing() {
     };
   };
   const enabled = /DISCOUNTS_ENABLED\s*=\s*true/.test(source);
-  const end = Date.parse(source.match(/COUNTDOWN_END = new Date\("([^"]+)"\)/)?.[1] ?? "1970-01-01");
+  const end = Date.parse(
+    source.match(/COUNTDOWN_END = new Date\("([^"]+)"\)/)?.[1] ?? "1970-01-01"
+  );
   const label = source.match(/SALE_LABEL = "([^"]+)"/)?.[1] ?? "sale";
   const lifetime = plan("lifetime");
   const team = plan("team");
   const sale =
-    enabled && Date.now() < end && (lifetime.discounted < lifetime.original || team.discounted < team.original);
+    enabled &&
+    Date.now() < end &&
+    (lifetime.discounted < lifetime.original || team.discounted < team.original);
   return { lifetime, team, sale, label, endsOn: new Date(end).toISOString().slice(0, 10) };
 }
 
@@ -306,7 +323,7 @@ Every asset has a detail page with a live preview, the install command in both f
 - **One file, named exports.** A block is a single \`.tsx\` file that exports the component (\`Hero7\`) and its demo props (\`hero7Demo\`), the exact data behind the preview. Spread the demo to get a working section in one line, then replace it with your own props.
 - **Props, not slots.** Headings, descriptions, buttons, images and lists are all props with plain types (\`ActionButton\`, \`Avatar\`, \`Fact\`). Arrays default to empty and every part is optional, so a block collapses gracefully when a prop is left out.
 - **Installs where shadcn puts it.** The CLI writes blocks to \`components/beste/block/{name}.tsx\`, pieces to \`components/beste/piece/{name}.tsx\` and components to \`components/beste/component/{name}.tsx\`, and pulls in the shadcn primitives (button, input, tabs) and Beste components the block imports.
-- **Theme tokens only.** No literal colours: every surface reads \`bg-background\`, \`text-foreground\`, \`bg-muted\` and friends, so a block matches your theme the moment it lands.
+- **Theme tokens only.** No literal colors: every surface reads \`bg-background\`, \`text-foreground\`, \`bg-muted\` and friends, so a block matches your theme the moment it lands.
 - **Demo content is realistic.** Copy, photographs and figures are written for the block's purpose so the preview shows what the section is for, not lorem ipsum.
 - **README on every page.** Installation, quick start, a props table and behaviour notes derived from the source, rendered on the asset page and available as Markdown.
 
@@ -357,7 +374,7 @@ Full docs: ${url("/docs/installation")} and the CLI reference at ${url("/docs/cl
 
 ## Theming
 
-Beste assets are styled entirely with shadcn/ui theme tokens, so they inherit your theme. Instead of literal colours, components reference CSS variables such as \`--background\`, \`--foreground\`, \`--primary\` and \`--muted\` that live in your global stylesheet; change the variables and every block updates with you. Dark mode is the same variables under a \`.dark\` class, and radius is one token. Some pieces and components expose a \`tone\` prop (for example \`neutral\`) that swaps a small set of token classes so the same component can read as quiet or prominent without new CSS. Docs: ${url("/docs/theming")}.
+Beste assets are styled entirely with shadcn/ui theme tokens, so they inherit your theme. Instead of literal colors, components reference CSS variables such as \`--background\`, \`--foreground\`, \`--primary\` and \`--muted\` that live in your global stylesheet; change the variables and every block updates with you. Dark mode is the same variables under a \`.dark\` class, and radius is one token. Some pieces and components expose a \`tone\` prop (for example \`neutral\`) that swaps a small set of token classes so the same component can read as quiet or prominent without new CSS. Docs: ${url("/docs/theming")}.
 
 ## MCP server
 
@@ -448,7 +465,10 @@ ${[...blockCats.entries()]
   .map(([title, items]) => {
     const { slug, description } = catMeta(title);
     const free = items.filter((i) => !i.isPro).length;
-    const examples = items.slice(0, 5).map((i) => `${i.title} (${i.name})`).join(", ");
+    const examples = items
+      .slice(0, 5)
+      .map((i) => `${i.title} (${i.name})`)
+      .join(", ");
     return `### ${title}
 
 - URL: ${url(`/blocks/${slug}`)}
@@ -494,7 +514,10 @@ ${[...pageCats.entries()]
 ${num(pieces.length)} small widgets, all free. Listing: ${url("/pieces")}. Each category page lists every piece in it.
 
 ${[...pieceCats.entries()]
-  .map(([category, items]) => `- [${category}](${url(`/pieces/${kebab(category)}`)}): ${items.length} pieces`)
+  .map(
+    ([category, items]) =>
+      `- [${category}](${url(`/pieces/${kebab(category)}`)}): ${items.length} pieces`
+  )
   .join("\n")}
 
 ## Components
@@ -502,7 +525,10 @@ ${[...pieceCats.entries()]
 ${components.length} styled primitives, all free. Listing: ${url("/components")}.
 
 ${[...componentCats.entries()]
-  .map(([category, items]) => `- [${category}](${url(`/components/${kebab(category)}`)}): ${items.length} components`)
+  .map(
+    ([category, items]) =>
+      `- [${category}](${url(`/components/${kebab(category)}`)}): ${items.length} components`
+  )
   .join("\n")}
 ${
   toolList.length > 0

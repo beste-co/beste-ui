@@ -13,7 +13,7 @@ The catalog has four tiers:
 - **Blocks** (https://ui.beste.co/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
 - **Pages** (https://ui.beste.co/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
 - **Pieces** (https://ui.beste.co/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,076 pieces in 45 categories, all free.
-- **Components** (https://ui.beste.co/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 157 components in 8 categories, all free.
+- **Components** (https://ui.beste.co/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 158 components in 8 categories, all free.
 
 Every asset has a detail page with a live preview, the install command in both flavors, its props and a README. Blocks live at `/block/{name}`, pages at `/page/{name}`, pieces at `/piece/{name}` and components at `/component/{name}`.
 
@@ -22,7 +22,7 @@ Every asset has a detail page with a live preview, the install command in both f
 - **One file, named exports.** A block is a single `.tsx` file that exports the component (`Hero7`) and its demo props (`hero7Demo`), the exact data behind the preview. Spread the demo to get a working section in one line, then replace it with your own props.
 - **Props, not slots.** Headings, descriptions, buttons, images and lists are all props with plain types (`ActionButton`, `Avatar`, `Fact`). Arrays default to empty and every part is optional, so a block collapses gracefully when a prop is left out.
 - **Installs where shadcn puts it.** The CLI writes blocks to `components/beste/block/{name}.tsx`, pieces to `components/beste/piece/{name}.tsx` and components to `components/beste/component/{name}.tsx`, and pulls in the shadcn primitives (button, input, tabs) and Beste components the block imports.
-- **Theme tokens only.** No literal colours: every surface reads `bg-background`, `text-foreground`, `bg-muted` and friends, so a block matches your theme the moment it lands.
+- **Theme tokens only.** No literal colors: every surface reads `bg-background`, `text-foreground`, `bg-muted` and friends, so a block matches your theme the moment it lands.
 - **Demo content is realistic.** Copy, photographs and figures are written for the block's purpose so the preview shows what the section is for, not lorem ipsum.
 - **README on every page.** Installation, quick start, a props table and behaviour notes derived from the source, rendered on the asset page and available as Markdown.
 
@@ -73,7 +73,7 @@ Full docs: https://ui.beste.co/docs/installation and the CLI reference at https:
 
 ## Theming
 
-Beste assets are styled entirely with shadcn/ui theme tokens, so they inherit your theme. Instead of literal colours, components reference CSS variables such as `--background`, `--foreground`, `--primary` and `--muted` that live in your global stylesheet; change the variables and every block updates with you. Dark mode is the same variables under a `.dark` class, and radius is one token. Some pieces and components expose a `tone` prop (for example `neutral`) that swaps a small set of token classes so the same component can read as quiet or prominent without new CSS. Docs: https://ui.beste.co/docs/theming.
+Beste assets are styled entirely with shadcn/ui theme tokens, so they inherit your theme. Instead of literal colors, components reference CSS variables such as `--background`, `--foreground`, `--primary` and `--muted` that live in your global stylesheet; change the variables and every block updates with you. Dark mode is the same variables under a `.dark` class, and radius is one token. Some pieces and components expose a `tone` prop (for example `neutral`) that swaps a small set of token classes so the same component can read as quiet or prominent without new CSS. Docs: https://ui.beste.co/docs/theming.
 
 ## MCP server
 
@@ -545,9 +545,9 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 
 ## Components
 
-157 styled primitives, all free. Listing: https://ui.beste.co/components.
+158 styled primitives, all free. Listing: https://ui.beste.co/components.
 
-- [Inspector](https://ui.beste.co/components/inspector): 45 components
+- [Inspector](https://ui.beste.co/components/inspector): 46 components
 - [Card](https://ui.beste.co/components/card): 28 components
 - [Button](https://ui.beste.co/components/button): 19 components
 - [Text](https://ui.beste.co/components/text): 19 components

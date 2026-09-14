@@ -2,6 +2,7 @@
 
 import type { LucideIcon } from "lucide-react";
 import * as React from "react";
+
 import { ColorPicker } from "@/components/beste/component/color-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
@@ -71,7 +72,7 @@ interface InspectorColorProps {
   format?: "hex" | "oklch" | "rgb";
   /** Carry an alpha channel, and show its rail in the picker. */
   alpha?: boolean;
-  /** Preset colours offered inside the picker. */
+  /** Preset colors offered inside the picker. */
   swatches?: string[];
   /** Block interaction and dim the row. */
   disabled?: boolean;
@@ -122,7 +123,7 @@ export function InspectorColor({
       onValueChange?.(next);
       if (complete) onValueCommit?.(next);
     },
-    [valueProp, onValueChange, onValueCommit],
+    [valueProp, onValueChange, onValueCommit]
   );
 
   const swatchColor = isRenderableColor(value) ? value : "transparent";
@@ -151,7 +152,7 @@ export function InspectorColor({
             "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
             sizeStyles[size],
             toneStyles[tone],
-            className,
+            className
           )}
         >
           <span
@@ -179,7 +180,7 @@ export function InspectorColor({
             data-slot="inspector-color-swatch"
             className={cn(
               "relative size-5 shrink-0 rounded-full border border-border",
-              "transition-transform group-hover/inspector-color:scale-110",
+              "transition-transform group-hover/inspector-color:scale-110"
             )}
           >
             {alpha ? (

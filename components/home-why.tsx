@@ -1,6 +1,7 @@
 "use client";
 
 import { FileCode, Layers, Paintbrush, Terminal } from "lucide-react";
+
 import { Feature235 } from "@/registry/feature235/feature235";
 
 /**
@@ -64,7 +65,7 @@ export function HomeWhy() {
           icon: Paintbrush,
           title: "Themed by tokens",
           description:
-            "Tailwind v4 and shadcn tokens throughout, so a block takes your colours, radius and dark mode without edits.",
+            "Tailwind v4 and shadcn tokens throughout, so a block takes your colors, radius and dark mode without edits.",
         },
       ]}
     />

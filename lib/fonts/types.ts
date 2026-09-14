@@ -101,7 +101,27 @@ export type FontName =
   | "space-mono"
   | "courier-prime"
   | "ibm-plex-mono"
-  | "anonymous-pro";
+  | "anonymous-pro"
+  | "literata"
+  | "bodoni-moda"
+  | "dm-serif-display"
+  | "libre-caslon-text"
+  | "prata"
+  | "young-serif"
+  | "gloock"
+  | "marcellus"
+  | "figtree"
+  | "instrument-sans"
+  | "oswald"
+  | "noto-sans"
+  | "pt-sans"
+  | "mulish"
+  | "barlow"
+  | "josefin-sans"
+  | "nunito-sans"
+  | "fira-sans"
+  | "roboto-slab"
+  | "noto-serif";
 
 /**
  * What a font may be called.

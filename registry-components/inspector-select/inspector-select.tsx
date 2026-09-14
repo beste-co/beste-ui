@@ -53,7 +53,7 @@ interface InspectorSelectOption {
   description?: string;
   /** Leading icon, shown in the menu and in the row once selected. */
   icon?: LucideIcon;
-  /** Leading colour dot in any CSS colour — palettes, themes, brand colours. */
+  /** Leading colour dot in any CSS colour — palettes, themes, brand colors. */
   swatch?: string;
   /**
    * Heading this option sits under. Consecutive options that share a group form
@@ -241,7 +241,7 @@ export function InspectorSelect({
           // full opacity and turn it over while the menu is open.
           "[&>svg:last-child]:opacity-100 [&>svg:last-child]:transition-transform data-[state=open]:[&>svg:last-child]:rotate-180",
           toneStyles[tone],
-          className,
+          className
         )}
       >
         <span className="flex min-w-0 items-center gap-1.5 text-foreground/70">
@@ -252,7 +252,7 @@ export function InspectorSelect({
         <span
           className={cn(
             "ml-auto flex min-w-0 items-center gap-1.5",
-            selected ? "text-foreground" : "text-foreground/70",
+            selected ? "text-foreground" : "text-foreground/70"
           )}
         >
           {selected?.swatch ? (
@@ -281,7 +281,7 @@ export function InspectorSelect({
           "[--inspector-radius:var(--radius-xl)] rounded-(--inspector-radius)",
           // The menu is portaled out of the row, so it carries its own copy of
           // the radius token instead of inheriting one.
-          menuWidth === "trigger" && "w-(--radix-select-trigger-width)",
+          menuWidth === "trigger" && "w-(--radix-select-trigger-width)"
         )}
       >
         {sections.length === 0 ? (
@@ -292,7 +292,9 @@ export function InspectorSelect({
               {index > 0 ? <SelectSeparator /> : null}
               <SelectGroup>
                 {section.label ? (
-                  <SelectLabel className="text-sm font-medium select-none">{section.label}</SelectLabel>
+                  <SelectLabel className="text-sm font-medium select-none">
+                    {section.label}
+                  </SelectLabel>
                 ) : null}
                 {section.options.map((option) => {
                   const OptionIcon = option.icon;
@@ -307,7 +309,7 @@ export function InspectorSelect({
                       disabled={option.disabled}
                       className={cn(
                         "cursor-pointer rounded-md",
-                        option.description && "items-start *:[span]:last:items-start",
+                        option.description && "items-start *:[span]:last:items-start"
                       )}
                     >
                       {option.swatch ? (
@@ -315,7 +317,7 @@ export function InspectorSelect({
                           aria-hidden="true"
                           className={cn(
                             "size-3 shrink-0 rounded-full border border-border",
-                            leadingAlign,
+                            leadingAlign
                           )}
                           style={{ backgroundColor: option.swatch }}
                         />

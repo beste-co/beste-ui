@@ -47,7 +47,7 @@ interface InspectorMulticolorProps {
   /** Optional leading icon shown before the label. */
   icon?: LucideIcon;
 
-  /** Controlled list of colours. Pair it with `onValueChange`. */
+  /** Controlled list of colors. Pair it with `onValueChange`. */
   value?: string[];
   /** Initial list in uncontrolled mode. */
   defaultValue?: string[];
@@ -60,15 +60,15 @@ interface InspectorMulticolorProps {
   onValueCommit?: (value: string[]) => void;
 
   /**
-   * Fewest colours the list may hold; the remove button stops there.
+   * Fewest colors the list may hold; the remove button stops there.
    * @defaultValue 1 */
   min?: number;
   /**
-   * Most colours the list may hold; the add button stops there.
+   * Most colors the list may hold; the add button stops there.
    * @defaultValue 5 */
   max?: number;
   /**
-   * Colour appended by the add button.
+   * Color appended by the add button.
    * @defaultValue "#ffffff" */
   newColor?: string;
 
@@ -78,7 +78,7 @@ interface InspectorMulticolorProps {
   format?: "hex" | "oklch" | "rgb";
   /** Carry an alpha channel, and show its row in the picker. */
   alpha?: boolean;
-  /** Preset colours offered inside the picker. */
+  /** Preset colors offered inside the picker. */
   swatches?: string[];
 
   /** Block interaction and dim the row. */

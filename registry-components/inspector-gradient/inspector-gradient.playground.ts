@@ -6,7 +6,7 @@
  * component is adding a folder, and so a change to one never touches the others.
  * Site-only, like the meta: `shadcn add` copies the .tsx and nothing else.
  */
-import { SURFACE_CONTROLS, type PlaygroundConfig } from "@/lib/playground-types";
+import { type PlaygroundConfig, SURFACE_CONTROLS } from "@/lib/playground-types";
 
 export const playground: PlaygroundConfig = {
   keys: [
@@ -19,7 +19,13 @@ export const playground: PlaygroundConfig = {
     { prop: "label", label: "Label", kind: "text", placeholder: "Gradient" },
     { prop: "minStops", label: "Min stops", kind: "stepper", min: 2, max: 6, default: 2 },
     { prop: "maxStops", label: "Max stops", kind: "stepper", min: 2, max: 12, default: 8 },
-    { prop: "format", label: "Colour format", kind: "select", options: ["hex", "oklch", "rgb"], default: "hex" },
+    {
+      prop: "format",
+      label: "Color format",
+      kind: "select",
+      options: ["hex", "oklch", "rgb"],
+      default: "hex",
+    },
     { prop: "alpha", label: "Alpha", kind: "switch", default: true },
     ...SURFACE_CONTROLS,
   ],

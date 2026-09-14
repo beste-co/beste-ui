@@ -18,7 +18,7 @@ export const playground: PlaygroundConfig = {
     { keys: "The eyedropper", does: "Offered only where the browser has `EyeDropper`; picks a colour from anywhere on screen." },
   ],
   controls: [
-    { prop: "color", label: "Colour", kind: "color" },
+    { prop: "color", label: "Color", kind: "color" },
     { prop: "format", label: "Format", kind: "select", options: ["hex", "oklch", "rgb"], default: "hex" },
     { prop: "alpha", label: "Alpha", kind: "switch", default: false },
     { prop: "oklch", label: "OKLCH plane", kind: "switch", default: true },

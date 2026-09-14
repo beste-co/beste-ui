@@ -17,7 +17,7 @@ export const playground: PlaygroundConfig = {
     { prop: "role", label: "Role", kind: "text", placeholder: "Creative Director" },
     { prop: "bio", label: "Bio", kind: "text", placeholder: "Fifteen years of brand work." },
     { prop: "linkLabel", label: "Link label", kind: "text", placeholder: "Read profile" },
-    { prop: "colored", label: "Coloured", kind: "switch", default: false },
+    { prop: "colored", label: "Colored", kind: "switch", default: false },
     { prop: "tone", label: "Tone", kind: "select", options: ["primary", "foreground"], default: "primary", group: "Surface" },
   ],
 };

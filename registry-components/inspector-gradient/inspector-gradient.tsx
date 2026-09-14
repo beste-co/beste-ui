@@ -87,7 +87,7 @@ function handleOffset(position: number) {
 /**
  * Give every stop a position. Anything without one is spread evenly across the
  * run, which is exactly what the browser does when no stop is placed, so a list
- * of plain colours looks the same before and after it is touched.
+ * of plain colors looks the same before and after it is touched.
  */
 function normalizeStops(stops: (string | GradientStop)[] | undefined): GradientStop[] {
   const list = (stops ?? []).map((stop) =>
@@ -162,7 +162,7 @@ interface InspectorGradientProps {
   format?: "hex" | "oklch" | "rgb";
   /** Carry an alpha channel through the stops. */
   alpha?: boolean;
-  /** Preset colours offered inside a stop's picker. */
+  /** Preset colors offered inside a stop's picker. */
   swatches?: string[];
 
   /** Block interaction and dim the row. */

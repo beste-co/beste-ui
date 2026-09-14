@@ -15,7 +15,7 @@ export const meta: ComponentMeta = {
   ],
   usage: `import { InspectorGradient } from "@/components/beste/component/inspector-gradient";
 
-// Bare colours are spaced evenly, which keeps the simple case simple
+// Bare colors are spaced evenly, which keeps the simple case simple
 <InspectorGradient label="Gradient" defaultValue={{ kind: "linear", angle: 135, stops: ["#fb7185", "#8b5cf6"] }} />
 
 // Give a stop a position and it holds that share: here the first colour keeps the

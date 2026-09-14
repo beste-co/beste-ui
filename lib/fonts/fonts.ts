@@ -1043,6 +1043,220 @@ export const fontDefinitions: Record<FontName, FontDefinition> = {
       "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
     description: "Fixed-width font designed for coders",
   },
+
+  literata: {
+    name: "literata",
+    displayName: "Literata",
+    category: "serif",
+    weights: [400, 500, 600, 700],
+    italicWeights: [400, 500, 600, 700],
+    googleFontName: "Literata",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Google's book serif, made for long reading on screens",
+  },
+
+  "bodoni-moda": {
+    name: "bodoni-moda",
+    displayName: "Bodoni Moda",
+    category: "serif",
+    weights: [400, 500, 600, 700, 800, 900],
+    italicWeights: [400, 700],
+    googleFontName: "Bodoni Moda",
+    fallback: "ui-serif, Georgia, serif",
+    description: "High-contrast Didone with fashion-magazine poise",
+  },
+
+  "dm-serif-display": {
+    name: "dm-serif-display",
+    displayName: "DM Serif Display",
+    category: "serif",
+    weights: [400],
+    italicWeights: [400],
+    googleFontName: "DM Serif Display",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Sharp display serif for headlines that want presence",
+  },
+
+  "libre-caslon-text": {
+    name: "libre-caslon-text",
+    displayName: "Libre Caslon Text",
+    category: "serif",
+    weights: [400, 700],
+    italicWeights: [400],
+    googleFontName: "Libre Caslon Text",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Warm Caslon revival for body text with a classic voice",
+  },
+
+  prata: {
+    name: "prata",
+    displayName: "Prata",
+    category: "serif",
+    weights: [400],
+    googleFontName: "Prata",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Elegant Didone display face with a calm, editorial air",
+  },
+
+  "young-serif": {
+    name: "young-serif",
+    displayName: "Young Serif",
+    category: "serif",
+    weights: [400],
+    googleFontName: "Young Serif",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Sturdy, friendly serif with a hand-drawn softness",
+  },
+
+  gloock: {
+    name: "gloock",
+    displayName: "Gloock",
+    category: "serif",
+    weights: [400],
+    googleFontName: "Gloock",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Bold display serif with generous curves for big titles",
+  },
+
+  marcellus: {
+    name: "marcellus",
+    displayName: "Marcellus",
+    category: "serif",
+    weights: [400],
+    googleFontName: "Marcellus",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Roman-inscription serif, refined and formal",
+  },
+
+  figtree: {
+    name: "figtree",
+    displayName: "Figtree",
+    category: "sans-serif",
+    weights: [300, 400, 500, 600, 700, 800],
+    italicWeights: [400, 700],
+    googleFontName: "Figtree",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Friendly geometric sans serif with a clean, modern rhythm",
+  },
+
+  "instrument-sans": {
+    name: "instrument-sans",
+    displayName: "Instrument Sans",
+    category: "sans-serif",
+    weights: [400, 500, 600, 700],
+    italicWeights: [400, 700],
+    googleFontName: "Instrument Sans",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Neutral grotesque that pairs with Instrument Serif",
+  },
+
+  oswald: {
+    name: "oswald",
+    displayName: "Oswald",
+    category: "sans-serif",
+    weights: [300, 400, 500, 600, 700],
+    googleFontName: "Oswald",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Condensed grotesque, the standard for bold uppercase headlines",
+  },
+
+  "noto-sans": {
+    name: "noto-sans",
+    displayName: "Noto Sans",
+    category: "sans-serif",
+    weights: [400, 500, 600, 700],
+    italicWeights: [400, 700],
+    googleFontName: "Noto Sans",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Google's universal sans serif, neutral and complete",
+  },
+
+  "pt-sans": {
+    name: "pt-sans",
+    displayName: "PT Sans",
+    category: "sans-serif",
+    weights: [400, 700],
+    italicWeights: [400, 700],
+    googleFontName: "PT Sans",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Humanist sans serif with a Cyrillic heritage, warm and clear",
+  },
+
+  mulish: {
+    name: "mulish",
+    displayName: "Mulish",
+    category: "sans-serif",
+    weights: [300, 400, 500, 600, 700, 800],
+    italicWeights: [400, 700],
+    googleFontName: "Mulish",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Minimalist sans serif, soft and even for interfaces",
+  },
+
+  barlow: {
+    name: "barlow",
+    displayName: "Barlow",
+    category: "sans-serif",
+    weights: [300, 400, 500, 600, 700],
+    italicWeights: [400, 700],
+    googleFontName: "Barlow",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Slightly rounded grotesque with a Californian, industrial feel",
+  },
+
+  "josefin-sans": {
+    name: "josefin-sans",
+    displayName: "Josefin Sans",
+    category: "sans-serif",
+    weights: [300, 400, 500, 600, 700],
+    italicWeights: [400, 700],
+    googleFontName: "Josefin Sans",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Geometric, vintage-flavoured sans serif with elegant thin weights",
+  },
+
+  "nunito-sans": {
+    name: "nunito-sans",
+    displayName: "Nunito Sans",
+    category: "sans-serif",
+    weights: [300, 400, 500, 600, 700, 800],
+    italicWeights: [400, 700],
+    googleFontName: "Nunito Sans",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Nunito's straight-edged sibling, balanced and readable",
+  },
+
+  "fira-sans": {
+    name: "fira-sans",
+    displayName: "Fira Sans",
+    category: "sans-serif",
+    weights: [300, 400, 500, 600, 700],
+    italicWeights: [400, 700],
+    googleFontName: "Fira Sans",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Humanist sans serif designed for Firefox OS, sturdy at any size",
+  },
+
+  "roboto-slab": {
+    name: "roboto-slab",
+    displayName: "Roboto Slab",
+    category: "serif",
+    weights: [300, 400, 500, 600, 700],
+    googleFontName: "Roboto Slab",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Slab serif companion to Roboto, friendly and solid",
+  },
+
+  "noto-serif": {
+    name: "noto-serif",
+    displayName: "Noto Serif",
+    category: "serif",
+    weights: [400, 500, 600, 700],
+    italicWeights: [400, 700],
+    googleFontName: "Noto Serif",
+    fallback: "ui-serif, Georgia, serif",
+    description: "Google's universal serif, calm and highly legible",
+  },
 };
 
 // Default font set

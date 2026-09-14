@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "inspector-multicolor",
   title: "Inspector Multicolor",
   description:
-    "Settings row for a list of colours: a swatch per stop, each opening the OKLCH picker, and a remove and add pair at the far right bounded by min and max.",
+    "Settings row for a list of colors: a swatch per stop, each opening the OKLCH picker, and a remove and add pair at the far right bounded by min and max.",
   category: "Inspector",
   registryDependencies: ["popover"],
   registryComponents: ["color-picker"],

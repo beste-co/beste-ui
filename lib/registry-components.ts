@@ -96,6 +96,7 @@ import { InspectorAngle, inspectorAngleDemo } from "@/registry-components/inspec
 import { InspectorAspect, inspectorAspectDemo } from "@/registry-components/inspector-aspect/inspector-aspect";
 import { InspectorAttributes, inspectorAttributesDemo } from "@/registry-components/inspector-attributes/inspector-attributes";
 import { InspectorBorder, inspectorBorderDemo } from "@/registry-components/inspector-border/inspector-border";
+import { InspectorChoice, inspectorChoiceDemo } from "@/registry-components/inspector-choice/inspector-choice";
 import { InspectorClip, inspectorClipDemo } from "@/registry-components/inspector-clip/inspector-clip";
 import { InspectorCode, inspectorCodeDemo } from "@/registry-components/inspector-code/inspector-code";
 import { InspectorColor, inspectorColorDemo } from "@/registry-components/inspector-color/inspector-color";
@@ -251,6 +252,7 @@ import { playground as inspectorAnglePlayground } from "@/registry-components/in
 import { playground as inspectorAspectPlayground } from "@/registry-components/inspector-aspect/inspector-aspect.playground";
 import { playground as inspectorAttributesPlayground } from "@/registry-components/inspector-attributes/inspector-attributes.playground";
 import { playground as inspectorBorderPlayground } from "@/registry-components/inspector-border/inspector-border.playground";
+import { playground as inspectorChoicePlayground } from "@/registry-components/inspector-choice/inspector-choice.playground";
 import { playground as inspectorClipPlayground } from "@/registry-components/inspector-clip/inspector-clip.playground";
 import { playground as inspectorCodePlayground } from "@/registry-components/inspector-code/inspector-code.playground";
 import { playground as inspectorColorPlayground } from "@/registry-components/inspector-color/inspector-color.playground";
@@ -1362,6 +1364,17 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: inspectorBorderPlayground,
   },
   {
+    name: "inspector-choice",
+    title: "Inspector Choice",
+    description: "A short list of named choices with one of them on: a plan, a studio look, a delivery option. Each row carries a label, a line saying what picking it means, and room for a state on the right, so a list of options worth reading does not have to hide in a menu.",
+    category: "Inspector",
+    component: InspectorChoice,
+    demoProps: inspectorChoiceDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { InspectorChoice } from \"@/components/beste/component/inspector-choice\";\n\n// Controlled: the row that matches value is on, the rest answer hover\n<InspectorChoice\n  aria-label=\"Plan\"\n  value={plan}\n  onValueChange={(next) => console.log(\"plan\", next)}\n  options={[\n    { value: \"free\", label: \"Free\", description: \"One site, community support\" },\n    { value: \"pro\", label: \"Pro\", description: \"Unlimited sites, custom domains\", badge: \"Current\" },\n    { value: \"agency\", label: \"Agency\", description: \"Twenty five sites and invites\" },\n  ]}\n/>\n\n// Two columns when the descriptions are a few words, not sentences\n<InspectorChoice\n  aria-label=\"Delivery\"\n  defaultValue=\"standard\"\n  columns={2}\n  tone=\"ghost\"          // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"             // \"sm\" | \"default\" | \"lg\"\n  options={[\n    { value: \"standard\", label: \"Standard\", hint: \"Free\" },\n    { value: \"express\", label: \"Express\", hint: \"$12\" },\n  ]}\n/>",
+    playground: inspectorChoicePlayground,
+  },
+  {
     name: "inspector-clip",
     title: "Inspector Clip",
     description: "The shape a box is cut to. Every thumbnail is drawn with the property it sets, so the grid is not a picture of the shapes but the shapes themselves, and a shape with a number in it brings its own slider out. Percentages throughout, so a shape survives a box that changes size.",
@@ -1481,7 +1494,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["popover"],
     registryComponents: ["inspector-segmented", "inspector-angle", "inspector-color", "inspector-slider"],
     variants: { tone: ["muted", "outline", "ghost"] },
-    usage: "import { InspectorGradient } from \"@/components/beste/component/inspector-gradient\";\n\n// Bare colours are spaced evenly, which keeps the simple case simple\n<InspectorGradient label=\"Gradient\" defaultValue={{ kind: \"linear\", angle: 135, stops: [\"#fb7185\", \"#8b5cf6\"] }} />\n\n// Give a stop a position and it holds that share: here the first colour keeps the\n// opening third to itself, and the last two split what is left. Drag the handles\n// over the ramp in the editor to do the same by hand.\n<InspectorGradient\n  label=\"Background\"\n  defaultValue={{\n    stops: [\n      { color: \"#fdba74\", position: 0 },\n      { color: \"#fb7185\", position: 40 },\n      { color: \"#8b5cf6\", position: 100 },\n    ],\n  }}\n/>\n\n// Stops are written in the order given and never sorted, so a stop placed before\n// the one ahead of it stays a hard edge, which is how a stripe is made.\n<InspectorGradient\n  label=\"Stripe\"\n  kinds={[\"linear\"]}\n  defaultValue={{ angle: 90, stops: [{ color: \"#171717\", position: 50 }, { color: \"#e5e5e5\", position: 50 }] }}\n/>\n\n// Controlled, with a separate commit for expensive work\n<InspectorGradient\n  label=\"Background\"\n  value={gradient}\n  onValueChange={setGradient}                           // every frame of a drag\n  onValueCommit={(value) => console.log(\"persist\", value)} // on release, add, remove\n/>\n\n// One kind is a setting rather than a choice, so the segmented row drops away.\n// A radial gradient has no direction either, so the dial goes with it.\n<InspectorGradient label=\"Overlay\" kinds={[\"linear\"]} value={overlay} onValueChange={setOverlay} />\n\n<InspectorGradient\n  label=\"Palette\"\n  icon={Blend}           // optional leading icon\n  minStops={2}\n  maxStops={7}       // 7 by default, as the full gradient picker allowed\n  format=\"oklch\"         // notation the stops are written back in\n  alpha                  // stops carry an alpha channel\n  swatches={[\"#171717\", \"#fb7185\", \"#8b5cf6\"]} // presets inside each stop's picker\n  tone=\"outline\"         // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n  value={gradient}\n  onValueChange={setGradient}\n/>",
+    usage: "import { InspectorGradient } from \"@/components/beste/component/inspector-gradient\";\n\n// Bare colors are spaced evenly, which keeps the simple case simple\n<InspectorGradient label=\"Gradient\" defaultValue={{ kind: \"linear\", angle: 135, stops: [\"#fb7185\", \"#8b5cf6\"] }} />\n\n// Give a stop a position and it holds that share: here the first colour keeps the\n// opening third to itself, and the last two split what is left. Drag the handles\n// over the ramp in the editor to do the same by hand.\n<InspectorGradient\n  label=\"Background\"\n  defaultValue={{\n    stops: [\n      { color: \"#fdba74\", position: 0 },\n      { color: \"#fb7185\", position: 40 },\n      { color: \"#8b5cf6\", position: 100 },\n    ],\n  }}\n/>\n\n// Stops are written in the order given and never sorted, so a stop placed before\n// the one ahead of it stays a hard edge, which is how a stripe is made.\n<InspectorGradient\n  label=\"Stripe\"\n  kinds={[\"linear\"]}\n  defaultValue={{ angle: 90, stops: [{ color: \"#171717\", position: 50 }, { color: \"#e5e5e5\", position: 50 }] }}\n/>\n\n// Controlled, with a separate commit for expensive work\n<InspectorGradient\n  label=\"Background\"\n  value={gradient}\n  onValueChange={setGradient}                           // every frame of a drag\n  onValueCommit={(value) => console.log(\"persist\", value)} // on release, add, remove\n/>\n\n// One kind is a setting rather than a choice, so the segmented row drops away.\n// A radial gradient has no direction either, so the dial goes with it.\n<InspectorGradient label=\"Overlay\" kinds={[\"linear\"]} value={overlay} onValueChange={setOverlay} />\n\n<InspectorGradient\n  label=\"Palette\"\n  icon={Blend}           // optional leading icon\n  minStops={2}\n  maxStops={7}       // 7 by default, as the full gradient picker allowed\n  format=\"oklch\"         // notation the stops are written back in\n  alpha                  // stops carry an alpha channel\n  swatches={[\"#171717\", \"#fb7185\", \"#8b5cf6\"]} // presets inside each stop's picker\n  tone=\"outline\"         // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n  value={gradient}\n  onValueChange={setGradient}\n/>",
     playground: inspectorGradientPlayground,
   },
   {
@@ -1558,7 +1571,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
   {
     name: "inspector-multicolor",
     title: "Inspector Multicolor",
-    description: "Settings row for a list of colours: a swatch per stop, each opening the OKLCH picker, and a remove and add pair at the far right bounded by min and max.",
+    description: "Settings row for a list of colors: a swatch per stop, each opening the OKLCH picker, and a remove and add pair at the far right bounded by min and max.",
     category: "Inspector",
     component: InspectorMulticolor,
     demoProps: inspectorMulticolorDemo,
