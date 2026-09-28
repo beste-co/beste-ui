@@ -46,7 +46,7 @@ export function Callout({ type = "info", title, children }: CalloutProps) {
    * the body's.
    */
   const body = (
-    <div className="min-w-0 flex-1 space-y-3 text-lg leading-8 text-foreground/80 [&_p]:m-0 [&_p]:text-lg [&_p]:leading-8 [&_a]:font-medium [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-4">
+    <div className="min-w-0 flex-1 space-y-3 text-base leading-7 text-foreground/80 [&_p]:m-0 [&_p]:text-base [&_p]:leading-7 [&_a]:font-medium [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-4">
       {children}
     </div>
   );
@@ -76,7 +76,7 @@ export function Callout({ type = "info", title, children }: CalloutProps) {
           className={cn("shrink-0", icon_cls)}
           aria-hidden="true"
         />
-        <p className="text-lg font-semibold text-foreground">{title}</p>
+        <p className="text-base font-medium text-foreground">{title}</p>
       </div>
       <div className="mt-2 pl-[1.9rem]">{body}</div>
     </div>

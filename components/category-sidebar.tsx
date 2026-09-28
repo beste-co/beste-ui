@@ -180,7 +180,7 @@ export function CategorySidebar({ onCategoryClick, sortType = "count" }: Categor
               <span className="flex items-center gap-1.5">
                 {category}
                 {info?.isNew && (
-                  <span className="px-1.5 py-0.5 text-sm font-semibold uppercase bg-emerald-500 text-white rounded">
+                  <span className="px-1.5 py-0.5 text-sm font-medium uppercase bg-emerald-500 text-white rounded">
                     new
                   </span>
                 )}
@@ -188,7 +188,7 @@ export function CategorySidebar({ onCategoryClick, sortType = "count" }: Categor
               <span
                 className={cn(
                   "text-base text-muted-foreground",
-                  count >= 1000 && "font-bold animate-[color-cycle_3s_ease-in-out_infinite]"
+                  count >= 1000 && "font-medium animate-[color-cycle_3s_ease-in-out_infinite]"
                 )}
               >
                 {count}

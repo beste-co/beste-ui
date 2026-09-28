@@ -1335,7 +1335,7 @@ export function CustomThemeEditor({
           <Label className="font-medium text-base text-foreground">Colors</Label>
           {COLOR_GROUPS.map((group) => (
             <div key={group.title} className="space-y-3">
-              <h4 className="text-sm font-semibold uppercase text-muted-foreground">
+              <h4 className="text-sm font-medium uppercase text-muted-foreground">
                 {group.title}
               </h4>
               <div className="grid gap-3 sm:grid-cols-2">

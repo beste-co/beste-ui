@@ -2,6 +2,8 @@
 
 import { Cancel01Icon, Tick02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 const permissions = [
   "Use in personal projects",
@@ -51,8 +53,8 @@ export function LicenseContent() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
       <header className="mb-10 md:mb-12">
-        <h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">License</h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+        <h1 className={typography.h1}>License</h1>
+        <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           The Beste UI license lets you use these components freely in your own projects, with a
           few restrictions on passing them on.
         </p>
@@ -66,7 +68,7 @@ export function LicenseContent() {
       */}
       <div className="mb-4 grid gap-4 sm:grid-cols-2">
         <section className="rounded-xl bg-muted/60 p-6">
-          <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight">
+          <h2 className={cn(typography.h3, "flex items-center gap-2")}>
             <HugeiconsIcon icon={Tick02Icon} size={20} strokeWidth={2} className="text-teal-600 dark:text-teal-400" aria-hidden="true" />
             Permissions
           </h2>
@@ -81,7 +83,7 @@ export function LicenseContent() {
         </section>
 
         <section className="rounded-xl bg-muted/60 p-6">
-          <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight">
+          <h2 className={cn(typography.h3, "flex items-center gap-2")}>
             <HugeiconsIcon icon={Cancel01Icon} size={20} strokeWidth={2} className="text-destructive" aria-hidden="true" />
             Restrictions
           </h2>
@@ -97,7 +99,7 @@ export function LicenseContent() {
       </div>
 
       <section className="rounded-xl bg-muted/60 p-6">
-        <h2 className="text-xl font-semibold tracking-tight">Full license</h2>
+        <h2 className={typography.h3}>Full license</h2>
         {/* The terms as written, on a lighter surface: a legal text is quoted
             here, not laid out, so it keeps its own line breaks and its own
             monospace column. It scrolls sideways rather than widening the page. */}

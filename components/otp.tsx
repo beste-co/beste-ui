@@ -6,6 +6,7 @@ import { Loading03Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { typography } from "@/lib/typography";
 
 interface OtpFormProps {
   email: string;
@@ -110,7 +111,7 @@ export const OtpForm = ({
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col items-center text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">Verify your email</h1>
+        <h1 className={typography.h2}>Verify your email</h1>
         <p className="mt-1.5 text-balance text-base text-foreground/70">
           We&apos;ve sent a code to <span className="text-foreground">{email}</span>
         </p>
@@ -196,7 +197,7 @@ function Slot(props: SlotProps & { value: string }) {
       className={cn(
         // Filled, round, no shadow — the shape every field on the site wears,
         // at the size a digit needs.
-        "flex size-14 items-center justify-center rounded-2xl bg-muted/60 text-xl font-medium text-foreground transition-colors",
+        "flex size-14 items-center justify-center rounded-2xl bg-muted/60 text-lg font-medium text-foreground transition-colors",
         { "z-10 bg-muted ring-2 ring-ring/50": props.isActive }
       )}
     >

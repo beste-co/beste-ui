@@ -12,9 +12,10 @@ import {
 } from "@/components/ui/dialog";
 
 import { BesteLogo } from "@/components/icons/beste-logo";
-import { Button12 } from "@/components/beste/component/button12";
+import { Button23 } from "@/components/beste/component/button23";
 import { IconButton } from "@/components/icon-button";
 import { ICON_ACTION_CLASS_SM } from "@/components/icon-action";
+import { typography } from "@/lib/typography";
 
 interface ProUnlockContentProps {
   onGetProAccess?: () => void;
@@ -45,7 +46,7 @@ export function ProUnlockContent({ onGetProAccess }: ProUnlockContentProps) {
           <BesteLogo width={24} height={24} color="#FF7322" />
         </span>
         <div>
-          <h3 className="text-2xl font-semibold leading-tight tracking-tight">Upgrade to Pro</h3>
+          <h3 className={typography.h2}>Upgrade to Pro</h3>
           <p className="mt-2 text-base text-foreground/70">
             Get instant access to production-ready code you can copy, customize, and ship.
           </p>
@@ -63,7 +64,9 @@ export function ProUnlockContent({ onGetProAccess }: ProUnlockContentProps) {
 
       <div className="flex flex-col items-center gap-3">
         {/* The library's own button, as everywhere else it asks for something. */}
-        <Button12
+        <Button23
+          size="sm"
+          tone="dark"
           label="Get Pro access"
           onClick={onGetProAccess}
           className="w-full justify-between"

@@ -9,6 +9,7 @@ import { SourceCodeIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { FitScale } from "@/components/fit-scale";
 import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
+import { typography } from "@/lib/typography";
 
 export interface RelatedPreviewItem {
   name: string;
@@ -73,7 +74,7 @@ export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
                 what you scan a grid for, and the card's overlay already carries the
                 accessible name. */}
             <div className="relative flex flex-col gap-1 px-1 pb-1">
-              <h3 className="text-base font-semibold tracking-tight">{c.title}</h3>
+              <h3 className={typography.h3}>{c.title}</h3>
               <p className="line-clamp-2 text-base text-muted-foreground">{c.description}</p>
             </div>
           </div>

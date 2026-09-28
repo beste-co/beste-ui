@@ -19,6 +19,8 @@ import { getBlockAddedDate, recentBlockDates } from "@/lib/changelog-dates";
 import { getCategoryInfo } from "@/lib/category-info";
 import { getAllTags, getBlocksForTag, getTag } from "@/lib/tags";
 import { PAGE_SIZE, paginate, parsePage } from "../../_lib/paginate";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 interface TagPageProps {
   params: Promise<{ tag: string }>;
@@ -125,20 +127,20 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
         </Breadcrumb>
 
         <header className="mb-10 md:mb-12">
-          <h1 className="text-3xl font-semibold capitalize leading-tight tracking-tight md:text-4xl">
+          <h1 className={cn(typography.h1, "capitalize")}>
             {tag.label} blocks
           </h1>
           {/* A curated tag lists the blocks that declared it, so naming its
               categories would promise a sweep that never happened. A keyword
               tag really is the union of its categories, and links to them. */}
           {tag.blocks ? (
-            <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+            <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
               {page.totalItems} production-ready {tag.label} blocks, spread across{" "}
               {tag.categories.length} categories.
             </p>
           ) : (
             <>
-              <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+              <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
                 {page.totalItems} production-ready {tag.label} blocks across these categories:
               </p>
               <div className="mt-4 flex flex-wrap gap-2">

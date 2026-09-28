@@ -125,7 +125,7 @@ export function ThemePlayground() {
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium text-muted-foreground">Preview</span>
           <span
-            className="px-2.5 py-0.5 text-sm font-semibold"
+            className="px-2.5 py-0.5 text-sm font-medium"
             style={{
               background: "var(--pg-primary)",
               color: "var(--pg-primary-foreground)",
@@ -137,7 +137,7 @@ export function ThemePlayground() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold text-foreground">Upgrade your workspace</h4>
+          <h4 className="text-base font-medium text-foreground">Upgrade your workspace</h4>
           <p className="mt-1 text-sm leading-6 text-muted-foreground">
             Every accent here reads from a single token. Move a slider, the whole surface follows.
           </p>
@@ -157,7 +157,7 @@ export function ThemePlayground() {
         <div className="flex flex-wrap gap-2.5">
           <button
             type="button"
-            className="cursor-pointer px-4 py-2 text-sm font-semibold transition-transform active:scale-[0.98]"
+            className="cursor-pointer px-4 py-2 text-sm font-medium transition-transform active:scale-[0.98]"
             style={{
               background: "var(--pg-primary)",
               color: "var(--pg-primary-foreground)",
@@ -168,7 +168,7 @@ export function ThemePlayground() {
           </button>
           <button
             type="button"
-            className="cursor-pointer border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+            className="cursor-pointer border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
             style={{ borderRadius: "var(--pg-radius)" }}
           >
             Learn more

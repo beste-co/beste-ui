@@ -13,11 +13,13 @@ import {
 import { Badge7 } from "@/components/beste/component/badge7";
 import { BesteLogo } from "@/components/icons/beste-logo";
 import { BesteText } from "@/components/icons/beste-text";
-import { Button12 } from "@/components/beste/component/button12";
+import { Button23 } from "@/components/beste/component/button23";
 import { GitHubLogo } from "@/components/icons/github-logo";
 import Link from "next/link";
 import { LinkedInLogo } from "@/components/icons/linkedin-logo";
 import { XLogo } from "@/components/icons/x-logo";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 const COLUMNS: {
   title: string;
@@ -120,21 +122,21 @@ export function SiteFooter() {
               <BesteText height={16} className="text-foreground" />
             </Link>
 
-            <h2 className="mt-6 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            <h2 className={cn(typography.h2, "mt-6 text-foreground")}>
               Ship the interface, keep the code.
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-3 text-base text-muted-foreground">
               New blocks, pieces and components every week. Install one with a command and it is
               yours to edit. No runtime dependency, no upgrade path to fight.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button12 asChild label="Browse the library">
+              <Button23 size="sm" tone="dark" asChild label="Browse the library">
                 <Link href="/blocks" />
-              </Button12>
-              <Button12 asChild label="See pricing" tone="outline">
+              </Button23>
+              <Button23 size="sm" asChild label="See pricing" tone="outline">
                 <Link href={PRICING_HREF} {...hostedLinkProps} />
-              </Button12>
+              </Button23>
             </div>
           </div>
 
@@ -142,7 +144,7 @@ export function SiteFooter() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:justify-items-end">
             {COLUMNS.map((column) => (
               <div key={column.title}>
-                <h3 className="text-base font-bold tracking-tight text-foreground">
+                <h3 className="text-sm font-medium text-foreground">
                   {column.title}
                 </h3>
                 <ul className="mt-5 flex flex-col gap-3">
@@ -152,7 +154,7 @@ export function SiteFooter() {
                         <a
                           href={link.href}
                           target="_blank"
-                          className="text-base text-muted-foreground transition-colors hover:text-foreground"
+                          className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                         >
                           {link.label}
                         </a>
@@ -160,7 +162,7 @@ export function SiteFooter() {
                         <Link
                           href={link.href}
                           {...(link.hosted ? hostedLinkProps : {})}
-                          className="text-base text-muted-foreground transition-colors hover:text-foreground"
+                          className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                         >
                           {link.label}
                         </Link>
@@ -179,7 +181,7 @@ export function SiteFooter() {
           be the layout talking.
         */}
         <div className="mt-14 border-t pt-10">
-          <h3 className="text-base font-bold tracking-tight text-foreground">Shadcn Blocks</h3>
+          <h3 className="text-sm font-medium text-foreground">Shadcn Blocks</h3>
           <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3 lg:grid-cols-4">
             {BLOCK_CATEGORIES.map((column) => (
               <ul key={column[0]?.href} className="flex flex-col gap-3">
@@ -187,7 +189,7 @@ export function SiteFooter() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-base text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {link.label}
                     </Link>
@@ -236,7 +238,7 @@ export function SiteFooter() {
             browser's clock rather than the server's — one night a year the two would
             disagree and React would report it. A line without a year is true on both.
           */}
-          <p className="text-base text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             © 2026,{" "}
             <a href="https://beste.co" className="text-foreground hover:underline">
               Beste

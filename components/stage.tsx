@@ -45,6 +45,9 @@ const PM_ICONS: Record<PackageManager, string> = {
 
 const PM_ORDER: PackageManager[] = ["npx", "bun", "pnpm", "yarn"];
 
+/** Every piece of the floating bar is a solid muted pill on its white shell, like the stage's corner buttons. */
+const BAR_PILL = "bg-muted hover:bg-muted/70";
+
 /** What a locked code pane shows, blurred, behind the upgrade card. */
 const LOCKED_SAMPLE_SOURCE = `import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
@@ -81,7 +84,7 @@ export function Hero({
               <HugeiconsIcon icon={SparklesIcon} size={14} strokeWidth={2} />
               {eyebrow}
             </Badge>
-            <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
               {title}
             </h1>
             <p className="max-w-xl text-lg text-muted-foreground md:text-xl">
@@ -278,15 +281,15 @@ export function Stage({
       </div>
 
       <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
-        <div className="pointer-events-auto flex max-w-full items-center gap-1 rounded-full border bg-background/90 p-1 shadow-xl shadow-foreground/10 backdrop-blur-md">
+        <div className="pointer-events-auto flex max-w-full items-center gap-1 rounded-full bg-background p-1.5 shadow-[0_10px_40px_-12px] shadow-foreground/25">
           {/* The catalogue, not "back": the arrows on the right already walk
               the neighbours, and this always lands on the listing. */}
-          <IconButton asChild label={backLabel} icon={GridViewIcon} className={ICON_ACTION_CLASS_SM}>
+          <IconButton asChild label={backLabel} icon={GridViewIcon} className={cn(ICON_ACTION_CLASS_SM, BAR_PILL)}>
             <Link href={backHref} />
           </IconButton>
 
           <Tabs value={activeTab} onValueChange={(v) => switchTab(v as "view" | "code")}>
-            <TabsList className="h-9 rounded-full bg-muted/60 p-1">
+            <TabsList className="h-9 rounded-full bg-muted p-1">
               <TabsTrigger
                 value="view"
                 className="cursor-pointer rounded-full px-3 text-sm data-[state=active]:bg-background"
@@ -307,11 +310,11 @@ export function Stage({
               flavor={flavor}
               onChange={setFlavor}
               size="sm"
-              className="hidden lg:flex"
+              className={cn(BAR_PILL, "hidden lg:flex")}
             />
           )}
 
-          <div className="hidden h-9 items-center rounded-full bg-muted/60 pl-1 text-sm sm:flex">
+          <div className="hidden h-9 items-center rounded-full bg-muted pl-1 text-sm sm:flex">
             <DropdownMenu>
               <DropdownMenuTrigger
                 className="flex size-7 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
@@ -365,9 +368,10 @@ export function Stage({
             </button>
           </div>
 
-          <ThemePicker size="sm" className="hidden md:inline-flex" />
+          <ThemePicker size="sm" className={cn(BAR_PILL, "hidden md:inline-flex")} />
 
-          {actions}
+          {/* Page actions (favorite, prev, next) take the same solid pill as the rest of the bar */}
+          {actions && <div className="flex items-center gap-1 [&>a]:bg-muted [&>button]:bg-muted [&>span>*]:bg-muted">{actions}</div>}
         </div>
       </div>
 

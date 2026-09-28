@@ -1,13 +1,9 @@
 import { BlocksGrid } from "@/components/blocks-grid";
-import { Button12 } from "@/components/beste/component/button12";
+import { Button23 } from "@/components/beste/component/button23";
 import { COLLECTION_BY_BLOCK } from "@/lib/collections";
 import { ComponentDemo } from "@/components/component-demo";
-import { Cta69 } from "@/registry/cta69/cta69";
-import { Faq77 } from "@/registry/faq77/faq77";
-import { Feature230 } from "@/registry/feature230/feature230";
 import { HomeHero } from "@/components/home-hero";
-import { HomeHeroAltair } from "@/components/home-hero-altair";
-import { HomeWhy } from "@/components/home-why";
+import { HomeCta, HomeFaq, HomeSteps } from "@/components/home-sections";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { RegistryComponentDemo } from "@/components/registry-component-demo";
@@ -17,6 +13,7 @@ import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { changelog } from "@/data/changelog";
 import { recentBlockDates } from "@/lib/changelog-dates";
 import { registryComponents } from "@/lib/registry-components";
+import { typography } from "@/lib/typography";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
 const SITE_DESCRIPTION =
@@ -221,61 +218,30 @@ export default async function HomePage() {
   const sixBlocks = pickSixAcrossSets(blockPool, seed);
   const sixRegistryComponents = seededShuffle(registryComponents, seed).slice(0, 6);
 
-  /*
-   * The newest release, formatted here rather than in the hero: the hero is a
-   * client component, and a date formatted there would render one way on the
-   * server and another in the browser.
-   */
+  // The newest release, shown as a short pill in the hero.
   const newest = changelog[0];
-  const latestRelease = newest
-    ? {
-        title: newest.title,
-        date: new Date(`${newest.date}T00:00:00`).toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        }),
-      }
-    : undefined;
+  const latestRelease = newest ? { title: newest.title } : undefined;
 
   return (
     <div>
-      {/*
-        The hero sits outside the page's column on purpose: it is an image that has
-        to reach both edges, and the negative top margin cancels the layout's own
-        padding so it starts flush under the bar rather than floating below it.
-
-        It is hero187's shape as the site's own copy (`home-hero-altair`): the
-        type sits a step smaller and heavier than the catalogue block, and the
-        field hands its click to the ⌘K palette.
-      */}
-      <HomeHeroAltair
+      {/* Full bleed, pulled up over the layout's top padding so it starts flush under the bar. */}
+      <HomeHero
         className="-mt-12 md:-mt-16"
-        // The counts sit two rows below and the page title carries the search
-        // terms, so the hero is free to say the one thing that sets the library apart.
-        heading="Built for your agent."
-        description="Every screen a website needs, reachable over MCP."
-        image={{
-          src: "https://images.unsplash.com/photo-1504093428647-19ae13b11ff2?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-          alt: "",
-        }}
+        blocks={blocks.length}
+        pieces={allComponents.length}
+        components={registryComponents.length}
+        release={latestRelease}
       />
 
-      <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
-        <HomeHero
-          blocks={blocks.length}
-          pieces={allComponents.length}
-          components={registryComponents.length}
-          release={latestRelease}
-        />
-
+      <div className="mx-auto w-full max-w-6xl px-4 pt-16 md:px-6 md:pt-20">
         {/* Blocks preview */}
-        <section className="mb-16">
+        <section className="mb-14">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-2xl font-semibold leading-tight tracking-tight md:text-3xl">
-              <span className="font-semibold">Full-page blocks</span>, production-ready
+            <h2 className={typography.h2}>
+              <span className="font-medium">Full-page blocks</span>, production-ready
             </h2>
-            <Button12
+            <Button23
+              size="sm"
               asChild
               label="Browse all blocks"
               tone="outline"
@@ -285,19 +251,20 @@ export default async function HomePage() {
               className="hidden shrink-0 sm:inline-flex"
             >
               <Link href="/blocks" />
-            </Button12>
+            </Button23>
           </div>
 
           <BlocksGrid blocks={sixBlocks} addedDates={recentBlockDates()} skeletonCount={6} />
         </section>
 
         {/* Components preview */}
-        <section className="mb-16">
+        <section className="mb-14">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-2xl font-semibold leading-tight tracking-tight md:text-3xl">
-              <span className="font-semibold">Components</span>, the primitives behind it all
+            <h2 className={typography.h2}>
+              <span className="font-medium">Components</span>, the primitives behind it all
             </h2>
-            <Button12
+            <Button23
+              size="sm"
               asChild
               label="Browse all components"
               tone="outline"
@@ -307,7 +274,7 @@ export default async function HomePage() {
               className="hidden shrink-0 sm:inline-flex"
             >
               <Link href="/components" />
-            </Button12>
+            </Button23>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -338,7 +305,7 @@ export default async function HomePage() {
                 card. The article is the one that is `relative`, and it should be.
               */}
                 <div className="flex flex-col gap-1 px-1 pb-1">
-                  <h3 className="text-base font-semibold tracking-tight">
+                  <h3 className={typography.h3}>
                     <Link
                       href={`/component/${c.name}`}
                       className="outline-none before:absolute before:inset-0 before:rounded-xl before:content-['']"
@@ -346,7 +313,7 @@ export default async function HomePage() {
                       {c.title}
                     </Link>
                   </h3>
-                  <p className="line-clamp-2 text-base text-muted-foreground">{c.description}</p>
+                  <p className="line-clamp-2 text-sm text-muted-foreground">{c.description}</p>
                 </div>
               </article>
             ))}
@@ -354,12 +321,13 @@ export default async function HomePage() {
         </section>
 
         {/* Pieces preview */}
-        <section className="mb-16">
+        <section className="mb-14">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-2xl font-semibold leading-tight tracking-tight md:text-3xl">
-              <span className="font-semibold">Small pieces</span>, ready to drop in
+            <h2 className={typography.h2}>
+              <span className="font-medium">Small pieces</span>, ready to drop in
             </h2>
-            <Button12
+            <Button23
+              size="sm"
               asChild
               label="Browse all pieces"
               tone="outline"
@@ -369,7 +337,7 @@ export default async function HomePage() {
               className="hidden shrink-0 sm:inline-flex"
             >
               <Link href="/pieces" />
-            </Button12>
+            </Button23>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -402,7 +370,7 @@ export default async function HomePage() {
                 <div className="flex flex-col gap-1 px-1 pb-1">
                   {/* The pseudo-element stretches this one link over the whole card,
                     which is the same shape the listing grids use. */}
-                  <h3 className="text-base font-semibold tracking-tight">
+                  <h3 className={typography.h3}>
                     <Link
                       href={`/piece/${c.name}`}
                       className="outline-none before:absolute before:inset-0 before:rounded-xl before:content-['']"
@@ -410,7 +378,7 @@ export default async function HomePage() {
                       {c.title}
                     </Link>
                   </h3>
-                  <p className="line-clamp-2 text-base text-muted-foreground">{c.description}</p>
+                  <p className="line-clamp-2 text-sm text-muted-foreground">{c.description}</p>
                 </div>
               </article>
             ))}
@@ -418,18 +386,11 @@ export default async function HomePage() {
         </section>
 
         {/* Bottom sections (preserved from previous design) */}
-        <div className="border-t pt-12 lg:pt-24">
-          {/*
-          The block's own heading, not one built beside it. What it has no slot for is
-          a line under that heading: `heading`, `badge` and `button` are the only text
-          it takes, and the three cards already say what the sentence there used to
-          say. The container override is still needed, since the block draws its own
-          max-width column and this page is already inside one.
-        */}
-          <Feature230
-            className="pt-0 [&>div]:max-w-none [&>div]:px-0"
-            badge={{ label: "How it works" }}
-            heading="From browse to <strong>build in seconds.</strong>"
+        <div className="border-t pt-12 lg:pt-16">
+          <HomeSteps
+            className="pt-0"
+            heading="From browse to"
+            headingMuted="build in seconds."
             button={{ label: "Start browsing", href: "/blocks" }}
             items={[
               {
@@ -464,52 +425,29 @@ export default async function HomePage() {
             ]}
           />
 
-          {/*
-          The questions are the same ones, and the structured data is still emitted
-          from the same array, so the block only changes how they are presented — a
-          crawler reads exactly what it read before.
-        */}
-          <section className="mb-12 lg:mb-16">
+          {/* The structured data is emitted from the same FAQS array the section renders. */}
+          <section className="mb-8 lg:mb-12">
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
-            <Faq77
-              badge={{ label: "Questions" }}
+            <HomeFaq
               heading="Everything about installing, licensing and owning the code."
-              labels={{
-                note: "Still stuck on something specific? Open an issue on GitHub or ask on X. We read all of it.",
-              }}
-              button={{
-                label: "Ask on X",
-                href: "https://twitter.com/withbeste",
-              }}
-              items={FAQS.map((item, index) => ({
-                index: String(index + 1).padStart(2, "0"),
-                question: item.q,
-                answer: item.a,
-              }))}
+              note="Still stuck on something specific? Open an issue on GitHub or ask on X. We read all of it."
+              button={{ label: "Ask on X", href: "https://twitter.com/withbeste" }}
+              items={FAQS.map((item) => ({ question: item.q, answer: item.a }))}
             />
           </section>
         </div>
       </div>
 
-      {/*
-        The closing CTA is one of the library's own blocks, cta69, filled with the
-        real inventory. It sits after the page's column rather than inside it: the
-        marquee running behind it is the width of the page, and in a `max-w-6xl`
-        box it was a wide idea in a narrow one. A negative margin would only have
-        cancelled the padding, not the cap, so the block simply lives outside.
-      */}
-      <Cta69
-        badge={{ label: "Start here" }}
+      {/* Outside the column: the marquee behind it runs the full width of the page. */}
+      <HomeCta
         heading="Everything you need is already built."
         button={{ label: "Browse the library", href: "/blocks" }}
-        labels={{
-          marqueePhrase: "Ship it",
-          note: `${blocks.length} blocks, ${allComponents.length} pieces and ${registryComponents.length} components for shadcn/ui and Tailwind. Install one with a command and the code is yours.`,
-          footnote: "Updated weekly. MIT for free, commercial licence for Pro.",
-        }}
+        marquee="Ship it"
+        note={`${blocks.length} blocks, ${allComponents.length} pieces and ${registryComponents.length} components for shadcn/ui and Tailwind. Install one with a command and the code is yours.`}
+        footnote="Updated weekly. MIT for free, commercial licence for Pro."
       />
     </div>
   );

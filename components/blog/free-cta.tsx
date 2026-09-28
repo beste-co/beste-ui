@@ -16,8 +16,8 @@ export function FreeCta({
   return (
     // Borderless and set like the page around it, the same as the callouts.
     <div className="my-8 rounded-xl bg-emerald-500/10 p-5">
-      <p className="text-lg font-semibold text-foreground">{heading}</p>
-      <p className="mt-2 text-lg leading-8 text-foreground/80">{description}</p>
+      <p className="text-base font-medium text-foreground">{heading}</p>
+      <p className="mt-2 text-base leading-7 text-foreground/80">{description}</p>
     </div>
   );
 }

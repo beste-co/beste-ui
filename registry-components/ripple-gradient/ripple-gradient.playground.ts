@@ -1,0 +1,30 @@
+/**
+ * Playground for `ripple-gradient`: the palette, the rings and how they meet.
+ * Site-only, like the meta: `shadcn add` copies the .tsx and nothing else.
+ */
+import type { PlaygroundConfig } from "@/lib/playground-types";
+
+export const playground: PlaygroundConfig = {
+  controls: [
+    { prop: "colors.0", label: "Color 1", kind: "color", group: "Colors" },
+    { prop: "colors.1", label: "Color 2", kind: "color", group: "Colors" },
+    { prop: "colors.2", label: "Color 3", kind: "color", group: "Colors" },
+    { prop: "colors.3", label: "Color 4", kind: "color", group: "Colors" },
+    { prop: "colors.4", label: "Color 5", kind: "color", group: "Colors" },
+    { prop: "colors.5", label: "Color 6", kind: "color", group: "Colors" },
+    { prop: "baseColor", label: "Base", kind: "color", default: "#f4efe6", group: "Colors" },
+    { prop: "intensity", label: "Intensity", kind: "slider", min: 0, max: 1, step: 0.05, default: 0.8, group: "Colors" },
+    { prop: "saturation", label: "Saturation", kind: "slider", min: 0, max: 2, step: 0.05, default: 1, group: "Colors" },
+    { prop: "sources", label: "Sources", kind: "stepper", min: 1, max: 6, step: 1, default: 3, group: "Rings" },
+    { prop: "frequency", label: "Density", kind: "slider", min: 0, max: 1, step: 0.05, default: 0.45, group: "Rings" },
+    { prop: "softness", label: "Softness", kind: "slider", min: 0, max: 1, step: 0.05, default: 0.6, group: "Rings" },
+    { prop: "decay", label: "Decay", kind: "slider", min: 0, max: 1, step: 0.05, default: 0.45, group: "Rings" },
+    { prop: "interference", label: "Interference", kind: "slider", min: 0, max: 1, step: 0.05, default: 0.5, group: "Rings" },
+    { prop: "seed", label: "Seed", kind: "stepper", min: 0, max: 20, step: 1, default: 2, group: "Rings" },
+    { prop: "grain", label: "Grain", kind: "slider", min: 0, max: 1, step: 0.05, default: 0.2, group: "Grain" },
+    { prop: "grainSize", label: "Grain size", kind: "slider", min: 1, max: 4, step: 0.25, default: 1, unit: "px", group: "Grain" },
+    { prop: "grainMotion", label: "Flicker", kind: "switch", default: true, group: "Grain" },
+    { prop: "speed", label: "Speed", kind: "slider", min: 0, max: 3, step: 0.1, default: 1, unit: "x", group: "Motion" },
+    { prop: "paused", label: "Paused", kind: "switch", default: false, group: "Motion" },
+  ],
+};

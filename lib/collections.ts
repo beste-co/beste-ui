@@ -58,6 +58,14 @@ const COLLECTION_COPY: Record<BlockSet, Omit<CollectionInfo, "slug" | "count">> 
     metaDescription:
       "The Sirius collection: light, spacious shadcn/tailwind blocks for product marketing. Light-weight headings, one accent colour and media tiles floating real UI assets.",
   },
+  vega: {
+    label: "Vega",
+    description:
+      "Heroes that move: live WebGL and canvas surfaces, photographs that relight and assemble as you scroll, and features that run sideways or reveal word by word. For launches and portfolios that want the first screen to be the thing people remember.",
+    metaTitle: "Vega collection - Beste UI",
+    metaDescription:
+      "The Vega collection: motion-led shadcn/tailwind heroes and features with WebGL backgrounds, scroll-driven photography, animated type and horizontal scroll stories.",
+  },
 };
 
 /** Every collection, in the order the picker lists them. */

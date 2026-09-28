@@ -39,7 +39,7 @@ export function useIsNew(addedDates?: Readonly<Record<string, string>>) {
  */
 export function NewBadge({ count }: { count?: number }) {
   return (
-    <span className="rounded-full border border-[#FF7322] bg-background px-2 py-0.5 text-[10px] font-semibold tracking-wide text-[#FF7322] tabular-nums">
+    <span className="rounded-full border border-[#FF7322] bg-background px-2 py-0.5 text-[10px] font-medium text-[#FF7322] tabular-nums">
       {count === undefined ? "NEW" : `${count} NEW`}
     </span>
   );

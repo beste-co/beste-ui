@@ -16,6 +16,8 @@ import { type BrowseSort, DEFAULT_SORT, SORT_OPTIONS } from "@/lib/browse-sort";
 import { pieceInstallCommand } from "@/lib/install-command";
 import { type ComponentMeta, components } from "@/lib/components";
 import type { CategoryCount } from "./_lib/paginate";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 /** The category picks the route; the sort is only ever a query. */
 function browseHref(category: string | null, sort: BrowseSort = DEFAULT_SORT): string {
@@ -111,7 +113,7 @@ export function ComponentsContent({
           its parentheses are drawn taller than the digits and hang below the
           line, so a shared baseline left the whole group reading as dropped.
         */}
-        <h1 className="flex flex-wrap items-center gap-x-3 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+        <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
           <span>
             {currentCategory ? (
               <>
@@ -128,9 +130,9 @@ export function ComponentsContent({
               "Pieces"
             )}
           </span>
-          <span className="text-2xl font-semibold text-primary md:text-3xl">({totalItems})</span>
+          <span className="text-2xl font-medium text-primary md:text-3xl">({totalItems})</span>
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+        <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           {description ??
             "Compact, self-contained widgets that behave like assets. Drop them into any block, card, or page to add a small touch of polish without rewriting the surrounding UI."}
         </p>
@@ -156,7 +158,7 @@ export function ComponentsContent({
         ]}
         disabled={isPending}
       >
-          <p className="text-base text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {totalItems === 0 ? "No pieces" : `${rangeStart}–${rangeEnd} of ${totalItems}`}
           </p>
           {showPagination && (
@@ -229,7 +231,7 @@ export function ComponentsContent({
                     not what you scan a grid for, and the overlay above already carries
                     the accessible name. */}
                 <div className="relative flex flex-col gap-1 px-1 pb-1">
-                  <h3 className="text-base font-semibold tracking-tight">{c.title}</h3>
+                  <h3 className={typography.h3}>{c.title}</h3>
                   <p className="line-clamp-2 text-base text-muted-foreground">{c.description}</p>
                 </div>
               </div>

@@ -28,6 +28,8 @@ import { getRelated } from "@/lib/search-index";
 import { notFound } from "next/navigation";
 import path from "node:path";
 import { readFile } from "node:fs/promises";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 // The origin every generated URL is written against; see lib/site-links.ts.
 const SITE_URL = SITE_ORIGIN;
@@ -216,10 +218,10 @@ export default async function ComponentDetailPage({ params }: PageProps) {
             {/* The document's h1 is the hidden one above the piece, so the
                 title here is a second-level heading styled as the first. */}
             <header className="mb-10 md:mb-12">
-              <h2 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+              <h2 className={typography.h1}>
                 {component.title}
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground md:text-xl">{component.description}</p>
+              <p className={cn(typography.lead, "mt-3")}>{component.description}</p>
             </header>
 
             {playground ? (

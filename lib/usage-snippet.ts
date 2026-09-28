@@ -19,7 +19,21 @@ function formatProps(props: Record<string, unknown>, baseIndent = "  "): string 
     .map(([k, v]) => {
       if (typeof v === "string") return `${baseIndent}${k}="${v.replace(/"/g, '\\"')}"`;
       if (typeof v === "number" || typeof v === "boolean") return `${baseIndent}${k}={${v}}`;
-      const json = JSON.stringify(v, null, 2)
+      // Callbacks, components and JSX have no JSON form; print a stand-in the reader can fill
+      if (typeof v === "function") return `${baseIndent}${k}={() => console.log("${k}")}`;
+      if (typeof v === "object" && v !== null && ("$$typeof" in v || "render" in v)) {
+        const named = v as { displayName?: string; name?: string; type?: { displayName?: string; name?: string } };
+        const label = named.displayName ?? named.name ?? named.type?.displayName ?? named.type?.name;
+        return `${baseIndent}${k}={${label ? ("props" in v ? `<${label} />` : label) : "..."}}`;
+      }
+      let serialized: string | undefined;
+      try {
+        serialized = JSON.stringify(v, null, 2);
+      } catch {
+        serialized = undefined;
+      }
+      if (serialized === undefined) return `${baseIndent}${k}={...}`;
+      const json = serialized
         .split("\n")
         .map((line, i) => (i === 0 ? line : `${baseIndent}${line}`))
         .join("\n");

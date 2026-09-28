@@ -16,7 +16,7 @@ import { NavArrowButton } from "@/components/nav-arrow-button";
 import { FavoriteButton } from "@/components/favorite-button";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ComponentPlayground } from "@/components/component-playground";
+import { PlaygroundKeys } from "@/components/component-playground";
 import { ComponentPropsTable } from "@/components/component-props-table";
 import { type DocsSection, DocsSideRail } from "@/components/docs-side-rail";
 import {
@@ -36,6 +36,8 @@ import { SPONSOR_HREF, SPONSORS } from "@/lib/sponsors";
 import { getRelated } from "@/lib/search-index";
 import path from "node:path";
 import { readFile } from "node:fs/promises";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 // The origin every generated URL is written against; see lib/site-links.ts.
 const SITE_URL = SITE_ORIGIN;
@@ -154,7 +156,6 @@ export default async function RegistryComponentDetailPage({ params }: PageProps)
    */
   const sections: DocsSection[] = [
     { id: "usage", label: "Usage" },
-    ...(playground ? [{ id: "playground", label: "Playground" }] : []),
     ...(playground?.keys?.length ? [{ id: "keyboard", label: "Keyboard" }] : []),
     ...(propRows.length > 0 ? [{ id: "props", label: "Props" }] : []),
   ];
@@ -170,10 +171,10 @@ export default async function RegistryComponentDetailPage({ params }: PageProps)
     dateModified: lastModified,
   });
 
-  // Semantic same-category neighbors, rendered as live-preview cards.
+  // Semantic same-category neighbors as live-preview cards; three, since WebGL previews share the page context budget
   const relatedComponents = getRelated("component", component.name, {
     sameCategoryOnly: true,
-    limit: 6,
+    limit: 3,
   });
 
   return (
@@ -255,17 +256,16 @@ export default async function RegistryComponentDetailPage({ params }: PageProps)
                 {/* The document's h1 is the hidden one above the component, so
                     the title here is a second-level heading styled as the first. */}
                 <header className="mb-10 md:mb-12">
-                  <h2 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+                  <h2 className={typography.h1}>
                     {component.title}
                   </h2>
-                  <p className="mt-4 text-lg text-muted-foreground md:text-xl">{component.description}</p>
+                  <p className={cn(typography.lead, "mt-3")}>{component.description}</p>
                 </header>
 
                 <RegistryComponentUsage name={component.name} />
 
-                {playground ? (
-                  <ComponentPlayground name={component.name} config={playground} className="mt-16" />
-                ) : null}
+                {/* The settings live in the stage's Customize popover; the gestures they cannot show stay here */}
+                {playground?.keys?.length ? <PlaygroundKeys keys={playground.keys} className="mt-16" /> : null}
 
                 {propRows.length > 0 ? (
                   <ComponentPropsTable rows={propRows} className="mt-16" />
@@ -286,7 +286,7 @@ export default async function RegistryComponentDetailPage({ params }: PageProps)
                         <HugeiconsIcon icon={ArrowLeft01Icon} size={16} strokeWidth={2} className="shrink-0 text-foreground/70" />
                         <span className="flex min-w-0 flex-col">
                           <span className="text-base text-foreground/70">Previous</span>
-                          <span className="truncate text-lg font-medium">{prev.title}</span>
+                          <span className="truncate text-base font-medium">{prev.title}</span>
                         </span>
                       </Link>
                     ) : (
@@ -300,7 +300,7 @@ export default async function RegistryComponentDetailPage({ params }: PageProps)
                       >
                         <span className="flex min-w-0 flex-col">
                           <span className="text-base text-foreground/70">Next</span>
-                          <span className="truncate text-lg font-medium">{next.title}</span>
+                          <span className="truncate text-base font-medium">{next.title}</span>
                         </span>
                         <HugeiconsIcon icon={ArrowRight01Icon} size={16} strokeWidth={2} className="shrink-0 text-foreground/70" />
                       </Link>

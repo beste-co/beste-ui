@@ -3,6 +3,7 @@ export type FontName =
   | "haskoy"
   | "geist"
   | "inter"
+  | "inter-tight"
   | "roboto"
   | "open-sans"
   | "poppins"

@@ -165,11 +165,10 @@
 }
 
 @theme inline {
-  /* The reader's own interface font. `@theme inline` means Tailwind resolves this
-     at build time, so `.font-sans` compiles to the stack itself rather than to a
-     variable that something further down could still redefine. */
-  --font-sans: system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-plus-jakarta-sans);
+  /* Inter Tight for everything but code: sans and serif both point at it, since
+     the blocks use font-serif for display type. */
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -234,7 +233,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: system-ui, -apple-system, "system-ui", "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
   }
 }
 

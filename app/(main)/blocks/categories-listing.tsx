@@ -10,6 +10,8 @@ import type { ComponentType } from "react";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/navigation";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 export interface CategoryCard {
   category: string;
@@ -171,13 +173,13 @@ export function CategoriesListing({ categories, addedDates }: CategoriesListingP
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <header className="mb-10 md:mb-12">
         {/* Baseline row rather than a smaller inline span — see blocks-listing. */}
-        <h1 className="flex flex-wrap items-center gap-x-3 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+        <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
           <span>Blocks</span>
-          <span className="text-2xl font-semibold text-primary md:text-3xl">
+          <span className="text-2xl font-medium text-primary md:text-3xl">
             ({blocksObfuscated.length})
           </span>
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+        <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           Production-ready React blocks for Tailwind CSS and shadcn/ui. Copy, paste, and ship your
           next project faster.
         </p>
@@ -205,7 +207,7 @@ export function CategoriesListing({ categories, addedDates }: CategoriesListingP
         ]}
         disabled={isPending}
       >
-        <p className="text-base text-muted-foreground">{categories.length} categories</p>
+        <p className="text-sm text-muted-foreground">{categories.length} categories</p>
       </BrowseFilters>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -247,7 +249,7 @@ export function CategoriesListing({ categories, addedDates }: CategoriesListingP
               being a link did not already say.
             */}
             <div className="relative flex items-center justify-between gap-3 px-1 pb-1">
-              <h3 className="text-lg font-semibold tracking-tight">{c.category}</h3>
+              <h3 className={typography.h3}>{c.category}</h3>
               {/* On a muted card the chip needs the lighter surface to be seen at all. */}
               <span className="shrink-0 rounded-full bg-background px-2.5 py-0.5 text-sm font-medium tabular-nums text-foreground/70">
                 {c.count} {c.count === 1 ? "block" : "blocks"}

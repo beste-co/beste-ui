@@ -107,7 +107,7 @@ function FilterPicker({
         disabled={disabled}
         aria-label={label ?? allLabel}
         className={cn(
-          "flex h-11 shrink-0 cursor-pointer items-center justify-between gap-2 rounded-full bg-muted/60 px-4 text-base text-foreground",
+          "flex h-9 shrink-0 cursor-pointer items-center justify-between gap-2 rounded-full bg-muted/60 px-3.5 text-sm text-foreground",
           "outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50",
           "disabled:pointer-events-none disabled:opacity-60",
           triggerClassName
@@ -121,14 +121,14 @@ function FilterPicker({
               already fighting for the room, and on a picker whose options are
               not quantities of anything. */}
           {activeCount !== undefined && (
-            <span className="hidden font-mono text-sm text-foreground/50 sm:inline">
+            <span className="hidden font-mono text-xs text-foreground/50 sm:inline">
               ({activeCount})
             </span>
           )}
         </span>
         <HugeiconsIcon
           icon={ArrowDown01Icon}
-          size={16}
+          size={14}
           strokeWidth={2}
           className="shrink-0 text-foreground/50"
           aria-hidden="true"
@@ -137,13 +137,13 @@ function FilterPicker({
 
       <DropdownMenuContent
         align="start"
-        className="max-h-[380px] w-[240px] overflow-y-auto rounded-xl"
+        className="max-h-[360px] w-[220px] overflow-y-auto rounded-xl"
       >
         {allowAll && (
           <>
             <DropdownMenuItem
               onSelect={() => onValueChange(null)}
-              className="flex cursor-pointer items-center justify-between gap-3 text-base"
+              className="flex cursor-pointer items-center justify-between gap-3 text-sm"
             >
               <span className="flex min-w-0 items-center gap-2">
                 <HugeiconsIcon
@@ -155,7 +155,7 @@ function FilterPicker({
                 />
                 <span className="truncate">{allLabel}</span>
               </span>
-              <span className="font-mono text-sm text-foreground/50">
+              <span className="font-mono text-xs text-foreground/50">
                 {allCount ?? options.length}
               </span>
             </DropdownMenuItem>
@@ -168,7 +168,7 @@ function FilterPicker({
             <DropdownMenuItem
               key={option.value}
               onSelect={() => onValueChange(option.value)}
-              className="flex cursor-pointer items-center justify-between gap-3 text-base"
+              className="flex cursor-pointer items-center justify-between gap-3 text-sm"
             >
               <span className="flex min-w-0 items-center gap-2">
                 {/* Kept in the layout rather than added to it, so a row does
@@ -183,7 +183,7 @@ function FilterPicker({
                 <span className="truncate">{option.label}</span>
               </span>
               {option.count !== undefined && (
-                <span className="font-mono text-sm text-foreground/50">{option.count}</span>
+                <span className="font-mono text-xs text-foreground/50">{option.count}</span>
               )}
             </DropdownMenuItem>
           );
@@ -238,8 +238,8 @@ export function BrowseFilters({
    * fits drops to the next.
    */
   const pickerWidth = multiple
-    ? "min-w-[8.5rem] shrink basis-0 flex-1 px-4 sm:min-w-[180px] sm:shrink-0 sm:flex-none sm:gap-3 sm:px-5"
-    : "max-w-[45%] sm:max-w-none sm:min-w-[200px] sm:gap-3 sm:px-5";
+    ? "min-w-[8rem] shrink basis-0 flex-1 sm:min-w-[160px] sm:shrink-0 sm:flex-none sm:gap-3 sm:px-4"
+    : "max-w-[45%] sm:max-w-none sm:min-w-[180px] sm:gap-3 sm:px-4";
 
   return (
     <div
@@ -255,9 +255,9 @@ export function BrowseFilters({
           >
             <HugeiconsIcon
               icon={Search01Icon}
-              size={16}
+              size={14}
               strokeWidth={2}
-              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-foreground/50 sm:left-4"
+              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-foreground/50"
               aria-hidden="true"
             />
             <input
@@ -267,7 +267,7 @@ export function BrowseFilters({
               placeholder={searchPlaceholder}
               aria-label={searchLabel ?? searchPlaceholder}
               className={cn(
-                "h-11 w-full rounded-full bg-muted/60 pl-10 pr-9 text-base text-foreground sm:pl-11 sm:pr-10",
+                "h-9 w-full rounded-full bg-muted/60 pl-9 pr-8 text-sm text-foreground",
                 "outline-none transition-colors placeholder:text-foreground/50",
                 "hover:bg-muted focus-visible:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50",
                 // Safari draws its own clear button on a search input, next to
@@ -280,7 +280,7 @@ export function BrowseFilters({
                 type="button"
                 aria-label="Clear search"
                 onClick={() => onQueryChange?.("")}
-                className="absolute right-3 top-1/2 flex size-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-foreground/50 transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+                className="absolute right-2 top-1/2 flex size-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-foreground/50 transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
               >
                 <HugeiconsIcon icon={Cancel01Icon} size={14} strokeWidth={2} aria-hidden="true" />
               </button>
@@ -353,7 +353,7 @@ interface BrowsePaginationProps {
  * arrows and round numbers on the filled surface, the current page inverted
  * rather than outlined.
  *
- * The numbers are `sm` and up. Seven 44px targets plus two arrows do not fit
+ * The numbers are `sm` and up. Seven 36px targets plus two arrows do not fit
  * across a phone, and the honest answer there is which page you are on and a way
  * to the next one, not a row of numbers scaled down until none of them can be
  * pressed.
@@ -378,7 +378,7 @@ export function BrowsePagination({
           />
         </li>
 
-        <li className="px-2 text-base text-foreground/70 sm:hidden">
+        <li className="px-2 text-sm text-foreground/70 sm:hidden">
           Page {currentPage} of {totalPages}
         </li>
 
@@ -389,7 +389,7 @@ export function BrowsePagination({
               // of its own to key on.
               key={`ellipsis-${index}`}
               aria-hidden="true"
-              className="hidden size-11 items-center justify-center text-foreground/50 sm:flex"
+              className="hidden size-9 items-center justify-center text-foreground/50 sm:flex"
             >
               <HugeiconsIcon icon={MoreHorizontalIcon} size={16} strokeWidth={2} />
             </li>
@@ -399,7 +399,7 @@ export function BrowsePagination({
                 href={pageHref(basePath, page)}
                 aria-current={page === currentPage ? "page" : undefined}
                 className={cn(
-                  "flex size-11 items-center justify-center rounded-full text-base tabular-nums transition-colors",
+                  "flex size-9 items-center justify-center rounded-full text-sm tabular-nums transition-colors",
                   "outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
                   // Filled either way, like the arrows: an unfilled number beside
                   // two pills read as a label rather than something to press.
@@ -445,9 +445,8 @@ interface BrowsePagerArrowProps {
  */
 export function BrowsePagerArrow({ href, direction, label }: BrowsePagerArrowProps) {
   const icon = direction === "prev" ? ArrowLeft01Icon : ArrowRight01Icon;
-  // size-11 rather than the button's own `md`, to stand exactly as tall as the
-  // search field and the picker beside it.
-  const shape = "size-11 border-0 bg-muted/60 hover:bg-muted";
+  // size-9, to stand exactly as tall as the search field and the picker beside it.
+  const shape = "size-9 border-0 bg-muted/60 hover:bg-muted";
 
   if (!href) {
     return (

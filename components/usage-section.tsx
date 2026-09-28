@@ -7,6 +7,7 @@ import { useState } from "react";
 import { CodeBlock } from "@/components/code-block";
 import { useRegistryFlavor } from "@/components/registry-flavor";
 import { cn } from "@/lib/utils";
+import { typography } from "@/lib/typography";
 
 interface UsageSectionProps {
   /** The hand-written snippet from the meta, when there is one. */
@@ -65,8 +66,8 @@ export function UsageSection({ usage, usageBase, fallback, id = "usage", classNa
     <section id={id} className={cn("flex scroll-mt-8 flex-col gap-4", className)}>
       <div className="flex items-end justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-semibold leading-tight tracking-tight">Usage</h2>
-          <p className="mt-2 text-lg text-foreground/70">
+          <h2 className={typography.h2}>Usage</h2>
+          <p className="mt-2 text-sm text-foreground/70">
             The import and the props worth knowing about, in one place.
           </p>
         </div>

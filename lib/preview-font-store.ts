@@ -22,8 +22,8 @@ export const PreviewFontContext = createContext<PreviewFontContextType | null>(n
 
 const defaultContext: PreviewFontContextType = {
   fontSet: {
-    sans: fontDefinitions.manrope,
-    serif: fontDefinitions["plus-jakarta-sans"],
+    sans: fontDefinitions["inter-tight"],
+    serif: fontDefinitions["inter-tight"],
     mono: fontDefinitions["geist-mono"] || fontDefinitions.inter,
   },
   setFontSet: () => {},
@@ -38,8 +38,8 @@ export function usePreviewFont() {
 
 export function getDefaultFontSet(): FontSet {
   return {
-    sans: fontDefinitions.manrope,
-    serif: fontDefinitions["plus-jakarta-sans"],
+    sans: fontDefinitions["inter-tight"],
+    serif: fontDefinitions["inter-tight"],
     mono: fontDefinitions["geist-mono"] || fontDefinitions.inter,
   };
 }
@@ -56,10 +56,10 @@ export function loadStoredFonts(): FontSet {
       return {
         sans:
           fontDefinitions[parsed.sans as keyof typeof fontDefinitions] ||
-          fontDefinitions.manrope,
+          fontDefinitions["inter-tight"],
         serif:
           fontDefinitions[parsed.serif as keyof typeof fontDefinitions] ||
-          fontDefinitions["plus-jakarta-sans"],
+          fontDefinitions["inter-tight"],
         mono:
           fontDefinitions[parsed.mono as keyof typeof fontDefinitions] ||
           fontDefinitions["geist-mono"],

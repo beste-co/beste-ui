@@ -1,21 +1,21 @@
 import { ImageResponse } from "next/og";
 
 async function loadAssets(): Promise<
-  { name: string; data: Buffer; weight: 400 | 600; style: "normal" }[]
+  { name: string; data: Buffer; weight: 400 | 500; style: "normal" }[]
 > {
   const [
     { base64Font: normal },
     { base64Font: mono },
-    { base64Font: semibold },
+    { base64Font: medium },
   ] = await Promise.all([
-    import("./geist-regular-otf.json").then((mod) => mod.default || mod),
+    import("./intertight-regular-woff.json").then((mod) => mod.default || mod),
     import("./geistmono-regular-otf.json").then((mod) => mod.default || mod),
-    import("./geist-semibold-otf.json").then((mod) => mod.default || mod),
+    import("./intertight-medium-woff.json").then((mod) => mod.default || mod),
   ]);
 
   return [
     {
-      name: "Geist",
+      name: "Inter Tight",
       data: Buffer.from(normal, "base64"),
       weight: 400 as const,
       style: "normal" as const,
@@ -27,9 +27,9 @@ async function loadAssets(): Promise<
       style: "normal" as const,
     },
     {
-      name: "Geist",
-      data: Buffer.from(semibold, "base64"),
-      weight: 600 as const,
+      name: "Inter Tight",
+      data: Buffer.from(medium, "base64"),
+      weight: 500 as const,
       style: "normal" as const,
     },
   ];
@@ -50,7 +50,7 @@ export async function GET(request: Request) {
     (
       <div
         tw="flex h-full w-full bg-white flex-col p-16"
-        style={{ fontFamily: "Geist Sans" }}
+        style={{ fontFamily: "Inter Tight" }}
       >
         {/* Gray circular background */}
         <div
@@ -86,7 +86,7 @@ export async function GET(request: Request) {
           <div
             tw="flex text-stone-900 tracking-tight leading-[1.1]"
             style={{
-              fontWeight: 600,
+              fontWeight: 500,
               fontSize: title && title.length > 20 ? 48 : 56,
               letterSpacing: "-0.02em",
             }}

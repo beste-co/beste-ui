@@ -2,8 +2,12 @@
 
 import { type ComponentType, useEffect, useState } from "react";
 
+import { BackgroundDemoContent, type DemoContentTone } from "@/components/background-demo-content";
+import { signature } from "@/components/component-playground";
+import { DemoContentSwitch } from "@/components/demo-content-switch";
 import { FitScale } from "@/components/fit-scale";
 import { ReplayButton } from "@/components/replay-button";
+import { StageCustomizer } from "@/components/stage-customizer";
 import { ThemedPreview } from "@/components/theme/themed-preview";
 import {
   Select,
@@ -12,7 +16,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { PlaygroundConfig } from "@/lib/playgrounds";
 import { toneSwatch } from "@/lib/usage-snippet";
+import { cn } from "@/lib/utils";
 
 interface ItemStageProps {
   name: string;
@@ -26,6 +32,16 @@ interface ItemStageProps {
   isAnimated?: boolean;
   /** Large surfaces are scaled to fit the stage rather than clipped. */
   fitToStage?: boolean;
+  /** Background surfaces fill the whole stage and can carry demo content on top. */
+  background?: boolean;
+  /** How the demo content sits on a background surface */
+  demoContentTone?: DemoContentTone;
+  /** Full-frame pieces fill the whole stage like a background, without demo content. */
+  fullBleed?: boolean;
+  /** Background surfaces that read best on their own start with the demo content off. */
+  demoContentOff?: boolean;
+  /** Settings for the Customize popover; the preview itself is what they turn. */
+  playground?: PlaygroundConfig;
 }
 
 /**
@@ -41,34 +57,89 @@ export function ItemStage({
   defaultTone,
   isAnimated = false,
   fitToStage = false,
+  background = false,
+  demoContentTone,
+  fullBleed = false,
+  demoContentOff = false,
+  playground,
 }: ItemStageProps) {
+  const [showContent, setShowContent] = useState(!demoContentOff);
   const [toneOverride, setToneOverride] = useState<string | undefined>(undefined);
   // Remounts the live demo so a one-shot entrance plays again
   const [replay, setReplay] = useState(0);
+  // Props set from the Customize popover; null means the demo as shipped
+  const [custom, setCustom] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
     setToneOverride(undefined);
-  }, [name]);
+    setShowContent(!demoContentOff);
+    setCustom(null);
+  }, [name, demoContentOff]);
 
-  const activeTone = toneOverride ?? (demoProps?.tone as string | undefined) ?? defaultTone;
-  const props: Record<string, unknown> = tones ? { ...demoProps, tone: activeTone } : (demoProps ?? {});
+  const base = demoProps ?? {};
+  const activeTone = toneOverride ?? ((custom ?? base).tone as string | undefined) ?? defaultTone;
+  const merged = custom ?? base;
+  const props: Record<string, unknown> = tones ? { ...merged, tone: activeTone } : merged;
+  const dirty = custom !== null && signature(custom) !== signature(base);
+
+  // The tone picker and a tone row in the popover stay one setting
+  const changeCustom = (next: Record<string, unknown>) => {
+    if (tones && typeof next.tone === "string" && next.tone !== activeTone) setToneOverride(next.tone);
+    setCustom(next);
+  };
+  const resetCustom = () => {
+    setCustom(null);
+    setToneOverride(undefined);
+  };
+
+  // A customized preview is keyed by its props, so structural changes land; backgrounds read props live instead
+  const previewKey = `${replay}-${custom ? signature(custom) : ""}`;
+
+  const controls = isAnimated || background || (tones && tones.length > 0) || Boolean(playground);
+
+  // The tone picker is folded into Customize; a playground without a tone row gets one here
+  const customizer =
+    playground && tones && tones.length > 0 && !playground.controls.some((control) => control.prop === "tone")
+      ? {
+          ...playground,
+          controls: [
+            { prop: "tone", label: "Tone", kind: tones.length <= 3 ? ("segmented" as const) : ("select" as const), options: tones, default: defaultTone, group: "Surface" },
+            ...playground.controls,
+          ],
+        }
+      : playground;
 
   return (
-    <ThemedPreview className="relative flex min-h-svh items-center justify-center px-4 py-24 md:px-6">
-      {fitToStage ? (
+    <ThemedPreview className="relative flex min-h-[calc(100svh_-_78px)] items-center justify-center px-4 py-24 md:px-6">
+      {background || fullBleed ? (
+        <>
+          <Component
+            key={replay}
+            {...props}
+            className={cn(typeof props.className === "string" ? props.className : undefined, "absolute inset-0 h-full min-h-0")}
+          />
+          {background && showContent && <BackgroundDemoContent tone={demoContentTone} />}
+        </>
+      ) : fitToStage ? (
         <div className="h-[70svh] w-full max-w-6xl">
-          <FitScale key={replay} className="size-full" padding={0}>
+          <FitScale key={previewKey} className="size-full" padding={0}>
             <Component {...props} />
           </FitScale>
         </div>
       ) : (
-        <Component key={replay} {...props} />
+        <Component key={previewKey} {...props} />
       )}
 
-      {(isAnimated || (tones && tones.length > 0)) && (
+      {controls && (
         <div className="absolute right-4 top-4 z-20 flex items-center gap-2 md:right-6 md:top-6">
-          {tones && tones.length > 0 && (
-            <Select value={activeTone} onValueChange={(v) => setToneOverride(v)}>
+          {tones && tones.length > 0 && !playground && (
+            <Select
+              value={activeTone}
+              onValueChange={(v) => {
+                setToneOverride(v);
+                if (custom) setCustom({ ...custom, tone: v });
+              }}
+            >
               {/* Both the trigger and the rows: the primitive ships
                   `cursor-default`, which on a menu reads as "not clickable". */}
               <SelectTrigger className="h-11 w-36 cursor-pointer rounded-full border-0 bg-muted/60 text-base shadow-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50">
@@ -90,8 +161,15 @@ export function ItemStage({
               </SelectContent>
             </Select>
           )}
-          {isAnimated && (
-            <ReplayButton label="Reanimate" onClick={() => setReplay((value) => value + 1)} />
+          {background && <DemoContentSwitch checked={showContent} onCheckedChange={setShowContent} />}
+          {isAnimated && !background && (
+            <ReplayButton
+              onClick={() => setReplay((value) => value + 1)}
+              className="rounded-full border-0 bg-muted text-foreground/70 hover:bg-muted hover:text-foreground"
+            />
+          )}
+          {playground && (
+            <StageCustomizer name={name} config={customizer ?? playground} props={props} onChange={changeCustom} onReset={resetCustom} dirty={dirty} />
           )}
         </div>
       )}

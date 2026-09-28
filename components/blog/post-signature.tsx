@@ -19,7 +19,7 @@ export function PostSignature() {
         className="size-12 rounded-full object-cover"
       />
       <div className="flex flex-col leading-tight">
-        <span className="font-semibold text-foreground">uğur</span>
+        <span className="font-medium text-foreground">uğur</span>
         <span className="text-sm text-muted-foreground">building beste.co</span>
       </div>
       <div className="ml-auto flex items-center gap-3">

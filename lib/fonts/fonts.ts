@@ -67,6 +67,17 @@ export const fontDefinitions: Record<FontName, FontDefinition> = {
     description: "Modern, clean, and highly readable",
   },
 
+  "inter-tight": {
+    name: "inter-tight",
+    displayName: "Inter Tight",
+    category: "sans-serif",
+    weights: [400, 500, 600, 700],
+    italicWeights: [400, 500, 600, 700],
+    googleFontName: "Inter Tight",
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Inter with tighter spacing, made for display and dense UI",
+  },
+
   roboto: {
     name: "roboto",
     displayName: "Roboto",

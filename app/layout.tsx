@@ -2,7 +2,7 @@ import "./globals.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Geist_Mono, Inter_Tight } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { type ReactNode, Suspense } from "react";
 import { Analytics } from "@/components/analytics";
@@ -10,8 +10,8 @@ import { AuthProvider } from "@/lib/auth-context";
 import { FavoritesProvider } from "@/lib/favorites-context";
 import { LicenseProvider } from "@/lib/license-context";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
   display: "swap",
 });
@@ -115,7 +115,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>{isProduction && gaId && <GoogleAnalytics gaId={gaId} />}</head>
-      <body className={`${plusJakartaSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}>
+      <body className={`${interTight.variable} ${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}>
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static structured data.

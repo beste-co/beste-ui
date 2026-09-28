@@ -20,7 +20,8 @@
  * Usage: bun run scripts/generate-block-sets.ts
  */
 
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+
 import { join } from "node:path";
 
 const REGISTRY_DIR = join(import.meta.dirname, "..", "registry");
@@ -35,6 +36,7 @@ const SETS = [
   { key: "auralis", brand: "Auralis", components: ["badge7", "button12"] },
   { key: "polaris", brand: "Polaris", components: ["badge6", "button1"] },
   { key: "sirius", brand: "Sirius", components: ["badge23", "button21"] },
+  { key: "vega", brand: null, components: ["button23", "button24"] },
 ] as const;
 
 /** Blocks that belong to a set but carry neither its components nor its name. */
@@ -43,6 +45,7 @@ const EXTRA: Record<string, string[]> = {
   auralis: [],
   polaris: [],
   sirius: [],
+  vega: ["feature318", "feature320", "feature322", "feature323", "feature324", "hero198", "hero206"],
 };
 
 /** The registry-components a block declares in its meta. */
@@ -73,11 +76,13 @@ const lists = SETS.map(({ key, brand }) => {
 
   // Only blocks no set has already claimed: a Polaris block that happens to
   // mention Sirius in a testimonial stays Polaris.
-  const fromCopy = dirs.filter(
-    (dir) =>
-      !byComponent.has(dir) &&
-      readFileSync(join(REGISTRY_DIR, dir, `${dir}.tsx`), "utf-8").includes(brand)
-  );
+  const fromCopy = brand
+    ? dirs.filter(
+        (dir) =>
+          !byComponent.has(dir) &&
+          readFileSync(join(REGISTRY_DIR, dir, `${dir}.tsx`), "utf-8").includes(brand)
+      )
+    : [];
 
   const names = Array.from(
     new Set([...fromComponents, ...fromCopy, ...(EXTRA[key] ?? [])])

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button12 } from "@/components/beste/component/button12";
+import { Button23 } from "@/components/beste/component/button23";
 
 interface ProCtaProps {
   heading?: string;
@@ -29,14 +29,14 @@ export function ProCta({
   return (
     <div className="my-8 flex flex-col gap-6 rounded-xl border bg-background p-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
       <div className="min-w-0 flex-1">
-        <p className="text-xl font-semibold leading-tight tracking-tight text-foreground">
+        <p className="text-lg font-medium leading-tight text-foreground">
           {heading}
         </p>
         <p className="mt-2 text-base text-foreground/70">{description}</p>
       </div>
-      <Button12 asChild label={label} className="shrink-0">
+      <Button23 size="sm" tone="dark" asChild label={label} className="shrink-0">
         <Link href={href} />
-      </Button12>
+      </Button23>
     </div>
   );
 }

@@ -78,7 +78,7 @@ export function SecretComponent({
 
         hello@beste.co - Let's talk!
       */}
-      <h1 className="text-4xl font-bold">
+      <h1 className="text-4xl font-medium">
         {discovered ? "You found nothing!" : message}
       </h1>
       <p className="mt-4 text-muted-foreground">

@@ -6,7 +6,12 @@ import type { ComponentType } from "react";
 
 import type { PlaygroundConfig } from "@/lib/playground-types";
 
+import { ActivityFeed, activityFeedDemo } from "@/registry-components/activity-feed/activity-feed";
+import { AnamorphicType, anamorphicTypeDemo } from "@/registry-components/anamorphic-type/anamorphic-type";
+import { ApertureReveal, apertureRevealDemo } from "@/registry-components/aperture-reveal/aperture-reveal";
 import { AreaChart, areaChartDemo } from "@/registry-components/area-chart/area-chart";
+import { AsciiRender, asciiRenderDemo } from "@/registry-components/ascii-render/ascii-render";
+import { AuroraSky, auroraSkyDemo } from "@/registry-components/aurora-sky/aurora-sky";
 import { Badge6, badge6Demo } from "@/registry-components/badge6/badge6";
 import { Badge7, badge7Demo } from "@/registry-components/badge7/badge7";
 import { Badge8, badge8Demo } from "@/registry-components/badge8/badge8";
@@ -26,6 +31,10 @@ import { Badge21, badge21Demo } from "@/registry-components/badge21/badge21";
 import { Badge22, badge22Demo } from "@/registry-components/badge22/badge22";
 import { Badge23, badge23Demo } from "@/registry-components/badge23/badge23";
 import { BarChart, barChartDemo } from "@/registry-components/bar-chart/bar-chart";
+import { BauhausComposition, bauhausCompositionDemo } from "@/registry-components/bauhaus-composition/bauhaus-composition";
+import { BlobGradient, blobGradientDemo } from "@/registry-components/blob-gradient/blob-gradient";
+import { BlobMask, blobMaskDemo } from "@/registry-components/blob-mask/blob-mask";
+import { BokehGradient, bokehGradientDemo } from "@/registry-components/bokeh-gradient/bokeh-gradient";
 import { Button1, button1Demo } from "@/registry-components/button1/button1";
 import { Button2, button2Demo } from "@/registry-components/button2/button2";
 import { Button3, button3Demo } from "@/registry-components/button3/button3";
@@ -45,7 +54,10 @@ import { Button19, button19Demo } from "@/registry-components/button19/button19"
 import { Button20, button20Demo } from "@/registry-components/button20/button20";
 import { Button21, button21Demo } from "@/registry-components/button21/button21";
 import { Button22, button22Demo } from "@/registry-components/button22/button22";
+import { Button23, button23Demo } from "@/registry-components/button23/button23";
+import { Button24, button24Demo } from "@/registry-components/button24/button24";
 import { CalendarMonth, calendarMonthDemo } from "@/registry-components/calendar-month/calendar-month";
+import { CandleFlame, candleFlameDemo } from "@/registry-components/candle-flame/candle-flame";
 import { Card1, card1Demo } from "@/registry-components/card1/card1";
 import { Card2, card2Demo } from "@/registry-components/card2/card2";
 import { Card3, card3Demo } from "@/registry-components/card3/card3";
@@ -74,8 +86,30 @@ import { Card25, card25Demo } from "@/registry-components/card25/card25";
 import { Card26, card26Demo } from "@/registry-components/card26/card26";
 import { Card27, card27Demo } from "@/registry-components/card27/card27";
 import { Card28, card28Demo } from "@/registry-components/card28/card28";
+import { ChatBubble, chatBubbleDemo } from "@/registry-components/chat-bubble/chat-bubble";
+import { CloudSky, cloudSkyDemo } from "@/registry-components/cloud-sky/cloud-sky";
+import { CodeShare, codeShareDemo } from "@/registry-components/code-share/code-share";
 import { ColorPicker, colorPickerDemo } from "@/registry-components/color-picker/color-picker";
+import { ConcertinaBook, concertinaBookDemo } from "@/registry-components/concertina-book/concertina-book";
+import { ConfirmSlide, confirmSlideDemo } from "@/registry-components/confirm-slide/confirm-slide";
+import { ConfirmType, confirmTypeDemo } from "@/registry-components/confirm-type/confirm-type";
+import { ConicGradient, conicGradientDemo } from "@/registry-components/conic-gradient/conic-gradient";
+import { ContourTerrain, contourTerrainDemo } from "@/registry-components/contour-terrain/contour-terrain";
+import { CounterColumns, counterColumnsDemo } from "@/registry-components/counter-columns/counter-columns";
+import { CrtScreen, crtScreenDemo } from "@/registry-components/crt-screen/crt-screen";
+import { CurtainReveal, curtainRevealDemo } from "@/registry-components/curtain-reveal/curtain-reveal";
+import { Cyanotype, cyanotypeDemo } from "@/registry-components/cyanotype/cyanotype";
 import { DataTable, dataTableDemo } from "@/registry-components/data-table/data-table";
+import { DitherForm, ditherFormDemo } from "@/registry-components/dither-form/dither-form";
+import { DockMagnify, dockMagnifyDemo } from "@/registry-components/dock-magnify/dock-magnify";
+import { DuneField, duneFieldDemo } from "@/registry-components/dune-field/dune-field";
+import { ExpandingFrame, expandingFrameDemo } from "@/registry-components/expanding-frame/expanding-frame";
+import { Ferrofluid, ferrofluidDemo } from "@/registry-components/ferrofluid/ferrofluid";
+import { FieldOtp, fieldOtpDemo } from "@/registry-components/field-otp/field-otp";
+import { FieldPassword, fieldPasswordDemo } from "@/registry-components/field-password/field-password";
+import { FieldSearch, fieldSearchDemo } from "@/registry-components/field-search/field-search";
+import { FileAvatar, fileAvatarDemo } from "@/registry-components/file-avatar/file-avatar";
+import { FileDrop, fileDropDemo } from "@/registry-components/file-drop/file-drop";
 import { FilterCheckbox, filterCheckboxDemo } from "@/registry-components/filter-checkbox/filter-checkbox";
 import { FilterChips, filterChipsDemo } from "@/registry-components/filter-chips/filter-chips";
 import { FilterCombobox, filterComboboxDemo } from "@/registry-components/filter-combobox/filter-combobox";
@@ -90,6 +124,22 @@ import { FilterSlider, filterSliderDemo } from "@/registry-components/filter-sli
 import { FilterSwatch, filterSwatchDemo } from "@/registry-components/filter-swatch/filter-swatch";
 import { FilterToggle, filterToggleDemo } from "@/registry-components/filter-toggle/filter-toggle";
 import { FilterTree, filterTreeDemo } from "@/registry-components/filter-tree/filter-tree";
+import { FluidGradient, fluidGradientDemo } from "@/registry-components/fluid-gradient/fluid-gradient";
+import { FoldGradient, foldGradientDemo } from "@/registry-components/fold-gradient/fold-gradient";
+import { FrostedGradient, frostedGradientDemo } from "@/registry-components/frosted-gradient/frosted-gradient";
+import { GalleryRail, galleryRailDemo } from "@/registry-components/gallery-rail/gallery-rail";
+import { GlassLens, glassLensDemo } from "@/registry-components/glass-lens/glass-lens";
+import { GrowingTree, growingTreeDemo } from "@/registry-components/growing-tree/growing-tree";
+import { Halftone, halftoneDemo } from "@/registry-components/halftone/halftone";
+import { Harmonograph, harmonographDemo } from "@/registry-components/harmonograph/harmonograph";
+import { HeatmapCalendar, heatmapCalendarDemo } from "@/registry-components/heatmap-calendar/heatmap-calendar";
+import { HeatmapGrid, heatmapGridDemo } from "@/registry-components/heatmap-grid/heatmap-grid";
+import { HoldConfirm, holdConfirmDemo } from "@/registry-components/hold-confirm/hold-confirm";
+import { HorizonGradient, horizonGradientDemo } from "@/registry-components/horizon-gradient/horizon-gradient";
+import { ImageLoupe, imageLoupeDemo } from "@/registry-components/image-loupe/image-loupe";
+import { Impasto, impastoDemo } from "@/registry-components/impasto/impasto";
+import { InkFlow, inkFlowDemo } from "@/registry-components/ink-flow/ink-flow";
+import { InkFluid, inkFluidDemo } from "@/registry-components/ink-fluid/ink-fluid";
 import { InspectorAction, inspectorActionDemo } from "@/registry-components/inspector-action/inspector-action";
 import { InspectorAlign, inspectorAlignDemo } from "@/registry-components/inspector-align/inspector-align";
 import { InspectorAngle, inspectorAngleDemo } from "@/registry-components/inspector-angle/inspector-angle";
@@ -136,15 +186,82 @@ import { InspectorTracks, inspectorTracksDemo } from "@/registry-components/insp
 import { InspectorTransition, inspectorTransitionDemo } from "@/registry-components/inspector-transition/inspector-transition";
 import { InspectorUnit, inspectorUnitDemo } from "@/registry-components/inspector-unit/inspector-unit";
 import { InspectorVariants, inspectorVariantsDemo } from "@/registry-components/inspector-variants/inspector-variants";
+import { Kaleidoscope, kaleidoscopeDemo } from "@/registry-components/kaleidoscope/kaleidoscope";
+import { KbdCombo, kbdComboDemo } from "@/registry-components/kbd-combo/kbd-combo";
+import { KbdSheet, kbdSheetDemo } from "@/registry-components/kbd-sheet/kbd-sheet";
+import { KoiPond, koiPondDemo } from "@/registry-components/koi-pond/koi-pond";
+import { Letterpress, letterpressDemo } from "@/registry-components/letterpress/letterpress";
+import { LightLeak, lightLeakDemo } from "@/registry-components/light-leak/light-leak";
 import { LineChart, lineChartDemo } from "@/registry-components/line-chart/line-chart";
+import { LineEngraving, lineEngravingDemo } from "@/registry-components/line-engraving/line-engraving";
+import { LiquidChrome, liquidChromeDemo } from "@/registry-components/liquid-chrome/liquid-chrome";
+import { LiquidSlides, liquidSlidesDemo } from "@/registry-components/liquid-slides/liquid-slides";
+import { ListKanban, listKanbanDemo } from "@/registry-components/list-kanban/list-kanban";
+import { ListSortable, listSortableDemo } from "@/registry-components/list-sortable/list-sortable";
+import { LoupeCompare, loupeCompareDemo } from "@/registry-components/loupe-compare/loupe-compare";
+import { MagneticField, magneticFieldDemo } from "@/registry-components/magnetic-field/magnetic-field";
+import { MarbleSlab, marbleSlabDemo } from "@/registry-components/marble-slab/marble-slab";
+import { Marquee1, marquee1Demo } from "@/registry-components/marquee1/marquee1";
+import { MentionInput, mentionInputDemo } from "@/registry-components/mention-input/mention-input";
+import { MeshGradient, meshGradientDemo } from "@/registry-components/mesh-gradient/mesh-gradient";
+import { MeterRing, meterRingDemo } from "@/registry-components/meter-ring/meter-ring";
+import { MeterStack, meterStackDemo } from "@/registry-components/meter-stack/meter-stack";
+import { MosaicGradient, mosaicGradientDemo } from "@/registry-components/mosaic-gradient/mosaic-gradient";
+import { Murmuration, murmurationDemo } from "@/registry-components/murmuration/murmuration";
+import { NavBreadcrumb, navBreadcrumbDemo } from "@/registry-components/nav-breadcrumb/nav-breadcrumb";
+import { NavPagination, navPaginationDemo } from "@/registry-components/nav-pagination/nav-pagination";
+import { NavTabs, navTabsDemo } from "@/registry-components/nav-tabs/nav-tabs";
+import { NoticeStack, noticeStackDemo } from "@/registry-components/notice-stack/notice-stack";
 import { NotificationsMenu, notificationsMenuDemo } from "@/registry-components/notifications-menu/notifications-menu";
+import { OceanHorizon, oceanHorizonDemo } from "@/registry-components/ocean-horizon/ocean-horizon";
+import { OpArt, opArtDemo } from "@/registry-components/op-art/op-art";
+import { OrbGradient, orbGradientDemo } from "@/registry-components/orb-gradient/orb-gradient";
+import { PagerDots, pagerDotsDemo } from "@/registry-components/pager-dots/pager-dots";
+import { PaperLandscape, paperLandscapeDemo } from "@/registry-components/paper-landscape/paper-landscape";
+import { PhotoDust, photoDustDemo } from "@/registry-components/photo-dust/photo-dust";
+import { PhotoRelight, photoRelightDemo } from "@/registry-components/photo-relight/photo-relight";
+import { PhotoRing, photoRingDemo } from "@/registry-components/photo-ring/photo-ring";
 import { PieChart, pieChartDemo } from "@/registry-components/pie-chart/pie-chart";
+import { PixelDistort, pixelDistortDemo } from "@/registry-components/pixel-distort/pixel-distort";
+import { PlayerScrubber, playerScrubberDemo } from "@/registry-components/player-scrubber/player-scrubber";
+import { PlayerWaveform, playerWaveformDemo } from "@/registry-components/player-waveform/player-waveform";
+import { PoolCaustics, poolCausticsDemo } from "@/registry-components/pool-caustics/pool-caustics";
+import { PriceTag, priceTagDemo } from "@/registry-components/price-tag/price-tag";
+import { PriceToggle, priceToggleDemo } from "@/registry-components/price-toggle/price-toggle";
+import { PrismGradient, prismGradientDemo } from "@/registry-components/prism-gradient/prism-gradient";
 import { ProductFilters, productFiltersDemo } from "@/registry-components/product-filters/product-filters";
+import { QrCode, qrCodeDemo } from "@/registry-components/qr-code/qr-code";
 import { RadarChart, radarChartDemo } from "@/registry-components/radar-chart/radar-chart";
 import { RadialChart, radialChartDemo } from "@/registry-components/radial-chart/radial-chart";
+import { RainGlass, rainGlassDemo } from "@/registry-components/rain-glass/rain-glass";
+import { ReactionBar, reactionBarDemo } from "@/registry-components/reaction-bar/reaction-bar";
+import { ReactionDiffusion, reactionDiffusionDemo } from "@/registry-components/reaction-diffusion/reaction-diffusion";
+import { ReactionPicker, reactionPickerDemo } from "@/registry-components/reaction-picker/reaction-picker";
+import { ReactionRating, reactionRatingDemo } from "@/registry-components/reaction-rating/reaction-rating";
+import { ReadoutCompare, readoutCompareDemo } from "@/registry-components/readout-compare/readout-compare";
+import { ReadoutStat, readoutStatDemo } from "@/registry-components/readout-stat/readout-stat";
+import { ReededLight, reededLightDemo } from "@/registry-components/reeded-light/reeded-light";
+import { Ridgelines, ridgelinesDemo } from "@/registry-components/ridgelines/ridgelines";
+import { RippleGradient, rippleGradientDemo } from "@/registry-components/ripple-gradient/ripple-gradient";
 import { ScheduleTimeline, scheduleTimelineDemo } from "@/registry-components/schedule-timeline/schedule-timeline";
+import { ScrollRail, scrollRailDemo } from "@/registry-components/scroll-rail/scroll-rail";
+import { ScrollToc, scrollTocDemo } from "@/registry-components/scroll-toc/scroll-toc";
 import { SidebarNav, sidebarNavDemo } from "@/registry-components/sidebar-nav/sidebar-nav";
+import { SignaturePad, signaturePadDemo } from "@/registry-components/signature-pad/signature-pad";
+import { SilkDrape, silkDrapeDemo } from "@/registry-components/silk-drape/silk-drape";
+import { SketchToPhoto, sketchToPhotoDemo } from "@/registry-components/sketch-to-photo/sketch-to-photo";
+import { SliceAssembly, sliceAssemblyDemo } from "@/registry-components/slice-assembly/slice-assembly";
+import { SmokeGradient, smokeGradientDemo } from "@/registry-components/smoke-gradient/smoke-gradient";
+import { SnippetInstall, snippetInstallDemo } from "@/registry-components/snippet-install/snippet-install";
+import { SplitFlap, splitFlapDemo } from "@/registry-components/split-flap/split-flap";
+import { StarTrails, starTrailsDemo } from "@/registry-components/star-trails/star-trails";
+import { StatusUptime, statusUptimeDemo } from "@/registry-components/status-uptime/status-uptime";
+import { StepsChecklist, stepsChecklistDemo } from "@/registry-components/steps-checklist/steps-checklist";
+import { StepsTrack, stepsTrackDemo } from "@/registry-components/steps-track/steps-track";
+import { StringArt, stringArtDemo } from "@/registry-components/string-art/string-art";
+import { SunBlinds, sunBlindsDemo } from "@/registry-components/sun-blinds/sun-blinds";
 import { TalentCard, talentCardDemo } from "@/registry-components/talent-card/talent-card";
+import { TextOrbit, textOrbitDemo } from "@/registry-components/text-orbit/text-orbit";
 import { Text1, text1Demo } from "@/registry-components/text1/text1";
 import { Text2, text2Demo } from "@/registry-components/text2/text2";
 import { Text3, text3Demo } from "@/registry-components/text3/text3";
@@ -164,8 +281,29 @@ import { Text16, text16Demo } from "@/registry-components/text16/text16";
 import { Text17, text17Demo } from "@/registry-components/text17/text17";
 import { Text18, text18Demo } from "@/registry-components/text18/text18";
 import { Text19, text19Demo } from "@/registry-components/text19/text19";
+import { Text20, text20Demo } from "@/registry-components/text20/text20";
+import { Text21, text21Demo } from "@/registry-components/text21/text21";
+import { Text22, text22Demo } from "@/registry-components/text22/text22";
+import { TimeCountdown, timeCountdownDemo } from "@/registry-components/time-countdown/time-countdown";
+import { TimeRelative, timeRelativeDemo } from "@/registry-components/time-relative/time-relative";
+import { Toolbar, toolbarDemo } from "@/registry-components/toolbar/toolbar";
+import { TourSpotlight, tourSpotlightDemo } from "@/registry-components/tour-spotlight/tour-spotlight";
+import { TreeJson, treeJsonDemo } from "@/registry-components/tree-json/tree-json";
+import { TreeView, treeViewDemo } from "@/registry-components/tree-view/tree-view";
+import { TypeWindow, typeWindowDemo } from "@/registry-components/type-window/type-window";
 import { UserMenu, userMenuDemo } from "@/registry-components/user-menu/user-menu";
+import { VortexGradient, vortexGradientDemo } from "@/registry-components/vortex-gradient/vortex-gradient";
+import { WarpField, warpFieldDemo } from "@/registry-components/warp-field/warp-field";
+import { WaterReflection, waterReflectionDemo } from "@/registry-components/water-reflection/water-reflection";
+import { WaveGradient, waveGradientDemo } from "@/registry-components/wave-gradient/wave-gradient";
+import { WheatField, wheatFieldDemo } from "@/registry-components/wheat-field/wheat-field";
+import { ZoomParallax, zoomParallaxDemo } from "@/registry-components/zoom-parallax/zoom-parallax";
+import { playground as activityFeedPlayground } from "@/registry-components/activity-feed/activity-feed.playground";
+import { playground as anamorphicTypePlayground } from "@/registry-components/anamorphic-type/anamorphic-type.playground";
+import { playground as apertureRevealPlayground } from "@/registry-components/aperture-reveal/aperture-reveal.playground";
 import { playground as areaChartPlayground } from "@/registry-components/area-chart/area-chart.playground";
+import { playground as asciiRenderPlayground } from "@/registry-components/ascii-render/ascii-render.playground";
+import { playground as auroraSkyPlayground } from "@/registry-components/aurora-sky/aurora-sky.playground";
 import { playground as badge6Playground } from "@/registry-components/badge6/badge6.playground";
 import { playground as badge7Playground } from "@/registry-components/badge7/badge7.playground";
 import { playground as badge8Playground } from "@/registry-components/badge8/badge8.playground";
@@ -185,6 +323,10 @@ import { playground as badge21Playground } from "@/registry-components/badge21/b
 import { playground as badge22Playground } from "@/registry-components/badge22/badge22.playground";
 import { playground as badge23Playground } from "@/registry-components/badge23/badge23.playground";
 import { playground as barChartPlayground } from "@/registry-components/bar-chart/bar-chart.playground";
+import { playground as bauhausCompositionPlayground } from "@/registry-components/bauhaus-composition/bauhaus-composition.playground";
+import { playground as blobGradientPlayground } from "@/registry-components/blob-gradient/blob-gradient.playground";
+import { playground as blobMaskPlayground } from "@/registry-components/blob-mask/blob-mask.playground";
+import { playground as bokehGradientPlayground } from "@/registry-components/bokeh-gradient/bokeh-gradient.playground";
 import { playground as button1Playground } from "@/registry-components/button1/button1.playground";
 import { playground as button2Playground } from "@/registry-components/button2/button2.playground";
 import { playground as button3Playground } from "@/registry-components/button3/button3.playground";
@@ -203,6 +345,9 @@ import { playground as button18Playground } from "@/registry-components/button18
 import { playground as button19Playground } from "@/registry-components/button19/button19.playground";
 import { playground as button20Playground } from "@/registry-components/button20/button20.playground";
 import { playground as button21Playground } from "@/registry-components/button21/button21.playground";
+import { playground as button23Playground } from "@/registry-components/button23/button23.playground";
+import { playground as button24Playground } from "@/registry-components/button24/button24.playground";
+import { playground as candleFlamePlayground } from "@/registry-components/candle-flame/candle-flame.playground";
 import { playground as card1Playground } from "@/registry-components/card1/card1.playground";
 import { playground as card2Playground } from "@/registry-components/card2/card2.playground";
 import { playground as card3Playground } from "@/registry-components/card3/card3.playground";
@@ -231,7 +376,29 @@ import { playground as card25Playground } from "@/registry-components/card25/car
 import { playground as card26Playground } from "@/registry-components/card26/card26.playground";
 import { playground as card27Playground } from "@/registry-components/card27/card27.playground";
 import { playground as card28Playground } from "@/registry-components/card28/card28.playground";
+import { playground as chatBubblePlayground } from "@/registry-components/chat-bubble/chat-bubble.playground";
+import { playground as cloudSkyPlayground } from "@/registry-components/cloud-sky/cloud-sky.playground";
+import { playground as codeSharePlayground } from "@/registry-components/code-share/code-share.playground";
 import { playground as colorPickerPlayground } from "@/registry-components/color-picker/color-picker.playground";
+import { playground as concertinaBookPlayground } from "@/registry-components/concertina-book/concertina-book.playground";
+import { playground as confirmSlidePlayground } from "@/registry-components/confirm-slide/confirm-slide.playground";
+import { playground as confirmTypePlayground } from "@/registry-components/confirm-type/confirm-type.playground";
+import { playground as conicGradientPlayground } from "@/registry-components/conic-gradient/conic-gradient.playground";
+import { playground as contourTerrainPlayground } from "@/registry-components/contour-terrain/contour-terrain.playground";
+import { playground as counterColumnsPlayground } from "@/registry-components/counter-columns/counter-columns.playground";
+import { playground as crtScreenPlayground } from "@/registry-components/crt-screen/crt-screen.playground";
+import { playground as curtainRevealPlayground } from "@/registry-components/curtain-reveal/curtain-reveal.playground";
+import { playground as cyanotypePlayground } from "@/registry-components/cyanotype/cyanotype.playground";
+import { playground as ditherFormPlayground } from "@/registry-components/dither-form/dither-form.playground";
+import { playground as dockMagnifyPlayground } from "@/registry-components/dock-magnify/dock-magnify.playground";
+import { playground as duneFieldPlayground } from "@/registry-components/dune-field/dune-field.playground";
+import { playground as expandingFramePlayground } from "@/registry-components/expanding-frame/expanding-frame.playground";
+import { playground as ferrofluidPlayground } from "@/registry-components/ferrofluid/ferrofluid.playground";
+import { playground as fieldOtpPlayground } from "@/registry-components/field-otp/field-otp.playground";
+import { playground as fieldPasswordPlayground } from "@/registry-components/field-password/field-password.playground";
+import { playground as fieldSearchPlayground } from "@/registry-components/field-search/field-search.playground";
+import { playground as fileAvatarPlayground } from "@/registry-components/file-avatar/file-avatar.playground";
+import { playground as fileDropPlayground } from "@/registry-components/file-drop/file-drop.playground";
 import { playground as filterCheckboxPlayground } from "@/registry-components/filter-checkbox/filter-checkbox.playground";
 import { playground as filterChipsPlayground } from "@/registry-components/filter-chips/filter-chips.playground";
 import { playground as filterComboboxPlayground } from "@/registry-components/filter-combobox/filter-combobox.playground";
@@ -246,6 +413,22 @@ import { playground as filterSliderPlayground } from "@/registry-components/filt
 import { playground as filterSwatchPlayground } from "@/registry-components/filter-swatch/filter-swatch.playground";
 import { playground as filterTogglePlayground } from "@/registry-components/filter-toggle/filter-toggle.playground";
 import { playground as filterTreePlayground } from "@/registry-components/filter-tree/filter-tree.playground";
+import { playground as fluidGradientPlayground } from "@/registry-components/fluid-gradient/fluid-gradient.playground";
+import { playground as foldGradientPlayground } from "@/registry-components/fold-gradient/fold-gradient.playground";
+import { playground as frostedGradientPlayground } from "@/registry-components/frosted-gradient/frosted-gradient.playground";
+import { playground as galleryRailPlayground } from "@/registry-components/gallery-rail/gallery-rail.playground";
+import { playground as glassLensPlayground } from "@/registry-components/glass-lens/glass-lens.playground";
+import { playground as growingTreePlayground } from "@/registry-components/growing-tree/growing-tree.playground";
+import { playground as halftonePlayground } from "@/registry-components/halftone/halftone.playground";
+import { playground as harmonographPlayground } from "@/registry-components/harmonograph/harmonograph.playground";
+import { playground as heatmapCalendarPlayground } from "@/registry-components/heatmap-calendar/heatmap-calendar.playground";
+import { playground as heatmapGridPlayground } from "@/registry-components/heatmap-grid/heatmap-grid.playground";
+import { playground as holdConfirmPlayground } from "@/registry-components/hold-confirm/hold-confirm.playground";
+import { playground as horizonGradientPlayground } from "@/registry-components/horizon-gradient/horizon-gradient.playground";
+import { playground as imageLoupePlayground } from "@/registry-components/image-loupe/image-loupe.playground";
+import { playground as impastoPlayground } from "@/registry-components/impasto/impasto.playground";
+import { playground as inkFlowPlayground } from "@/registry-components/ink-flow/ink-flow.playground";
+import { playground as inkFluidPlayground } from "@/registry-components/ink-fluid/ink-fluid.playground";
 import { playground as inspectorActionPlayground } from "@/registry-components/inspector-action/inspector-action.playground";
 import { playground as inspectorAlignPlayground } from "@/registry-components/inspector-align/inspector-align.playground";
 import { playground as inspectorAnglePlayground } from "@/registry-components/inspector-angle/inspector-angle.playground";
@@ -292,12 +475,79 @@ import { playground as inspectorTracksPlayground } from "@/registry-components/i
 import { playground as inspectorTransitionPlayground } from "@/registry-components/inspector-transition/inspector-transition.playground";
 import { playground as inspectorUnitPlayground } from "@/registry-components/inspector-unit/inspector-unit.playground";
 import { playground as inspectorVariantsPlayground } from "@/registry-components/inspector-variants/inspector-variants.playground";
+import { playground as kaleidoscopePlayground } from "@/registry-components/kaleidoscope/kaleidoscope.playground";
+import { playground as kbdComboPlayground } from "@/registry-components/kbd-combo/kbd-combo.playground";
+import { playground as kbdSheetPlayground } from "@/registry-components/kbd-sheet/kbd-sheet.playground";
+import { playground as koiPondPlayground } from "@/registry-components/koi-pond/koi-pond.playground";
+import { playground as letterpressPlayground } from "@/registry-components/letterpress/letterpress.playground";
+import { playground as lightLeakPlayground } from "@/registry-components/light-leak/light-leak.playground";
 import { playground as lineChartPlayground } from "@/registry-components/line-chart/line-chart.playground";
+import { playground as lineEngravingPlayground } from "@/registry-components/line-engraving/line-engraving.playground";
+import { playground as liquidChromePlayground } from "@/registry-components/liquid-chrome/liquid-chrome.playground";
+import { playground as liquidSlidesPlayground } from "@/registry-components/liquid-slides/liquid-slides.playground";
+import { playground as listKanbanPlayground } from "@/registry-components/list-kanban/list-kanban.playground";
+import { playground as listSortablePlayground } from "@/registry-components/list-sortable/list-sortable.playground";
+import { playground as loupeComparePlayground } from "@/registry-components/loupe-compare/loupe-compare.playground";
+import { playground as magneticFieldPlayground } from "@/registry-components/magnetic-field/magnetic-field.playground";
+import { playground as marbleSlabPlayground } from "@/registry-components/marble-slab/marble-slab.playground";
+import { playground as marquee1Playground } from "@/registry-components/marquee1/marquee1.playground";
+import { playground as mentionInputPlayground } from "@/registry-components/mention-input/mention-input.playground";
+import { playground as meshGradientPlayground } from "@/registry-components/mesh-gradient/mesh-gradient.playground";
+import { playground as meterRingPlayground } from "@/registry-components/meter-ring/meter-ring.playground";
+import { playground as meterStackPlayground } from "@/registry-components/meter-stack/meter-stack.playground";
+import { playground as mosaicGradientPlayground } from "@/registry-components/mosaic-gradient/mosaic-gradient.playground";
+import { playground as murmurationPlayground } from "@/registry-components/murmuration/murmuration.playground";
+import { playground as navBreadcrumbPlayground } from "@/registry-components/nav-breadcrumb/nav-breadcrumb.playground";
+import { playground as navPaginationPlayground } from "@/registry-components/nav-pagination/nav-pagination.playground";
+import { playground as navTabsPlayground } from "@/registry-components/nav-tabs/nav-tabs.playground";
+import { playground as noticeStackPlayground } from "@/registry-components/notice-stack/notice-stack.playground";
 import { playground as notificationsMenuPlayground } from "@/registry-components/notifications-menu/notifications-menu.playground";
+import { playground as oceanHorizonPlayground } from "@/registry-components/ocean-horizon/ocean-horizon.playground";
+import { playground as opArtPlayground } from "@/registry-components/op-art/op-art.playground";
+import { playground as orbGradientPlayground } from "@/registry-components/orb-gradient/orb-gradient.playground";
+import { playground as pagerDotsPlayground } from "@/registry-components/pager-dots/pager-dots.playground";
+import { playground as paperLandscapePlayground } from "@/registry-components/paper-landscape/paper-landscape.playground";
+import { playground as photoDustPlayground } from "@/registry-components/photo-dust/photo-dust.playground";
+import { playground as photoRelightPlayground } from "@/registry-components/photo-relight/photo-relight.playground";
+import { playground as photoRingPlayground } from "@/registry-components/photo-ring/photo-ring.playground";
 import { playground as pieChartPlayground } from "@/registry-components/pie-chart/pie-chart.playground";
+import { playground as pixelDistortPlayground } from "@/registry-components/pixel-distort/pixel-distort.playground";
+import { playground as playerScrubberPlayground } from "@/registry-components/player-scrubber/player-scrubber.playground";
+import { playground as playerWaveformPlayground } from "@/registry-components/player-waveform/player-waveform.playground";
+import { playground as poolCausticsPlayground } from "@/registry-components/pool-caustics/pool-caustics.playground";
+import { playground as priceTagPlayground } from "@/registry-components/price-tag/price-tag.playground";
+import { playground as priceTogglePlayground } from "@/registry-components/price-toggle/price-toggle.playground";
+import { playground as prismGradientPlayground } from "@/registry-components/prism-gradient/prism-gradient.playground";
+import { playground as qrCodePlayground } from "@/registry-components/qr-code/qr-code.playground";
 import { playground as radarChartPlayground } from "@/registry-components/radar-chart/radar-chart.playground";
 import { playground as radialChartPlayground } from "@/registry-components/radial-chart/radial-chart.playground";
+import { playground as rainGlassPlayground } from "@/registry-components/rain-glass/rain-glass.playground";
+import { playground as reactionBarPlayground } from "@/registry-components/reaction-bar/reaction-bar.playground";
+import { playground as reactionDiffusionPlayground } from "@/registry-components/reaction-diffusion/reaction-diffusion.playground";
+import { playground as reactionPickerPlayground } from "@/registry-components/reaction-picker/reaction-picker.playground";
+import { playground as reactionRatingPlayground } from "@/registry-components/reaction-rating/reaction-rating.playground";
+import { playground as readoutComparePlayground } from "@/registry-components/readout-compare/readout-compare.playground";
+import { playground as readoutStatPlayground } from "@/registry-components/readout-stat/readout-stat.playground";
+import { playground as reededLightPlayground } from "@/registry-components/reeded-light/reeded-light.playground";
+import { playground as ridgelinesPlayground } from "@/registry-components/ridgelines/ridgelines.playground";
+import { playground as rippleGradientPlayground } from "@/registry-components/ripple-gradient/ripple-gradient.playground";
+import { playground as scrollRailPlayground } from "@/registry-components/scroll-rail/scroll-rail.playground";
+import { playground as scrollTocPlayground } from "@/registry-components/scroll-toc/scroll-toc.playground";
+import { playground as signaturePadPlayground } from "@/registry-components/signature-pad/signature-pad.playground";
+import { playground as silkDrapePlayground } from "@/registry-components/silk-drape/silk-drape.playground";
+import { playground as sketchToPhotoPlayground } from "@/registry-components/sketch-to-photo/sketch-to-photo.playground";
+import { playground as sliceAssemblyPlayground } from "@/registry-components/slice-assembly/slice-assembly.playground";
+import { playground as smokeGradientPlayground } from "@/registry-components/smoke-gradient/smoke-gradient.playground";
+import { playground as snippetInstallPlayground } from "@/registry-components/snippet-install/snippet-install.playground";
+import { playground as splitFlapPlayground } from "@/registry-components/split-flap/split-flap.playground";
+import { playground as starTrailsPlayground } from "@/registry-components/star-trails/star-trails.playground";
+import { playground as statusUptimePlayground } from "@/registry-components/status-uptime/status-uptime.playground";
+import { playground as stepsChecklistPlayground } from "@/registry-components/steps-checklist/steps-checklist.playground";
+import { playground as stepsTrackPlayground } from "@/registry-components/steps-track/steps-track.playground";
+import { playground as stringArtPlayground } from "@/registry-components/string-art/string-art.playground";
+import { playground as sunBlindsPlayground } from "@/registry-components/sun-blinds/sun-blinds.playground";
 import { playground as talentCardPlayground } from "@/registry-components/talent-card/talent-card.playground";
+import { playground as textOrbitPlayground } from "@/registry-components/text-orbit/text-orbit.playground";
 import { playground as text1Playground } from "@/registry-components/text1/text1.playground";
 import { playground as text2Playground } from "@/registry-components/text2/text2.playground";
 import { playground as text3Playground } from "@/registry-components/text3/text3.playground";
@@ -317,7 +567,23 @@ import { playground as text16Playground } from "@/registry-components/text16/tex
 import { playground as text17Playground } from "@/registry-components/text17/text17.playground";
 import { playground as text18Playground } from "@/registry-components/text18/text18.playground";
 import { playground as text19Playground } from "@/registry-components/text19/text19.playground";
+import { playground as text20Playground } from "@/registry-components/text20/text20.playground";
+import { playground as text21Playground } from "@/registry-components/text21/text21.playground";
+import { playground as text22Playground } from "@/registry-components/text22/text22.playground";
+import { playground as timeCountdownPlayground } from "@/registry-components/time-countdown/time-countdown.playground";
+import { playground as timeRelativePlayground } from "@/registry-components/time-relative/time-relative.playground";
+import { playground as toolbarPlayground } from "@/registry-components/toolbar/toolbar.playground";
+import { playground as tourSpotlightPlayground } from "@/registry-components/tour-spotlight/tour-spotlight.playground";
+import { playground as treeJsonPlayground } from "@/registry-components/tree-json/tree-json.playground";
+import { playground as treeViewPlayground } from "@/registry-components/tree-view/tree-view.playground";
+import { playground as typeWindowPlayground } from "@/registry-components/type-window/type-window.playground";
 import { playground as userMenuPlayground } from "@/registry-components/user-menu/user-menu.playground";
+import { playground as vortexGradientPlayground } from "@/registry-components/vortex-gradient/vortex-gradient.playground";
+import { playground as warpFieldPlayground } from "@/registry-components/warp-field/warp-field.playground";
+import { playground as waterReflectionPlayground } from "@/registry-components/water-reflection/water-reflection.playground";
+import { playground as waveGradientPlayground } from "@/registry-components/wave-gradient/wave-gradient.playground";
+import { playground as wheatFieldPlayground } from "@/registry-components/wheat-field/wheat-field.playground";
+import { playground as zoomParallaxPlayground } from "@/registry-components/zoom-parallax/zoom-parallax.playground";
 
 export interface RegistryComponentMeta {
   name: string;
@@ -344,11 +610,53 @@ export interface RegistryComponentMeta {
   hidden?: boolean;
   /** If true, plays a one-shot animation on mount; showcases offer a replay */
   isAnimated?: boolean;
+  /** Background stage only: how the demo content sits on the surface */
+  demoContentTone?: "light" | "theme" | "soft" | "plain";
+  /** Fills the whole stage like a background, without demo content */
+  fullBleed?: boolean;
+  /** Background stage only: demo content starts switched off */
+  demoContentOff?: boolean;
+  /** Scale of the demo inside its listing card */
+  cardScale?: number;
   /** Docs playground, from {name}.playground.ts beside the component */
   playground?: PlaygroundConfig;
 }
 
 const _allRegistryComponents_0: RegistryComponentMeta[] = [
+  {
+    name: "activity-feed",
+    title: "Activity Feed",
+    description: "An activity timeline: events grouped by day under sticky headers (Today, Yesterday, then dates written in the reader's locale), each on a vertical rail with a tinted icon node, the actor, what they did and what it happened to. Relative times (3 min ago) keep themselves current from one shared clock that pauses on hidden tabs, and render only after mount so the server and the browser never disagree. Details open under an event with a smooth height animation, new events slide in at the top, and a Load more button stays busy while its promise runs. Three tones, three sizes, controlled or uncontrolled details.",
+    category: "Activity",
+    component: ActivityFeed,
+    demoProps: activityFeedDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { MessageSquare, Upload } from \"lucide-react\";\nimport { ActivityFeed } from \"@/components/beste/component/activity-feed\";\n\n<ActivityFeed\n  events={[\n    {\n      id: \"1\",\n      actor: { name: \"Hania Rani\" },\n      action: \"uploaded\",\n      target: \"Esja (piano take 4).wav\",\n      time: \"2026-09-27T09:41:00Z\",\n      icon: Upload,\n      tone: \"info\",                 // \"neutral\" | \"info\" | \"success\" | \"warning\" | \"danger\"\n      detail: \"48 kHz, 24 bit, 6 min 12 s.\",\n    },\n    { id: \"2\", actor: { name: \"Nils Frahm\" }, action: \"commented on\", target: \"Says, mix 7\", time: Date.now() - 60_000, icon: MessageSquare },\n  ]}\n  hasMore\n  onLoadMore={async () => console.log(\"fetch the next page\")}\n  locale=\"en-GB\"\n  tone=\"outline\"                    // \"muted\" | \"outline\" | \"ghost\" (default)\n  className=\"max-h-96 overflow-y-auto\"  // a scroll area makes the day headers stick\n/>",
+    playground: activityFeedPlayground,
+  },
+  {
+    name: "anamorphic-type",
+    title: "Anamorphic Type",
+    description: "A statement cut into thousands of fragments traced from its own font and scattered in depth, so it only reads from one exact viewpoint. The camera slowly orbits and most of the time the fragments drift as an abstract constellation, then every few seconds it eases into the true angle, the words snap into focus, hold and fall apart again. The cursor steers the camera; its center is the true viewpoint. Density, depth, orbit, timing, fragment shape and colors are props. The real text stays in the page, the fragment count adapts to the device, it pauses offscreen and shows the resolved words for reduced motion.",
+    category: "Text",
+    component: AnamorphicType,
+    demoProps: anamorphicTypeDemo,
+    usage: "import { AnamorphicType } from \"@/components/beste/component/anamorphic-type\";\n\n<AnamorphicType\n  as=\"h1\"\n  text=\"It only makes sense from here.\"\n  className=\"text-8xl font-semibold tracking-[-0.045em]\"\n/>\n\n<AnamorphicType\n  text=\"Stand where we stood.\"\n  depth={0.8}                   // deeper scatter, more abstract off-axis\n  orbit={0.3}                   // the camera strays less\n  interval={4}                  // seconds between resolves\n  hold={3}                      // seconds the words stay in focus\n  fragment=\"dashes\"             // \"dots\" (default) | \"dashes\"\n  accentColor=\"var(--primary)\"  // any CSS color, tokens included\n  accent={0.15}                 // share of accent fragments\n/>",
+    isAnimated: true,
+    cardScale: 0.5,
+    playground: anamorphicTypePlayground,
+  },
+  {
+    name: "aperture-reveal",
+    title: "Aperture Reveal",
+    description: "A Canvas 2D camera iris in front of a full-bleed photograph: machined blades in brushed dark metal, each catching the light at its own angle, with crisp overlapping seams, soft cast shadows, lit edges and fine grain, set in a turned metal ring on a matte lens body. As it opens the blades turn and retract, then the ring grows past the frame so the photo stands alone. Progress can be driven from scroll (a number or a MotionValue, read every frame without re-renders) or left to a slow open, hold and close loop. The light on the metal and the photo drift with the cursor. Blade count, colors, rotation, twist, pace and grain are props; it pauses offscreen and holds a still frame for reduced motion.",
+    category: "Media",
+    component: ApertureReveal,
+    demoProps: apertureRevealDemo,
+    usage: "import { ApertureReveal } from \"@/components/beste/component/aperture-reveal\";\n\n<ApertureReveal className=\"h-[32rem] w-full\" />\n\n// Driven by scroll: pass a number from 0 (closed) to 1 (open), or a framer-motion MotionValue\nconst { scrollYProgress } = useScroll({ target: ref, offset: [\"start start\", \"end end\"] });\n\n<ApertureReveal\n  className=\"absolute inset-0\"\n  imageSrc=\"/photos/night-sky.jpg\"\n  imageAlt=\"Snowy peaks under the Milky Way\"\n  progress={scrollYProgress}\n  blades={11}                 // 5 to 16\n  bladeColor=\"#23201c\"        // any CSS color\n  highlightColor=\"#ffe9c7\"\n  twist={0.8}                 // blades turn further while opening\n/>",
+    isAnimated: true,
+    playground: apertureRevealPlayground,
+  },
   {
     name: "area-chart",
     title: "Area Chart",
@@ -360,6 +668,29 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["chart"],
     usage: "import { AreaChart } from \"@/components/beste/component/area-chart\";\n\n<AreaChart\n  xKey=\"month\"\n  stacked\n  config={{\n    revenue: { label: \"Revenue\", color: \"var(--chart-1)\" },\n    orders: { label: \"Orders\", color: \"var(--chart-2)\" },\n  }}\n  data={[\n    { month: \"Jan\", revenue: 4200, orders: 2400 },\n    { month: \"Feb\", revenue: 3800, orders: 2100 },\n  ]}\n/>",
     playground: areaChartPlayground,
+  },
+  {
+    name: "ascii-render",
+    title: "ASCII Render",
+    description: "A live WebGL scene drawn entirely in characters: a turning form is raymarched into a small grid, one cell per glyph, then printed from a monospace glyph ramp over drifting noise and a slow scan line, with cells lighting up in the accent color around the cursor. Colors, glyph ramp, cell size, form, placement, size, spin, speed, drift, scan line, contrast and the cursor glow are all props. Colors follow the theme, cells grow on slower devices, it pauses offscreen, holds a still frame for reduced motion and falls back to a dot field without WebGL.",
+    category: "Media",
+    component: AsciiRender,
+    demoProps: asciiRenderDemo,
+    usage: "import { AsciiRender } from \"@/components/beste/component/ascii-render\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <AsciiRender className=\"absolute inset-0\" align=\"right\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<AsciiRender\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--foreground)\"  // any CSS color, tokens included\n  accentColor=\"var(--primary)\"\n  glyphs=\" .,:;ox%#@\"           // darkest to brightest\n  cellSize={12}                 // cell height in pixels\n  scene=\"torus\"                 // \"lattice\" (default) | \"sphere\" | \"torus\" | \"asterisk\"\n  align=\"right\"                 // \"left\" | \"center\" (default) | \"right\"\n  spin={0.6}                    // how fast the form turns\n  scanLine={false}\n/>",
+    isAnimated: true,
+    fullBleed: true,
+    playground: asciiRenderPlayground,
+  },
+  {
+    name: "aurora-sky",
+    title: "Aurora Sky",
+    description: "A live WebGL night sky with folding northern-lights curtains, vertical rays, a sparse twinkling starfield and two mountain ridges along the bottom. The curtains lean with the cursor like wind. Sky, curtain and mountain colors, brightness, curtain count and height, ray detail, stars, twinkle, speed and wind are all props. Grows softly out of the sky color on load, renders at a reduced scale, adapts to the device, pauses offscreen, holds a still sky for reduced motion and falls back to a CSS gradient without WebGL.",
+    category: "Background",
+    component: AuroraSky,
+    demoProps: auroraSkyDemo,
+    usage: "import { AuroraSky } from \"@/components/beste/component/aurora-sky\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <AuroraSky className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<AuroraSky\n  className=\"min-h-[32rem]\"\n  lowColor=\"#7df9ff\"      // any CSS color, tokens included\n  highColor=\"#6d5bff\"\n  intensity={0.7}         // brightness, 0 to 1\n  curtains={3}            // 1 to 4\n  rays={0.8}              // sharper vertical rays\n  mountains={false}       // open horizon\n/>",
+    isAnimated: true,
+    playground: auroraSkyPlayground,
   },
   {
     name: "badge6",
@@ -572,6 +903,51 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["chart"],
     usage: "import { BarChart } from \"@/components/beste/component/bar-chart\";\n\n<BarChart\n  xKey=\"month\"\n  config={{\n    desktop: { label: \"Desktop\", color: \"var(--chart-1)\" },\n    mobile: { label: \"Mobile\", color: \"var(--chart-2)\" },\n  }}\n  data={[\n    { month: \"Jan\", desktop: 186, mobile: 80 },\n    { month: \"Feb\", desktop: 305, mobile: 200 },\n  ]}\n/>",
     playground: barChartPlayground,
+  },
+  {
+    name: "bauhaus-composition",
+    title: "Bauhaus Composition",
+    description: "A living constructivist poster in crisp SVG: circles, half and quarter circles, squares, a triangle, bars and hairline rules snapped to a modular grid rearrange into a new balanced composition every few seconds. Each form springs to its new place with a slight stagger, quarter circles turning in quarter steps and bars sliding along their axis, one muted form printing over the rest like overlapping inks. Forms lean away from the cursor and a click moves on at once. Palette, form count, seed, rhythm, spring, stagger, repel and grid are all props; the forms grow in one after another on load, it pauses offscreen and holds one arrangement for reduced motion.",
+    category: "Background",
+    component: BauhausComposition,
+    demoProps: bauhausCompositionDemo,
+    usage: "import { BauhausComposition } from \"@/components/beste/component/bauhaus-composition\";\n\n// As a panel or a layer behind content\n<BauhausComposition className=\"aspect-[4/5]\" />\n\n<BauhausComposition\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--foreground)\"   // any CSS color, tokens included\n  accentColor=\"#d9412b\"          // the loud color, usually the big circle\n  secondaryColor=\"#e3b23c\"\n  tertiaryColor=\"#2c5aa0\"\n  shapes={18}                    // 6 to 24 forms\n  seed={3}                       // a different cast and sequence\n  interval={6}                   // seconds per arrangement\n  bounce={0.8}                   // livelier arrival\n  columns={8}                    // a coarser grid\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: bauhausCompositionPlayground,
+  },
+  {
+    name: "blob-gradient",
+    title: "Blob Gradient",
+    description: "A live WebGL lava lamp: soft colored blobs float, merge and pull apart like liquid over a background color, each carrying its own color and blending with its neighbors in Oklab where they meet, so the mix stays bright instead of going muddy. A goo setting runs from soft glowing orbs to crisp liquid edges, a glow adds a halo and light along the edges, and a rise setting moves from free floating to blobs that climb and sink like wax in a lamp. Colors, background, blob count, size, speed, saturation, grain amount and size and the seed are all props; a new palette fades through over a set time, a new count grows blobs in or shrinks them away, and the cursor becomes one more blob that merges with the rest. It grows softly out of its background on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to soft CSS color pools without WebGL.",
+    category: "Background",
+    component: BlobGradient,
+    demoProps: blobGradientDemo,
+    usage: "import { BlobGradient } from \"@/components/beste/component/blob-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <BlobGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Soft pastel orbs floating freely on the page background\n<BlobGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#ffc8dd\", \"#bde0fe\", \"#cdb4db\"]}\n  backgroundColor=\"var(--background)\"\n  count={5}\n  goo={0.1}                // soft glowing orbs instead of liquid edges\n  rise={0}                 // float freely, no lamp drift\n  size={1.4}\n/>",
+    isAnimated: true,
+    playground: blobGradientPlayground,
+  },
+  {
+    name: "blob-mask",
+    title: "Blob Mask",
+    description: "A photo clipped by an organic SVG blob that breathes continuously, trailed by an offset outline blob, and swells gently toward the cursor. The path is rebuilt from noise-driven points each frame and written straight to the DOM. Colors, lobe count, wobble, speed, outline and swell are all props; it pauses offscreen and holds one still shape for reduced motion.",
+    category: "Media",
+    component: BlobMask,
+    demoProps: blobMaskDemo,
+    usage: "import { BlobMask } from \"@/components/beste/component/blob-mask\";\n\n<BlobMask\n  className=\"aspect-square max-w-[560px]\"   // give it a size; the blob fills it\n  src=\"https://images.unsplash.com/photo-1617897903246-719242758050?w=1600&q=80\"\n  alt=\"A dropper bottle of golden oil\"\n  outlineColor=\"#b07a5b\"   // any CSS color\n  points={7}               // fewer, rounder lobes\n  wobble={0.8}             // livelier edge, 0 to 1\n  bulge={0.7}              // swell toward the cursor, 0 to 1\n  outline={false}          // drop the trailing outline\n/>",
+    isAnimated: true,
+    playground: blobMaskPlayground,
+  },
+  {
+    name: "bokeh-gradient",
+    title: "Bokeh Gradient",
+    description: "A live WebGL field of out-of-focus light: soft discs of varying size drift upward over a gentle wash of the palette, each with the soft interior and slightly brighter rim of real lens bokeh, near discs larger and brighter than far ones. The discs can take the polygon shape of the aperture blades, the focus goes from dreamy to crisp, and the depth layers shift with parallax toward the cursor. Colors, background, count, size, focus, aperture, blades, brightness, wash, speed, depth, saturation and film grain are all props, and a new palette fades through over a set time. It grows softly out of its background on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to soft CSS circles without WebGL.",
+    category: "Background",
+    component: BokehGradient,
+    demoProps: bokehGradientDemo,
+    usage: "import { BokehGradient } from \"@/components/beste/component/bokeh-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <BokehGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Crisp hexagonal city lights\n<BokehGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#ffd28a\", \"#ff8a5c\", \"#f6f1e7\"]}\n  backgroundColor=\"#120d0a\"\n  focus={0.8}\n  aperture={1}             // the polygon of the aperture blades\n  blades={6}\n  count={32}\n/>",
+    isAnimated: true,
+    playground: bokehGradientPlayground,
   },
   {
     name: "button1",
@@ -801,6 +1177,32 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usageBase: "import { Button22 } from \"@/components/beste/component/button22\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button22 label=\"Start your journey\" render={<Link href=\"/contact\" />} nativeButton={false} />\n\n<Button22\n  label=\"See how it works\"\n  icon={ArrowRight}   // replaces the dot marker\n  tone=\"outline\"      // \"primary\" (default) | \"light\" | \"dark\" | \"outline\"\n  onClick={() => console.log(\"clicked\")}\n/>",
   },
   {
+    name: "button23",
+    title: "Arrow Pill",
+    description: "A calm sentence-case pill with an arrow. On hover the arrow slips out the way it points while a twin arrives from behind it, either up and to the right or straight to the right. A white tone holds on dark or photographic surfaces in both themes, and a hairline outline takes the surface's text color.",
+    category: "Button",
+    component: Button23,
+    demoProps: button23Demo,
+    registryDependencies: ["button"],
+    variants: { tone: ["light", "outline", "dark", "primary"] },
+    usage: "import { Button23 } from \"@/components/beste/component/button23\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button23 asChild label=\"Enter the studio\">\n  <Link href=\"/studio\" />\n</Button23>\n\n<Button23\n  label=\"Watch the reel\"\n  tone=\"outline\"   // \"light\" (default) | \"outline\" | \"dark\" | \"primary\"\n  size=\"sm\"        // \"default\" | \"sm\"\n  direction=\"right\" // \"up-right\" (default) | \"right\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    usageBase: "import { Button23 } from \"@/components/beste/component/button23\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button23 label=\"Enter the studio\" render={<Link href=\"/studio\" />} nativeButton={false} />\n\n<Button23\n  label=\"Watch the reel\"\n  tone=\"outline\"   // \"light\" (default) | \"outline\" | \"dark\" | \"primary\"\n  size=\"sm\"        // \"default\" | \"sm\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    playground: button23Playground,
+  },
+  {
+    name: "button24",
+    title: "Turn Arrow Button",
+    description: "A square-cornered block button with a down-right arrow that swings a quarter turn to point right on hover while the fill switches to the accent. Built for poster layouts and hard grids.",
+    category: "Button",
+    component: Button24,
+    demoProps: button24Demo,
+    registryDependencies: ["button"],
+    variants: { tone: ["dark", "primary", "light"] },
+    usage: "import { Button24 } from \"@/components/beste/component/button24\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button24 asChild label=\"Get a festival pass\">\n  <Link href=\"/passes\" />\n</Button24>\n\n<Button24\n  label=\"See the program\"\n  tone=\"primary\"   // \"dark\" (default) | \"primary\" | \"light\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    usageBase: "import { Button24 } from \"@/components/beste/component/button24\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button24 label=\"Get a festival pass\" render={<Link href=\"/passes\" />} nativeButton={false} />\n\n<Button24\n  label=\"See the program\"\n  tone=\"primary\"   // \"dark\" (default) | \"primary\" | \"light\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    playground: button24Playground,
+  },
+  {
     name: "calendar-month",
     title: "Calendar Month",
     description: "A month grid with selectable days, a today marker, colored event dots per day, and prev/next month controls. Data-driven (weekStart + daysInMonth) so it renders deterministically; controlled or self-managed selection.",
@@ -808,6 +1210,17 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     component: CalendarMonth,
     demoProps: calendarMonthDemo,
     usage: "import { CalendarMonth } from \"@/components/beste/component/calendar-month\";\n\n<CalendarMonth\n  monthLabel=\"January 2026\"\n  weekStart={4}\n  daysInMonth={31}\n  today={20}\n  defaultSelectedDay={21}\n  events={[\n    { day: 12, tone: \"emerald\" },\n    { day: 22, tone: \"primary\" },\n  ]}\n  onSelectDay={(day) => console.log(\"day:\", day)}\n/>",
+  },
+  {
+    name: "candle-flame",
+    title: "Candle Flame",
+    description: "A single candle flame drawn live in WebGL on a dark, warm ground: a teardrop with a blue base, a white-gold core and an orange mantle, a slow flicker, warm light breathing on the room and the wax, and a thin wisp of smoke that curls up now and then. The cursor is a breath that bends the flame away, and a quick pass makes it gutter for a moment. Colors, candle, flicker, sway, smoke, glow, breath, position and size are all props. Pauses offscreen, holds a still flame for reduced motion and falls back to a soft glow without WebGL.",
+    category: "Media",
+    component: CandleFlame,
+    demoProps: candleFlameDemo,
+    usage: "import { CandleFlame } from \"@/components/beste/component/candle-flame\";\n\n<CandleFlame className=\"aspect-[4/5] w-full max-w-md\" />\n\n<CandleFlame\n  className=\"h-[36rem]\"\n  groundColor=\"#0b0908\"     // any CSS color, tokens included\n  flameColor=\"#ffb45c\"\n  waxColor=\"#f2e8d8\"\n  position={0.7}            // candle toward the right, 0 to 1\n  flicker={0.3}             // calmer flame, 0 to 1\n  smoke={0}                 // no smoke wisps\n  breath={0.9}              // the cursor bends it further\n/>",
+    isAnimated: true,
+    playground: candleFlamePlayground,
   },
   {
     name: "card1",
@@ -1118,6 +1531,40 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: card28Playground,
   },
   {
+    name: "chat-bubble",
+    title: "Chat Bubble",
+    description: "A conversation drawn as message groups: consecutive messages from one person within a few minutes gather under one avatar and name, their corners tightening where the bubbles meet so a run reads as one voice. The reader's messages sit on the right in the primary color, everyone else's on the left in one of three tones. Times slide out beside a bubble on hover or focus, the reader's latest message carries its delivery state (sending, sent, delivered, read), reactions sit under a bubble as chips, bare links become links, and a typing bubble of three dots joins the person's group. The whole log is one tab stop with arrow keys between messages.",
+    category: "Chat",
+    component: ChatBubble,
+    demoProps: chatBubbleDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ChatBubble } from \"@/components/beste/component/chat-bubble\";\n\n<ChatBubble\n  me=\"joni\"\n  people={[\n    { id: \"joni\", name: \"Joni Mitchell\" },\n    { id: \"miles\", name: \"Miles Davis\", avatar: \"/avatars/miles.jpg\" },\n  ]}\n  messages={[\n    { id: \"1\", from: \"miles\", text: \"Rehearsal moved to Thursday.\", time: \"2026-09-27T17:02:00Z\" },\n    { id: \"2\", from: \"joni\", text: \"Works for me.\", time: \"2026-09-27T17:05:00Z\", status: \"read\" },\n  ]}\n  typing={[\"miles\"]}                                   // a three-dot bubble joins their group\n  onReact={(id, emoji) => console.log(\"React\", id, emoji)} // makes reaction chips pressable\n  groupWithin={5}                                      // minutes between messages in one group\n  tone=\"outline\"                                       // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"                                            // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: chatBubblePlayground,
+  },
+  {
+    name: "cloud-sky",
+    title: "Cloud Sky",
+    description: "A live WebGL flight through golden-hour cumulus: up to four layers of billowy clouds drift past at different speeds, sunlit on the side facing a low sun, soft gray beneath, with a silver lining where thin edges catch the light and far layers fading into the horizon haze. The cursor steers the view a little. Sky colors, sun color and position, coverage, softness, speed and layers are all props. Clouds condense softly out of clear sky on load, it renders at a reduced, adaptive resolution, pauses offscreen, holds a still sky for reduced motion and falls back to a CSS sky without WebGL.",
+    category: "Background",
+    component: CloudSky,
+    demoProps: cloudSkyDemo,
+    usage: "import { CloudSky } from \"@/components/beste/component/cloud-sky\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <CloudSky className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<CloudSky\n  className=\"min-h-[32rem]\"\n  skyTop=\"#3d4f7a\"       // any CSS color, tokens included\n  skyHorizon=\"#f7b88a\"\n  sunX={0.3}             // sun position, 0 to 1\n  sunY={0.25}\n  coverage={0.7}         // more of the sky under cloud\n  softness={0.8}         // mistier edges\n  layers={3}             // depth layers, 1 to 4\n/>",
+    isAnimated: true,
+    playground: cloudSkyPlayground,
+  },
+  {
+    name: "code-share",
+    title: "Code Share",
+    description: "A share card built around the qr-code component: the link as a QR on a white plate that every phone camera reads in either theme, a title and a line of text, the URL in a read-only field that selects itself on focus, and a copy button whose icon turns into a check and is announced to screen readers. Where the browser has a share sheet a Share button opens it, and Download QR saves the code as a PNG with the same module and finder style. Every QR setting passes through the qr prop.",
+    category: "Code",
+    component: CodeShare,
+    demoProps: codeShareDemo,
+    registryComponents: ["qr-code"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { CodeShare } from \"@/components/beste/component/code-share\";\n\n<CodeShare\n  url=\"https://beste.co/tours/nils-frahm-autumn\"\n  title=\"Share the tour\"\n  description=\"Scan to see every date, or send the link.\"\n  qr={{ moduleStyle: \"dots\", finderStyle: \"circle\", ecc: \"Q\" }}\n  fileName=\"autumn-tour\"\n  onCopy={(url) => console.log(\"Copied\", url)}\n/>",
+    playground: codeSharePlayground,
+  },
+  {
     name: "color-picker",
     title: "Color Picker",
     description: "OKLCH-native colour picker: a gamut-aware lightness and chroma plane, RGB and OKLCH tabs whose rows show their own colour ramp on hover, a field that accepts hex, rgb() or oklch(), screen eyedropper and preset swatches.",
@@ -1130,6 +1577,110 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: colorPickerPlayground,
   },
   {
+    name: "concertina-book",
+    title: "Concertina Book",
+    description: "A folded concertina book whose pages carry one wide photo printed across the whole strip. As it opens, each page unfolds in 3D from a tight zigzag pile on the right, catching light and shade on its folds, until the picture lies flat and unbroken. Folds and unfolds on its own loop with autoplay, opens as it passes through the viewport, or follows any progress you hand it (a pinned section's scroll, a slider). Pages, fold angle, shade and page aspect are props; reduced motion shows the flat pages in a swipeable row.",
+    category: "Media",
+    component: ConcertinaBook,
+    demoProps: concertinaBookDemo,
+    dependencies: ["framer-motion"],
+    usage: "import { ConcertinaBook } from \"@/components/beste/component/concertina-book\";\nimport { useScroll } from \"framer-motion\";\n\n// Opens on its own as it scrolls through the viewport\n<ConcertinaBook\n  className=\"h-[32rem]\"\n  image={{ src: \"https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=2400&q=80\", alt: \"A calm lake below pines\" }}\n  pages={6}          // number of folded pages\n  fold={78}          // largest fold angle, in degrees\n  shade={0.5}        // light and shade on the folds, 0 to 1\n/>\n\n// Driven by a pinned section: scrolling down turns into sideways travel\nfunction Pinned() {\n  const ref = useRef<HTMLElement>(null);\n  const { scrollYProgress } = useScroll({ target: ref, offset: [\"start start\", \"end end\"] });\n  return (\n    <section ref={ref} className=\"relative h-[320vh]\">\n      <div className=\"sticky top-0 h-svh\">\n        <ConcertinaBook className=\"h-full\" image={...} progress={scrollYProgress} />\n      </div>\n    </section>\n  );\n}",
+    isAnimated: true,
+    fullBleed: true,
+    playground: concertinaBookPlayground,
+  },
+  {
+    name: "confirm-slide",
+    title: "Confirm Slide",
+    description: "A slide-to-confirm track for actions that should not happen by accident: the thumb follows the pointer continuously, the label fades as it travels while a soft light runs across the label at rest, and letting go before the end springs the thumb back. Reaching the end, or flicking past halfway, morphs the thumb into a check that draws itself in, swaps the label, fires onConfirm and resets on its own or stays confirmed. It is a real slider for assistive technology: holding the Right arrow slides it through, while End, Enter or Space complete at once. The track is never narrower than its longest label. Destructive or default tone, three sizes, custom thumb icon, and controlled or uncontrolled confirmed state.",
+    category: "Confirm",
+    component: ConfirmSlide,
+    demoProps: confirmSlideDemo,
+    variants: { tone: ["default", "destructive"] },
+    usage: "import { ConfirmSlide } from \"@/components/beste/component/confirm-slide\";\n\n<ConfirmSlide\n  className=\"w-full max-w-sm\"\n  label=\"Slide to delete the album\"\n  confirmedLabel=\"Album deleted\"\n  tone=\"destructive\"\n  onConfirm={() => console.log(\"Deleted\")}\n/>\n\n<ConfirmSlide\n  label=\"Slide to publish\"\n  resetAfter={null}      // stay confirmed\n  size=\"lg\"              // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: confirmSlidePlayground,
+  },
+  {
+    name: "confirm-type",
+    title: "Confirm Type",
+    description: "Type-to-confirm for destructive actions: a short warning, the exact name to type with a copy button beside it, and a field that shows letter by letter how close the typing is, tinting every matching character and underlining the first one that departs. The button only arms on an exact match; pressing it or Enter before that shakes the field instead. The action may return a promise, which shows a spinner and then draws a check. Case-sensitive or not, destructive or default tone, three sizes, controlled or uncontrolled text.",
+    category: "Confirm",
+    component: ConfirmType,
+    demoProps: confirmTypeDemo,
+    dependencies: ["lucide-react"],
+    variants: { tone: ["default", "destructive"] },
+    usage: "import { ConfirmType } from \"@/components/beste/component/confirm-type\";\n\n<ConfirmType\n  name=\"Blue Lines\"\n  warning=\"Deleting the album removes its tracks and artwork. This cannot be undone.\"\n  confirmLabel=\"Delete this album\"\n  doneLabel=\"Album deleted\"\n  onConfirm={async () => {\n    await fetch(\"/api/albums/blue-lines\", { method: \"DELETE\" });\n  }}\n/>\n\n<ConfirmType\n  name=\"autumn-tour\"\n  caseSensitive={false}     // letter case does not matter\n  tone=\"default\"\n  size=\"sm\"\n/>",
+    playground: confirmTypePlayground,
+  },
+  {
+    name: "conic-gradient",
+    title: "Conic Gradient",
+    description: "A live WebGL conic gradient glow: up to six colors sweep around a center point and slowly turn, blended in Oklab so each seam between two hues stays clean and bright. The sweep can repeat into several arms, bend into a spiral, soften its seams toward the center, breathe with a slow swell and ripple, and fade at its edge into a background color, reading as a full disc, a glowing ring or a sweep that fills the frame. A soft light can sit at the core and a film grain on top. Colors, background, center, repeats, angle, speed and direction, radius, ring, falloff, blur, twist, core, breathe, saturation and grain are all props; new colors fade through over a set time, radius, core, speed and center glide to new values, and the center leans toward the cursor. It grows softly out of its background on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a CSS conic gradient without WebGL.",
+    category: "Background",
+    component: ConicGradient,
+    demoProps: conicGradientDemo,
+    usage: "import { ConicGradient } from \"@/components/beste/component/conic-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <ConicGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A thin, three-armed ring turning counterclockwise\n<ConicGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"var(--primary)\", \"#2fd4ff\", \"#ffb347\"]}\n  backgroundColor=\"var(--background)\"\n  repeat={3}\n  ring={0.8}\n  rotation={-1.5}\n  radius={0.4}\n  core={0}\n/>",
+    isAnimated: true,
+    playground: conicGradientPlayground,
+  },
+  {
+    name: "contour-terrain",
+    title: "Contour Terrain",
+    description: "A live WebGL survey map: crisp contour lines drift slowly across hill-shaded ground, with heavier index contours every fifth level, summits touched with the accent color and lines that swell softly around the cursor. Tilt runs from the map seen straight from above to a map laid back into the distance, where the lines thin out and fade into the paper. Rises softly out of the paper on load, adapts its resolution, pauses offscreen, holds a still view for reduced motion and falls back to CSS rings without WebGL.",
+    category: "Background",
+    component: ContourTerrain,
+    demoProps: contourTerrainDemo,
+    usage: "import { ContourTerrain } from \"@/components/beste/component/contour-terrain\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <ContourTerrain className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<ContourTerrain\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--foreground)\"    // any CSS color, tokens included\n  accentColor=\"var(--primary)\"    // summits\n  tilt={0.9}                      // 0 flat map from above, 1 low view across the land\n  relief={0.8}                    // deeper light and shade on the slopes\n  lines={30}                      // more contour levels\n  haze={0.3}                      // see further before the land fades\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: contourTerrainPlayground,
+  },
+  {
+    name: "counter-columns",
+    title: "Counter Columns",
+    description: "A wall of photographic prints tipped back in perspective, with tall columns drifting endlessly in opposite directions at slightly different paces. Scrolling the page pushes the columns and the push eases away, hovering slows the wall almost to a stop, and the whole plane leans gently toward the cursor. The loop is seamless at any size, and column count, pace, tilt, spacing and the top and bottom fade are all props. Reduced motion shows a still, staggered wall.",
+    category: "Media",
+    component: CounterColumns,
+    demoProps: counterColumnsDemo,
+    usage: "import { CounterColumns } from \"@/components/beste/component/counter-columns\";\n\n<CounterColumns\n  className=\"h-[40rem]\"\n  images={[\n    { src: \"https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=80\", alt: \"A model leaning on a teal wall\" },\n    { src: \"https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&q=80\", alt: \"Orange poppies against a blue sky\" },\n    { src: \"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&q=80\", alt: \"A woman walking down a city street\" },\n  ]}\n  columns={3}\n  tilt={0.6}\n  speed={1}\n/>",
+    isAnimated: true,
+    playground: counterColumnsPlayground,
+  },
+  {
+    name: "crt-screen",
+    title: "CRT Screen",
+    description: "A tube television whose picture is a live WebGL CRT shader over cards painted to an offscreen canvas: barrel distortion, scanlines, an aperture grille, bloom, a rolling hum bar and static, with a channel-switch glitch every few seconds or on click that tunes through a title card, color bars and an amber slate. Channels, curvature, scanlines, grille, glow, noise, roll, glitch interval, click to tune and the housing are all props. The resolution adapts to the device, it pauses offscreen, shows a still picture for reduced motion that still changes on click, and a CSS scanline screen stands in without WebGL.",
+    category: "Media",
+    component: CrtScreen,
+    demoProps: crtScreenDemo,
+    usage: "import { CrtScreen } from \"@/components/beste/component/crt-screen\";\n\n<CrtScreen\n  className=\"max-w-3xl\"\n  channels={[\n    { title: \"The late show never signed off.\", caption: \"Rabbit Ear Archive\" },\n    { title: \"Midnight double feature\", caption: \"Two noir pictures, back to back\", look: \"bars\" },\n    { title: \"Cartoons before dawn\", look: \"slate\" },\n  ]}\n  curvature={0.7}      // more bulge, 0 to 1\n  scanlines={0.8}      // deeper lines, 0 to 1\n  glitchInterval={0}   // only change channel on click\n  bezel={false}        // just the glass, no housing\n/>",
+    isAnimated: true,
+    playground: crtScreenPlayground,
+  },
+  {
+    name: "curtain-reveal",
+    title: "Curtain Reveal",
+    description: "A heavy theatre curtain in WebGL in front of a full-bleed photograph: crimson velvet hanging in deep vertical folds, each face turned to the viewer staying dark and saturated while the faces turned away catch a soft rim of light, with fine vertical pile, a weighted hem and gathered swags across the top. As it opens each half draws to its side, the folds bunching tighter and deeper, the hem trailing the top and lifting off the floor, a soft shadow falling on the stage while the house lights come up on the photo. The fabric breathes slowly and sways where the cursor brushes past. Progress can be driven from scroll (a number or a MotionValue, read every frame without re-renders) or left to a slow open, hold and close loop. Color, sheen, folds, swags, the width kept at the sides and grain are props; it pauses offscreen and holds the open stage for reduced motion.",
+    category: "Media",
+    component: CurtainReveal,
+    demoProps: curtainRevealDemo,
+    usage: "import { CurtainReveal } from \"@/components/beste/component/curtain-reveal\";\n\n<CurtainReveal className=\"h-[32rem] w-full\" />\n\n// Driven by scroll: pass a number from 0 (closed) to 1 (open), or a framer-motion MotionValue\nconst { scrollYProgress } = useScroll({ target: ref, offset: [\"start start\", \"end end\"] });\n\n<CurtainReveal\n  className=\"absolute inset-0\"\n  imageSrc=\"/photos/stage.jpg\"\n  imageAlt=\"The orchestra on stage\"\n  progress={scrollYProgress}\n  autoplay={false}\n  color=\"#1d2a4a\"          // any CSS color\n  sheenColor=\"#8fa6d8\"\n  folds={14}\n  valance={0}              // no swags across the top\n  frame={0}                // draw the curtain fully out of view\n/>",
+    isAnimated: true,
+    fullBleed: true,
+    playground: curtainRevealPlayground,
+  },
+  {
+    name: "cyanotype",
+    title: "Cyanotype",
+    description: "A live WebGL sun print: procedurally drawn ferns, grasses, seed heads, veined leaves and flowers lie on brushed watercolor paper while the coating develops from pale chemistry to deep Prussian blue, leaving the plants as white silhouettes with soft lifted edges. The cursor casts shade that holds back the blue and leaves a fading ghost, and every few seconds a wash of water rinses the print and a new arrangement develops. Colors, specimen count, seed, exposure time, wash interval, brushed edge, grain and shade are all props. Fades up softly out of the bare paper on load, adapts its resolution, pauses offscreen, shows a finished print for reduced motion and falls back to a CSS gradient without WebGL.",
+    category: "Background",
+    component: Cyanotype,
+    demoProps: cyanotypeDemo,
+    usage: "import { Cyanotype } from \"@/components/beste/component/cyanotype\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <Cyanotype className=\"absolute inset-0\" />\n  <div className=\"relative text-white\">...</div>\n</section>\n\n<Cyanotype\n  className=\"min-h-[32rem]\"\n  blueColor=\"#1c3f6e\"      // any CSS color\n  specimens={7}            // plants per print, 1 to 9\n  seed={42}                // same seed, same arrangement\n  focus=\"center\"           // \"right\" (default) | \"center\" | \"full\"\n  exposureTime={4}         // seconds to develop\n  washInterval={0}         // never rinse and redevelop\n  shade={0.8}              // how strongly the cursor holds back the blue\n/>",
+    isAnimated: true,
+    playground: cyanotypePlayground,
+  },
+  {
     name: "data-table",
     title: "Data Table",
     description: "Client-side data-table engine: column-driven config with custom cell renderers, sortable headers, keyword search, row selection, per-row action menus, and pagination. Owns all state; blocks pass columns + rows as data.",
@@ -1138,6 +1689,124 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: dataTableDemo,
     registryDependencies: ["table", "input", "button", "badge", "avatar", "checkbox", "dropdown-menu"],
     usage: "import { DataTable, type DataTableColumn } from \"@/components/beste/component/data-table\";\nimport { Eye, Trash2 } from \"lucide-react\";\n\ntype Row = { id: string; name: string; spend: number };\n\nconst columns: DataTableColumn<Row>[] = [\n  { id: \"name\", header: \"Name\", sortable: true, value: (r) => r.name },\n  { id: \"spend\", header: \"Spend\", sortable: true, align: \"right\", value: (r) => r.spend },\n];\n\n<DataTable\n  columns={columns}\n  data={rows}\n  searchable\n  selectable\n  pageSize={8}\n  rowActions={[\n    { id: \"view\", label: \"View\", icon: Eye },\n    { id: \"delete\", label: \"Delete\", icon: Trash2, destructive: true },\n  ]}\n  onRowAction={(action, row) => console.log(action, row.id)}\n/>",
+  },
+  {
+    name: "dither-form",
+    title: "Dither Form",
+    description: "A live WebGL background that raymarches a 3D form and prints it with 1-bit ordered dithering at a chunky pixel size, turning toward the cursor. Ink and paper colors, pixel size, the form (torus, blobs or linked rings), the dither matrix, exposure, backdrop glow, speed and tilt are all props. Ink and paper follow the theme by default, the image dissolves softly in from bare paper on load, slower devices get chunkier pixels instead of dropped frames, it pauses offscreen and holds a still frame for reduced motion.",
+    category: "Background",
+    component: DitherForm,
+    demoProps: ditherFormDemo,
+    usage: "import { DitherForm } from \"@/components/beste/component/dither-form\";\n\n// As a panel or a layer behind content\n<DitherForm className=\"aspect-square\" />\n\n<DitherForm\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--primary)\"       // any CSS color, tokens included\n  paperColor=\"var(--background)\"\n  pixelSize={4}                   // CSS pixels per dither dot\n  shape=\"rings\"                   // \"torus\" (default) | \"blobs\" | \"rings\"\n  pattern=\"bayer4\"                // \"bayer8\" (default) | \"bayer4\"\n  exposure={0.7}                  // brighter form, 0 to 1\n  tilt={0.8}                      // turns further toward the cursor\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: ditherFormPlayground,
+  },
+  {
+    name: "dock-magnify",
+    title: "Dock Magnify",
+    description: "A dock of app tiles that swells under the pointer the way a desktop dock does: each tile's scale follows a cosine falloff from the pointer, eased every frame and written straight to a CSS variable, so moving along it costs no React renders. Neighbours make room as tiles grow, so nothing clips, and the tiles grow away from the edge the dock sits on (bottom, top, left or right). Labels show beside the hovered tile, a pressed tile hops, and running dots, badges, images, tinted icon tiles and separators are all built in. The dock is one tab stop with arrow keys, and a keyboard-focused tile swells as if hovered; reduced motion keeps every tile at rest.",
+    category: "Dock",
+    component: DockMagnify,
+    demoProps: dockMagnifyDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { CalendarDays, Mail, Music } from \"lucide-react\";\nimport { DockMagnify } from \"@/components/beste/component/dock-magnify\";\n\n<DockMagnify\n  items={[\n    { id: \"music\", label: \"Music\", icon: Music, tint: \"#fb3c5b\", running: true },\n    { id: \"mail\", label: \"Mail\", icon: Mail, tint: \"#3b82f6\", badge: 12, href: \"/mail\" },\n    { id: \"divider\", separator: true },\n    { id: \"calendar\", label: \"Calendar\", icon: CalendarDays, onClick: () => console.log(\"Open the calendar\") },\n  ]}\n  magnification={2}     // largest scale under the pointer\n  distance={160}        // px the swell reaches either side\n  side=\"left\"           // \"bottom\" (default) | \"top\" | \"left\" | \"right\"\n  tone=\"outline\"        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"             // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: dockMagnifyPlayground,
+  },
+  {
+    name: "dune-field",
+    title: "Dune Field",
+    description: "A photoreal desert at golden hour, raymarched in a WebGL shader. Dunes rise on a long windward slope to a sharp crest and fall away on a steep lee face, their crest lines curving across a broad swell of land. A low sun rakes across them: lee faces fall into soft shadow tinted by the sky, fine wind ripples catch the light, quartz grains glint, and the distance fades into a warm haze that carries the sun's glow. The camera glides slowly over the dunes and turns gently with the cursor, and on arrival the light comes up out of the dusk. Sand, sky, haze and sun colors, sun height and angle, dune size and ripples are all props. Pauses offscreen and adapts its resolution to keep the glide smooth. Reduced motion shows a still view.",
+    category: "Background",
+    component: DuneField,
+    demoProps: duneFieldDemo,
+    usage: "import { DuneField } from \"@/components/beste/component/dune-field\";\n\n<DuneField className=\"h-[40rem]\" />\n\n<DuneField\n  sandColor=\"#c98f5a\"\n  skyColor=\"#5f7fb0\"\n  sunHeight={0.12}   // a lower sun, longer shadows\n  sunAngle={40}      // light from the right\n  scale={1.3}        // bigger dunes\n  className=\"absolute inset-0\"\n/>",
+    isAnimated: true,
+    demoContentTone: "light",
+    playground: duneFieldPlayground,
+  },
+  {
+    name: "expanding-frame",
+    title: "Expanding Frame",
+    description: "A two-line headline parts to the left and right while a small rounded photograph between the lines grows to fill the stage, its corners easing square and the picture settling from a close zoom to its full view. Progress can come from a number or a live scroll value, or the frame opens and closes on its own. An overlay passed as children settles in once the photograph is full. Lines, photograph, starting width, corner radius, zoom and pace are all props. Reduced motion shows the full photograph.",
+    category: "Media",
+    component: ExpandingFrame,
+    demoProps: expandingFrameDemo,
+    usage: "import { ExpandingFrame } from \"@/components/beste/component/expanding-frame\";\n\n<ExpandingFrame\n  className=\"h-[36rem] bg-background text-foreground\"\n  lines={[\"Built around\", \"the light.\"]}\n  imageSrc=\"https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=2000&q=80\"\n  imageAlt=\"Curved white bands of a building around an opening of blue sky\"\n/>\n\n// Driven by scroll: pass a framer-motion MotionValue (or any { get() }) as progress\nconst { scrollYProgress } = useScroll({ target: ref });\n<ExpandingFrame progress={scrollYProgress} autoplay={false} startWidth={0.24} radius={32} />",
+    isAnimated: true,
+    playground: expandingFramePlayground,
+  },
+  {
+    name: "ferrofluid",
+    title: "Ferrofluid",
+    description: "A live WebGL pool of glossy black magnetic fluid in a shallow dish, seen from a low studio camera so the spikes stand in profile. A magnet (the cursor anywhere over it, or an invisible one hovering over the pool when idle) raises a crown of sharp needle spikes on a hexagonal lattice that grow with proximity, lean toward the pull and relax into a smooth liquid dome when it leaves, lit by an overhead key, a strip light and a rim light. Fluid, surface and light colors, pool size, spike density and height, reach, response, gloss and highlight are props. The pull is spring-smoothed so nothing flickers, a still pool stops redrawing, the resolution adapts to the device, and reduced motion holds one settled crown.",
+    category: "Media",
+    component: Ferrofluid,
+    demoProps: ferrofluidDemo,
+    usage: "import { Ferrofluid } from \"@/components/beste/component/ferrofluid\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <Ferrofluid className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<Ferrofluid\n  className=\"min-h-[32rem]\"\n  surfaceColor=\"var(--muted)\"   // any CSS color, tokens included\n  density={0.8}                 // more, finer spikes\n  spikeHeight={0.9}             // taller crown\n  response={0.3}                // heavier, slower fluid\n  idleMagnet={false}            // stays smooth until the cursor comes near\n/>",
+    isAnimated: true,
+    fullBleed: true,
+    playground: ferrofluidPlayground,
+  },
+  {
+    name: "field-otp",
+    title: "Field OTP",
+    description: "A one-time code field for sign-in and verification: one real input with `autocomplete=\"one-time-code\"` sits under a row of slots, so paste, SMS autofill, password managers and IME all work as they do in any field. Typing fills the slot under the caret and moves on, Backspace steps back, the arrow keys move between slots, and a pasted code fills them all. The active slot shows a blinking caret, each character pops in, and an optional dash splits the row. A `validate` function checks the finished code: a wrong one shakes the row, tints it red and clears it for another try; a right one settles each slot in green and brings in a check. Numeric or alphanumeric, masked or plain, controlled or uncontrolled.",
+    category: "Field",
+    component: FieldOtp,
+    demoProps: fieldOtpDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { FieldOtp } from \"@/components/beste/component/field-otp\";\n\n<FieldOtp\n  label=\"Verification code\"\n  description=\"We sent a code to hello@beste.co.\"\n  separator={3}               // 123-456\n  validate={async (code) => {\n    const response = await fetch(\"/api/verify\", { method: \"POST\", body: JSON.stringify({ code }) });\n    return response.ok;       // false shakes and clears, true locks it in green\n  }}\n  onComplete={(code) => console.log(\"Entered\", code)}\n/>\n\n// Letters and digits, four slots, shown as dots\n<FieldOtp length={4} pattern=\"alphanumeric\" mask tone=\"muted\" size=\"lg\" />\n\n// Status from your own logic\n<FieldOtp value={code} onValueChange={setCode} status={verifying ? \"checking\" : failed ? \"error\" : \"idle\"} />",
+    playground: fieldOtpPlayground,
+  },
+  {
+    name: "field-password",
+    title: "Field Password",
+    description: "A password field for sign-up and change forms: a show and hide eye that keeps the caret where it was, a four-segment strength meter scored in the browser with penalties for repeats, runs like abc or qwerty, common passwords (leetspeak included), years and the reader's own name or email, and a live checklist of rules whose circles fill and draw a check as each one is met. Caps Lock is flagged while the field has focus, the strength is announced once typing settles, and Safari's password generator is told the rules. `onValidChange` reports when every rule and the minimum score pass; `current-password` turns it into a plain sign-in field.",
+    category: "Field",
+    component: FieldPassword,
+    demoProps: fieldPasswordDemo,
+    registryDependencies: ["input"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { FieldPassword } from \"@/components/beste/component/field-password\";\n\n<FieldPassword\n  label=\"Create a password\"\n  userInputs={[\"hello@beste.co\", \"Nina Simone\"]}   // penalized if they appear in the password\n  onValidChange={(valid) => console.log(\"Can submit:\", valid)}\n/>\n\n// Custom rules instead of the default five\n<FieldPassword\n  minScore={3}             // 0 to 4\n  rules={[\n    { id: \"length\", label: \"At least 16 characters\", test: (v) => v.length >= 16 },\n    { id: \"space\", label: \"At least two words\", test: (v) => /\\S\\s+\\S/.test(v) },\n  ]}\n/>\n\n// Sign-in: no meter, no checklist\n<FieldPassword name=\"password\" autoComplete=\"current-password\" tone=\"muted\" size=\"lg\" />\n\n// The scorer on its own\nimport { scorePassword } from \"@/components/beste/component/field-password\";\nconsole.log(scorePassword(\"correct horse battery staple\").label);",
+    playground: fieldPasswordPlayground,
+  },
+  {
+    name: "field-search",
+    title: "Field Search",
+    description: "A search field that does the whole job: `onSearch` fires once typing pauses (and at once on Enter), a shortcut shown as key caps focuses it from anywhere on the page (Command K on a Mac, Control K elsewhere), a spinner takes the search icon's place while results load, and a clear button appears once there is a query. With a `storageKey` it remembers recent searches and offers them in a list while the field is empty, each one removable, with a Clear all; the list is a proper combobox with arrow keys, Enter and Delete. Escape closes the list, then clears the query, then lets go of the field. Built on the shadcn Input.",
+    category: "Field",
+    component: FieldSearch,
+    demoProps: fieldSearchDemo,
+    registryDependencies: ["input"],
+    registryComponents: ["kbd-combo"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { FieldSearch } from \"@/components/beste/component/field-search\";\n\nconst [loading, setLoading] = useState(false);\n\n<FieldSearch\n  placeholder=\"Search songs and venues\"\n  storageKey=\"recent-searches\"     // remembers searches on this device\n  debounce={300}                   // ms of quiet before onSearch\n  loading={loading}\n  onSearch={async (query) => {\n    setLoading(true);\n    console.log(\"Search\", query);\n    setLoading(false);\n  }}\n/>\n\n// No shortcut, no memory, just a field\n<FieldSearch shortcut={false} tone=\"muted\" size=\"sm\" onSearch={(query) => console.log(query)} />",
+    playground: fieldSearchPlayground,
+  },
+  {
+    name: "file-avatar",
+    title: "File Avatar",
+    description: "An avatar uploader: a round or rounded-square avatar with the current photo or the person's initials, and a camera overlay on hover. Click, drop or paste an image and a crop step opens in place: the picture under a circular mask, dragged to frame it, zoomed with the wheel, a slider or a pinch, and moved with the arrow keys, always covering the whole avatar. Save renders the crop to a square canvas and returns a Blob and a data URL; Cancel puts the old avatar back. A ring around the avatar shows upload progress, a remove button clears it, and accepted types and a size limit reject files with an inline message.",
+    category: "File",
+    component: FileAvatar,
+    demoProps: fileAvatarDemo,
+    dependencies: ["lucide-react"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { FileAvatar } from \"@/components/beste/component/file-avatar\";\n\n<FileAvatar\n  name=\"Björk\"\n  defaultValue=\"/avatars/bjork.jpg\"\n  onChange={async (result) => {\n    if (!result) return console.log(\"removed\");\n    const body = new FormData();\n    body.append(\"avatar\", result.blob, \"avatar.png\");\n    console.log(\"upload\", result.blob.size, \"bytes\");\n  }}\n/>\n\n// A rounded square, a smaller JPEG, and progress you drive yourself\n<FileAvatar\n  name=\"Nina Simone\"\n  shape=\"rounded\"           // \"circle\" (default) | \"rounded\"\n  outputSize={512}          // px of the saved square\n  outputType=\"image/jpeg\"\n  quality={0.85}\n  maxSize={2 * 1024 * 1024} // 2 MB\n  progress={0.4}            // 0 to 1, null hides the ring\n  size=\"lg\"                 // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: fileAvatarPlayground,
+  },
+  {
+    name: "file-drop",
+    title: "File Drop",
+    description: "A dropzone with its file list: drag files over and the zone lifts while its dashed edge starts to march, or click to browse. Each file becomes a row with a type icon, a name that truncates in the middle so the extension stays in view, its size and a thin progress line, moving through waiting, uploading, uploaded and failed with retry and remove. Accepted types, size and count limits reject files with a clear inline message; progress comes from your own upload function or from a progress map, uploads run three at a time and removing a row aborts its upload. Pasting files is optional.",
+    category: "File",
+    component: FileDrop,
+    demoProps: fileDropDemo,
+    dependencies: ["lucide-react"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { FileDrop, type FileDropUpload } from \"@/components/beste/component/file-drop\";\n\n// Your uploader: report progress, honor the signal, reject to mark the row as failed\nconst upload: FileDropUpload = async (item, { onProgress, signal }) => {\n  onProgress(0.5);\n  console.log(\"uploading\", item.name, signal.aborted);\n  onProgress(1);\n};\n\n<FileDrop\n  upload={upload}\n  accept=\"image/*,.pdf\"\n  maxSize={10 * 1024 * 1024}   // 10 MB\n  maxFiles={5}\n  onFilesChange={(files) => console.log(files.length, \"files\")}\n/>\n\n// Progress you drive yourself, keyed by item id\n<FileDrop\n  files={files}\n  onFilesChange={setFiles}\n  progress={{ [files[0].id]: 0.4 }}\n  tone=\"outline\"               // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"                    // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: fileDropPlayground,
   },
   {
     name: "filter-checkbox",
@@ -1289,6 +1958,193 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["checkbox", "label"],
     usage: "import { FilterTree } from \"@/components/beste/component/filter-tree\";\n\nconst categories = [\n  {\n    label: \"Shoes\",\n    value: \"shoes\",\n    children: [\n      { label: \"Sneakers\", value: \"sneakers\", count: 24 },\n      { label: \"Boots\", value: \"boots\", count: 10 },\n    ],\n  },\n  { label: \"Accessories\", value: \"accessories\", count: 12 },\n];\n\n<FilterTree\n  label=\"Category\"\n  options={categories}\n  defaultValue={[\"shoes\"]} // expands to shoes + sneakers + boots\n  onChange={(value) => console.log(\"selected:\", value)} // includes descendants\n/>",
     playground: filterTreePlayground,
+  },
+  {
+    name: "fluid-gradient",
+    title: "Fluid Gradient",
+    description: "A live WebGL paint pour: a ramp of up to six colors, blended in Oklab, runs through layered fractal noise that warps itself twice, so the colors fold into marbled, swirling streams that drift slowly along a set direction like paint poured and gently stirred. Fine streaks run inside the streams, a soft gloss catches the folds and a film grain sits on top. Colors, scale, warp, detail, flow direction, stretch, ramp repeats, speed, contrast, sheen, saturation, grain amount and size, the seed and the cursor pull are all props; a new palette fades through over a set time, and the paint bends softly toward the cursor like a lens. It unfolds softly out of its first color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a plain CSS ramp without WebGL.",
+    category: "Background",
+    component: FluidGradient,
+    demoProps: fluidGradientDemo,
+    usage: "import { FluidGradient } from \"@/components/beste/component/fluid-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <FluidGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Long, bold streams of sunset colors flowing upward\n<FluidGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#2a0f3d\", \"#c2185b\", \"#ff8a3d\", \"#ffe3b3\"]}\n  flow={90}\n  stretch={0.8}\n  contrast={0.8}\n  repeat={2}               // the ramp mirrors twice across the paint\n  transition={2}           // a new palette fades in over 2 seconds\n/>",
+    isAnimated: true,
+    playground: fluidGradientPlayground,
+  },
+  {
+    name: "fold-gradient",
+    title: "Fold Gradient",
+    description: "A live WebGL pleated gradient: a smooth multi-color gradient printed across a sheet that is folded like an accordion, blended in Oklab. Every pleat has a lit face and a shaded face from a movable light, soft shadow in the valleys and a thin highlight along the ridges, and the sheet breathes as a slow swell opens and closes the folds while a gentle sway travels down each pleat. Colors, base, fold count, depth, pleat angle, light angle, breathing, sway, sheen, gradient direction, speed, saturation and film grain are all props, and a new palette fades through over a set time. The pleats under the cursor ease open and the light leans toward it. It unfolds softly out of its base color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to CSS pleat stripes without WebGL.",
+    category: "Background",
+    component: FoldGradient,
+    demoProps: foldGradientDemo,
+    usage: "import { FoldGradient } from \"@/components/beste/component/fold-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <FoldGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Fine horizontal pleats in a cool palette, lit from above\n<FoldGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#0f2a4a\", \"#2f6fd6\", \"#9fd3ff\", \"#f4f1ea\"]}\n  baseColor=\"#0f2a4a\"\n  folds={26}\n  angle={0}              // pleats run left to right\n  lightAngle={90}\n  depth={0.7}\n/>",
+    isAnimated: true,
+    demoContentTone: "soft",
+    playground: foldGradientPlayground,
+  },
+  {
+    name: "frosted-gradient",
+    title: "Frosted Gradient",
+    description: "A live WebGL pane of frosted glass with color drifting behind it: soft round shapes and rounded bars in up to six colors float slowly on the far side, blurred by the glass into a gradient, while a fine sandblasted tooth scatters the view, the edges of the pane bend the light with a thin highlight and optional vertical flutes press into the surface. Colors blend in Oklab under a fine film grain. Colors, background, shape count and size, blur, frost, bevel, flutes, speed, saturation and grain are all props; a new palette fades through over a set time, and the first shape glides after the cursor behind the glass. It grows softly out of its background color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to soft CSS color pools without WebGL.",
+    category: "Background",
+    component: FrostedGradient,
+    demoProps: frostedGradientDemo,
+    usage: "import { FrostedGradient } from \"@/components/beste/component/frosted-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <FrostedGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A dark, fluted pane over three deep colors\n<FrostedGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#ff4f3a\", \"#3a5bff\", \"#ffb13a\"]}\n  backgroundColor=\"#0e0f14\"\n  shapes={4}\n  blur={0.8}\n  frost={0.7}\n  flutes={18}              // vertical reeds pressed into the glass\n/>",
+    isAnimated: true,
+    demoContentTone: "plain",
+    playground: frostedGradientPlayground,
+  },
+  {
+    name: "gallery-rail",
+    title: "Gallery Rail",
+    description: "A horizontal gallery wall of photographs in frames of different proportions, hung on one eye line with a title and credit under each. Travel along the wall comes from a number or a live scroll value, or the wall drifts slowly on its own. Each photograph moves a little slower than its frame, and frames grow slightly as they reach the middle. Content such as a heading can hang first on the wall. Photographs load just before they arrive. Reduced motion turns the wall into a plain horizontal scroll.",
+    category: "Media",
+    component: GalleryRail,
+    demoProps: galleryRailDemo,
+    usage: "import { GalleryRail } from \"@/components/beste/component/gallery-rail\";\n\n<GalleryRail\n  className=\"h-[36rem]\"\n  items={[\n    { src: \"https://images.unsplash.com/photo-1579437469180-e31a7aa7273d?w=1400&q=80\", alt: \"A pebble beach\", title: \"The long bay\", caption: \"Nina Simone, 2022\", aspect: 1.5 },\n    { src: \"https://images.unsplash.com/photo-1689202893906-7528e0e89379?w=1400&q=80\", alt: \"A rocky bay\", title: \"Under the pines\", caption: \"Miles Davis, 2024\", aspect: 0.75 },\n  ]}\n/>\n\n// Driven by scroll: pass a framer-motion MotionValue (or any { get() }) as progress\nconst { scrollYProgress } = useScroll({ target: ref, offset: [\"start start\", \"end end\"] });\n<GalleryRail progress={scrollYProgress} autoplay={false} lead={<h2>Room 4</h2>} />",
+    isAnimated: true,
+    playground: galleryRailPlayground,
+  },
+  {
+    name: "glass-lens",
+    title: "Liquid Glass Type",
+    description: "Large type set in its own font and rendered live in WebGL under drops of clear liquid glass. The drops drift slowly, melt into each other and split, and one follows the cursor on a spring. Under the glass the type is magnified and bent toward the edges with a faint color split, a soft inner shadow, a thin bright rim and a specular highlight. The real text stays in the page for screen readers. Colors, drop count and size, merge smoothness, refraction, magnification, dispersion, rim, highlight and drift speed are props.",
+    category: "Text",
+    component: GlassLens,
+    demoProps: glassLensDemo,
+    usage: "import { GlassLens } from \"@/components/beste/component/glass-lens\";\n\n// The type comes from className: size, weight, family and tracking\n<GlassLens\n  as=\"h1\"\n  text=\"See through everything.\"\n  className=\"min-h-[28rem] text-[12vw] font-semibold tracking-[-0.05em]\"\n/>\n\n<GlassLens\n  text=\"Blown, not poured.\"\n  className=\"min-h-[24rem] font-serif text-8xl\"\n  inkColor=\"var(--foreground)\"   // any CSS color, tokens included\n  tintColor=\"var(--primary)\"\n  blobs={4}                      // 1 to 4 drops\n  magnify={0.8}                  // enlarge the type under the glass\n  dispersion={0.7}               // color split at the edges\n  interactive={false}            // no drop follows the cursor\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    fullBleed: true,
+    cardScale: 0.5,
+    playground: glassLensPlayground,
+  },
+  {
+    name: "growing-tree",
+    title: "Growing Tree",
+    description: "A tree drawn like a fine ink botanical plate grows from a single point on Canvas 2D: a leader climbs while side shoots break away, twigs split and small blossoms open at the tips. Once grown it sways on springs in a passing breeze, every branch carrying the ones above it, and petals let go, tumble down and rest on the ground before they fade. A cursor moving across it sends a gust through the branches, and it can regrow a new tree now and then. Seed, complexity, growth time, colors, blossoms, petal fall, wind, sway and regrow are all props. Colors follow the theme, the petal count adapts to the device, it pauses offscreen and shows the grown tree still for reduced motion.",
+    category: "Media",
+    component: GrowingTree,
+    demoProps: growingTreeDemo,
+    usage: "import { GrowingTree } from \"@/components/beste/component/growing-tree\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <GrowingTree className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<GrowingTree\n  className=\"min-h-[32rem]\"\n  seed={21}                        // a different tree, always the same for this seed\n  complexity={0.8}                 // a fuller crown\n  duration={12}                    // seconds to grow\n  branchColor=\"var(--foreground)\"  // any CSS color, tokens included\n  blossomColor=\"#d9677a\"\n  fall={0.7}                       // more petals drifting down\n  wind={0.3}                       // a calmer breeze\n  regrow={0}                       // keep this tree\n/>",
+    isAnimated: true,
+    fullBleed: true,
+    playground: growingTreePlayground,
+  },
+  {
+    name: "halftone",
+    title: "Live Halftone",
+    description: "A live WebGL print of any photo as a rotated halftone screen: dot size follows the photo's light, a slow wave travels through the dots, and the cursor presses a shaded 3D swell into the print that magnifies the dots beneath it and sends ripples through the screen as it moves. Ink and paper colors, dot size, screen angle, wave, speed, contrast, swell, swell size and ripples are all props. Ink and paper follow the theme by default, the resolution adapts to the device, it pauses offscreen, holds a still print for reduced motion and falls back to a grayscale photo without WebGL.",
+    category: "Background",
+    component: Halftone,
+    demoProps: halftoneDemo,
+    usage: "import { Halftone } from \"@/components/beste/component/halftone\";\n\n<Halftone\n  className=\"aspect-[4/5]\"\n  src=\"https://images.unsplash.com/photo-1621983266286-09645be8fd01?w=2000&q=80\"\n  alt=\"A woman looking back over her shoulder\"\n  inkColor=\"var(--primary)\"      // any CSS color, tokens included\n  paperColor=\"var(--background)\"\n  dotSize={10}                   // distance between dots, in pixels\n  angle={15}                     // screen angle, in degrees\n  wave={0.3}                     // how much the wave swells the dots, 0 to 1\n  contrast={0.7}                 // soft to punchy, 0 to 1\n  bulge={0.8}                    // how far the print swells under the cursor, 0 to 1\n  ripples={0.4}                  // ripples through the dots as the cursor moves\n/>",
+    isAnimated: true,
+    demoContentTone: "soft",
+    demoContentOff: true,
+    playground: halftonePlayground,
+  },
+  {
+    name: "harmonograph",
+    title: "Harmonograph",
+    description: "A live Canvas 2D harmonograph: two damped pendulums over a slowly turning table draw one fine ink line into a rosette, and each finished figure rests briefly, fades away completely and only then gives way to the next, one figure at a time. The plate sways gently in 3D and leans toward the cursor; a click starts a new figure. Ink and paper, pace, pause between figures, line width and strength, damping, table spin, complexity, tilt and plate shape are all props. It pauses offscreen and shows a finished figure for reduced motion.",
+    category: "Media",
+    component: Harmonograph,
+    demoProps: harmonographDemo,
+    usage: "import { Harmonograph } from \"@/components/beste/component/harmonograph\";\n\n<Harmonograph className=\"aspect-square w-full max-w-[560px]\" />\n\n<Harmonograph\n  className=\"aspect-square w-full max-w-md\"\n  inkColor=\"var(--primary)\"   // any CSS color, tokens included\n  duration={8}                // seconds per figure\n  hold={0.4}                  // rest before the next figure starts\n  complexity={0.9}            // more intricate ratios\n  spin={0.2}                  // a calmer table\n  tilt={0.8}                  // stronger sway and lean\n  round={false}               // square sheet instead of a round plate\n/>",
+    isAnimated: true,
+    playground: harmonographPlayground,
+  },
+  {
+    name: "heatmap-calendar",
+    title: "Heatmap Calendar",
+    description: "A contribution calendar in the GitHub style: one square per day in week columns, shaded from a single color in five steps whose thresholds follow the data's quantiles or your own. Month and weekday labels, a Less to More legend and an optional total frame the grid; a rolling range of weeks or a whole calendar year, weeks starting on Sunday or Monday, and names and numbers in any locale. Hovering or focusing a day lifts it with a tooltip of its date and value; the grid is one tab stop with arrow keys by day and week, and days can be made selectable. All date maths is in UTC, so a day never shifts with the reader's time zone, and wide ranges scroll sideways, opening on the latest week.",
+    category: "Heatmap",
+    component: HeatmapCalendar,
+    demoProps: heatmapCalendarDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { HeatmapCalendar } from \"@/components/beste/component/heatmap-calendar\";\n\n// A rolling year that ends on the latest date in the data\n<HeatmapCalendar data={[{ date: \"2026-09-27\", value: 4 }, { date: \"2026-09-26\", value: 1 }]} />\n\n<HeatmapCalendar\n  data={activity}\n  year={2026}                     // a whole calendar year instead of a rolling range\n  weekStartsOn={1}                // Monday\n  locale=\"de-DE\"\n  color=\"#16a34a\"                 // any CSS color; lighter steps are mixed from it\n  levels={5}                      // shades including the empty one\n  thresholds={[1, 3, 6, 10]}      // lowest value of each non-empty level\n  unit={[\"session\", \"sessions\"]}\n  showTotal\n  onSelectedChange={(date, day) => console.log(date, day.value)}\n/>",
+    playground: heatmapCalendarPlayground,
+  },
+  {
+    name: "heatmap-grid",
+    title: "Heatmap Grid",
+    description: "A heatmap by two axes, weekday by hour out of the box: one shaded square per slot on the heatmap family's scale, with thresholds from the data's quantiles or your own. Weekday names and hours come from Intl in any locale, the week starts on Sunday or Monday, hours read in 12 or 24 hour style, and hour labels thin out as the grid narrows. Hovering or focusing a slot lifts it, dims everything outside its row and column into a soft crosshair and shows a tooltip; the grid is one tab stop with arrow keys, the busiest slot is named beside a Less to More legend, and slots can be made selectable. Custom row and column labels turn it into any two-axis grid. Cells share the width and never shrink below their size; a narrow frame scrolls sideways.",
+    category: "Heatmap",
+    component: HeatmapGrid,
+    demoProps: heatmapGridDemo,
+    registryComponents: ["heatmap-calendar"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { HeatmapGrid } from \"@/components/beste/component/heatmap-grid\";\n\n// data[weekday][hour], with data[0] as Sunday\n<HeatmapGrid\n  data={sessions}\n  weekStartsOn={1}              // 0 Sunday (default) | 1 Monday\n  unit={[\"session\", \"sessions\"]}\n  label=\"Listening sessions by weekday and hour\"\n/>\n\n// Any two axes\n<HeatmapGrid\n  data={[[4, 9, 2], [7, 1, 5]]}\n  rows={[\"Paris\", \"Lisbon\"]}\n  columns={[\"Q1\", \"Q2\", \"Q3\"]}\n  color=\"#10b981\"               // any CSS color; defaults to the primary token\n  onSelectedChange={(cell, value) => console.log(cell, value)}\n  tone=\"outline\"                // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"                     // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: heatmapGridPlayground,
+  },
+  {
+    name: "hold-confirm",
+    title: "Hold Confirm",
+    description: "A hold-to-confirm button for actions that deserve a second of thought: pressing and holding fills it from the left, the label flipping color as the fill passes under it, and letting go early rewinds the fill smoothly. When the hold completes a check draws itself in, the label changes, a short vibration marks it where supported, and the button resets on its own or stays confirmed. Works with the pointer and by holding Space or Enter; screen readers, which cannot hold, confirm with a single activation unless that is turned off. Duration, labels, icon, destructive or default tone, three sizes, and controlled or uncontrolled confirmed state.",
+    category: "Confirm",
+    component: HoldConfirm,
+    demoProps: holdConfirmDemo,
+    variants: { tone: ["default", "destructive"] },
+    usage: "import { HoldConfirm } from \"@/components/beste/component/hold-confirm\";\nimport { Trash2 } from \"lucide-react\";\n\n<HoldConfirm\n  label=\"Delete the album\"\n  holdingLabel=\"Keep holding\"\n  confirmedLabel=\"Album deleted\"\n  icon={Trash2}\n  tone=\"destructive\"\n  onConfirm={() => console.log(\"Deleted\")}\n/>\n\n<HoldConfirm\n  label=\"Publish to every store\"\n  duration={2000}           // a longer hold for a bigger commitment\n  resetAfter={null}         // stay confirmed\n  size=\"lg\"\n/>",
+    playground: holdConfirmPlayground,
+  },
+  {
+    name: "horizon-gradient",
+    title: "Horizon Gradient",
+    description: "A live WebGL sky gradient: up to six colors run from the zenith down to a hazy horizon, blended in Oklab, with a soft sun or moon sitting on the horizon line, a warm bloom around it and along the horizon, a shimmering trail below and thin cloud streaks that catch its light as they drift. A slow time-of-day drift eases the sky up and down its colors. Colors, sun color, size and position, horizon height, glow, haze, streaks, drift, speed, saturation and film grain are all props, and a new palette fades through over a set time; the sun leans a little toward the cursor. On load the sun rises out of the flat zenith color over 2.4 seconds. It adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a CSS sky without WebGL.",
+    category: "Background",
+    component: HorizonGradient,
+    demoProps: horizonGradientDemo,
+    usage: "import { HorizonGradient } from \"@/components/beste/component/horizon-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <HorizonGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A pale blue morning with a small low sun on the right\n<HorizonGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#8fb8e8\", \"#bcd6f0\", \"#f3e6d8\", \"#ffe9c7\"]}\n  sunColor=\"#fffaf0\"\n  sunSize={0.2}\n  sunX={0.72}\n  horizon={0.22}\n  streaks={0.6}\n/>",
+    isAnimated: true,
+    playground: horizonGradientPlayground,
+  },
+  {
+    name: "image-loupe",
+    title: "Image Loupe",
+    description: "A magnifier for product and detail photos. In lens mode a round or rounded loupe follows the pointer and shows the picture under it at the chosen zoom; in side mode a pane opens beside the image and a box marks the area it shows, falling back to the lens when there is no room. The large file loads only on the first zoom, under the regular picture with a small spinner, then fades in. Scrolling changes the zoom while magnified. On touch, press and hold opens the lens above the finger so it is never covered, while a quick swipe still scrolls the page. The frame is a button: Enter magnifies, the arrow keys move, plus and minus zoom and Escape closes. Position and zoom reach the DOM as CSS variables, so moving costs no renders.",
+    category: "Loupe",
+    component: ImageLoupe,
+    demoProps: imageLoupeDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ImageLoupe } from \"@/components/beste/component/image-loupe\";\n\n<ImageLoupe\n  src=\"https://images.unsplash.com/photo-1783676167814-13057079dd43?q=80&w=1200&auto=format&fit=crop\"\n  zoomSrc=\"https://images.unsplash.com/photo-1783676167814-13057079dd43?q=80&w=2400&auto=format&fit=crop\"\n  alt=\"Van Gogh, a wheat field with cypresses under swirling clouds\"\n  aspectRatio=\"4 / 3\"\n/>\n\n<ImageLoupe\n  src={product.image}\n  zoomSrc={product.largeImage}   // fetched on the first zoom\n  alt={product.name}\n  mode=\"side\"                    // \"lens\" (default) | \"side\"\n  side=\"right\"                   // pane on the right; the lens takes over without room\n  defaultZoom={3}\n  minZoom={1.5}\n  maxZoom={6}\n  wheelZoom={false}              // keep the wheel for scrolling\n  lensShape=\"rounded\"            // \"circle\" (default) | \"rounded\"\n  lensSize={220}\n  tone=\"outline\"                 // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"                      // \"sm\" | \"default\" | \"lg\"\n  onZoomChange={(zoom) => console.log(zoom)}\n/>",
+    playground: imageLoupePlayground,
+  },
+  {
+    name: "impasto",
+    title: "Impasto",
+    description: "A live oil painting that paints itself from any photo: thick brushstrokes follow the picture's contours from broad blocking-in to fine detail, each with bristle grooves and ridges of paint, lit by a raking light that glints on the wet surface while linen shows through the thin passages. The light follows the cursor, dragging with a mouse lays fresh strokes, and the finished canvas is slowly painted over again. Stroke size, count, pace, thickness, flow, sheen, canvas texture and primer are all props. Adapts its resolution, pauses offscreen, paints the finished canvas at once for reduced motion and falls back to the plain photo without WebGL.",
+    category: "Media",
+    component: Impasto,
+    demoProps: impastoDemo,
+    usage: "import { Impasto } from \"@/components/beste/component/impasto\";\n\n<Impasto\n  className=\"aspect-[4/3]\"\n  src=\"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=1600&q=80\"\n  alt=\"Sunrise over a misty valley\"\n  strokeSize={0.7}     // broader brushwork, 0 to 1\n  thickness={0.8}      // taller ridges of paint\n  flow={0.4}           // looser, swirling strokes\n  sheen={0.6}          // wet shine under the light\n  repaint={0}          // keep the finished painting\n/>",
+    isAnimated: true,
+    fullBleed: true,
+    playground: impastoPlayground,
+  },
+  {
+    name: "ink-flow",
+    title: "Ink Flow",
+    description: "A generative Canvas 2D background where thousands of fine ink strokes follow a slowly turning current, fade back into the paper and are drawn again, gathering into heavier brush lines around the cursor. Ink and paper colors, density, speed, swirl, trail, weight, opacity, the side the ink gathers on and the brush are all props. Ink and paper follow the theme by default, the stroke count adapts to the device, it pauses offscreen and holds a still drawing for reduced motion.",
+    category: "Background",
+    component: InkFlow,
+    demoProps: inkFlowDemo,
+    usage: "import { InkFlow } from \"@/components/beste/component/ink-flow\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <InkFlow className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<InkFlow\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--primary)\"      // any CSS color, tokens included\n  paperColor=\"var(--background)\"\n  density={0.7}                  // how many strokes, 0 to 1\n  swirl={0.8}                    // tight eddies instead of long sweeps\n  trail={0.3}                    // strokes fade sooner\n  gather=\"left\"                  // \"right\" (default) | \"left\" | \"center\" | \"none\"\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: inkFlowPlayground,
+  },
+  {
+    name: "ink-fluid",
+    title: "Ink Fluid",
+    description: "A real-time stable fluids simulation in WebGL: pigments swirl through water with vorticity and pressure solving on a small grid, glowing like light on a dark ground and mixing like ink on a light one. The cursor drags ink through the field, clicks switch pigment and drops land on their own when nobody is drawing. Ground color, pigments, grid sizes, solver passes, vorticity, fade, splash size, force and drop interval are all props. The display resolution adapts to the device, it pauses offscreen, settles into a still for reduced motion and falls back to a soft gradient without half-float support.",
+    category: "Background",
+    component: InkFluid,
+    demoProps: inkFluidDemo,
+    usage: "import { InkFluid } from \"@/components/beste/component/ink-fluid\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem] bg-foreground text-background\">\n  <InkFluid className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<InkFluid\n  className=\"min-h-[32rem]\"\n  groundColor=\"#f4efe6\"                        // any CSS color; light grounds mix like ink\n  pigments={[\"#1a264c\", \"#d32f1a\", \"#b08a2e\"]} // colors as they read on white paper\n  pigment3=\"#b08a2e\"                          // or set pigments one by one: pigment1, pigment2, pigment3\n  vorticity={0.8}                              // tighter eddies, 0 to 1\n  fade={0.15}                                  // ink lingers longer, 0 to 1\n  autoInterval={0}                             // no drops on their own\n/>",
+    isAnimated: true,
+    playground: inkFluidPlayground,
   },
   {
     name: "inspector-action",
@@ -1836,6 +2692,78 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: inspectorVariantsPlayground,
   },
   {
+    name: "kaleidoscope",
+    title: "Kaleidoscope",
+    description: "A live WebGL kaleidoscope that folds any photo into a crisp mandala of mirrored segments, turning slowly while its view drifts and zooms over the photo so the pattern keeps blooming into new symmetric forms. Seen as a circle with a soft vignette and a thin glass rim that bends color only at its edge, or as a full rectangle of pattern. The cursor turns the tube and zooms the view. Segments, speed, zoom, drift, rim and vignette are all props. Adapts its resolution, pauses offscreen, holds a still pattern for reduced motion and falls back to the plain photo without WebGL.",
+    category: "Media",
+    component: Kaleidoscope,
+    demoProps: kaleidoscopeDemo,
+    usage: "import { Kaleidoscope } from \"@/components/beste/component/kaleidoscope\";\n\n<Kaleidoscope\n  className=\"aspect-square w-full max-w-xl\"\n  src=\"https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=2400&q=80\"\n  alt=\"Orange poppies against a clear blue sky\"\n  segments={10}     // mirrored segments, 6 to 12\n  zoom={0.7}        // look closer into the photo, 0 to 1\n  drift={0.3}       // how far the view wanders, 0 to 1\n/>\n\n// As a full rectangle of pattern instead of a round tube\n<Kaleidoscope src=\"/petals.jpg\" round={false} rim={false} className=\"h-[32rem]\" />",
+    isAnimated: true,
+    playground: kaleidoscopePlayground,
+  },
+  {
+    name: "kbd-combo",
+    title: "Kbd Combo",
+    description: "A keyboard shortcut drawn as key caps: `mod` reads as Command on Apple platforms and Control elsewhere, modifiers and special keys get their symbols, and the whole shortcut is spelled out for screen readers. With `live` on, each cap presses down while the real key is held and the combo glows when it is complete; `onTrigger` turns the same caps into the listener for the shortcut. Combos and sequences (\"g then i\"), three tones and three sizes.",
+    category: "Keyboard",
+    component: KbdCombo,
+    demoProps: kbdComboDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { KbdCombo } from \"@/components/beste/component/kbd-combo\";\n\n// Static caps. `mod` is ⌘ on a Mac and Ctrl everywhere else\n<KbdCombo keys=\"mod+k\" />\n\n// The caps press down as the reader holds the keys\n<KbdCombo keys=\"mod+shift+p\" live size=\"lg\" />\n\n// The same caps own the shortcut\n<KbdCombo keys=\"mod+k\" live onTrigger={() => console.log(\"Open the palette\")} />\n\n// A sequence, pressed one key after another\n<KbdCombo keys=\"g then i\" sequence live onTrigger={() => console.log(\"Go to inbox\")} />\n\n<KbdCombo\n  keys={[\"alt\", \"up\"]}\n  separator=\"plus\"   // \"none\" | \"plus\" | \"then\"\n  tone=\"outline\"     // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"          // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: kbdComboPlayground,
+  },
+  {
+    name: "kbd-sheet",
+    title: "Keyboard Shortcut Sheet",
+    description: "A keyboard shortcut sheet: groups of shortcuts drawn with kbd-combo caps, which show Command on Apple platforms and Control elsewhere, laid out in balanced columns so groups of different lengths never leave holes. A search field filters by label, by the keys as written and by their names on either platform, highlighting the match. It sits in place on a docs page, or opens as a dialog from anywhere with the question mark key, which is ignored while the reader types. Sequences like g then h, three tones and three sizes.",
+    category: "Keyboard",
+    component: KbdSheet,
+    demoProps: kbdSheetDemo,
+    dependencies: ["lucide-react"],
+    registryDependencies: ["dialog"],
+    registryComponents: ["kbd-combo"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { KbdSheet } from \"@/components/beste/component/kbd-sheet\";\n\nconst groups = [\n  {\n    title: \"Playback\",\n    shortcuts: [\n      { keys: \"space\", label: \"Play or pause\" },\n      { keys: \"mod+right\", label: \"Next track\" },\n    ],\n  },\n  {\n    title: \"Navigation\",\n    shortcuts: [{ keys: [\"g\", \"h\"], label: \"Go home\", sequence: true }],\n  },\n];\n\n// A dialog that opens with \"?\" from anywhere in the app\n<KbdSheet groups={groups} />\n\n// In place on a docs page\n<KbdSheet groups={groups} inline tone=\"outline\" />",
+    playground: kbdSheetPlayground,
+  },
+  {
+    name: "koi-pond",
+    title: "Koi Pond",
+    description: "A koi pond seen from above: kohaku, sanke, showa and golden koi swim with a flowing S-curve, trailing their fins and fluttering tails over a mottled green floor lit by drifting sunlight caustics, each casting a soft shadow below, while lily pads with a flower or two bob on the surface. The fish grow curious and circle the cursor, a click scatters food and sends ripple rings across the water, and now and then a koi breaks the surface for a breath. Fish count, varieties, water color, lily pads, caustics, ripples, curiosity and pace are props. It pauses offscreen, holds a still pond for reduced motion and keeps swimming on a flat floor without WebGL.",
+    category: "Background",
+    component: KoiPond,
+    demoProps: koiPondDemo,
+    usage: "import { KoiPond } from \"@/components/beste/component/koi-pond\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <KoiPond className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<KoiPond\n  className=\"min-h-[32rem]\"\n  fish={9}                 // 1 to 12 koi\n  palette=\"golden\"         // \"mixed\" (default) | \"kohaku\" | \"golden\"\n  waterColor=\"#12312d\"     // the pond floor, any CSS color\n  curiosity={0.9}          // how readily they gather at the cursor, 0 to 1\n  lilyPads={false}\n/>",
+    isAnimated: true,
+    playground: koiPondPlayground,
+  },
+  {
+    name: "letterpress",
+    title: "Letterpress",
+    description: "Type pressed into thick cotton paper, one word at a time: each impression bites in with a slight overshoot, the walls of the letters catch a raking light on one side and fall into shadow on the other, and the ink lies unevenly at the bottom, squeezed at the edges with light spots where it didn't take. When the composition is set it rests, then the sheet slides away and a fresh one is set in the next ink and arrangement. The light follows the cursor so the deboss glints. Built in WebGL from the type's own font, with lines, colors, depth, ink, grain and timing as props; it pauses offscreen, sets the finished sheet for reduced motion and falls back to embossed type without WebGL.",
+    category: "Text",
+    component: Letterpress,
+    demoProps: letterpressDemo,
+    usage: "import { Letterpress } from \"@/components/beste/component/letterpress\";\n\n// The font, weight and size (as an upper bound) come from className.\n// Keep the real heading in the DOM for screen readers, e.g. an sr-only h1.\n<Letterpress\n  className=\"min-h-[32rem] font-serif text-8xl font-bold\"\n  lines={[\"Pressed\", \"by hand,\", \"one word\", \"at a time.\"]}\n  paperColor=\"#f1ece1\"                          // any CSS color, tokens included\n  inkColors={[\"#1f2a44\", \"#a8352a\", \"#2d2a26\"]} // one per sheet, cycling\n  arrangements={[\"left\", \"center\", \"stagger\"]}  // one per sheet, cycling\n  interval={0.9}      // seconds between presses, slower than the default\n  hold={4}            // seconds a finished sheet rests\n  depth={0.7}         // how deep the type bites, 0 to 1\n  irregularity={0.6}  // uneven ink, 0 to 1\n  area={{ top: 0.2, bottom: 0.3 }} // keep the type clear of your own content\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    fullBleed: true,
+    cardScale: 0.5,
+    playground: letterpressPlayground,
+  },
+  {
+    name: "light-leak",
+    title: "Light Leak Gradient",
+    description: "A live WebGL film light leak: warm, saturated blooms of light burn in from the edges and corners of the frame the way stray light fogs a roll of film, swelling, drifting along the edge and fading while a gentle exposure flicker breathes through them. Each leak fringes slightly at its rim, the strongest light can clip into a warm, overexposed cream, and a film grain sits over the frame. Dark bases take the light additively like an unexposed frame; light bases take it as a warm stain. Colors, base, leak count, edges, size, intensity, burn, fringe, flicker, speed, saturation and grain are all props, a new palette fades through over a set time, and the nearest leak leans calmly toward the cursor. It grows softly out of its base color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to soft CSS corner blooms without WebGL.",
+    category: "Background",
+    component: LightLeak,
+    demoProps: lightLeakDemo,
+    usage: "import { LightLeak } from \"@/components/beste/component/light-leak\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <LightLeak className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Pale leaks on warm paper, only from the corners\n<LightLeak\n  className=\"min-h-[32rem]\"\n  baseColor=\"#f4ede2\"\n  colors={[\"#ff6b35\", \"#f7a072\", \"#e84a5f\"]}\n  edges=\"corners\"\n  burn={0.2}\n  flicker={0}\n/>",
+    isAnimated: true,
+    playground: lightLeakPlayground,
+  },
+  {
     name: "line-chart",
     title: "Line Chart",
     description: "Recharts line chart on the shadcn ChartContainer: multi-series lines with configurable curve, optional dots, active-dot hover, grid, y-axis, legend, and a theme-aware tooltip. Config-driven colors via --chart tokens.",
@@ -1848,6 +2776,221 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: lineChartPlayground,
   },
   {
+    name: "line-engraving",
+    title: "Line Engraving",
+    description: "A live WebGL piece that recuts any photo as a banknote-style intaglio engraving: fine parallel lines swell with the shadows and bend around the form, a second set crosses only in the deepest darks, and the whole plate sits pressed into warm, fibrous paper with a soft bevel. The lines are cut in one by one along their direction on arrival, then drift very slowly, and a soft loupe follows the cursor to reveal finer line work. Ink and paper colors, density, angle, contour, cross hatching, loupe, grain and speed are props. Adapts its resolution, idles at 30fps, shows a still print for reduced motion and a toned photo without WebGL.",
+    category: "Media",
+    component: LineEngraving,
+    demoProps: lineEngravingDemo,
+    usage: "import { LineEngraving } from \"@/components/beste/component/line-engraving\";\n\n<LineEngraving\n  className=\"aspect-[4/5] w-full max-w-md\"\n  imageSrc=\"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&h=1500&fit=crop&q=80\"\n  imageAlt=\"Portrait of a bearded man in a dark shirt\"\n  inkColor=\"#18222f\"     // any CSS color, tokens included\n  paperColor=\"#f3eee3\"\n  density={0.55}         // open to very fine, 0 to 1\n  angle={28}             // direction of the lines, in degrees\n  contour={0.5}          // how far the lines bend around the form\n  crossHatch={0.6}       // crossing lines in the deepest shadows\n  loupe={0.6}            // finer lines under the cursor, 0 turns it off\n/>",
+    isAnimated: true,
+    playground: lineEngravingPlayground,
+  },
+  {
+    name: "liquid-chrome",
+    title: "Liquid Chrome",
+    description: "A live WebGL background of liquid chrome: slow folding metal with a rainbow film on its edges that swells toward the cursor. Colors, speed, fold size, film, pull, grain and vignette are all props. Adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a CSS gradient without WebGL.",
+    category: "Background",
+    component: LiquidChrome,
+    demoProps: liquidChromeDemo,
+    usage: "import { LiquidChrome } from \"@/components/beste/component/liquid-chrome\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <LiquidChrome className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Or wrapping content, with its own look\n<LiquidChrome\n  className=\"min-h-[32rem]\"\n  shadowColor=\"var(--foreground)\"   // any CSS color, tokens included\n  highlightColor=\"#f4d7b0\"\n  iridescence={0.4}                 // 0 to 1\n  hue={0.2}                         // shifts the rainbow film\n  speed={0.6}                       // 1 is the default pace\n  scale={2.2}                       // more, smaller folds\n  pull={0.8}                        // swell under the cursor, 0 to 1\n>\n  <h2>...</h2>\n</LiquidChrome>",
+    isAnimated: true,
+    playground: liquidChromePlayground,
+  },
+  {
+    name: "liquid-slides",
+    title: "Liquid Slides",
+    description: "A WebGL photo slideshow that swaps images through a noise-displaced liquid wipe with a wet rim and a slight color split, under a thin timeline that reads like stories: shown slides stay full, the current one fills with time and the next start empty. It advances on a timer, a click, the arrows or the keyboard, pauses its timer on hover and ripples the photo under the cursor. Timing, distortion, edge detail, color split, push-in and every control are props. All photos preload first, it falls back to crossfading images without WebGL and switches instantly for reduced motion.",
+    category: "Media",
+    component: LiquidSlides,
+    demoProps: liquidSlidesDemo,
+    usage: "import { LiquidSlides } from \"@/components/beste/component/liquid-slides\";\n\n<LiquidSlides\n  className=\"aspect-[4/5] md:aspect-[16/10]\"\n  slides={[\n    { src: \"https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1400&q=80\", alt: \"A model leaning on a teal wall\" },\n    { src: \"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=1400&q=80\", alt: \"A woman walking down a city street\" },\n  ]}\n  labels={{ carousel: \"Lookbook\", previous: \"Previous look\", next: \"Next look\" }}\n  interval={5}        // seconds per slide\n  transition={1.2}    // seconds per wipe\n  distortion={0.7}    // how far the wet edge drags, 0 to 1\n  pauseOnHover\n/>",
+    isAnimated: true,
+    playground: liquidSlidesPlayground,
+  },
+  {
+    name: "list-kanban",
+    title: "List Kanban",
+    description: "A kanban board: cards dragged within and between columns. The card lifts into a floating ghost that tilts slightly and follows the pointer, a dashed slot shows where it will land while the other cards make room on a spring; on drop the card settles from the ghost into its slot. The board scrolls sideways near its edges and tall columns scroll on their own. On touch a short long press lifts a card, so the board still scrolls under a passing finger. The keyboard does it all too: Space picks a card up, the up and down arrows move it within a column, left and right carry it between columns, Space drops it and Escape puts it back, with every step announced. Columns take a color dot and a work-in-progress limit that tints the header when exceeded. Controlled or uncontrolled, any card shape, your own card content.",
+    category: "List",
+    component: ListKanban,
+    demoProps: listKanbanDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ListKanban, type KanbanColumn } from \"@/components/beste/component/list-kanban\";\n\ntype Task = { id: string; title: string };\n\nconst [columns, setColumns] = useState<KanbanColumn<Task>[]>([\n  { id: \"todo\", title: \"To do\", color: \"#a1a1aa\", cards: [{ id: \"t1\", title: \"Mix the live album\" }] },\n  { id: \"doing\", title: \"Doing\", color: \"#f59e0b\", limit: 2, cards: [] },\n  { id: \"done\", title: \"Done\", color: \"#10b981\", cards: [] },\n]);\n\n<ListKanban\n  columns={columns}\n  onChange={(next, move) => {\n    setColumns(next);\n    console.log(\"moved\", move.card.title, \"to\", move.to.column);\n  }}\n  getCardLabel={(task) => task.title}\n  renderCard={(task) => <span className=\"font-medium\">{task.title}</span>}\n  maxHeight=\"24rem\"        // a column's list scrolls past this\n  tone=\"outline\"           // \"muted\" (default) | \"outline\" | \"ghost\"\n/>",
+    playground: listKanbanPlayground,
+  },
+  {
+    name: "list-sortable",
+    title: "List Sortable",
+    description: "A list you reorder by dragging: the row lifts off the page and follows the pointer, the other rows step aside to make room, the list scrolls on its own near a scroll edge, and on drop every row settles into its new place from where it was drawn. On touch a short long press lifts the row, so the list still scrolls under a passing finger. The keyboard does it all too: Space picks a row up, the arrows carry it, Space drops it and Escape puts it back, with every step announced to screen readers. Drag the whole row, or only its grip so the row can hold buttons and links. Controlled or uncontrolled, any item shape, your own row content.",
+    category: "List",
+    component: ListSortable,
+    demoProps: listSortableDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ListSortable } from \"@/components/beste/component/list-sortable\";\n\n// Controlled, with your own row content\n<ListSortable\n  items={tracks}\n  onReorder={(next) => setTracks(next)}\n  getItemLabel={(track) => track.title}\n  renderItem={(track, { index }) => (\n    <span className=\"flex flex-1 items-center justify-between\">\n      <span>{index + 1}. {track.title}</span>\n      <span className=\"text-muted-foreground\">{track.length}</span>\n    </span>\n  )}\n/>\n\n// Rows that hold buttons: only the grip drags\n<ListSortable\n  items={tasks}\n  onReorder={setTasks}\n  handle\n  renderItem={(task) => (\n    <>\n      <span className=\"flex-1\">{task.name}</span>\n      <button onClick={() => console.log(\"remove\", task.id)}>Remove</button>\n    </>\n  )}\n/>\n\n// Plain strings, uncontrolled\n<ListSortable defaultItems={[\"Vocals\", \"Guitar\", \"Drums\"]} getKey={(item) => item} />",
+    playground: listSortablePlayground,
+  },
+  {
+    name: "loupe-compare",
+    title: "Loupe Compare",
+    description: "A before and after comparison: two pictures stacked in one frame, the top one revealed up to a divider with a round handle. Drag the divider, click anywhere to send it there on a spring, or switch to hover mode so a mouse moves it without pressing; it runs sideways or top to bottom. The reveal is a clip-path and the position is a single CSS variable, so nothing reflows and moving costs no renders. Captions on each side fade as the divider reaches them. Both pictures load before either shows, then fade in together over a soft placeholder. The frame keeps its aspect ratio, and the keyboard works it like a slider: arrows, Page Up and Page Down, Home and End.",
+    category: "Loupe",
+    component: LoupeCompare,
+    demoProps: loupeCompareDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { LoupeCompare } from \"@/components/beste/component/loupe-compare\";\n\n<LoupeCompare\n  before={{ src: \"/photos/raw.jpg\", alt: \"The stage before the lighting cue\" }}\n  after={{ src: \"/photos/graded.jpg\", alt: \"The stage with the lighting cue\" }}\n  labels={{ before: \"Raw\", after: \"Graded\" }}\n  aspectRatio=\"16/9\"\n/>\n\n// Top to bottom, following the mouse without a press\n<LoupeCompare\n  before={{ src: \"/photos/scan.jpg\", alt: \"Archive scan\", className: \"grayscale\" }}\n  after={{ src: \"/photos/scan.jpg\", alt: \"Restored scan\" }}\n  orientation=\"vertical\"\n  mode=\"hover\"\n  onValueCommit={(value) => console.log(\"settled at\", value)}\n/>",
+    playground: loupeComparePlayground,
+  },
+  {
+    name: "magnetic-field",
+    title: "Magnetic Field",
+    description: "A Canvas 2D field of iron filings that swing along the curved lines between two drifting magnetic poles. The cursor takes over the lead pole, spring physics pull the filings toward it, and a click or tap sends a radial shockwave through the grid; left alone the field pulses on its own. Ink and paper colors, spacing, filing length and weight, contrast, stiffness, pole strength, the second pole, shockwave, pulse interval and speed are all props. The filing count adapts to the device, it pauses offscreen and settles into one still frame for reduced motion.",
+    category: "Background",
+    component: MagneticField,
+    demoProps: magneticFieldDemo,
+    usage: "import { MagneticField } from \"@/components/beste/component/magnetic-field\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <MagneticField className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<MagneticField\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--primary)\"      // any CSS color, tokens included\n  spacing={18}                   // denser grid, in pixels\n  length={0.8}                   // longer needles, 0 to 1\n  secondPole={false}             // one pole only: a radial field\n  pulseInterval={0}              // no pulses on its own\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: magneticFieldPlayground,
+  },
+  {
+    name: "marble-slab",
+    title: "Marble Slab",
+    description: "A live WebGL background of polished, book-matched marble: domain-warped veins of varying width that fade in and out along their length, finer hairline veins, a sparse crackle, a warm metallic tint at the vein edges and a cloudy translucent depth around them, mirrored around a hairline joint the way two slabs are opened like a book. The stone is rendered once into a texture; only the polish moves, a large softbox reflection that drifts slowly across the surface, shimmers through a fine micro relief and follows the cursor. Colors, scale, vein count, warp, book matching, gloss and speed are all props. The veins surface softly out of the flat ground on load; it pauses offscreen, holds a still frame for reduced motion and shows a soft stone gradient without WebGL.",
+    category: "Background",
+    component: MarbleSlab,
+    demoProps: marbleSlabDemo,
+    usage: "import { MarbleSlab } from \"@/components/beste/component/marble-slab\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <MarbleSlab className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A dark Nero Marquina with white veins\n<MarbleSlab\n  className=\"min-h-[32rem]\"\n  groundColor=\"#16161a\"\n  veinColor=\"#e9e6e1\"\n  accentColor=\"#8a8f99\"\n  veins={0.7}\n  warp={0.8}\n  bookMatch={false}\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: marbleSlabPlayground,
+  },
+  {
+    name: "marquee1",
+    title: "Velocity Marquee",
+    description: "A full-width band of words that drifts on its own, speeds up with scroll velocity and turns to run the way the page is scrolling. Tone, size, separator, speed, boost and direction are props. It stops when offscreen and stands still for reduced motion.",
+    category: "Marquee",
+    component: Marquee1,
+    demoProps: marquee1Demo,
+    dependencies: ["framer-motion"],
+    variants: { tone: ["primary", "dark", "light", "outline"] },
+    usage: "import { Marquee1 } from \"@/components/beste/component/marquee1\";\n\n<Marquee1 items={[\"Posters\", \"Talks\", \"Workshops\", \"Night print\"]} />\n\n<Marquee1\n  items={[\"Open daily\", \"Free entry\", \"Late on Fridays\"]}\n  tone=\"dark\"          // \"primary\" (default) | \"dark\" | \"light\" | \"outline\"\n  size=\"sm\"            // \"sm\" | \"md\" (default) | \"lg\"\n  separator=\"dot\"      // \"diamond\" (default) | \"dot\" | \"slash\" | \"none\"\n  speed={0.6}          // base drift, 1 is the default pace\n  boost={0.8}          // how much scrolling speeds it up, 0 to 1\n  followScroll={false} // keep one direction whatever the scroll does\n  pauseOnHover\n/>",
+    isAnimated: true,
+    playground: marquee1Playground,
+  },
+  {
+    name: "mention-input",
+    title: "Mention Input",
+    description: "A growing textarea with @mentions and any other trigger you give it, such as #tags: typing a trigger opens a suggestion list anchored at the caret, filtered as you type with accent-insensitive matching and the matched letters in bold, picked with the arrows and Enter or Tab. Picked mentions are drawn as tinted chips exactly in line with the text, stepped over by the arrow keys and removed whole by Backspace. The textarea stays the source of truth, the value is plain markup (@[Name](id)) with parse and serialize helpers, suggestions can come from a list or an async function, and the browser's undo history, IME input, forms and combobox semantics all keep working.",
+    category: "Composer",
+    component: MentionInput,
+    demoProps: mentionInputDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { MentionInput } from \"@/components/beste/component/mention-input\";\n\n<MentionInput\n  placeholder=\"Write a comment\"\n  triggers={[\n    { char: \"@\", items: people },                                      // { id, label, description?, avatar? }[]\n    { char: \"#\", items: (query) => fetch(`/api/tags?q=${query}`).then((r) => r.json()) },\n  ]}\n  onValueChange={(markup, { text, mentions }) => console.log(markup, mentions)}\n  onSubmit={(markup) => console.log(\"Send\", markup)}   // Mod+Enter by default\n  submitKey=\"mod+enter\"                                // or \"enter\", with Shift+Enter for a new line\n  rows={2}\n  maxRows={8}\n  name=\"comment\"                                       // submits the markup with a form\n/>",
+    playground: mentionInputPlayground,
+  },
+  {
+    name: "mesh-gradient",
+    title: "Mesh Gradient",
+    description: "A live WebGL mesh gradient: up to six colors drift as soft fields that blend in Oklab, so every mix between two hues stays clean and bright instead of going muddy. A fractal domain warp lets the fields flow into each other, a slow swirl twists the center, and a film grain sits on top, held still or flickering like film. Colors, speed, scale, distortion, swirl, softness, saturation, grain amount and size, posterized bands and the seed are all props; a new palette fades through over a set time, and the cursor draws the field toward itself like a soft lens. It grows softly out of its first color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to soft CSS color pools without WebGL.",
+    category: "Background",
+    component: MeshGradient,
+    demoProps: meshGradientDemo,
+    usage: "import { MeshGradient } from \"@/components/beste/component/mesh-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <MeshGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A pale, heavily grained pastel with theme tokens\n<MeshGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"var(--background)\", \"#ffd6e0\", \"#c9e4ff\", \"var(--primary)\"]}\n  distortion={0.8}\n  softness={0.8}\n  grain={0.6}\n  grainSize={2}\n  transition={2}           // a new palette fades in over 2 seconds\n/>",
+    isAnimated: true,
+    playground: meshGradientPlayground,
+  },
+  {
+    name: "meter-ring",
+    title: "Meter Ring",
+    description: "A circular meter for quotas, usage and progress: an SVG ring with rounded caps that fills from empty and eases to each new reading, whole or split into segments with gaps, in the foreground color, or colored by any thresholds you pass (e.g. warning past 80%, danger past 95%), with the value and unit in the middle or your own content. An indeterminate mode turns an arc round the track for work of unknown length. It is a real meter (or progressbar while indeterminate) with its value spelled out for screen readers. Three track tones and three sizes.",
+    category: "Meter",
+    component: MeterRing,
+    demoProps: meterRingDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { MeterRing } from \"@/components/beste/component/meter-ring\";\n\n<MeterRing value={84} label=\"Storage used\" unit=\"GB\" />\n\n// Twelve segments, custom thresholds, a bigger ring\n<MeterRing\n  value={9}\n  max={12}\n  label=\"Tracks mastered\"\n  segments={12}\n  gap={2.5}                 // percent of the ring between segments\n  thresholds={[{ from: 12, status: \"success\" }]}\n  size=\"lg\"                 // \"sm\" | \"default\" | \"lg\"\n  tone=\"outline\"            // \"muted\" (default) | \"outline\" | \"ghost\"\n/>\n\n// Work of unknown length\n<MeterRing indeterminate label=\"Uploading stems\" />",
+    playground: meterRingPlayground,
+  },
+  {
+    name: "meter-stack",
+    title: "Meter Stack",
+    description: "A stacked usage bar for storage, quotas and budgets: each part a colored segment with a small gap in a bar with rounded ends, growing in from empty on mount while the total above it counts up in step, and easing to new values later. Hover a segment or its legend entry to single it out with a tooltip of its label, value and share while the rest dim. The legend lists every part and the free space, values are written by your own formatter (a locale-aware formatBytes ships with it), and the total turns amber and red as the bar nears full. It is a real meter with its reading spelled out for screen readers. Theme chart colors by default, three track tones and three sizes.",
+    category: "Meter",
+    component: MeterStack,
+    demoProps: meterStackDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { MeterStack, formatBytes } from \"@/components/beste/component/meter-stack\";\n\n<MeterStack\n  label=\"Studio drive\"\n  segments={[\n    { label: \"Stems\", value: 18.6e9 },\n    { label: \"Mixes\", value: 9.2e9 },\n    { label: \"Video\", value: 7.1e9, color: \"#8b5cf6\" }, // any CSS color\n  ]}\n  max={50e9}\n  formatValue={(value) => formatBytes(value)}\n/>\n\n// A monthly budget: plain numbers, earlier warning, no free entry\n<MeterStack\n  label=\"Tour budget\"\n  segments={[{ label: \"Travel\", value: 12400 }, { label: \"Crew\", value: 8600 }]}\n  max={25000}\n  formatValue={(value) => `$${Math.round(value).toLocaleString(\"en-US\")}`}\n  warningAt={0.7}           // amber from 70%\n  freeLabel={null}          // leave the unused part out of the legend\n  size=\"lg\"                 // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: meterStackPlayground,
+  },
+  {
+    name: "mosaic-gradient",
+    title: "Mosaic Gradient",
+    description: "A live WebGL gradient set in tiles: a soft, flowing multi-color gradient is sampled once per tile, so the frame reads as a grid of rounded, glazed tiles in grout, each with a beveled edge, a small shadow and its own slow glint, while broad waves of light pass across the grid and gently lift the tiles they cross. Colors blend in Oklab. Colors, grout color, tile count, gap, rounding, shimmer, depth, wave strength, speed, saturation and grain are all props; a new palette fades through over a set time, and tiles near the cursor lift and brighten softly. The tiles grow in one by one from the center on load, it adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a CSS blend without WebGL.",
+    category: "Background",
+    component: MosaicGradient,
+    demoProps: mosaicGradientDemo,
+    usage: "import { MosaicGradient } from \"@/components/beste/component/mosaic-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <MosaicGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Fine, round pixels on a light grout\n<MosaicGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#ffd6e0\", \"#c9e4ff\", \"#b8f2d8\", \"#fff1b8\"]}\n  backgroundColor=\"#fbf8f3\"\n  cells={48}\n  gap={0.22}\n  radius={1}               // round tiles\n  depth={0.2}\n/>",
+    isAnimated: true,
+    playground: mosaicGradientPlayground,
+  },
+  {
+    name: "murmuration",
+    title: "Murmuration",
+    description: "A starling murmuration at dusk on Canvas 2D: thousands of birds fly as one dark cloud that folds, stretches, splits and rejoins like a living ink blot, following real flocking rules over a slow dusk sky. Where the flock folds it reads darker, where it thins it turns translucent. The cursor is a hawk: birds flee it and the panic travels through the flock as a wave before it closes again. Sky and bird colors, flock size, bird size, speed, cohesion, alignment, separation, wander and the hawk are all props. The bird count adapts to the device, it pauses offscreen and holds a still flock for reduced motion.",
+    category: "Background",
+    component: Murmuration,
+    demoProps: murmurationDemo,
+    usage: "import { Murmuration } from \"@/components/beste/component/murmuration\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <Murmuration className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<Murmuration\n  className=\"min-h-[32rem]\"\n  birds={2400}             // flock size, 200 to 2600\n  skyTop=\"#1f2640\"         // any CSS color\n  skyHorizon=\"#f0a878\"\n  cohesion={0.7}           // a tighter, darker cloud\n  wander={0.8}             // roams further and reshapes more\n  hawk={0.9}               // flees the cursor harder\n  hawkRadius={180}         // in pixels\n/>",
+    isAnimated: true,
+    playground: murmurationPlayground,
+  },
+  {
+    name: "nav-breadcrumb",
+    title: "Nav Breadcrumb",
+    description: "A breadcrumb trail that folds its middle into a menu when it runs out of room. The fold is decided from the real widths of every level, separator and the menu button, measured again whenever the container resizes, so the trail always fits on one line: the first level and the current page stay in view, the nearest parents stay beside them, and the levels in between collapse behind a small button that lists them in order. Long labels are cut with an ellipsis and keep their full text as a tooltip. Levels render as real links through your own router, or as buttons, with a chevron or slash separator and an optional home icon.",
+    category: "Nav",
+    component: NavBreadcrumb,
+    demoProps: navBreadcrumbDemo,
+    registryDependencies: ["dropdown-menu"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { NavBreadcrumb } from \"@/components/beste/component/nav-breadcrumb\";\n\n// Links through your router, a house icon on the first level\n<NavBreadcrumb\n  homeIcon\n  items={[\n    { label: \"Home\", href: \"/\" },\n    { label: \"Artists\", href: \"/artists\" },\n    { label: \"Robert Glasper\", href: \"/artists/glasper\" },\n    { label: \"Black Radio III\" },\n  ]}\n  renderLink={(props) => <Link {...props} />}\n/>\n\n// Buttons driven by your own state, slash separators, a filled trail\n<NavBreadcrumb\n  items={path}\n  onNavigate={(item, index) => setPath(path.slice(0, index + 1))}\n  separator=\"slash\"\n  tone=\"muted\"\n/>",
+    playground: navBreadcrumbPlayground,
+  },
+  {
+    name: "nav-pagination",
+    title: "Nav Pagination",
+    description: "Pagination that never changes width as the reader walks through it: page numbers with ellipses kept to a fixed count, a marker that slides to the current page on a spring, and previous and next arrows that disable at the ends. Press an ellipsis and it opens into a small field to type any page and jump there. An optional page size menu keeps the first row on screen in view when the size changes, and a range readout says 21 to 40 of 312. Pages render as buttons, or as real links through your own router, and a narrow container collapses the numbers into Page 6 of 16.",
+    category: "Nav",
+    component: NavPagination,
+    demoProps: navPaginationDemo,
+    registryDependencies: ["input", "select"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { NavPagination } from \"@/components/beste/component/nav-pagination\";\n\n// Buttons, controlled\n<NavPagination total={312} pageSize={20} page={page} onPageChange={setPage} />\n\n// Real links through your router, with a page size menu and the range readout\n<NavPagination\n  total={312}\n  page={page}\n  pageSize={pageSize}\n  pageSizeOptions={[10, 20, 50]}\n  onPageSizeChange={setPageSize}\n  getHref={(page, size) => `/releases?page=${page}&size=${size}`}\n  renderLink={(props) => <Link {...props} />}\n  showRange\n/>\n\n// Two pages each side, two at each end, on a filled strip\n<NavPagination pageCount={40} siblings={2} boundaries={2} tone=\"muted\" size=\"lg\" />",
+    playground: navPaginationPlayground,
+  },
+  {
+    name: "nav-tabs",
+    title: "Nav Tabs",
+    description: "Tabs with one indicator that slides and resizes between them on a spring: a line under the current tab, a filled pill, or a raised segment on a strip. When the tabs outgrow their space the strip scrolls sideways behind soft fades, arrows appear only while there is more to see, and the current tab always scrolls clear of the edges. Tabs take icons and count badges, follow the WAI-ARIA tabs pattern with automatic or manual activation, and either show panels or render as real links through your own router.",
+    category: "Nav",
+    component: NavTabs,
+    demoProps: navTabsDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { NavTabs } from \"@/components/beste/component/nav-tabs\";\n\n// Tabs with panels, controlled\n<NavTabs\n  value={tab}\n  onValueChange={setTab}\n  tabs={[\n    { value: \"overview\", label: \"Overview\", content: <Overview /> },\n    { value: \"releases\", label: \"Releases\", count: 24, content: <Releases /> },\n    { value: \"tour\", label: \"Tour dates\", count: 12, content: <Tour /> },\n  ]}\n/>\n\n// A segmented strip that selects only on Enter or Space\n<NavTabs variant=\"segment\" activation=\"manual\" tabs={tabs} />\n\n// Real links through your router; the strip becomes a labelled nav\n<NavTabs\n  variant=\"pill\"\n  value={section}\n  tabs={sections}\n  getHref={(value) => `/artists/glasper/${value}`}\n  renderLink={(props) => <Link {...props} />}\n  aria-label=\"Artist sections\"\n/>",
+    playground: navTabsPlayground,
+  },
+  {
+    name: "notice-stack",
+    title: "Notice Stack",
+    description: "A zero-dependency toast system: drop one `NoticeStack` in the layout and call `notice()` from anywhere, no provider needed. Notices stack like cards, the older ones tucked behind the newest, and fan out on hover or focus; they slide in and out on a soft overshoot, swipe away with a flick (the card resists when pulled toward the screen), pause their countdown while you read them or while the tab is hidden, and carry an optional action such as Undo. `notice.promise()` shows one notice that reads loading and turns into success or error in place. Six positions, success, error, warning, info and loading variants, polite or assertive announcements by variant, and F8 or Alt+T to jump into the stack.",
+    category: "Notice",
+    component: NoticeStack,
+    demoProps: noticeStackDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { NoticeStack, notice } from \"@/components/beste/component/notice-stack\";\n\n// Once, in the root layout\n<NoticeStack closeButton />\n\n// Anywhere after that\nnotice(\"Setlist saved\");\nnotice.success(\"Tickets sent\", { description: \"Check hello@beste.co for the receipt.\" });\nnotice.error(\"Payment declined\", { duration: 8000 });\n\nnotice(\"Track removed\", {\n  action: { label: \"Undo\", onClick: () => console.log(\"Restore the track\") },\n});\n\nnotice.promise(uploadMix(), {\n  loading: \"Uploading the mix\",\n  success: (file) => ({ title: \"Mix uploaded\", description: file.name }),\n  error: \"Upload failed\",\n});\n\nconst id = notice.loading(\"Syncing\");\nnotice.success(\"Synced\", { id });   // same id: updates in place\nnotice.dismiss();                   // clears every notice",
+    playground: noticeStackPlayground,
+  },
+  {
     name: "notifications-menu",
     title: "Notifications Menu",
     description: "Topbar bell trigger with an unread count and a popover feed: icon rows with title, description, timestamp, unread dots, a mark-all-read action, and a scrollable list. Manages read state internally.",
@@ -1857,6 +3000,97 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["popover", "button", "scroll-area", "separator"],
     usage: "import { NotificationsMenu } from \"@/components/beste/component/notifications-menu\";\nimport { UserPlus } from \"lucide-react\";\n\n<NotificationsMenu\n  notifications={[\n    {\n      id: \"1\",\n      title: \"New customer signed up\",\n      description: \"Amara joined the Scale plan.\",\n      time: \"2m ago\",\n      icon: UserPlus,\n      unread: true,\n    },\n  ]}\n  onSelect={(id) => console.log(\"open:\", id)}\n  onMarkAllRead={() => console.log(\"all read\")}\n/>",
     playground: notificationsMenuPlayground,
+  },
+  {
+    name: "ocean-horizon",
+    title: "Ocean Horizon",
+    description: "A live WebGL background of the open sea at dusk, rendered like a calm cinematic photograph: summed swell and ripple waves with sharpened crests, Fresnel sky reflections, a sun glitter path that widens toward the horizon, light glowing through the crests, aerial haze on the distance, thin high clouds and a camera that rides the swell and turns gently toward the cursor. Sky, sun and water colors, sun height and position, wave size, crest sharpness, glitter, haze, clouds and speed are all props. The scene rises softly out of a plain sky on load; it adapts its resolution and wave detail, pauses offscreen, holds a still frame for reduced motion and shows the same scene as a CSS gradient without WebGL.",
+    category: "Background",
+    component: OceanHorizon,
+    demoProps: oceanHorizonDemo,
+    usage: "import { OceanHorizon } from \"@/components/beste/component/ocean-horizon\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <OceanHorizon className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Bright late afternoon on a livelier sea\n<OceanHorizon\n  className=\"min-h-[32rem]\"\n  skyTop=\"#3d6fa8\"      // any CSS color, tokens included\n  skyHorizon=\"#dfe6ea\"\n  sunColor=\"#fff4dc\"\n  waterColor=\"#0d3348\"\n  sunHeight={0.6}       // 0 is just set, 1 is high afternoon\n  sunX={0.4}\n  waves={0.8}\n  choppiness={0.7}\n  clouds={0.2}\n/>",
+    isAnimated: true,
+    playground: oceanHorizonPlayground,
+  },
+  {
+    name: "op-art",
+    title: "Op Art Field",
+    description: "A live WebGL background of dense parallel lines in the spirit of Bridget Riley: they ripple in slow waves, swell from hairline to heavy across the field and bulge around the cursor or a wandering focus. Ink and paper colors, line count, angle, wave, weight, contrast, speed and pull are all props. Lines stay crisp at any size, the resolution adapts to the device, it pauses offscreen, holds a still frame for reduced motion and falls back to CSS stripes without WebGL.",
+    category: "Background",
+    component: OpArt,
+    demoProps: opArtDemo,
+    usage: "import { OpArt } from \"@/components/beste/component/op-art\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <OpArt className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<OpArt\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--primary)\"      // any CSS color, tokens included\n  paperColor=\"var(--background)\"\n  lines={48}                     // lines across the height\n  angle={-12}                    // rotation, in degrees\n  wave={0.8}                     // ripple, 0 to 1\n  weight={0.3}                   // average thickness, 0 to 1\n  contrast={0.9}                 // thin to heavy swing, 0 to 1\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: opArtPlayground,
+  },
+  {
+    name: "orb-gradient",
+    title: "Orb Gradient",
+    description: "A live WebGL gradient planet: one soft sphere whose surface carries a color ramp in latitude bands that fold and swirl slowly as it turns, lit from one side with a wrapped terminator, a luminous rim along its edge and an atmosphere that glows into the space around it. The palette is blended in Oklab, the rim and halo take its lightest color, and a film grain sits over the frame. Colors, base, size, position (including off frame, for a rising horizon), glow, rim, swirl, light angle, speed, saturation and grain are all props; a new palette fades through over a set time, and the light and the turn lean softly toward the cursor. It rises and grows softly out of its base color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a CSS sphere without WebGL.",
+    category: "Background",
+    component: OrbGradient,
+    demoProps: orbGradientDemo,
+    usage: "import { OrbGradient } from \"@/components/beste/component/orb-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <OrbGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A huge planet rising from the bottom edge\n<OrbGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#0b2a4a\", \"#1f6fb2\", \"#7fd1e8\", \"#e9f7ff\"]}\n  size={2.6}\n  positionY={1.95}          // center far below the frame, only the top arc shows\n  glow={0.8}\n  lightAngle={90}\n/>",
+    isAnimated: true,
+    playground: orbGradientPlayground,
+  },
+  {
+    name: "pager-dots",
+    title: "Pager Dots",
+    description: "Slide dots for carousels and stories: the active dot stretches into a pill on a spring, and with a duration the pill fills as its page plays, then autoplay moves on. Autoplay pauses under the pointer, on keyboard focus, on a hidden tab and offscreen, and toggling it never restarts the fill. Long sets slide a window along the dots and shrink the ones at its edges, the way story apps do. It is a tablist: one tab stop, arrow keys, Home and End. Row or column, three sizes, and a bare tone that takes the text color for use over a photo.",
+    category: "Pager",
+    component: PagerDots,
+    demoProps: pagerDotsDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { PagerDots } from \"@/components/beste/component/pager-dots\";\n\n// A plain indicator driven by your carousel\n<PagerDots count={5} value={slide} onValueChange={setSlide} />\n\n// Stories: each page plays for 5 seconds, then moves on\n<PagerDots\n  count={12}\n  duration={5000}\n  value={slide}\n  onValueChange={setSlide}\n  onCycleEnd={(index) => console.log(\"finished\", index)}\n/>\n\n// Over a photo: bare, white, with its own pause switch\n<PagerDots\n  count={8}\n  duration={4000}\n  playing={playing}\n  tone=\"ghost\"\n  className=\"text-white\"\n  getControls={(index) => `slide-${index}`}\n/>",
+    playground: pagerDotsPlayground,
+  },
+  {
+    name: "paper-landscape",
+    title: "Paper Landscape",
+    description: "A layered paper-cut landscape: six hills with clumps of cypress, pine and round paper trees, soft mist between the layers, a low sun that sets behind the far hills on scroll, drifting clouds and a small flock of birds that flap, glide and bob. Layers spread in depth with pointer and scroll parallax. Palette, paper, sun, clouds, birds, mist, tree density and parallax depth are all props, and reduced motion keeps the scene still.",
+    category: "Background",
+    component: PaperLandscape,
+    demoProps: paperLandscapeDemo,
+    dependencies: ["framer-motion"],
+    usage: "import { PaperLandscape } from \"@/components/beste/component/paper-landscape\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <PaperLandscape className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<PaperLandscape\n  className=\"min-h-[32rem]\"\n  palette={[\"#dfe7ea\", \"#c3d3d8\", \"#9db6bf\", \"#6f919e\", \"#48707f\", \"#284b58\"]} // far to near\n  paperColor=\"#eef3f4\"\n  sunColor=\"#f2c14e\"\n  birds={3}        // 0 to 5\n  trees={0.8}      // denser woods\n  parallax={0.7}   // deeper pointer and scroll parallax\n/>",
+    isAnimated: true,
+    demoContentTone: "plain",
+    playground: paperLandscapePlayground,
+  },
+  {
+    name: "photo-dust",
+    title: "Photo Dust",
+    description: "A photograph made of a couple of hundred thousand grains of colored dust in WebGL. At the start the grains drift as a fine cloud carried by a slow curl wind; as progress rises they settle into place from the bottom up along a soft noise field, each one lifting a little before it lands, until the picture is whole and the real photo fades in for full detail. The cursor blows the settled grains aside as it passes. Progress takes a number or a live scroll source without re-rendering, or autoplay gathers and scatters on a loop. Density, wind, grain, ground color and crop focus are props. It pauses offscreen, adapts its resolution, and shows the plain photo for reduced motion.",
+    category: "Media",
+    component: PhotoDust,
+    demoProps: photoDustDemo,
+    usage: "import { PhotoDust } from \"@/components/beste/component/photo-dust\";\n\n// Gathers and scatters on its own\n<PhotoDust className=\"aspect-[4/5] w-full max-w-md\" />\n\n// Driven by scroll: 0 is loose dust, 1 is the finished photo\n<PhotoDust\n  className=\"aspect-[4/5] w-full\"\n  imageSrc=\"https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=1600&q=80\"\n  imageAlt=\"A glass perfume bottle on warm paper\"\n  progress={0.6}   // or a scroll MotionValue, read every frame without re-rendering\n  autoplay={false}\n  density={0.7}\n  wind={0.4}\n/>",
+    isAnimated: true,
+    playground: photoDustPlayground,
+  },
+  {
+    name: "photo-relight",
+    title: "Photo Relight",
+    description: "One architectural photograph relit across a whole day in WebGL: a cool dawn, a neutral midday, a warm golden hour with low raking light and lifted shadows, then sunset, blue hour and a deep night. The sky is regraded on its own, and after dusk the lights you trace on the photo switch on one by one. Each is a four-cornered shape that follows the photo's perspective and says what it is: a window lets only its glass glow with a warm room behind it while frames stay dark, a surface such as a timber ceiling is washed with light and keeps its grain, and water glows from within while the deck around it stays dark. Windows and surfaces spill a soft halo. The day follows a progress value or a live scroll source without re-rendering, or runs back and forth on its own. Warmth, night depth, light color, bloom, grain, horizon and crop focus are props. It only draws while the day is moving, pauses offscreen, holds golden hour for reduced motion and falls back to the plain photo with a shade for the hour.",
+    category: "Media",
+    component: PhotoRelight,
+    demoProps: photoRelightDemo,
+    usage: "import { PhotoRelight } from \"@/components/beste/component/photo-relight\";\n\n// Runs the day on its own\n<PhotoRelight className=\"aspect-[3/2]\" />\n\n// Your own photo: trace each light by its four corners, 0 to 1 across and down the photo\n<PhotoRelight\n  className=\"aspect-[3/2]\"\n  imageSrc=\"https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=2000&q=80\"\n  imageAlt=\"A white modernist house behind a long pool\"\n  lights={[\n    { kind: \"window\", points: [[0.228, 0.468], [0.598, 0.468], [0.598, 0.645], [0.228, 0.645]] },\n    { kind: \"surface\", points: [[0.16, 0.125], [0.646, 0.125], [0.646, 0.24], [0.215, 0.24]], color: \"#ffc58a\" },\n    { kind: \"water\", points: [[0, 0.69], [0.59, 0.69], [0.97, 0.94], [0, 0.94]], color: \"#5fd4f0\", at: 0.8 },\n  ]}\n  progress={0.7}   // or a scroll MotionValue, read every frame without re-rendering\n  warmth={0.9}\n  nightDepth={0.8}\n/>",
+    isAnimated: true,
+    playground: photoRelightPlayground,
+  },
+  {
+    name: "photo-ring",
+    title: "Photo Ring",
+    description: "Portrait photographs mounted on a slowly turning 3D ring seen slightly from above. Each panel is gently curved, catches the light and a soft gloss as it turns toward the front, and fades into the surface as it passes behind, while a quiet reflection lies on the floor below. Drag or scroll to give the ring momentum; it eases back to its idle turn. Radius, panel size, tilt, pace, fog, shading and reflection are all props. Reduced motion holds a still ring.",
+    category: "Media",
+    component: PhotoRing,
+    demoProps: photoRingDemo,
+    usage: "import { PhotoRing } from \"@/components/beste/component/photo-ring\";\n\n<PhotoRing\n  className=\"h-[32rem]\"\n  images={[\n    { src: \"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=800&fit=crop\", alt: \"Portrait of a woman\" },\n    { src: \"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop\", alt: \"Portrait of a man\" },\n    // ...ten to fourteen photographs read best\n  ]}\n  gap={0.2}\n  tilt={10}\n  reflection={0.5}\n/>",
+    isAnimated: true,
+    playground: photoRingPlayground,
   },
   {
     name: "pie-chart",
@@ -1871,6 +3105,85 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: pieChartPlayground,
   },
   {
+    name: "pixel-distort",
+    title: "Pixel Distort",
+    description: "A photo laid on an invisible grid of square cells, live in WebGL. Sweeping the cursor drags the cells it passes over in the direction of the movement, like smearing wet paint: a faster sweep pulls further, and the displaced cells break into coarser pixels with a slight red and blue split at their edges. Each cell then eases back into place and the photo sharpens again; a still cursor leaves it alone. On arrival the photo grows softly out of the dark ground and resolves from big pixel blocks into the sharp image. Grid size, strength, radius, how quickly cells settle, color split, pixelation and grain are all props. Draws only while something moves, pauses offscreen, shows the sharp photo for reduced motion and falls back to the plain photo without WebGL.",
+    category: "Background",
+    component: PixelDistort,
+    demoProps: pixelDistortDemo,
+    usage: "import { PixelDistort } from \"@/components/beste/component/pixel-distort\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <PixelDistort\n    className=\"absolute inset-0\"\n    src=\"https://images.unsplash.com/photo-1697128951362-e704be45d3da?w=2000&q=80\"\n    alt=\"Raised hands against blue stage light\"\n  />\n  <div className=\"relative\">...</div>\n</section>\n\n<PixelDistort\n  className=\"min-h-[32rem]\"\n  src=\"https://images.unsplash.com/photo-1697128951362-e704be45d3da?w=2000&q=80\"\n  grid={20}        // chunkier cells\n  strength={0.9}   // a sweep drags further\n  relax={0.2}      // cells take longer to settle\n/>",
+    isAnimated: true,
+    playground: pixelDistortPlayground,
+  },
+  {
+    name: "player-scrubber",
+    title: "Player Scrubber",
+    description: "A media timeline for audio and video with its own play button and clock, so it plays on its own or follows a real media element: chapters drawn as separate segments with small gaps that open and swell under the pointer, a buffered range, the played fill and a thumb that appears on hover and grows while dragging. A bubble above the track shows the time and the chapter under the pointer, elapsed and remaining times can sit on either side, and click and key jumps land on a soft spring while dragging follows the pointer exactly. Arrow keys seek 5 seconds (1 with Shift), Page keys a tenth, Home and End the ends, all on a native range input for full accessibility.",
+    category: "Player",
+    component: PlayerScrubber,
+    demoProps: playerScrubberDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { PlayerScrubber, formatTime } from \"@/components/beste/component/player-scrubber\";\n\n// Uncontrolled, with chapters and a buffered range\n<PlayerScrubber\n  duration={242}\n  defaultValue={71}\n  buffered={150}                        // seconds loaded, or [[start, end], ...]\n  chapters={[\n    { start: 0, title: \"Intro\" },\n    { start: 38, title: \"Says\" },\n    { start: 121, title: \"Hammers\" },\n  ]}\n  showTime                              // elapsed on the left, remaining on the right\n/>\n\n// Controlled by a media element: follow playback, seek on release\n<PlayerScrubber\n  duration={audio.duration}\n  value={currentTime}\n  onValueCommit={(seconds) => console.log(\"seek to\", seconds)}\n  tone=\"outline\"                        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"                             // \"sm\" | \"default\" | \"lg\"\n/>\n\nformatTime(3725); // \"1:02:05\"",
+    playground: playerScrubberPlayground,
+  },
+  {
+    name: "player-waveform",
+    title: "Player Waveform",
+    description: "An audio waveform you can seek through: loudness peaks drawn as rounded bars that rise in from the middle on load, the played part tinted in full, the part under the pointer previewed in a lighter tint with a time bubble above, and a thin playhead on hover. It resamples any number of peaks to the bars that fit the width, keeps its own clock with an optional play button so it plays on its own, or follows a real audio element. Drag, click and keys seek (arrows 5 seconds, Shift 1, Page keys a tenth, Home and End), Space or K plays and pauses, and a native range input carries it for assistive technology.",
+    category: "Player",
+    component: PlayerWaveform,
+    demoProps: playerWaveformDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { PlayerWaveform, resamplePeaks } from \"@/components/beste/component/player-waveform\";\n\n// Plays on its own, with a button and times\n<PlayerWaveform\n  peaks={peaks}                 // numbers from 0 to 1, any length\n  duration={214}\n  defaultPlaying\n  loop\n  showPlay\n  showTime\n/>\n\n// Follows an audio element: controlled value and playing state\n<PlayerWaveform\n  peaks={peaks}\n  duration={audio.duration}\n  value={currentTime}\n  playing={isPlaying}\n  onPlayingChange={(next) => console.log(next ? \"play\" : \"pause\")}\n  onValueCommit={(seconds) => console.log(\"seek to\", seconds)}\n  barWidth={2}                  // px\n  gap={1}                       // px\n  tone=\"muted\"                  // \"muted\" | \"outline\" | \"ghost\" (default)\n  size=\"lg\"                     // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: playerWaveformPlayground,
+  },
+  {
+    name: "pool-caustics",
+    title: "Pool Caustics",
+    description: "A live WebGL pool floor: pale hand-laid tiles and a lane mark bent by the water, sun-dappled caustic light drifting across them with a faint rainbow edge, and ripple rings that spread from the cursor, taps and the occasional drop. Tile, grout, lane, water and light colors, tile size, caustic strength and scale, refraction, color split, speed, ripples and rain are all props. It grows softly out of its tile color on load, the resolution adapts to the device, it pauses offscreen, holds a still frame for reduced motion and falls back to a tiled CSS grid without WebGL.",
+    category: "Background",
+    component: PoolCaustics,
+    demoProps: poolCausticsDemo,
+    usage: "import { PoolCaustics } from \"@/components/beste/component/pool-caustics\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <PoolCaustics className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<PoolCaustics\n  className=\"min-h-[32rem]\"\n  tileColor=\"#f4efe6\"     // any CSS color\n  laneColor=\"#b8452c\"\n  tileSize={12}           // tiles across the height\n  caustics={0.9}          // brighter light, 0 to 1\n  refraction={0.8}        // the water bends the grid more\n  rain={0}                // no ripples on their own\n/>",
+    isAnimated: true,
+    demoContentTone: "plain",
+    playground: poolCausticsPlayground,
+  },
+  {
+    name: "price-tag",
+    title: "Price Tag",
+    description: "A price, formatted by the locale's own rules: cents hide on whole amounts, the currency symbol and cents can sit smaller and raised, and a short period follows the number. When the amount changes, as on a monthly to yearly switch, each digit rolls the way the price moved. An optional old price is struck through beside a computed \"Save 20%\" chip, a zero reads as \"Free\", and the whole price is spelled out for screen readers. Three tones for the chip and three sizes.",
+    category: "Price",
+    component: PriceTag,
+    demoProps: priceTagDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { PriceTag } from \"@/components/beste/component/price-tag\";\n\n<PriceTag amount={29} period=\"/mo\" periodLabel=\"per month\" />\n\n// A yearly switch: the digits roll to the new amount\n<PriceTag amount={yearly ? 290 : 29} period={yearly ? \"/yr\" : \"/mo\"} />\n\n<PriceTag\n  amount={24}\n  compareAt={30}        // struck through, with a \"Save 20%\" chip\n  currency=\"EUR\"\n  locale=\"de-DE\"\n  symbol=\"raised\"       // \"inline\" (default) | \"raised\"\n  cents=\"raised\"\n  tone=\"outline\"        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"             // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: priceTagPlayground,
+  },
+  {
+    name: "price-toggle",
+    title: "Price Toggle",
+    description: "A billing period switch for pricing sections: a thumb slides between Monthly and Yearly (or any periods you pass) on a soft spring, measured from each label so any length fits, and a savings badge like \"2 months free\" turns green and pops when its period is picked. It renders whatever you pass as children with the picked period, so a price-tag underneath follows it and its digits roll. Built from native radios, so arrow keys, forms and screen readers work as they do in any radio group. Three tones and three sizes.",
+    category: "Price",
+    component: PriceToggle,
+    demoProps: priceToggleDemo,
+    registryComponents: ["price-tag"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { PriceToggle } from \"@/components/beste/component/price-toggle\";\nimport { PriceTag } from \"@/components/beste/component/price-tag\";\n\n// The price follows the switch and its digits roll\n<PriceToggle defaultValue=\"monthly\">\n  {(period) =>\n    period === \"yearly\" ? (\n      <PriceTag amount={120} period=\"/yr\" periodLabel=\"per year\" />\n    ) : (\n      <PriceTag amount={12} period=\"/mo\" periodLabel=\"per month\" />\n    )\n  }\n</PriceToggle>\n\n// Your own periods, controlled\n<PriceToggle\n  value={period}\n  onValueChange={setPeriod}\n  options={[\n    { value: \"month\", label: \"Month\" },\n    { value: \"quarter\", label: \"Quarter\", badge: \"Save 10%\" },\n    { value: \"year\", label: \"Year\", badge: \"Save 20%\" },\n  ]}\n  tone=\"outline\"        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"             // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: priceTogglePlayground,
+  },
+  {
+    name: "prism-gradient",
+    title: "Prism Gradient",
+    description: "A live WebGL gradient of light split through a prism: a thin white beam enters from one side and leaves as a few soft fans of dispersed color, each running its palette edge to edge, with caustic streaks flowing along the beams, a slow sway and a bloom around the prism. The fans can use a custom palette, a physical rainbow or any mix of the two; dark bases glow, light bases take the light as a tint. Colors, spectrum mix, base color, beam count, spread, angle, prism position, bloom, sharpness, caustics, the white beam, speed, saturation and film grain are all props, and a new palette fades through over a set time; the prism eases a little toward the cursor. On load the beams reach out of the flat base color over 2.4 seconds. It adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a CSS color fan without WebGL.",
+    category: "Background",
+    component: PrismGradient,
+    demoProps: prismGradientDemo,
+    usage: "import { PrismGradient } from \"@/components/beste/component/prism-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <PrismGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A pure rainbow fanning upward on a warm paper base\n<PrismGradient\n  className=\"min-h-[32rem]\"\n  baseColor=\"#f4efe6\"\n  spectrum={1}             // a physical rainbow\n  beams={1}\n  spread={0.8}\n  angle={70}\n  sourceX={0.5}\n  sourceY={0.15}\n/>",
+    isAnimated: true,
+    playground: prismGradientPlayground,
+  },
+  {
     name: "product-filters",
     title: "Product Filters Engine",
     description: "Shared engine behind the productlist blocks: filter/sort/page state, query emission with debounce, cascading groups, client-side matching, and a config-driven field renderer over the individual filter components.",
@@ -1881,6 +3194,17 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryComponents: ["filter-checkbox", "filter-chips", "filter-combobox", "filter-multiselect", "filter-radio", "filter-range", "filter-rating", "filter-search", "filter-segmented", "filter-select", "filter-slider", "filter-swatch", "filter-toggle", "filter-tree"],
     hidden: true,
     usage: "import {\n  ProductFilterChips,\n  ProductFilterField,\n  useProductFilters,\n  type ProductFilterGroup,\n} from \"@/components/beste/component/product-filters\";\n\nconst groups: ProductFilterGroup[] = [\n  { id: \"q\", label: \"Search\", type: \"search\", placeholder: \"Search products\" },\n  {\n    id: \"category\",\n    label: \"Category\",\n    type: \"select\",\n    clearLabel: \"All categories\",\n    options: [{ label: \"Sneakers\", value: \"sneakers\" }],\n  },\n  {\n    id: \"subcategory\",\n    label: \"Subcategory\",\n    type: \"select\",\n    dependsOn: \"category\", // stays disabled until a category is picked\n    options: [{ label: \"Running\", value: \"running\", parentValue: \"sneakers\" }],\n  },\n];\n\nfunction Toolbar() {\n  const engine = useProductFilters({\n    groups,\n    pageSize: 12,\n    onQueryChange: (query) => console.log(\"fetch with:\", query),\n  });\n\n  return (\n    <div className=\"space-y-4\">\n      <div className=\"grid gap-3 md:grid-cols-3\">\n        {groups.map((group, index) => (\n          <ProductFilterField key={index} group={group} engine={engine} />\n        ))}\n      </div>\n      <ProductFilterChips engine={engine} />\n    </div>\n  );\n}",
+  },
+  {
+    name: "qr-code",
+    title: "QR Code",
+    description: "A QR code generator with no dependencies: text is encoded as UTF-8 bytes into the smallest version from 1 to 40 that fits, with Reed-Solomon error correction at L, M, Q or H and the mask the standard's penalty rules pick. Drawn as one crisp SVG path in square, flowing rounded or dotted modules, with square, rounded or circular corner eyes, any colors (tokens included) and a configurable quiet zone. A centered logo sits on a cleared plate and raises the error correction to H on its own. Exports the encoder, an SVG string builder and a PNG download helper.",
+    category: "Code",
+    component: QrCode,
+    demoProps: qrCodeDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { QrCode, downloadQrPng } from \"@/components/beste/component/qr-code\";\n\n<QrCode value=\"https://beste.co\" />\n\n<QrCode\n  value=\"https://beste.co/tickets/4F7Q\"\n  moduleStyle=\"rounded\"      // \"square\" | \"rounded\" | \"dots\"\n  finderStyle=\"circle\"       // \"square\" | \"rounded\" | \"circle\"\n  ecc=\"Q\"                    // \"L\" | \"M\" | \"Q\" | \"H\"\n  color=\"var(--primary)\"\n  size=\"lg\"                  // \"sm\" | \"default\" | \"lg\" | pixels\n  logo={{ src: \"/logo.svg\", size: 0.22 }}\n/>\n\n// Save it as a PNG, tokens resolved against the page\n<button onClick={() => downloadQrPng(\"https://beste.co\", { fileName: \"beste\" })}>Download</button>",
+    playground: qrCodePlayground,
   },
   {
     name: "radar-chart",
@@ -1907,6 +3231,121 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: radialChartPlayground,
   },
   {
+    name: "rain-glass",
+    title: "Rain on Glass",
+    description: "A live WebGL window on a rainy evening: the photo behind the glass sits out of focus, a fine mist clings to the pane, small droplets gather and larger drops break free and run down in stop-start paths, clearing trails that slowly mist over again. Every drop is a tiny lens showing a sharp, flipped view of the scene with a dark rim and a highlight, and the cursor wipes the mist like a finger. Blur, mist, droplet density, drop rate and size, refraction, tint and the wipe are all props. Adapts its resolution, pauses offscreen, holds a still pane for reduced motion and falls back to a blurred photo without WebGL.",
+    category: "Background",
+    component: RainGlass,
+    demoProps: rainGlassDemo,
+    usage: "import { RainGlass } from \"@/components/beste/component/rain-glass\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <RainGlass\n    className=\"absolute inset-0\"\n    src=\"https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=2000&q=80\"\n    alt=\"A city street at dusk\"\n  />\n  <div className=\"relative\">...</div>\n</section>\n\n<RainGlass\n  className=\"min-h-[32rem]\"\n  src=\"https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=2000&q=80\"\n  blur={0.8}          // further out of focus, 0 to 1\n  fog={0.4}           // lighter mist\n  rate={0.8}          // more drops running down\n  dropSize={0.7}      // larger drops\n  tintColor=\"#e8c9a0\" // warm mist, any CSS color\n  recovery={0.2}      // wiped glass stays clear longer\n/>",
+    isAnimated: true,
+    playground: rainGlassPlayground,
+  },
+  {
+    name: "reaction-bar",
+    title: "Reaction Bar",
+    description: "Emoji reaction pills with counts for comments, posts and messages: pressing a pill adds or removes your own reaction, with a small burst of particles as it lands and the count rolling up or down from the side it moves toward. Hovering or focusing a pill names who reacted (\"You, Nina Simone and 9 others\"), and a \"+\" button opens a compact emoji grid for a new reaction, which arrives as a pill of its own. Each pill is a real toggle button with `aria-pressed` and a spoken label, and it works controlled or uncontrolled.",
+    category: "Reaction",
+    component: ReactionBar,
+    demoProps: reactionBarDemo,
+    registryDependencies: ["popover"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ReactionBar } from \"@/components/beste/component/reaction-bar\";\n\n<ReactionBar\n  reactions={[\n    { emoji: \"🔥\", count: 12, by: [\"Nina Simone\", \"Miles Davis\"] },\n    { emoji: \"❤️\", count: 7 },\n  ]}\n  defaultValue={[\"❤️\"]}\n/>\n\n// Controlled, saving each change\n<ReactionBar\n  reactions={reactions}\n  value={mine}\n  onValueChange={(next) => console.log(\"Save reactions\", next)}\n  choices={[\"👍\", \"❤️\", \"🎧\"]}   // what the \"+\" button offers; [] hides it\n  maxNames={2}                   // names in the tooltip before \"and N others\"\n  tone=\"outline\"                 // \"muted\" | \"outline\" | \"ghost\"\n  size=\"sm\"                      // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: reactionBarPlayground,
+  },
+  {
+    name: "reaction-diffusion",
+    title: "Reaction Diffusion",
+    description: "A live Gray-Scott reaction-diffusion simulation in WebGL that grows coral and fingerprint patterns across the surface, run on a small ping-pong grid and upscaled with a relief-shaded display pass. Ink, paper and accent colors, feed and kill rates, grid detail, growth speed, self-seeding, a drifting eraser, front accent and relief are all props; growth can steer around an element you pass by ref, and the cursor or a tap seeds new colonies. It fades up softly out of its paper color on load, steps per frame adapt to the device, it pauses offscreen, grows one settled still frame for reduced motion and falls back to a CSS pattern without WebGL.",
+    category: "Background",
+    component: ReactionDiffusion,
+    demoProps: reactionDiffusionDemo,
+    usage: "import { ReactionDiffusion } from \"@/components/beste/component/reaction-diffusion\";\nimport { useRef } from \"react\";\n\n// Growth steers around the text block you pass as avoidRef\nconst copy = useRef<HTMLDivElement>(null);\n\n<section className=\"relative min-h-[40rem]\">\n  <ReactionDiffusion className=\"absolute inset-0\" avoidRef={copy} />\n  <div ref={copy} className=\"relative max-w-2xl\">...</div>\n</section>\n\n<ReactionDiffusion\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--foreground)\"   // any CSS color, tokens included\n  accentColor=\"var(--primary)\"\n  feed={0.037}                   // thinner, wormier pattern\n  kill={0.06}\n  resolution={0.8}               // finer grid\n  seeding={0.2}                  // seeds itself less often\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: reactionDiffusionPlayground,
+  },
+  {
+    name: "reaction-picker",
+    title: "Reaction Picker",
+    description: "An emoji picker panel for reactions, comments and messages, built to sit inline or inside a popover. A search field filters a built-in set of about 380 common emoji by name and keywords; category tabs with icons scroll the grid and follow along as it scrolls, with a marker that slides between them. A Recently used row is remembered in localStorage, a skin tone row applies one of the five modifiers to every emoji that takes it, and a preview bar names the hovered or focused emoji. The grid is fully keyboard driven, with arrows moving by row across sections, and each cell has a fixed size so the panel is exactly as wide as its columns.",
+    category: "Reaction",
+    component: ReactionPicker,
+    demoProps: reactionPickerDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ReactionPicker } from \"@/components/beste/component/reaction-picker\";\n\n<ReactionPicker onSelect={(emoji) => console.log(\"Picked\", emoji)} />\n\n// Inside a popover, focused on open, with a controlled skin tone\n<ReactionPicker\n  autoFocus\n  skinTone={tone}\n  onSkinToneChange={(next) => console.log(\"Tone\", next)}\n  onSelect={(emoji, entry) => console.log(emoji, entry.name)}\n  columns={9}            // emoji per row\n  recent={false}         // hide the Recently used row\n  tone=\"outline\"         // \"muted\" | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: reactionPickerPlayground,
+  },
+  {
+    name: "reaction-rating",
+    title: "Reaction Rating",
+    description: "A star rating for reviews, feedback and track ratings: stars fill up to the pointer as a preview (by halves, with `allowHalf`), a click sets the rating and gives the star it lands on a small pop, and clicking the same rating again clears it. The keyboard gets a native range under the stars: arrows, Home and End step through it, number keys jump straight to a rating and Backspace clears. As a read-only display it fills fractionally, so 4.3 fills 30% of the fifth star, and it can write the value and the number of ratings beside the stars (\"4.3 (1,284)\"). Any icon can replace the star, in amber, the primary color or the foreground.",
+    category: "Reaction",
+    component: ReactionRating,
+    demoProps: reactionRatingDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ReactionRating } from \"@/components/beste/component/reaction-rating\";\n\nconst [rating, setRating] = useState(0);\n<ReactionRating value={rating} onValueChange={setRating} allowHalf label=\"Rate this album\" />\n\n// A review summary: read-only, fractional fill, value and count\n<ReactionRating readOnly defaultValue={4.3} showValue count={1284} size=\"sm\" />\n\n// Hearts in the primary color, ten of them\nimport { Heart } from \"lucide-react\";\n<ReactionRating icon={Heart} max={10} color=\"primary\" tone=\"outline\" />",
+    playground: reactionRatingPlayground,
+  },
+  {
+    name: "readout-compare",
+    title: "Readout Compare",
+    description: "One metric across two periods: the label and a delta chip that knows whether up is good news, the current figure written with Intl.NumberFormat beside the one it is compared with, and a pair of bars on one scale, this period solid and the earlier one faint, that grow in from the left on a soft ease-out. Optional breakdown rows compare further metrics the same way, each with its own twin bars and chip, and each row can have its own format and direction. The comparison is read out once as a sentence for screen readers. Three tones and three sizes; it shares its number formatting with readout-stat.",
+    category: "Readout",
+    component: ReadoutCompare,
+    demoProps: readoutCompareDemo,
+    registryComponents: ["readout-stat"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ReadoutCompare } from \"@/components/beste/component/readout-compare\";\n\n<ReadoutCompare\n  label=\"Streams\"\n  value={1284300}\n  previous={1146900}\n  format=\"compact\"            // \"number\" | \"currency\" | \"percent\" | \"compact\"\n  currentLabel=\"Sep 2026\"\n  previousLabel=\"Aug 2026\"\n  breakdown={[\n    { label: \"Spotify\", value: 742100, previous: 681400 },\n    { label: \"Apple Music\", value: 298200, previous: 301900 },\n  ]}\n/>\n\n// Refunds going down is good news\n<ReadoutCompare\n  label=\"Refunds\"\n  value={1840}\n  previous={2310}\n  format=\"currency\"\n  goodDirection=\"down\"\n  tone=\"outline\"              // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"                   // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: readoutComparePlayground,
+  },
+  {
+    name: "readout-stat",
+    title: "Readout Stat",
+    description: "A KPI readout: a label, a big figure written with Intl.NumberFormat (number, currency, percent or compact, in any locale) whose digits roll into place like an odometer whenever the value changes, a delta chip that knows whether up is good news, an inline sparkline that draws itself in and ends on a dot in the verdict's color, and an optional caption. The written figure is read out once for screen readers; the rolling columns are decoration. Three tones and three sizes.",
+    category: "Readout",
+    component: ReadoutStat,
+    demoProps: readoutStatDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ReadoutStat } from \"@/components/beste/component/readout-stat\";\n\n<ReadoutStat\n  label=\"Monthly revenue\"\n  value={48290}\n  format=\"currency\"          // \"number\" | \"currency\" | \"percent\" | \"compact\"\n  currency=\"USD\"\n  previous={42870}           // the chip shows the change from this\n  trend={[31, 34, 33, 37, 40, 43, 45, 48]}\n  caption=\"Compared with August\"\n/>\n\n// Churn going down is good news\n<ReadoutStat\n  label=\"Churn\"\n  value={0.021}\n  format=\"percent\"\n  delta={-0.18}              // a ready-made change, as a fraction\n  goodDirection=\"down\"\n  tone=\"outline\"             // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"                  // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: readoutStatPlayground,
+  },
+  {
+    name: "reeded-light",
+    title: "Reeded Light",
+    description: "A live WebGL background of light seen through reeded glass: a procedural field with a glow pooled at the source corner, a broad haze and a narrow accent band slowly bends behind a row of rounded glass reeds, each magnifying and tipping its own slice, with soft seams, shaded flanks, a fine glint and static film grain. A warm lamp behind the glass follows the cursor. Colors, light direction, band position, reed width, magnification, shading, grain, speed, lamp and a readability veil are all props. Adapts its resolution, pauses offscreen, holds a still frame for reduced motion and shows the same light as a CSS gradient before the canvas is ready or without WebGL.",
+    category: "Background",
+    component: ReededLight,
+    demoProps: reededLightDemo,
+    usage: "import { ReededLight } from \"@/components/beste/component/reeded-light\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <ReededLight className=\"absolute inset-0\" veilX={0.3} veilY={0.7} veil={0.4} />\n  <div className=\"relative\">...</div>\n</section>\n\n<ReededLight\n  className=\"min-h-[32rem]\"\n  groundColor=\"#0b0a08\"   // any CSS color, tokens included\n  glowColor=\"#f4e6c8\"\n  hazeColor=\"#2f5a4a\"\n  accentColor=\"#f2a33a\"\n  angle={120}             // the light runs from the top right toward the bottom left\n  band={0.58}             // where the bright band crosses\n  reedWidth={24}          // narrower reeds, in CSS pixels\n  magnify={0.8}           // stronger lenses\n/>",
+    isAnimated: true,
+    playground: reededLightPlayground,
+  },
+  {
+    name: "ridgelines",
+    title: "Ridgelines",
+    description: "A Canvas 2D stacked ridgeline plot in the spirit of a pulsar chart: dozens of lines lifted by slow noise gathered in a central band, each filled to hide the ridges behind it, rising from flat on mount. Nearby lines lift under the cursor. Ink and paper colors, line count, ridge height, band width, speed, line weight and the cursor peak are all props. Pauses offscreen and holds a still plot for reduced motion.",
+    category: "Background",
+    component: Ridgelines,
+    demoProps: ridgelinesDemo,
+    usage: "import { Ridgelines } from \"@/components/beste/component/ridgelines\";\n\n// A square cover panel\n<Ridgelines className=\"aspect-square rounded-sm\" />\n\n<Ridgelines\n  className=\"min-h-[32rem]\"\n  inkColor=\"var(--foreground)\"    // any CSS color, tokens included\n  paperColor=\"var(--background)\"\n  lines={40}                      // 12 to 96\n  amplitude={0.7}                 // taller ridges\n  spread={0.3}                    // a narrower central band\n  weight={0.2}                    // finer lines\n  riseIn={false}                  // skip the rise on mount\n/>",
+    isAnimated: true,
+    demoContentOff: true,
+    playground: ridgelinesPlayground,
+  },
+  {
+    name: "ripple-gradient",
+    title: "Ripple Gradient",
+    description: "A live WebGL ripple gradient: concentric rings spread from a few slowly wandering points like drops on still water, each ring carrying the next color of the palette outward, blended in Oklab over a calm base color. Where rings from different sources meet they reinforce and cancel, and they fade with distance. Colors, base, source count, ring density, speed, softness, decay, interference, intensity, saturation and film grain are all props and a new palette fades through over a set time. On load the rings spread out of the flat base; it adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to CSS rings without WebGL.",
+    category: "Background",
+    component: RippleGradient,
+    demoProps: rippleGradientDemo,
+    usage: "import { RippleGradient } from \"@/components/beste/component/ripple-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <RippleGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Fine, crisp rings on a dark pool\n<RippleGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#7ee0d1\", \"#4c8dff\", \"#c7b8ff\"]}\n  baseColor=\"#0a1420\"\n  sources={4}\n  frequency={0.8}          // tighter rings\n  softness={0.2}           // thin, crisp lines\n  interference={0.8}\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: rippleGradientPlayground,
+  },
+  {
     name: "schedule-timeline",
     title: "Schedule Timeline",
     description: "A Gantt-style day timeline: resource rows against an hour axis with time-positioned event bars (left/width computed from start/end), grid lines, a live 'now' marker, colored tones, and clickable bars with a hover tooltip showing the event and its time range. Ideal for room bookings, shifts, and resource scheduling.",
@@ -1915,6 +3354,28 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: scheduleTimelineDemo,
     registryDependencies: ["tooltip"],
     usage: "import { ScheduleTimeline } from \"@/components/beste/component/schedule-timeline\";\n\n<ScheduleTimeline\n  dayStart={8}\n  dayEnd={18}\n  step={2}\n  nowAt={11.5}\n  rows={[\n    {\n      id: \"loft\",\n      label: \"Atrium Loft\",\n      sublabel: \"Floor 3 · 12 seats\",\n      events: [\n        { id: \"a1\", label: \"Planning sync\", start: 9, end: 11, tone: \"primary\" },\n        { id: \"a2\", label: \"Design review\", start: 14, end: 15.5, tone: \"emerald\" },\n      ],\n    },\n  ]}\n  onEventClick={(rowId, eventId) => console.log(rowId, eventId)}\n/>",
+  },
+  {
+    name: "scroll-rail",
+    title: "Scroll Rail",
+    description: "A horizontal rail that carries any content sideways: chapters, a timeline, case studies or cards. Travel comes from a number or a live scroll value, or the rail drifts slowly on its own. Inside a panel, data-rail-depth makes an element drift against the travel for depth and data-rail-focus dims it until its panel reaches the middle. One animation loop writes transforms on whole pixels and pauses offscreen. Reduced motion turns the rail into a plain horizontal scroll.",
+    category: "Media",
+    component: ScrollRail,
+    demoProps: scrollRailDemo,
+    usage: "import { ScrollRail } from \"@/components/beste/component/scroll-rail\";\n\n<ScrollRail className=\"h-[32rem]\" gap={48}>\n  <div className=\"w-[26rem]\">\n    <span data-rail-depth=\"0.3\" className=\"text-7xl\">01</span>\n    <h3 data-rail-focus=\"0.4\">Listen first</h3>\n  </div>\n  <div className=\"w-[26rem]\">\n    <span data-rail-depth=\"0.3\" className=\"text-7xl\">02</span>\n    <h3 data-rail-focus=\"0.4\">Draw by hand</h3>\n  </div>\n</ScrollRail>\n\n// Driven by scroll: pass a framer-motion MotionValue (or any { get() }) as progress\nconst { scrollYProgress } = useScroll({ target: ref, offset: [\"start start\", \"end end\"] });\n<ScrollRail progress={scrollYProgress} autoplay={false}>{panels}</ScrollRail>",
+    isAnimated: true,
+    playground: scrollRailPlayground,
+  },
+  {
+    name: "scroll-toc",
+    title: "Scroll TOC",
+    description: "A table of contents that follows the reader: the current section is the last heading past a line near the top (the last one once the page bottoms out, the topmost in view before any has passed), and a marker slides and resizes onto it along a thin rail. Entries come from an items list, from headings collected out of a container, or from the content passed as children, which lays the list and its own scroll area side by side. Clicks scroll smoothly, respect scroll-margin, move focus to the heading and hold the marker steady while the page travels; deeper levels indent and can collapse to the current section. Works on the page or inside any scroll container.",
+    category: "Scroll",
+    component: ScrollToc,
+    demoProps: scrollTocDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { ScrollToc } from \"@/components/beste/component/scroll-toc\";\n\n// Beside an article on the page: headings are collected from it\n<aside className=\"sticky top-24\">\n  <ScrollToc containerSelector=\"article\" offset={96} />\n</aside>\n\n// Explicit entries, inside a scroll container\n<ScrollToc\n  root=\"#docs-scroller\"\n  items={[\n    { id: \"install\", title: \"Install\", level: 2 },\n    { id: \"props\", title: \"Props\", level: 2 },\n    { id: \"events\", title: \"Events\", level: 3 },\n  ]}\n  collapse          // deeper levels only under the current section\n  updateHash\n/>\n\n// Content and contents together, in one scroll area\n<ScrollToc className=\"h-[32rem]\">\n  <article>...</article>\n</ScrollToc>",
+    playground: scrollTocPlayground,
   },
   {
     name: "sidebar-nav",
@@ -1926,6 +3387,155 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { SidebarNav } from \"@/components/beste/component/sidebar-nav\";\nimport { LayoutDashboard, Users } from \"lucide-react\";\n\n// The collapse toggle lives in your topbar; pass `collapsed` down.\n<SidebarNav\n  brand={{ name: \"Acme Inc\" }}\n  collapsed={collapsed}\n  defaultActiveId=\"dashboard\"\n  groups={[\n    {\n      label: \"Overview\",\n      items: [\n        { id: \"dashboard\", label: \"Dashboard\", icon: LayoutDashboard },\n        { id: \"customers\", label: \"Customers\", icon: Users, badge: 24 },\n      ],\n    },\n  ]}\n  onNavigate={(id) => console.log(\"navigate:\", id)}\n/>",
   },
   {
+    name: "signature-pad",
+    title: "Signature Pad",
+    description: "A canvas for capturing a signature: strokes are smoothed into curves through their midpoints and run thick on slow movement and thin on fast, like ink, or follow real pen pressure on a stylus. Points are stored as fractions of the pad's width, so the signature survives any resize on a crisp, pixel-ratio-correct canvas. A dashed baseline and a faint placeholder guide the signer; undo (also Cmd or Ctrl + Z) and clear sit below. Export helpers return an SVG string or a PNG data URL, and a ref exposes clear, undo, isEmpty and both exports.",
+    category: "Draw",
+    component: SignaturePad,
+    demoProps: signaturePadDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { SignaturePad, toSvg, type SignatureData, type SignaturePadHandle } from \"@/components/beste/component/signature-pad\";\n\n// Uncontrolled, read it back through the ref\nconst pad = useRef<SignaturePadHandle>(null);\n<SignaturePad ref={pad} label=\"Signature of Nina Simone\" />\nconsole.log(pad.current?.toDataURL());\n\n// Controlled\nconst [signature, setSignature] = useState<SignatureData>([]);\n<SignaturePad\n  value={signature}\n  onChange={setSignature}\n  color=\"#1e3a8a\"       // any CSS color; defaults to the foreground token\n  minWidth={0.6}        // px on fast strokes\n  maxWidth={3.6}        // px on slow strokes or full pressure\n  tone=\"outline\"        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"             // \"sm\" | \"default\" | \"lg\"\n/>\nconsole.log(toSvg(signature, { width: 600, height: 200 }));",
+    playground: signaturePadPlayground,
+  },
+  {
+    name: "silk-drape",
+    title: "Silk Drape",
+    description: "A live WebGL length of silk hanging from a few pins along its top edge: real cloth physics (a mass-spring weave with shear and bending) lets it fall into deep folds and swell in a slow breeze, shaded with an anisotropic sheen that runs along the weave, a soft rim and occlusion in the folds. Sweeping the cursor across stirs the air: the silk ripples and swings in the direction of the movement, then settles; a still cursor leaves it alone. The fabric is far wider than the frame, so its edges never show however it gathers. Silk and background colors, sheen, light angle, stiffness, wind, pins and mesh detail are all props. It grows softly out of the background on load, the resolution adapts to the device, it pauses offscreen, hangs still for reduced motion and falls back to a CSS drape without WebGL.",
+    category: "Background",
+    component: SilkDrape,
+    demoProps: silkDrapeDemo,
+    usage: "import { SilkDrape } from \"@/components/beste/component/silk-drape\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <SilkDrape className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<SilkDrape\n  className=\"min-h-[32rem]\"\n  color=\"#d9c3a0\"            // champagne; any CSS color, tokens included\n  backgroundColor=\"#1a140d\"\n  sheen={0.9}                // brighter highlights along the weave, 0 to 1\n  lightAngle={60}            // light from the upper right\n  wind={0.7}                 // a stronger breeze\n  pins={7}                   // shallower swags along the top\n/>",
+    isAnimated: true,
+    playground: silkDrapePlayground,
+  },
+  {
+    name: "sketch-to-photo",
+    title: "Sketch to Photo",
+    description: "A live WebGL piece that turns any photo into an architect's ink drawing and back: contour lines traced from the photo itself sweep across warm fibrous paper like a moving pen, fine broken hatching follows in the shadows, then a watercolor wash of the real colors blooms outward along a feathered front with darker tide lines at its edge, and finally the drawing lets go as the photograph sharpens into place. Driven by a 0 to 1 progress (made for scroll) or looping on its own. Paper and ink colors, line weight, line detail, speed and grain are props. Adapts its resolution, stops drawing once it catches up, holds the finished photo for reduced motion and shows the plain photo without WebGL.",
+    category: "Media",
+    component: SketchToPhoto,
+    demoProps: sketchToPhotoDemo,
+    usage: "import { SketchToPhoto } from \"@/components/beste/component/sketch-to-photo\";\n\n<SketchToPhoto\n  className=\"aspect-[4/3]\"\n  imageSrc=\"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2000&q=80\"\n  imageAlt=\"A modern house with wide glass walls and a pool\"\n  paperColor=\"#f1ece2\"   // any CSS color, tokens included\n  inkColor=\"#2b2723\"\n  lineWeight={0.4}       // hairline to bold, 0 to 1\n  lineDetail={0.5}       // main contours only to every detail, 0 to 1\n  progress={0.5}         // 0 paper, 0.4 drawn, 0.75 washed, 1 photo; leave it out to loop\n/>",
+    isAnimated: true,
+    playground: sketchToPhotoPlayground,
+  },
+  {
+    name: "slice-assembly",
+    title: "Slice Assembly",
+    description: "A photograph cut into vertical strips that float apart in 3D space, each turned toward or away from the light with its own soft shadow, then settle one after another into the whole picture with no seams left behind. Progress can come from a number or a live scroll value, or the strips loop on their own. Strip count, depth, scatter, stagger, shading, shadow, pace and a gentle cursor lean are all props. Reduced motion shows the whole photograph.",
+    category: "Media",
+    component: SliceAssembly,
+    demoProps: sliceAssemblyDemo,
+    usage: "import { SliceAssembly } from \"@/components/beste/component/slice-assembly\";\n\n<SliceAssembly\n  className=\"aspect-[4/5] w-full max-w-md\"\n  imageSrc=\"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=1400&q=80\"\n  imageAlt=\"A woman in a dark check coat walking down a city street\"\n/>\n\n// Driven by scroll: pass a framer-motion MotionValue (or any { get() }) as progress\nconst { scrollYProgress } = useScroll({ target: ref });\n<SliceAssembly progress={scrollYProgress} strips={18} depth={0.8} stagger={0.4} />",
+    isAnimated: true,
+    playground: sliceAssemblyPlayground,
+  },
+  {
+    name: "smoke-gradient",
+    title: "Smoke Gradient",
+    description: "A live WebGL gradient of colored smoke: soft plumes rise from the bottom edge, widen as they climb, curl through a fractal flow and thin out near the top, over a low haze along the floor. The smoke is colored by a gradient ramp from the base of each plume to its tip, blended in Oklab, under a fine film grain. Colors, base, density, plume count, height, rise speed, curl, softness, scale, saturation, grain and seed are all props; a new palette fades through over a set time, and the smoke parts gently around the cursor. It grows softly out of its base on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to soft CSS plumes without WebGL.",
+    category: "Background",
+    component: SmokeGradient,
+    demoProps: smokeGradientDemo,
+    usage: "import { SmokeGradient } from \"@/components/beste/component/smoke-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <SmokeGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Pale incense on a light page\n<SmokeGradient\n  className=\"min-h-[32rem]\"\n  baseColor=\"#f4f1ec\"\n  colors={[\"#d9d2c8\", \"#b7a6c9\", \"#8f7fb0\"]}\n  plumes={1}\n  curl={0.8}\n  softness={0.8}\n/>",
+    isAnimated: true,
+    playground: smokeGradientPlayground,
+  },
+  {
+    name: "snippet-install",
+    title: "Snippet Install",
+    description: "An install command block with a tab for each package manager: npm, pnpm, yarn and bun, or any subset in any order. The command is derived from the packages, a dev flag and whether they are installed or run once (npx, pnpm dlx, yarn dlx, bunx), or given exactly per manager. A marker slides between the tabs on a spring, and the reader's pick is remembered and shared by every snippet on the page and across visits. The copy button morphs into a check and announces itself, and a long command scrolls sideways instead of wrapping.",
+    category: "Snippet",
+    component: SnippetInstall,
+    demoProps: snippetInstallDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { SnippetInstall } from \"@/components/beste/component/snippet-install\";\n\n// Installs, with the command written for each manager\n<SnippetInstall packages={[\"motion\", \"lucide-react\"]} />\n\n// A dev dependency\n<SnippetInstall packages=\"@biomejs/biome\" dev />\n\n// Run once without installing: npx, pnpm dlx, yarn dlx, bunx\n<SnippetInstall kind=\"exec\" packages=\"shadcn@latest add button\" />\n\n// Exact commands where the derived ones do not fit\n<SnippetInstall\n  managers={[\"pnpm\", \"bun\"]}\n  commands={{ pnpm: \"pnpm create next-app@latest\", bun: \"bun create next-app\" }}\n/>\n\n<SnippetInstall\n  packages=\"zod\"\n  defaultManager=\"pnpm\"   // shown until the reader picks\n  remember={false}        // keep this snippet's pick to itself\n  prompt={false}          // no $ before the command\n  tone=\"outline\"          // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"               // \"sm\" | \"default\" | \"lg\"\n  onCopy={(command) => console.log(\"Copied\", command)}\n/>",
+    playground: snippetInstallPlayground,
+  },
+  {
+    name: "split-flap",
+    title: "Split-Flap Board",
+    description: "A departure board of CSS 3D split-flap characters that flick through random glyphs before settling on each phrase, rippling across the columns and cycling through a list. Columns, rows, timing, flip count, ripple, capitals and the flap, ink and split colors are props. Transforms only from one loop that sleeps between phrases; it pauses offscreen and shows the first phrase still for reduced motion.",
+    category: "Text",
+    component: SplitFlap,
+    demoProps: splitFlapDemo,
+    usage: "import { SplitFlap } from \"@/components/beste/component/split-flap\";\n\n<div className=\"rounded-2xl bg-[#121211] p-6\">\n  <SplitFlap phrases={[\"Sleep in Paris, wake in Vienna\", \"Lisbon to Madrid, 22:05\"]} />\n</div>\n\n<SplitFlap\n  phrases={[\"Now boarding\", \"Platform 4\"]}\n  columns={12}          // characters per row\n  interval={4000}       // milliseconds per phrase\n  flips={3}             // random glyphs before each character settles\n  stagger={0.8}         // a slower ripple across the board\n  flapColor=\"#1b2a3a\"\n  inkColor=\"#ffd166\"\n/>",
+    isAnimated: true,
+    cardScale: 0.5,
+    playground: splitFlapPlayground,
+  },
+  {
+    name: "star-trails",
+    title: "Star Trails",
+    description: "A live WebGL background of a long-exposure night photograph: thousands of stars drawn analytically as continuous, anti-aliased arcs around a celestial pole, each with its own brightness and colour temperature from blue-white to orange. The exposure builds up over the first seconds like a real shutter left open, then the sky keeps turning slowly with a soft comet fade on every trail. Airglow lifts the sky toward the horizon over layered ridges and an optional pine forest line, finished with lens vignetting and fine sensor noise. The land and the pole shift slightly with the cursor for depth. Colours, star density, trail length, pole position, horizon height, foreground, grain and speed are props, and a progress prop can drive the exposure from scroll. Grows softly out of the sky color on load, adapts its resolution, pauses offscreen, holds the full exposure for reduced motion and falls back to a CSS gradient without WebGL.",
+    category: "Background",
+    component: StarTrails,
+    demoProps: starTrailsDemo,
+    usage: "import { StarTrails } from \"@/components/beste/component/star-trails\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <StarTrails className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<StarTrails\n  className=\"min-h-[32rem]\"\n  skyColor=\"#060510\"      // any CSS color, tokens included\n  glowColor=\"#2a1e3a\"\n  horizonColor=\"#d08040\"\n  exposure={0.8}          // longer trails\n  poleX={0.5}\n  poleY={0.3}             // the pole inside the frame draws full circles\n  silhouette=\"ridges\"     // \"forest\", \"ridges\" or \"none\"\n/>",
+    isAnimated: true,
+    playground: starTrailsPlayground,
+  },
+  {
+    name: "status-uptime",
+    title: "Status Uptime",
+    description: "Service row for status pages and dashboards: a status dot that pulses softly while something is wrong, the service name, its current status and the uptime over the days on screen, above a strip of daily bars colored by each day's worst status. Hovering or focusing a bar shows the date, that day's uptime and its incidents; the strip is one tab stop with arrow keys between days, and narrow rows drop their oldest days instead of squeezing the bars.",
+    category: "Status",
+    component: StatusUptime,
+    demoProps: statusUptimeDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { StatusUptime } from \"@/components/beste/component/status-uptime\";\n\n<StatusUptime\n  name=\"Public API\"\n  days={[\n    { date: \"2026-09-25\", status: \"operational\" },\n    { date: \"2026-09-26\", status: \"degraded\", uptime: 99.82, incidents: [{ title: \"Elevated latency\" }] },\n    { date: \"2026-09-27\", status: \"operational\" },\n  ]}\n  range={90}             // most days shown; narrow rows show fewer\n/>\n\n// The current status defaults to the last day; set it to override\n<StatusUptime\n  name=\"Webhooks\"\n  status=\"partial\"       // \"operational\" | \"maintenance\" | \"degraded\" | \"partial\" | \"major\"\n  days={history}\n  showPercent={false}\n  tone=\"outline\"         // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n/>\n\n// Siblings share the same words and colors\nimport { statusMeta } from \"@/components/beste/component/status-uptime\";\nconsole.log(statusMeta.degraded.label);",
+    playground: statusUptimePlayground,
+  }
+];
+
+const _allRegistryComponents_1: RegistryComponentMeta[] = [
+  {
+    name: "steps-checklist",
+    title: "Steps Checklist",
+    description: "An onboarding checklist card: a ring beside the title fills as items are checked and reads \"3 of 5 done\", the next open item is highlighted with its description and an action button or link, and finished items fold to a single struck-through line while a check draws itself in their box. When every item is done the ring completes in green with a check, the title cross-fades to a finished one and an optional Dismiss button appears. The whole list collapses under its header, completion can be controlled or left to the card, and each item is a real checkbox for keyboards and screen readers.",
+    category: "Steps",
+    component: StepsChecklist,
+    demoProps: stepsChecklistDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { StepsChecklist } from \"@/components/beste/component/steps-checklist\";\n\n<StepsChecklist\n  title=\"Set up your workspace\"\n  items={[\n    { id: \"profile\", title: \"Complete your profile\", description: \"A photo and a short bio.\" },\n    { id: \"invite\", title: \"Invite the band\", action: { label: \"Invite\", href: \"/invite\" } },\n    { id: \"first\", title: \"Publish the first page\", action: { label: \"Open the editor\", onClick: () => console.log(\"open\") } },\n  ]}\n  defaultCompleted={[\"profile\"]}\n  onToggle={(id, done) => console.log(id, done)}\n  finishedDescription=\"Your workspace is ready.\"\n  onDismiss={() => console.log(\"dismissed\")}\n  tone=\"muted\"          // \"muted\" | \"outline\" (default) | \"ghost\"\n  size=\"sm\"             // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: stepsChecklistPlayground,
+  },
+  {
+    name: "steps-track",
+    title: "Steps Track",
+    description: "Multi-step progress as an ordered list: a numbered marker per step, a title and an optional description, laid out as a row or a column. As `current` advances, the line between the markers fills segment by segment on a spring and each finished number turns into a check that draws itself in; stepping back empties it the other way. Steps can also be marked as needing attention or skipped. Completed steps (or every step) can be made pressable to jump back, the current one carries `aria-current=\"step\"`, and every state is spelled out for screen readers.",
+    category: "Steps",
+    component: StepsTrack,
+    demoProps: stepsTrackDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { StepsTrack } from \"@/components/beste/component/steps-track\";\n\n<StepsTrack\n  steps={[\n    { title: \"Upload stems\", description: \"WAV or AIFF\" },\n    { title: \"Set the mix\" },\n    { title: \"Master\" },\n    { title: \"Release\" },\n  ]}\n  current={1}\n/>\n\n<StepsTrack\n  steps={steps}\n  current={step}\n  orientation=\"vertical\"            // a column with the text beside each marker\n  onStepClick={(index) => setStep(index)}\n  clickable=\"completed\"             // \"completed\" | \"all\" | \"none\"\n  tone=\"outline\"                    // \"muted\" | \"outline\" | \"ghost\"\n  size=\"lg\"                         // \"sm\" | \"default\" | \"lg\"\n/>\n\n// Per-step overrides\n<StepsTrack steps={[{ title: \"Payment\", status: \"error\" }, { title: \"Survey\", status: \"skipped\" }]} current={2} />",
+    playground: stepsTrackPlayground,
+  },
+  {
+    name: "string-art",
+    title: "String Art",
+    description: "A round board ringed with nails where a single thread is woven pin to pin in real time until a photograph appears, chosen pass by pass by the classic greedy string art method on a grayscale copy of the image. The thread being pulled is highlighted, finished portraits rest, fade and give way to the next photo, hovering speeds the weaving and leans the board, and a click moves on. Pins, passes, thread weight, colors, speed, hold, rim and tilt are props; the work is time sliced so it never blocks the page, and reduced motion weaves the finished portrait without the needle or tilt.",
+    category: "Media",
+    component: StringArt,
+    demoProps: stringArtDemo,
+    usage: "import { StringArt } from \"@/components/beste/component/string-art\";\n\n<StringArt\n  className=\"aspect-square w-full max-w-[560px]\"\n  images={[\n    { src: \"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80\", alt: \"Portrait of a man\", focus: 0.32 },\n  ]}\n  pins={240}                   // nails around the board\n  lines={3500}                 // most passes per portrait; it stops sooner once the picture is done\n  threadColor=\"var(--foreground)\"\n  needleColor=\"var(--primary)\" // the pass being pulled right now\n  speed={320}                  // passes per second\n  hold={6}                     // seconds a finished portrait rests\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: stringArtPlayground,
+  },
+  {
+    name: "sun-blinds",
+    title: "Sun Through Blinds",
+    description: "A live WebGL wall of warm afternoon light falling through venetian blinds: slat shadows that soften with distance and sway in a slow breeze, a window mullion, the blurred shadow of a potted plant, dust drifting through a faint beam and plaster grain, with the sun shifting a little toward the cursor. Wall and light colors, slat count, softness, sway, leaves, dust, follow and speed are props. Grows softly out of the wall color on load, adapts its resolution, pauses offscreen, holds a still frame for reduced motion and falls back to a striped CSS gradient without WebGL.",
+    category: "Background",
+    component: SunBlinds,
+    demoProps: sunBlindsDemo,
+    usage: "import { SunBlinds } from \"@/components/beste/component/sun-blinds\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <SunBlinds className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<SunBlinds\n  className=\"min-h-[32rem]\"\n  wallColor=\"#c9d3cf\"     // any CSS color, tokens included\n  lightColor=\"#fff1d6\"\n  slats={16}              // more, thinner slats\n  softness={0.8}          // softer slat edges\n  sway={0.2}              // a quieter breeze\n  leaves={false}          // no plant shadow\n  dust={0.8}              // more dust in the beam\n/>",
+    isAnimated: true,
+    demoContentTone: "plain",
+    playground: sunBlindsPlayground,
+  },
+  {
     name: "talent-card",
     title: "Talent Card",
     description: "A candidate/freelancer card: avatar with verified badge, star rating or new label, a location/rate split, and toggleable wishlist and invite actions that track their own state. Ideal for talent marketplaces and staffing grids.",
@@ -1935,6 +3545,18 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["button", "avatar"],
     usage: "import { TalentCard } from \"@/components/beste/component/talent-card\";\n\n<TalentCard\n  name=\"Selin Aydar\"\n  verified\n  rating={4.6}\n  reviews={18}\n  location=\"Porto, PT\"\n  distance=\"820 miles away\"\n  rate=\"$142\"\n  availability=\"Recently active — Available\"\n  onWishlist={(saved) => console.log(\"wishlist:\", saved)}\n  onInvite={(invited) => console.log(\"invite:\", invited)}\n/>",
     playground: talentCardPlayground,
+  },
+  {
+    name: "text-orbit",
+    title: "Text Orbit",
+    description: "A round photo encircled by rings of text set on SVG paths, each turning at its own speed and direction, with any ring tilted into a Saturn-like orbit that passes behind and in front of the photo. The whole object leans toward the cursor in 3D, sways on its own when nobody is pointing and floats over a faded reflection. Rings, speed, lean, sway and the reflection are props; the ring type takes its font from the component's own classes. Pauses offscreen and holds still for reduced motion.",
+    category: "Text",
+    component: TextOrbit,
+    demoProps: textOrbitDemo,
+    usage: "import { TextOrbit } from \"@/components/beste/component/text-orbit\";\n\n<TextOrbit\n  className=\"mx-auto max-w-[520px] font-serif\"\n  color=\"var(--primary)\"          // any CSS color, tokens included\n  image={{ src: \"https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=2000&q=80\", alt: \"A perfume bottle\" }}\n  imageScale={1.7}                // zoom of the round photo\n  imageFocus=\"28% 56%\"            // where the zoom centers\n  rings={[\n    { text: \"Ember No. 9 · Eau de parfum ·\", radius: 1.04, depth: 70 },\n    { text: \"Bitter orange · Fig leaf · Smoked amber ·\", radius: 0.8, speed: 1.7, direction: \"counterclockwise\" },\n    { text: \"Composed in Grasse ·\", radius: 1.32, speed: 0.7, tilt: 74 }, // tilted orbit\n  ]}\n  speed={0.6}       // global turning speed\n  tilt={0.8}        // lean toward the cursor, 0 to 1\n  sway={0.3}        // drift on its own, 0 to 1\n  reflection={false}\n/>",
+    isAnimated: true,
+    cardScale: 0.5,
+    playground: textOrbitPlayground,
   },
   {
     name: "text1",
@@ -2156,6 +3778,122 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: text19Playground,
   },
   {
+    name: "text20",
+    title: "Repel Letters",
+    description: "Heavy type whose letters drop in one by one, then spring away from the cursor with a slight lean and stretch before settling back. Push, reach, lean, stretch and springiness are props. Resting positions are measured once, so a move reads a single box, not one per letter.",
+    category: "Text",
+    component: Text20,
+    demoProps: text20Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Text20 } from \"@/components/beste/component/text20\";\n\n<Text20\n  as=\"h1\"                  // \"h1\" | \"h2\" | \"h3\" | \"p\" | \"span\"\n  text=\"Loud type, strict grid.\"\n  className=\"text-8xl font-semibold tracking-[-0.06em]\"\n/>\n\n<Text20\n  text=\"Keep your distance.\"\n  force={0.8}      // how far letters are pushed, 0 to 1\n  reach={320}      // radius around the cursor, in pixels\n  tilt={0.3}       // lean, 0 to 1\n  stretch={0.7}    // upward stretch, 0 to 1\n  bounce={0.8}     // lively wobble on the way back\n  entrance={false} // skip the drop-in\n/>",
+    isAnimated: true,
+    cardScale: 0.5,
+    playground: text20Playground,
+  },
+  {
+    name: "text21",
+    title: "Particle Type",
+    description: "Text drawn as thousands of particles sampled from its own font and layout on a Canvas 2D layer. Particles fly into the letters, scatter and swirl away from the cursor, take an accent color while they move and shimmer at rest; a slow ghost pointer keeps them alive on touch screens. Density, size, colors, push, reach, spring, swirl and shimmer are props. The real text stays in the page for screen readers and search, the particle count adapts to the device, it pauses offscreen and settles into still letters for reduced motion.",
+    category: "Text",
+    component: Text21,
+    demoProps: text21Demo,
+    usage: "import { Text21 } from \"@/components/beste/component/text21\";\n\n<Text21\n  as=\"h1\"                  // \"h1\" | \"h2\" | \"h3\" | \"p\" | \"span\"\n  text=\"Every letter, loose.\"\n  className=\"text-9xl font-semibold tracking-[-0.04em]\"\n/>\n\n<Text21\n  text=\"Push it around.\"\n  color=\"currentColor\"          // follows the text color; any CSS color or token\n  accentColor=\"var(--primary)\"  // color while particles move\n  density={0.7}                 // finer sampling, 0 to 1\n  force={0.8}                   // harder scatter, 0 to 1\n  reach={220}                   // radius around the cursor, in pixels\n  idle={false}                  // no ghost pointer when nobody is pointing\n/>",
+    isAnimated: true,
+    playground: text21Playground,
+  },
+  {
+    name: "text22",
+    title: "Trivision Type",
+    description: "Type set on a trivision board: the statement is cut into vertical slats that are real 3D triangular prisms, and every few seconds they turn one after another in a wave to show the next statement, each printed on its own surface (paper, ink or accent). Faces darken as they turn away, and hairline seams drawn in difference sit over the slat joints, so every seam reads the same on paper, ink and accent. Pauses on hover and offscreen; with reduced motion the statement changes in place.",
+    category: "Text",
+    component: Text22,
+    demoProps: text22Demo,
+    variants: { tone: ["paper", "ink", "accent"] },
+    usage: "import { Text22 } from \"@/components/beste/component/text22\";\n\n<Text22\n  as=\"h1\"\n  faces={[\n    { text: \"Seen from across the street.\", tone: \"paper\" },  // \"paper\" | \"ink\" | \"accent\"\n    { text: \"Read by someone in a hurry.\", tone: \"ink\" },  // similar lengths wrap alike\n    { text: \"Remembered for years after.\", tone: \"accent\" },\n  ]}\n  className=\"text-8xl font-semibold tracking-[-0.045em]\"\n/>\n\n<Text22\n  faces={[{ text: \"Open late.\" }, { text: \"Closed never.\", tone: \"ink\" }]}\n  slats={12}        // fewer, wider slats\n  interval={4}      // seconds each statement holds\n  stagger={0.06}    // a slower wave across the board\n  seams={false}\n/>",
+    isAnimated: true,
+    cardScale: 0.5,
+    playground: text22Playground,
+  },
+  {
+    name: "time-countdown",
+    title: "Time Countdown",
+    description: "A countdown to a date or through a duration, drawn as unit tiles whose digits roll down on the beat of each second, 9 wrapping cleanly from 0. Units are chosen per use and leading zero units can drop away, labels come from the locale in long, short or narrow form, and a message can replace the digits when time is up. It renders a stable placeholder on the server, pauses while the tab is hidden, announces the time left once a minute rather than every second, and fires onComplete once. Three tones and three sizes.",
+    category: "Time",
+    component: TimeCountdown,
+    demoProps: timeCountdownDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { TimeCountdown } from \"@/components/beste/component/time-countdown\";\n\n<TimeCountdown target=\"2026-12-31T23:59:59Z\" />\n\n// Minutes and seconds only, as a clock with colons\n<TimeCountdown duration={15 * 60} units={[\"minutes\", \"seconds\"]} separator labels=\"none\" />\n\n<TimeCountdown\n  target={launchDate}\n  hideLeadingZeros          // days disappear once under a day is left\n  labels=\"short\"            // \"long\" (default) | \"short\" | \"narrow\" | \"none\"\n  locale=\"de-DE\"\n  completeLabel=\"We are live\"\n  onComplete={() => console.log(\"Launched\")}\n  tone=\"outline\"            // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"                 // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: timeCountdownPlayground,
+  },
+  {
+    name: "time-relative",
+    title: "Time Relative",
+    description: "A relative timestamp that reads \"just now\", \"3 minutes ago\" or \"in 2 days\" in any locale through Intl.RelativeTimeFormat, and keeps itself current on one clock shared by every timestamp on the page: every second under a minute, every minute under an hour, hourly after that, and paused while the tab is hidden. It sits in a real time element with the full date and time on hover, switches to a short date past a threshold, and can reserve the width of the longest wording in its unit so the text beside it never shifts as it ticks. The server renders a stable date and the live wording fades in after mount. Long, short and narrow wording, three tones and three sizes.",
+    category: "Time",
+    component: TimeRelative,
+    demoProps: timeRelativeDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { TimeRelative } from \"@/components/beste/component/time-relative\";\n\n<TimeRelative date={comment.createdAt} />\n\n// In a list: a label before it, a stable width, short wording\n<TimeRelative\n  date=\"2026-09-25T18:30:00Z\"\n  prefix=\"Edited\"\n  format=\"short\"          // \"long\" (default) | \"short\" | \"narrow\"\n  reserveWidth            // hold the width of \"59 min. ago\" while it ticks\n  threshold={30 * 86400}  // a short date after 30 days\n  tone=\"muted\"            // \"ghost\" (default) | \"muted\" | \"outline\"\n/>",
+    playground: timeRelativePlayground,
+  },
+  {
+    name: "toolbar",
+    title: "Toolbar",
+    description: "A floating pill toolbar built from compound parts: buttons, toggles, one-of-many and any-of-many toggle groups, and separators. One highlight slides under whichever item the pointer or keyboard is on, and one tooltip rides along with it showing the label and the shortcut as key caps, drawn for the platform (⌘ on a Mac, Ctrl elsewhere). Arrow keys, Home and End move through the bar as a single tab stop, in a row or a column.",
+    category: "Toolbar",
+    component: Toolbar,
+    demoProps: toolbarDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import {\n  Toolbar,\n  ToolbarButton,\n  ToolbarSeparator,\n  ToolbarToggle,\n  ToolbarToggleGroup,\n} from \"@/components/beste/component/toolbar\";\n\n// A tool picker, a formatting set and a plain action\n<Toolbar aria-label=\"Canvas tools\" floating>\n  <ToolbarToggleGroup type=\"single\" value={tool} onValueChange={setTool} aria-label=\"Tool\">\n    <ToolbarToggle value=\"select\" icon={MousePointer2} label=\"Move\" shortcut=\"V\" />\n    <ToolbarToggle value=\"pen\" icon={PenTool} label=\"Pen\" shortcut=\"P\" />\n  </ToolbarToggleGroup>\n  <ToolbarSeparator />\n  <ToolbarToggleGroup type=\"multiple\" defaultValue={[\"bold\"]} aria-label=\"Text style\">\n    <ToolbarToggle value=\"bold\" icon={Bold} label=\"Bold\" shortcut=\"Mod+B\" />\n    <ToolbarToggle value=\"italic\" icon={Italic} label=\"Italic\" shortcut=\"Mod+I\" />\n  </ToolbarToggleGroup>\n  <ToolbarSeparator />\n  <ToolbarButton icon={Undo2} label=\"Undo\" shortcut=\"Mod+Z\" onClick={() => console.log(\"undo\")} />\n</Toolbar>\n\n// A column down the side of a canvas, tooltips to the right\n<Toolbar orientation=\"vertical\" tone=\"outline\" size=\"lg\" aria-label=\"Layers\">\n  <ToolbarButton icon={Plus} label=\"Add layer\" shortcut=\"Mod+Shift+N\" />\n  <ToolbarToggle icon={Eye} label=\"Show hidden\" defaultPressed />\n</Toolbar>\n\n// A word on the button instead of a tooltip\n<ToolbarButton icon={Share} label=\"Share\" showLabel />",
+    playground: toolbarPlayground,
+  },
+  {
+    name: "tour-spotlight",
+    title: "Tour Spotlight",
+    description: "Onboarding coach marks: the page dims around a rounded cutout that frames each step's target, the cutout glides to the next target on a spring and the target scrolls into view, while a step card sits beside it and flips to whichever side has room. Back, next, skip and finish buttons, progress dots you can jump with, arrow keys and Escape, focus held in the card and handed back afterwards. Targets are CSS selectors or refs and are tracked through scrolling and resizing; the tour can dim the whole viewport or only its own box, let clicks through to the target, and be controlled or left to itself.",
+    category: "Tour",
+    component: TourSpotlight,
+    demoProps: tourSpotlightDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { TourSpotlight } from \"@/components/beste/component/tour-spotlight\";\n\nconst steps = [\n  { target: \"#search\", title: \"Find anything\", body: \"Search songs, venues and setlists.\", side: \"bottom\" },\n  { target: \"#new-setlist\", title: \"Start a new one\", body: \"Copied from your last show.\", side: \"left\" },\n];\n\n// Over the whole viewport, opened from your own state\n<TourSpotlight steps={steps} open={open} onOpenChange={setOpen} onFinish={() => console.log(\"Tour finished\")} />\n\n// Inside a panel: selectors are searched in the children and only this box is dimmed\n<TourSpotlight steps={steps} contained defaultOpen launcherLabel=\"Replay the tour\">\n  <Dashboard />\n</TourSpotlight>\n\n<TourSpotlight\n  steps={steps}\n  allowTargetClick          // clicks pass through the cutout\n  closeOnOverlayClick       // clicking the dimmed area skips\n  dim={0.4}\n  labels={{ next: \"Continue\", finish: \"Got it\" }}\n/>",
+    playground: tourSpotlightPlayground,
+  },
+  {
+    name: "tree-json",
+    title: "Tree JSON",
+    description: "A JSON viewer on the tree family's pattern: objects and arrays open and close with a height animation and a spring on the chevron, closed ones show a preview like {3 keys} or [12 items], and values are colored by type with strings, numbers, booleans and null each told apart in light and dark themes. Long arrays arrive in chunks behind a Show more row, a search field highlights matching keys and values, opens their parents and reaches into chunked arrays, and every row copies its value or its path, written the way you would in code (data.dates[2].city). Values stay selectable. The whole viewer is a WAI-ARIA tree: arrow keys walk it, Right and Left open, close and climb, `*` opens every sibling, and Cmd or Ctrl + C copies the focused value (with Shift, its path).",
+    category: "Tree",
+    component: TreeJson,
+    demoProps: treeJsonDemo,
+    registryDependencies: ["input"],
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { TreeJson } from \"@/components/beste/component/tree-json\";\n\n<TreeJson data={response} rootName=\"response\" expandDepth={2} searchable />\n\n// Controlled search and expansion, copy callback\n<TreeJson\n  data={config}\n  rootName=\"config\"\n  expanded={open}\n  onExpandedChange={setOpen}\n  search={query}\n  onSearchChange={setQuery}\n  chunkSize={50}                 // array items shown at a time\n  onCopy={(text, what, path) => console.log(\"Copied\", what, path)}\n  tone=\"outline\"                 // \"ghost\" (default) | \"muted\" | \"outline\"\n  size=\"sm\"                      // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: treeJsonPlayground,
+  },
+  {
+    name: "tree-view",
+    title: "Tree View",
+    description: "A file explorer tree built on the full WAI-ARIA tree pattern: folders open and close with a height animation and a spring on the chevron, indent guides run under every open folder and the branch holding the focus lights up, and each file gets an icon from its extension. Arrow keys walk the tree, Right and Left open, close and climb, Home and End jump, `*` opens every sibling folder and typing a name jumps to it. Single or multiple selection with Shift ranges and Cmd or Ctrl toggles, controlled or uncontrolled expansion and selection, and optional actions at the end of each row.",
+    category: "Tree",
+    component: TreeView,
+    demoProps: treeViewDemo,
+    variants: { tone: ["muted", "outline", "ghost"] },
+    usage: "import { TreeView } from \"@/components/beste/component/tree-view\";\n\n<TreeView\n  aria-label=\"Project files\"\n  items={[\n    { id: \"app\", name: \"app\", children: [{ id: \"app/page.tsx\", name: \"page.tsx\" }] },\n    { id: \"package.json\", name: \"package.json\" },\n  ]}\n  defaultExpanded={[\"app\"]}\n/>\n\n// Multiple selection, controlled, with an action on Enter or double click\n<TreeView\n  items={items}\n  selectionMode=\"multiple\"      // \"single\" (default) | \"multiple\" | \"none\"\n  selected={selected}\n  onSelectedChange={setSelected}\n  onAction={(item) => console.log(\"Open\", item.name)}\n  renderActions={(item) => <button type=\"button\" onClick={() => console.log(\"Rename\", item.name)}>Rename</button>}\n  tone=\"outline\"                 // \"ghost\" (default) | \"muted\" | \"outline\"\n  size=\"sm\"                      // \"sm\" | \"default\" | \"lg\"\n/>",
+    playground: treeViewPlayground,
+  },
+  {
+    name: "type-window",
+    title: "Type Window",
+    description: "A giant word cut out of a solid surface, used as a window onto a full-bleed photo. As progress runs from 0 to 1 the camera flies straight into one letter, the middle one by default: the whole word stays intact and simply grows around a point inside that letter's stroke, on an exponential curve, so the zoom reads as a steady flight with nothing sliding. The letter opens around the camera until the photo fills the frame. The photo moves toward the camera more slowly, for a sense of depth, and drifts gently with the pointer. The word is drawn as glyph outlines on a canvas at device resolution each frame, so it stays put and crisp at every scale. Follows any progress you give it (a pinned section's scroll, a slider) or loops on its own with autoplay. Reduced motion shows a still frame.",
+    category: "Media",
+    component: TypeWindow,
+    demoProps: typeWindowDemo,
+    usage: "import { TypeWindow } from \"@/components/beste/component/type-window\";\n\n<TypeWindow\n  word=\"Horizon\"\n  imageSrc=\"/photos/valley.jpg\"\n  imageAlt=\"A mountain valley at first light\"\n  className=\"h-[40rem]\"\n/>\n\n// Drive it with a pinned section's scroll\nconst { scrollYProgress } = useScroll({ target: sectionRef, offset: [\"start start\", \"end end\"] });\n\n<TypeWindow\n  word=\"North\"\n  imageSrc=\"/photos/fjord.jpg\"\n  progress={scrollYProgress}  // a MotionValue or a number, 0 to 1\n  letter={1}                  // fly into the \"o\" instead of the middle letter\n  surface=\"foreground\"        // cut the word from the dark surface\n  fontWeight={900}\n  className=\"absolute inset-0\"\n/>",
+    isAnimated: true,
+    fullBleed: true,
+    playground: typeWindowPlayground,
+  },
+  {
     name: "user-menu",
     title: "User Menu",
     description: "Topbar account menu: avatar trigger with name and email, dropdown with icon items, keyboard shortcuts, and a destructive sign-out row. Compact avatar-only mode for dense headers.",
@@ -2165,10 +3903,77 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["dropdown-menu", "avatar"],
     usage: "import { UserMenu } from \"@/components/beste/component/user-menu\";\nimport { LogOut, Settings } from \"lucide-react\";\n\n<UserMenu\n  user={{ name: \"Jordan Ellis\", email: \"jordan@acme.com\" }}\n  items={[\n    { id: \"settings\", label: \"Settings\", icon: Settings, shortcut: \"⌘S\" },\n    { id: \"logout\", label: \"Log out\", icon: LogOut, destructive: true },\n  ]}\n  onSelect={(id) => console.log(\"selected:\", id)}\n/>",
     playground: userMenuPlayground,
+  },
+  {
+    name: "vortex-gradient",
+    title: "Vortex Gradient",
+    description: "A live WebGL whirlpool of color: up to six colors wound into a logarithmic spiral that turns and pulls toward its center, blended in Oklab so every mix stays clean. Fractal ripples fray the arms, the pit darkens as it falls away, and an optional bright eye glows at the heart, all under a fine film grain. Colors, base, arm count, tightness, spread, depth, turbulence, eye, center position, direction, speed, saturation and grain are all props; a new palette fades through over a set time, and the center leans gently toward the cursor. It grows softly out of its base color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a CSS conic sweep without WebGL.",
+    category: "Background",
+    component: VortexGradient,
+    demoProps: vortexGradientDemo,
+    usage: "import { VortexGradient } from \"@/components/beste/component/vortex-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <VortexGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// A calm, sea-glass whirlpool filling the frame\n<VortexGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"#0f3d3e\", \"#3fa7a0\", \"#c8f1e6\", \"#1c6e8c\"]}\n  baseColor=\"#061a1c\"\n  arms={5}\n  tightness={0.8}\n  spread={2}               // reaches past the frame edges\n  eye={0}\n  direction=\"counterclockwise\"\n/>",
+    isAnimated: true,
+    demoContentTone: "theme",
+    playground: vortexGradientPlayground,
+  },
+  {
+    name: "warp-field",
+    title: "Warp Field",
+    description: "A Canvas 2D starfield streaming from a vanishing point that leans toward the cursor. Raise the warp prop and the stars ease into long hyperspace streaks while a soft tunnel glow opens; lower it and they settle back to a slow cruise. Space, star and glow colors, density, speed, streak length, glow, horizon and follow are all props. The stars fade in softly on load, the star count adapts to the device, it pauses offscreen and holds a still field for reduced motion.",
+    category: "Background",
+    component: WarpField,
+    demoProps: warpFieldDemo,
+    usage: "import { WarpField } from \"@/components/beste/component/warp-field\";\nimport { useState } from \"react\";\n\n// Drive the warp from anything: a button hover, a scroll position, a timer\nconst [warp, setWarp] = useState(0);\n\n<section className=\"relative min-h-[40rem]\">\n  <WarpField className=\"absolute inset-0\" warp={warp} />\n  <button\n    onPointerEnter={() => setWarp(1)}\n    onPointerLeave={() => setWarp(0)}\n    className=\"relative\"\n  >\n    Reserve a seat\n  </button>\n</section>\n\n<WarpField\n  className=\"min-h-[32rem]\"\n  spaceColor=\"#04050a\"   // any CSS color, tokens included\n  glowColor=\"#96afff\"\n  density={0.8}          // more stars, 0 to 1\n  streaks={0.7}          // longer streaks at warp\n  horizon={0.5}          // vanishing point height\n/>",
+    isAnimated: true,
+    playground: warpFieldPlayground,
+  },
+  {
+    name: "water-reflection",
+    title: "Water Reflection",
+    description: "A live WebGL surface that sets any landscape photo above a still lake and mirrors it in the water: a rolling swell drawn in perspective, glints on the crests, drops that land on their own and ripple rings that follow the cursor. Waterline, crop, water color, reflectivity, swell, speed, glints, rain and ripples are all props. Grows softly out of the water color on load, adapts its resolution to the device, pauses offscreen, holds a calm frame for reduced motion and falls back to the plain photo without WebGL.",
+    category: "Background",
+    component: WaterReflection,
+    demoProps: waterReflectionDemo,
+    usage: "import { WaterReflection } from \"@/components/beste/component/water-reflection\";\n\n// As a panel or a layer behind content\n<WaterReflection\n  className=\"aspect-[16/8] rounded-md\"\n  src=\"https://images.unsplash.com/photo-1519681393784-d120267933ba?w=2400&q=80\"\n  alt=\"Snowy peaks under the Milky Way\"\n  horizon={0.42}        // waterline height, 0 to 1 from the bottom\n  crop={0.12}           // trims the photo's foreground above the waterline\n  waterColor=\"#070b14\"  // any CSS color, tokens included\n  waves={0.6}           // swell strength, 0 to 1\n  rain={0.4}            // drops landing on their own, 0 to 1\n/>",
+    isAnimated: true,
+    playground: waterReflectionPlayground,
+  },
+  {
+    name: "wave-gradient",
+    title: "Wave Gradient",
+    description: "A live WebGL gradient of layered color bands: two to nine ribbons stacked across the frame at an angle, each edge a pair of slow sine swells that roll at its own pace, blended softly into the next band in Oklab so every seam stays clean and bright. A shade under each edge makes the ribbons read as layered, a soft crest of light runs along them, and a fine film grain sits on top. Colors, angle, band count, amplitude, frequency, speed, softness, glow, depth, saturation, grain and seed are all props; new colors fade through and a new wave shape eases in over a set time, and the bands lift into a soft swell under the cursor. It rises softly out of its first color on load, adapts its resolution to the device, pauses offscreen, holds a still frame for reduced motion and falls back to a stepped CSS gradient without WebGL.",
+    category: "Background",
+    component: WaveGradient,
+    demoProps: waveGradientDemo,
+    usage: "import { WaveGradient } from \"@/components/beste/component/wave-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <WaveGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Pale, level ribbons with theme tokens\n<WaveGradient\n  className=\"min-h-[32rem]\"\n  colors={[\"var(--background)\", \"#ffd9c7\", \"#ff9b85\", \"var(--primary)\"]}\n  angle={0}\n  bands={4}\n  amplitude={0.3}         // gentle swells\n  softness={0.7}          // hazy seams\n  glow={0.2}\n/>",
+    isAnimated: true,
+    playground: waveGradientPlayground,
+  },
+  {
+    name: "wheat-field",
+    title: "Wheat Field",
+    description: "A field of ripe wheat at golden hour on Canvas 2D: thousands of stalks planted in perspective rows run from dark, backlit stems in the foreground to pale haze at the horizon under a low sun. Gusts roll across the field as traveling bands and every stalk bends on a springy lag; the cursor brushes through the field like a hand, parting the stalks, and a quick sweep sends a ripple running out. Sky, sun, grain, density, wind, gust speed, sway and brush are all props. The stalks grow in softly on load, the stalk count adapts to the device, it pauses offscreen and holds a still field for reduced motion.",
+    category: "Background",
+    component: WheatField,
+    demoProps: wheatFieldDemo,
+    usage: "import { WheatField } from \"@/components/beste/component/wheat-field\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <WheatField className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<WheatField\n  className=\"min-h-[32rem]\"\n  skyTop=\"#3b4a6b\"        // any CSS color\n  skyHorizon=\"#f7c98b\"\n  sunColor=\"#ffb86b\"\n  grainColor=\"#c98f2e\"\n  wind={0.8}              // stronger gusts, 0 to 1\n  gustSpeed={1.4}         // gusts travel faster\n  brush={0.9}             // the cursor parts the stalks further\n/>",
+    isAnimated: true,
+    playground: wheatFieldPlayground,
+  },
+  {
+    name: "zoom-parallax",
+    title: "Zoom Parallax",
+    description: "Seven photographs in an asymmetric editorial collage around a center image. As progress runs, every photograph grows from its own place at its own pace, the center fastest, so the center photograph glides to fill the frame while the others fly outward past the edges with real depth. Frames carry soft shadows and the photographs stay crisp all the way in. Progress can come from a number or a live scroll value, or the zoom loops on its own. Layout, depth, shadow, pace and a gentle cursor drift are all props. Reduced motion shows the full center photograph.",
+    category: "Media",
+    component: ZoomParallax,
+    demoProps: zoomParallaxDemo,
+    usage: "import { ZoomParallax } from \"@/components/beste/component/zoom-parallax\";\n\n<ZoomParallax className=\"h-[36rem] w-full\" />\n\n// Driven by scroll: pass a framer-motion MotionValue (or any { get() }) as progress\nconst { scrollYProgress } = useScroll({ target: ref });\n<ZoomParallax progress={scrollYProgress} autoplay={false} layout=\"headline\" depth={0.8} />",
+    isAnimated: true,
+    playground: zoomParallaxPlayground,
   }
 ];
 
-const _allRegistryComponents: RegistryComponentMeta[] = [..._allRegistryComponents_0];
+const _allRegistryComponents: RegistryComponentMeta[] = [..._allRegistryComponents_0, ..._allRegistryComponents_1];
 
 /** Every registry-component, including hidden infrastructure ones. */
 export const allRegistryComponents = _allRegistryComponents;

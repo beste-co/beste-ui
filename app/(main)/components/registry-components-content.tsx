@@ -18,6 +18,8 @@ import { componentInstallCommand } from "@/lib/install-command";
 import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { type RegistryComponentMeta, registryComponents } from "@/lib/registry-components";
 import type { CategoryCount } from "./_lib/paginate";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 /** The category picks the route; the sort is only ever a query. */
 function browseHref(category: string | null, sort: BrowseSort = DEFAULT_SORT): string {
@@ -113,7 +115,7 @@ export function RegistryComponentsContent({
           its parentheses are drawn taller than the digits and hang below the
           line, so a shared baseline left the whole group reading as dropped.
         */}
-        <h1 className="flex flex-wrap items-center gap-x-3 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+        <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
           <span>
             {currentCategory ? (
               <>
@@ -130,9 +132,9 @@ export function RegistryComponentsContent({
               "Components"
             )}
           </span>
-          <span className="text-2xl font-semibold text-primary md:text-3xl">({totalItems})</span>
+          <span className="text-2xl font-medium text-primary md:text-3xl">({totalItems})</span>
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+        <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           {description ??
             "Design system primitives: buttons, badges and other building blocks our sections are composed from. Install one and reuse it across your whole project."}
         </p>
@@ -158,7 +160,7 @@ export function RegistryComponentsContent({
         ]}
         disabled={isPending}
       >
-          <p className="text-base text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {totalItems === 0 ? "No components" : `${rangeStart}–${rangeEnd} of ${totalItems}`}
           </p>
           {showPagination && (
@@ -213,6 +215,19 @@ export function RegistryComponentsContent({
                     <FitScale key={replays[c.name] ?? 0}>
                       <Component {...c.demoProps} />
                     </FitScale>
+                  ) : c.cardScale ? (
+                    // Laid out on a larger canvas, then shrunk, so display type shows whole
+                    <div
+                      key={replays[c.name] ?? 0}
+                      className="absolute left-1/2 top-1/2 flex items-center justify-center"
+                      style={{
+                        width: `${100 / Math.min(1, Math.max(0.2, c.cardScale))}%`,
+                        height: `${100 / Math.min(1, Math.max(0.2, c.cardScale))}%`,
+                        transform: `translate(-50%, -50%) scale(${Math.min(1, Math.max(0.2, c.cardScale))})`,
+                      }}
+                    >
+                      <Component {...c.demoProps} />
+                    </div>
                   ) : (
                     <Component key={replays[c.name] ?? 0} {...c.demoProps} />
                   )}
@@ -242,7 +257,7 @@ export function RegistryComponentsContent({
                       crawler needs. The registry name is gone from here — it is what
                       you type into a terminal, not what you scan a grid for, and it
                       is on the page this card opens. */}
-                  <h3 className="text-base font-semibold tracking-tight">{c.title}</h3>
+                  <h3 className={typography.h3}>{c.title}</h3>
                   <p className="line-clamp-2 text-base text-muted-foreground">
                     {c.description}
                   </p>

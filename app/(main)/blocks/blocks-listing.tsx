@@ -14,6 +14,8 @@ import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { type BrowseSort, DEFAULT_SORT, SORT_OPTIONS } from "@/lib/browse-sort";
 import { COLLECTIONS, COLLECTION_BY_BLOCK, getCollection } from "@/lib/collections";
 import { type CategoryCount, categorySlug } from "./_lib/paginate";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 interface BlocksListingProps {
   itemNames: readonly string[];
@@ -185,7 +187,7 @@ export function BlocksListing({
           its parentheses are drawn taller than the digits and hang below the
           line, so a shared baseline left the whole group reading as dropped.
         */}
-        <h1 className="flex flex-wrap items-center gap-x-3 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+        <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
           <span>
             {trail.length > 0 ? (
               <>
@@ -217,9 +219,9 @@ export function BlocksListing({
               "Blocks"
             )}
           </span>
-          <span className="text-2xl font-semibold text-primary md:text-3xl">({totalItems})</span>
+          <span className="text-2xl font-medium text-primary md:text-3xl">({totalItems})</span>
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">
+        <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           {description ??
             "A library of production-ready React blocks built with Tailwind CSS and shadcn/ui. Copy, paste, and customize for your next project."}
         </p>
@@ -259,7 +261,7 @@ export function BlocksListing({
         ]}
         disabled={isPending}
       >
-          <p className="text-base text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {totalItems === 0 ? "No blocks" : `${rangeStart}–${rangeEnd} of ${totalItems}`}
           </p>
           {showPagination && (

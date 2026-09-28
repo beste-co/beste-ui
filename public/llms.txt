@@ -22,7 +22,7 @@ Beste UI is made by [beste.co](https://beste.co), an opinionated block-based sit
 - [Blocks](https://ui.beste.co/blocks): 168 full page sections in 41 categories. 168 are free, the rest are Pro.
 - [Pages](https://ui.beste.co/pages): 0 whole pages composed from the blocks. One command installs a page and every block inside it.
 - [Pieces](https://ui.beste.co/pieces): 1,076 small widgets in 45 categories that drop into the media slots of a block. Free.
-- [Components](https://ui.beste.co/components): 158 styled primitives in 8 categories: buttons, badges, cards, text effects, inspector controls. Free.
+- [Components](https://ui.beste.co/components): 291 styled primitives in 40 categories: buttons, badges, cards, text effects, inspector controls. Free.
 - [Search](https://ui.beste.co/search): Search every tier by name or by describing what you need.
 
 ## Block categories
@@ -77,6 +77,7 @@ Sets of blocks that share one design language, so a whole site reads as one piec
 - [Auralis](https://ui.beste.co/blocks/collection/auralis): 12 blocks. Oversized display type on monochrome surfaces, with a monospace parenthetical eyebrow and a pill CTA that carries its own seal. Editorial layouts for studio, agency and portfolio sites.
 - [Polaris](https://ui.beste.co/blocks/collection/polaris): 5 blocks. A square accent eyebrow over bold uppercase labels, hairline rules under every section header, and a two-tone seal button. Structured, high-contrast layouts for creative studios.
 - [Sirius](https://ui.beste.co/blocks/collection/sirius): 27 blocks. Light-weight display headings on white, a single accent colour, and media tiles that float a live piece of product UI. Calm, spacious pages for a modern SaaS.
+- [Vega](https://ui.beste.co/blocks/collection/vega): 7 blocks. Heroes that move: live WebGL and canvas surfaces, photographs that relight and assemble as you scroll, and features that run sideways or reveal word by word. For launches and portfolios that want the first screen to be the thing people remember.
 
 ## For agents
 

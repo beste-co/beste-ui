@@ -2,7 +2,7 @@
 
 import { ItemStage } from "@/components/item-stage";
 import { UsageSection } from "@/components/usage-section";
-import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
+import { BACKGROUND_PREVIEW_CATEGORIES, FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { registryComponents } from "@/lib/registry-components";
 import { usageSnippet } from "@/lib/usage-snippet";
 
@@ -30,6 +30,11 @@ export function RegistryComponentStageView({ name }: { name: string }) {
       isAnimated={entry.isAnimated}
       // Cards and dashboard panels are drawn at a size a settings row never is.
       fitToStage={FRAME_PREVIEW_CATEGORIES.has(entry.category)}
+      background={BACKGROUND_PREVIEW_CATEGORIES.has(entry.category)}
+      demoContentTone={entry.demoContentTone}
+      fullBleed={entry.fullBleed}
+      demoContentOff={entry.demoContentOff}
+      playground={entry.playground}
     />
   );
 }

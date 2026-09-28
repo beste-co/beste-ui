@@ -19,6 +19,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import * as React from "react";
+import { Button23 } from "@/components/beste/component/button23";
 import { BesteLogo } from "@/components/icons/beste-logo";
 import { BesteText } from "@/components/icons/beste-text";
 import { GitHubLogo } from "@/components/icons/github-logo";
@@ -90,9 +91,9 @@ function GitHubLink() {
       rel="noopener noreferrer"
       aria-label="Beste UI on GitHub"
       title="GitHub"
-      className="hidden size-11 shrink-0 items-center justify-center rounded-full bg-muted/60 text-foreground transition-colors hover:bg-muted sm:flex"
+      className="hidden size-9 shrink-0 items-center justify-center rounded-full bg-muted/60 text-foreground transition-colors hover:bg-muted sm:flex"
     >
-      <GitHubLogo width={18} height={18} />
+      <GitHubLogo width={16} height={16} />
     </a>
   );
 }
@@ -123,10 +124,6 @@ export function SiteHeader() {
   const { session, refreshSession } = useAuth();
   const { hasPro } = useLicense();
   const { setOpen: setCommandOpen } = useCommandPalette();
-  // The home page carries a search of its own, in the hero. The bar does not
-  // repeat it there — and the bar does not stick, so scrolling past the hero
-  // takes the whole header with it rather than leaving a field behind.
-  const isHome = pathname === "/";
   const { theme, setTheme } = useTheme();
 
   const [mounted, setMounted] = React.useState(false);
@@ -207,11 +204,11 @@ export function SiteHeader() {
     <button
       type="button"
       onClick={() => setCommandOpen(true)}
-      className="group/search flex h-11 w-full cursor-pointer items-center gap-3 rounded-full bg-muted/60 pl-4 pr-1.5 text-left transition-colors hover:bg-muted"
+      className="group/search flex h-10 w-full cursor-pointer items-center gap-2.5 rounded-full bg-muted/60 pl-4 pr-1.5 text-left transition-colors hover:bg-muted"
     >
-      <HugeiconsIcon icon={Search01Icon} size={16} strokeWidth={2} className="shrink-0 text-foreground/50" aria-hidden="true" />
-      <span className="w-full text-base text-foreground/50">Search…</span>
-      <span className="flex h-8 shrink-0 items-center gap-1 rounded-full bg-background px-2.5">
+      <HugeiconsIcon icon={Search01Icon} size={14} strokeWidth={2} className="shrink-0 text-foreground/50" aria-hidden="true" />
+      <span className="w-full text-sm text-foreground/50">Search blocks, pieces and components…</span>
+      <span className="flex h-7 shrink-0 items-center gap-1 rounded-full bg-background px-2">
         <Kbd>⌘</Kbd>
         <Kbd>K</Kbd>
       </span>
@@ -223,7 +220,7 @@ export function SiteHeader() {
       {/* Chrome, not content: the Markdown rendition drops it and opens with
           the site preamble instead. See lib/html-to-markdown.ts. */}
       <header data-md-omit="" className="w-full border-b bg-background">
-        <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-5 px-4 md:px-6">
+        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-5 px-4 md:px-6">
           <Link
             href="/"
             aria-label="Beste UI home"
@@ -233,21 +230,7 @@ export function SiteHeader() {
             <BesteText height={16} className="text-foreground" />
           </Link>
 
-          {/*
-            Faded rather than unmounted. The bar lives in the layout and survives
-            a navigation, so leaving the field in place lets it cross-fade as the
-            route changes — and keeps the sections at the same place on every
-            page instead of sliding them in and out.
-          */}
-          <div
-            className={cn(
-              "hidden max-w-md flex-1 transition-opacity duration-300 md:block",
-              isHome && "pointer-events-none opacity-0"
-            )}
-            aria-hidden={isHome}
-          >
-            {search}
-          </div>
+          <div className="hidden max-w-md flex-1 md:block">{search}</div>
 
           <div className="flex items-center gap-2">
             <div className="hidden items-center gap-5 lg:flex">
@@ -259,9 +242,10 @@ export function SiteHeader() {
                     href={item.href}
                     {...(item.hosted ? hostedLinkProps : {})}
                     aria-current={active ? "page" : undefined}
+                    // Text8's line, drawn on hover instead of on view; the current section keeps it.
                     className={cn(
-                      "cursor-pointer text-base font-semibold transition-colors",
-                      active ? "text-foreground" : "text-foreground/70 hover:text-foreground",
+                      "relative cursor-pointer text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 motion-reduce:after:transition-none",
+                      active ? "text-foreground after:scale-x-100" : "text-foreground/70 after:scale-x-0 hover:text-foreground",
                     )}
                   >
                     {item.label}
@@ -283,14 +267,9 @@ export function SiteHeader() {
                 type="button"
                 aria-label="Search"
                 onClick={() => setCommandOpen(true)}
-                className={cn(
-                  "flex size-11 cursor-pointer items-center justify-center rounded-full bg-muted/60 text-foreground transition-all duration-300 hover:bg-muted md:hidden",
-                  isHome && "pointer-events-none scale-90 opacity-0"
-                )}
-                aria-hidden={isHome}
-                tabIndex={isHome ? -1 : undefined}
+                className="flex size-9 cursor-pointer items-center justify-center rounded-full bg-muted/60 text-foreground transition-colors hover:bg-muted md:hidden"
               >
-                <HugeiconsIcon icon={Search01Icon} size={20} strokeWidth={2} />
+                <HugeiconsIcon icon={Search01Icon} size={16} strokeWidth={2} />
               </button>
 
               {/*
@@ -303,19 +282,16 @@ export function SiteHeader() {
                 aria-label="Menu"
                 aria-expanded={menuOpen}
                 onClick={() => setMenuOpen(true)}
-                className="flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-muted/60 text-foreground transition-colors hover:bg-muted"
+                className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-muted/60 text-foreground transition-colors hover:bg-muted"
               >
                 {/*
-                  The control is 44px whatever is inside it, and what is inside
-                  keeps a margin: a photograph filling the circle edge to edge
-                  reads larger than the GitHub mark beside it, even though the two
-                  hit areas are identical. 36px is the size at which they look
-                  like the same button.
+                  The avatar keeps a margin inside the 36px control: edge to edge
+                  it reads larger than the GitHub mark beside it.
                 */}
                 {user ? (
-                  avatar("size-9 text-sm")
+                  avatar("size-7 text-xs")
                 ) : (
-                  <HugeiconsIcon icon={Menu01Icon} size={20} strokeWidth={2} />
+                  <HugeiconsIcon icon={Menu01Icon} size={16} strokeWidth={2} />
                 )}
               </button>
             </div>
@@ -369,7 +345,7 @@ export function SiteHeader() {
             >
               {avatar("size-11 text-base")}
               <span className="min-w-0">
-                <span className="flex items-center gap-1.5 truncate text-base font-semibold">
+                <span className="flex items-center gap-1.5 truncate text-base font-medium">
                   {user.name || user.email?.split("@")[0] || "Anonymous"}
                   {hasPro && (
                     <HugeiconsIcon
@@ -390,16 +366,16 @@ export function SiteHeader() {
               <p className="text-base text-foreground/70">
                 Sign in to keep favourites and unlock the Pro library.
               </p>
-              <button
-                type="button"
+              <Button23
+                size="sm"
+                tone="dark"
+                label="Sign in"
                 onClick={() => {
                   setMenuOpen(false);
                   setLoginOpen(true);
                 }}
-                className="mt-4 w-full cursor-pointer rounded-full bg-foreground px-5 py-3 text-base font-semibold text-background transition-opacity hover:opacity-90"
-              >
-                Sign in
-              </button>
+                className="mt-4 w-full justify-between"
+              />
             </div>
           )}
 
@@ -414,7 +390,7 @@ export function SiteHeader() {
                   {...(item.hosted ? hostedLinkProps : {})}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "cursor-pointer text-2xl font-bold tracking-tight transition-colors",
+                    "cursor-pointer text-2xl font-medium tracking-tight transition-colors",
                     active ? "text-foreground" : "text-foreground/70 hover:text-foreground",
                   )}
                 >
@@ -453,7 +429,7 @@ export function SiteHeader() {
                 <span className="flex items-center gap-2">
                   {item.label}
                   {item.badge && (
-                    <span className="rounded-full bg-primary px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none tracking-wide text-primary-foreground">
+                    <span className="rounded-full bg-primary px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none tracking-wide text-primary-foreground">
                       {item.badge}
                     </span>
                   )}

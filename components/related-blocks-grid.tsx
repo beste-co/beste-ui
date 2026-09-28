@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { BlockPreview } from "@/components/blocks-grid";
 import { ProBadge } from "@/components/pro-badge";
 import type { BlockMeta } from "@/lib/blocks";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 export function RelatedBlocksGrid({ blocks }: { blocks: BlockMeta[] }) {
   // Render the live block previews only after mount. They embed full block
@@ -64,7 +66,7 @@ export function RelatedBlocksGrid({ blocks }: { blocks: BlockMeta[] }) {
               {block.isPro ? (
                 <ProBadge />
               ) : (
-                <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-black">
+                <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-medium text-black">
                   FREE
                 </span>
               )}
@@ -72,7 +74,7 @@ export function RelatedBlocksGrid({ blocks }: { blocks: BlockMeta[] }) {
             </div>
             {/* Plain text: the card's own overlay link already carries this name,
                 and two anchors to one page is one more than anyone needs. */}
-            <h3 className="mb-1 text-base font-semibold tracking-tight">{block.title}</h3>
+            <h3 className={cn(typography.h3, "mb-1")}>{block.title}</h3>
             <p className="line-clamp-2 min-h-[3rem] text-base text-muted-foreground">
               {block.description}
             </p>

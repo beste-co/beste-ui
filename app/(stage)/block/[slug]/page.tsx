@@ -29,6 +29,8 @@ import { getRelated } from "@/lib/search-index";
 import { notFound } from "next/navigation";
 import { getViewer } from "@/lib/entitlements";
 import { PRICING_HREF, hostedLinkProps } from "@/lib/site-links";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -160,8 +162,8 @@ export default async function BlockPage({ params }: PageProps) {
     dateModified: lastModified,
   });
 
-  // Semantic same-category neighbors (replaces positional neighborWindow).
-  const relatedBlocks = getRelated("block", block.name, { sameCategoryOnly: true, limit: 6 })
+  // Semantic same-category neighbors; three, since live WebGL previews share the page context budget
+  const relatedBlocks = getRelated("block", block.name, { sameCategoryOnly: true, limit: 3 })
     .map((it) => blocks.find((b) => b.name === it.name))
     .filter((b): b is (typeof blocks)[number] => Boolean(b));
 
@@ -238,7 +240,7 @@ export default async function BlockPage({ params }: PageProps) {
                 title here is a second-level heading styled as the first. The
                 tag rides with it: free or Pro is a fact about the block. */}
             <header className="mb-10 md:mb-12">
-              <h2 className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+              <h2 className={cn(typography.h1, "flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2")}>
                 <span>{block.title}</span>
                 {block.isPro ? (
                   <Link
@@ -250,13 +252,13 @@ export default async function BlockPage({ params }: PageProps) {
                     <ProBadge size="md" className="rounded-full px-2.5 py-1 text-sm" />
                   </Link>
                 ) : (
-                  <span className="shrink-0 rounded-full bg-yellow-400 px-2.5 py-1 text-sm font-semibold tracking-wide text-black">
+                  <span className="shrink-0 rounded-full bg-yellow-400 px-2.5 py-1 text-sm font-medium text-black">
                     FREE
                   </span>
                 )}
               </h2>
 
-              <p className="mt-4 text-lg text-muted-foreground md:text-xl">{block.description}</p>
+              <p className={cn(typography.lead, "mt-3")}>{block.description}</p>
             </header>
           </div>
 
@@ -267,14 +269,11 @@ export default async function BlockPage({ params }: PageProps) {
               aria-label={`${block.title} documentation`}
             >
               {/*
-                The README at reading size. `Mdx` is the blog's renderer and sets
-                no size on its paragraphs, so the band scales them from here: 18px
-                over a 3xl column lands at roughly 70 characters a line. `[&>p]`
-                rather than `[&_p]`, so the child combinator stops at the edge of
-                a callout or the upgrade card, which set their own leading.
+                The README at the docs scale (14px body, code at the site's CodeBlock
+                size); `compact` on Mdx sets it, the blog keeps 16px.
               */}
-              <div className="mx-auto max-w-3xl px-4 py-12 text-lg md:px-6 md:py-16 [&>p]:leading-8 [&_li]:leading-8 [&_table]:text-base">
-                <Mdx source={docsSource} isUserPro={isUserPro} />
+              <div className="mx-auto max-w-3xl px-4 py-12 text-base md:px-6 md:py-16 [&_table]:text-sm">
+                <Mdx source={docsSource} isUserPro={isUserPro} compact />
               </div>
             </section>
           )}

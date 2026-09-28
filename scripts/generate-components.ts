@@ -263,6 +263,10 @@ function buildEntries(metas: CollectedMeta[], withPlayground = false): string[] 
       if (m.usageBase) props.push(`    usageBase: ${JSON.stringify(m.usageBase)}`);
       if (m.isPro) props.push(`    isPro: true`);
       if (m.isAnimated) props.push(`    isAnimated: true`);
+      if (m.demoContentTone) props.push(`    demoContentTone: "${m.demoContentTone}"`);
+      if (m.fullBleed) props.push(`    fullBleed: true`);
+      if (m.demoContentOff) props.push(`    demoContentOff: true`);
+      if (m.cardScale) props.push(`    cardScale: ${m.cardScale}`);
       // Both generated files import their playgrounds now, so both may name one.
       // The flag stays because an entry may only name an identifier the file it
       // lands in actually imported.
@@ -329,6 +333,14 @@ export interface ComponentMeta {
   hidden?: boolean;
   /** If true, plays a one-shot animation on mount; showcases offer a replay */
   isAnimated?: boolean;
+  /** Background stage only: how the demo content sits on the surface */
+  demoContentTone?: "light" | "theme" | "soft" | "plain";
+  /** Fills the whole stage like a background, without demo content */
+  fullBleed?: boolean;
+  /** Background stage only: demo content starts switched off */
+  demoContentOff?: boolean;
+  /** Scale of the demo inside its listing card */
+  cardScale?: number;
   /** Props the documentation page lets a reader turn, if the piece ships a config */
   playground?: PlaygroundConfig;
 }
@@ -403,6 +415,14 @@ export interface RegistryComponentMeta {
   hidden?: boolean;
   /** If true, plays a one-shot animation on mount; showcases offer a replay */
   isAnimated?: boolean;
+  /** Background stage only: how the demo content sits on the surface */
+  demoContentTone?: "light" | "theme" | "soft" | "plain";
+  /** Fills the whole stage like a background, without demo content */
+  fullBleed?: boolean;
+  /** Background stage only: demo content starts switched off */
+  demoContentOff?: boolean;
+  /** Scale of the demo inside its listing card */
+  cardScale?: number;
   /** Docs playground, from {name}.playground.ts beside the component */
   playground?: PlaygroundConfig;
 }

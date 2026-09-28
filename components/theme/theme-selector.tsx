@@ -279,7 +279,7 @@ export function ThemeSelector({
                       <h4 className="font-medium text-base text-foreground">
                         {customTheme.displayName}
                       </h4>
-                      <span className="text-sm font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                      <span className="text-sm font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
                         Custom
                       </span>
                     </div>
@@ -408,7 +408,7 @@ export function ThemeSelector({
         {isAdvancedMode && (
           <div className="absolute inset-0 bg-background z-10 flex flex-col">
             <div className="p-4 border-b flex items-center justify-between">
-              <h2 className="font-semibold">Custom Theme Editor</h2>
+              <h2 className="font-medium">Custom Theme Editor</h2>
               <Button
                 variant="outline"
                 size="icon"

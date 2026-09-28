@@ -1,5 +1,6 @@
 import type { ComponentPropRow } from "@/lib/component-props";
 import { cn } from "@/lib/utils";
+import { typography } from "@/lib/typography";
 
 interface ComponentPropsTableProps {
   rows: ComponentPropRow[];
@@ -17,8 +18,8 @@ export function ComponentPropsTable({ rows, className }: ComponentPropsTableProp
   return (
     <section id="props" className={cn("flex scroll-mt-8 flex-col gap-4", className)}>
       <div>
-        <h2 className="text-2xl font-semibold leading-tight tracking-tight">Props</h2>
-        <p className="mt-2 text-lg text-foreground/70">
+        <h2 className={typography.h2}>Props</h2>
+        <p className="mt-2 text-sm text-foreground/70">
           Read from the component's own type, so this cannot drift from what it accepts.
         </p>
       </div>
@@ -26,7 +27,7 @@ export function ComponentPropsTable({ rows, className }: ComponentPropsTableProp
       {/* The table scrolls inside its own box: a long union in the type column must
           not be allowed to widen the page. */}
       <div className="overflow-x-auto rounded-lg border">
-        <table className="w-full border-collapse text-left text-base">
+        <table className="w-full border-collapse text-left text-sm">
           <thead>
             <tr className="border-b bg-muted/50">
               <th scope="col" className="px-3 py-2.5 font-medium">
@@ -47,7 +48,7 @@ export function ComponentPropsTable({ rows, className }: ComponentPropsTableProp
             {rows.map((row) => (
               <tr key={row.name} className="border-b last:border-0 align-top">
                 <td className="px-3 py-2.5 whitespace-nowrap">
-                  <code className="font-mono text-base text-foreground">{row.name}</code>
+                  <code className="font-mono text-[0.8125rem] text-foreground">{row.name}</code>
                   {row.required ? (
                     <span role="img" aria-label="required" title="Required" className="ml-1 text-destructive">
                       *
@@ -55,13 +56,13 @@ export function ComponentPropsTable({ rows, className }: ComponentPropsTableProp
                   ) : null}
                 </td>
                 <td className="px-3 py-2.5">
-                  <code className="font-mono text-base break-words text-foreground/70">
+                  <code className="font-mono text-[0.8125rem] break-words text-foreground/70">
                     {row.type}
                   </code>
                 </td>
                 <td className="px-3 py-2.5 whitespace-nowrap">
                   {row.defaultValue ? (
-                    <code className="font-mono text-base text-foreground/70">
+                    <code className="font-mono text-[0.8125rem] text-foreground/70">
                       {row.defaultValue}
                     </code>
                   ) : (

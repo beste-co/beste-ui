@@ -13,7 +13,7 @@ The catalog has four tiers:
 - **Blocks** (https://ui.beste.co/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
 - **Pages** (https://ui.beste.co/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
 - **Pieces** (https://ui.beste.co/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,076 pieces in 45 categories, all free.
-- **Components** (https://ui.beste.co/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 158 components in 8 categories, all free.
+- **Components** (https://ui.beste.co/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 291 components in 40 categories, all free.
 
 Every asset has a detail page with a live preview, the install command in both flavors, its props and a README. Blocks live at `/block/{name}`, pages at `/page/{name}`, pieces at `/piece/{name}` and components at `/component/{name}`.
 
@@ -487,6 +487,12 @@ Studio collections are sets of blocks that share one design language: type, spac
 - 27 blocks
 - Light-weight display headings on white, a single accent colour, and media tiles that float a live piece of product UI. Calm, spacious pages for a modern SaaS.
 
+### Vega
+
+- URL: https://ui.beste.co/blocks/collection/vega
+- 7 blocks
+- Heroes that move: live WebGL and canvas surfaces, photographs that relight and assemble as you scroll, and features that run sideways or reveal word by word. For launches and portfolios that want the first screen to be the thing people remember.
+
 ## Pages
 
 Complete, ready-to-ship screens composed from the block catalog. Install a page and get every block, piece and primitive behind it in one command. Listing: https://ui.beste.co/pages. Each page also belongs to a collection, at `/pages/collection/{slug}`.
@@ -545,16 +551,48 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 
 ## Components
 
-158 styled primitives, all free. Listing: https://ui.beste.co/components.
+291 styled primitives, all free. Listing: https://ui.beste.co/components.
 
+- [Background](https://ui.beste.co/components/background): 46 components
 - [Inspector](https://ui.beste.co/components/inspector): 46 components
 - [Card](https://ui.beste.co/components/card): 28 components
-- [Button](https://ui.beste.co/components/button): 19 components
-- [Text](https://ui.beste.co/components/text): 19 components
+- [Text](https://ui.beste.co/components/text): 27 components
+- [Media](https://ui.beste.co/components/media): 26 components
+- [Button](https://ui.beste.co/components/button): 21 components
 - [Badge](https://ui.beste.co/components/badge): 18 components
 - [Filter](https://ui.beste.co/components/filter): 14 components
 - [Dashboard](https://ui.beste.co/components/dashboard): 8 components
 - [Chart](https://ui.beste.co/components/chart): 6 components
+- [Confirm](https://ui.beste.co/components/confirm): 3 components
+- [Field](https://ui.beste.co/components/field): 3 components
+- [Nav](https://ui.beste.co/components/nav): 3 components
+- [Reaction](https://ui.beste.co/components/reaction): 3 components
+- [Code](https://ui.beste.co/components/code): 2 components
+- [File](https://ui.beste.co/components/file): 2 components
+- [Heatmap](https://ui.beste.co/components/heatmap): 2 components
+- [Loupe](https://ui.beste.co/components/loupe): 2 components
+- [Keyboard](https://ui.beste.co/components/keyboard): 2 components
+- [List](https://ui.beste.co/components/list): 2 components
+- [Meter](https://ui.beste.co/components/meter): 2 components
+- [Player](https://ui.beste.co/components/player): 2 components
+- [Price](https://ui.beste.co/components/price): 2 components
+- [Readout](https://ui.beste.co/components/readout): 2 components
+- [Steps](https://ui.beste.co/components/steps): 2 components
+- [Time](https://ui.beste.co/components/time): 2 components
+- [Tree](https://ui.beste.co/components/tree): 2 components
+- [Activity](https://ui.beste.co/components/activity): 1 components
+- [Chat](https://ui.beste.co/components/chat): 1 components
+- [Dock](https://ui.beste.co/components/dock): 1 components
+- [Marquee](https://ui.beste.co/components/marquee): 1 components
+- [Composer](https://ui.beste.co/components/composer): 1 components
+- [Notice](https://ui.beste.co/components/notice): 1 components
+- [Pager](https://ui.beste.co/components/pager): 1 components
+- [Scroll](https://ui.beste.co/components/scroll): 1 components
+- [Draw](https://ui.beste.co/components/draw): 1 components
+- [Snippet](https://ui.beste.co/components/snippet): 1 components
+- [Status](https://ui.beste.co/components/status): 1 components
+- [Toolbar](https://ui.beste.co/components/toolbar): 1 components
+- [Tour](https://ui.beste.co/components/tour): 1 components
 
 ## Blog
 
@@ -566,6 +604,10 @@ Long-form posts at https://ui.beste.co/blog. Feed: https://ui.beste.co/blog/feed
 
 The full changelog is at https://ui.beste.co/changelog; the latest releases:
 
+- v1.31.0 (2026-09-28): Gradient heroes
+- v1.30.0 (2026-09-28): Gradient backgrounds and interface components
+- v1.29.0 (2026-09-26): Motion heroes and scroll features
+- v1.28.0 (2026-09-26): Backgrounds, media and motion components
 - v1.27.0 (2026-09-10): Pieces drop: settings, consent, catalogue, tools
 - v1.26.0 (2026-09-08): Blocks where the card is the link
 - v1.25.0 (2026-09-05): Install commands, changelogs and yearly pricing
@@ -574,10 +616,6 @@ The full changelog is at https://ui.beste.co/changelog; the latest releases:
 - v1.22.0 (2026-09-04): Text: 19 ways a line of type can arrive
 - v1.21.0 (2026-08-12): Polaris: 45 blocks for a site that publishes
 - v1.20.0 (2026-08-07): Questionnaire: 16 blocks that ask first
-- v1.19.0 (2026-08-06): Introducing Pages
-- v1.18.0 (2026-08-03): Sirius: 138 more blocks
-- v1.17.0 (2026-07-31): 13 new blog blocks
-- v1.16.0 (2026-07-29): Auralis: 87 new blocks
 
 ## Links
 

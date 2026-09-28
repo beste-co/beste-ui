@@ -13,6 +13,8 @@ import type { BlockMeta } from "@/lib/blocks";
 import { getBlockObfuscated } from "@/lib/blocks-obfuscated";
 import { blockInstallCommand } from "@/lib/install-command";
 import { useFavorites } from "@/lib/favorites-context";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 /**
  * Card thumbnail — the block, rendered scaled down. It resolves the component
@@ -206,18 +208,18 @@ export function BlocksGrid({
             {block.isPro ? (
               <ProBadge />
             ) : (
-              <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-black">
+              <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-medium text-black">
                 FREE
               </span>
             )}
             <p className="text-sm text-foreground/60">{block.name}</p>
           </div>
-          <h3 className="mb-1 text-base font-semibold tracking-tight">
+          <h3 className={cn(typography.h3, "mb-1")}>
             {/* Plain text: the card's own overlay link already carries this name, and
                 two anchors to one page is one more than a reader or a crawler needs. */}
             {block.title}
           </h3>
-          <p className="text-base text-muted-foreground line-clamp-2 min-h-[3rem]">
+          <p className="text-sm text-muted-foreground line-clamp-2 min-h-10">
             {block.description}
           </p>
         </div>

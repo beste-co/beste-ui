@@ -3,6 +3,7 @@
 // pieces/components).
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { typography } from "@/lib/typography";
 
 export function RelatedSection({
   heading,
@@ -21,7 +22,7 @@ export function RelatedSection({
     <section className="border-t border-border bg-muted/40">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 className="text-2xl font-semibold leading-tight tracking-tight">{heading}</h2>
+          <h2 className={typography.h2}>{heading}</h2>
           {viewAllHref && (
             <Link
               href={viewAllHref}

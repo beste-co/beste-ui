@@ -18,6 +18,7 @@ import { registryComponents } from "@/lib/registry-components";
 import { RelatedBlocksGrid } from "@/components/related-blocks-grid";
 import { RelatedPreviewGrid, type RelatedPreviewItem } from "@/components/related-preview-grid";
 import { cn } from "@/lib/utils";
+import { typography } from "@/lib/typography";
 
 interface Hit {
   type: "block" | "piece" | "component" | "page";
@@ -157,7 +158,7 @@ export function SearchResults() {
 
   return (
     <div>
-      <h1 className="mb-5 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">Search</h1>
+      <h1 className={cn(typography.h1, "mb-5")}>Search</h1>
 
       {/* The field and the facets in the language the listing bars use: filled
           pills on the page's own surface, no borders, and the facet in force
@@ -199,13 +200,13 @@ export function SearchResults() {
       </div>
 
       {!activeQuery && !loading && (
-        <p className="py-16 text-center text-lg text-muted-foreground">
+        <p className="py-16 text-center text-base text-muted-foreground">
           Start typing to search across {blocks.length + components.length + registryComponents.length}+ blocks, pages, pieces, and components.
         </p>
       )}
 
       {nothing && (
-        <p className="py-16 text-center text-lg text-muted-foreground">
+        <p className="py-16 text-center text-base text-muted-foreground">
           No results for &ldquo;{activeQuery}&rdquo;. Try a broader phrase.
         </p>
       )}
@@ -213,13 +214,13 @@ export function SearchResults() {
       <div className="flex flex-col gap-12">
         {showBlocks && (
           <section>
-            <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-tight">Blocks</h2>
+            <h2 className={cn(typography.h2, "mb-5")}>Blocks</h2>
             <RelatedBlocksGrid blocks={blockMetas} />
           </section>
         )}
         {showPages && (
           <section>
-            <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-tight">Pages</h2>
+            <h2 className={cn(typography.h2, "mb-5")}>Pages</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {pageHits.map((hit) => (
                 <Link
@@ -228,7 +229,7 @@ export function SearchResults() {
                   className="flex flex-col rounded-xl bg-muted p-5 transition-colors hover:bg-muted-foreground/15"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-semibold tracking-tight">{hit.title}</h3>
+                    <h3 className={typography.h3}>{hit.title}</h3>
                     {hit.isPro && <ProBadge />}
                   </div>
                   <p className="mt-2 line-clamp-2 text-base text-muted-foreground">
@@ -242,13 +243,13 @@ export function SearchResults() {
         )}
         {showPieces && (
           <section>
-            <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-tight">Pieces</h2>
+            <h2 className={cn(typography.h2, "mb-5")}>Pieces</h2>
             <RelatedPreviewGrid items={pieceItems} />
           </section>
         )}
         {showComponents && (
           <section>
-            <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-tight">Components</h2>
+            <h2 className={cn(typography.h2, "mb-5")}>Components</h2>
             <RelatedPreviewGrid items={componentItems} />
           </section>
         )}

@@ -16,9 +16,10 @@ import { CodeBlock } from "@/components/code-block";
 import { FitScale } from "@/components/fit-scale";
 import { ThemedPreview } from "@/components/theme/themed-preview";
 import type { PlaygroundConfig, PlaygroundControl } from "@/lib/playgrounds";
-import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
+import { BACKGROUND_PREVIEW_CATEGORIES, FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { registryComponents } from "@/lib/registry-components";
 import { cn } from "@/lib/utils";
+import { typography } from "@/lib/typography";
 
 interface ComponentPlaygroundProps {
   /** Registry name, e.g. `inspector-slider`. */
@@ -88,7 +89,7 @@ function stringFor(control: PlaygroundControl, value: unknown): string {
  * caring what is inside it, so elements and functions are reduced to a token here
  * and cycles are cut. The result is only ever compared with another of itself.
  */
-function signature(value: Record<string, unknown>): string {
+export function signature(value: Record<string, unknown>): string {
   const seen = new WeakSet<object>();
   try {
     return JSON.stringify(value, (_key, item) => {
@@ -116,8 +117,16 @@ function printProp(key: string, value: unknown): string | null {
   if (typeof value === "boolean") return value ? `  ${key}` : null;
   if (typeof value === "number") return `  ${key}={${value}}`;
   if (typeof value === "string") return `  ${key}="${value}"`;
-  if (Array.isArray(value)) return `  ${key}={${JSON.stringify(value)}}`;
-  return `  ${key}={${JSON.stringify(value)}}`;
+  // Elements and components have no JSON form, and a dev element's owner chain is circular
+  if (typeof value === "object" && ("$$typeof" in value || "render" in value)) {
+    const named = value as { displayName?: string; name?: string };
+    return `  ${key}={${named.displayName ?? named.name ?? "..."}}`;
+  }
+  try {
+    return `  ${key}={${JSON.stringify(value)}}`;
+  } catch {
+    return `  ${key}={...}`;
+  }
 }
 
 /**
@@ -127,7 +136,7 @@ function printProp(key: string, value: unknown): string | null {
  * reason the config carries those defaults: a reader copying this should get the
  * three lines they need, not a dump of every prop the component has.
  */
-function snippetFor(name: string, props: Record<string, unknown>, config: PlaygroundConfig) {
+export function snippetFor(name: string, props: Record<string, unknown>, config: PlaygroundConfig) {
   const comp = pascal(name);
   const defaults = new Map(
     config.controls.filter((c) => c.default !== undefined).map((c) => [c.prop, c.default]),
@@ -144,6 +153,189 @@ function snippetFor(name: string, props: Record<string, unknown>, config: Playgr
 
   const body = lines.length > 0 ? `<${comp}\n${lines.join("\n")}\n/>` : `<${comp} />`;
   return `import { ${comp} } from "@/components/beste/component/${name}";\n\n${body}`;
+}
+
+/** A control's prop may point into an array, e.g. `colors.2` for the third color. */
+function readProp(props: Record<string, unknown>, path: string) {
+  const [key = path, index] = path.split(".");
+  const value = props[key];
+  return index !== undefined && Array.isArray(value) ? value[Number(index)] : value;
+}
+
+export function writeProp(props: Record<string, unknown>, path: string, next: unknown) {
+  const [key = path, index] = path.split(".");
+  if (index === undefined) return { ...props, [key]: next };
+  const list = Array.isArray(props[key]) ? [...(props[key] as unknown[])] : [];
+  list[Number(index)] = next;
+  return { ...props, [key]: list };
+}
+
+function renderControl(control: PlaygroundControl, props: Record<string, unknown>, set: (prop: string, value: unknown) => void) {
+  const value = readProp(props, control.prop);
+  const common = { label: control.label, size: "sm" as const };
+
+  switch (control.kind) {
+    case "slider":
+      return (
+        <InspectorSlider
+          key={control.prop}
+          {...common}
+          min={control.min ?? 0}
+          max={control.max ?? 100}
+          step={control.step ?? 1}
+          unit={control.unit}
+          ticks={false}
+          value={numberFor(control, value)}
+          onValueChange={(next) => set(control.prop, next)}
+        />
+      );
+    case "stepper":
+      return (
+        <InspectorStepper
+          key={control.prop}
+          {...common}
+          min={control.min}
+          max={control.max}
+          step={control.step ?? 1}
+          suffix={control.unit}
+          value={numberFor(control, value)}
+          onValueChange={(next) => set(control.prop, next)}
+        />
+      );
+    case "switch":
+      return (
+        <InspectorSwitch
+          key={control.prop}
+          {...common}
+          checked={Boolean(value)}
+          onCheckedChange={(next) => set(control.prop, next)}
+        />
+      );
+    case "select":
+      return (
+        <InspectorSelect
+          key={control.prop}
+          {...common}
+          options={optionList(control)}
+          value={stringFor(control, value)}
+          onValueChange={(next) => set(control.prop, next)}
+        />
+      );
+    case "segmented":
+      return (
+        <InspectorSegmented
+          key={control.prop}
+          {...common}
+          options={optionList(control)}
+          value={stringFor(control, value)}
+          onValueChange={(next) => set(control.prop, next)}
+        />
+      );
+    case "toggles":
+      return (
+        <InspectorToggles
+          key={control.prop}
+          {...common}
+          options={optionList(control)}
+          value={Array.isArray(value) ? (value as string[]) : []}
+          onValueChange={(next) => set(control.prop, next)}
+        />
+      );
+    case "color":
+      return (
+        <InspectorColor
+          key={control.prop}
+          {...common}
+          value={typeof value === "string" ? value : undefined}
+          onValueChange={(next) => set(control.prop, next)}
+        />
+      );
+    default:
+      return (
+        <InspectorInput
+          key={control.prop}
+          {...common}
+          placeholder={control.placeholder}
+          value={stringFor(control, value)}
+          onValueChange={(next) => set(control.prop, next)}
+        />
+      );
+  }
+}
+
+/** Controls in the order they were declared, gathered under their groups. */
+function groupControls(controls: PlaygroundControl[]) {
+  const map = new Map<string, PlaygroundControl[]>();
+  for (const control of controls) {
+    const key = control.group ?? "Props";
+    const list = map.get(key);
+    if (list) list.push(control);
+    else map.set(key, [control]);
+  }
+  return [...map.entries()];
+}
+
+/**
+ * The settings for a playground, as groups of inspector rows. Used by the stage's
+ * Customize popover and by the piece playground, so both turn the same props the same way.
+ */
+export function PlaygroundControls({
+  config,
+  props,
+  onChange,
+  groupTone = "outline",
+  groupClassName,
+  className,
+}: {
+  config: PlaygroundConfig;
+  props: Record<string, unknown>;
+  onChange: (next: Record<string, unknown>) => void;
+  /** Surface of each group; the stage popover draws them as plain cards on a muted panel. */
+  groupTone?: "muted" | "outline" | "ghost";
+  groupClassName?: string;
+  className?: string;
+}) {
+  const groups = React.useMemo(() => groupControls(config.controls), [config.controls]);
+  const set = (prop: string, value: unknown) => onChange(writeProp(props, prop, value));
+  return (
+    <div className={cn("flex min-w-0 flex-col gap-2", className)}>
+      {groups.map(([group, controls]) => (
+        <InspectorGroup key={group} label={group} tone={groupTone} className={groupClassName}>
+          {controls.map((control) => renderControl(control, props, set))}
+        </InspectorGroup>
+      ))}
+    </div>
+  );
+}
+
+/** The keyboard and gesture table: documentation a props table cannot carry. */
+export function PlaygroundKeys({ keys, className }: { keys: PlaygroundConfig["keys"]; className?: string }) {
+  if (!keys?.length) return null;
+  return (
+    <div id="keyboard" className={cn("flex scroll-mt-8 flex-col gap-3", className)}>
+      <div>
+        <h2 className={typography.h2}>Keyboard and gestures</h2>
+        <p className="mt-2 max-w-2xl text-sm text-foreground/70">
+          Every one of these is in the component already. They are listed because a props table
+          cannot mention a gesture, so nothing else on this page can tell you they exist.
+        </p>
+      </div>
+      <div className="overflow-hidden rounded-lg border">
+        <table className="w-full border-collapse text-left text-sm">
+          <tbody>
+            {keys.map((entry) => (
+              <tr key={entry.keys} className="border-b align-top last:border-0">
+                <th scope="row" className="w-56 px-3 py-2.5 font-medium whitespace-nowrap text-foreground">
+                  {entry.keys}
+                </th>
+                <td className="px-3 py-2.5 text-foreground/70">{entry.does}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
 
 /** A framed, themed stage. Every preview on the page sits on the same one. */
@@ -194,10 +386,6 @@ export function ComponentPlayground({
   const [props, setProps] = React.useState<Record<string, unknown>>(initial);
   const dirty = signature(props) !== signature(initial);
 
-  const set = (prop: string, value: unknown) => {
-    setProps((current) => ({ ...current, [prop]: value }));
-  };
-
   /*
    * The preview is keyed by the props it was given, so a change to a structural one
    * lands: most of these rows are uncontrolled by design and hold their own value,
@@ -206,21 +394,11 @@ export function ComponentPlayground({
    */
   const previewKey = signature(props);
 
-  /** Controls in the order they were declared, gathered under their groups. */
-  const groups = React.useMemo(() => {
-    const map = new Map<string, PlaygroundControl[]>();
-    for (const control of config.controls) {
-      const key = control.group ?? "Props";
-      const list = map.get(key);
-      if (list) list.push(control);
-      else map.set(key, [control]);
-    }
-    return [...map.entries()];
-  }, [config.controls]);
-
   if (!Given) return null;
   const Component = Given as React.ComponentType<Record<string, unknown>>;
-  const largeSurface = !fill && FRAME_PREVIEW_CATEGORIES.has(entry?.category ?? "");
+  // Full-frame pieces fill the stage the same way backgrounds do
+  const background = !fill && (BACKGROUND_PREVIEW_CATEGORIES.has(entry?.category ?? "") || Boolean(entry?.fullBleed));
+  const largeSurface = !fill && !background && FRAME_PREVIEW_CATEGORIES.has(entry?.category ?? "");
 
   /*
    * The backdrop answers to the props the reader has set, so switching the
@@ -232,104 +410,12 @@ export function ComponentPlayground({
       ? config.stage.image
       : undefined;
 
-  const renderControl = (control: PlaygroundControl) => {
-    const value = props[control.prop];
-    const common = { label: control.label, size: "sm" as const };
-
-    switch (control.kind) {
-      case "slider":
-        return (
-          <InspectorSlider
-            key={control.prop}
-            {...common}
-            min={control.min ?? 0}
-            max={control.max ?? 100}
-            step={control.step ?? 1}
-            unit={control.unit}
-            ticks={false}
-            value={numberFor(control, value)}
-            onValueChange={(next) => set(control.prop, next)}
-          />
-        );
-      case "stepper":
-        return (
-          <InspectorStepper
-            key={control.prop}
-            {...common}
-            min={control.min}
-            max={control.max}
-            step={control.step ?? 1}
-            suffix={control.unit}
-            value={numberFor(control, value)}
-            onValueChange={(next) => set(control.prop, next)}
-          />
-        );
-      case "switch":
-        return (
-          <InspectorSwitch
-            key={control.prop}
-            {...common}
-            checked={Boolean(value)}
-            onCheckedChange={(next) => set(control.prop, next)}
-          />
-        );
-      case "select":
-        return (
-          <InspectorSelect
-            key={control.prop}
-            {...common}
-            options={optionList(control)}
-            value={stringFor(control, value)}
-            onValueChange={(next) => set(control.prop, next)}
-          />
-        );
-      case "segmented":
-        return (
-          <InspectorSegmented
-            key={control.prop}
-            {...common}
-            options={optionList(control)}
-            value={stringFor(control, value)}
-            onValueChange={(next) => set(control.prop, next)}
-          />
-        );
-      case "toggles":
-        return (
-          <InspectorToggles
-            key={control.prop}
-            {...common}
-            options={optionList(control)}
-            value={Array.isArray(value) ? (value as string[]) : []}
-            onValueChange={(next) => set(control.prop, next)}
-          />
-        );
-      case "color":
-        return (
-          <InspectorColor
-            key={control.prop}
-            {...common}
-            value={typeof value === "string" ? value : undefined}
-            onValueChange={(next) => set(control.prop, next)}
-          />
-        );
-      default:
-        return (
-          <InspectorInput
-            key={control.prop}
-            {...common}
-            placeholder={control.placeholder}
-            value={stringFor(control, value)}
-            onValueChange={(next) => set(control.prop, next)}
-          />
-        );
-    }
-  };
 
   return (
     <section id="playground" className={cn("flex scroll-mt-8 flex-col gap-4", className)}>
       <header className="flex items-baseline justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-semibold leading-tight tracking-tight">Playground</h2>
+          <h2 className={typography.h2}>Playground</h2>
           <p className="mt-2 max-w-2xl text-lg text-foreground/70">
             Turn the props on the right; the snippet under them is what you would write to get
             what you see.
@@ -362,9 +448,15 @@ export function ComponentPlayground({
           */}
           <Stage
             backdrop={backdrop}
-            className={fill || largeSurface ? "h-[420px]" : "h-[220px]"}
+            className={fill || largeSurface || background ? "h-[420px]" : "h-[220px]"}
           >
-            {fill ? (
+            {background ? (
+              // Backgrounds read their props live, so the running surface is kept instead of remounted
+              <Component
+                {...props}
+                className={cn(typeof props.className === "string" ? props.className : undefined, "absolute inset-0 h-full min-h-0")}
+              />
+            ) : fill ? (
               <div key={previewKey} className="size-full">
                 <Component {...props} />
               </div>
@@ -394,47 +486,12 @@ export function ComponentPlayground({
           of the rows on the stage beside it, which is both the cheapest way to build
           this and the most honest test of the set.
         */}
-        <aside className="flex min-w-0 flex-col gap-2">
-          {groups.map(([group, controls]) => (
-            <InspectorGroup key={group} label={group} tone="outline">
-              {controls.map(renderControl)}
-            </InspectorGroup>
-          ))}
+        <aside className="min-w-0">
+          <PlaygroundControls config={config} props={props} onChange={setProps} />
         </aside>
       </div>
 
-      {config.keys?.length ? (
-        <div id="keyboard" className="mt-4 flex scroll-mt-8 flex-col gap-3">
-          <div>
-            <h2 className="text-2xl font-semibold leading-tight tracking-tight">
-              Keyboard and gestures
-            </h2>
-            <p className="mt-2 max-w-2xl text-lg text-foreground/70">
-              Every one of these is in the component already. They are listed because a props
-              table cannot mention a gesture, so nothing else on this page can tell you they
-              exist.
-            </p>
-          </div>
-
-          <div className="overflow-hidden rounded-lg border">
-            <table className="w-full border-collapse text-left text-base">
-              <tbody>
-                {config.keys.map((entry) => (
-                  <tr key={entry.keys} className="border-b last:border-0 align-top">
-                    <th
-                      scope="row"
-                      className="w-56 px-3 py-2.5 font-medium whitespace-nowrap text-foreground"
-                    >
-                      {entry.keys}
-                    </th>
-                    <td className="px-3 py-2.5 text-foreground/70">{entry.does}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ) : null}
+      <PlaygroundKeys keys={config.keys} className="mt-4" />
 
     </section>
   );

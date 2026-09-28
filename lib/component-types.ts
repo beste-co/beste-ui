@@ -70,6 +70,33 @@ export interface ComponentMeta {
    * can watch it again without reloading the page.
    */
   isAnimated?: boolean;
+
+  /**
+   * How the stage's demo content reads on a Background component: "light" (white
+   * text, the default, for dark surfaces) or "theme" (foreground text on a patch
+   * of paper, for surfaces drawn on a light page) or "plain" (foreground text with
+   * nothing behind it).
+   */
+  demoContentTone?: "light" | "theme" | "soft" | "plain";
+
+  /**
+   * Fill the whole component stage like a Background, without demo content on top.
+   * For full-frame pieces (a scene, a painting) that read best at viewport size.
+   */
+  fullBleed?: boolean;
+
+  /**
+   * Background stage only: start with the demo content switched off. The Content
+   * switch still turns it on; for surfaces that read best on their own first.
+   */
+  demoContentOff?: boolean;
+
+  /**
+   * Scale of the demo inside its listing card, 0.2 to 1. The card lays the demo out
+   * on a larger canvas and shrinks it, so display type and full-frame effects show
+   * whole instead of cropped. Leave it out to draw the demo at its own size.
+   */
+  cardScale?: number;
 }
 
 /**

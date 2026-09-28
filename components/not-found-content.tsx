@@ -2,11 +2,11 @@
 
 import { LinkSquare01Icon, SearchRemoveIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-// Button12's seal takes a Lucide component, not a Hugeicons definition.
+// Button23's icon takes a Lucide component, not a Hugeicons definition.
 import { ArrowRight, Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button12 } from "@/components/beste/component/button12";
+import { Button23 } from "@/components/beste/component/button23";
 import {
   Empty,
   EmptyContent,
@@ -28,7 +28,7 @@ const HEADER = "max-w-xl gap-3";
 // The icon carries its own size class: EmptyMedia's default targets svgs that
 // have none, through a :not() that would otherwise outrank an override here.
 const MEDIA = "size-14";
-const TITLE = "text-2xl font-semibold tracking-tight md:text-3xl";
+const TITLE = "text-2xl font-medium tracking-tight md:text-3xl";
 const DESCRIPTION = "text-base/relaxed md:text-lg/relaxed";
 const CONTENT = "max-w-none flex-row flex-wrap justify-center gap-3";
 
@@ -72,12 +72,12 @@ export function NotFoundContent() {
           </EmptyHeader>
           <EmptyContent className={CONTENT}>
             {/* The address is carried over, so /block/error19 lands on /block/error19. */}
-            <Button12 asChild label="Continue on ui.beste.co">
+            <Button23 size="sm" tone="dark" asChild label="Continue on ui.beste.co">
               <a href={`${HOSTED_SITE}${pathname}`} rel="noreferrer" target="_blank" />
-            </Button12>
-            <Button12 asChild label="Browse the blocks" tone="outline" icon={ArrowRight}>
+            </Button23>
+            <Button23 size="sm" asChild label="Browse the blocks" tone="outline" icon={ArrowRight}>
               <Link href="/blocks" />
-            </Button12>
+            </Button23>
           </EmptyContent>
         </Empty>
       ) : (
@@ -95,9 +95,9 @@ export function NotFoundContent() {
             </EmptyDescription>
           </EmptyHeader>
           <EmptyContent className={CONTENT}>
-            <Button12 asChild label="Back to the library" icon={Home}>
+            <Button23 size="sm" tone="dark" asChild label="Back to the library" icon={Home}>
               <Link href="/" />
-            </Button12>
+            </Button23>
           </EmptyContent>
         </Empty>
       )}

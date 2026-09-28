@@ -10,38 +10,39 @@ import { Tweet } from "./tweet";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 /**
- * Element + custom-component map for MDX posts. No typography plugin — every
- * element is styled explicitly with the project's design tokens so posts read
- * like the rest of the site.
+ * Element map for MDX posts and READMEs, on the site scale in `lib/typography`:
+ * `#`/`##` at h2, `###` at h3, body 16px over leading-7.
  */
 const components = {
   h1: (props: ComponentProps<"h1">) => (
     <h2
-      className="mt-14 scroll-mt-24 text-balance text-3xl font-semibold leading-tight tracking-tight text-foreground"
+      className={cn(typography.h2, "mt-12 scroll-mt-24 text-balance text-foreground")}
       {...props}
     />
   ),
   h2: (props: ComponentProps<"h2">) => (
     <h3
-      className="mt-14 scroll-mt-24 text-2xl font-semibold leading-tight tracking-tight text-foreground"
+      className={cn(typography.h2, "mt-12 scroll-mt-24 text-foreground")}
       {...props}
     />
   ),
   h3: (props: ComponentProps<"h3">) => (
     <h4
-      className="mt-10 scroll-mt-24 text-xl font-semibold tracking-tight text-foreground"
+      className={cn(typography.h3, "mt-8 scroll-mt-24 text-foreground")}
       {...props}
     />
   ),
   h4: (props: ComponentProps<"h4">) => (
     <h5
-      className="mt-8 scroll-mt-24 text-lg font-semibold tracking-tight text-foreground"
+      className="mt-6 scroll-mt-24 text-base font-medium text-foreground"
       {...props}
     />
   ),
-  p: (props: ComponentProps<"p">) => <p className="mt-6 text-lg leading-8 text-foreground/85" {...props} />,
+  p: (props: ComponentProps<"p">) => <p className="mt-5 text-base leading-7 text-foreground/85" {...props} />,
   a: ({ href = "", ...props }: ComponentProps<"a">) => {
     const isExternal = /^https?:/.test(href);
     const cls =
@@ -53,26 +54,26 @@ const components = {
   },
   ul: (props: ComponentProps<"ul">) => (
     <ul
-      className="mt-6 list-disc space-y-2.5 pl-5 text-lg text-foreground/85 marker:text-foreground/40"
+      className="mt-5 list-disc space-y-2 pl-5 text-base text-foreground/85 marker:text-foreground/40"
       {...props}
     />
   ),
   ol: (props: ComponentProps<"ol">) => (
     <ol
-      className="mt-6 list-decimal space-y-2.5 pl-5 text-lg text-foreground/85 marker:text-foreground/40"
+      className="mt-5 list-decimal space-y-2 pl-5 text-base text-foreground/85 marker:text-foreground/40"
       {...props}
     />
   ),
-  li: (props: ComponentProps<"li">) => <li className="pl-1.5 leading-8" {...props} />,
+  li: (props: ComponentProps<"li">) => <li className="pl-1.5 leading-7" {...props} />,
   blockquote: (props: ComponentProps<"blockquote">) => (
     <blockquote
-      className="mt-8 rounded-xl bg-muted/60 p-6 text-lg italic text-foreground/80 [&>:first-child]:mt-0 [&>:last-child]:mb-0"
+      className="mt-6 rounded-xl bg-muted/60 p-5 text-base italic text-foreground/80 [&>:first-child]:mt-0 [&>:last-child]:mb-0"
       {...props}
     />
   ),
-  hr: () => <hr className="my-14 border-border" />,
+  hr: () => <hr className="my-12 border-border" />,
   strong: (props: ComponentProps<"strong">) => (
-    <strong className="font-semibold text-foreground" {...props} />
+    <strong className="font-medium text-foreground" {...props} />
   ),
   code: (props: ComponentProps<"code">) => (
     <code
@@ -82,20 +83,20 @@ const components = {
   ),
   pre: BlogPre,
   table: (props: ComponentProps<"table">) => (
-    <div className="my-8 overflow-x-auto rounded-xl bg-muted/60">
-      <table className="w-full border-collapse text-base" {...props} />
+    <div className="my-6 overflow-x-auto rounded-xl bg-muted/60">
+      <table className="w-full border-collapse text-sm" {...props} />
     </div>
   ),
   thead: (props: ComponentProps<"thead">) => <thead className="bg-foreground/5" {...props} />,
   th: (props: ComponentProps<"th">) => (
-    <th className="border-b border-foreground/10 px-4 py-3 text-left font-semibold text-foreground" {...props} />
+    <th className="border-b border-foreground/10 px-4 py-3 text-left font-medium text-foreground" {...props} />
   ),
   td: (props: ComponentProps<"td">) => (
     <td className="border-b border-foreground/10 px-4 py-3 align-top text-foreground/85 last:border-0" {...props} />
   ),
   // biome-ignore lint/a11y/useAltText: alt is passed through from MDX source.
   img: (props: ComponentProps<"img">) => (
-    <img className="my-8 w-full rounded-xl" alt="" {...props} />
+    <img className="my-6 w-full rounded-xl" alt="" {...props} />
   ),
   Callout,
   FreeCta,
@@ -116,10 +117,23 @@ interface MdxProps {
    * bought is the one reader it cannot be useful to.
    */
   isUserPro?: boolean;
+  /**
+   * Docs scale for READMEs: 14px body, headings a step down and code at the site's
+   * `CodeBlock` size. Blog posts keep the 16px reading scale.
+   */
+  compact?: boolean;
 }
 
+// Descendant overrides outrank each element's own size class, so one wrapper rescales the whole README
+const COMPACT = cn(
+  "[&_p]:text-sm [&_p]:leading-6 [&_li]:text-sm [&_li]:leading-6 [&_blockquote]:text-sm",
+  "[&_h2]:text-lg [&_h3]:text-base [&_h4]:text-sm",
+  "[&_pre]:text-sm/7",
+  "[&_:not(pre)>code]:text-[0.8125rem]",
+);
+
 /** Compiles and renders an MDX post body. */
-export async function Mdx({ source, isUserPro = false }: MdxProps) {
+export async function Mdx({ source, isUserPro = false, compact = false }: MdxProps) {
   const { content } = await compileMDX({
     source,
     components: isUserPro ? { ...components, ProCta: NoProCta } : components,
@@ -130,5 +144,5 @@ export async function Mdx({ source, isUserPro = false }: MdxProps) {
       },
     },
   });
-  return content;
+  return compact ? <div className={COMPACT}>{content}</div> : content;
 }
