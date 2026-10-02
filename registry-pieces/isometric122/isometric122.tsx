@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 // --- isometric kit (shared by every Isometric piece, keep in sync) ---
 type Tone = "primary" | "foreground" | "color" | "none";
-type Palette = "theme" | "light" | "dark" | "tone";
+type Palette = "theme" | "light" | "dark" | "tone" | "glass";
 
 // "color" takes the `color` prop instead of a class, so any hex works
 const toneClasses: Record<Tone, string> = {
@@ -61,10 +61,14 @@ const BODY: Record<Palette, Paint> = {
   light: { base: "fill-white", left: "fill-zinc-950/5", right: "fill-zinc-950/10", edge: "stroke-zinc-200", ink: "fill-zinc-950/15" },
   dark: { base: "fill-zinc-800", left: "fill-black/20", right: "fill-black/40", edge: "stroke-zinc-500", ink: "fill-white/15" },
   tone: { base: "fill-current", left: "fill-black/15", right: "fill-black/30", edge: "stroke-zinc-400/70", ink: "fill-white/30" },
+  // See-through body for a piece that sits over a photo or gradient; stacked solids add up to a frosted look
+  glass: { base: "fill-card/30", left: "fill-foreground/5", right: "fill-foreground/10", edge: "stroke-card/70", ink: "fill-foreground/20" },
 };
 const ACCENT: Paint = { base: "fill-current", left: "fill-black/15", right: "fill-black/30", edge: "stroke-transparent", ink: "fill-white/40" };
 // On a body that is already the tone, the accent turns white so it still stands out
 const ACCENT_ON_TONE: Paint = { base: "fill-white", left: "fill-black/10", right: "fill-black/20", edge: "stroke-transparent", ink: "fill-current" };
+// On a glass body the accent is tinted glass too, with a light rim
+const ACCENT_ON_GLASS: Paint = { base: "fill-current/45", left: "fill-black/10", right: "fill-black/20", edge: "stroke-white/50", ink: "fill-white/60" };
 
 // On a body in the tone, the edge takes whatever stands out against that tone
 const TONE_EDGE: Record<Tone, string> = {
@@ -79,7 +83,7 @@ function paints(palette: Palette, accent: boolean, tone: Tone = "primary", color
   // A light custom color gets dark lines and ink, a deep one gets light ones
   const onTone = tone === "color" && isLight(color) ? { edge: "stroke-black/35", ink: "fill-black/20" } : { edge: TONE_EDGE[tone] };
   const body = palette === "tone" ? { ...BODY.tone, ...onTone } : BODY[palette];
-  return { body, accent: !accent ? body : palette === "tone" ? ACCENT_ON_TONE : ACCENT };
+  return { body, accent: !accent ? body : palette === "tone" ? ACCENT_ON_TONE : palette === "glass" ? ACCENT_ON_GLASS : ACCENT };
 }
 
 function Block({ faces, paint }: { faces: Faces; paint: Paint }) {
@@ -99,7 +103,7 @@ interface Isometric122Props {
   tone?: Tone;
   /** Hex color the piece takes when tone is "color". */
   color?: string;
-  /** Body color: follows the theme, stays light or dark, or takes the tone. */
+  /** Body color: follows the theme, stays light or dark, takes the tone, or turns see-through over whatever is behind it. */
   palette?: Palette;
   /** Color the moving queen and its target square with the tone; off keeps the piece one color. */
   accent?: boolean;
@@ -205,6 +209,7 @@ const DARK: Record<Palette, Paint> = {
   light: { base: "fill-zinc-800", left: "fill-white/10", right: "fill-black/25", edge: "stroke-zinc-900", ink: "fill-white/30" },
   dark: { base: "fill-zinc-950", left: "fill-white/10", right: "fill-white/5", edge: "stroke-zinc-600", ink: "fill-white/30" },
   tone: { base: "fill-zinc-900", left: "fill-white/10", right: "fill-black/25", edge: "stroke-transparent", ink: "fill-white/30" },
+  glass: { base: "fill-foreground", left: "fill-background/10", right: "fill-background/25", edge: "stroke-foreground", ink: "fill-background/30" },
 };
 function Ball({ r, z, paint }: { r: number; z: number; paint: Paint }) {
   return (

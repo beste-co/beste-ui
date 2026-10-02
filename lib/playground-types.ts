@@ -63,6 +63,13 @@ export interface PlaygroundControl {
 
   /** Which group the control sits in. Everything else lands in "Props". */
   group?: string;
+
+  /**
+   * A family name. A value set here follows the reader to the next item whose
+   * control carries the same name, so a look chosen on one piece is not lost on
+   * the next.
+   */
+  carry?: string;
 }
 
 /** One line of the keyboard and gesture table. */
@@ -84,7 +91,9 @@ export interface PlaygroundKey {
  */
 export interface PlaygroundStage {
   /** Shown behind the component, covering the stage. */
-  image: string;
+  image?: string;
+  /** A live backdrop instead of a picture. */
+  effect?: "mesh-gradient";
   /**
    * Props that must hold these values for the backdrop to appear. Left out, it
    * is always there. `{ surface: "glass" }` is the case this was written for.
@@ -188,7 +197,10 @@ export const ISOMETRIC_COLORS = [
   "#E0528C",
 ];
 
-export const ISOMETRIC_CONTROLS: PlaygroundControl[] = [
+/** The glass palette is see-through, so the stage puts a gradient behind it. */
+export const ISOMETRIC_GLASS_STAGE: PlaygroundStage = { effect: "mesh-gradient", when: { palette: "glass" } };
+
+const ISOMETRIC_OWN_CONTROLS: PlaygroundControl[] = [
   {
     prop: "tone",
     label: "Tone",
@@ -219,6 +231,7 @@ export const ISOMETRIC_CONTROLS: PlaygroundControl[] = [
       { value: "light", label: "Light" },
       { value: "dark", label: "Dark" },
       { value: "tone", label: "Tone" },
+      { value: "glass", label: "Glass" },
     ],
     default: "theme",
     group: "Color",
@@ -226,3 +239,6 @@ export const ISOMETRIC_CONTROLS: PlaygroundControl[] = [
   { prop: "accent", label: "Accent", kind: "switch", default: true, group: "Color" },
   { prop: "animated", label: "Motion", kind: "switch", default: true, group: "Motion" },
 ];
+
+/** Every isometric piece takes the same props, so a choice made on one carries to the next. */
+export const ISOMETRIC_CONTROLS: PlaygroundControl[] = ISOMETRIC_OWN_CONTROLS.map((control) => ({ ...control, carry: "isometric" }));

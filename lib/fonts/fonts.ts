@@ -45,6 +45,23 @@ export const fontDefinitions: Record<FontName, FontDefinition> = {
     description: "Modern geometric sans serif with Turkish design heritage",
   },
 
+  "beste-sans": {
+    name: "beste-sans",
+    displayName: "Beste Sans",
+    category: "sans-serif",
+    weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    italicWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+    isCustomFont: true,
+    customFontPath: "/fonts/bestesans/web",
+    fontFileExtension: "woff2",
+    variableFontFiles: {
+      normal: "BesteSans[opsz,wght].woff2",
+      italic: "BesteSans-Italic[opsz,wght].woff2",
+    },
+    fallback: "ui-sans-serif, system-ui, sans-serif",
+    description: "Beste's own variable sans, with optical sizes and true italics",
+  },
+
   geist: {
     name: "geist",
     displayName: "Geist",
@@ -1366,6 +1383,26 @@ export const generateGoogleFontsURL = (fontSet: FontSet): string => {
 // Generate @font-face rules for a single custom font
 const generateFontFaceRules = (font: FontDefinition): string => {
   if (!font?.customFontPath) return "";
+
+  if (font.variableFontFiles) {
+    const { normal, italic } = font.variableFontFiles;
+    return [
+      ["normal", normal],
+      ["italic", italic],
+    ]
+      .filter(([, file]) => file)
+      .map(
+        ([style, file]) => `
+        @font-face {
+          font-family: "${font.displayName}";
+          src: url("${font.customFontPath}/${file}") format("woff2");
+          font-weight: 100 900;
+          font-style: ${style};
+          font-display: swap;
+        }`
+      )
+      .join("\n");
+  }
 
   const ext = font.fontFileExtension || "ttf";
   const format = ext === "woff2" ? "woff2" : "truetype";

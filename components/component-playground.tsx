@@ -14,8 +14,9 @@ import { InspectorSwitch } from "@/components/beste/component/inspector-switch";
 import { InspectorToggles } from "@/components/beste/component/inspector-toggles";
 import { CodeBlock } from "@/components/code-block";
 import { FitScale } from "@/components/fit-scale";
+import { StageMesh } from "@/components/stage-mesh";
 import { ThemedPreview } from "@/components/theme/themed-preview";
-import type { PlaygroundConfig, PlaygroundControl } from "@/lib/playgrounds";
+import type { PlaygroundConfig, PlaygroundControl, PlaygroundStage } from "@/lib/playgrounds";
 import { BACKGROUND_PREVIEW_CATEGORIES, FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { registryComponents } from "@/lib/registry-components";
 import { cn } from "@/lib/utils";
@@ -350,6 +351,12 @@ export function PlaygroundKeys({ keys, className }: { keys: PlaygroundConfig["ke
   );
 }
 
+/** The config's backdrop, while the props it waits for hold. */
+export function activeStage(config: PlaygroundConfig | undefined, props: Record<string, unknown>): PlaygroundStage | undefined {
+  const stage = config?.stage;
+  return stage && Object.entries(stage.when ?? {}).every(([prop, value]) => props[prop] === value) ? stage : undefined;
+}
+
 /** A framed, themed stage. Every preview on the page sits on the same one. */
 function Stage({
   children,
@@ -358,16 +365,18 @@ function Stage({
 }: {
   children: React.ReactNode;
   /** Preview-only picture behind the component. Never reaches its props. */
-  backdrop?: string;
+  backdrop?: PlaygroundStage;
   className?: string;
 }) {
   return (
     <div className={cn("relative overflow-hidden rounded-lg border", className)}>
       <ThemedPreview className="relative size-full">
-        {backdrop ? (
+        {backdrop?.effect === "mesh-gradient" ? (
+          <StageMesh />
+        ) : backdrop?.image ? (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
-            src={backdrop}
+            src={backdrop.image}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 size-full object-cover"
@@ -416,11 +425,7 @@ export function ComponentPlayground({
    * The backdrop answers to the props the reader has set, so switching the
    * surface to glass puts something behind the panel to actually be frosted.
    */
-  const backdrop =
-    config.stage &&
-    Object.entries(config.stage.when ?? {}).every(([prop, value]) => props[prop] === value)
-      ? config.stage.image
-      : undefined;
+  const backdrop = activeStage(config, props);
 
 
   return (

@@ -1,5 +1,6 @@
 export type FontName =
   // Sans-serif fonts (29)
+  | "beste-sans"
   | "haskoy"
   | "geist"
   | "inter"
@@ -152,6 +153,8 @@ export interface FontDefinition {
   customFontPath?: string; // Path to custom font files
   isCustomFont?: boolean; // Flag to identify custom fonts
   fontFileExtension?: "ttf" | "woff2"; // Font file extension (default: "ttf")
+  /** Variable files under `customFontPath`; when set they replace the per-weight files. */
+  variableFontFiles?: { normal: string; italic?: string };
   fallback: string;
   description: string;
 }

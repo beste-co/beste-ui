@@ -3,11 +3,12 @@
 import { type ComponentType, useEffect, useState } from "react";
 
 import { BackgroundDemoContent, type DemoContentTone } from "@/components/background-demo-content";
-import { signature } from "@/components/component-playground";
+import { activeStage, signature } from "@/components/component-playground";
 import { DemoContentSwitch } from "@/components/demo-content-switch";
 import { FitScale } from "@/components/fit-scale";
 import { ReplayButton } from "@/components/replay-button";
 import { StageCustomizer } from "@/components/stage-customizer";
+import { StageMesh } from "@/components/stage-mesh";
 import { ThemedPreview } from "@/components/theme/themed-preview";
 import {
   Select,
@@ -46,6 +47,19 @@ interface ItemStageProps {
   cardFrame?: boolean;
 }
 
+// Choices that follow the reader from one item to the next, by control family
+const carried = new Map<string, Record<string, unknown>>();
+
+/** The demo props with whatever was chosen on a sibling laid over them; null when nothing was. */
+function withCarried(playground: PlaygroundConfig | undefined, base: Record<string, unknown>) {
+  let next: Record<string, unknown> | null = null;
+  for (const control of playground?.controls ?? []) {
+    const kept = control.carry ? carried.get(control.carry) : undefined;
+    if (kept && control.prop in kept) next = { ...(next ?? base), [control.prop]: kept[control.prop] };
+  }
+  return next;
+}
+
 /**
  * A piece or component on the stage: centred in a viewport-tall surface in the
  * preview theme, with the tone picker and the replay button in the corner,
@@ -71,12 +85,13 @@ export function ItemStage({
   // Remounts the live demo so a one-shot entrance plays again
   const [replay, setReplay] = useState(0);
   // Props set from the Customize popover; null means the demo as shipped
-  const [custom, setCustom] = useState<Record<string, unknown> | null>(null);
+  const [custom, setCustom] = useState<Record<string, unknown> | null>(() => withCarried(playground, demoProps ?? {}));
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: a new item starts over, with the carried choices
   useEffect(() => {
     setToneOverride(undefined);
     setShowContent(!demoContentOff);
-    setCustom(null);
+    setCustom(withCarried(playground, demoProps ?? {}));
   }, [name, demoContentOff]);
 
   const base = demoProps ?? {};
@@ -88,9 +103,13 @@ export function ItemStage({
   // The tone picker and a tone row in the popover stay one setting
   const changeCustom = (next: Record<string, unknown>) => {
     if (tones && typeof next.tone === "string" && next.tone !== activeTone) setToneOverride(next.tone);
+    for (const control of playground?.controls ?? []) {
+      if (control.carry && next[control.prop] !== props[control.prop]) carried.set(control.carry, { ...carried.get(control.carry), [control.prop]: next[control.prop] });
+    }
     setCustom(next);
   };
   const resetCustom = () => {
+    for (const control of playground?.controls ?? []) if (control.carry) carried.delete(control.carry);
     setCustom(null);
     setToneOverride(undefined);
   };
@@ -131,6 +150,7 @@ export function ItemStage({
         </div>
       ) : cardFrame ? (
         <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-3xl bg-muted">
+          {activeStage(playground, props)?.effect === "mesh-gradient" && <StageMesh />}
           <Component key={previewKey} {...props} />
         </div>
       ) : (
