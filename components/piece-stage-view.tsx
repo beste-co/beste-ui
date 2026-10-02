@@ -5,6 +5,9 @@ import { UsageSection } from "@/components/usage-section";
 import { components } from "@/lib/components";
 import { usageSnippet } from "@/lib/usage-snippet";
 
+// Card art fills whatever box it gets, so its stage is a card rather than the viewport
+const CARD_ART_CATEGORIES = new Set(["Isometric"]);
+
 function NotFound({ name }: { name: string }) {
   return (
     <div className="flex min-h-[60vh] items-center justify-center p-12 text-base text-muted-foreground">
@@ -24,6 +27,8 @@ export function PieceStageView({ name }: { name: string }) {
       demoProps={entry.demoProps}
       tones={entry.variants?.tone}
       isAnimated={entry.isAnimated}
+      playground={entry.playground}
+      cardFrame={CARD_ART_CATEGORIES.has(entry.category)}
     />
   );
 }

@@ -1,37 +1,24 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
+
+// Static cuts, since the image renderer cannot read a variable font: the text
+// cut for body copy and the display cut for the title
+const FONT_DIR = join(process.cwd(), "public/fonts/bestesans/static/ttf");
 
 async function loadAssets(): Promise<
   { name: string; data: Buffer; weight: 400 | 500; style: "normal" }[]
 > {
-  const [
-    { base64Font: normal },
-    { base64Font: mono },
-    { base64Font: medium },
-  ] = await Promise.all([
-    import("./intertight-regular-woff.json").then((mod) => mod.default || mod),
+  const [normal, medium, { base64Font: mono }] = await Promise.all([
+    readFile(join(FONT_DIR, "BesteSans-Regular.ttf")),
+    readFile(join(FONT_DIR, "BesteSansDisplay-Medium.ttf")),
     import("./geistmono-regular-otf.json").then((mod) => mod.default || mod),
-    import("./intertight-medium-woff.json").then((mod) => mod.default || mod),
   ]);
 
   return [
-    {
-      name: "Inter Tight",
-      data: Buffer.from(normal, "base64"),
-      weight: 400 as const,
-      style: "normal" as const,
-    },
-    {
-      name: "Geist Mono",
-      data: Buffer.from(mono, "base64"),
-      weight: 400 as const,
-      style: "normal" as const,
-    },
-    {
-      name: "Inter Tight",
-      data: Buffer.from(medium, "base64"),
-      weight: 500 as const,
-      style: "normal" as const,
-    },
+    { name: "Beste Sans", data: normal, weight: 400 as const, style: "normal" as const },
+    { name: "Geist Mono", data: Buffer.from(mono, "base64"), weight: 400 as const, style: "normal" as const },
+    { name: "Beste Sans", data: medium, weight: 500 as const, style: "normal" as const },
   ];
 }
 
@@ -50,7 +37,7 @@ export async function GET(request: Request) {
     (
       <div
         tw="flex h-full w-full bg-white flex-col p-16"
-        style={{ fontFamily: "Inter Tight" }}
+        style={{ fontFamily: "Beste Sans" }}
       >
         {/* Gray circular background */}
         <div

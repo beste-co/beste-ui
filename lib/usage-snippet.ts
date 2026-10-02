@@ -53,6 +53,8 @@ export function usageSnippet(kind: UsageKind, name: string, demoProps: Record<st
 
 const TONE_SWATCH: Record<string, string> = {
   primary: "var(--primary)",
+  color: "conic-gradient(#2F6FED, #6E56CF, #E5484D, #F5B014, #1A9E75, #2F6FED)",
+  none: "var(--border)",
   foreground: "var(--foreground)",
   background: "var(--background)",
   muted: "var(--muted-foreground)",

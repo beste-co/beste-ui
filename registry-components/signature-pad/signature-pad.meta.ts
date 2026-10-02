@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "A canvas for capturing a signature: strokes are smoothed into curves through their midpoints and run thick on slow movement and thin on fast, like ink, or follow real pen pressure on a stylus. Points are stored as fractions of the pad's width, so the signature survives any resize on a crisp, pixel-ratio-correct canvas. A dashed baseline and a faint placeholder guide the signer; undo (also Cmd or Ctrl + Z) and clear sit below. Export helpers return an SVG string or a PNG data URL, and a ref exposes clear, undo, isEmpty and both exports.",
   category: "Draw",
+  cardScale: 0.5,
   usage: `import { SignaturePad, toSvg, type SignatureData, type SignaturePadHandle } from "@/components/beste/component/signature-pad";
 
 // Uncontrolled, read it back through the ref

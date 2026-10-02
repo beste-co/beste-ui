@@ -57,6 +57,12 @@ export interface BlockMeta {
   /** Preview alignment for mobile cards: 'top' (default) or 'bottom' */
   previewAlign?: "top" | "bottom";
 
+  /**
+   * Size of the block in its listing card relative to the default, 0.2 to 2.
+   * Below 1 shows more of the block, smaller; above 1 zooms in on its center.
+   */
+  cardScale?: number;
+
   /** If true, the block is a Pro block with obfuscated source code */
   isPro?: boolean;
 

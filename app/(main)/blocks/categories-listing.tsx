@@ -249,7 +249,7 @@ export function CategoriesListing({ categories, addedDates }: CategoriesListingP
               being a link did not already say.
             */}
             <div className="relative flex items-center justify-between gap-3 px-1 pb-1">
-              <h3 className={typography.h3}>{c.category}</h3>
+              <h3 className={typography.cardTitle}>{c.category}</h3>
               {/* On a muted card the chip needs the lighter surface to be seen at all. */}
               <span className="shrink-0 rounded-full bg-background px-2.5 py-0.5 text-sm font-medium tabular-nums text-foreground/70">
                 {c.count} {c.count === 1 ? "block" : "blocks"}

@@ -1,6 +1,5 @@
 "use client";
 
-import { Highlighter } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Highlight {
@@ -23,7 +22,7 @@ const toneClasses: Record<Highlight["tone"], string> = {
 };
 
 export const education18Demo: Education18Props = {
-  lesson: "Lesson 6 · Hooks in depth",
+  lesson: "Lesson 6",
   highlights: [
     {
       text: "useEffect runs after the DOM commit, not during render.",
@@ -51,16 +50,11 @@ export function Education18({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300">
-            <Highlighter className="size-3.5" aria-hidden="true" />
-          </div>
-          {lesson && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {lesson}
-            </span>
-          )}
-        </div>
+        {lesson && (
+          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            {lesson}
+          </span>
+        )}
         <div className="flex flex-col gap-1.5">
           {highlights.map((h, idx) => (
             <span

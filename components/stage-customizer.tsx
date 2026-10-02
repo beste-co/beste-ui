@@ -65,7 +65,8 @@ export function StageCustomizer({ name, config, props, onChange, onReset, dirty 
         className="flex max-h-[min(72svh,44rem)] w-[22rem] flex-col gap-0 overflow-hidden rounded-2xl border-0 bg-muted p-0 shadow-xl"
       >
         <div className="flex items-center justify-between gap-3 px-4 pt-3 pb-1">
-          <span className="text-base font-medium select-none">Customize</span>
+          {/* As tall as the Reset button, so the panel does not shift when it appears */}
+          <span className="flex h-8 items-center text-base font-medium select-none">Customize</span>
           {dirty && (
             <button type="button" onClick={onReset} className={ghostButton}>
               <HugeiconsIcon icon={ArrowReloadHorizontalIcon} size={14} strokeWidth={2} aria-hidden="true" />

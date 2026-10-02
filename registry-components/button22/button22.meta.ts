@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "button22",
   title: "Sliding Marker Pill",
   description:
-    "An uppercase, letter-spaced pill with a small marker at its end. On hover the marker slips out on the right while the label slides over and a twin marker arrives from the left, in one smooth motion.",
+    "A pill with a small marker at its end. On hover the marker slips out on the right while the label slides over and a twin marker arrives from the left, in one smooth motion.",
   category: "Button",
   registryDependencies: ["button"],
   usage: `import { Button22 } from "@/components/beste/component/button22";

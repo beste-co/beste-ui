@@ -1,10 +1,12 @@
 "use client";
 
-import { Package, Search, Star } from "lucide-react";
+import { Search, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Product {
   name: string;
+  /** Product photo shown as the row's thumbnail. */
+  image?: string;
   price: string;
   rating: string;
 }
@@ -18,9 +20,24 @@ interface Search18Props {
 export const search18Demo: Search18Props = {
   query: "linen",
   products: [
-    { name: "Washed linen pillow", price: "$48", rating: "4.8" },
-    { name: "Linen throw blanket", price: "$112", rating: "4.6" },
-    { name: "Natural linen apron", price: "$34", rating: "4.9" },
+    {
+      name: "Washed linen pillow",
+      image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=120&h=120&fit=crop&auto=format&q=70",
+      price: "$48",
+      rating: "4.8",
+    },
+    {
+      name: "Linen throw blanket",
+      image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=120&h=120&fit=crop&auto=format&q=70",
+      price: "$112",
+      rating: "4.6",
+    },
+    {
+      name: "Striped linen cushion",
+      image: "https://images.unsplash.com/photo-1616627561950-9f746e330187?w=120&h=120&fit=crop&auto=format&q=70",
+      price: "$34",
+      rating: "4.9",
+    },
   ],
 };
 
@@ -52,9 +69,11 @@ export function Search18({
               key={idx}
               className="flex items-center gap-3 px-3 py-2"
             >
-              <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-amber-200 to-rose-200 text-amber-800">
-                <Package className="size-4" aria-hidden="true" />
-              </div>
+              {p.image ? (
+                <img src={p.image} alt={p.name} loading="lazy" className="size-9 shrink-0 rounded-md bg-muted object-cover" />
+              ) : (
+                <div className="size-9 shrink-0 rounded-md bg-muted" aria-hidden="true" />
+              )}
               <div className="flex min-w-0 flex-1 flex-col">
                 <span className="truncate text-sm font-medium text-card-foreground">
                   {p.name}

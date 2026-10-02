@@ -17,6 +17,10 @@ export const typography = {
   h2: "text-xl font-medium leading-tight tracking-tight md:text-2xl",
   /** Card, panel and sub-section title. */
   h3: "text-lg font-medium leading-snug",
+  /** Title of a catalogue card: a block, piece, component or page in a grid. */
+  cardTitle: "text-base font-medium leading-snug",
+  /** The description under a catalogue card's title. */
+  cardText: "text-sm text-muted-foreground",
   /** Running text. */
   body: "text-base",
   /** Card descriptions, counts, dates and other secondary copy. */

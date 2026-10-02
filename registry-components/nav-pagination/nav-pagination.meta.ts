@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Pagination that never changes width as the reader walks through it: page numbers with ellipses kept to a fixed count, a marker that slides to the current page on a spring, and previous and next arrows that disable at the ends. Press an ellipsis and it opens into a small field to type any page and jump there. An optional page size menu keeps the first row on screen in view when the size changes, and a range readout says 21 to 40 of 312. Pages render as buttons, or as real links through your own router, and a narrow container collapses the numbers into Page 6 of 16.",
   category: "Nav",
+  cardScale: 0.7,
   registryDependencies: ["input", "select"],
   usage: `import { NavPagination } from "@/components/beste/component/nav-pagination";
 

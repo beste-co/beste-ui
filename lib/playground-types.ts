@@ -46,8 +46,14 @@ export interface PlaygroundControl {
   /** Choice kinds. A plain string is its own label. */
   options?: (string | { value: string; label?: string })[];
 
-  /** Ghost text, for `text`. */
+  /** Ghost text, for `text`; for `color`, the color shown while the prop is unset. */
   placeholder?: string;
+
+  /** Preset colors offered in the picker, for `color`. */
+  swatches?: string[];
+
+  /** Show the control, and print its prop, only while another prop has this value. */
+  when?: { prop: string; equals: unknown };
 
   /**
    * The component's own default. A control sitting on it is left out of the snippet,
@@ -164,4 +170,59 @@ export const SURFACE_CONTROLS: PlaygroundControl[] = [
   // A flag, so a switch: a menu of two states would be a menu asking a question the
   // reader can answer by looking at it.
   { prop: "disabled", label: "Disabled", kind: "switch", default: false, group: "Surface" },
+];
+
+/**
+ * How an Isometric piece is colored: the body follows the theme, stays light or
+ * dark, or takes the tone; the accent area takes the tone, or goes mono.
+ */
+/** Preset hex colors for the "color" tone of an Isometric piece; any other hex works too. */
+export const ISOMETRIC_COLORS = [
+  "#2F6FED",
+  "#1A9E75",
+  "#E5484D",
+  "#F5B014",
+  "#6E56CF",
+  "#F2682A",
+  "#0E9AA7",
+  "#E0528C",
+];
+
+export const ISOMETRIC_CONTROLS: PlaygroundControl[] = [
+  {
+    prop: "tone",
+    label: "Tone",
+    kind: "select",
+    options: [
+      { value: "primary", label: "Primary" },
+      { value: "foreground", label: "Foreground" },
+      { value: "color", label: "Color" },
+      { value: "none", label: "No tone" },
+    ],
+    group: "Color",
+  },
+  {
+    prop: "color",
+    label: "Color",
+    kind: "color",
+    swatches: ISOMETRIC_COLORS,
+    placeholder: "#2F6FED",
+    group: "Color",
+    when: { prop: "tone", equals: "color" },
+  },
+  {
+    prop: "palette",
+    label: "Palette",
+    kind: "select",
+    options: [
+      { value: "theme", label: "Theme" },
+      { value: "light", label: "Light" },
+      { value: "dark", label: "Dark" },
+      { value: "tone", label: "Tone" },
+    ],
+    default: "theme",
+    group: "Color",
+  },
+  { prop: "accent", label: "Accent", kind: "switch", default: true, group: "Color" },
+  { prop: "animated", label: "Motion", kind: "switch", default: true, group: "Motion" },
 ];

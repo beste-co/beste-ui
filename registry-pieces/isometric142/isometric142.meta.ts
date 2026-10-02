@@ -1,0 +1,19 @@
+import type { ComponentMeta } from "@/lib/component-types";
+
+export const meta: ComponentMeta = {
+  name: "isometric142",
+  title: "Isometric Theater Stage",
+  description:
+    "A small stage framed by a proscenium arch, with curtains in the accent color. The curtains gather to the sides as a spotlight falls on the boards, then close again.",
+  category: "Isometric",
+  usage: `import { Isometric142 } from "@/components/beste/piece/isometric142";
+
+// Give it the card's media area; the drawing scales to fit and centers itself.
+// palette: "theme" | "light" | "dark" | "tone", accent={false} for one color.
+<div className="flex aspect-square flex-col overflow-hidden rounded-3xl border border-border bg-card">
+  <Isometric142 tone="color" color="#2F6FED" palette="theme" className="min-h-0 flex-1" />
+  <p className="px-8 pb-8 text-center text-lg text-muted-foreground">
+    Tickets for 40 shows this season.
+  </p>
+</div>`,
+};

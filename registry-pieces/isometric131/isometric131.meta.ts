@@ -1,0 +1,19 @@
+import type { ComponentMeta } from "@/lib/component-types";
+
+export const meta: ComponentMeta = {
+  name: "isometric131",
+  title: "Isometric Moving Boxes",
+  description:
+    "Three cardboard boxes sit stacked on a pallet. A roll of tape in the accent color runs across the top box and seals it shut, then the tape folds down over the edge.",
+  category: "Isometric",
+  usage: `import { Isometric131 } from "@/components/beste/piece/isometric131";
+
+// Give it the card's media area; the drawing scales to fit and centers itself.
+// palette: "theme" | "light" | "dark" | "tone", accent={false} for one color.
+<div className="flex aspect-square flex-col overflow-hidden rounded-3xl border border-border bg-card">
+  <Isometric131 tone="color" color="#2F6FED" palette="theme" className="min-h-0 flex-1" />
+  <p className="px-8 pb-8 text-center text-lg text-muted-foreground">
+    Move a 2 bedroom home in 1 day.
+  </p>
+</div>`,
+};

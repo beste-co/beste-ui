@@ -42,6 +42,8 @@ interface ItemStageProps {
   demoContentOff?: boolean;
   /** Settings for the Customize popover; the preview itself is what they turn. */
   playground?: PlaygroundConfig;
+  /** Card art fills its box, so it is shown inside a card the size it will be used at. */
+  cardFrame?: boolean;
 }
 
 /**
@@ -62,6 +64,7 @@ export function ItemStage({
   fullBleed = false,
   demoContentOff = false,
   playground,
+  cardFrame = false,
 }: ItemStageProps) {
   const [showContent, setShowContent] = useState(!demoContentOff);
   const [toneOverride, setToneOverride] = useState<string | undefined>(undefined);
@@ -103,7 +106,7 @@ export function ItemStage({
       ? {
           ...playground,
           controls: [
-            { prop: "tone", label: "Tone", kind: tones.length <= 3 ? ("segmented" as const) : ("select" as const), options: tones, default: defaultTone, group: "Surface" },
+            { prop: "tone", label: "Tone", kind: tones.length <= 3 ? ("segmented" as const) : ("select" as const), options: tones.map((t) => (t === "none" ? { value: t, label: "No tone" } : t)), default: defaultTone, group: "Surface" },
             ...playground.controls,
           ],
         }
@@ -125,6 +128,10 @@ export function ItemStage({
           <FitScale key={previewKey} className="size-full" padding={0}>
             <Component {...props} />
           </FitScale>
+        </div>
+      ) : cardFrame ? (
+        <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-3xl bg-muted">
+          <Component key={previewKey} {...props} />
         </div>
       ) : (
         <Component key={previewKey} {...props} />
@@ -154,7 +161,7 @@ export function ItemStage({
                         style={{ background: toneSwatch(t) }}
                         aria-hidden="true"
                       />
-                      <span className="capitalize">{t}</span>
+                      <span className="capitalize">{t === "none" ? "No tone" : t}</span>
                     </div>
                   </SelectItem>
                 ))}

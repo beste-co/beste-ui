@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "An install command block with a tab for each package manager: npm, pnpm, yarn and bun, or any subset in any order. The command is derived from the packages, a dev flag and whether they are installed or run once (npx, pnpm dlx, yarn dlx, bunx), or given exactly per manager. A marker slides between the tabs on a spring, and the reader's pick is remembered and shared by every snippet on the page and across visits. The copy button morphs into a check and announces itself, and a long command scrolls sideways instead of wrapping.",
   category: "Snippet",
+  cardScale: 0.7,
   usage: `import { SnippetInstall } from "@/components/beste/component/snippet-install";
 
 // Installs, with the command written for each manager

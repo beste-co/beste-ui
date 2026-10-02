@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 type Tone = "dark" | "primary";
 
 interface Button1Props {
-  /** Button label (rendered uppercase) */
+  /** Button label */
   label: string;
   /**
    * Compose the rendered element shadcn-style (radix asChild):
@@ -88,7 +88,7 @@ export function Button1({
   const classes = cn(
     // justify-between keeps the label left and the seal pinned right when the
     // pill is full-width; at w-fit there's no free space so they stay together.
-    "group/button1 h-auto w-fit justify-between gap-3 rounded-md py-3 pl-6 pr-3 text-base font-bold uppercase tracking-wider transition-colors",
+    "group/button1 h-auto w-fit justify-between gap-3 rounded-md py-3 pl-6 pr-3 text-base font-bold transition-colors",
     roundedFull && "rounded-full",
     styles.pill,
     className

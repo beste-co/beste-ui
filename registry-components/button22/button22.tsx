@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 type Tone = "primary" | "light" | "dark" | "outline";
 
 interface Button22Props {
-  /** Button label (rendered uppercase) */
+  /** Button label */
   label: string;
   /**
    * Compose the rendered element shadcn-style (radix asChild): your element
@@ -72,7 +72,7 @@ export function Button22({
   className,
 }: Button22Props) {
   const classes = cn(
-    "group/button22 relative h-auto w-fit cursor-pointer rounded-full pl-7 pr-13 py-4 text-sm font-semibold uppercase tracking-[0.18em] antialiased shadow-none transition-colors duration-500",
+    "group/button22 relative h-auto w-fit cursor-pointer rounded-full pl-7 pr-13 py-4 text-sm font-semibold antialiased shadow-none transition-colors duration-500",
     toneStyles[tone],
     className
   );

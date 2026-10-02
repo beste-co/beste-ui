@@ -1,0 +1,19 @@
+import type { ComponentMeta } from "@/lib/component-types";
+
+export const meta: ComponentMeta = {
+  name: "isometric93",
+  title: "Isometric Mailbox",
+  description:
+    "A letter slides into a curbside mailbox on its post, and the flag on the side swings up in the accent color to say mail is in.",
+  category: "Isometric",
+  usage: `import { Isometric93 } from "@/components/beste/piece/isometric93";
+
+// Give it the card's media area; the drawing scales to fit and centers itself.
+// palette: "theme" | "light" | "dark" | "tone", accent={false} for one color.
+<div className="flex aspect-square flex-col overflow-hidden rounded-3xl border border-border bg-card">
+  <Isometric93 tone="color" color="#2F6FED" palette="theme" className="min-h-0 flex-1" />
+  <p className="px-8 pb-8 text-center text-lg text-muted-foreground">
+    Get a ping the moment 1 new reply lands.
+  </p>
+</div>`,
+};

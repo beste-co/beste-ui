@@ -74,8 +74,8 @@ export function RelatedBlocksGrid({ blocks }: { blocks: BlockMeta[] }) {
             </div>
             {/* Plain text: the card's own overlay link already carries this name,
                 and two anchors to one page is one more than anyone needs. */}
-            <h3 className={cn(typography.h3, "mb-1")}>{block.title}</h3>
-            <p className="line-clamp-2 min-h-[3rem] text-base text-muted-foreground">
+            <h3 className={cn(typography.cardTitle, "mb-1")}>{block.title}</h3>
+            <p className={cn(typography.cardText, "line-clamp-2 min-h-10")}>
               {block.description}
             </p>
           </div>

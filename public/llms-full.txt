@@ -12,7 +12,7 @@ The catalog has four tiers:
 
 - **Blocks** (https://ui.beste.co/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
 - **Pages** (https://ui.beste.co/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
-- **Pieces** (https://ui.beste.co/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,076 pieces in 45 categories, all free.
+- **Pieces** (https://ui.beste.co/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,326 pieces in 46 categories, all free.
 - **Components** (https://ui.beste.co/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 291 components in 40 categories, all free.
 
 Every asset has a detail page with a live preview, the install command in both flavors, its props and a README. Blocks live at `/block/{name}`, pages at `/page/{name}`, pieces at `/piece/{name}` and components at `/component/{name}`.
@@ -501,8 +501,9 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 
 ## Pieces
 
-1,076 small widgets, all free. Listing: https://ui.beste.co/pieces. Each category page lists every piece in it.
+1,326 small widgets, all free. Listing: https://ui.beste.co/pieces. Each category page lists every piece in it.
 
+- [Isometric](https://ui.beste.co/pieces/isometric): 250 pieces
 - [Shapes](https://ui.beste.co/pieces/shapes): 80 pieces
 - [Editor](https://ui.beste.co/pieces/editor): 56 pieces
 - [AI](https://ui.beste.co/pieces/ai): 52 pieces
@@ -604,6 +605,7 @@ Long-form posts at https://ui.beste.co/blog. Feed: https://ui.beste.co/blog/feed
 
 The full changelog is at https://ui.beste.co/changelog; the latest releases:
 
+- v1.32.0 (2026-10-02): Isometric pieces
 - v1.31.0 (2026-09-28): Gradient heroes
 - v1.30.0 (2026-09-28): Gradient backgrounds and interface components
 - v1.29.0 (2026-09-26): Motion heroes and scroll features
@@ -615,7 +617,6 @@ The full changelog is at https://ui.beste.co/changelog; the latest releases:
 - v1.23.0 (2026-09-04): Altair: 108 blocks for a practice that listens
 - v1.22.0 (2026-09-04): Text: 19 ways a line of type can arrive
 - v1.21.0 (2026-08-12): Polaris: 45 blocks for a site that publishes
-- v1.20.0 (2026-08-07): Questionnaire: 16 blocks that ask first
 
 ## Links
 

@@ -65,7 +65,6 @@ export function ProUnlockContent({ onGetProAccess }: ProUnlockContentProps) {
       <div className="flex flex-col items-center gap-3">
         {/* The library's own button, as everywhere else it asks for something. */}
         <Button23
-          size="sm"
           tone="dark"
           label="Get Pro access"
           onClick={onGetProAccess}

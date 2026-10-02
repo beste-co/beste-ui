@@ -3,6 +3,7 @@
 import { SourceCodeIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
+import { CardDemo } from "@/components/card-demo";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, useTransition } from "react";
 import {
@@ -187,7 +188,6 @@ export function ComponentsContent({
 
         <div data-md-omit="" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {gridItems.map((c) => {
-            const Component = c.component;
             return (
               /*
                 The whole card is a link, and the link is a sibling of the card's
@@ -206,7 +206,7 @@ export function ComponentsContent({
                 <div
                   className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background"
                 >
-                  <Component key={replays[c.name] ?? 0} {...c.demoProps} />
+                  <CardDemo key={replays[c.name] ?? 0} entry={{ component: c.component, demoProps: c.demoProps, cardScale: c.cardScale, category: c.category }} />
                   {/* The corner marks as one cluster: the badge holds the
                       corner and the source-code hint fades in beside it, rather
                       than the two landing on the same spot. It sits above the
@@ -231,8 +231,8 @@ export function ComponentsContent({
                     not what you scan a grid for, and the overlay above already carries
                     the accessible name. */}
                 <div className="relative flex flex-col gap-1 px-1 pb-1">
-                  <h3 className={typography.h3}>{c.title}</h3>
-                  <p className="line-clamp-2 text-base text-muted-foreground">{c.description}</p>
+                  <h3 className={typography.cardTitle}>{c.title}</h3>
+                  <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
                 </div>
               </div>
             );

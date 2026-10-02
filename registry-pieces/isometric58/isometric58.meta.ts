@@ -1,0 +1,19 @@
+import type { ComponentMeta } from "@/lib/component-types";
+
+export const meta: ComponentMeta = {
+  name: "isometric58",
+  title: "Isometric ID Badge",
+  description:
+    "An ID badge hangs from a lanyard loop and sways a little, with a photo and name lines on its face and a check in the accent color popping onto the corner of the photo.",
+  category: "Isometric",
+  usage: `import { Isometric58 } from "@/components/beste/piece/isometric58";
+
+// Give it the card's media area; the drawing scales to fit and centers itself.
+// palette: "theme" | "light" | "dark" | "tone", accent={false} for one color.
+<div className="flex aspect-square flex-col overflow-hidden rounded-3xl border border-border bg-card">
+  <Isometric58 tone="color" color="#2F6FED" palette="theme" className="min-h-0 flex-1" />
+  <p className="px-8 pb-8 text-center text-lg text-muted-foreground">
+    New hires badged in on day 1.
+  </p>
+</div>`,
+};

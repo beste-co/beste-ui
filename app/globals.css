@@ -164,11 +164,28 @@
   --ring: oklch(0.6 0.05 50);
 }
 
+/* The site typeface: one variable file per style, weights 100 to 900, and the
+   optical size follows the font size on its own, so large type gets the display cut */
+@font-face {
+  font-family: "Beste Sans";
+  src: url("/fonts/bestesans/web/BesteSans%5Bopsz,wght%5D.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Beste Sans";
+  src: url("/fonts/bestesans/web/BesteSans-Italic%5Bopsz,wght%5D.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme inline {
-  /* Inter Tight for everything but code: sans and serif both point at it, since
+  /* Beste Sans for everything but code: sans and serif both point at it, since
      the blocks use font-serif for display type. */
-  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Beste Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Beste Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -233,7 +250,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
   }
 }
 

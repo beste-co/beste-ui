@@ -5,7 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, useTransition } from "react";
-import { FitScale } from "@/components/fit-scale";
+import { CardDemo } from "@/components/card-demo";
 import {
   BrowseFilters,
   BrowsePagerArrow,
@@ -15,7 +15,6 @@ import { NewBadge, useIsNew } from "@/components/new-badge";
 import { ReplayButton } from "@/components/replay-button";
 import { type BrowseSort, DEFAULT_SORT, SORT_OPTIONS } from "@/lib/browse-sort";
 import { componentInstallCommand } from "@/lib/install-command";
-import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
 import { type RegistryComponentMeta, registryComponents } from "@/lib/registry-components";
 import type { CategoryCount } from "./_lib/paginate";
 import { typography } from "@/lib/typography";
@@ -189,7 +188,6 @@ export function RegistryComponentsContent({
 
         <div data-md-omit="" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {gridItems.map((c) => {
-            const Component = c.component;
             return (
               /*
                 The whole card is a link, and the link is a sibling of the card's
@@ -209,28 +207,7 @@ export function RegistryComponentsContent({
                   className="absolute inset-0 z-10 rounded-xl outline-none"
                 />
                 <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background">
-                  {/* Large-surface categories get fit-scaled so the whole demo
-                      shows at its natural proportions, like block previews */}
-                  {FRAME_PREVIEW_CATEGORIES.has(c.category) ? (
-                    <FitScale key={replays[c.name] ?? 0}>
-                      <Component {...c.demoProps} />
-                    </FitScale>
-                  ) : c.cardScale ? (
-                    // Laid out on a larger canvas, then shrunk, so display type shows whole
-                    <div
-                      key={replays[c.name] ?? 0}
-                      className="absolute left-1/2 top-1/2 flex items-center justify-center"
-                      style={{
-                        width: `${100 / Math.min(1, Math.max(0.2, c.cardScale))}%`,
-                        height: `${100 / Math.min(1, Math.max(0.2, c.cardScale))}%`,
-                        transform: `translate(-50%, -50%) scale(${Math.min(1, Math.max(0.2, c.cardScale))})`,
-                      }}
-                    >
-                      <Component {...c.demoProps} />
-                    </div>
-                  ) : (
-                    <Component key={replays[c.name] ?? 0} {...c.demoProps} />
-                  )}
+                  <CardDemo key={replays[c.name] ?? 0} entry={c} />
                   {/* The corner marks as one cluster: the badge holds the
                       corner and the source-code hint fades in beside it, rather
                       than the two landing on the same spot. The cluster sits
@@ -257,8 +234,8 @@ export function RegistryComponentsContent({
                       crawler needs. The registry name is gone from here — it is what
                       you type into a terminal, not what you scan a grid for, and it
                       is on the page this card opens. */}
-                  <h3 className={typography.h3}>{c.title}</h3>
-                  <p className="line-clamp-2 text-base text-muted-foreground">
+                  <h3 className={typography.cardTitle}>{c.title}</h3>
+                  <p className={cn(typography.cardText, "line-clamp-2")}>
                     {c.description}
                   </p>
                 </div>

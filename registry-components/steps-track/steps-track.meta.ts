@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Multi-step progress as an ordered list: a numbered marker per step, a title and an optional description, laid out as a row or a column. As `current` advances, the line between the markers fills segment by segment on a spring and each finished number turns into a check that draws itself in; stepping back empties it the other way. Steps can also be marked as needing attention or skipped. Completed steps (or every step) can be made pressable to jump back, the current one carries `aria-current=\"step\"`, and every state is spelled out for screen readers.",
   category: "Steps",
+  cardScale: 0.6,
   usage: `import { StepsTrack } from "@/components/beste/component/steps-track";
 
 <StepsTrack

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 type Tone = "dark" | "primary" | "outline";
 
 interface Button12Props {
-  /** Button label (rendered uppercase) */
+  /** Button label */
   label: string;
   /**
    * Compose the rendered element shadcn-style (radix asChild): your element
@@ -65,7 +65,7 @@ export function Button12({
   const styles = toneStyles[tone];
 
   const classes = cn(
-    "group/button12 inline-flex w-fit cursor-pointer items-center gap-3 rounded-full py-2 pl-8 pr-2 text-base font-bold uppercase tracking-wider transition-colors",
+    "group/button12 inline-flex w-fit cursor-pointer items-center gap-3 rounded-full py-2 pl-8 pr-2 text-base font-bold transition-colors",
     styles.pill,
     className
   );

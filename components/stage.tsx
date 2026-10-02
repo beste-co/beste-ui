@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type ReactNode, useState } from "react";
 
+import { Button23 } from "@/components/beste/component/button23";
 import { CodeBlock } from "@/components/code-block";
 import { ICON_ACTION_CLASS_SM } from "@/components/icon-action";
 import { IconButton } from "@/components/icon-button";
@@ -155,6 +156,8 @@ interface StageProps {
   flavor?: { kind: "block" | "piece" | "component"; name: string };
   /** Round actions after the theme picker: favourite, previous, next. */
   actions?: ReactNode;
+  /** Pin a "Get access" button to the top right for visitors without Pro. */
+  accessCta?: boolean;
   /** The label on the sheet's edge, e.g. "About this block". */
   detailsLabel?: string;
   /** The thing itself, rendered edge to edge. */
@@ -185,6 +188,7 @@ export function Stage({
   backLabel,
   flavor: flavorItem,
   actions,
+  accessCta = false,
   detailsLabel = "Details",
   children,
   details,
@@ -279,6 +283,15 @@ export function Stage({
         <div className="pb-24">{details}</div>
         <SiteFooter />
       </div>
+
+      {/* The same floating shell as the bar below, holding the library's own button */}
+      {accessCta && isPro && !isUserPro && (
+        <div className="fixed top-4 right-4 z-40 rounded-full bg-background p-1.5 shadow-[0_10px_40px_-12px] shadow-foreground/25">
+          <Button23 asChild size="sm" tone="dark" label="Get Pro access">
+            <Link href="/pricing" />
+          </Button23>
+        </div>
+      )}
 
       <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
         <div className="pointer-events-auto flex max-w-full items-center gap-1 rounded-full bg-background p-1.5 shadow-[0_10px_40px_-12px] shadow-foreground/25">

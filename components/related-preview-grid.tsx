@@ -7,9 +7,9 @@ import type { ComponentType } from "react";
 import Link from "next/link";
 import { SourceCodeIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { FitScale } from "@/components/fit-scale";
-import { FRAME_PREVIEW_CATEGORIES } from "@/lib/registry-component-preview";
+import { CardDemo } from "@/components/card-demo";
 import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 export interface RelatedPreviewItem {
   name: string;
@@ -18,8 +18,11 @@ export interface RelatedPreviewItem {
   component: ComponentType<any>;
   demoProps: any;
   href: string;
-  /** Large-surface categories (e.g. Card) get fit-scaled in the thumbnail. */
+  /** Decides how the demo sits in the card: backgrounds fill it, large surfaces are fitted. */
   category?: string;
+  fullBleed?: boolean;
+  /** Size of the demo in the card, from the meta file. */
+  cardScale?: number;
 }
 
 export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
@@ -28,7 +31,6 @@ export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((c) => {
-        const Component = c.component;
         return (
           /*
             The same card as the catalog grid: one overlay link covering it, a
@@ -53,16 +55,7 @@ export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
               inert
               className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background"
             >
-              {/* Large-surface categories (Card) get fit-scaled so the whole
-                  demo shows at its natural proportions, matching the catalog
-                  grid on /components/{category}. */}
-              {c.category && FRAME_PREVIEW_CATEGORIES.has(c.category) ? (
-                <FitScale>
-                  <Component {...c.demoProps} />
-                </FitScale>
-              ) : (
-                <Component {...c.demoProps} />
-              )}
+              <CardDemo entry={c} />
               <div
                 className="pointer-events-none absolute right-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-md border bg-background opacity-0 transition-opacity group-hover:opacity-100"
                 aria-hidden="true"
@@ -74,8 +67,8 @@ export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
                 what you scan a grid for, and the card's overlay already carries the
                 accessible name. */}
             <div className="relative flex flex-col gap-1 px-1 pb-1">
-              <h3 className={typography.h3}>{c.title}</h3>
-              <p className="line-clamp-2 text-base text-muted-foreground">{c.description}</p>
+              <h3 className={typography.cardTitle}>{c.title}</h3>
+              <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
             </div>
           </div>
         );

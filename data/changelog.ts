@@ -50,6 +50,8 @@ interface ChangelogEntryInput {
   featureSubtitle?: string;
   /** X/Twitter status URL to embed under the entry */
   tweetUrl?: string;
+  /** Video shown under the entry: a video file URL, or a YouTube link */
+  videoUrl?: string;
   /** Byline name for this release. Falls back to the site author when unset. */
   author?: string;
   /** Where the byline name links to. Falls back to the site author's profile. */
@@ -104,12 +106,22 @@ export interface ChangelogEntry {
   featureEyebrow?: string;
   featureSubtitle?: string;
   tweetUrl?: string;
+  videoUrl?: string;
   author?: string;
   authorUrl?: string;
 }
 
 // Simplified changelog data - only name and flags needed
 const _changelog: ChangelogEntryInput[] = [
+  {
+    version: "v1.32.0",
+    date: "2026-10-02",
+    title: "Isometric pieces",
+    description:
+      "**250** isometric pieces for feature cards and bento grids, drawn in SVG with calm looping motion. Each one takes a tone or any hex color.",
+    videoUrl: "https://cdn.beste.app/changelog/export-1790938070760.mp4",
+    pieces: Array.from({ length: 250 }, (_, index) => ({ name: `isometric${index + 1}`, isNew: true })),
+  },
   {
     version: "v1.31.0",
     date: "2026-09-28",
@@ -3778,6 +3790,7 @@ function enrichChangelog(entries: ChangelogEntryInput[]): ChangelogEntry[] {
       featureEyebrow: entry.featureEyebrow,
       featureSubtitle: entry.featureSubtitle,
       tweetUrl: entry.tweetUrl,
+      videoUrl: entry.videoUrl,
       author: entry.author,
       authorUrl: entry.authorUrl,
     };

@@ -1,15 +1,32 @@
 "use client";
 
-import type { FontDefinition, FontSet } from "@/lib/fonts";
+import type { FontDefinition, FontName, FontSet } from "@/lib/fonts";
 import { createContext, useContext } from "react";
 import {
-  fontDefinitions,
+  fontDefinitions as sharedFontDefinitions,
   getMonospaceFonts,
-  getSansSerifFonts,
+  getSansSerifFonts as getSharedSansSerifFonts,
   getSerifFonts,
 } from "@/lib/fonts";
 
-const STORAGE_KEY = "blocks-preview-fonts";
+// Bumped when the default typeface changed, so earlier picks start over
+const STORAGE_KEY = "blocks-preview-fonts-v2";
+
+/** The site's own typeface; it is loaded by globals.css and only exists in this app. */
+export const BESTE_SANS = {
+  name: "beste-sans",
+  displayName: "Beste Sans",
+  category: "sans-serif",
+  weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+  italicWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+  isCustomFont: true,
+  customFontPath: "/fonts/bestesans/web",
+  fallback: "ui-sans-serif, system-ui, sans-serif",
+  description: "The Beste typeface, drawn for interface and display type",
+} as unknown as FontDefinition;
+
+const fontDefinitions = { ...sharedFontDefinitions, "beste-sans": BESTE_SANS } as Record<FontName | "beste-sans", FontDefinition>;
+const getSansSerifFonts = () => [BESTE_SANS, ...getSharedSansSerifFonts()];
 
 export interface PreviewFontContextType {
   fontSet: FontSet;
@@ -22,8 +39,8 @@ export const PreviewFontContext = createContext<PreviewFontContextType | null>(n
 
 const defaultContext: PreviewFontContextType = {
   fontSet: {
-    sans: fontDefinitions["inter-tight"],
-    serif: fontDefinitions["inter-tight"],
+    sans: BESTE_SANS,
+    serif: BESTE_SANS,
     mono: fontDefinitions["geist-mono"] || fontDefinitions.inter,
   },
   setFontSet: () => {},
@@ -38,8 +55,8 @@ export function usePreviewFont() {
 
 export function getDefaultFontSet(): FontSet {
   return {
-    sans: fontDefinitions["inter-tight"],
-    serif: fontDefinitions["inter-tight"],
+    sans: BESTE_SANS,
+    serif: BESTE_SANS,
     mono: fontDefinitions["geist-mono"] || fontDefinitions.inter,
   };
 }
@@ -54,12 +71,8 @@ export function loadStoredFonts(): FontSet {
     if (stored) {
       const parsed = JSON.parse(stored);
       return {
-        sans:
-          fontDefinitions[parsed.sans as keyof typeof fontDefinitions] ||
-          fontDefinitions["inter-tight"],
-        serif:
-          fontDefinitions[parsed.serif as keyof typeof fontDefinitions] ||
-          fontDefinitions["inter-tight"],
+        sans: fontDefinitions[parsed.sans as keyof typeof fontDefinitions] || BESTE_SANS,
+        serif: fontDefinitions[parsed.serif as keyof typeof fontDefinitions] || BESTE_SANS,
         mono:
           fontDefinitions[parsed.mono as keyof typeof fontDefinitions] ||
           fontDefinitions["geist-mono"],

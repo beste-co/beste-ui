@@ -142,9 +142,15 @@ export function snippetFor(name: string, props: Record<string, unknown>, config:
     config.controls.filter((c) => c.default !== undefined).map((c) => [c.prop, c.default]),
   );
 
+  // A prop whose control is switched off by another prop has no effect, so it is not printed
+  const idle = new Set(
+    config.controls.filter((c) => c.when && props[c.when.prop] !== c.when.equals).map((c) => c.prop),
+  );
+
   const lines: string[] = [];
   for (const [key, value] of Object.entries(props)) {
     if (typeof value === "function") continue;
+    if (idle.has(key)) continue;
     if (defaults.has(key) && defaults.get(key) === value) continue;
     if (value === "") continue;
     const printed = printProp(key, value);
@@ -168,6 +174,11 @@ export function writeProp(props: Record<string, unknown>, path: string, next: un
   const list = Array.isArray(props[key]) ? [...(props[key] as unknown[])] : [];
   list[Number(index)] = next;
   return { ...props, [key]: list };
+}
+
+/** A control with a `when` only applies while the prop it names has that value. */
+function shown(control: PlaygroundControl, props: Record<string, unknown>) {
+  return !control.when || readProp(props, control.when.prop) === control.when.equals;
 }
 
 function renderControl(control: PlaygroundControl, props: Record<string, unknown>, set: (prop: string, value: unknown) => void) {
@@ -246,7 +257,8 @@ function renderControl(control: PlaygroundControl, props: Record<string, unknown
         <InspectorColor
           key={control.prop}
           {...common}
-          value={typeof value === "string" ? value : undefined}
+          swatches={control.swatches}
+          value={typeof value === "string" ? value : control.placeholder}
           onValueChange={(next) => set(control.prop, next)}
         />
       );
@@ -301,7 +313,7 @@ export function PlaygroundControls({
     <div className={cn("flex min-w-0 flex-col gap-2", className)}>
       {groups.map(([group, controls]) => (
         <InspectorGroup key={group} label={group} tone={groupTone} className={groupClassName}>
-          {controls.map((control) => renderControl(control, props, set))}
+          {controls.filter((control) => shown(control, props)).map((control) => renderControl(control, props, set))}
         </InspectorGroup>
       ))}
     </div>

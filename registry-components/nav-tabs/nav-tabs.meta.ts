@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Tabs with one indicator that slides and resizes between them on a spring: a line under the current tab, a filled pill, or a raised segment on a strip. When the tabs outgrow their space the strip scrolls sideways behind soft fades, arrows appear only while there is more to see, and the current tab always scrolls clear of the edges. Tabs take icons and count badges, follow the WAI-ARIA tabs pattern with automatic or manual activation, and either show panels or render as real links through your own router.",
   category: "Nav",
+  cardScale: 0.7,
   usage: `import { NavTabs } from "@/components/beste/component/nav-tabs";
 
 // Tabs with panels, controlled

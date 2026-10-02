@@ -229,10 +229,10 @@ export function SearchResults() {
                   className="flex flex-col rounded-xl bg-muted p-5 transition-colors hover:bg-muted-foreground/15"
                 >
                   <div className="flex items-center gap-2">
-                    <h3 className={typography.h3}>{hit.title}</h3>
+                    <h3 className={typography.cardTitle}>{hit.title}</h3>
                     {hit.isPro && <ProBadge />}
                   </div>
-                  <p className="mt-2 line-clamp-2 text-base text-muted-foreground">
+                  <p className={cn(typography.cardText, "mt-2 line-clamp-2")}>
                     {hit.description}
                   </p>
                   <span className="mt-4 text-base text-muted-foreground">{hit.category}</span>

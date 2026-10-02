@@ -92,9 +92,10 @@ export interface ComponentMeta {
   demoContentOff?: boolean;
 
   /**
-   * Scale of the demo inside its listing card, 0.2 to 1. The card lays the demo out
-   * on a larger canvas and shrinks it, so display type and full-frame effects show
-   * whole instead of cropped. Leave it out to draw the demo at its own size.
+   * Size of the demo inside its listing card, 0.2 to 2. The card lays the demo out
+   * on a canvas of the card's size divided by this and scales it back, so 0.5 shows
+   * the demo at half size and 1.5 zooms in. Leave it out and the card fits the demo
+   * itself: natural size when it fits, shrunk when it does not.
    */
   cardScale?: number;
 }

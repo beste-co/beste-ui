@@ -14,6 +14,7 @@ import { changelog } from "@/data/changelog";
 import { recentBlockDates } from "@/lib/changelog-dates";
 import { registryComponents } from "@/lib/registry-components";
 import { typography } from "@/lib/typography";
+import { cn } from "@/lib/utils";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
 const SITE_DESCRIPTION =
@@ -305,7 +306,7 @@ export default async function HomePage() {
                 card. The article is the one that is `relative`, and it should be.
               */}
                 <div className="flex flex-col gap-1 px-1 pb-1">
-                  <h3 className={typography.h3}>
+                  <h3 className={typography.cardTitle}>
                     <Link
                       href={`/component/${c.name}`}
                       className="outline-none before:absolute before:inset-0 before:rounded-xl before:content-['']"
@@ -313,7 +314,7 @@ export default async function HomePage() {
                       {c.title}
                     </Link>
                   </h3>
-                  <p className="line-clamp-2 text-sm text-muted-foreground">{c.description}</p>
+                  <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
                 </div>
               </article>
             ))}
@@ -370,7 +371,7 @@ export default async function HomePage() {
                 <div className="flex flex-col gap-1 px-1 pb-1">
                   {/* The pseudo-element stretches this one link over the whole card,
                     which is the same shape the listing grids use. */}
-                  <h3 className={typography.h3}>
+                  <h3 className={typography.cardTitle}>
                     <Link
                       href={`/piece/${c.name}`}
                       className="outline-none before:absolute before:inset-0 before:rounded-xl before:content-['']"
@@ -378,7 +379,7 @@ export default async function HomePage() {
                       {c.title}
                     </Link>
                   </h3>
-                  <p className="line-clamp-2 text-sm text-muted-foreground">{c.description}</p>
+                  <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
                 </div>
               </article>
             ))}

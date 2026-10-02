@@ -28,8 +28,8 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-black" />
   <img alt="MCP" src="https://img.shields.io/badge/MCP-ready-black" />
   <img alt="Blocks" src="https://img.shields.io/badge/blocks-168-black" />
-  <img alt="Pieces" src="https://img.shields.io/badge/pieces-1076-black" />
-  <img alt="Components" src="https://img.shields.io/badge/components-293-black" />
+  <img alt="Pieces" src="https://img.shields.io/badge/pieces-1326-black" />
+  <img alt="Components" src="https://img.shields.io/badge/components-295-black" />
   <img alt="Tailwind" src="https://img.shields.io/badge/Tailwind-v4-black" />
   <img alt="React" src="https://img.shields.io/badge/React-19-black" />
 </p>
@@ -218,8 +218,8 @@ The MCP server is the fastest path, not the only one:
 | | Count | What it is |
 | --- | --- | --- |
 | **Blocks** | 168 | Full page sections: heroes, pricing tables, FAQs, footers, auth screens |
-| **Pieces** | 1076 | Small visual widgets that sit inside a block's media slot: mini cards, charts, stat tiles, terminals |
-| **Components** | 293 | Design-system primitives: buttons, badges, filters, inspector controls |
+| **Pieces** | 1326 | Small visual widgets that sit inside a block's media slot: mini cards, charts, stat tiles, terminals |
+| **Components** | 295 | Design-system primitives: buttons, badges, filters, inspector controls |
 
 The distinction matters when you compose them, and it is the same distinction
 your agent works with. A block is a section you drop on a page. A piece is an

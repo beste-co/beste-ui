@@ -133,6 +133,7 @@ function generateBlocksTs(metas: CollectedMeta[]): string {
 
     if (m.fullscreen) props.push(`    fullscreen: true`);
     if (m.previewAlign) props.push(`    previewAlign: "${m.previewAlign}"`);
+    if (m.cardScale) props.push(`    cardScale: ${m.cardScale}`);
     if (m.isPro) props.push(`    isPro: true`);
     if (m.tags?.length) {
       props.push(`    tags: [${m.tags.map((t) => `"${escapeString(t)}"`).join(", ")}]`);
@@ -174,6 +175,8 @@ export interface BlockMeta {
   fullscreen?: boolean;
   /** Preview alignment for mobile cards: 'top' (default) or 'bottom' */
   previewAlign?: "top" | "bottom";
+  /** Size of the block in its listing card relative to the default, 0.2 to 2 */
+  cardScale?: number;
   /** If true, the block is a Pro block with obfuscated source code */
   isPro?: boolean;
   /** Cross-category hub labels, surfaced at /blocks/tag/{slug} */

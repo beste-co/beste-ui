@@ -952,7 +952,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
   {
     name: "button1",
     title: "Seal Arrow Button",
-    description: "An uppercase pill button with a trailing seal arrow chip and an optional link.",
+    description: "A pill button with a trailing seal arrow chip and an optional link.",
     category: "Button",
     component: Button1,
     demoProps: button1Demo,
@@ -1167,7 +1167,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
   {
     name: "button22",
     title: "Sliding Marker Pill",
-    description: "An uppercase, letter-spaced pill with a small marker at its end. On hover the marker slips out on the right while the label slides over and a twin marker arrives from the left, in one smooth motion.",
+    description: "A pill with a small marker at its end. On hover the marker slips out on the right while the label slides over and a twin marker arrives from the left, in one smooth motion.",
     category: "Button",
     component: Button22,
     demoProps: button22Demo,
@@ -2076,6 +2076,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryComponents: ["heatmap-calendar"],
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { HeatmapGrid } from \"@/components/beste/component/heatmap-grid\";\n\n// data[weekday][hour], with data[0] as Sunday\n<HeatmapGrid\n  data={sessions}\n  weekStartsOn={1}              // 0 Sunday (default) | 1 Monday\n  unit={[\"session\", \"sessions\"]}\n  label=\"Listening sessions by weekday and hour\"\n/>\n\n// Any two axes\n<HeatmapGrid\n  data={[[4, 9, 2], [7, 1, 5]]}\n  rows={[\"Paris\", \"Lisbon\"]}\n  columns={[\"Q1\", \"Q2\", \"Q3\"]}\n  color=\"#10b981\"               // any CSS color; defaults to the primary token\n  onSelectedChange={(cell, value) => console.log(cell, value)}\n  tone=\"outline\"                // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"                     // \"sm\" | \"default\" | \"lg\"\n/>",
+    cardScale: 0.6,
     playground: heatmapGridPlayground,
   },
   {
@@ -2817,6 +2818,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: listKanbanDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { ListKanban, type KanbanColumn } from \"@/components/beste/component/list-kanban\";\n\ntype Task = { id: string; title: string };\n\nconst [columns, setColumns] = useState<KanbanColumn<Task>[]>([\n  { id: \"todo\", title: \"To do\", color: \"#a1a1aa\", cards: [{ id: \"t1\", title: \"Mix the live album\" }] },\n  { id: \"doing\", title: \"Doing\", color: \"#f59e0b\", limit: 2, cards: [] },\n  { id: \"done\", title: \"Done\", color: \"#10b981\", cards: [] },\n]);\n\n<ListKanban\n  columns={columns}\n  onChange={(next, move) => {\n    setColumns(next);\n    console.log(\"moved\", move.card.title, \"to\", move.to.column);\n  }}\n  getCardLabel={(task) => task.title}\n  renderCard={(task) => <span className=\"font-medium\">{task.title}</span>}\n  maxHeight=\"24rem\"        // a column's list scrolls past this\n  tone=\"outline\"           // \"muted\" (default) | \"outline\" | \"ghost\"\n/>",
+    cardScale: 0.5,
     playground: listKanbanPlayground,
   },
   {
@@ -2887,6 +2889,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: mentionInputDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { MentionInput } from \"@/components/beste/component/mention-input\";\n\n<MentionInput\n  placeholder=\"Write a comment\"\n  triggers={[\n    { char: \"@\", items: people },                                      // { id, label, description?, avatar? }[]\n    { char: \"#\", items: (query) => fetch(`/api/tags?q=${query}`).then((r) => r.json()) },\n  ]}\n  onValueChange={(markup, { text, mentions }) => console.log(markup, mentions)}\n  onSubmit={(markup) => console.log(\"Send\", markup)}   // Mod+Enter by default\n  submitKey=\"mod+enter\"                                // or \"enter\", with Shift+Enter for a new line\n  rows={2}\n  maxRows={8}\n  name=\"comment\"                                       // submits the markup with a form\n/>",
+    cardScale: 0.7,
     playground: mentionInputPlayground,
   },
   {
@@ -2920,6 +2923,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: meterStackDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { MeterStack, formatBytes } from \"@/components/beste/component/meter-stack\";\n\n<MeterStack\n  label=\"Studio drive\"\n  segments={[\n    { label: \"Stems\", value: 18.6e9 },\n    { label: \"Mixes\", value: 9.2e9 },\n    { label: \"Video\", value: 7.1e9, color: \"#8b5cf6\" }, // any CSS color\n  ]}\n  max={50e9}\n  formatValue={(value) => formatBytes(value)}\n/>\n\n// A monthly budget: plain numbers, earlier warning, no free entry\n<MeterStack\n  label=\"Tour budget\"\n  segments={[{ label: \"Travel\", value: 12400 }, { label: \"Crew\", value: 8600 }]}\n  max={25000}\n  formatValue={(value) => `$${Math.round(value).toLocaleString(\"en-US\")}`}\n  warningAt={0.7}           // amber from 70%\n  freeLabel={null}          // leave the unused part out of the legend\n  size=\"lg\"                 // \"sm\" | \"default\" | \"lg\"\n/>",
+    cardScale: 0.6,
     playground: meterStackPlayground,
   },
   {
@@ -2954,6 +2958,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["dropdown-menu"],
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { NavBreadcrumb } from \"@/components/beste/component/nav-breadcrumb\";\n\n// Links through your router, a house icon on the first level\n<NavBreadcrumb\n  homeIcon\n  items={[\n    { label: \"Home\", href: \"/\" },\n    { label: \"Artists\", href: \"/artists\" },\n    { label: \"Robert Glasper\", href: \"/artists/glasper\" },\n    { label: \"Black Radio III\" },\n  ]}\n  renderLink={(props) => <Link {...props} />}\n/>\n\n// Buttons driven by your own state, slash separators, a filled trail\n<NavBreadcrumb\n  items={path}\n  onNavigate={(item, index) => setPath(path.slice(0, index + 1))}\n  separator=\"slash\"\n  tone=\"muted\"\n/>",
+    cardScale: 1,
     playground: navBreadcrumbPlayground,
   },
   {
@@ -2966,6 +2971,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryDependencies: ["input", "select"],
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { NavPagination } from \"@/components/beste/component/nav-pagination\";\n\n// Buttons, controlled\n<NavPagination total={312} pageSize={20} page={page} onPageChange={setPage} />\n\n// Real links through your router, with a page size menu and the range readout\n<NavPagination\n  total={312}\n  page={page}\n  pageSize={pageSize}\n  pageSizeOptions={[10, 20, 50]}\n  onPageSizeChange={setPageSize}\n  getHref={(page, size) => `/releases?page=${page}&size=${size}`}\n  renderLink={(props) => <Link {...props} />}\n  showRange\n/>\n\n// Two pages each side, two at each end, on a filled strip\n<NavPagination pageCount={40} siblings={2} boundaries={2} tone=\"muted\" size=\"lg\" />",
+    cardScale: 0.7,
     playground: navPaginationPlayground,
   },
   {
@@ -2977,6 +2983,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: navTabsDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { NavTabs } from \"@/components/beste/component/nav-tabs\";\n\n// Tabs with panels, controlled\n<NavTabs\n  value={tab}\n  onValueChange={setTab}\n  tabs={[\n    { value: \"overview\", label: \"Overview\", content: <Overview /> },\n    { value: \"releases\", label: \"Releases\", count: 24, content: <Releases /> },\n    { value: \"tour\", label: \"Tour dates\", count: 12, content: <Tour /> },\n  ]}\n/>\n\n// A segmented strip that selects only on Enter or Space\n<NavTabs variant=\"segment\" activation=\"manual\" tabs={tabs} />\n\n// Real links through your router; the strip becomes a labelled nav\n<NavTabs\n  variant=\"pill\"\n  value={section}\n  tabs={sections}\n  getHref={(value) => `/artists/glasper/${value}`}\n  renderLink={(props) => <Link {...props} />}\n  aria-label=\"Artist sections\"\n/>",
+    cardScale: 0.7,
     playground: navTabsPlayground,
   },
   {
@@ -3124,6 +3131,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: playerScrubberDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { PlayerScrubber, formatTime } from \"@/components/beste/component/player-scrubber\";\n\n// Uncontrolled, with chapters and a buffered range\n<PlayerScrubber\n  duration={242}\n  defaultValue={71}\n  buffered={150}                        // seconds loaded, or [[start, end], ...]\n  chapters={[\n    { start: 0, title: \"Intro\" },\n    { start: 38, title: \"Says\" },\n    { start: 121, title: \"Hammers\" },\n  ]}\n  showTime                              // elapsed on the left, remaining on the right\n/>\n\n// Controlled by a media element: follow playback, seek on release\n<PlayerScrubber\n  duration={audio.duration}\n  value={currentTime}\n  onValueCommit={(seconds) => console.log(\"seek to\", seconds)}\n  tone=\"outline\"                        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"                             // \"sm\" | \"default\" | \"lg\"\n/>\n\nformatTime(3725); // \"1:02:05\"",
+    cardScale: 0.8,
     playground: playerScrubberPlayground,
   },
   {
@@ -3170,6 +3178,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     registryComponents: ["price-tag"],
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { PriceToggle } from \"@/components/beste/component/price-toggle\";\nimport { PriceTag } from \"@/components/beste/component/price-tag\";\n\n// The price follows the switch and its digits roll\n<PriceToggle defaultValue=\"monthly\">\n  {(period) =>\n    period === \"yearly\" ? (\n      <PriceTag amount={120} period=\"/yr\" periodLabel=\"per year\" />\n    ) : (\n      <PriceTag amount={12} period=\"/mo\" periodLabel=\"per month\" />\n    )\n  }\n</PriceToggle>\n\n// Your own periods, controlled\n<PriceToggle\n  value={period}\n  onValueChange={setPeriod}\n  options={[\n    { value: \"month\", label: \"Month\" },\n    { value: \"quarter\", label: \"Quarter\", badge: \"Save 10%\" },\n    { value: \"year\", label: \"Year\", badge: \"Save 20%\" },\n  ]}\n  tone=\"outline\"        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"             // \"sm\" | \"default\" | \"lg\"\n/>",
+    cardScale: 1,
     playground: priceTogglePlayground,
   },
   {
@@ -3375,6 +3384,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: scrollTocDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { ScrollToc } from \"@/components/beste/component/scroll-toc\";\n\n// Beside an article on the page: headings are collected from it\n<aside className=\"sticky top-24\">\n  <ScrollToc containerSelector=\"article\" offset={96} />\n</aside>\n\n// Explicit entries, inside a scroll container\n<ScrollToc\n  root=\"#docs-scroller\"\n  items={[\n    { id: \"install\", title: \"Install\", level: 2 },\n    { id: \"props\", title: \"Props\", level: 2 },\n    { id: \"events\", title: \"Events\", level: 3 },\n  ]}\n  collapse          // deeper levels only under the current section\n  updateHash\n/>\n\n// Content and contents together, in one scroll area\n<ScrollToc className=\"h-[32rem]\">\n  <article>...</article>\n</ScrollToc>",
+    cardScale: 0.6,
     playground: scrollTocPlayground,
   },
   {
@@ -3395,6 +3405,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: signaturePadDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { SignaturePad, toSvg, type SignatureData, type SignaturePadHandle } from \"@/components/beste/component/signature-pad\";\n\n// Uncontrolled, read it back through the ref\nconst pad = useRef<SignaturePadHandle>(null);\n<SignaturePad ref={pad} label=\"Signature of Nina Simone\" />\nconsole.log(pad.current?.toDataURL());\n\n// Controlled\nconst [signature, setSignature] = useState<SignatureData>([]);\n<SignaturePad\n  value={signature}\n  onChange={setSignature}\n  color=\"#1e3a8a\"       // any CSS color; defaults to the foreground token\n  minWidth={0.6}        // px on fast strokes\n  maxWidth={3.6}        // px on slow strokes or full pressure\n  tone=\"outline\"        // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"lg\"             // \"sm\" | \"default\" | \"lg\"\n/>\nconsole.log(toSvg(signature, { width: 600, height: 200 }));",
+    cardScale: 0.5,
     playground: signaturePadPlayground,
   },
   {
@@ -3450,6 +3461,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: snippetInstallDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { SnippetInstall } from \"@/components/beste/component/snippet-install\";\n\n// Installs, with the command written for each manager\n<SnippetInstall packages={[\"motion\", \"lucide-react\"]} />\n\n// A dev dependency\n<SnippetInstall packages=\"@biomejs/biome\" dev />\n\n// Run once without installing: npx, pnpm dlx, yarn dlx, bunx\n<SnippetInstall kind=\"exec\" packages=\"shadcn@latest add button\" />\n\n// Exact commands where the derived ones do not fit\n<SnippetInstall\n  managers={[\"pnpm\", \"bun\"]}\n  commands={{ pnpm: \"pnpm create next-app@latest\", bun: \"bun create next-app\" }}\n/>\n\n<SnippetInstall\n  packages=\"zod\"\n  defaultManager=\"pnpm\"   // shown until the reader picks\n  remember={false}        // keep this snippet's pick to itself\n  prompt={false}          // no $ before the command\n  tone=\"outline\"          // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"               // \"sm\" | \"default\" | \"lg\"\n  onCopy={(command) => console.log(\"Copied\", command)}\n/>",
+    cardScale: 0.7,
     playground: snippetInstallPlayground,
   },
   {
@@ -3484,6 +3496,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: statusUptimeDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { StatusUptime } from \"@/components/beste/component/status-uptime\";\n\n<StatusUptime\n  name=\"Public API\"\n  days={[\n    { date: \"2026-09-25\", status: \"operational\" },\n    { date: \"2026-09-26\", status: \"degraded\", uptime: 99.82, incidents: [{ title: \"Elevated latency\" }] },\n    { date: \"2026-09-27\", status: \"operational\" },\n  ]}\n  range={90}             // most days shown; narrow rows show fewer\n/>\n\n// The current status defaults to the last day; set it to override\n<StatusUptime\n  name=\"Webhooks\"\n  status=\"partial\"       // \"operational\" | \"maintenance\" | \"degraded\" | \"partial\" | \"major\"\n  days={history}\n  showPercent={false}\n  tone=\"outline\"         // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n/>\n\n// Siblings share the same words and colors\nimport { statusMeta } from \"@/components/beste/component/status-uptime\";\nconsole.log(statusMeta.degraded.label);",
+    cardScale: 0.6,
     playground: statusUptimePlayground,
   }
 ];
@@ -3509,6 +3522,7 @@ const _allRegistryComponents_1: RegistryComponentMeta[] = [
     demoProps: stepsTrackDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { StepsTrack } from \"@/components/beste/component/steps-track\";\n\n<StepsTrack\n  steps={[\n    { title: \"Upload stems\", description: \"WAV or AIFF\" },\n    { title: \"Set the mix\" },\n    { title: \"Master\" },\n    { title: \"Release\" },\n  ]}\n  current={1}\n/>\n\n<StepsTrack\n  steps={steps}\n  current={step}\n  orientation=\"vertical\"            // a column with the text beside each marker\n  onStepClick={(index) => setStep(index)}\n  clickable=\"completed\"             // \"completed\" | \"all\" | \"none\"\n  tone=\"outline\"                    // \"muted\" | \"outline\" | \"ghost\"\n  size=\"lg\"                         // \"sm\" | \"default\" | \"lg\"\n/>\n\n// Per-step overrides\n<StepsTrack steps={[{ title: \"Payment\", status: \"error\" }, { title: \"Survey\", status: \"skipped\" }]} current={2} />",
+    cardScale: 0.6,
     playground: stepsTrackPlayground,
   },
   {

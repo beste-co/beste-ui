@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Service row for status pages and dashboards: a status dot that pulses softly while something is wrong, the service name, its current status and the uptime over the days on screen, above a strip of daily bars colored by each day's worst status. Hovering or focusing a bar shows the date, that day's uptime and its incidents; the strip is one tab stop with arrow keys between days, and narrow rows drop their oldest days instead of squeezing the bars.",
   category: "Status",
+  cardScale: 0.6,
   usage: `import { StatusUptime } from "@/components/beste/component/status-uptime";
 
 <StatusUptime

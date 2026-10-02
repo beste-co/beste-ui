@@ -178,6 +178,7 @@ export default async function BlockPage({ params }: PageProps) {
       isUserPro={isUserPro}
       flavor={{ kind: "block", name: block.name }}
       detailsLabel="About this block"
+      accessCta
       actions={
         <>
           <FavoriteButton blockName={block.name} className="hidden md:inline-flex" />

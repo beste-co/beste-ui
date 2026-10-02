@@ -1,0 +1,18 @@
+/* Beste Sans — variable (100–900, opsz 14–32). Tüm ağırlıklar iki dosyada. */
+@font-face {
+  font-family: "Beste Sans";
+  src: url("BesteSans[opsz,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Beste Sans";
+  src: url("BesteSans-Italic[opsz,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+/* Optik boyut tarayıcıda yazı boyutuna göre otomatik ayarlanır (font-optical-sizing: auto).
+   Fiyat tabloları için: font-variant-numeric: tabular-nums;
+   Klasik Inter şekilleri gerekirse: font-feature-settings: "cv11", "cv05", "cv01", "cv02", "cv03", "cv04", "cv09"; */

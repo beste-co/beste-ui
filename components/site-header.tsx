@@ -367,7 +367,6 @@ export function SiteHeader() {
                 Sign in to keep favourites and unlock the Pro library.
               </p>
               <Button23
-                size="sm"
                 tone="dark"
                 label="Sign in"
                 onClick={() => {
@@ -390,7 +389,7 @@ export function SiteHeader() {
                   {...(item.hosted ? hostedLinkProps : {})}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "cursor-pointer text-2xl font-medium tracking-tight transition-colors",
+                    "cursor-pointer text-xl font-medium tracking-tight transition-colors",
                     active ? "text-foreground" : "text-foreground/70 hover:text-foreground",
                   )}
                 >

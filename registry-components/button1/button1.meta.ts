@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "button1",
   title: "Seal Arrow Button",
   description:
-    "An uppercase pill button with a trailing seal arrow chip and an optional link.",
+    "A pill button with a trailing seal arrow chip and an optional link.",
   category: "Button",
   registryDependencies: ["button"],
   usage: `import { Button1 } from "@/components/beste/component/button1";

@@ -1,5 +1,6 @@
 "use client";
 
+import { clampCardScale } from "@/components/card-demo";
 import { Bookmark02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
@@ -34,6 +35,8 @@ export const BlockPreview = ({ name }: { name: string }) => {
   const Component: ComponentType<any> = block.component;
   const demoProps = block.demoProps;
   const isBottom = block.previewAlign === "bottom";
+  // The meta's own size for this card, as a share of the default
+  const zoom = clampCardScale((block as { cardScale?: number }).cardScale) ?? 1;
 
   try {
     return (
@@ -47,7 +50,7 @@ export const BlockPreview = ({ name }: { name: string }) => {
             style={{
               width: "430px",
               height: "800px",
-              transform: `translateX(-50%) scale(0.65)`,
+              transform: `translateX(-50%) scale(${0.65 * zoom})`,
             }}
           >
             <Component {...demoProps} />
@@ -60,7 +63,7 @@ export const BlockPreview = ({ name }: { name: string }) => {
             style={{
               width: "1440px",
               height: "900px",
-              transform: "translate(-50%, -50%) scale(0.24)",
+              transform: `translate(-50%, -50%) scale(${0.24 * zoom})`,
             }}
           >
             <Component {...demoProps} />
@@ -173,16 +176,21 @@ export function BlocksGrid({
         */}
         <div className="relative flex h-84 items-center justify-center overflow-hidden rounded-md bg-background md:h-48">
           {/* The card's own marks, in the corner the preview keeps clear: the
-              badge takes the corner itself and the bookmark sits inside it, so a
-              block that is both new and saved reads as one cluster. */}
-          {(isBlockFavorite || isNew) && (
-            <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 pointer-events-none">
-              {isBlockFavorite && (
-                <HugeiconsIcon icon={Bookmark02Icon} size={20} strokeWidth={2} className="fill-primary text-primary" />
-              )}
-              {isNew && <NewBadge />}
-            </div>
-          )}
+              plan badge takes the corner itself, with the new badge and the
+              bookmark inside it, so they read as one cluster. */}
+          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 pointer-events-none">
+            {isBlockFavorite && (
+              <HugeiconsIcon icon={Bookmark02Icon} size={20} strokeWidth={2} className="fill-primary text-primary" />
+            )}
+            {isNew && <NewBadge />}
+            {block.isPro ? (
+              <ProBadge />
+            ) : (
+              <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-medium text-black">
+                FREE
+              </span>
+            )}
+          </div>
           {shouldRenderPreview ? (
             <BlockPreview name={block.name} />
           ) : (
@@ -204,22 +212,12 @@ export function BlocksGrid({
 
         {/* Block info */}
         <div className="relative flex-1 px-1 pb-1">
-          <div className="flex items-center gap-1.5 mb-1">
-            {block.isPro ? (
-              <ProBadge />
-            ) : (
-              <span className="rounded-full bg-yellow-400 px-2 py-0.5 text-[10px] font-medium text-black">
-                FREE
-              </span>
-            )}
-            <p className="text-sm text-foreground/60">{block.name}</p>
-          </div>
-          <h3 className={cn(typography.h3, "mb-1")}>
+          <h3 className={cn(typography.cardTitle, "mb-1")}>
             {/* Plain text: the card's own overlay link already carries this name, and
                 two anchors to one page is one more than a reader or a crawler needs. */}
             {block.title}
           </h3>
-          <p className="text-sm text-muted-foreground line-clamp-2 min-h-10">
+          <p className={cn(typography.cardText, "line-clamp-2 min-h-10")}>
             {block.description}
           </p>
         </div>

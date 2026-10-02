@@ -31,6 +31,8 @@ export function RelatedPreviewByName({
         demoProps: meta.demoProps,
         href: `/${kind}/${meta.name}`,
         category: "category" in meta ? meta.category : undefined,
+        fullBleed: "fullBleed" in meta ? meta.fullBleed : undefined,
+        cardScale: meta.cardScale,
       };
     })
     .filter((x): x is RelatedPreviewItem => Boolean(x));

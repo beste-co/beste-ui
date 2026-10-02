@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "A heatmap by two axes, weekday by hour out of the box: one shaded square per slot on the heatmap family's scale, with thresholds from the data's quantiles or your own. Weekday names and hours come from Intl in any locale, the week starts on Sunday or Monday, hours read in 12 or 24 hour style, and hour labels thin out as the grid narrows. Hovering or focusing a slot lifts it, dims everything outside its row and column into a soft crosshair and shows a tooltip; the grid is one tab stop with arrow keys, the busiest slot is named beside a Less to More legend, and slots can be made selectable. Custom row and column labels turn it into any two-axis grid. Cells share the width and never shrink below their size; a narrow frame scrolls sideways.",
   category: "Heatmap",
+  cardScale: 0.6,
   registryComponents: ["heatmap-calendar"],
   usage: `import { HeatmapGrid } from "@/components/beste/component/heatmap-grid";
 
