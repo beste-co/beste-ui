@@ -8,6 +8,7 @@ interface Form7Props {
   max?: number;
   count?: number;
   hint?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const form7Demo: Form7Props = {
     "Beste v3 ships real-time collaboration, custom themes, and a brand new AI editor. Available to all workspaces starting next Tuesday.",
   max: 280,
   hint: "Posted to your workspace feed and email digest.",
+  bordered: false,
 };
 
 export function Form7({
@@ -25,6 +27,7 @@ export function Form7({
   max = 280,
   count,
   hint,
+  bordered = false,
   className,
 }: Form7Props) {
   const length = count ?? value.length;
@@ -45,7 +48,7 @@ export function Form7({
             {label}
           </label>
         )}
-        <div className="flex min-h-24 items-start rounded-md border border-border bg-card px-3 py-2 shadow-sm">
+        <div className={cn("flex min-h-24 items-start rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
           <span className="flex-1 text-sm leading-snug text-card-foreground">
             {value}
           </span>
@@ -58,7 +61,7 @@ export function Form7({
           )}
           <span
             className={cn(
-              "shrink-0 whitespace-nowrap font-mono text-xs tabular-nums",
+              "shrink-0 whitespace-nowrap text-xs tabular-nums",
               isOver
                 ? "text-rose-600 dark:text-rose-400"
                 : isNear

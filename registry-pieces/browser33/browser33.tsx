@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Folder, Star } from "lucide-react";
+import { ChevronDown, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Browser33Props {
@@ -9,15 +9,17 @@ interface Browser33Props {
   folder?: string;
   removeLabel?: string;
   doneLabel?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser33Demo: Browser33Props = {
   title: "Bookmark added",
-  name: "Auralis — Independent Design Studio",
+  name: "Auralis Design Studio",
   folder: "Bookmarks bar",
   removeLabel: "Remove",
   doneLabel: "Done",
+  bordered: false,
 };
 
 export function Browser33({
@@ -26,6 +28,7 @@ export function Browser33({
   folder = "Bookmarks bar",
   removeLabel = "Remove",
   doneLabel = "Done",
+  bordered = false,
   className,
 }: Browser33Props) {
   return (
@@ -35,7 +38,7 @@ export function Browser33({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-lg border border-border bg-card p-3 shadow-md">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-lg bg-card p-3 shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <Star
             className="size-4 shrink-0 fill-amber-400 text-amber-400"
@@ -46,21 +49,17 @@ export function Browser33({
           </span>
         </div>
         <div className="flex flex-col gap-2">
-          <div className="rounded-md border border-border bg-background px-2.5 py-1.5">
+          <div className={cn("rounded-md px-2.5 py-1.5", bordered ? "border border-border bg-background" : "bg-muted")}>
             <span className="block truncate text-sm text-card-foreground">
               {name}
             </span>
           </div>
           <button
             type="button"
-            className="flex cursor-pointer items-center justify-between gap-2 rounded-md border border-border bg-background px-2.5 py-1.5 transition-colors hover:bg-muted"
+            className={cn("flex cursor-pointer items-center justify-between gap-2 rounded-md px-2.5 py-1.5 transition-colors hover:bg-muted", bordered ? "border border-border bg-background" : "bg-muted hover:bg-muted-foreground/15")}
           >
-            <span className="flex min-w-0 items-center gap-2 text-sm text-card-foreground">
-              <Folder
-                className="size-3.5 shrink-0 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <span className="truncate">{folder}</span>
+            <span className="truncate text-sm text-card-foreground">
+              {folder}
             </span>
             <ChevronDown
               className="size-3.5 shrink-0 text-muted-foreground"

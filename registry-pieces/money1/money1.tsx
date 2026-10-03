@@ -45,7 +45,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const money1Demo: Money1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   symbol: "BTC",
   name: "Bitcoin",
@@ -61,7 +61,7 @@ export function Money1({
   delta = 0,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Money1Props) {
@@ -87,7 +87,7 @@ export function Money1({
             toneClasses[tone]
           )}
         >
-          <span className="font-mono text-xs font-bold">{symbol}</span>
+          <span className="text-xs font-bold">{symbol}</span>
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
           {name && (

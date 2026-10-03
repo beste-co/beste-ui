@@ -1,6 +1,5 @@
 "use client";
 
-import { Scale } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -34,12 +33,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const legal5Demo: Legal5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   section: "§ 4.2",
   heading: "Limitation of liability",
   body: "In no event shall either party be liable for any indirect, incidental, special, or consequential damages arising out of this agreement, even if advised of the possibility of such damages.",
-  source: "Master services agreement · MSA-2026-0421",
 };
 
 export function Legal5({
@@ -48,7 +46,7 @@ export function Legal5({
   body,
   source,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Legal5Props) {
@@ -63,9 +61,11 @@ export function Legal5({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
-          <span className="rounded-md bg-amber-500/15 px-1.5 py-0.5 font-mono text-xs font-semibold text-amber-700 dark:text-amber-300">
-            {section}
-          </span>
+          {section && (
+            <span className="rounded-md bg-amber-500/15 px-1.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-300">
+              {section}
+            </span>
+          )}
           {heading && (
             <span className="truncate text-sm font-semibold">
               {heading}
@@ -78,10 +78,9 @@ export function Legal5({
           </p>
         )}
         {source && (
-          <div className="flex items-center gap-1.5 border-t border-current/15 pt-2 text-xs text-current/60">
-            <Scale className="size-3" aria-hidden="true" />
-            <span className="truncate">{source}</span>
-          </div>
+          <span className="truncate border-t border-current/15 pt-2 text-xs text-current/60">
+            {source}
+          </span>
         )}
       </div>
     </div>

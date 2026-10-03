@@ -7,19 +7,21 @@ interface Search12Props {
   placeholder?: string;
   action?: string;
   helper?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const search12Demo: Search12Props = {
   placeholder: "Search over 12,000 templates…",
   action: "Search",
-  helper: "Try “marketing landing”, “saas pricing”, or “portfolio”.",
+  bordered: false,
 };
 
 export function Search12({
   placeholder = "Search…",
   action = "Search",
   helper,
+  bordered = false,
   className,
 }: Search12Props) {
   return (
@@ -30,7 +32,7 @@ export function Search12({
       )}
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-2">
-        <div className="flex w-full items-center gap-2 rounded-full border border-border bg-card p-1.5 pl-5 shadow-md">
+        <div className={cn("flex w-full items-center gap-2 rounded-full bg-card p-1.5 pl-5 shadow-md", bordered && "border border-border")}>
           <Search
             className="size-4 shrink-0 text-muted-foreground"
             aria-hidden="true"

@@ -14,18 +14,18 @@ interface Boarding2Props {
   group?: string;
   boardingSeconds?: number;
   flightMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const boarding2Demo: Boarding2Props = {
   airline: "Northline Air",
-  flight: "NL 412",
   from: "LIS",
   to: "BER",
   gate: "B14",
   seat: "12A",
-  group: "Group 2",
   boardingSeconds: 1458,
+  bordered: false,
 };
 
 function format(total: number) {
@@ -38,14 +38,15 @@ function format(total: number) {
 
 export function Boarding2({
   airline = "Airline",
-  flight = "XX 000",
+  flight,
   from = "AAA",
   to = "BBB",
   gate = "A1",
   seat = "1A",
-  group = "Group 1",
+  group,
   boardingSeconds = 900,
   flightMs = 6000,
+  bordered = false,
   className,
 }: Boarding2Props) {
   const [left, setLeft] = useState(boardingSeconds);
@@ -70,13 +71,15 @@ export function Boarding2({
 @keyframes boarding2-trail { 0% { width: 0%; opacity: 1; } 90% { opacity: 1; } 100% { width: 100%; opacity: 0; } }
 `}</style>
 
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <div className="min-w-0">
             <p className="truncate text-sm font-medium text-card-foreground">
               {airline}
             </p>
-            <p className="font-mono text-xs text-muted-foreground">{flight}</p>
+            {flight && (
+              <p className="text-xs text-muted-foreground">{flight}</p>
+            )}
           </div>
           <span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium tabular-nums text-amber-600 dark:text-amber-400">
             Boards in {format(left)}
@@ -84,7 +87,7 @@ export function Boarding2({
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="text-xl font-semibold tracking-wide text-card-foreground">
+          <span className="text-xl font-semibold text-card-foreground">
             {from}
           </span>
           <span className="relative h-6 flex-1" aria-hidden="true">
@@ -98,22 +101,24 @@ export function Boarding2({
               style={{ animation: `boarding2-fly ${flightMs}ms linear infinite` }}
             />
           </span>
-          <span className="text-xl font-semibold tracking-wide text-card-foreground">
+          <span className="text-xl font-semibold text-card-foreground">
             {to}
           </span>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 border-t border-dashed border-border pt-3 text-xs">
+        <div className="grid auto-cols-fr grid-flow-col gap-2 border-t border-dashed border-border pt-3 text-xs">
           {[
             { label: "Gate", value: gate },
             { label: "Seat", value: seat },
             { label: "Boarding", value: group },
-          ].map((cell) => (
-            <div key={cell.label} className="text-center">
-              <p className="text-muted-foreground">{cell.label}</p>
-              <p className="font-medium text-card-foreground">{cell.value}</p>
-            </div>
-          ))}
+          ]
+            .filter((cell) => cell.value)
+            .map((cell) => (
+              <div key={cell.label} className="text-center">
+                <p className="text-muted-foreground">{cell.label}</p>
+                <p className="font-medium text-card-foreground">{cell.value}</p>
+              </div>
+            ))}
         </div>
       </div>
     </div>

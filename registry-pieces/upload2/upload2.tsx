@@ -30,9 +30,7 @@ export function Upload2({
       )}
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-2 rounded-xl border-2 border-dashed border-border bg-muted/30 px-6 py-8 text-center">
-        <div className="flex size-10 items-center justify-center rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400">
-          <UploadCloud className="size-5" aria-hidden="true" />
-        </div>
+        <UploadCloud className="size-6 shrink-0 text-sky-600 dark:text-sky-400" aria-hidden="true" />
         {title && (
           <span className="text-sm font-semibold text-card-foreground">
             {title}

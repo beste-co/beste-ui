@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleCheck, ExternalLink, Settings } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -61,15 +61,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor48Demo: Editor48Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   headerLabel: "Website URLs",
-  changeLabel: "Change",
   url: "https://beste.co",
   verifiedLabel: "Domain verified",
   changesTitle: "Unpublished Changes",
-  changesDescription: "You have changes that are not yet published",
-  logLabel: "View log",
   publishLabel: "Publish Changes",
   tone: "foreground",
 };
@@ -85,7 +82,7 @@ export function Editor48({
   publishLabel,
   tone = "foreground",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor48Props) {
@@ -123,24 +120,15 @@ export function Editor48({
                 {changeLabel && (
                   <button
                     type="button"
-                    className="flex items-center gap-1 text-xs text-current/60 hover:text-current"
+                    className="text-xs text-current/60 hover:text-current"
                   >
-                    <Settings className="size-3.5" aria-hidden="true" />
                     {changeLabel}
                   </button>
                 )}
               </div>
             )}
             {url && (
-              <div className="flex items-center gap-2">
-                <ExternalLink
-                  className="size-3.5 shrink-0 text-current/60"
-                  aria-hidden="true"
-                />
-                <span className="truncate text-xs">
-                  {url}
-                </span>
-              </div>
+              <span className="truncate text-xs">{url}</span>
             )}
             {verifiedLabel && (
               <div className="flex items-center gap-2">

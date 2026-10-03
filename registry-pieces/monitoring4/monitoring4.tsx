@@ -48,23 +48,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const monitoring4Demo: Monitoring4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   endpoint: "auth.beste.co",
   history: defaultHistory,
   uptime: "99.92%",
-  pastLabel: "30d ago",
-  nowLabel: "Today",
 };
 
 export function Monitoring4({
   endpoint = "endpoint",
   history = defaultHistory,
   uptime,
-  pastLabel = "30d ago",
-  nowLabel = "Today",
+  pastLabel,
+  nowLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Monitoring4Props) {
@@ -85,7 +83,7 @@ export function Monitoring4({
         )}
       >
         <div className="flex items-baseline justify-between gap-2">
-          <span className="truncate font-mono text-xs">
+          <span className="truncate text-xs">
             {endpoint}
           </span>
           {uptime && (
@@ -102,10 +100,12 @@ export function Monitoring4({
             />
           ))}
         </div>
-        <div className="flex items-center justify-between text-xs text-current/60">
-          <span>{pastLabel}</span>
-          <span>{nowLabel}</span>
-        </div>
+        {(pastLabel || nowLabel) && (
+          <div className="flex items-center justify-between text-xs text-current/60">
+            <span>{pastLabel}</span>
+            <span>{nowLabel}</span>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ interface Commerce31Props {
   price?: number;
   maxCount?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -37,7 +38,8 @@ export const commerce31Demo: Commerce31Props = {
   initials: "BN",
   price: 34,
   maxCount: 3,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Commerce31({
@@ -45,7 +47,8 @@ export function Commerce31({
   initials = "P",
   price = 0,
   maxCount = 3,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Commerce31Props) {
   const [phase, setPhase] = useState<Phase>("idle");
@@ -88,7 +91,7 @@ export function Commerce31({
       )}
     >
       <style>{`@keyframes commerce31-fly-x { from { transform: translateX(0); } to { transform: translateX(0.75rem); } } @keyframes commerce31-fly-y { 0% { transform: translateY(0) scale(1); } 55% { transform: translateY(-3.5rem) scale(1); } 100% { transform: translateY(-3rem) scale(0.4); } } @keyframes commerce31-bump { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }`}</style>
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex h-8 items-center justify-between">
           <span className="text-sm text-muted-foreground">
             {count === 0
@@ -134,7 +137,8 @@ export function Commerce31({
             <button
               type="button"
               className={cn(
-                "h-8 cursor-pointer rounded-lg border border-border bg-card px-3 text-sm font-medium text-card-foreground transition-transform duration-200 ease-out motion-reduce:transition-none",
+                "h-8 cursor-pointer rounded-lg px-3 text-sm font-medium text-card-foreground transition-transform duration-200 ease-out motion-reduce:transition-none",
+              bordered ? "border border-border bg-card" : "bg-muted",
                 phase === "press" ? "scale-90" : "scale-100"
               )}
             >

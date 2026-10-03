@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Upload3Props {
   label?: string;
   action?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const upload3Demo: Upload3Props = {
   label: "Attach supporting documents",
   action: "Browse",
+  bordered: false,
 };
 
 export function Upload3({
   label,
   action = "Browse",
+  bordered = false,
   className,
 }: Upload3Props) {
   return (
@@ -38,7 +41,7 @@ export function Upload3({
         </div>
         <button
           type="button"
-          className="shrink-0 rounded-md border border-border bg-muted px-2.5 py-1 text-xs font-semibold text-card-foreground hover:bg-muted-foreground/10"
+          className={cn("shrink-0 rounded-md bg-muted px-2.5 py-1 text-xs font-semibold text-card-foreground hover:bg-muted-foreground/10", bordered && "border border-border")}
         >
           {action}
         </button>

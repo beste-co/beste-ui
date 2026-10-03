@@ -13,7 +13,6 @@ interface Input22Props {
 export const input22Demo: Input22Props = {
   label: "How was your stay?",
   rating: 4,
-  hint: "Tap to rate. Optional comment on the next step.",
 };
 
 export function Input22({
@@ -62,9 +61,6 @@ export function Input22({
               />
             </button>
           ))}
-          <span className="ml-2 font-mono text-sm font-semibold text-card-foreground">
-            {rating}.0
-          </span>
         </div>
         {hint && (
           <span className="text-xs text-muted-foreground">{hint}</span>

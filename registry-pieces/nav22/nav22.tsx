@@ -21,7 +21,6 @@ export const nav22Demo: Nav22Props = {
     { label: "Installation", anchor: "#installation", active: true },
     { label: "Usage", anchor: "#usage" },
     { label: "API reference", anchor: "#api" },
-    { label: "Troubleshooting", anchor: "#trouble" },
   ],
 };
 
@@ -39,7 +38,7 @@ export function Nav22({
     >
       <div className="flex w-52 flex-col gap-1.5">
         {title && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {title}
           </span>
         )}

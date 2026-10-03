@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser4Demo: Browser4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   url: "https://stripe.com/dashboard",
   secure: true,
@@ -42,7 +42,7 @@ export function Browser4({
   url = "https://example.com",
   secure = true,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser4Props) {
@@ -62,7 +62,7 @@ export function Browser4({
             aria-hidden="true"
           />
         )}
-        <span className="flex-1 truncate font-mono text-sm">
+        <span className="flex-1 truncate text-sm">
           {url}
         </span>
         <button

@@ -16,6 +16,7 @@ interface Upload17Props {
   chunkStatuses?: ("done" | "uploading" | "pending")[];
   overallPercent?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -59,7 +60,8 @@ export const upload17Demo: Upload17Props = {
     "pending",
   ],
   overallPercent: 58,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Upload17({
@@ -67,7 +69,8 @@ export function Upload17({
   chunks = 16,
   chunkStatuses = [],
   overallPercent = 0,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Upload17Props) {
   return (
@@ -77,12 +80,12 @@ export function Upload17({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center justify-between">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-center justify-between gap-2">
           <span className="truncate text-sm font-semibold text-card-foreground">
             {filename}
           </span>
-          <span className="shrink-0 font-mono text-xs text-muted-foreground">
+          <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
             {overallPercent}%
           </span>
         </div>
@@ -106,12 +109,6 @@ export function Upload17({
               />
             );
           })}
-        </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>Chunked upload · 16 MB parts</span>
-          <span>
-            {chunkStatuses.filter((s) => s === "done").length} / {chunks} done
-          </span>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@ interface Ai40Props {
   role?: string;
   traits?: string[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,13 +35,15 @@ export const ai40Demo: Ai40Props = {
   role: "Senior engineer",
   traits: ["Concise", "Code-first", "Terminal-friendly"],
   tone: "sunset",
+  bordered: false,
 };
 
 export function Ai40({
   name = "Persona",
   role,
   traits = [],
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai40Props) {
   return (
@@ -50,7 +53,7 @@ export function Ai40({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         <div
           className={cn(
             "flex items-center gap-2 px-3 py-2",

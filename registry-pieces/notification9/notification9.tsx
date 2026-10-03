@@ -11,15 +11,16 @@ interface Notification9Props {
   description?: string;
   action?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
 };
 
 const buttonClasses: Record<Tone, string> = {
@@ -32,10 +33,10 @@ const buttonClasses: Record<Tone, string> = {
 
 export const notification9Demo: Notification9Props = {
   title: "Update available",
-  version: "v2.14.0",
   description: "Restart to install new editor shortcuts and bug fixes.",
   action: "Restart now",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Notification9({
@@ -43,7 +44,8 @@ export function Notification9({
   version,
   description,
   action,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Notification9Props) {
   return (
@@ -53,16 +55,12 @@ export function Notification9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-start gap-3">
-          <div
-            className={cn(
-              "flex size-9 shrink-0 items-center justify-center rounded-lg",
-              tileClasses[tone]
-            )}
-          >
-            <DownloadCloud className="size-4" aria-hidden="true" />
-          </div>
+          <DownloadCloud
+            className={cn("mt-0.5 size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col gap-0.5">
             <div className="flex items-center gap-2">
               {title && (
@@ -71,7 +69,7 @@ export function Notification9({
                 </span>
               )}
               {version && (
-                <span className="rounded-full bg-muted px-1.5 py-0.5 font-mono text-xs text-muted-foreground">
+                <span className="rounded-full bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                   {version}
                 </span>
               )}

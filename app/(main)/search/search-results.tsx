@@ -244,7 +244,7 @@ export function SearchResults() {
         {showPieces && (
           <section>
             <h2 className={cn(typography.h2, "mb-5")}>Pieces</h2>
-            <RelatedPreviewGrid items={pieceItems} />
+            <RelatedPreviewGrid items={pieceItems} kind="piece" />
           </section>
         )}
         {showComponents && (

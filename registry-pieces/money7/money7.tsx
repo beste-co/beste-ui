@@ -15,18 +15,17 @@ interface Money7Props {
   subtotal?: string;
   tax?: string;
   total?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const money7Demo: Money7Props = {
-  number: "INV-20481",
   lines: [
     { description: "Block license", qty: 2, price: "$49.00", total: "$98.00" },
     { description: "Support hours", qty: 4, price: "$35.00", total: "$140.00" },
   ],
-  subtotal: "$238.00",
-  tax: "$47.60",
   total: "$285.60",
+  bordered: false,
 };
 
 export function Money7({
@@ -35,6 +34,7 @@ export function Money7({
   subtotal,
   tax,
   total,
+  bordered = false,
   className,
 }: Money7Props) {
   return (
@@ -44,13 +44,13 @@ export function Money7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             Invoice
           </span>
           {number && (
-            <span className="font-mono text-xs text-card-foreground">
+            <span className="text-xs text-card-foreground">
               #{number}
             </span>
           )}

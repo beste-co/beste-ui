@@ -18,7 +18,7 @@ export function Shapes19({ className }: Shapes19Props) {
     >
       <svg
         viewBox="0 0 24 24"
-        className="size-16 text-amber-500"
+        className="size-16 text-primary"
         fill="currentColor"
         stroke="currentColor"
         strokeWidth="1"

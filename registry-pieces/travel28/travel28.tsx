@@ -7,6 +7,7 @@ interface Travel28Props {
   distance?: string;
   eta?: string;
   note?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const travel28Demo: Travel28Props = {
   distance: "1.8 km away",
   eta: "24 min",
   note: "On foot · fastest route",
+  bordered: false,
 };
 
 export function Travel28({
@@ -22,6 +24,7 @@ export function Travel28({
   distance,
   eta,
   note,
+  bordered = false,
   className,
 }: Travel28Props) {
   return (
@@ -31,7 +34,7 @@ export function Travel28({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 flex-1 flex-col gap-0.5">
             {title && (

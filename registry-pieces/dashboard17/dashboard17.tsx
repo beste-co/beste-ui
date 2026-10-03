@@ -62,21 +62,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard17Demo: Dashboard17Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Live requests",
   value: "2,418",
   rate: "+24 / sec",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Dashboard17({
   label = "Live",
   value = "0",
   rate,
-  tone = "emerald",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard17Props) {
@@ -102,17 +102,17 @@ export function Dashboard17({
               className={cn("relative size-2 rounded-full", pingClasses[tone])}
             />
           </span>
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
         </div>
-        <span className="font-mono text-2xl font-semibold tabular-nums">
+        <span className="text-2xl font-semibold tabular-nums">
           {value}
         </span>
         {rate && (
           <span
             className={cn(
-              "font-mono text-xs font-medium tabular-nums",
+              "text-xs font-medium tabular-nums",
               textClasses[tone]
             )}
           >

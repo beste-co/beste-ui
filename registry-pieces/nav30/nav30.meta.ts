@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "nav30",
   title: "Slash Commands",
   description:
-    "Slash-command flyout listing mono commands with hints beside them and a slash glyph prefix column.",
+    "Slash-command flyout listing commands with a short hint beside each one.",
   category: "Nav",
 };

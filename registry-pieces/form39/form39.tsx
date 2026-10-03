@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Lock } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -43,7 +41,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const form39Demo: Form39Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Cookie Preferences",
   requiredLabel: "Required",
@@ -101,7 +99,7 @@ export function Form39({
   categories = [],
   stepMs = 620,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Form39Props) {
@@ -151,12 +149,6 @@ export function Form39({
                 )}
               >
                 <span className="flex min-w-0 items-center gap-1.5">
-                  {category.required && (
-                    <Lock
-                      className="size-3 shrink-0 text-current/60"
-                      aria-hidden="true"
-                    />
-                  )}
                   <span className="truncate text-xs">
                     {category.label}
                   </span>

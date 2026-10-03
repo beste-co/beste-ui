@@ -16,7 +16,6 @@ interface Chat15Props {
 export const chat15Demo: Chat15Props = {
   filename: "kickoff-brief.pdf",
   size: "2.4 MB",
-  pages: "8 pages",
   role: "received",
 };
 

@@ -27,7 +27,7 @@ export function Socialproof6({
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-3">
         {label && (
-          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {label}
           </span>
         )}

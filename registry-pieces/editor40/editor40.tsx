@@ -11,6 +11,7 @@ interface Action {
 interface Editor40Props {
   line?: string;
   actions?: Action[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,11 +22,13 @@ export const editor40Demo: Editor40Props = {
     { label: "Add missing property 'prfile'" },
     { label: "Disable rule for this line" },
   ],
+  bordered: false,
 };
 
 export function Editor40({
   line = "",
   actions = [],
+  bordered = false,
   className,
 }: Editor40Props) {
   return (
@@ -36,7 +39,7 @@ export function Editor40({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card px-2 py-2 font-mono text-xs shadow-sm">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card px-2 py-2 text-xs shadow-sm", bordered && "border border-border")}>
           <button
             type="button"
             aria-label="Quick fixes"
@@ -48,7 +51,7 @@ export function Editor40({
             {line}
           </code>
         </div>
-        <ul className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-md">
+        <ul className={cn("flex flex-col overflow-hidden rounded-md bg-card shadow-md", bordered && "border border-border")}>
           {actions.map((a, i) => (
             <li
               key={i}

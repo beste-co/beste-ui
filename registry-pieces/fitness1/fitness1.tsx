@@ -37,14 +37,14 @@ interface Fitness1Props {
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-current/10 text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-current",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 
@@ -65,15 +65,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const fitness1Demo: Fitness1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   exercise: "Back squat",
-  target: "5 × 5 @ RPE 8",
   sets: [
     { set: 1, reps: "5", weight: "80 kg", done: true },
     { set: 2, reps: "5", weight: "85 kg", done: true },
     { set: 3, reps: "5", weight: "95 kg" },
-    { set: 4, reps: "5", weight: "95 kg" },
   ],
   repsLabel: "reps",
   doneLabel: "Done",
@@ -90,7 +88,7 @@ export function Fitness1({
   nextLabel = "Next",
   tone = "neutral",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Fitness1Props) {
@@ -105,14 +103,10 @@ export function Fitness1({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Dumbbell className="size-4" aria-hidden="true" />
-          </div>
+          <Dumbbell
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex flex-row gap-2 items-center">
             {exercise && (
               <span className="text-sm font-semibold">
@@ -131,17 +125,17 @@ export function Fitness1({
             <div
               key={idx}
               className={cn(
-                "grid grid-cols-4 items-center gap-2 py-1.5 text-sm",
+                "grid grid-cols-4 items-center gap-2 py-1.5 text-sm tabular-nums",
                 s.done && "opacity-60"
               )}
             >
-              <span className="font-mono font-semibold text-current/60">
+              <span className="font-semibold text-current/60">
                 #{s.set}
               </span>
-              <span className="font-mono">
+              <span>
                 {s.reps} {repsLabel}
               </span>
-              <span className="font-mono">
+              <span>
                 {s.weight}
               </span>
               <span

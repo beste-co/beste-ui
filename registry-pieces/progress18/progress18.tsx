@@ -14,6 +14,7 @@ interface Progress18Props {
   stepMs?: number;
   holdMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -29,7 +30,8 @@ export const progress18Demo: Progress18Props = {
   label: "Syncing library",
   doneLabel: "Library synced",
   segments: 10,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Progress18({
@@ -38,7 +40,8 @@ export function Progress18({
   segments = 10,
   stepMs = 240,
   holdMs = 2200,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Progress18Props) {
   const [filled, setFilled] = useState(0);
@@ -78,7 +81,7 @@ export function Progress18({
       )}
     >
       <style>{`@keyframes progress18-pop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium text-card-foreground">
             {isDone ? doneLabel : label}

@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes45Demo: Shapes45Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes45({ surface = "card", bordered = true, inverted = false, className }: Shapes45Props) {
+export function Shapes45({ surface = "card", bordered = false, inverted = false, className }: Shapes45Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -55,7 +55,7 @@ export function Shapes45({ surface = "card", bordered = true, inverted = false, 
           <span className="h-1.5 w-full rounded-full bg-current/70" />
           <span className="h-1.5 w-3/4 rounded-full bg-current/70" />
           <div className="flex items-center gap-1">
-            <span className="size-1.5 rounded-full bg-emerald-500" />
+            <span className="size-1.5 rounded-full bg-primary" />
             <span className="h-1 w-12 rounded-full bg-current/10" />
           </div>
         </div>

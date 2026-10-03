@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "dashboard11",
   title: "Leaderboard",
   description:
-    "Top-three ranking card with gold, silver, and bronze medal circles next to names and monospaced scores.",
+    "Top-three ranking card with gold, silver, and bronze medal circles next to names and scores.",
   category: "Dashboard",
 };

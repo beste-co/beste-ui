@@ -63,18 +63,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const weather2Demo: Weather2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   days: [
     { label: "Mon", condition: "sunny", high: 24, low: 15 },
     { label: "Tue", condition: "cloudy", high: 22, low: 14 },
     { label: "Wed", condition: "rainy", high: 18, low: 12 },
     { label: "Thu", condition: "cloudy", high: 19, low: 13 },
-    { label: "Fri", condition: "sunny", high: 25, low: 16 },
   ],
 };
 
-export function Weather2({ days = [], surface = "card", bordered = true, inverted = false, className }: Weather2Props) {
+export function Weather2({ days = [], surface = "card", bordered = false, inverted = false, className }: Weather2Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

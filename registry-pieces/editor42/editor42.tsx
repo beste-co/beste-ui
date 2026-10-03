@@ -10,6 +10,7 @@ interface Editor42Props {
   suffix?: string;
   message?: string;
   severity?: Severity;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,6 +44,7 @@ export const editor42Demo: Editor42Props = {
   suffix: ".name;",
   message: "Property 'prfile' does not exist on type 'User'.",
   severity: "error",
+  bordered: false,
 };
 
 export function Editor42({
@@ -51,6 +53,7 @@ export function Editor42({
   suffix = "",
   message,
   severity = "error",
+  bordered = false,
   className,
 }: Editor42Props) {
   const cfg = severityClasses[severity];
@@ -62,7 +65,7 @@ export function Editor42({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-baseline gap-3 overflow-hidden rounded-md border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-baseline gap-3 overflow-hidden rounded-md bg-card px-3 py-2 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         <span
           className="shrink-0 tabular-nums text-muted-foreground/60"
           aria-hidden="true"

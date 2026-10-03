@@ -20,6 +20,7 @@ interface Ai34Props {
   rows?: Ai34Row[];
   currency?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -38,13 +39,15 @@ export const ai34Demo: Ai34Props = {
     { label: "Output", tokens: 528, cost: 0.0053 },
   ],
   currency: "$",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai34({
   rows = [],
   currency = "$",
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai34Props) {
   const totalCost = rows.reduce((s, r) => s + r.cost, 0);
@@ -57,8 +60,8 @@ export function Ai34({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col rounded-md border border-border bg-card p-3 shadow-sm">
-        <div className="flex flex-col gap-1 font-mono text-xs">
+      <div className={cn("flex w-full max-w-80 flex-col rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex flex-col gap-1 text-xs">
           {rows.map((r) => (
             <div key={r.label} className="flex items-center justify-between">
               <span className="text-muted-foreground">{r.label}</span>
@@ -74,7 +77,7 @@ export function Ai34({
             </div>
           ))}
         </div>
-        <div className="mt-2 flex items-center justify-between border-t border-border pt-2 font-mono text-xs">
+        <div className="mt-2 flex items-center justify-between border-t border-border pt-2 text-xs">
           <span className="font-semibold text-card-foreground">Total</span>
           <div className="flex items-center gap-3">
             <span className="tabular-nums text-muted-foreground">

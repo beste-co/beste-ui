@@ -11,7 +11,6 @@ import { BlockPreview } from "@/components/blocks-grid";
 import { ProBadge } from "@/components/pro-badge";
 import type { BlockMeta } from "@/lib/blocks";
 import { typography } from "@/lib/typography";
-import { cn } from "@/lib/utils";
 
 export function RelatedBlocksGrid({ blocks }: { blocks: BlockMeta[] }) {
   // Render the live block previews only after mount. They embed full block
@@ -74,10 +73,7 @@ export function RelatedBlocksGrid({ blocks }: { blocks: BlockMeta[] }) {
             </div>
             {/* Plain text: the card's own overlay link already carries this name,
                 and two anchors to one page is one more than anyone needs. */}
-            <h3 className={cn(typography.cardTitle, "mb-1")}>{block.title}</h3>
-            <p className={cn(typography.cardText, "line-clamp-2 min-h-10")}>
-              {block.description}
-            </p>
+            <h3 className={typography.cardTitle}>{block.title}</h3>
           </div>
         </div>
       ))}

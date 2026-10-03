@@ -20,11 +20,11 @@ export function Shapes4({ className }: Shapes4Props) {
         className="flex flex-col items-center gap-4"
         aria-hidden="true"
       >
-        <div className="relative h-2 w-40 rounded-full bg-muted">
-          <span className="absolute inset-y-0 left-0 w-1/3 rounded-full bg-orange-500" />
-          <span className="absolute -top-2 left-1/3 size-6 -translate-x-1/2 rounded-full border-2 border-orange-500 bg-card shadow-sm" />
+        <div className="relative h-2 w-40 rounded-full bg-foreground/10">
+          <span className="absolute inset-y-0 left-0 w-1/3 rounded-full bg-primary" />
+          <span className="absolute -top-2 left-1/3 size-6 -translate-x-1/2 rounded-full border-2 border-primary bg-card shadow-sm" />
         </div>
-        <div className="relative h-2 w-40 rounded-full bg-muted">
+        <div className="relative h-2 w-40 rounded-full bg-foreground/10">
           <span className="absolute inset-y-0 left-0 w-2/3 rounded-full bg-foreground" />
           <span className="absolute -top-2 left-2/3 size-6 -translate-x-1/2 rounded-full border-2 border-foreground bg-card shadow-sm" />
         </div>

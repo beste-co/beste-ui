@@ -25,7 +25,7 @@ function MoveCap({
   return (
     <kbd
       className={cn(
-        "flex size-10 items-center justify-center rounded-md border font-mono text-sm font-semibold shadow-sm",
+        "flex size-10 items-center justify-center rounded-md border text-sm font-semibold shadow-sm",
         active
           ? "border-primary bg-primary text-primary-foreground border-b-2 shadow-inner"
           : "border-border border-b-2 bg-gradient-to-b from-card to-muted text-card-foreground"
@@ -58,7 +58,7 @@ export function Keyboard15({
           <MoveCap label="D" active={active === "D"} />
         </div>
         {caption && (
-          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {caption}
           </span>
         )}

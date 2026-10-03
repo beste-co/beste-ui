@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "card16",
   title: "Deal Card",
   description:
-    "Limited-offer card with a rose discount tag, ticking countdown, strikethrough original, and bold sale price.",
+    "Limited-offer card with a rose discount tag, a struck-through original, and a bold sale price.",
   category: "Card",
 };

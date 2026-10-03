@@ -6,14 +6,16 @@ import { cn } from "@/lib/utils";
 
 interface Editor18Props {
   scopes?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor18Demo: Editor18Props = {
   scopes: ["Dashboard", "render()", "if (isReady)"],
+  bordered: false,
 };
 
-export function Editor18({ scopes = [], className }: Editor18Props) {
+export function Editor18({ scopes = [], bordered = false, className }: Editor18Props) {
   return (
     <div
       className={cn(
@@ -21,8 +23,8 @@ export function Editor18({ scopes = [], className }: Editor18Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
-        <div className="flex items-center gap-1 border-b border-border bg-muted/60 px-3 py-1 font-mono text-xs">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-center gap-1 border-b border-border bg-muted/60 px-3 py-1 text-xs">
           {scopes.map((s, i) => (
             <Fragment key={i}>
               {i > 0 && (
@@ -44,7 +46,7 @@ export function Editor18({ scopes = [], className }: Editor18Props) {
             </Fragment>
           ))}
         </div>
-        <pre className="px-3 py-2 font-mono text-xs leading-relaxed text-muted-foreground">
+        <pre className="px-3 py-2 text-xs leading-relaxed text-muted-foreground">
           {"    // hidden lines…\n    const ready = useReady();\n    if (!ready) return null;"}
         </pre>
       </div>

@@ -13,22 +13,24 @@ interface Tier {
 interface Event7Props {
   heading?: string;
   tiers?: Tier[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const event7Demo: Event7Props = {
   heading: "Conference passes",
   tiers: [
-    { name: "Student", price: "$89", remaining: 42 },
-    { name: "Early bird", price: "$249", highlighted: true, remaining: 18 },
-    { name: "Standard", price: "$399", remaining: 124 },
+    { name: "Early bird", price: "$249", highlighted: true },
+    { name: "Standard", price: "$399" },
     { name: "VIP", price: "$1,200", soldOut: true },
   ],
+  bordered: false,
 };
 
 export function Event7({
   heading,
   tiers = [],
+  bordered = false,
   className,
 }: Event7Props) {
   return (
@@ -38,9 +40,9 @@ export function Event7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {heading}
           </span>
         )}
@@ -75,7 +77,7 @@ export function Event7({
                   </span>
                 )}
               </div>
-              <span className="font-mono text-sm font-bold tabular-nums text-card-foreground">
+              <span className="text-sm font-bold tabular-nums text-card-foreground">
                 {t.price}
               </span>
             </div>

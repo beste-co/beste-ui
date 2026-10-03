@@ -19,6 +19,7 @@ interface Search25Props {
   maxVisible?: number;
   charMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -28,25 +29,22 @@ export const search25Demo: Search25Props = {
   results: [
     {
       title: "Nina Simone",
-      meta: "Vocals, piano",
       avatar:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face",
     },
     {
       title: "Miles Davis",
-      meta: "Trumpet",
       avatar:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
     },
     {
       title: "Herbie Hancock",
-      meta: "Keys",
       avatar:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
     },
-    { title: "Joni Mitchell", meta: "Guitar, vocals" },
-    { title: "Erykah Badu", meta: "Vocals" },
+    { title: "Joni Mitchell" },
   ],
+  bordered: false,
 };
 
 function initials(name: string): string {
@@ -79,6 +77,7 @@ export function Search25({
   maxVisible = 3,
   charMs = 140,
   holdMs = 2000,
+  bordered = false,
   className,
 }: Search25Props) {
   const [qi, setQi] = useState(0);
@@ -130,7 +129,7 @@ export function Search25({
       )}
     >
       <style>{`@keyframes search25-blink { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0; } }`}</style>
-      <div className="w-full max-w-80 overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-xl bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2.5 border-b border-border px-3 py-2.5">
           <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
           <span className="flex min-w-0 flex-1 items-center text-sm">
@@ -190,10 +189,6 @@ export function Search25({
             );
           })}
         </div>
-
-        <p className="border-t border-border px-3 py-2 text-xs tabular-nums text-muted-foreground">
-          Showing {shown.size} of {results.length} results
-        </p>
       </div>
     </div>
   );

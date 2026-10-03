@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "health2",
   title: "Blood Pressure",
   description:
-    "BP reading pairing systolic over diastolic with a status pill and a color-dotted legend beneath.",
+    "BP reading pairing systolic over diastolic with a status pill.",
   category: "Health",
 };

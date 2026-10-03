@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, MessageCircle } from "lucide-react";
+import { Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Card15Props {
@@ -35,10 +35,8 @@ export function Card15({
     >
       <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl bg-foreground p-4 text-background shadow-xl">
         <div className="flex items-center gap-2">
-          <div className="flex size-9 items-center justify-center rounded-lg bg-background/10">
-            <Building2 className="size-4" aria-hidden="true" />
-          </div>
-          <span className="text-sm font-semibold uppercase tracking-wide">
+          <Building2 className="size-5 shrink-0" aria-hidden="true" />
+          <span className="text-sm font-semibold">
             {name}
           </span>
         </div>
@@ -63,9 +61,8 @@ export function Card15({
         </div>
         <button
           type="button"
-          className="inline-flex items-center justify-center gap-1 rounded-md bg-background px-3 py-2 text-xs font-semibold text-foreground hover:opacity-90"
+          className="inline-flex items-center justify-center rounded-md bg-background px-3 py-2 text-xs font-semibold text-foreground hover:opacity-90"
         >
-          <MessageCircle className="size-3.5" aria-hidden="true" />
           {action}
         </button>
       </div>

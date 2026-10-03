@@ -8,6 +8,7 @@ interface Card14Props {
   includedUnits?: string;
   included?: string;
   overage?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const card14Demo: Card14Props = {
   includedUnits: "1M",
   included: "requests included monthly",
   overage: "$3.00 per 1M after",
+  bordered: false,
 };
 
 export function Card14({
@@ -25,6 +27,7 @@ export function Card14({
   includedUnits,
   included,
   overage,
+  bordered = false,
   className,
 }: Card14Props) {
   return (
@@ -34,18 +37,15 @@ export function Card14({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-border bg-card p-4 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Usage-based
-        </span>
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline gap-1">
-          <span className="font-mono text-3xl font-bold text-card-foreground">
+          <span className="text-3xl font-bold tabular-nums text-card-foreground">
             {unitPrice}
           </span>
           <span className="text-xs text-muted-foreground">{unitLabel}</span>
         </div>
         <div className="rounded-md bg-muted/60 p-2 text-xs">
-          <span className="font-mono font-semibold text-card-foreground">
+          <span className="font-semibold text-card-foreground">
             {includedUnits}
           </span>
           <span className="text-muted-foreground"> {included}</span>

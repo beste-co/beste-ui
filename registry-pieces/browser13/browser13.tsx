@@ -5,14 +5,16 @@ import { cn } from "@/lib/utils";
 
 interface Browser13Props {
   fontSize?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser13Demo: Browser13Props = {
   fontSize: 18,
+  bordered: false,
 };
 
-export function Browser13({ fontSize = 16, className }: Browser13Props) {
+export function Browser13({ fontSize = 16, bordered = false, className }: Browser13Props) {
   return (
     <div
       className={cn(
@@ -20,13 +22,13 @@ export function Browser13({ fontSize = 16, className }: Browser13Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center justify-between gap-2 rounded-full border border-border bg-card px-3 py-1.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center justify-between gap-2 rounded-full bg-card px-3 py-1.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <BookOpen
             className="size-4 text-muted-foreground"
             aria-hidden="true"
           />
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             Reader
           </span>
         </div>
@@ -38,7 +40,7 @@ export function Browser13({ fontSize = 16, className }: Browser13Props) {
           >
             <Minus className="size-3" aria-hidden="true" />
           </button>
-          <span className="w-7 text-center font-mono text-xs tabular-nums text-card-foreground">
+          <span className="w-7 text-center text-xs tabular-nums text-card-foreground">
             {fontSize}
           </span>
           <button

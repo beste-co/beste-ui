@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "money7",
   title: "Invoice Summary",
   description:
-    "Compact invoice card with an ID header, line items, and a subtotal, tax, and total block at the bottom.",
+    "Compact invoice card with line items and a bold total at the bottom.",
   category: "Finance",
 };

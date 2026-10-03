@@ -6,6 +6,7 @@ interface Ticket7Props {
   number?: string;
   ahead?: number;
   waitTime?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,9 +14,10 @@ export const ticket7Demo: Ticket7Props = {
   number: "A47",
   ahead: 3,
   waitTime: "~12 min",
+  bordered: false,
 };
 
-export function Ticket7({ number, ahead, waitTime, className }: Ticket7Props) {
+export function Ticket7({ number, ahead, waitTime, bordered = false, className }: Ticket7Props) {
   return (
     <div
       className={cn(
@@ -23,12 +25,12 @@ export function Ticket7({ number, ahead, waitTime, className }: Ticket7Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col items-center gap-1 p-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             Your Number
           </span>
-          <span className="font-mono text-4xl font-bold tabular-nums tracking-wider text-card-foreground">
+          <span className="text-4xl font-bold tabular-nums text-card-foreground">
             {number}
           </span>
         </div>

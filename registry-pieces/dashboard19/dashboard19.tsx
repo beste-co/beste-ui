@@ -39,7 +39,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard19Demo: Dashboard19Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   average: 4.6,
   total: 1284,
@@ -59,7 +59,7 @@ export function Dashboard19({
   reviewsLabel = "reviews",
   rows = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard19Props) {
@@ -77,7 +77,7 @@ export function Dashboard19({
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
           <div className="flex items-baseline gap-1.5">
-            <span className="font-mono text-xl font-semibold tabular-nums">
+            <span className="text-xl font-semibold tabular-nums">
               {average.toFixed(1)}
             </span>
             <Star
@@ -85,7 +85,7 @@ export function Dashboard19({
               aria-hidden="true"
             />
           </div>
-          <span className="font-mono text-xs text-current/60">
+          <span className="text-xs text-current/60">
             {total.toLocaleString()} {reviewsLabel}
           </span>
         </div>
@@ -97,13 +97,9 @@ export function Dashboard19({
                 key={r.stars}
                 className="flex items-center gap-2 text-xs"
               >
-                <span className="w-3 shrink-0 font-mono">
+                <span className="w-3 shrink-0 tabular-nums text-current/60">
                   {r.stars}
                 </span>
-                <Star
-                  className="size-3 shrink-0 text-current/60"
-                  aria-hidden="true"
-                />
                 <div className="flex-1 overflow-hidden rounded-sm bg-current/10">
                   <div
                     className="h-1.5 rounded-sm bg-amber-500"
@@ -111,7 +107,7 @@ export function Dashboard19({
                     aria-hidden="true"
                   />
                 </div>
-                <span className="w-12 shrink-0 text-right font-mono tabular-nums text-current/60">
+                <span className="w-12 shrink-0 text-right tabular-nums text-current/60">
                   {r.count.toLocaleString()}
                 </span>
               </div>

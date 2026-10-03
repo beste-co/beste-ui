@@ -38,13 +38,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const food1Demo: Food1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Roasted miso salmon",
   description: "With charred leeks, lemon and toasted sesame",
   price: "₺240",
-  calories: "520 kcal",
-  tags: ["Chef's pick", "Gluten-free"],
+  tags: ["Gluten-free"],
   imageSrc: defaultImage,
   alt: "Roasted miso salmon · plated",
 };
@@ -58,7 +57,7 @@ export function Food1({
   imageSrc = defaultImage,
   alt,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Food1Props) {
@@ -87,7 +86,7 @@ export function Food1({
               </span>
             )}
             {price && (
-              <span className="shrink-0 font-mono text-sm font-bold">
+              <span className="shrink-0 text-sm font-bold tabular-nums">
                 {price}
               </span>
             )}
@@ -97,21 +96,23 @@ export function Food1({
               {description}
             </span>
           )}
-          <div className="mt-1 flex flex-wrap items-center gap-1">
-            {calories && (
-              <span className="rounded-full bg-current/10 px-1.5 py-0.5 text-xs text-current/60">
-                {calories}
-              </span>
-            )}
-            {tags.map((tag, idx) => (
-              <span
-                key={idx}
-                className="rounded-full bg-emerald-500 px-1.5 py-0.5 text-xs font-semibold text-white"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          {(calories || tags.length > 0) && (
+            <div className="mt-1 flex flex-wrap items-center gap-1">
+              {calories && (
+                <span className="rounded-full bg-current/10 px-1.5 py-0.5 text-xs text-current/60">
+                  {calories}
+                </span>
+              )}
+              {tags.map((tag, idx) => (
+                <span
+                  key={idx}
+                  className="rounded-full bg-emerald-500 px-1.5 py-0.5 text-xs font-semibold text-white"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

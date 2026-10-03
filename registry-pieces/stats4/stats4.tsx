@@ -42,7 +42,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats4Demo: Stats4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Active users · 30d",
   value: "128,420",
@@ -56,7 +56,7 @@ export function Stats4({
   data = [],
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Stats4Props) {
@@ -89,7 +89,7 @@ export function Stats4({
       <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg px-3 py-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex min-w-0 flex-1 flex-col">
           {label && (
-            <span className="truncate text-xs font-medium uppercase tracking-wide text-current/60">
+            <span className="truncate text-xs font-medium text-current/60">
               {label}
             </span>
           )}

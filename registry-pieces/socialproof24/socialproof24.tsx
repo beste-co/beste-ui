@@ -37,7 +37,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const socialproof24Demo: Socialproof24Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   items: [
     {
@@ -60,7 +60,7 @@ export const socialproof24Demo: Socialproof24Props = {
   ],
 };
 
-export function Socialproof24({ items = [], surface = "card", bordered = true, inverted = false, className }: Socialproof24Props) {
+export function Socialproof24({ items = [], surface = "card", bordered = false, inverted = false, className }: Socialproof24Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

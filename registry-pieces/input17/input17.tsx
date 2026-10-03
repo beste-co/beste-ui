@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Input17Props {
@@ -8,6 +8,7 @@ interface Input17Props {
   from?: string;
   to?: string;
   duration?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const input17Demo: Input17Props = {
   from: "Apr 01",
   to: "Apr 30",
   duration: "30 days",
+  bordered: false,
 };
 
 export function Input17({
@@ -23,6 +25,7 @@ export function Input17({
   from,
   to,
   duration,
+  bordered = false,
   className,
 }: Input17Props) {
   return (
@@ -38,13 +41,9 @@ export function Input17({
             {label}
           </label>
         )}
-        <div className="flex items-center overflow-hidden rounded-md border border-border bg-card shadow-sm">
-          <div className="flex min-w-0 flex-1 items-center gap-2 px-3 py-2">
-            <Calendar
-              className="size-3.5 shrink-0 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <span className="truncate font-mono text-sm text-card-foreground">
+        <div className={cn("flex items-center overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
+          <div className="flex min-w-0 flex-1 items-center px-3 py-2">
+            <span className="truncate text-sm text-card-foreground">
               {from}
             </span>
           </div>
@@ -52,8 +51,8 @@ export function Input17({
             className="size-3.5 shrink-0 text-muted-foreground"
             aria-hidden="true"
           />
-          <div className="flex min-w-0 flex-1 items-center gap-2 px-3 py-2">
-            <span className="truncate font-mono text-sm text-card-foreground">
+          <div className="flex min-w-0 flex-1 items-center px-3 py-2">
+            <span className="truncate text-sm text-card-foreground">
               {to}
             </span>
           </div>

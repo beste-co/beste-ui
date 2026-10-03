@@ -43,7 +43,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const monitoring24Demo: Monitoring24Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Downloaded by this page",
   rows: [
@@ -72,7 +72,7 @@ export function Monitoring24({
   unit = "KB",
   countMs = 1100,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Monitoring24Props) {

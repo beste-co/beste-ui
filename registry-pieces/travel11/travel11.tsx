@@ -57,17 +57,16 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const travel11Demo: Travel11Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Hotel Alma Soho",
   location: "Barcelona, Spain",
   rating: "4.8",
-  reviewCount: "2,412 reviews",
   pricePerNight: "€184",
   perNightLabel: "/ night",
   image:
     "https://images.unsplash.com/photo-1562861844-763c4ae2e696?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  tone: "sky",
+  tone: "primary",
 };
 
 export function Travel11({
@@ -78,9 +77,9 @@ export function Travel11({
   pricePerNight,
   perNightLabel,
   image,
-  tone = "sky",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Travel11Props) {
@@ -141,7 +140,7 @@ export function Travel11({
           </div>
           {pricePerNight && (
             <div className="flex items-baseline justify-between">
-              <span className="font-mono text-base font-bold">
+              <span className="text-base font-bold tabular-nums">
                 {pricePerNight}
                 {perNightLabel && (
                   <span className="ml-1 text-xs font-normal text-current/60">

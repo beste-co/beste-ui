@@ -1,6 +1,5 @@
 "use client";
 
-import { Check, ShieldCheck, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -57,33 +56,30 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation17Demo: Automation17Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  waitingLabel: "Waiting for approval",
-  requestedBy: "Ada Lovelace",
-  requestedByPrefix: "Requested by",
-  initials: "AL",
-  ago: "3m ago",
+  requestedBy: "Nils Frahm",
+  initials: "NF",
   action: "Send refund to Atlas Labs",
   amount: "$2,840.00",
   denyLabel: "Deny",
   approveLabel: "Approve",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Automation17({
-  waitingLabel = "Waiting for approval",
+  waitingLabel,
   requestedBy = "Requester",
-  requestedByPrefix = "Requested by",
+  requestedByPrefix,
   initials,
   ago,
   action = "Action",
   amount,
   denyLabel = "Deny",
   approveLabel = "Approve",
-  tone = "emerald",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation17Props) {
@@ -96,17 +92,11 @@ export function Automation17({
         className
       )}
     >
-      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center gap-1.5">
-          <ShieldCheck
-            className="size-3.5 text-amber-500"
-            aria-hidden="true"
-          />
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-            {waitingLabel}
-          </span>
-        </div>
-        <div className="flex items-start gap-2">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        {waitingLabel && (
+          <span className="text-xs font-medium text-current/60">{waitingLabel}</span>
+        )}
+        <div className="flex items-center gap-2">
           <span
             className="flex size-7 shrink-0 items-center justify-center rounded-full bg-current/10 text-xs font-semibold"
             aria-hidden="true"
@@ -118,12 +108,13 @@ export function Automation17({
               {action}
             </span>
             <span className="truncate text-xs text-current/60">
-              {requestedByPrefix} {requestedBy}
+              {requestedByPrefix ? `${requestedByPrefix} ` : ""}
+              {requestedBy}
               {ago ? ` · ${ago}` : ""}
             </span>
           </div>
           {amount && (
-            <span className="shrink-0 font-mono text-sm font-semibold tabular-nums">
+            <span className="shrink-0 text-sm font-medium tabular-nums">
               {amount}
             </span>
           )}
@@ -131,9 +122,8 @@ export function Automation17({
         <div className="flex items-center gap-1.5">
           <button
             type="button"
-            className="inline-flex flex-1 items-center justify-center gap-1 rounded-sm border border-current/15 bg-current/10 px-3 py-1.5 text-xs font-medium hover:bg-current/10"
+            className={cn("inline-flex flex-1 items-center justify-center gap-1 rounded-sm bg-current/10 px-3 py-1.5 text-xs font-medium hover:bg-current/10", bordered && "border border-current/15")}
           >
-            <X className="size-3" aria-hidden="true" />
             {denyLabel}
           </button>
           <button
@@ -143,7 +133,6 @@ export function Automation17({
               approveClasses[tone]
             )}
           >
-            <Check className="size-3" strokeWidth={3} aria-hidden="true" />
             {approveLabel}
           </button>
         </div>

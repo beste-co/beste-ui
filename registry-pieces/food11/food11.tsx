@@ -46,8 +46,7 @@ const STAGES: Record<Stage, { label: string; icon: typeof Flame; pill: string }>
 };
 
 export const food11Demo: Food11Props = {
-  orderLabel: "Order #1284",
-  tableLabel: "Table 6",
+  orderLabel: "Table 6",
   items: [
     { name: "Miso ramen", qty: 2 },
     { name: "Gyoza", qty: 1 },

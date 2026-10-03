@@ -1,5 +1,5 @@
 "use client";
-import { Minus, Plus, ShoppingBag } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -18,6 +18,7 @@ interface Commerce6Props {
   price?: string;
   qty?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,10 +36,10 @@ export const commerce6Demo: Commerce6Props = {
   image:
     "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=256&auto=format&fit=crop",
   name: "Nomad Diver Watch",
-  variant: "Black · Steel band",
   price: "$420",
   qty: 1,
   tone: "foreground",
+  bordered: false,
 };
 
 export function Commerce6({
@@ -48,6 +49,7 @@ export function Commerce6({
   price = "$0",
   qty = 1,
   tone = "foreground",
+  bordered = false,
   className,
 }: Commerce6Props) {
   return (
@@ -57,7 +59,7 @@ export function Commerce6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2.5">
           <div className="relative size-12 shrink-0 overflow-hidden rounded-sm bg-muted">
             {image && (
@@ -78,12 +80,12 @@ export function Commerce6({
               </span>
             )}
           </div>
-          <span className="shrink-0 font-mono text-sm font-semibold tabular-nums text-card-foreground">
+          <span className="shrink-0 text-sm font-semibold tabular-nums text-card-foreground">
             {price}
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex items-center overflow-hidden rounded-sm border border-border">
+          <div className={cn("flex items-center overflow-hidden rounded-sm", bordered ? "border border-border" : "bg-muted")}>
             <button
               type="button"
               className="flex size-7 items-center justify-center text-muted-foreground hover:bg-muted"
@@ -91,7 +93,7 @@ export function Commerce6({
             >
               <Minus className="size-3" />
             </button>
-            <span className="flex w-7 items-center justify-center font-mono text-xs tabular-nums text-card-foreground">
+            <span className="flex w-7 items-center justify-center text-xs tabular-nums text-card-foreground">
               {qty}
             </span>
             <button
@@ -109,7 +111,6 @@ export function Commerce6({
               ctaClasses[tone]
             )}
           >
-            <ShoppingBag className="size-3.5" aria-hidden="true" />
             Add to cart
           </button>
         </div>

@@ -8,6 +8,7 @@ interface Money17Props {
   period?: string;
   nextLabel?: string;
   nextDate?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const money17Demo: Money17Props = {
   period: "/mo",
   nextLabel: "Next charge",
   nextDate: "Jul 1, 2026",
+  bordered: false,
 };
 
 export function Money17({
@@ -25,6 +27,7 @@ export function Money17({
   period,
   nextLabel = "Next charge",
   nextDate,
+  bordered = false,
   className,
 }: Money17Props) {
   return (
@@ -34,7 +37,7 @@ export function Money17({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-3 rounded-lg border border-border bg-card px-4 py-3.5 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-3 rounded-lg bg-card px-4 py-3.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between gap-2">
           {plan && (
             <span className="text-sm font-semibold text-card-foreground">

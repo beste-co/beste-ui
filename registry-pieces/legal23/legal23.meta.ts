@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "legal23",
   title: "Case Citations",
   description:
-    "Authority list panel where each citation sits on an amber-ruled block with court and holding lines.",
+    "Authority list panel where each citation sits on a muted block with its holding.",
   category: "Legal",
 };

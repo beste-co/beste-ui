@@ -1,12 +1,13 @@
 "use client";
 
-import { Camera, ImageIcon, Search, X } from "lucide-react";
+import { ImageIcon, Search, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Search16Props {
   filename?: string;
   placeholder?: string;
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,12 +16,14 @@ export const search16Demo: Search16Props = {
   placeholder: "Find similar products",
   image:
     "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=160&auto=format&fit=crop",
+  bordered: false,
 };
 
 export function Search16({
   filename,
   placeholder = "Visual search",
   image,
+  bordered = false,
   className,
 }: Search16Props) {
   return (
@@ -30,7 +33,7 @@ export function Search16({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-2 rounded-xl border border-border bg-card p-1.5 pr-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-2 rounded-xl bg-card p-1.5 shadow-sm", bordered && "border border-border")}>
         <div className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-amber-400 to-rose-500 text-white">
           {image ? (
             <img
@@ -58,14 +61,6 @@ export function Search16({
           aria-label="Remove image"
         >
           <X className="size-3.5" aria-hidden="true" />
-        </button>
-        <span className="h-6 w-px bg-border" aria-hidden="true" />
-        <button
-          type="button"
-          className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground hover:bg-muted-foreground/10"
-          aria-label="Upload another image"
-        >
-          <Camera className="size-4" aria-hidden="true" />
         </button>
         <button
           type="button"

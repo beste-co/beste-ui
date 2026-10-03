@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "card25",
   title: "Advisor Card",
   description:
-    "Founder-or-advisor card with a primary sparkle badge, italic former-role line, and LinkedIn plus Intro buttons.",
+    "Founder-or-advisor card with an avatar, a role, a short bio, and LinkedIn plus Intro buttons.",
   category: "Card",
 };

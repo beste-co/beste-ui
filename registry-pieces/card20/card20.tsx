@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Twitter } from "lucide-react";
+import { Twitter } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Card20Props {
@@ -11,18 +11,18 @@ interface Card20Props {
   initials?: string;
   handle?: string;
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const card20Demo: Card20Props = {
-  name: "Furkan Genç",
-  role: "Design lead · Beste",
-  location: "Istanbul · GMT+3",
+  name: "Nils Frahm",
+  role: "Design lead",
   bio: "Designing the tooling that ships millions of components every week.",
-  initials: "BS",
-  handle: "mira.sol",
+  initials: "NF",
   image:
     "https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjgwfHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D",
+  bordered: false,
 };
 
 export function Card20({
@@ -33,6 +33,7 @@ export function Card20({
   initials = "??",
   handle,
   image,
+  bordered = false,
   className,
 }: Card20Props) {
   return (
@@ -42,7 +43,7 @@ export function Card20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <div className="relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500 via-fuchsia-500 to-rose-500 text-sm font-bold text-white shadow-md">
             {image ? (
@@ -67,8 +68,7 @@ export function Card20({
               </span>
             )}
             {location && (
-              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                <MapPin className="size-3" aria-hidden="true" />
+              <span className="truncate text-xs text-muted-foreground">
                 {location}
               </span>
             )}

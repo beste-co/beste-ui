@@ -37,17 +37,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor3Demo: Editor3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   crumbs: [
-    { label: "src", kind: "folder" },
-    { label: "components", kind: "folder" },
-    { label: "beste", kind: "folder" },
-    { label: "button.tsx", kind: "file" },
+    { label: "src" },
+    { label: "components" },
+    { label: "beste" },
+    { label: "button.tsx" },
   ],
 };
 
-export function Editor3({ crumbs = [], surface = "card", bordered = true, inverted = false, className }: Editor3Props) {
+export function Editor3({ crumbs = [], surface = "card", bordered = false, inverted = false, className }: Editor3Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -59,7 +59,7 @@ export function Editor3({ crumbs = [], surface = "card", bordered = true, invert
     >
       <div
         className={cn(
-          "inline-flex items-center gap-1 rounded-md px-2 py-1.5 font-mono text-xs shadow-sm",
+          "inline-flex items-center gap-1 rounded-md px-2 py-1.5 text-xs shadow-sm",
           surfaceTone,
           bordered && "border border-current/15"
         )}
@@ -70,15 +70,17 @@ export function Editor3({ crumbs = [], surface = "card", bordered = true, invert
           return (
             <Fragment key={i}>
               <div className="flex items-center gap-1">
-                <Icon
-                  className={cn(
-                    "size-3 shrink-0",
-                    c.kind === "folder"
-                      ? "text-amber-500"
-                      : "text-current/60"
-                  )}
-                  aria-hidden="true"
-                />
+                {c.kind && (
+                  <Icon
+                    className={cn(
+                      "size-3 shrink-0",
+                      c.kind === "folder"
+                        ? "text-amber-500"
+                        : "text-current/60"
+                    )}
+                    aria-hidden="true"
+                  />
+                )}
                 <span
                   className={cn(
                     "truncate",

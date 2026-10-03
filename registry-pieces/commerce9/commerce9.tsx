@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, PackageCheck } from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Commerce9Props {
@@ -8,21 +8,22 @@ interface Commerce9Props {
   total?: string;
   eta?: string;
   email?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const commerce9Demo: Commerce9Props = {
-  orderId: "#SO-8241",
   total: "$284.00",
-  eta: "Arrives Apr 26 – Apr 28",
-  email: "hello@beste.co",
+  eta: "Arrives Apr 26 to 28",
+  bordered: false,
 };
 
 export function Commerce9({
-  orderId = "#000000",
+  orderId,
   total = "—",
   eta,
   email,
+  bordered = false,
   className,
 }: Commerce9Props) {
   return (
@@ -32,36 +33,28 @@ export function Commerce9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <span
-            className="flex size-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white"
+          <Check
+            className="size-5 shrink-0 text-emerald-500"
             aria-hidden="true"
-          >
-            <Check className="size-4" />
-          </span>
+          />
           <div className="flex flex-col">
             <span className="text-sm font-semibold text-card-foreground">
               Order confirmed
             </span>
-            <span className="font-mono text-xs text-muted-foreground">
-              {orderId}
-            </span>
+            {orderId && (
+              <span className="text-xs text-muted-foreground">{orderId}</span>
+            )}
           </div>
-          <span className="ml-auto shrink-0 font-mono text-base font-semibold tabular-nums text-card-foreground">
+          <span className="ml-auto shrink-0 text-base font-semibold tabular-nums text-card-foreground">
             {total}
           </span>
         </div>
         {(eta || email) && (
           <div className="flex flex-col gap-1 border-t border-border pt-2 text-xs">
             {eta && (
-              <div className="flex items-center gap-1.5 text-card-foreground">
-                <PackageCheck
-                  className="size-3 text-muted-foreground"
-                  aria-hidden="true"
-                />
-                <span>{eta}</span>
-              </div>
+              <span className="text-card-foreground">{eta}</span>
             )}
             {email && (
               <span className="text-muted-foreground">

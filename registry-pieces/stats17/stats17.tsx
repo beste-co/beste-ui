@@ -8,7 +8,7 @@ type Surface = "card" | "glass";
 interface Side {
   label: string;
   value: string;
-  caption: string;
+  caption?: string;
 }
 
 interface Stats17Props {
@@ -40,15 +40,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats17Demo: Stats17Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Time to first booking",
-  before: { label: "Before", value: "9 days", caption: "across three systems" },
-  after: { label: "After", value: "4 hours", caption: "on one workspace" },
-  footnote: "Median across eleven practices that switched last quarter.",
+  before: { label: "Before", value: "9 days" },
+  after: { label: "After", value: "4 hours" },
 };
 
-export function Stats17({ title, before, after, footnote, surface = "card", bordered = true, inverted = false, className }: Stats17Props) {
+export function Stats17({ title, before, after, footnote, surface = "card", bordered = false, inverted = false, className }: Stats17Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -59,13 +58,15 @@ export function Stats17({ title, before, after, footnote, surface = "card", bord
         <div className="mt-4 flex items-center gap-4">
           {before && (
             <div className="min-w-0 flex-1">
-              <p className="font-mono text-xs uppercase tracking-widest text-current/60">
+              <p className="text-xs text-current/60">
                 {before.label}
               </p>
               <p className="mt-1 text-2xl font-light tracking-tight tabular-nums text-current/60">
                 {before.value}
               </p>
-              <p className="mt-0.5 text-xs text-current/60">{before.caption}</p>
+              {before.caption && (
+                <p className="mt-0.5 text-xs text-current/60">{before.caption}</p>
+              )}
             </div>
           )}
 
@@ -73,13 +74,15 @@ export function Stats17({ title, before, after, footnote, surface = "card", bord
 
           {after && (
             <div className="min-w-0 flex-1">
-              <p className="font-mono text-xs uppercase tracking-widest text-primary">
+              <p className="text-xs text-primary">
                 {after.label}
               </p>
               <p className="mt-1 text-2xl font-light tracking-tight tabular-nums">
                 {after.value}
               </p>
-              <p className="mt-0.5 text-xs text-current/60">{after.caption}</p>
+              {after.caption && (
+                <p className="mt-0.5 text-xs text-current/60">{after.caption}</p>
+              )}
             </div>
           )}
         </div>

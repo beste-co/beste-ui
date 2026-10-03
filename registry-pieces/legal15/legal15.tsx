@@ -9,15 +9,15 @@ interface Legal15Props {
   state?: string;
   expiry?: string;
   sealNo?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal15Demo: Legal15Props = {
-  notary: "Rosa M. Álvarez",
-  commission: "Notary Public · Bar #284,911",
+  notary: "Agnes Obel",
   state: "State of New York",
   expiry: "Commission expires Oct 3, 2029",
-  sealNo: "NY-NP-77412",
+  bordered: false,
 };
 
 export function Legal15({
@@ -26,6 +26,7 @@ export function Legal15({
   state,
   expiry,
   sealNo,
+  bordered = false,
   className,
 }: Legal15Props) {
   return (
@@ -35,13 +36,13 @@ export function Legal15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative flex size-16 shrink-0 -rotate-6 flex-col items-center justify-center rounded-full border-2 border-rose-600/70 bg-card text-center text-rose-700 shadow-sm dark:text-rose-300">
           <Stamp className="size-4" aria-hidden="true" />
-          <span className="text-xs font-bold uppercase tracking-wider">
+          <span className="text-xs font-bold">
             Notary
           </span>
-          <span className="font-mono text-xs">{sealNo}</span>
+          {sealNo && <span className="text-xs">{sealNo}</span>}
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
           {notary && (
@@ -56,7 +57,7 @@ export function Legal15({
             <span className="text-xs text-card-foreground">{state}</span>
           )}
           {expiry && (
-            <span className="mt-1 text-xs text-muted-foreground">{expiry}</span>
+            <span className="text-xs text-muted-foreground">{expiry}</span>
           )}
         </div>
       </div>

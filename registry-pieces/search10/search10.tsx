@@ -38,15 +38,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const search10Demo: Search10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   query: "mira",
   groups: [
     {
       group: "Files",
       items: [
-        { label: "mira-handoff.fig", hint: "Figma" },
-        { label: "brand-mira.pdf", hint: "Doc" },
+        { label: "mira-handoff.fig" },
+        { label: "brand-mira.pdf" },
       ],
     },
   ],
@@ -61,7 +61,7 @@ export function Search10({
   query = "",
   groups = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Search10Props) {
@@ -89,7 +89,7 @@ export function Search10({
             const Icon = iconForGroup(g.group);
             return (
               <div key={gIdx} className="flex flex-col">
-                <span className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-current/60">
+                <span className="px-2 pb-1 text-xs font-semibold text-current/60">
                   {g.group}
                 </span>
                 {g.items.map((item, idx) => (

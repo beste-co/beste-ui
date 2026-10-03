@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "media15",
   title: "Image Carousel",
   description:
-    "Image frame with arrow controls, a slide counter, and position dots.",
+    "Image frame with arrow controls and position dots.",
   category: "Media",
 };

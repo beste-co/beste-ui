@@ -7,6 +7,7 @@ interface Input20Props {
   label?: string;
   hex?: string;
   name?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const input20Demo: Input20Props = {
   label: "Accent color",
   hex: "#6D5EFA",
   name: "Mira violet",
+  bordered: false,
 };
 
 export function Input20({
   label,
   hex = "#000000",
   name,
+  bordered = false,
   className,
 }: Input20Props) {
   return (
@@ -35,9 +38,9 @@ export function Input20({
             {label}
           </label>
         )}
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card p-1.5 shadow-sm">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card p-1.5 shadow-sm", bordered && "border border-border")}>
           <div
-            className="flex size-8 shrink-0 items-center justify-center rounded-md border border-border shadow-inner"
+            className={cn("flex size-8 shrink-0 items-center justify-center rounded-md shadow-inner", bordered ? "border border-border" : "bg-card")}
             style={{ backgroundColor: hex }}
             aria-hidden="true"
           />
@@ -47,7 +50,7 @@ export function Input20({
                 {name}
               </span>
             )}
-            <span className="font-mono text-xs uppercase text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {hex}
             </span>
           </div>

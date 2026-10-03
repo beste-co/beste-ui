@@ -29,14 +29,14 @@ interface Health1Props {
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-current/10 text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-current",
+  primary: "text-primary",
+  foreground: "text-current",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const traceClasses: Record<Tone, string> = {
@@ -68,11 +68,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const health1Demo: Health1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   bpm: 72,
-  status: "Resting · Normal",
-  updated: "2 min ago",
   label: "Heart rate",
   unitLabel: "bpm",
   tone: "primary",
@@ -86,7 +84,7 @@ export function Health1({
   unitLabel = "bpm",
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Health1Props) {
@@ -101,23 +99,16 @@ export function Health1({
     >
       <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-full",
-              iconClasses[tone]
-            )}
-          >
-            <Heart
-              className="size-4 animate-pulse fill-current"
-              aria-hidden="true"
-            />
-          </div>
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <Heart
+            className={cn("size-5 shrink-0 animate-pulse fill-current", iconClasses[tone])}
+            aria-hidden="true"
+          />
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
         </div>
         <div className="flex items-baseline gap-1.5">
-          <span className="font-mono text-3xl font-bold">
+          <span className="text-3xl font-bold tabular-nums">
             {bpm}
           </span>
           <span className="text-xs font-medium text-current/60">
@@ -139,10 +130,12 @@ export function Health1({
             strokeLinejoin="round"
           />
         </svg>
-        <div className="flex items-center justify-between text-xs text-current/60">
-          {status && <span>{status}</span>}
-          {updated && <span>{updated}</span>}
-        </div>
+        {(status || updated) && (
+          <div className="flex items-center justify-between text-xs text-current/60">
+            {status && <span>{status}</span>}
+            {updated && <span>{updated}</span>}
+          </div>
+        )}
       </div>
     </div>
   );

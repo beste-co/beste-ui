@@ -35,7 +35,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats3Demo: Stats3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   items: [
     { value: "128K", label: "Users" },
@@ -44,7 +44,7 @@ export const stats3Demo: Stats3Props = {
   ],
 };
 
-export function Stats3({ items = [], surface = "card", bordered = true, inverted = false, className }: Stats3Props) {
+export function Stats3({ items = [], surface = "card", bordered = false, inverted = false, className }: Stats3Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -66,7 +66,7 @@ export function Stats3({ items = [], surface = "card", bordered = true, inverted
             <span className="text-xl font-bold tabular-nums">
               {item.value}
             </span>
-            <span className="text-xs uppercase tracking-wide text-current/60">
+            <span className="text-xs text-current/60">
               {item.label}
             </span>
           </div>

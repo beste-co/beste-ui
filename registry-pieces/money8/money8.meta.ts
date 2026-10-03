@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "money8",
   title: "Cash Withdrawal",
   description:
-    "Dashed-border card with an emerald cash bubble, a status label, and a bold amount with currency.",
+    "Dashed-border card with an emerald cash icon, a status label, and a bold amount with currency.",
   category: "Finance",
 };

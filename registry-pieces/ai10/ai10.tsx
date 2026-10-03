@@ -56,13 +56,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai10Demo: Ai10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Monthly requests",
   used: 4200,
   quota: 10000,
-  resetsIn: "resets in 12d",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Ai10({
@@ -70,9 +69,9 @@ export function Ai10({
   used = 0,
   quota = 1000,
   resetsIn,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai10Props) {
@@ -126,15 +125,15 @@ export function Ai10({
               strokeDashoffset={offset}
             />
           </svg>
-          <span className="relative font-mono text-xs font-semibold tabular-nums">
+          <span className="relative text-xs font-semibold tabular-nums">
             {Math.round(pct)}%
           </span>
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
-          <span className="truncate text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="truncate text-xs font-semibold text-current/60">
             {label}
           </span>
-          <span className="font-mono text-sm tabular-nums">
+          <span className="text-sm tabular-nums">
             {used.toLocaleString()}{" "}
             <span className="text-current/60">
               / {quota.toLocaleString()}

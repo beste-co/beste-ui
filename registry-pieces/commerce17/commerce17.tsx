@@ -18,17 +18,18 @@ interface Commerce17Props {
   points?: number;
   nextThreshold?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  violet: "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white",
-  emerald: "bg-gradient-to-br from-emerald-500 to-teal-500 text-white",
-  sky: "bg-gradient-to-br from-sky-500 to-indigo-500 text-white",
-  amber: "bg-gradient-to-br from-amber-400 to-orange-500 text-white",
-  rose: "bg-gradient-to-br from-rose-500 to-fuchsia-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  violet: "text-violet-500",
+  emerald: "text-emerald-500",
+  sky: "text-sky-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -47,6 +48,7 @@ export const commerce17Demo: Commerce17Props = {
   points: 2140,
   nextThreshold: 2750,
   tone: "primary",
+  bordered: false,
 };
 
 export function Commerce17({
@@ -55,6 +57,7 @@ export function Commerce17({
   points = 0,
   nextThreshold = 1000,
   tone = "primary",
+  bordered = false,
   className,
 }: Commerce17Props) {
   const pct = Math.max(2, Math.min(100, (points / nextThreshold) * 100));
@@ -67,28 +70,18 @@ export function Commerce17({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span
-              className={cn(
-                "flex size-7 shrink-0 items-center justify-center rounded-full shadow-sm",
-                tileClasses[tone]
-              )}
+            <Crown
+              className={cn("size-4 shrink-0", iconClasses[tone])}
               aria-hidden="true"
-            >
-              <Crown className="size-3.5" />
+            />
+            <span className="text-xs font-semibold text-card-foreground">
+              {tier} member
             </span>
-            <div className="flex flex-col">
-              <span className="text-xs font-semibold text-card-foreground">
-                {tier} member
-              </span>
-              <span className="text-xs text-muted-foreground">
-                Loyalty program
-              </span>
-            </div>
           </div>
-          <span className="font-mono text-sm font-semibold tabular-nums text-card-foreground">
+          <span className="text-sm font-semibold tabular-nums text-card-foreground">
             {points.toLocaleString()}
             <span className="ml-0.5 text-xs text-muted-foreground">pts</span>
           </span>

@@ -40,7 +40,6 @@ export const badge1Demo: Badge1Props = {
     { label: "needs review", tone: "warning" },
     { label: "archived", tone: "muted" },
   ],
-  removable: true,
 };
 
 export function Badge1({

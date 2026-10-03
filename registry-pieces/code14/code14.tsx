@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GitCommit } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Kind = "context" | "added" | "removed";
@@ -15,6 +14,7 @@ interface Code14Props {
   filename?: string;
   lines?: DiffLine[];
   stepMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,22 +33,21 @@ const signs: Record<Kind, string> = {
 export const code14Demo: Code14Props = {
   filename: "pricing.ts",
   lines: [
-    { text: 'import { coupon } from "./coupon"' },
-    { text: "" },
     { text: "export function total(cart: Cart) {" },
-    { text: "  const sum = cart.lines.reduce(add, 0)", kind: "removed" },
+    { text: "  const sum = cart.lines.reduce(add, 0)" },
     { text: "  return sum", kind: "removed" },
-    { text: "  const sum = cart.lines.reduce(add, 0)", kind: "added" },
     { text: "  const discount = coupon(cart, sum)", kind: "added" },
     { text: "  return sum - discount", kind: "added" },
     { text: "}" },
   ],
+  bordered: false,
 };
 
 export function Code14({
   filename = "diff",
   lines = [],
   stepMs = 350,
+  bordered = false,
   className,
 }: Code14Props) {
   const changeOrder = lines.map((line) => line.kind ?? "context");
@@ -65,15 +64,11 @@ export function Code14({
   }, [revealed, changes, stepMs]);
 
   let seen = 0;
-  let added = 0;
-  let removed = 0;
   const rows = lines.map((line) => {
     const kind = line.kind ?? "context";
     if (kind === "context") return { line, kind, visible: true };
     const visible = seen < revealed;
     seen += 1;
-    if (visible && kind === "added") added += 1;
-    if (visible && kind === "removed") removed += 1;
     return { line, kind, visible };
   });
 
@@ -85,16 +80,10 @@ export function Code14({
       )}
     >
       <style>{`@keyframes code14-in { from { opacity: 0; transform: translateX(-0.5rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="w-full max-w-80 overflow-hidden rounded-md border border-border bg-card shadow-xl">
-        <div className="flex items-center justify-between border-b border-border bg-muted px-3 py-2">
-          <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-            <GitCommit className="size-3.5" aria-hidden="true" />
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-md bg-card shadow-xl", bordered && "border border-border")}>
+        <div className="border-b border-border bg-muted px-3 py-2">
+          <span className="font-mono text-xs text-muted-foreground">
             {filename}
-          </span>
-          <span className="text-xs tabular-nums">
-            <span className="text-emerald-600 dark:text-emerald-400">{added} added</span>
-            <span className="text-muted-foreground">, </span>
-            <span className="text-rose-600 dark:text-rose-400">{removed} removed</span>
           </span>
         </div>
         <div className="overflow-x-auto py-3">

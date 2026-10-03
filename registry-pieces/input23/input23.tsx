@@ -8,6 +8,7 @@ interface Input23Props {
   quantity?: number;
   max?: number;
   price?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const input23Demo: Input23Props = {
   quantity: 2,
   max: 4,
   price: "$38 each",
+  bordered: false,
 };
 
 export function Input23({
@@ -23,6 +25,7 @@ export function Input23({
   quantity = 0,
   max = 10,
   price,
+  bordered = false,
   className,
 }: Input23Props) {
   return (
@@ -32,7 +35,7 @@ export function Input23({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center justify-between gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center justify-between gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col">
           {label && (
             <span className="text-sm font-semibold text-card-foreground">
@@ -43,7 +46,7 @@ export function Input23({
             <span className="text-xs text-muted-foreground">{price}</span>
           )}
         </div>
-        <div className="inline-flex items-center overflow-hidden rounded-full border border-border bg-card">
+        <div className={cn("inline-flex items-center overflow-hidden rounded-full", bordered ? "border border-border bg-card" : "bg-muted")}>
           <button
             type="button"
             disabled={quantity <= 0}
@@ -52,7 +55,7 @@ export function Input23({
           >
             <Minus className="size-3.5" aria-hidden="true" />
           </button>
-          <span className="flex min-w-10 items-center justify-center font-mono text-sm font-bold text-card-foreground">
+          <span className="flex min-w-10 items-center justify-center text-sm font-bold text-card-foreground">
             {quantity}
           </span>
           <button

@@ -55,21 +55,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard21Demo: Dashboard21Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Storage used",
   value: 68,
   caption: "34 GB of 50 GB",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard21({
   label = "Progress",
   value = 0,
   caption,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard21Props) {
@@ -112,16 +112,16 @@ export function Dashboard21({
               strokeDashoffset={offset}
             />
           </svg>
-          <span className="absolute inset-0 flex items-center justify-center font-mono text-sm font-semibold tabular-nums">
+          <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums">
             {Math.round(pct)}%
           </span>
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
           {caption && (
-            <span className="truncate font-mono text-sm">
+            <span className="truncate text-sm">
               {caption}
             </span>
           )}

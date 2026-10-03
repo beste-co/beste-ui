@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "neutral" | "primary" | "foreground";
@@ -53,12 +52,7 @@ export function Tooltip4({
             cardClasses[tone]
           )}
         >
-          <div className="flex items-center gap-2">
-            <Sparkles className="size-3.5 opacity-80" aria-hidden="true" />
-            {title && (
-              <span className="text-xs font-semibold">{title}</span>
-            )}
-          </div>
+          {title && <span className="text-xs font-semibold">{title}</span>}
           {description && (
             <span className="text-xs leading-snug opacity-70">
               {description}
@@ -67,10 +61,9 @@ export function Tooltip4({
           {action && (
             <button
               type="button"
-              className="inline-flex items-center gap-1 self-start text-xs font-semibold hover:underline"
+              className="self-start text-xs font-semibold hover:underline"
             >
               {action}
-              <ArrowRight className="size-3" aria-hidden="true" />
             </button>
           )}
         </div>

@@ -13,6 +13,7 @@ interface Commerce23Props {
   rows?: Commerce23Row[];
   total?: string;
   totalLabel?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,17 +21,19 @@ export const commerce23Demo: Commerce23Props = {
   rows: [
     { label: "Subtotal", value: "$284.00" },
     { label: "Shipping", value: "Free", muted: true },
-    { label: "Tax (8.5%)", value: "$24.14" },
-    { label: "Discount · SUMMER20", value: "−$56.80", emphasis: true },
+    { label: "Tax", value: "$24.14" },
+    { label: "Discount", value: "−$56.80", emphasis: true },
   ],
   total: "$251.34",
   totalLabel: "Total",
+  bordered: false,
 };
 
 export function Commerce23({
   rows = [],
   total = "$0.00",
   totalLabel = "Total",
+  bordered = false,
   className,
 }: Commerce23Props) {
   return (
@@ -40,7 +43,7 @@ export function Commerce23({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col gap-1">
           {rows.map((r) => (
             <div
@@ -50,7 +53,7 @@ export function Commerce23({
               <span className="truncate text-muted-foreground">{r.label}</span>
               <span
                 className={cn(
-                  "shrink-0 font-mono tabular-nums",
+                  "shrink-0 tabular-nums",
                   r.emphasis
                     ? "font-medium text-emerald-600 dark:text-emerald-400"
                     : r.muted
@@ -67,7 +70,7 @@ export function Commerce23({
           <span className="text-sm font-semibold text-card-foreground">
             {totalLabel}
           </span>
-          <span className="font-mono text-lg font-semibold tabular-nums text-card-foreground">
+          <span className="text-lg font-semibold tabular-nums text-card-foreground">
             {total}
           </span>
         </div>

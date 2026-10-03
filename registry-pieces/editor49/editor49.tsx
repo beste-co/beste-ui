@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Editor49Props {
@@ -12,6 +11,7 @@ interface Editor49Props {
   charMs?: number;
   holdMs?: number;
   hopMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,6 +24,7 @@ export const editor49Demo: Editor49Props = {
   ],
   draft: "Adding one line about the migration guide.",
   editors: ["Joni Mitchell", "Thom Yorke"],
+  bordered: false,
 };
 
 function initials(name: string) {
@@ -43,6 +44,7 @@ export function Editor49({
   charMs = 40,
   holdMs = 2200,
   hopMs = 2000,
+  bordered = false,
   className,
 }: Editor49Props) {
   const [hop, setHop] = useState(0);
@@ -74,9 +76,8 @@ export function Editor49({
 @keyframes editor49-blink { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0.15; } }
 `}</style>
 
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <FileText className="size-4 text-muted-foreground" aria-hidden="true" />
           <span className="text-sm font-medium text-card-foreground">
             {documentTitle}
           </span>

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "tooltip10",
   title: "Image Preview",
   description:
-    "Thumbnail-first tooltip showing a gradient preview, dimensions chip, filename, and author.",
+    "Thumbnail-first tooltip showing an image preview, a dimensions chip, and the filename.",
   category: "Tooltip",
 };

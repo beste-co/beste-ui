@@ -54,21 +54,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const monitoring5Demo: Monitoring5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Error budget",
   value: 82,
   unit: "%",
-  tone: "rose",
+  tone: "primary",
 };
 
 export function Monitoring5({
   label = "SLO",
   value = 0,
   unit = "%",
-  tone = "rose",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Monitoring5Props) {
@@ -117,7 +117,7 @@ export function Monitoring5({
               {unit}
             </span>
           </span>
-          <span className="text-xs uppercase tracking-wide text-current/60">
+          <span className="text-xs text-current/60">
             {label}
           </span>
         </div>

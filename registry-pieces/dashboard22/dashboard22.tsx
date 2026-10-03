@@ -55,17 +55,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard22Demo: Dashboard22Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Weekly sessions",
   actual: 186,
   target: 220,
   max: 300,
   suffix: "",
-  targetMetLabel: "Target met",
-  toTargetLabel: "to target",
-  maxLabel: "max",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Dashboard22({
@@ -74,17 +71,20 @@ export function Dashboard22({
   target = 100,
   max = 100,
   suffix,
-  targetMetLabel = "Target met",
-  toTargetLabel = "to target",
-  maxLabel = "max",
-  tone = "violet",
+  targetMetLabel,
+  toTargetLabel,
+  maxLabel,
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard22Props) {
   const actualPct = Math.max(0, Math.min(100, (actual / max) * 100));
   const hitTarget = actual >= target;
+  const targetNote = hitTarget
+    ? targetMetLabel
+    : toTargetLabel && `${target - actual}${suffix ?? ""} ${toTargetLabel}`;
 
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
@@ -97,10 +97,10 @@ export function Dashboard22({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
-          <div className="flex items-baseline gap-1 font-mono text-xs">
+          <div className="flex items-baseline gap-1 text-xs">
             <span className="text-sm font-semibold tabular-nums">
               {actual}
               {suffix}
@@ -120,17 +120,17 @@ export function Dashboard22({
             style={{ width: `${actualPct}%` }}
           />
         </div>
-        <div className="flex items-center justify-between text-xs text-current/60">
-          <span>
-            {hitTarget
-              ? targetMetLabel
-              : `${target - actual}${suffix} ${toTargetLabel}`}
-          </span>
-          <span>
-            {maxLabel} {max}
-            {suffix}
-          </span>
-        </div>
+        {(targetNote || maxLabel) && (
+          <div className="flex items-center justify-between text-xs tabular-nums text-current/60">
+            <span>{targetNote}</span>
+            {maxLabel && (
+              <span>
+                {maxLabel} {max}
+                {suffix}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

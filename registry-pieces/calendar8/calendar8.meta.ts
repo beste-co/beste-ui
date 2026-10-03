@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "calendar8",
   title: "Year Heatmap",
   description:
-    "GitHub-style contribution grid with five emerald intensity steps, a caption, and a Less/More legend.",
+    "GitHub-style contribution grid with five emerald intensity steps and a one-line caption.",
   category: "Calendar",
 };

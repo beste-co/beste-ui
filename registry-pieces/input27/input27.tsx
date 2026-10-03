@@ -10,6 +10,7 @@ interface Token {
 interface Input27Props {
   label?: string;
   tokens?: Token[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,6 +23,7 @@ export const input27Demo: Input27Props = {
     { text: "launch-prep", type: "hash" },
     { text: " agenda?" },
   ],
+  bordered: false,
 };
 
 const typeClasses = {
@@ -33,6 +35,7 @@ const typeClasses = {
 export function Input27({
   label,
   tokens = [],
+  bordered = false,
   className,
 }: Input27Props) {
   return (
@@ -48,7 +51,7 @@ export function Input27({
             {label}
           </label>
         )}
-        <div className="rounded-md border border-border bg-card px-3 py-2 shadow-sm">
+        <div className={cn("rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
           <span className="text-sm leading-relaxed">
             {tokens.map((t, idx) => (
               <span key={idx} className={typeClasses[t.type ?? "plain"]}>

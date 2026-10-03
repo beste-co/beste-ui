@@ -1,11 +1,11 @@
 "use client";
 
-import { CalendarX } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Calendar24Props {
   days?: { day: string; date: number; blocked?: boolean; off?: boolean }[];
   reason?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,11 +20,13 @@ export const calendar24Demo: Calendar24Props = {
     { day: "Sun", date: 3 },
   ],
   reason: "Out of office · Apr 30 – May 1",
+  bordered: false,
 };
 
 export function Calendar24({
   days = [],
   reason,
+  bordered = false,
   className,
 }: Calendar24Props) {
   return (
@@ -34,16 +36,12 @@ export function Calendar24({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <CalendarX
-            className="size-3.5 text-rose-500"
-            aria-hidden="true"
-          />
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {reason && (
+          <span className="text-xs font-semibold text-muted-foreground">
             {reason}
           </span>
-        </div>
+        )}
         <div className="flex items-center justify-between gap-1">
           {days.map((d, idx) => (
             <div
@@ -57,12 +55,12 @@ export function Calendar24({
                     : "bg-muted/60"
               )}
             >
-              <span className="font-medium uppercase tracking-wide text-muted-foreground">
+              <span className="font-medium text-muted-foreground">
                 {d.day}
               </span>
               <span
                 className={cn(
-                  "font-mono font-bold",
+                  "font-bold tabular-nums",
                   d.off
                     ? "text-rose-700 dark:text-rose-300 line-through"
                     : "text-card-foreground"

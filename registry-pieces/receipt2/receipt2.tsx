@@ -39,10 +39,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const receipt2Demo: Receipt2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Invoice",
-  reference: "#4821",
   status: "Paid",
   items: [
     { label: "Care plan · May", amount: "$980.00" },
@@ -59,7 +58,7 @@ export function Receipt2({
   items = [],
   total,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Receipt2Props) {
@@ -79,7 +78,7 @@ export function Receipt2({
               {title}
             </p>
             {reference && (
-              <span className="font-mono text-sm text-current/60">
+              <span className="text-sm text-current/60">
                 {reference}
               </span>
             )}
@@ -95,7 +94,7 @@ export function Receipt2({
           {items.map((item, index) => (
             <div key={index} className="flex items-center justify-between text-sm">
               <span className="text-current/60">{item.label}</span>
-              <span className="font-mono tabular-nums">
+              <span className="tabular-nums">
                 {item.amount}
               </span>
             </div>
@@ -105,7 +104,7 @@ export function Receipt2({
         {total && (
           <div className="mt-3 flex items-center justify-between border-t border-current/15 pt-3">
             <span className="text-sm font-medium">Total</span>
-            <span className="font-mono text-base font-semibold tabular-nums">
+            <span className="text-base font-semibold tabular-nums">
               {total}
             </span>
           </div>

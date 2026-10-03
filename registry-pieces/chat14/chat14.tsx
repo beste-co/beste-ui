@@ -24,7 +24,7 @@ export function Chat14({
     >
       <div className="flex w-full max-w-72 items-center gap-3">
         <span className="h-px flex-1 bg-border" aria-hidden="true" />
-        <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
           {label}
         </span>
         <span className="h-px flex-1 bg-border" aria-hidden="true" />

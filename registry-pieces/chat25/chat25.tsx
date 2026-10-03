@@ -12,6 +12,7 @@ interface Typer {
 interface Chat25Props {
   typers?: Typer[];
   summary?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,21 +20,23 @@ export const chat25Demo: Chat25Props = {
   typers: [
     {
       src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face",
-      alt: "Ayşe",
-      fallback: "AK",
+      alt: "Nils Frahm",
+      fallback: "NF",
     },
     {
       src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
-      alt: "Merve",
-      fallback: "MÖ",
+      alt: "Hania Rani",
+      fallback: "HR",
     },
   ],
-  summary: "Ayşe and Merve are typing",
+  summary: "Nils and Hania are typing",
+  bordered: false,
 };
 
 export function Chat25({
   typers = [],
   summary,
+  bordered = false,
   className,
 }: Chat25Props) {
   return (
@@ -43,7 +46,7 @@ export function Chat25({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-2.5 py-1.5 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-full bg-card px-2.5 py-1.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center -space-x-1.5">
           {typers.slice(0, 3).map((t, i) => (
             <Avatar key={i} className="size-5 border-2 border-card">

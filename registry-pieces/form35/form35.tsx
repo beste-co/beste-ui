@@ -10,6 +10,7 @@ interface Toggle {
 interface Form35Props {
   title?: string;
   items?: Toggle[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,9 +21,10 @@ export const form35Demo: Form35Props = {
     { label: "Payment received", enabled: true },
     { label: "Weekly summary", enabled: false },
   ],
+  bordered: false,
 };
 
-export function Form35({ title, items = [], className }: Form35Props) {
+export function Form35({ title, items = [], bordered = false, className }: Form35Props) {
   return (
     <div
       className={cn(
@@ -30,7 +32,7 @@ export function Form35({ title, items = [], className }: Form35Props) {
         className
       )}
     >
-      <div className="w-full max-w-72 rounded-md border border-border bg-card p-4 shadow-xl">
+      <div className={cn("w-full max-w-72 rounded-md bg-card p-4 shadow-xl", bordered && "border border-border")}>
         {title && (
           <p className="mb-3 text-sm font-semibold text-card-foreground">
             {title}

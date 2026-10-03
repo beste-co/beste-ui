@@ -33,10 +33,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai3Demo: Ai3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   model: "Claude Opus 4.6",
-  speed: "Balanced",
   image: "https://oud.pics/sm/l/claude.png",
   alt: "Claude",
 };
@@ -47,7 +46,7 @@ export function Ai3({
   image,
   alt,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai3Props) {

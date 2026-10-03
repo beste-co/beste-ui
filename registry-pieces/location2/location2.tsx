@@ -8,6 +8,7 @@ interface Location2Props {
   place?: string;
   address?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -45,13 +46,15 @@ const blocks = [
 export const location2Demo: Location2Props = {
   place: "Times Square",
   address: "Manhattan, New York",
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Location2({
   place,
   address,
   tone = "primary",
+  bordered = false,
   className,
 }: Location2Props) {
   return (
@@ -61,7 +64,7 @@ export function Location2({
         className
       )}
     >
-      <div className="w-full max-w-64 overflow-hidden rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-64 overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         <div className="relative h-32 bg-background">
           <svg
             viewBox="0 0 256 128"

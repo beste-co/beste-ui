@@ -14,6 +14,7 @@ interface Health9Props {
   meal?: string;
   kcal?: number;
   macros?: Macro[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -32,12 +33,14 @@ export const health9Demo: Health9Props = {
   meal: "Lunch · Grilled chicken bowl",
   kcal: 620,
   macros: defaultMacros,
+  bordered: false,
 };
 
 export function Health9({
   meal,
   kcal = 0,
   macros = defaultMacros,
+  bordered = false,
   className,
 }: Health9Props) {
   const totalGrams = macros.reduce((acc, m) => acc + m.grams, 0);
@@ -49,19 +52,17 @@ export function Health9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-amber-500/15 text-amber-500">
-            <Utensils className="size-4" aria-hidden="true" />
-          </div>
+          <Utensils className="size-5 shrink-0 text-amber-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {meal && (
               <span className="truncate text-sm font-semibold text-card-foreground">
                 {meal}
               </span>
             )}
-            <span className="text-xs text-muted-foreground">
-              {kcal} kcal · {totalGrams} g total
+            <span className="text-xs tabular-nums text-muted-foreground">
+              {kcal} kcal
             </span>
           </div>
         </div>
@@ -82,13 +83,13 @@ export function Health9({
             <div key={idx} className="flex flex-col">
               <span
                 className={cn(
-                  "text-xs font-medium uppercase tracking-wide",
+                  "text-xs font-medium",
                   m.text
                 )}
               >
                 {m.label}
               </span>
-              <span className="font-mono text-sm font-semibold text-card-foreground">
+              <span className="text-sm font-semibold tabular-nums text-card-foreground">
                 {m.grams} g
               </span>
             </div>

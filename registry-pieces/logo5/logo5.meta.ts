@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Titled 3-by-2 grid of bordered tiles, each centered on a customer or partner logo for social proof.",
   category: "Logo",
+  cardScale: 0.75,
 };

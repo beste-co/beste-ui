@@ -17,6 +17,7 @@ interface Ai32Props {
   status?: "queued" | "running" | "succeeded";
   progress?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -40,7 +41,8 @@ export const ai32Demo: Ai32Props = {
   dataset: "support_tickets",
   status: "running",
   progress: 62,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai32({
@@ -48,7 +50,8 @@ export function Ai32({
   dataset = "dataset",
   status = "running",
   progress = 0,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai32Props) {
   const pct = Math.max(0, Math.min(100, progress));
@@ -60,9 +63,9 @@ export function Ai32({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
-          <div className="flex min-w-0 items-baseline gap-1 font-mono text-xs">
+          <div className="flex min-w-0 items-baseline gap-1 text-xs">
             <span className="truncate text-card-foreground">{base}</span>
             <span className="text-muted-foreground">+</span>
             <span className="truncate text-muted-foreground">{dataset}</span>

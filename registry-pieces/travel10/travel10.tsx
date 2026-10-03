@@ -36,11 +36,9 @@ const cardClasses: Record<Tone, string> = {
 };
 
 export const travel10Demo: Travel10Props = {
-  label: "Next trip",
   destination: "Lisbon · Jun 14",
   days: 12,
   daysLabel: "days to go",
-  detail: "Boarding in 4h 37m · 09:40 local",
   progress: 84,
   tone: "neutral",
 };
@@ -71,15 +69,10 @@ export function Travel10({
         )}
       >
         <div className="flex items-center gap-3">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-current/10">
-            <Plane
-              className="-rotate-45 size-4"
-              aria-hidden="true"
-            />
-          </div>
+          <Plane className="-rotate-45 size-5 shrink-0" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {label && (
-              <span className="text-xs font-semibold uppercase tracking-wide opacity-70">
+              <span className="text-xs font-semibold opacity-70">
                 {label}
               </span>
             )}
@@ -90,11 +83,11 @@ export function Travel10({
             )}
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="font-mono text-3xl font-bold leading-none tabular-nums">
+            <span className="text-3xl font-bold leading-none tabular-nums">
               {days}
             </span>
             {daysLabel && (
-              <span className="text-xs font-medium uppercase tracking-wide opacity-70">
+              <span className="text-xs font-medium opacity-70">
                 {daysLabel}
               </span>
             )}

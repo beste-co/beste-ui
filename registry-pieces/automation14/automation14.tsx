@@ -28,13 +28,13 @@ interface Automation14Props {
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary/15 text-primary",
-  foreground: "bg-current/10 text-foreground",
-  violet: "bg-violet-500/15 text-violet-600 dark:text-violet-400",
-  emerald: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-  sky: "bg-sky-500/15 text-sky-600 dark:text-sky-400",
-  amber: "bg-amber-500/15 text-amber-600 dark:text-amber-400",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  violet: "text-violet-600 dark:text-violet-400",
+  emerald: "text-emerald-600 dark:text-emerald-400",
+  sky: "text-sky-600 dark:text-sky-400",
+  amber: "text-amber-600 dark:text-amber-400",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -64,29 +64,25 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation14Demo: Automation14Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   headingLabel: "For each item",
-  source: "items[]",
   current: 3,
   total: 28,
-  currentLabel: "current",
-  sampleKey: "item.email",
-  sampleValue: "ada@beste.co",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Automation14({
   headingLabel = "For each item",
-  source = "items[]",
+  source,
   current = 0,
   total = 1,
   currentLabel = "current",
   sampleKey,
   sampleValue,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation14Props) {
@@ -103,24 +99,18 @@ export function Automation14({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
-          <span
-            className={cn(
-              "flex size-7 shrink-0 items-center justify-center rounded-md",
-              tileClasses[tone]
-            )}
-            aria-hidden="true"
-          >
-            <Repeat2 className="size-3.5" />
-          </span>
+          <Repeat2 className={cn("size-4 shrink-0", iconClasses[tone])} aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="text-xs font-semibold">
               {headingLabel}
             </span>
-            <span className="truncate font-mono text-xs text-current/60">
-              {source}
-            </span>
+            {source && (
+              <span className="truncate text-xs text-current/60">
+                {source}
+              </span>
+            )}
           </div>
-          <span className="shrink-0 font-mono text-xs tabular-nums text-current/60">
+          <span className="shrink-0 text-xs tabular-nums text-current/60">
             {current} / {total}
           </span>
         </div>
@@ -132,9 +122,9 @@ export function Automation14({
           />
         </div>
         {sampleKey && sampleValue && (
-          <div className="flex items-center gap-1.5 rounded-sm bg-current/5 px-2 py-1 font-mono text-xs">
+          <div className="flex items-center gap-1.5 rounded-sm bg-current/5 px-2 py-1 text-xs">
             <span className="text-current/60">{currentLabel}</span>
-            <span className="">·</span>
+            <span>·</span>
             <span className="truncate text-sky-600 dark:text-sky-400">
               {sampleValue}
             </span>

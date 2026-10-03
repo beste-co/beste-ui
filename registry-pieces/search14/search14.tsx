@@ -1,30 +1,27 @@
 "use client";
 
-import { Flame, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Search14Props {
   placeholder?: string;
   trending?: string[];
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const search14Demo: Search14Props = {
   placeholder: "Search docs and guides…",
-  label: "Trending",
-  trending: [
-    "migrate to v3",
-    "webhook retries",
-    "api rate limits",
-    "team roles",
-  ],
+  trending: ["migrate to v3", "webhook retries", "team roles"],
+  bordered: false,
 };
 
 export function Search14({
   placeholder = "Search…",
   trending = [],
-  label = "Trending",
+  label,
+  bordered = false,
   className,
 }: Search14Props) {
   return (
@@ -35,7 +32,7 @@ export function Search14({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-2.5">
-        <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+        <div className={cn("flex items-center gap-2 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
           <Search
             className="size-3.5 shrink-0 text-muted-foreground"
             aria-hidden="true"
@@ -45,18 +42,16 @@ export function Search14({
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            <Flame
-              className="size-3 text-orange-500"
-              aria-hidden="true"
-            />
-            {label}
-          </span>
+          {label && (
+            <span className="text-xs font-medium text-muted-foreground">
+              {label}
+            </span>
+          )}
           {trending.map((tag, idx) => (
             <button
               key={idx}
               type="button"
-              className="rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs text-card-foreground hover:bg-muted"
+              className={cn("rounded-full bg-muted/60 px-2.5 py-1 text-xs text-card-foreground hover:bg-muted", bordered && "border border-border")}
             >
               {tag}
             </button>

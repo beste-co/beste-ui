@@ -39,7 +39,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation18Demo: Automation18Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Last 7 days",
   days: [
@@ -51,17 +51,15 @@ export const automation18Demo: Automation18Props = {
     { label: "Sat", success: 29, failed: 1 },
     { label: "Sun", success: 43, failed: 1 },
   ],
-  runsSuffix: "runs",
-  failedSuffix: "failed",
 };
 
 export function Automation18({
   title = "Run stats",
   days = [],
-  runsSuffix = "runs",
-  failedSuffix = "failed",
+  runsSuffix,
+  failedSuffix,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation18Props) {
@@ -70,6 +68,8 @@ export function Automation18({
   const successRate =
     total > 0 ? ((total - totalFailed) / total) * 100 : 100;
   const max = Math.max(...days.map((d) => d.success + d.failed), 1);
+
+  const showFailed = Boolean(failedSuffix) && totalFailed > 0;
 
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
@@ -82,10 +82,10 @@ export function Automation18({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-medium text-current/60">
             {title}
           </span>
-          <span className="font-mono text-sm font-semibold tabular-nums">
+          <span className="text-sm font-semibold tabular-nums">
             {successRate.toFixed(1)}%
           </span>
         </div>
@@ -123,16 +123,20 @@ export function Automation18({
             );
           })}
         </div>
-        <div className="flex items-center justify-between font-mono text-xs text-current/60">
-          <span>
-            {total.toLocaleString()} {runsSuffix}
-          </span>
-          {totalFailed > 0 && (
-            <span className="text-rose-600 dark:text-rose-400">
-              {totalFailed} {failedSuffix}
-            </span>
-          )}
-        </div>
+        {(runsSuffix || showFailed) && (
+          <div className="flex items-center justify-between gap-2 text-xs tabular-nums text-current/60">
+            {runsSuffix && (
+              <span>
+                {total.toLocaleString()} {runsSuffix}
+              </span>
+            )}
+            {showFailed && (
+              <span className="ml-auto text-rose-600 dark:text-rose-400">
+                {totalFailed} {failedSuffix}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

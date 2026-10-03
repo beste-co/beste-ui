@@ -26,18 +26,19 @@ interface Health7Props {
   stages?: SleepStage[];
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const defaultStages: SleepStage[] = [
@@ -59,18 +60,19 @@ const defaultStages: SleepStage[] = [
 
 export const health7Demo: Health7Props = {
   totalHours: "7h 41m",
-  score: 86,
   stages: defaultStages,
   label: "Sleep",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health7({
   totalHours,
-  score = 0,
+  score,
   stages = defaultStages,
   label = "Sleep",
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health7Props) {
   const total = stages.reduce((acc, s) => acc + s.minutes, 0);
@@ -82,27 +84,25 @@ export function Health7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-full",
-              iconClasses[tone]
-            )}
-          >
-            <Moon className="size-4 fill-current" aria-hidden="true" />
-          </div>
+          <Moon
+            className={cn("size-5 shrink-0 fill-current", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {label}
             </span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {totalHours}
             </span>
           </div>
-          <span className="shrink-0 rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-            Score {score}
-          </span>
+          {score !== undefined && (
+            <span className="shrink-0 rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold tabular-nums text-emerald-700 dark:text-emerald-300">
+              Score {score}
+            </span>
+          )}
         </div>
         <div
           className="flex h-2 overflow-hidden rounded-full"
@@ -121,13 +121,13 @@ export function Health7({
             <div key={idx} className="flex flex-col">
               <span
                 className={cn(
-                  "text-xs font-medium uppercase tracking-wide",
+                  "text-xs font-medium",
                   stage.text
                 )}
               >
                 {stage.label}
               </span>
-              <span className="font-mono text-card-foreground">
+              <span className="tabular-nums text-card-foreground">
                 {Math.floor(stage.minutes / 60)}h {stage.minutes % 60}m
               </span>
             </div>

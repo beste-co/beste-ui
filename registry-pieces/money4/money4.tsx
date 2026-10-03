@@ -37,12 +37,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const money4Demo: Money4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   merchant: "Stripe payout",
   category: "Income",
   amount: "+$3,240.00",
-  date: "Today · 09:14",
   direction: "incoming",
 };
 
@@ -53,15 +52,15 @@ export function Money4({
   date,
   direction = "outgoing",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Money4Props) {
   const isIncoming = direction === "incoming";
   const Icon = isIncoming ? ArrowDownLeft : ArrowUpRight;
-  const iconBubble = isIncoming
-    ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400"
-    : "bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400";
+  const iconColor = isIncoming
+    ? "text-emerald-600 dark:text-emerald-400"
+    : "text-rose-600 dark:text-rose-400";
   const amountColor = isIncoming
     ? "text-emerald-600 dark:text-emerald-400"
     : "";
@@ -76,14 +75,7 @@ export function Money4({
       )}
     >
       <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg px-3 py-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div
-          className={cn(
-            "flex size-9 shrink-0 items-center justify-center rounded-full",
-            iconBubble
-          )}
-        >
-          <Icon className="size-4" aria-hidden="true" />
-        </div>
+        <Icon className={cn("size-5 shrink-0", iconColor)} aria-hidden="true" />
         <div className="flex min-w-0 flex-1 flex-col">
           <span className="truncate text-sm font-semibold">
             {merchant}

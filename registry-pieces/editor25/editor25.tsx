@@ -10,21 +10,23 @@ interface Line {
 interface Editor25Props {
   lines?: Line[];
   limit?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor25Demo: Editor25Props = {
-  limit: 80,
   lines: [
     { text: "const message = `Hello`;" },
     { text: "const longer = `Shipping the biggest onboarding upgrade yet`;" },
     { text: "const wrapped = items.map((i) => i.name).join(', ') + '!'" },
   ],
+  bordered: false,
 };
 
 export function Editor25({
   lines = [],
-  limit = 80,
+  limit,
+  bordered = false,
   className,
 }: Editor25Props) {
   return (
@@ -34,18 +36,20 @@ export function Editor25({
         className
       )}
     >
-      <div className="relative w-full max-w-80 overflow-hidden rounded-md border border-border bg-card shadow-sm">
-        <div className="flex items-center justify-between border-b border-border px-3 py-1 font-mono text-xs text-muted-foreground">
-          <span>col guide</span>
-          <span className="tabular-nums">{limit}</span>
-        </div>
+      <div className={cn("relative w-full max-w-80 overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
+        {limit !== undefined && (
+          <div className="flex items-center justify-between border-b border-border px-3 py-1 text-xs text-muted-foreground">
+            <span>col guide</span>
+            <span className="tabular-nums">{limit}</span>
+          </div>
+        )}
         <div className="relative">
           <span
             className="pointer-events-none absolute top-0 h-full w-px bg-rose-500/60"
             style={{ left: "75%" }}
             aria-hidden="true"
           />
-          <pre className="px-3 py-2 font-mono text-xs leading-relaxed">
+          <pre className="px-3 py-2 text-xs leading-relaxed">
             {lines.map((l, i) => (
               <div key={i} className="flex gap-3">
                 <span

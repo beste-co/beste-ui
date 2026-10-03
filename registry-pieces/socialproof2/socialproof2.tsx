@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const socialproof2Demo: Socialproof2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   rating: 4.8,
   reviewCount: "2,847",
@@ -42,7 +42,7 @@ export function Socialproof2({
   rating = 0,
   reviewCount,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Socialproof2Props) {

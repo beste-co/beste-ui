@@ -33,7 +33,7 @@ export function Chat11({
           {emoji}
         </span>
         {timestamp && (
-          <span className="font-mono text-xs tabular-nums text-muted-foreground">
+          <span className="text-xs tabular-nums text-muted-foreground">
             {timestamp}
           </span>
         )}

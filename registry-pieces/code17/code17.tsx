@@ -53,10 +53,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const code17Demo: Code17Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Tools",
-  countLabel: "62 available",
   tools: [
     { name: "list_pages", access: "read" },
     { name: "update_section", access: "write" },
@@ -86,7 +85,7 @@ export function Code17({
   withheldLabel = "not exposed",
   stepMs = 460,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Code17Props) {
@@ -122,18 +121,20 @@ export function Code17({
           bordered && "border border-current/15"
         )}
       >
-        <div className="flex items-baseline justify-between gap-3">
-          {title && (
-            <span className="block text-sm font-semibold">
-              {title}
-            </span>
-          )}
-          {countLabel && (
-            <span className="shrink-0 text-xs text-current/60">
-              {countLabel}
-            </span>
-          )}
-        </div>
+        {(title || countLabel) && (
+          <div className="flex items-baseline justify-between gap-3">
+            {title && (
+              <span className="block text-sm font-semibold">
+                {title}
+              </span>
+            )}
+            {countLabel && (
+              <span className="shrink-0 text-xs text-current/60">
+                {countLabel}
+              </span>
+            )}
+          </div>
+        )}
 
         <div className="flex flex-col gap-1">
           {tools.map((tool, index) => {

@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -43,12 +42,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard32Demo: Dashboard32Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Collected this month",
   value: "$92.4K",
   delta: 8.6,
-  period: "vs last month",
   data: [18, 24, 20, 32, 28, 40, 38, 52, 60],
 };
 
@@ -60,12 +58,11 @@ export function Dashboard32({
   data = [],
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard32Props) {
   const positive = typeof delta === "number" && delta >= 0;
-  const TrendIcon = positive ? TrendingUp : TrendingDown;
 
   const min = Math.min(...data);
   const max = Math.max(...data);
@@ -91,17 +88,16 @@ export function Dashboard32({
       <div className={cn("w-full max-w-80 rounded-md p-5 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
         <p className="text-sm font-medium text-current/60">{label}</p>
         <div className="mt-1 flex items-baseline gap-2">
-          <span className="text-3xl font-semibold tracking-tight">
+          <span className="text-3xl font-semibold tracking-tight tabular-nums">
             {value}
           </span>
           {typeof delta === "number" && (
             <span
               className={cn(
-                "flex items-center gap-0.5 text-sm font-medium",
+                "text-sm font-medium tabular-nums",
                 positive ? "text-emerald-600" : "text-rose-600"
               )}
             >
-              <TrendIcon className="size-4" aria-hidden="true" />
               {positive ? "+" : ""}
               {delta.toFixed(1)}%
             </span>

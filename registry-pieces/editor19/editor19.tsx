@@ -8,6 +8,7 @@ interface Editor19Props {
   suffix?: string;
   chars?: number;
   words?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const editor19Demo: Editor19Props = {
   suffix: " in a weekend.",
   chars: 27,
   words: 3,
+  bordered: false,
 };
 
 export function Editor19({
@@ -25,6 +27,7 @@ export function Editor19({
   suffix = "",
   chars = 0,
   words = 0,
+  bordered = false,
   className,
 }: Editor19Props) {
   return (
@@ -35,14 +38,14 @@ export function Editor19({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
-        <div className="rounded-md border border-border bg-card px-3 py-2 font-sans text-sm leading-snug shadow-sm">
+        <div className={cn("rounded-md bg-card px-3 py-2 font-sans text-sm leading-snug shadow-sm", bordered && "border border-border")}>
           <span className="text-card-foreground">{prefix}</span>
           <span className="rounded-sm bg-primary/25 text-card-foreground">
             {selected}
           </span>
           <span className="text-card-foreground">{suffix}</span>
         </div>
-        <div className="inline-flex items-center gap-2 self-start rounded-full bg-foreground px-3 py-1 text-xs font-mono tabular-nums text-background shadow-sm">
+        <div className="inline-flex items-center gap-2 self-start rounded-full bg-foreground px-3 py-1 text-xs tabular-nums text-background shadow-sm">
           <span>{chars} chars</span>
           <span className="opacity-50">·</span>
           <span>{words} words</span>

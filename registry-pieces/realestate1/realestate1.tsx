@@ -1,6 +1,6 @@
 "use client";
 
-import { Bath, BedDouble, Heart, Square } from "lucide-react";
+import { Bath, BedDouble, Square } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -68,7 +68,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const realestate1Demo: Realestate1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   address: "221B Riverside Avenue",
   city: "Istanbul · Levent",
@@ -79,7 +79,6 @@ export const realestate1Demo: Realestate1Props = {
   image:
     "https://images.unsplash.com/photo-1676443445368-ec3798dda7f8?w=300&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGlzdGFuYnVsJTIwbG9mdHxlbnwwfHwwfHx8MA%3D%3D",
   tone: "primary",
-  statusLabel: "For sale",
 };
 
 export function Realestate1({
@@ -91,9 +90,9 @@ export function Realestate1({
   area,
   image,
   tone = "primary",
-  statusLabel = "For sale",
+  statusLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Realestate1Props) {
@@ -120,24 +119,21 @@ export function Realestate1({
               className="absolute inset-0 size-full object-cover"
             />
           )}
-          <span
-            className={cn(
-              "absolute left-2 top-2 rounded-full px-2 py-0.5 text-xs font-semibold",
-              tagClasses[tone]
-            )}
-          >
-            {statusLabel}
-          </span>
-          <button
-            type="button"
-            className="absolute right-2 top-2 flex size-7 items-center justify-center rounded-full bg-card/90 text-muted-foreground hover:text-rose-500"
-            aria-label="Save"
-          >
-            <Heart className="size-3.5" aria-hidden="true" />
-          </button>
-          <span className="absolute bottom-2 right-2 rounded-md bg-background/90 px-2 py-0.5 font-mono text-xs font-bold backdrop-blur text-foreground">
-            {price}
-          </span>
+          {statusLabel && (
+            <span
+              className={cn(
+                "absolute left-2 top-2 rounded-full px-2 py-0.5 text-xs font-semibold",
+                tagClasses[tone]
+              )}
+            >
+              {statusLabel}
+            </span>
+          )}
+          {price && (
+            <span className="absolute bottom-2 right-2 rounded-md bg-background/90 px-2 py-0.5 text-xs font-bold tabular-nums backdrop-blur text-foreground">
+              {price}
+            </span>
+          )}
         </div>
         <div className="flex flex-col gap-1 p-3">
           {address && (
@@ -150,7 +146,7 @@ export function Realestate1({
               {city}
             </span>
           )}
-          <div className="mt-1 flex items-center gap-3 text-xs text-current/60">
+          <div className="mt-1 flex items-center gap-3 text-xs tabular-nums text-current/60">
             <span className="inline-flex items-center gap-1">
               <BedDouble className="size-3" aria-hidden="true" />
               {beds}

@@ -21,38 +21,27 @@ interface Education9Props {
   caption?: string;
   week?: DayState[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 export const education9Demo: Education9Props = {
   days: 14,
-  caption: "Show up tomorrow to keep it alive.",
   week: ["done", "done", "done", "missed", "done", "today", "future"],
-  tone: "orange",
+  tone: "primary",
+  bordered: false,
 };
 
-const tileClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-card-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  orange: "bg-orange-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  sky: "bg-sky-500 text-white",
-  violet: "bg-violet-500 text-white",
-  rose: "bg-rose-500 text-white",
-  amber: "bg-amber-500 text-white",
-};
-
-const badgeTextClasses: Record<Tone, string> = {
+const iconClasses: Record<Tone, string> = {
   neutral: "text-card-foreground",
   primary: "text-primary",
   foreground: "text-foreground",
-  orange: "text-orange-600",
-  emerald: "text-emerald-600",
-  sky: "text-sky-600",
-  violet: "text-violet-600",
-  rose: "text-rose-600",
-  amber: "text-amber-600",
+  orange: "text-orange-500",
+  emerald: "text-emerald-500",
+  sky: "text-sky-500",
+  violet: "text-violet-500",
+  rose: "text-rose-500",
+  amber: "text-amber-500",
 };
 
 const dotActiveClasses: Record<Tone, string> = {
@@ -80,7 +69,8 @@ export function Education9({
   days = 0,
   caption,
   week = [],
-  tone = "orange",
+  tone = "primary",
+  bordered = false,
   className,
 }: Education9Props) {
   return (
@@ -90,25 +80,13 @@ export function Education9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div
-          className={cn(
-            "relative flex size-11 shrink-0 items-center justify-center rounded-xl shadow-md",
-            tileClasses[tone]
-          )}
-        >
-          <Flame className="size-5" aria-hidden="true" />
-          <span
-            className={cn(
-              "absolute -bottom-1 -right-1 rounded-full bg-card px-1 font-mono text-xs font-bold shadow-sm",
-              badgeTextClasses[tone]
-            )}
-          >
-            {days}
-          </span>
-        </div>
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <Flame
+          className={cn("size-6 shrink-0", iconClasses[tone])}
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-1">
-          <span className="text-sm font-semibold text-card-foreground">
+          <span className="text-sm font-semibold tabular-nums text-card-foreground">
             {days}-day streak
           </span>
           <div className="flex items-center gap-1" aria-hidden="true">

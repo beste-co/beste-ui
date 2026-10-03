@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "travel27",
   title: "Phrase Guide",
   description:
-    "Quick language helper with English meaning, native script, and romanized transliteration per row.",
+    "Quick language helper with the English meaning and the native script per row.",
   category: "Travel",
 };

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "commerce22",
   title: "Order Tracking",
   description:
-    "Vertical shipment status with check, spinning, and pending dots connected by a tone-colored line, each row showing label and timestamp.",
+    "Vertical shipment status with check, spinning, and pending dots connected by a tone-colored line, each row showing a label and an optional timestamp.",
   category: "Commerce",
 };

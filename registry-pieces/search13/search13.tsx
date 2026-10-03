@@ -12,6 +12,7 @@ interface Search13Props {
   query?: string;
   tabs?: Tab[];
   activeIndex?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,12 +25,14 @@ export const search13Demo: Search13Props = {
     { label: "People", count: 12 },
   ],
   activeIndex: 1,
+  bordered: false,
 };
 
 export function Search13({
   query = "",
   tabs = [],
   activeIndex = 0,
+  bordered = false,
   className,
 }: Search13Props) {
   return (
@@ -39,7 +42,7 @@ export function Search13({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-xl border border-border bg-card shadow-md">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-xl bg-card shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2">
           <Search
             className="size-3.5 shrink-0 text-muted-foreground"

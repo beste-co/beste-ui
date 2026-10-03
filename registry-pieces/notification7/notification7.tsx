@@ -1,6 +1,6 @@
 "use client";
 
-import { GitCommitHorizontal, Loader2, TriangleAlert, CheckCircle2 } from "lucide-react";
+import { Loader2, TriangleAlert, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type DeployStatus = "building" | "success" | "failed";
@@ -11,6 +11,7 @@ interface Notification7Props {
   message?: string;
   status?: DeployStatus;
   duration?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -37,18 +38,18 @@ const statusConfig: Record<
 
 export const notification7Demo: Notification7Props = {
   branch: "main",
-  commit: "a1b2c3d",
-  message: "fix: resolve cart rounding edge case",
+  message: "Fix cart rounding edge case",
   status: "success",
-  duration: "42s",
+  bordered: false,
 };
 
 export function Notification7({
   branch = "main",
-  commit = "0000000",
+  commit,
   message,
   status = "success",
   duration,
+  bordered = false,
   className,
 }: Notification7Props) {
   const config = statusConfig[status];
@@ -61,7 +62,7 @@ export function Notification7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
           <span
             className={cn(
@@ -79,7 +80,7 @@ export function Notification7({
             {config.label}
           </span>
           {duration && (
-            <span className="text-xs text-muted-foreground">{duration}</span>
+            <span className="text-xs tabular-nums text-muted-foreground">{duration}</span>
           )}
         </div>
         {message && (
@@ -88,9 +89,12 @@ export function Notification7({
           </span>
         )}
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <GitCommitHorizontal className="size-3.5" aria-hidden="true" />
-          <span className="font-mono">{commit.slice(0, 7)}</span>
-          <span>·</span>
+          {commit && (
+            <>
+              <span>{commit.slice(0, 7)}</span>
+              <span>·</span>
+            </>
+          )}
           <span>{branch}</span>
         </div>
       </div>

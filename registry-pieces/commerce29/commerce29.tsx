@@ -24,6 +24,7 @@ interface Commerce29Props {
   a?: Commerce29Product;
   b?: Commerce29Product;
   rows?: Commerce29Row[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -46,6 +47,7 @@ export const commerce29Demo: Commerce29Props = {
     { label: "Waterproof", a: { no: true }, b: { yes: true } },
     { label: "Rating", a: { text: "★ 4.7" }, b: { text: "★ 4.9" } },
   ],
+  bordered: false,
 };
 
 function Cell({ value }: { value: Commerce29AttrValue }) {
@@ -68,13 +70,13 @@ function Cell({ value }: { value: Commerce29AttrValue }) {
       </span>
     );
   return (
-    <span className="font-mono text-xs tabular-nums text-card-foreground">
+    <span className="text-xs tabular-nums text-card-foreground">
       {value.text}
     </span>
   );
 }
 
-export function Commerce29({ a, b, rows = [], className }: Commerce29Props) {
+export function Commerce29({ a, b, rows = [], bordered = false, className }: Commerce29Props) {
   return (
     <div
       className={cn(
@@ -82,7 +84,7 @@ export function Commerce29({ a, b, rows = [], className }: Commerce29Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="grid grid-cols-[5rem_1fr_1fr] gap-2">
           <span aria-hidden="true" />
           {[a, b].map((p, i) =>
@@ -98,7 +100,7 @@ export function Commerce29({ a, b, rows = [], className }: Commerce29Props) {
                 <span className="truncate text-xs font-semibold text-card-foreground">
                   {p.name}
                 </span>
-                <span className="font-mono text-xs tabular-nums text-muted-foreground">
+                <span className="text-xs tabular-nums text-muted-foreground">
                   {p.price}
                 </span>
               </div>

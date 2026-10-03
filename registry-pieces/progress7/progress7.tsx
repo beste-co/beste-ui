@@ -8,6 +8,7 @@ interface Progress7Props {
   value?: number;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,13 +23,15 @@ const toneClasses: Record<Tone, string> = {
 export const progress7Demo: Progress7Props = {
   value: 72,
   label: "Hydration",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Progress7({
   value = 0,
   label,
   tone = "primary",
+  bordered = false,
   className,
 }: Progress7Props) {
   const pct = Math.max(0, Math.min(100, value));
@@ -40,8 +43,8 @@ export function Progress7({
         className
       )}
     >
-      <div className="inline-flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 shadow-sm">
-        <div className="relative flex h-20 w-6 items-end overflow-hidden rounded-md border border-border bg-muted">
+      <div className={cn("inline-flex items-center gap-3 rounded-lg bg-card px-4 py-3 shadow-sm", bordered && "border border-border")}>
+        <div className={cn("relative flex h-20 w-6 items-end overflow-hidden rounded-md bg-muted", bordered && "border border-border")}>
           <div
             className={cn("w-full rounded-t-md transition-all", toneClasses[tone])}
             style={{ height: `${pct}%` }}
@@ -53,7 +56,7 @@ export function Progress7({
             {pct}%
           </span>
           {label && (
-            <span className="text-xs uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {label}
             </span>
           )}

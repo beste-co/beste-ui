@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Plus } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -35,13 +34,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 };
 
 export const editor50Demo: Editor50Props = {
-  sectionId: "hero181",
   title: "Portrait Hero",
   description:
     "Tall photograph beside a heading, a short paragraph and a checked benefit list.",
   addLabel: "Add to Page",
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   loadMs: 1400,
 };
@@ -65,7 +63,7 @@ export function Editor50({
   description,
   addLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   loadMs = 1400,
   className,
@@ -123,7 +121,7 @@ export function Editor50({
 
         <div className="flex flex-col gap-1 p-4">
           {sectionId && (
-            <p className="font-mono text-xs text-current/60">{sectionId}</p>
+            <p className="text-xs text-current/60">{sectionId}</p>
           )}
           {title && <span className="block text-sm font-semibold">{title}</span>}
           {description && (
@@ -133,13 +131,12 @@ export function Editor50({
             <button
               type="button"
               className={cn(
-                "mt-2 flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium",
+                "mt-2 flex items-center justify-center rounded-md px-3 py-1.5 text-xs font-medium",
                 inverted
                   ? "bg-background text-foreground"
                   : "bg-foreground text-background"
               )}
             >
-              <Plus className="size-3.5" aria-hidden="true" />
               {addLabel}
             </button>
           )}

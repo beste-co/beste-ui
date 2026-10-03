@@ -59,7 +59,7 @@ export function Toolbar18({
           <ChevronRight className="size-4" aria-hidden="true" />
         </button>
         <div className="mx-1 h-5 w-px bg-zinc-800" aria-hidden="true" />
-        <span className="px-2 font-mono text-xs tabular-nums text-zinc-300">
+        <span className="px-2 text-xs tabular-nums text-zinc-300">
           {current} / {total}
         </span>
         <button

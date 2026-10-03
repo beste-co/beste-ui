@@ -16,6 +16,7 @@ interface Chart9Props {
   rows?: Row[];
   intervalMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -37,13 +38,13 @@ const dotClasses: Record<Tone, string> = {
 
 export const chart9Demo: Chart9Props = {
   title: "Most played right now",
-  unit: "plays",
   rows: [
     { label: "Nina Simone", value: 8420 },
     { label: "Miles Davis", value: 7910 },
     { label: "Björk", value: 7280 },
   ],
   tone: "primary",
+  bordered: false,
 };
 
 export function Chart9({
@@ -52,6 +53,7 @@ export function Chart9({
   rows = [],
   intervalMs = 1600,
   tone = "primary",
+  bordered = false,
   className,
 }: Chart9Props) {
   const [values, setValues] = useState<number[]>(() => rows.map((r) => r.value));
@@ -81,7 +83,7 @@ export function Chart9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-3">
           <span className="truncate text-sm font-medium text-card-foreground">{title}</span>
           <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground">

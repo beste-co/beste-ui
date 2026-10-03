@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "realestate4",
   title: "Neighborhood Stats",
   description:
-    "Area snapshot card with median price, emerald year-over-year trend pill, days on market, and listings.",
+    "Area snapshot card with median price, a year-over-year trend pill, and days on market.",
   category: "Realestate",
 };

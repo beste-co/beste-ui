@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Clock, Users } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Role = "received" | "sent";
@@ -17,8 +17,7 @@ interface Chat12Props {
 export const chat12Demo: Chat12Props = {
   title: "Q2 Planning Kickoff",
   date: "Mon, Apr 28",
-  time: "10:00 – 11:30",
-  attendees: 6,
+  time: "10:00 to 11:30",
   role: "received",
 };
 
@@ -48,49 +47,38 @@ export function Chat12({
         )}
       >
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-9 shrink-0 items-center justify-center rounded-md",
-              isSent ? "bg-primary-foreground/20" : "bg-card"
-            )}
-          >
-            <Calendar className="size-4" aria-hidden="true" />
-          </div>
+          <Calendar className="size-5 shrink-0" aria-hidden="true" />
           <span className="truncate text-sm font-semibold">{title}</span>
         </div>
         <div className="flex flex-col gap-0.5 text-xs">
           {date && (
-            <div
-              className={cn(
-                "flex items-center gap-1.5",
+            <span
+              className={
                 isSent ? "text-primary-foreground/80" : "text-muted-foreground"
-              )}
+              }
             >
-              <Calendar className="size-3" aria-hidden="true" />
-              <span>{date}</span>
-            </div>
+              {date}
+            </span>
           )}
           {time && (
-            <div
+            <span
               className={cn(
-                "flex items-center gap-1.5 tabular-nums",
+                "tabular-nums",
                 isSent ? "text-primary-foreground/80" : "text-muted-foreground"
               )}
             >
-              <Clock className="size-3" aria-hidden="true" />
-              <span>{time}</span>
-            </div>
+              {time}
+            </span>
           )}
           {typeof attendees === "number" && (
-            <div
+            <span
               className={cn(
-                "flex items-center gap-1.5",
+                "tabular-nums",
                 isSent ? "text-primary-foreground/80" : "text-muted-foreground"
               )}
             >
-              <Users className="size-3" aria-hidden="true" />
-              <span>{attendees} going</span>
-            </div>
+              {attendees} going
+            </span>
           )}
         </div>
         <div className="flex items-center gap-1.5 pt-0.5">

@@ -18,6 +18,7 @@ interface Calendar13Props {
   days?: string[];
   busy?: { day: number; hour: number; span?: number }[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -32,7 +33,7 @@ const busyClasses: Record<Tone, string> = {
 };
 
 export const calendar13Demo: Calendar13Props = {
-  heading: "Availability · Thu 23 Apr",
+  heading: "Availability",
   hours: ["09", "10", "11", "12", "13", "14", "15", "16", "17"],
   days: ["Mon", "Tue", "Wed", "Thu", "Fri"],
   busy: [
@@ -43,6 +44,7 @@ export const calendar13Demo: Calendar13Props = {
     { day: 4, hour: 6, span: 2 },
   ],
   tone: "primary",
+  bordered: false,
 };
 
 export function Calendar13({
@@ -51,6 +53,7 @@ export function Calendar13({
   days = [],
   busy = [],
   tone = "primary",
+  bordered = false,
   className,
 }: Calendar13Props) {
   return (
@@ -60,9 +63,9 @@ export function Calendar13({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {heading}
           </span>
         )}
@@ -74,13 +77,13 @@ export function Calendar13({
         >
           <span aria-hidden="true" />
           {hours.map((h, idx) => (
-            <span key={idx} className="font-mono text-muted-foreground">
+            <span key={idx} className="tabular-nums text-muted-foreground">
               {h}
             </span>
           ))}
           {days.map((day, dIdx) => (
             <Fragment key={dIdx}>
-              <span className="pr-1 text-right font-semibold uppercase tracking-wide text-muted-foreground">
+              <span className="pr-1 text-right font-semibold text-muted-foreground">
                 {day}
               </span>
               {hours.map((_, hIdx) => {
@@ -102,19 +105,6 @@ export function Calendar13({
               })}
             </Fragment>
           ))}
-        </div>
-        <div className="flex items-center gap-3 text-xs text-muted-foreground">
-          <span className="inline-flex items-center gap-1">
-            <span
-              className={cn("size-2 rounded-sm", busyClasses[tone])}
-              aria-hidden="true"
-            />
-            Busy
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <span className="size-2 rounded-sm bg-muted" aria-hidden="true" />
-            Free
-          </span>
         </div>
       </div>
     </div>

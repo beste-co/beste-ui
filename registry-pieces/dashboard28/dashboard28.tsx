@@ -42,17 +42,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard28Demo: Dashboard28Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Recent invoices",
   accountHeader: "Account",
   planHeader: "Plan",
   amountHeader: "Amount",
-  sortKey: "Amount",
   rows: [
     { name: "Atlas Labs", plan: "Scale", amount: "$820" },
     { name: "Northwind", plan: "Pro", amount: "$420" },
-    { name: "Hemlock", plan: "Pro", amount: "$420" },
     { name: "Stoic & Co.", plan: "Starter", amount: "$120" },
   ],
 };
@@ -65,7 +63,7 @@ export function Dashboard28({
   rows = [],
   sortKey,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard28Props) {
@@ -79,11 +77,9 @@ export function Dashboard28({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-            {title}
-          </span>
-        </div>
+        <span className="text-xs font-semibold text-current/60">
+          {title}
+        </span>
         <table className="w-full text-xs">
           <thead>
             <tr className="text-current/60">
@@ -110,7 +106,7 @@ export function Dashboard28({
               >
                 <td className="truncate py-1.5 pr-2">{r.name}</td>
                 <td className="py-1.5 pr-2 text-current/60">{r.plan}</td>
-                <td className="py-1.5 text-right font-mono tabular-nums">
+                <td className="py-1.5 text-right tabular-nums">
                   {r.amount}
                 </td>
               </tr>

@@ -47,7 +47,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar31Demo: Calendar31Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Today",
   dateLabel: "Tue, 12 May",
@@ -64,7 +64,7 @@ export function Calendar31({
   dateLabel,
   items = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar31Props) {
@@ -87,7 +87,7 @@ export function Calendar31({
         <div className="flex flex-col gap-3">
           {items.map((slot, index) => (
             <div key={index} className="flex items-center gap-3">
-              <span className="w-11 shrink-0 font-mono text-sm tabular-nums text-current/60">
+              <span className="w-11 shrink-0 text-sm tabular-nums text-current/60">
                 {slot.time}
               </span>
               <span

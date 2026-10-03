@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "search14",
   title: "Trending Queries",
   description:
-    "Search field followed by a row of trending query chips led by a small flame label.",
+    "Search field followed by a row of trending query chips.",
   category: "Search",
 };

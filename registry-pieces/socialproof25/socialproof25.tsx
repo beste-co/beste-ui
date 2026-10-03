@@ -33,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const socialproof25Demo: Socialproof25Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   value: 4.9,
   max: 5,
@@ -45,7 +45,7 @@ export function Socialproof25({
   max = 5,
   caption,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Socialproof25Props) {

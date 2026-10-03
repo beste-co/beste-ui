@@ -34,12 +34,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const progress16Demo: Progress16Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Migration",
   steps: ["Export", "Map fields", "Review", "Go live"],
   activeIndex: 2,
-  caption: "Review finishes today, go live is scheduled for Friday.",
 };
 
 export function Progress16({
@@ -48,7 +47,7 @@ export function Progress16({
   activeIndex = 0,
   caption,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Progress16Props) {

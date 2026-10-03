@@ -7,6 +7,7 @@ interface Money21Props {
   amount?: string;
   delta?: string;
   bars?: number[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const money21Demo: Money21Props = {
   amount: "$48.2k",
   delta: "+12% MoM",
   bars: [38, 44, 41, 52, 58, 55, 67, 72, 70, 81, 88, 100],
+  bordered: false,
 };
 
 export function Money21({
@@ -22,6 +24,7 @@ export function Money21({
   amount = "$0",
   delta,
   bars = [],
+  bordered = false,
   className,
 }: Money21Props) {
   return (
@@ -31,11 +34,11 @@ export function Money21({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-lg border border-border bg-card px-4 py-3.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-lg bg-card px-4 py-3.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             {label && (
-              <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              <span className="text-xs font-medium text-muted-foreground">
                 {label}
               </span>
             )}

@@ -38,27 +38,24 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai16Demo: Ai16Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  title: "next_token",
   context: "The capital of France is",
-  topPrefix: "top",
   tokens: [
     { token: "Paris", probability: 0.643 },
     { token: "the", probability: 0.187 },
     { token: "located", probability: 0.081 },
     { token: "also", probability: 0.042 },
-    { token: "a", probability: 0.021 },
   ],
 };
 
 export function Ai16({
-  title = "next_token",
+  title,
   context,
   tokens = [],
-  topPrefix = "top",
+  topPrefix,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai16Props) {
@@ -74,16 +71,20 @@ export function Ai16({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center justify-between border-b border-current/15 px-3 py-1.5">
-          <span className="font-mono text-xs font-semibold uppercase tracking-wide text-current/60">
-            {title}
-          </span>
-          <span className="font-mono text-xs text-current/60">
-            {topPrefix} {tokens.length}
-          </span>
-        </div>
+        {(title || topPrefix) && (
+          <div className="flex items-center justify-between border-b border-current/15 px-3 py-1.5">
+            <span className="text-xs font-semibold text-current/60">
+              {title}
+            </span>
+            {topPrefix && (
+              <span className="text-xs tabular-nums text-current/60">
+                {topPrefix} {tokens.length}
+              </span>
+            )}
+          </div>
+        )}
         {context && (
-          <div className="border-b border-current/15 px-3 py-2 font-mono text-xs leading-relaxed">
+          <div className="border-b border-current/15 px-3 py-2 text-xs leading-relaxed">
             <span className="text-current/35">&ldquo;</span>
             {context}
             <span
@@ -111,7 +112,7 @@ export function Ai16({
                   style={{ width: `${pctWidth}%` }}
                   aria-hidden="true"
                 />
-                <div className="relative flex items-center justify-between gap-3 font-mono text-xs">
+                <div className="relative flex items-center justify-between gap-3 text-xs">
                   <span className="flex min-w-0 items-center">
                     <span className="text-current/35">
                       &ldquo;

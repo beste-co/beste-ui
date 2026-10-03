@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface Search8Props {
   transcript?: string;
   status?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -25,11 +26,13 @@ const barHeights = [
 export const search8Demo: Search8Props = {
   transcript: "Find last month's sales report",
   status: "Listening…",
+  bordered: false,
 };
 
 export function Search8({
   transcript,
   status = "Listening…",
+  bordered = false,
   className,
 }: Search8Props) {
   return (
@@ -39,7 +42,7 @@ export function Search8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-full border border-border bg-card py-2 pl-2 pr-4 shadow-md">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-full bg-card py-2 pl-2 pr-4 shadow-md", bordered && "border border-border")}>
         <div className="relative flex size-9 shrink-0 items-center justify-center">
           <span
             className="absolute inline-flex size-full animate-ping rounded-full bg-rose-500/40"

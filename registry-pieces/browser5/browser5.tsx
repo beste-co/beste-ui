@@ -36,18 +36,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser5Demo: Browser5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   bookmarks: [
     { label: "Work", folder: true },
     { label: "GitHub" },
     { label: "Linear" },
     { label: "Figma" },
-    { label: "Reading" },
   ],
 };
 
-export function Browser5({ bookmarks = [], surface = "card", bordered = true, inverted = false, className }: Browser5Props) {
+export function Browser5({ bookmarks = [], surface = "card", bordered = false, inverted = false, className }: Browser5Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

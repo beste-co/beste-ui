@@ -21,6 +21,7 @@ interface Ai22Props {
   args?: Ai22Arg[];
   status?: "running" | "done";
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -49,14 +50,16 @@ export const ai22Demo: Ai22Props = {
     { key: "limit", value: "5" },
   ],
   status: "done",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai22({
   fn = "function",
   args = [],
   status = "running",
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai22Props) {
   return (
@@ -66,14 +69,14 @@ export function Ai22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-md border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1.5">
             <Wrench
               className={cn("size-3.5", iconClasses[tone])}
               aria-hidden="true"
             />
-            <span className="font-mono text-xs font-semibold text-card-foreground">
+            <span className="text-xs font-semibold text-card-foreground">
               {fn}
             </span>
           </div>
@@ -95,7 +98,7 @@ export function Ai22({
             </span>
           )}
         </div>
-        <div className="flex flex-col gap-0.5 border-t border-border pt-1.5 font-mono text-xs">
+        <div className="flex flex-col gap-0.5 border-t border-border pt-1.5 text-xs">
           {args.map((a) => (
             <div key={a.key} className="flex gap-1.5">
               <span className="text-muted-foreground">{a.key}:</span>

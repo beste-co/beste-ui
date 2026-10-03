@@ -6,6 +6,7 @@ interface Education3Props {
   completed?: number;
   total?: number;
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const education3Demo: Education3Props = {
   completed: 14,
   total: 24,
   label: "React performance",
+  bordered: false,
 };
 
 export function Education3({
   completed = 0,
   total = 1,
   label,
+  bordered = false,
   className,
 }: Education3Props) {
   const safeTotal = Math.max(1, total);
@@ -34,7 +37,7 @@ export function Education3({
         className
       )}
     >
-      <div className="flex w-full max-w-64 items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-64 items-center gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative shrink-0">
           <svg
             width="64"
@@ -62,7 +65,7 @@ export function Education3({
               strokeDasharray={`${dash} ${circumference}`}
             />
           </svg>
-          <span className="absolute inset-0 flex items-center justify-center font-mono text-sm font-semibold text-card-foreground">
+          <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold tabular-nums text-card-foreground">
             {pct}%
           </span>
         </div>
@@ -72,11 +75,8 @@ export function Education3({
               {label}
             </span>
           )}
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs tabular-nums text-muted-foreground">
             {clamped} of {safeTotal} lessons completed
-          </span>
-          <span className="mt-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-            On track
           </span>
         </div>
       </div>

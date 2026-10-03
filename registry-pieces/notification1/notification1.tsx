@@ -33,11 +33,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const notification1Demo: Notification1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Payment successful",
-  description: "Your invoice has been sent to billing@beste.co",
-  action: "View receipt →",
+  description: "Your invoice has been sent to hello@beste.co",
+  action: "View receipt",
 };
 
 export function Notification1({
@@ -45,7 +45,7 @@ export function Notification1({
   description,
   action,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Notification1Props) {
@@ -59,9 +59,10 @@ export function Notification1({
       )}
     >
       <div className={cn("flex w-full max-w-72 items-start gap-3 rounded-lg p-3 shadow-lg", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-          <CheckCircle2 className="size-4" aria-hidden="true" />
-        </div>
+        <CheckCircle2
+          className="mt-0.5 size-5 shrink-0 text-emerald-600 dark:text-emerald-400"
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           {title && (
             <span className="text-sm font-semibold">

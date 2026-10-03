@@ -11,18 +11,18 @@ interface Ticket9Props {
   seat?: string;
   gate?: string;
   time?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const ticket9Demo: Ticket9Props = {
-  league: "NBA · Game 5",
   homeTeam: "Lakers",
   awayTeam: "Warriors",
   section: "112",
   row: "8",
   seat: "14",
-  gate: "3",
   time: "7:30 PM",
+  bordered: false,
 };
 
 export function Ticket9({
@@ -34,6 +34,7 @@ export function Ticket9({
   seat,
   gate,
   time,
+  bordered = false,
   className,
 }: Ticket9Props) {
   return (
@@ -43,10 +44,10 @@ export function Ticket9({
         className
       )}
     >
-      <div className="w-full max-w-80 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col gap-1 p-3">
           {league && (
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {league}
             </span>
           )}
@@ -55,7 +56,7 @@ export function Ticket9({
               {homeTeam}
             </span>
             <span
-              className="text-xs uppercase tracking-widest text-muted-foreground"
+              className="text-xs text-muted-foreground"
               aria-hidden="true"
             >
               vs
@@ -70,13 +71,15 @@ export function Ticket9({
           aria-hidden="true"
         />
         <div className="flex flex-col gap-0.5 bg-muted px-3 py-1.5 text-xs">
-          <span className="font-mono text-card-foreground">
+          <span className="text-card-foreground">
             Sec {section} · Row {row} · Seat {seat}
           </span>
-          <div className="flex items-center justify-between text-muted-foreground">
-            {gate && <span>Gate {gate}</span>}
-            {time && <span>{time}</span>}
-          </div>
+          {(gate || time) && (
+            <div className="flex items-center justify-between tabular-nums text-muted-foreground">
+              {gate && <span>Gate {gate}</span>}
+              {time && <span>{time}</span>}
+            </div>
+          )}
         </div>
       </div>
     </div>

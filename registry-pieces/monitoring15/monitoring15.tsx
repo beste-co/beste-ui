@@ -13,6 +13,7 @@ interface Span {
 
 interface Monitoring15Props {
   spans?: Span[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,10 +34,12 @@ const defaultSpans: Span[] = [
 
 export const monitoring15Demo: Monitoring15Props = {
   spans: defaultSpans,
+  bordered: false,
 };
 
 export function Monitoring15({
   spans = defaultSpans,
+  bordered = false,
   className,
 }: Monitoring15Props) {
   return (
@@ -46,10 +49,10 @@ export function Monitoring15({
         className
       )}
     >
-      <div className="grid w-full max-w-72 grid-cols-[auto_1fr] items-center gap-x-3 gap-y-1.5 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("grid w-full max-w-72 grid-cols-[auto_1fr] items-center gap-x-3 gap-y-1.5 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         {spans.map((span) => (
           <div key={span.label} className="contents">
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {span.label}
             </span>
             <div className="relative h-2" aria-hidden="true">

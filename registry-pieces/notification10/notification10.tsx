@@ -11,6 +11,7 @@ interface StackItem {
 
 interface Notification10Props {
   items?: StackItem[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,9 +22,9 @@ const iconMap = {
 };
 
 const iconColor: Record<StackItem["icon"], string> = {
-  bell: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-  heart: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
-  message: "bg-sky-500/10 text-sky-600 dark:text-sky-400",
+  bell: "text-amber-600 dark:text-amber-400",
+  heart: "text-rose-600 dark:text-rose-400",
+  message: "text-sky-600 dark:text-sky-400",
 };
 
 export const notification10Demo: Notification10Props = {
@@ -44,10 +45,12 @@ export const notification10Demo: Notification10Props = {
       description: "starts in 10 minutes",
     },
   ],
+  bordered: false,
 };
 
 export function Notification10({
   items = [],
+  bordered = false,
   className,
 }: Notification10Props) {
   return (
@@ -66,19 +69,15 @@ export function Notification10({
           className="absolute inset-x-2 -top-1 h-3 rounded-t-lg border border-b-0 border-border bg-card/80 shadow-sm"
           aria-hidden="true"
         />
-        <div className="relative flex flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-xl">
+        <div className={cn("relative flex flex-col gap-2 rounded-lg bg-card p-3 shadow-xl", bordered && "border border-border")}>
           {items.map((item, idx) => {
             const Icon = iconMap[item.icon];
             return (
               <div key={idx} className="flex items-start gap-2.5">
-                <div
-                  className={cn(
-                    "flex size-7 shrink-0 items-center justify-center rounded-full",
-                    iconColor[item.icon]
-                  )}
-                >
-                  <Icon className="size-3.5" aria-hidden="true" />
-                </div>
+                <Icon
+                  className={cn("mt-0.5 size-4 shrink-0", iconColor[item.icon])}
+                  aria-hidden="true"
+                />
                 <div className="flex min-w-0 flex-1 flex-col">
                   <span className="truncate text-xs font-semibold text-card-foreground">
                     {item.title}

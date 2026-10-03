@@ -9,6 +9,7 @@ interface Upload18Props {
   dimensions?: string;
   size?: string;
   imageSrc?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,8 +19,8 @@ const defaultImage =
 export const upload18Demo: Upload18Props = {
   filename: "brand-hero.jpg",
   dimensions: "2400 × 1600",
-  size: "1.4 MB",
   imageSrc: defaultImage,
+  bordered: false,
 };
 
 export function Upload18({
@@ -27,6 +28,7 @@ export function Upload18({
   dimensions,
   size,
   imageSrc = defaultImage,
+  bordered = false,
   className,
 }: Upload18Props) {
   return (
@@ -36,7 +38,7 @@ export function Upload18({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-2 shadow-sm", bordered && "border border-border")}>
         <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
           <img
             src={imageSrc}
@@ -59,7 +61,7 @@ export function Upload18({
               {filename}
             </span>
             <span className="truncate text-xs text-muted-foreground">
-              {dimensions} · {size}
+              {[dimensions, size].filter(Boolean).join(" · ")}
             </span>
           </div>
           <div className="flex items-center gap-1">

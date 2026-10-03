@@ -4,6 +4,7 @@ export const meta: ComponentMeta = {
   name: "ai48",
   title: "Image Generating",
   description:
-    "Square preview that starts as a blurred, washed-out photo and sharpens in stages while the percentage climbs and the step label moves from sketching to done, then starts over.",
+    "Square preview that starts as a blurred, washed-out photo and sharpens in stages while a bar fills and the step label moves from sketching to done, then starts over.",
   category: "AI",
+  cardScale: 0.75,
 };

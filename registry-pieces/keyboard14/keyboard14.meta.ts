@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "keyboard14",
   title: "Spacebar",
   description:
-    "Long-format spacebar keycap with a soft shadow, bracketed by a prompt above and a hint caption below.",
+    "Long-format spacebar keycap with a soft shadow and a prompt above it.",
   category: "Keyboard",
 };

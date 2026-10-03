@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "notification16",
   title: "Announcement Banner",
   description:
-    "Full-width tinted banner with a tag pill, headline, CTA button, and a dismiss control.",
+    "Compact banner with a headline, a one-line description, and a CTA button.",
   category: "Notification",
 };

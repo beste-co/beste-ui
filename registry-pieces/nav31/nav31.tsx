@@ -12,6 +12,7 @@ interface Crumb {
 
 interface Nav31Props {
   items?: Crumb[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,9 +22,10 @@ export const nav31Demo: Nav31Props = {
     { label: "Beste Co." },
     { label: "Settings", active: true },
   ],
+  bordered: false,
 };
 
-export function Nav31({ items = [], className }: Nav31Props) {
+export function Nav31({ items = [], bordered = false, className }: Nav31Props) {
   return (
     <div
       className={cn(
@@ -33,7 +35,7 @@ export function Nav31({ items = [], className }: Nav31Props) {
     >
       <nav
         aria-label="Breadcrumb"
-        className="inline-flex items-center gap-1 rounded-lg border border-border bg-card px-3 py-1.5 shadow-sm"
+        className={cn("inline-flex items-center gap-1 rounded-lg px-3 py-1.5 shadow-sm", bordered ? "border border-border bg-card" : "bg-muted")}
       >
         <Home
           className="size-3.5 text-muted-foreground"

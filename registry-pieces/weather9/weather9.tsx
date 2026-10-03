@@ -13,6 +13,7 @@ interface Weather9Props {
   aqi?: number;
   level?: Level;
   pollutants?: Pollutant[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,17 +36,14 @@ const levelLabel: Record<Level, string> = {
 export const weather9Demo: Weather9Props = {
   aqi: 42,
   level: "good",
-  pollutants: [
-    { name: "PM2.5", value: "12" },
-    { name: "O₃", value: "32" },
-    { name: "NO₂", value: "8" },
-  ],
+  bordered: false,
 };
 
 export function Weather9({
   aqi,
   level = "good",
   pollutants = [],
+  bordered = false,
   className,
 }: Weather9Props) {
   return (
@@ -55,14 +53,11 @@ export function Weather9({
         className
       )}
     >
-      <div className="w-full max-w-72 rounded-xl border border-border bg-card px-3 py-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Air Quality
-        </span>
-        <div className="mt-1 flex items-center gap-3">
+      <div className={cn("w-full max-w-72 rounded-xl bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-center gap-3">
           <span
             className={cn(
-              "flex size-12 items-center justify-center rounded-lg font-mono text-lg font-bold tabular-nums shadow-sm",
+              "flex size-12 items-center justify-center rounded-lg text-lg font-bold tabular-nums shadow-sm",
               levelClasses[level]
             )}
           >

@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes69Demo: Shapes69Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes69({ surface = "card", bordered = true, inverted = false, className }: Shapes69Props) {
+export function Shapes69({ surface = "card", bordered = false, inverted = false, className }: Shapes69Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -50,14 +50,14 @@ export function Shapes69({ surface = "card", bordered = true, inverted = false, 
         <span className="h-1.5 w-24 rounded-full bg-current/70" />
         <span className="h-1 w-32 rounded-full bg-current/10" />
         <div className="flex items-center gap-2">
-          <span className="flex size-8 items-center justify-center rounded-md border border-current/15 bg-background text-foreground">
+          <span className={cn("flex size-8 items-center justify-center rounded-md text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")}>
             <span className="h-2.5 w-1 rounded-full bg-current/70" />
           </span>
-          <span className="flex size-8 items-center justify-center rounded-md border border-current/15 bg-background text-foreground">
+          <span className={cn("flex size-8 items-center justify-center rounded-md text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")}>
             <span className="h-2.5 w-1 rounded-full bg-current/70" />
           </span>
           <span className="size-8 rounded-md border-2 border-foreground bg-background text-foreground" />
-          <span className="size-8 rounded-md border border-current/15 bg-background text-foreground" />
+          <span className={cn("size-8 rounded-md text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")} />
         </div>
         <span className="mt-1 h-6 w-full rounded-sm bg-current" />
       </div>

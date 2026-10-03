@@ -7,24 +7,25 @@ interface Editor31Props {
   incomingBranch?: string;
   currentCode?: string[];
   incomingCode?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor31Demo: Editor31Props = {
-  currentBranch: "HEAD",
-  incomingBranch: "feat/onboarding",
   currentCode: ["const greet = (name) =>", "  `Hi, ${name}!`;"],
   incomingCode: [
     "const greet = (name: string) =>",
-    "  `Merhaba, ${name}!`;",
+    "  `Hello, ${name}!`;",
   ],
+  bordered: false,
 };
 
 export function Editor31({
-  currentBranch = "HEAD",
-  incomingBranch = "branch",
+  currentBranch,
+  incomingBranch,
   currentCode = [],
   incomingCode = [],
+  bordered = false,
   className,
 }: Editor31Props) {
   return (
@@ -34,10 +35,12 @@ export function Editor31({
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between bg-emerald-100 px-3 py-1 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
           <span className="font-bold">{"<<<<<<<"} Current</span>
-          <span className="text-xs opacity-80">{currentBranch}</span>
+          {currentBranch && (
+            <span className="text-xs opacity-80">{currentBranch}</span>
+          )}
         </div>
         {currentCode.map((l, i) => (
           <code
@@ -60,7 +63,9 @@ export function Editor31({
         ))}
         <div className="flex items-center justify-between bg-sky-100 px-3 py-1 text-sky-800 dark:bg-sky-950 dark:text-sky-200">
           <span className="font-bold">{">>>>>>>"} Incoming</span>
-          <span className="text-xs opacity-80">{incomingBranch}</span>
+          {incomingBranch && (
+            <span className="text-xs opacity-80">{incomingBranch}</span>
+          )}
         </div>
       </pre>
     </div>

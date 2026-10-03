@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Customer logos drift past in one endless seamless lane, softened at both edges so nothing pops in or out.",
   category: "Logo",
+  cardScale: 0.75,
 };

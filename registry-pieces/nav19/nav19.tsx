@@ -12,6 +12,7 @@ interface BottomTab {
 
 interface Nav19Props {
   tabs?: BottomTab[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -28,12 +29,13 @@ export const nav19Demo: Nav19Props = {
     { label: "Home", icon: "home", active: true },
     { label: "Search", icon: "search" },
     { label: "", icon: "plus" },
-    { label: "Inbox", icon: "bell", badge: 3 },
+    { label: "Inbox", icon: "bell" },
     { label: "Profile", icon: "user" },
   ],
+  bordered: false,
 };
 
-export function Nav19({ tabs = [], className }: Nav19Props) {
+export function Nav19({ tabs = [], bordered = false, className }: Nav19Props) {
   return (
     <div
       className={cn(
@@ -41,7 +43,7 @@ export function Nav19({ tabs = [], className }: Nav19Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-end justify-between gap-1 rounded-2xl border border-border bg-card/95 p-2 shadow-lg backdrop-blur">
+      <div className={cn("flex w-full max-w-80 items-end justify-between gap-1 rounded-2xl bg-card/95 p-2 shadow-lg backdrop-blur", bordered && "border border-border")}>
         {tabs.map((t, idx) => {
           const Icon = iconMap[t.icon];
           const isPlus = t.icon === "plus";
@@ -66,7 +68,7 @@ export function Nav19({ tabs = [], className }: Nav19Props) {
                 <span className="relative">
                   <Icon className="size-5" aria-hidden="true" />
                   {typeof t.badge === "number" && (
-                    <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-rose-500 text-xs font-bold text-white">
+                    <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-rose-500 text-xs font-bold tabular-nums text-white">
                       {t.badge}
                     </span>
                   )}

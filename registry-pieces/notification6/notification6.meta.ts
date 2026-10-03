@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "notification6",
   title: "Achievement Toast",
   description:
-    "Celebratory unlock notice with a gradient trophy tile and an XP chip on the right.",
+    "Celebratory unlock notice with a tone-colored trophy icon and an XP chip on the right.",
   category: "Notification",
 };

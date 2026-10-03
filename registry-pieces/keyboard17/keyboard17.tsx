@@ -68,7 +68,7 @@ export function Keyboard17({
               <kbd
                 key={`${index}-${i}`}
                 className={cn(
-                  "flex size-10 items-center justify-center rounded-lg border border-border font-mono text-sm transition-all duration-150 ease-out motion-reduce:transition-none",
+                  "flex size-10 items-center justify-center rounded-lg border border-border text-sm transition-all duration-150 ease-out motion-reduce:transition-none",
                   down
                     ? "translate-y-0.5 border-b bg-muted text-card-foreground shadow-none"
                     : "border-b-2 bg-gradient-to-b from-card to-muted text-card-foreground shadow-sm"

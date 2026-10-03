@@ -12,33 +12,33 @@ interface Phrase {
 interface Travel27Props {
   languageLabel?: string;
   phrases?: Phrase[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel27Demo: Travel27Props = {
-  languageLabel: "Japanese · Quick phrases",
+  languageLabel: "Japanese",
   phrases: [
     {
       en: "Thank you",
       local: "ありがとう",
-      romanized: "arigatō",
     },
     {
       en: "Excuse me",
       local: "すみません",
-      romanized: "sumimasen",
     },
     {
       en: "Where's the station?",
       local: "駅はどこですか",
-      romanized: "eki wa doko desu ka",
     },
   ],
+  bordered: false,
 };
 
 export function Travel27({
   languageLabel,
   phrases = [],
+  bordered = false,
   className,
 }: Travel27Props) {
   return (
@@ -48,13 +48,11 @@ export function Travel27({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-rose-500/15 text-rose-500">
-            <Languages className="size-3.5" aria-hidden="true" />
-          </div>
+          <Languages className="size-4 shrink-0 text-rose-500" aria-hidden="true" />
           {languageLabel && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {languageLabel}
             </span>
           )}
@@ -69,7 +67,7 @@ export function Travel27({
                 {p.local}
               </span>
               {p.romanized && (
-                <span className="font-mono text-xs italic text-muted-foreground">
+                <span className="text-xs italic text-muted-foreground">
                   {p.romanized}
                 </span>
               )}

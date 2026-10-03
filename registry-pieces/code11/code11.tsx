@@ -12,6 +12,7 @@ interface Code11Props {
   url?: string;
   headers?: CurlHeader[];
   body?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,10 +20,10 @@ export const code11Demo: Code11Props = {
   method: "POST",
   url: "https://api.beste.co/v1/users",
   headers: [
-    { name: "Authorization", value: "Bearer sk_live_..." },
     { name: "Content-Type", value: "application/json" },
   ],
-  body: '{"name": "Ada Lovelace"}',
+  body: '{"name": "Nils Frahm"}',
+  bordered: false,
 };
 
 export function Code11({
@@ -30,6 +31,7 @@ export function Code11({
   url = "",
   headers = [],
   body,
+  bordered = false,
   className,
 }: Code11Props) {
   return (
@@ -39,7 +41,7 @@ export function Code11({
         className
       )}
     >
-      <div className="w-full max-w-96 rounded-lg border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <div className={cn("w-full max-w-96 rounded-lg bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         <div className="flex gap-1 truncate">
           <span className="text-card-foreground">curl</span>
           <span className="text-violet-600 dark:text-violet-400">-X</span>

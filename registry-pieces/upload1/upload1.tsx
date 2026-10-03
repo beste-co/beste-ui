@@ -33,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const upload1Demo: Upload1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   filename: "brand-guidelines.pdf",
   size: "12.4 MB",
@@ -45,7 +45,7 @@ export function Upload1({
   size,
   progress = 0,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Upload1Props) {
@@ -68,16 +68,16 @@ export function Upload1({
         )}
       >
         <div className="flex items-center gap-2.5">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400">
-            <FileText className="size-4" aria-hidden="true" />
-          </div>
+          <FileText className="size-5 shrink-0 text-sky-600 dark:text-sky-400" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-xs font-medium">
               {filename}
             </span>
-            <span className="text-xs text-current/60">
-              {size} · {pct}%
-            </span>
+            {size && (
+              <span className="text-xs text-current/60 tabular-nums">
+                {size}
+              </span>
+            )}
           </div>
         </div>
         <div className="h-1 w-full overflow-hidden rounded-full bg-current/10">

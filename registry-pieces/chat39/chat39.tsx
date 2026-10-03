@@ -21,6 +21,7 @@ interface Chat39Props {
   members?: Member[];
   changes?: Change[];
   intervalMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -47,22 +48,19 @@ export const chat39Demo: Chat39Props = {
     { name: "Miles Davis", initials: "MD", status: "call" },
     { name: "Björk", initials: "BJ", status: "away" },
     { name: "Patti Smith", initials: "PS", status: "online" },
-    { name: "Fela Kuti", initials: "FK", status: "offline" },
   ],
   changes: [
     { member: 3, status: "typing" },
     { member: 2, status: "online" },
     { member: 3, status: "online" },
-    { member: 4, status: "online" },
     { member: 1, status: "online" },
     { member: 0, status: "away" },
-    { member: 4, status: "call" },
     { member: 2, status: "typing" },
     { member: 2, status: "away" },
     { member: 0, status: "online" },
-    { member: 4, status: "offline" },
     { member: 1, status: "call" },
   ],
+  bordered: false,
 };
 
 export function Chat39({
@@ -70,6 +68,7 @@ export function Chat39({
   members = [],
   changes = [],
   intervalMs = 1500,
+  bordered = false,
   className,
 }: Chat39Props) {
   const [state, setState] = useState<{ tick: number; statuses: Presence[] }>(() => ({
@@ -105,7 +104,7 @@ export function Chat39({
       )}
     >
       <style>{`@keyframes chat39-in { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } } @keyframes chat39-flash { from { background-color: var(--muted); } to { background-color: transparent; } }`}</style>
-      <div className="flex w-full max-w-64 flex-col rounded-xl border border-border bg-card p-2 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col rounded-xl bg-card p-2 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between px-2 py-1.5">
           <span className="text-sm font-medium text-card-foreground">{title}</span>
           <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">

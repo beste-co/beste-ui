@@ -16,6 +16,7 @@ interface Commerce32Props {
   stepMs?: number;
   holdMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,6 +36,14 @@ const nodeClasses: Record<Tone, string> = {
   violet: "bg-violet-500 text-white",
 };
 
+const checkClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  emerald: "text-emerald-500",
+  sky: "text-sky-500",
+  violet: "text-violet-500",
+};
+
 const ringClasses: Record<Tone, string> = {
   primary: "ring-primary text-primary",
   foreground: "ring-foreground text-foreground",
@@ -47,26 +56,23 @@ export const commerce32Demo: Commerce32Props = {
   steps: [
     {
       label: "Cart",
-      lines: [
-        "Two items",
-        "Blue Note Vinyl, Tote Bag",
-        "Subtotal $58.00",
-      ],
+      lines: ["Two items", "Subtotal $58.00"],
     },
     {
       label: "Shipping",
-      lines: ["Nina Simone", "12 Jazz Lane, New Orleans", "Express, arrives Thursday"],
+      lines: ["Nina Simone", "Express, arrives Thursday"],
     },
     {
       label: "Payment",
-      lines: ["Visa ending 4417", "Billing matches shipping", "Total $64.50"],
+      lines: ["Visa ending 4417", "Total $64.50"],
     },
     {
       label: "Done",
-      lines: ["Order 4821 placed", "Confirmation sent to hello@beste.co"],
+      lines: ["Order placed", "Confirmation sent to hello@beste.co"],
     },
   ],
   tone: "primary",
+  bordered: false,
 };
 
 export function Commerce32({
@@ -74,6 +80,7 @@ export function Commerce32({
   stepMs = 1500,
   holdMs = 2600,
   tone = "primary",
+  bordered = false,
   className,
 }: Commerce32Props) {
   const [active, setActive] = useState(0);
@@ -112,7 +119,7 @@ export function Commerce32({
       )}
     >
       <style>{`@keyframes commerce32-pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }`}</style>
-      <div className="flex w-full max-w-80 flex-col gap-4 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-4 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div
           className="grid"
           style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}
@@ -196,20 +203,15 @@ export function Commerce32({
                   className="flex h-20 w-full shrink-0 items-center gap-3 px-3"
                 >
                   {isLast && (
-                    <span
-                      className={cn(
-                        "flex size-8 shrink-0 items-center justify-center rounded-full",
-                        nodeClasses[tone]
-                      )}
+                    <Check
+                      className={cn("size-5 shrink-0", checkClasses[tone])}
                       style={
                         finished
                           ? { animation: "commerce32-pop 400ms ease-out" }
                           : undefined
                       }
                       aria-hidden="true"
-                    >
-                      <Check className="size-4" />
-                    </span>
+                    />
                   )}
                   <div className="flex min-w-0 flex-col gap-0.5">
                     {step.lines.map((line, j) => (

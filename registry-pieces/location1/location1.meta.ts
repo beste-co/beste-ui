@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "location1",
   title: "Location Pin",
   description:
-    "Colored pin paired with city, country, and a monospace coordinate.",
+    "Colored pin paired with a city and its country.",
   category: "Location",
 };

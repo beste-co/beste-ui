@@ -9,6 +9,7 @@ interface Form27Props {
   placeholder?: string;
   open?: boolean;
   options?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const form27Demo: Form27Props = {
   placeholder: "Select a currency",
   open: true,
   options: ["USD · US Dollar", "EUR · Euro", "GBP · British Pound", "TRY · Turkish Lira"],
+  bordered: false,
 };
 
 export function Form27({
@@ -26,6 +28,7 @@ export function Form27({
   placeholder = "Select",
   open = false,
   options = [],
+  bordered = false,
   className,
 }: Form27Props) {
   return (
@@ -65,7 +68,7 @@ export function Form27({
             />
           </div>
           {open && options.length > 0 && (
-            <div className="mt-1 flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-md">
+            <div className={cn("mt-1 flex flex-col overflow-hidden rounded-md bg-card shadow-md", bordered && "border border-border")}>
               {options.map((opt, idx) => (
                 <button
                   key={idx}

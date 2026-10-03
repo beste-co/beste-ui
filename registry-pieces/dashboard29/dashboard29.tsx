@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -37,7 +36,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard29Demo: Dashboard29Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   metrics: [
     { label: "ARR", value: "$1.82M", delta: 8.4 },
@@ -46,7 +45,7 @@ export const dashboard29Demo: Dashboard29Props = {
   ],
 };
 
-export function Dashboard29({ metrics = [], surface = "card", bordered = true, inverted = false, className }: Dashboard29Props) {
+export function Dashboard29({ metrics = [], surface = "card", bordered = false, inverted = false, className }: Dashboard29Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -59,25 +58,23 @@ export function Dashboard29({ metrics = [], surface = "card", bordered = true, i
       <div className={cn("flex w-full max-w-80 divide-x divide-border overflow-hidden rounded-md shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {metrics.map((m) => {
           const positive = typeof m.delta === "number" && m.delta >= 0;
-          const TrendIcon = positive ? TrendingUp : TrendingDown;
           return (
             <div key={m.label} className="flex flex-1 flex-col gap-0.5 px-3 py-2">
               <span className="truncate text-xs text-current/60">
                 {m.label}
               </span>
-              <span className="font-mono text-base font-semibold tabular-nums">
+              <span className="text-base font-semibold tabular-nums">
                 {m.value}
               </span>
               {typeof m.delta === "number" && (
                 <span
                   className={cn(
-                    "inline-flex items-center gap-0.5 font-mono text-xs font-medium tabular-nums",
+                    "text-xs font-medium tabular-nums",
                     positive
                       ? "text-emerald-600 dark:text-emerald-400"
                       : "text-rose-600 dark:text-rose-400"
                   )}
                 >
-                  <TrendIcon className="size-3" aria-hidden="true" />
                   {positive ? "+" : ""}
                   {m.delta}%
                 </span>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Clipboard, Keyboard } from "lucide-react";
+import { Clipboard } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -24,13 +24,13 @@ interface Upload11Props {
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary/15 text-primary",
-  foreground: "bg-current/15 text-foreground",
-  violet: "bg-violet-500/15 text-violet-600 dark:text-violet-300",
-  sky: "bg-sky-500/15 text-sky-600 dark:text-sky-300",
-  emerald: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-300",
-  rose: "bg-rose-500/15 text-rose-600 dark:text-rose-300",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  violet: "text-violet-600 dark:text-violet-300",
+  sky: "text-sky-600 dark:text-sky-300",
+  emerald: "text-emerald-600 dark:text-emerald-300",
+  rose: "text-rose-600 dark:text-rose-300",
 };
 
 
@@ -51,7 +51,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const upload11Demo: Upload11Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Paste an image from your clipboard",
   hint: "Screenshot, copy, and press the shortcut to drop it here.",
@@ -63,7 +63,7 @@ export function Upload11({
   hint,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Upload11Props) {
@@ -77,14 +77,10 @@ export function Upload11({
       )}
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-3 rounded-xl border border-dashed border-current/15 bg-current/5 px-5 py-6 text-center">
-        <div
-          className={cn(
-            "flex size-10 items-center justify-center rounded-lg",
-            tileClasses[tone]
-          )}
-        >
-          <Clipboard className="size-5" aria-hidden="true" />
-        </div>
+        <Clipboard
+          className={cn("size-6 shrink-0", iconClasses[tone])}
+          aria-hidden="true"
+        />
         {title && (
           <span className="text-sm font-semibold">
             {title}
@@ -96,10 +92,9 @@ export function Upload11({
           </span>
         )}
         <div className={cn("inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs text-current/60 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-          <Keyboard className="size-3" aria-hidden="true" />
-          <kbd className="font-mono font-semibold">⌘</kbd>
+          <kbd className="font-semibold">⌘</kbd>
           <span>+</span>
-          <kbd className="font-mono font-semibold">V</kbd>
+          <kbd className="font-semibold">V</kbd>
         </div>
       </div>
     </div>

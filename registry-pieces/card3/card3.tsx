@@ -33,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const card3Demo: Card3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   price: "49",
   originalPrice: "89",
@@ -47,7 +47,7 @@ export function Card3({
   currency = "$",
   discount,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Card3Props) {

@@ -33,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats2Demo: Stats2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   value: "$48.2K",
   delta: 12.4,
@@ -45,7 +45,7 @@ export function Stats2({
   delta = 0,
   period,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Stats2Props) {

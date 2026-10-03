@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, GitBranch, Search } from "lucide-react";
+import { Check, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Branch {
@@ -12,6 +12,7 @@ interface Branch {
 interface Editor24Props {
   current?: string;
   branches?: Branch[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,14 +21,16 @@ export const editor24Demo: Editor24Props = {
   branches: [
     { name: "feat/onboarding", current: true },
     { name: "main" },
-    { name: "feat/ai-suggest", ahead: 3 },
+    { name: "feat/ai-suggest" },
     { name: "chore/cleanup" },
   ],
+  bordered: false,
 };
 
 export function Editor24({
   current,
   branches = [],
+  bordered = false,
   className,
 }: Editor24Props) {
   return (
@@ -37,7 +40,7 @@ export function Editor24({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col overflow-hidden rounded-md border border-border bg-card shadow-md">
+      <div className={cn("flex w-full max-w-64 flex-col overflow-hidden rounded-md bg-card shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2">
           <Search
             className="size-3.5 shrink-0 text-muted-foreground"
@@ -54,13 +57,9 @@ export function Editor24({
               <li
                 key={b.name}
                 className={cn(
-                  "flex items-center gap-2 px-3 py-1.5 font-mono text-xs transition-colors hover:bg-muted"
+                  "flex items-center gap-2 px-3 py-1.5 text-xs transition-colors hover:bg-muted"
                 )}
               >
-                <GitBranch
-                  className="size-3 shrink-0 text-muted-foreground"
-                  aria-hidden="true"
-                />
                 <span
                   className={cn(
                     "flex-1 truncate",

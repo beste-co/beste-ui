@@ -11,17 +11,17 @@ interface Travel13Props {
   nights?: number;
   guests?: string;
   total?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel13Demo: Travel13Props = {
-  confirmationNo: "AKSQ-24LP-7N",
   hotel: "Hotel Alma Soho · Barcelona",
   checkIn: "Jun 14",
   checkOut: "Jun 18",
   nights: 4,
-  guests: "2 adults",
   total: "€736",
+  bordered: false,
 };
 
 export function Travel13({
@@ -32,6 +32,7 @@ export function Travel13({
   nights = 0,
   guests,
   total,
+  bordered = false,
   className,
 }: Travel13Props) {
   return (
@@ -41,17 +42,15 @@ export function Travel13({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-emerald-500 bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-emerald-500")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-full bg-emerald-500 text-white">
-            <Check className="size-4" aria-hidden="true" />
-          </div>
+          <Check className="size-5 shrink-0 text-emerald-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+            <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
               Booking confirmed
             </span>
             {confirmationNo && (
-              <span className="truncate font-mono text-xs text-muted-foreground">
+              <span className="truncate text-xs text-muted-foreground">
                 {confirmationNo}
               </span>
             )}
@@ -78,9 +77,10 @@ export function Travel13({
         </div>
         <div className="flex items-center justify-between border-t border-border pt-2 text-sm text-muted-foreground">
           <span>
-            {nights} nights · {guests}
+            {nights} nights
+            {guests ? ` · ${guests}` : ""}
           </span>
-          <span className="font-mono text-base font-bold text-card-foreground">
+          <span className="text-base font-bold tabular-nums text-card-foreground">
             {total}
           </span>
         </div>

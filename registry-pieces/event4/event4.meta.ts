@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "event4",
   title: "Event Countdown",
   description:
-    "Dark foreground countdown with event title, start time, and a four-unit time tile grid below.",
+    "Dark countdown with the event title above a grid of four time tiles.",
   category: "Event",
 };

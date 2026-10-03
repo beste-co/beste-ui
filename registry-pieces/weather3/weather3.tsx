@@ -14,6 +14,7 @@ interface Hour {
 
 interface Weather3Props {
   hours?: Hour[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -38,13 +39,12 @@ export const weather3Demo: Weather3Props = {
     { label: "Now", condition: "sunny", temp: 22 },
     { label: "10 AM", condition: "sunny", temp: 23 },
     { label: "11 AM", condition: "cloudy", temp: 24 },
-    { label: "12 PM", condition: "cloudy", temp: 24 },
-    { label: "1 PM", condition: "rainy", temp: 21 },
-    { label: "2 PM", condition: "rainy", temp: 20 },
+    { label: "12 PM", condition: "rainy", temp: 21 },
   ],
+  bordered: false,
 };
 
-export function Weather3({ hours = [], className }: Weather3Props) {
+export function Weather3({ hours = [], bordered = false, className }: Weather3Props) {
   return (
     <div
       className={cn(
@@ -52,7 +52,7 @@ export function Weather3({ hours = [], className }: Weather3Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center justify-between gap-1 rounded-xl border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center justify-between gap-1 rounded-xl bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         {hours.map((hour, i) => {
           const Icon = iconMap[hour.condition];
           return (

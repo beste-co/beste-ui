@@ -1,6 +1,5 @@
 "use client";
 
-import { FileSearch } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface DiffLine {
@@ -13,6 +12,7 @@ interface Legal27Props {
   lines?: DiffLine[];
   added?: number;
   removed?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,8 +30,7 @@ export const legal27Demo: Legal27Props = {
     },
     { text: "of this agreement, subject to Section 11.", kind: "context" },
   ],
-  added: 1,
-  removed: 1,
+  bordered: false,
 };
 
 const lineClasses: Record<DiffLine["kind"], string> = {
@@ -49,10 +48,13 @@ const prefix: Record<DiffLine["kind"], string> = {
 export function Legal27({
   heading,
   lines = [],
-  added = 0,
-  removed = 0,
+  added,
+  removed,
+  bordered = false,
   className,
 }: Legal27Props) {
+  const showCounts = added !== undefined || removed !== undefined;
+
   return (
     <div
       className={cn(
@@ -60,25 +62,24 @@ export function Legal27({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex size-7 items-center justify-center rounded-md bg-violet-500/15 text-violet-500">
-              <FileSearch className="size-3.5" aria-hidden="true" />
-            </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {(heading || showCounts) && (
+          <div className="flex items-center justify-between gap-2">
             {heading && (
-              <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-semibold text-muted-foreground">
                 {heading}
               </span>
             )}
+            {showCounts && (
+              <span className="ml-auto shrink-0 text-xs tabular-nums">
+                <span className="text-emerald-700 dark:text-emerald-300">+{added ?? 0}</span>
+                <span className="text-muted-foreground"> / </span>
+                <span className="text-rose-700 dark:text-rose-300">-{removed ?? 0}</span>
+              </span>
+            )}
           </div>
-          <span className="text-xs font-mono">
-            <span className="text-emerald-700 dark:text-emerald-300">+{added}</span>
-            <span className="text-muted-foreground"> / </span>
-            <span className="text-rose-700 dark:text-rose-300">-{removed}</span>
-          </span>
-        </div>
-        <div className="flex flex-col gap-0.5 font-mono text-xs">
+        )}
+        <div className="flex flex-col gap-0.5 text-xs">
           {lines.map((line, idx) => (
             <div
               key={idx}

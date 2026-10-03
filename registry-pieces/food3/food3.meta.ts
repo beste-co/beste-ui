@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "food3",
   title: "Reservation Card",
   description:
-    "Emerald-bordered reservation summary with when/guests/seating/code arranged on a four-cell grid.",
+    "Emerald-bordered reservation summary with the restaurant name, the date and time, and the party size.",
   category: "Food",
 };

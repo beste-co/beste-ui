@@ -7,6 +7,7 @@ interface Editor10Props {
   lede?: string;
   bullets?: string[];
   code?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,7 +19,7 @@ export const editor10Demo: Editor10Props = {
     "Run smoke suite",
     "Tag the release",
   ],
-  code: "pnpm release",
+  bordered: false,
 };
 
 export function Editor10({
@@ -26,6 +27,7 @@ export function Editor10({
   lede,
   bullets = [],
   code,
+  bordered = false,
   className,
 }: Editor10Props) {
   return (
@@ -35,7 +37,7 @@ export function Editor10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         <h3 className="text-base font-bold text-card-foreground">
           {title}
         </h3>
@@ -61,7 +63,7 @@ export function Editor10({
           </ul>
         )}
         {code && (
-          <code className="rounded-sm bg-muted px-2 py-1 font-mono text-xs text-card-foreground">
+          <code className="rounded-sm bg-muted px-2 py-1 text-xs text-card-foreground">
             {code}
           </code>
         )}

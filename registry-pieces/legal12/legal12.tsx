@@ -5,13 +5,14 @@ import { cn } from "@/lib/utils";
 
 interface Toggle {
   label: string;
-  description: string;
+  description?: string;
   on: boolean;
 }
 
 interface Legal12Props {
   title?: string;
   toggles?: Toggle[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,25 +21,24 @@ export const legal12Demo: Legal12Props = {
   toggles: [
     {
       label: "Essential cookies",
-      description: "Always on. Needed for login and billing.",
       on: true,
     },
     {
       label: "Analytics",
-      description: "Anonymous product usage metrics.",
       on: true,
     },
     {
       label: "Personalized ads",
-      description: "Third-party partners may see your activity.",
       on: false,
     },
   ],
+  bordered: false,
 };
 
 export function Legal12({
   title,
   toggles = [],
+  bordered = false,
   className,
 }: Legal12Props) {
   return (
@@ -48,11 +48,9 @@ export function Legal12({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-emerald-500/15 text-emerald-500">
-            <ShieldCheck className="size-4" aria-hidden="true" />
-          </div>
+          <ShieldCheck className="size-5 shrink-0 text-emerald-500" aria-hidden="true" />
           {title && (
             <span className="text-sm font-semibold text-card-foreground">
               {title}
@@ -69,9 +67,11 @@ export function Legal12({
                 <span className="truncate text-xs font-semibold text-card-foreground">
                   {t.label}
                 </span>
-                <span className="truncate text-xs text-muted-foreground">
-                  {t.description}
-                </span>
+                {t.description && (
+                  <span className="truncate text-xs text-muted-foreground">
+                    {t.description}
+                  </span>
+                )}
               </div>
               <div
                 className={cn(

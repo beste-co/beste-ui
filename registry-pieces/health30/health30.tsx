@@ -20,18 +20,19 @@ interface Health30Props {
   cost?: string;
   action?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-foreground text-background",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const buttonClasses: Record<Tone, string> = {
@@ -46,12 +47,12 @@ const buttonClasses: Record<Tone, string> = {
 };
 
 export const health30Demo: Health30Props = {
-  provider: "Dr. Maya Chen",
-  specialty: "Telemedicine · General practice",
-  startsIn: "Starts in 12 min",
-  cost: "Covered by insurance",
+  provider: "Dr. Ólafur Arnalds",
+  specialty: "General practice",
+  startsIn: "In 12 min",
   action: "Join visit",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health30({
@@ -60,7 +61,8 @@ export function Health30({
   startsIn,
   cost,
   action = "Join visit",
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health30Props) {
   return (
@@ -70,16 +72,12 @@ export function Health30({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-9 items-center justify-center rounded-full shadow-md",
-              iconClasses[tone]
-            )}
-          >
-            <Video className="size-4" aria-hidden="true" />
-          </div>
+          <Video
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {provider && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -93,7 +91,7 @@ export function Health30({
             )}
           </div>
           {startsIn && (
-            <span className="shrink-0 rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-300">
+            <span className="shrink-0 rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-semibold tabular-nums text-amber-700 dark:text-amber-300">
               {startsIn}
             </span>
           )}
@@ -105,7 +103,7 @@ export function Health30({
           <button
             type="button"
             className={cn(
-              "rounded-md px-3 py-1.5 text-sm font-semibold hover:opacity-90",
+              "ml-auto rounded-md px-3 py-1.5 text-sm font-semibold hover:opacity-90",
               buttonClasses[tone]
             )}
           >

@@ -34,13 +34,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ticket4Demo: Ticket4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   number: "0427",
   event: "Annual Gala Raffle",
   drawDate: "Draw · Jun 14",
   numberLabel: "No.",
-  kindLabel: "Raffle",
 };
 
 export function Ticket4({
@@ -48,9 +47,9 @@ export function Ticket4({
   event,
   drawDate,
   numberLabel = "No.",
-  kindLabel = "Raffle",
+  kindLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ticket4Props) {
@@ -65,17 +64,19 @@ export function Ticket4({
     >
       <div className={cn("flex w-full max-w-80 overflow-hidden rounded-lg shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex flex-col items-center justify-center bg-current/10 px-4 py-3">
-          <span className="text-xs font-semibold uppercase tracking-widest text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {numberLabel}
           </span>
-          <span className="font-mono text-2xl font-bold tabular-nums">
+          <span className="text-2xl font-bold tabular-nums">
             {number}
           </span>
         </div>
         <div className="flex flex-1 flex-col justify-center gap-0.5 p-3">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-            {kindLabel}
-          </span>
+          {kindLabel && (
+            <span className="text-xs font-semibold text-current/60">
+              {kindLabel}
+            </span>
+          )}
           <span className="text-base font-bold leading-tight">
             {event}
           </span>

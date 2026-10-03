@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter, X } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Ai37Filter {
@@ -12,6 +12,7 @@ interface Ai37Props {
   namespace?: string;
   topK?: number;
   filters?: Ai37Filter[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,12 +23,14 @@ export const ai37Demo: Ai37Props = {
     { key: "lang", value: "en" },
     { key: "section", value: "guides" },
   ],
+  bordered: false,
 };
 
 export function Ai37({
   namespace = "namespace",
   topK = 5,
   filters = [],
+  bordered = false,
   className,
 }: Ai37Props) {
   return (
@@ -37,16 +40,10 @@ export function Ai37({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 font-mono text-xs">
-            <Filter
-              className="size-3 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <span className="text-card-foreground">{namespace}</span>
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className="text-xs text-card-foreground">{namespace}</span>
+          <span className="text-xs text-muted-foreground">
             top_k = {topK}
           </span>
         </div>
@@ -54,7 +51,7 @@ export function Ai37({
           {filters.map((f) => (
             <span
               key={f.key}
-              className="inline-flex items-center gap-1 rounded-sm border border-border bg-muted px-1.5 py-0.5 font-mono text-xs"
+              className={cn("inline-flex items-center gap-1 rounded-sm bg-muted px-1.5 py-0.5 text-xs", bordered && "border border-border")}
             >
               <span className="text-muted-foreground">{f.key}:</span>
               <span className="text-card-foreground">{f.value}</span>

@@ -41,7 +41,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor54Demo: Editor54Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Post Settings",
   status: "Draft",
@@ -50,7 +50,6 @@ export const editor54Demo: Editor54Props = {
     { label: "Publish Date", value: "12 May 2026" },
     { label: "Read Time", value: "5 min read" },
   ],
-  tags: ["retail", "case study"],
   stepMs: 380,
 };
 
@@ -69,7 +68,7 @@ export function Editor54({
   tags = [],
   stepMs = 380,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor54Props) {

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "ticket6",
   title: "Parking Stub",
   description:
-    "Garage receipt with a Parking header, monospace plate, entry timestamp, and level and spot footer.",
+    "Garage receipt with a Parking header, bold plate, entry timestamp, and spot.",
   category: "Ticket",
 };

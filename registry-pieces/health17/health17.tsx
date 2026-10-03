@@ -9,6 +9,7 @@ interface Health17Props {
   week?: Mood[];
   note?: string;
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -25,15 +26,15 @@ const weekdays = ["M", "T", "W", "T", "F", "S", "S"];
 export const health17Demo: Health17Props = {
   today: "good",
   week: ["okay", "good", "great", "low", "good", "good", "great"],
-  note: "4 of 7 days above neutral this week.",
-  label: "Mood today",
+  bordered: false,
 };
 
 export function Health17({
   today = "okay",
   week = [],
   note,
-  label = "Mood today",
+  label,
+  bordered = false,
   className,
 }: Health17Props) {
   const config = moodConfig[today];
@@ -45,15 +46,17 @@ export function Health17({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <span className="text-3xl" aria-label={config.label}>
             {config.emoji}
           </span>
           <div className="flex min-w-0 flex-1 flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {label}
-            </span>
+            {label && (
+              <span className="text-xs font-semibold text-muted-foreground">
+                {label}
+              </span>
+            )}
             <span className="text-sm font-semibold text-card-foreground">
               {config.label}
             </span>

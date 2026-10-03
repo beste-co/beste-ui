@@ -22,13 +22,13 @@ export function Shapes29({ className }: Shapes29Props) {
         <span className="h-3/4 w-1 rounded-full bg-foreground" />
         <span className="h-full w-1 rounded-full bg-foreground" />
         <span className="h-2/3 w-1 rounded-full bg-foreground" />
-        <span className="h-1/2 w-1 rounded-full bg-muted" />
-        <span className="h-3/4 w-1 rounded-full bg-muted" />
-        <span className="h-2/3 w-1 rounded-full bg-muted" />
-        <span className="h-1/3 w-1 rounded-full bg-muted" />
-        <span className="h-1/2 w-1 rounded-full bg-muted" />
-        <span className="h-1/4 w-1 rounded-full bg-muted" />
-        <span className="h-1/3 w-1 rounded-full bg-muted" />
+        <span className="h-1/2 w-1 rounded-full bg-foreground/15" />
+        <span className="h-3/4 w-1 rounded-full bg-foreground/15" />
+        <span className="h-2/3 w-1 rounded-full bg-foreground/15" />
+        <span className="h-1/3 w-1 rounded-full bg-foreground/15" />
+        <span className="h-1/2 w-1 rounded-full bg-foreground/15" />
+        <span className="h-1/4 w-1 rounded-full bg-foreground/15" />
+        <span className="h-1/3 w-1 rounded-full bg-foreground/15" />
       </div>
     </div>
   );

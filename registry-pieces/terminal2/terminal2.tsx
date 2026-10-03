@@ -6,14 +6,16 @@ import { cn } from "@/lib/utils";
 
 interface Terminal2Props {
   command?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const terminal2Demo: Terminal2Props = {
   command: "pnpm dlx shadcn@latest add button",
+  bordered: false,
 };
 
-export function Terminal2({ command = "", className }: Terminal2Props) {
+export function Terminal2({ command = "", bordered = false, className }: Terminal2Props) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -33,7 +35,7 @@ export function Terminal2({ command = "", className }: Terminal2Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-2 rounded-lg border border-border bg-muted py-1.5 pl-3 pr-1.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-2 rounded-lg bg-muted py-1.5 pl-3 pr-1.5 shadow-sm", bordered && "border border-border")}>
         <span
           className="shrink-0 select-none text-xs font-medium text-muted-foreground"
           aria-hidden="true"

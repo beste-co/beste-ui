@@ -11,6 +11,7 @@ interface Stats7Props {
   value?: string;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,12 +22,12 @@ const iconMap: Record<IconKey, typeof Users> = {
   zap: Zap,
 };
 
-const toneClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  emerald: "bg-emerald-500 text-white",
-  sunset: "bg-orange-500 text-white",
-  violet: "bg-violet-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  emerald: "text-emerald-500",
+  sunset: "text-orange-500",
+  violet: "text-violet-500",
 };
 
 export const stats7Demo: Stats7Props = {
@@ -34,6 +35,7 @@ export const stats7Demo: Stats7Props = {
   value: "2.8×",
   label: "Faster than last quarter",
   tone: "sunset",
+  bordered: false,
 };
 
 export function Stats7({
@@ -41,6 +43,7 @@ export function Stats7({
   value = "0",
   label,
   tone = "primary",
+  bordered = false,
   className,
 }: Stats7Props) {
   const Icon = iconMap[icon];
@@ -52,15 +55,8 @@ export function Stats7({
         className
       )}
     >
-      <div className="flex w-full max-w-64 items-center gap-3 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
-        <div
-          className={cn(
-            "flex size-12 shrink-0 items-center justify-center rounded-lg shadow-sm",
-            toneClasses[tone]
-          )}
-        >
-          <Icon className="size-5" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-64 items-center gap-3 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
+        <Icon className={cn("size-6 shrink-0", iconClasses[tone])} aria-hidden="true" />
         <div className="flex min-w-0 flex-1 flex-col">
           <span className="text-2xl font-bold tabular-nums leading-none text-card-foreground">
             {value}

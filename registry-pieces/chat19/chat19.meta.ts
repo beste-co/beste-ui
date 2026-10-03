@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "chat19",
   title: "Pinned Message",
   description:
-    "Amber-accented banner with a pin glyph, author caption, and the pinned message preview.",
+    "Amber-accented banner with a pin glyph and the pinned message preview.",
   category: "Chat",
 };

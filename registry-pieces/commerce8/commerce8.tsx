@@ -1,6 +1,5 @@
 "use client";
 
-import { Truck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -16,6 +15,7 @@ interface Commerce8Props {
   threshold?: number;
   currency?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -32,14 +32,16 @@ export const commerce8Demo: Commerce8Props = {
   subtotal: 48,
   threshold: 75,
   currency: "$",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Commerce8({
   subtotal = 0,
   threshold = 100,
   currency = "$",
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Commerce8Props) {
   const pct = Math.max(0, Math.min(100, (subtotal / threshold) * 100));
@@ -53,12 +55,8 @@ export function Commerce8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-1.5 text-xs">
-          <Truck
-            className="size-3.5 text-muted-foreground"
-            aria-hidden="true"
-          />
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="text-xs">
           {qualifies ? (
             <span className="font-medium text-emerald-600 dark:text-emerald-400">
               You qualify for free shipping.
@@ -66,7 +64,7 @@ export function Commerce8({
           ) : (
             <span className="text-card-foreground">
               Add{" "}
-              <span className="font-mono font-semibold tabular-nums">
+              <span className="font-semibold tabular-nums">
                 {currency}
                 {remaining.toFixed(0)}
               </span>{" "}
@@ -80,16 +78,6 @@ export function Commerce8({
             style={{ width: `${pct}%` }}
             aria-hidden="true"
           />
-        </div>
-        <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
-          <span>
-            {currency}
-            {subtotal.toFixed(0)}
-          </span>
-          <span>
-            {currency}
-            {threshold.toFixed(0)} goal
-          </span>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ interface Socialproof8Props {
   score?: number;
   total?: string;
   distribution?: number[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const socialproof8Demo: Socialproof8Props = {
   score: 4.8,
   total: "2,341 reviews",
   distribution: [82, 12, 3, 1, 2],
+  bordered: false,
 };
 
 export function Socialproof8({
@@ -23,6 +25,7 @@ export function Socialproof8({
   score = 0,
   total,
   distribution = [],
+  bordered = false,
   className,
 }: Socialproof8Props) {
   const rows = [distribution[0] ?? 0, distribution[1] ?? 0, distribution[2] ?? 0, distribution[3] ?? 0, distribution[4] ?? 0];
@@ -35,7 +38,7 @@ export function Socialproof8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-lg border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-lg bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between gap-2">
           <div className="flex items-baseline gap-1.5">
             <span className="text-2xl font-bold tabular-nums text-card-foreground">
@@ -44,7 +47,7 @@ export function Socialproof8({
             <span className="text-sm text-muted-foreground">/ 5</span>
           </div>
           {platform && (
-            <span className="font-mono text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {platform}
             </span>
           )}
@@ -76,13 +79,9 @@ export function Socialproof8({
                 key={starLevel}
                 className="flex items-center gap-2 text-xs"
               >
-                <span className="w-2 shrink-0 text-right font-mono tabular-nums text-muted-foreground">
+                <span className="w-2 shrink-0 text-right tabular-nums text-muted-foreground">
                   {starLevel}
                 </span>
-                <Star
-                  className="size-3 shrink-0 fill-muted-foreground/40 text-muted-foreground/40"
-                  aria-hidden="true"
-                />
                 <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
                   <div
                     className="h-full rounded-full bg-amber-400"
@@ -90,9 +89,6 @@ export function Socialproof8({
                     aria-hidden="true"
                   />
                 </div>
-                <span className="w-8 shrink-0 text-right font-mono tabular-nums text-muted-foreground">
-                  {pct}%
-                </span>
               </div>
             );
           })}

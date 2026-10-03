@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRight, Globe } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Search19Props {
@@ -8,6 +8,7 @@ interface Search19Props {
   title?: string;
   snippet?: string;
   highlight?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const search19Demo: Search19Props = {
   snippet:
     "Configure an IdP to issue SAML assertions to Beste, then map groups to workspace roles.",
   highlight: "SAML",
+  bordered: false,
 };
 
 function withHighlight(text: string, q?: string) {
@@ -40,6 +42,7 @@ export function Search19({
   title,
   snippet,
   highlight,
+  bordered = false,
   className,
 }: Search19Props) {
   return (
@@ -49,10 +52,9 @@ export function Search19({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {crumbs.length > 0 && (
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <Globe className="size-3" aria-hidden="true" />
             {crumbs.map((c, idx) => (
               <span key={idx} className="inline-flex items-center gap-1">
                 <span className="truncate">{c}</span>

@@ -14,7 +14,6 @@ interface Chat24Props {
 export const chat24Demo: Chat24Props = {
   message: "Let's shift the sync to 3pm instead.",
   role: "received",
-  editedAt: "09:48",
 };
 
 export function Chat24({

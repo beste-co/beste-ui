@@ -5,17 +5,20 @@ import { cn } from "@/lib/utils";
 interface Editor16Props {
   prefix?: string;
   lines?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor16Demo: Editor16Props = {
   prefix: "const ",
-  lines: ["name = 'Ayşe';", "role = 'design';", "team = 'core';"],
+  lines: ["name = 'Hania';", "role = 'design';", "team = 'core';"],
+  bordered: false,
 };
 
 export function Editor16({
   prefix = "",
   lines = [],
+  bordered = false,
   className,
 }: Editor16Props) {
   return (
@@ -25,11 +28,8 @@ export function Editor16({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
-        <div className="border-b border-border bg-muted/50 px-3 py-1 font-mono text-xs text-muted-foreground">
-          3 cursors
-        </div>
-        <pre className="px-3 py-2 font-mono text-xs leading-relaxed">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
+        <pre className="px-3 py-2 text-xs leading-relaxed">
           {lines.map((line, i) => (
             <div key={i} className="flex items-center">
               <span className="text-card-foreground">{prefix}</span>

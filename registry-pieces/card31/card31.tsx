@@ -53,20 +53,19 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const card31Demo: Card31Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   avatar: {
     src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=160&h=160&fit=crop",
-    alt: "Portrait of Priya Nandan",
+    alt: "Portrait of Anna Meredith",
   },
-  name: "Priya Nandan",
+  name: "Anna Meredith",
   role: "Migration engineer",
   status: "Free from 09:30 today",
   availability: "free",
   rows: [
     { label: "Call length", value: "30 minutes" },
     { label: "Based in", value: "Bristol, UK" },
-    { label: "Has migrated", value: "40+ practices" },
   ],
 };
 
@@ -78,7 +77,7 @@ export function Card31({
   availability = "free",
   rows = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Card31Props) {

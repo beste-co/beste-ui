@@ -6,6 +6,7 @@ interface Upload20Props {
   thumbs?: string[];
   total?: number;
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,12 +21,14 @@ export const upload20Demo: Upload20Props = {
   thumbs: defaultThumbs,
   total: 24,
   label: "Recent uploads",
+  bordered: false,
 };
 
 export function Upload20({
   thumbs = defaultThumbs,
   total = 0,
   label,
+  bordered = false,
   className,
 }: Upload20Props) {
   const visible = thumbs.slice(0, 4);
@@ -38,7 +41,7 @@ export function Upload20({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-2 rounded-md border border-border bg-card p-2 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-2 rounded-md bg-card p-2 shadow-sm", bordered && "border border-border")}>
         <div className="flex -space-x-2">
           {visible.map((src, idx) => (
             <img
@@ -49,7 +52,7 @@ export function Upload20({
             />
           ))}
           {extra > 0 && (
-            <span className="flex size-8 items-center justify-center rounded-md bg-muted font-mono text-xs font-semibold text-card-foreground ring-2 ring-card">
+            <span className="flex size-8 items-center justify-center rounded-md bg-muted text-xs font-semibold text-card-foreground ring-2 ring-card">
               +{extra}
             </span>
           )}

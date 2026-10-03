@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Nav33Props {
   current?: number;
   total?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const nav33Demo: Nav33Props = {
   current: 3,
   total: 8,
+  bordered: false,
 };
 
 export function Nav33({
   current = 1,
   total = 1,
+  bordered = false,
   className,
 }: Nav33Props) {
   const clampedTotal = Math.max(1, total);
@@ -47,7 +50,7 @@ export function Nav33({
           type="button"
           aria-label="Previous page"
           disabled={clamped === 1}
-          className="flex size-8 items-center justify-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground disabled:opacity-40"
+          className={cn("flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground disabled:opacity-40", bordered ? "border border-border bg-card" : "bg-card")}
         >
           <ChevronLeft className="size-3.5" aria-hidden="true" />
         </button>
@@ -80,7 +83,7 @@ export function Nav33({
           type="button"
           aria-label="Next page"
           disabled={clamped === clampedTotal}
-          className="flex size-8 items-center justify-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground disabled:opacity-40"
+          className={cn("flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground disabled:opacity-40", bordered ? "border border-border bg-card" : "bg-card")}
         >
           <ChevronRight className="size-3.5" aria-hidden="true" />
         </button>

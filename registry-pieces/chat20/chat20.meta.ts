@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "chat20",
   title: "Missed Call",
   description:
-    "Rose missed-call tile beside caller name and time, with a Call back action on the right.",
+    "Rose missed-call icon beside caller name and time, with a Call back action on the right.",
   category: "Chat",
 };

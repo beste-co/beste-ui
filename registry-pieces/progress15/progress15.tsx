@@ -11,6 +11,7 @@ interface Step {
 interface Progress15Props {
   title?: string;
   steps?: Step[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,15 +20,16 @@ export const progress15Demo: Progress15Props = {
   steps: [
     { label: "Create your workspace", done: true },
     { label: "Import member records", done: true },
-    { label: "Connect billing account", done: true },
     { label: "Invite your team", done: false },
     { label: "Publish booking page", done: false },
   ],
+  bordered: false,
 };
 
 export function Progress15({
   title = "Setup",
   steps = [],
+  bordered = false,
   className,
 }: Progress15Props) {
   const done = steps.filter((step) => step.done).length;
@@ -41,7 +43,7 @@ export function Progress15({
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-5 shadow-xl">
+      <div className={cn("w-full max-w-80 rounded-md bg-card p-5 shadow-xl", bordered && "border border-border")}>
         <div className="mb-3 flex items-baseline justify-between">
           <p className="text-base font-semibold text-card-foreground">{title}</p>
           <span className="text-sm text-muted-foreground">

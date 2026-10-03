@@ -16,6 +16,7 @@ interface Monitoring12Props {
   total?: number;
   remaining?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,13 +34,15 @@ const dotClasses: Record<Tone, string> = {
 export const monitoring12Demo: Monitoring12Props = {
   total: 10,
   remaining: 7,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring12({
   total = 10,
   remaining = 0,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring12Props) {
   const safeTotal = Math.max(1, total);
@@ -52,7 +55,7 @@ export function Monitoring12({
         className
       )}
     >
-      <div className="flex items-center gap-3 rounded-full border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("flex items-center gap-3 rounded-full bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-1" aria-hidden="true">
           {Array.from({ length: safeTotal }).map((_, i) => (
             <span

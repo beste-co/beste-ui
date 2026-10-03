@@ -26,31 +26,32 @@ interface Health15Props {
   splits?: Split[];
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 export const health15Demo: Health15Props = {
   distance: "10.2 km",
   totalTime: "49:18",
-  avgPace: "4:49 / km",
   label: "Run",
   splits: [
-    { km: 1, pace: "4:38", elevation: "+ 12 m" },
-    { km: 2, pace: "4:52", elevation: "- 4 m" },
-    { km: 3, pace: "4:41", elevation: "+ 8 m" },
+    { km: 1, pace: "4:38" },
+    { km: 2, pace: "4:52" },
+    { km: 3, pace: "4:41" },
   ],
   tone: "neutral",
+  bordered: false,
 };
 
 export function Health15({
@@ -60,6 +61,7 @@ export function Health15({
   splits = [],
   label = "Run",
   tone = "neutral",
+  bordered = false,
   className,
 }: Health15Props) {
   return (
@@ -69,48 +71,51 @@ export function Health15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div
-              className={cn(
-                "flex size-8 items-center justify-center rounded-md",
-                iconClasses[tone]
-              )}
-            >
-              <MapPin className="size-4" aria-hidden="true" />
-            </div>
+            <MapPin
+              className={cn("size-5 shrink-0", iconClasses[tone])}
+              aria-hidden="true"
+            />
             <div className="flex flex-col">
-              <span className="font-mono text-lg font-bold text-card-foreground">
+              <span className="text-lg font-bold tabular-nums text-card-foreground">
                 {distance}
               </span>
               <span className="text-xs text-muted-foreground">{label}</span>
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <span className="font-mono text-sm font-semibold text-card-foreground">
+            <span className="text-sm font-semibold tabular-nums text-card-foreground">
               {totalTime}
             </span>
-            <span className="font-mono text-xs text-muted-foreground">
-              avg {avgPace}
-            </span>
+            {avgPace && (
+              <span className="text-xs tabular-nums text-muted-foreground">
+                avg {avgPace}
+              </span>
+            )}
           </div>
         </div>
         <div className="flex flex-col divide-y divide-border">
           {splits.map((split, idx) => (
             <div
               key={idx}
-              className="grid grid-cols-3 items-center py-1.5 text-sm"
+              className={cn(
+                "items-center py-1.5 text-sm tabular-nums",
+                split.elevation ? "grid grid-cols-3" : "flex justify-between"
+              )}
             >
-              <span className="font-mono font-semibold text-muted-foreground">
+              <span className="font-semibold text-muted-foreground">
                 km {split.km}
               </span>
-              <span className="justify-self-center font-mono font-semibold text-card-foreground">
+              <span className="justify-self-center font-semibold text-card-foreground">
                 {split.pace}
               </span>
-              <span className="justify-self-end font-mono text-xs text-muted-foreground">
-                {split.elevation}
-              </span>
+              {split.elevation && (
+                <span className="justify-self-end text-xs text-muted-foreground">
+                  {split.elevation}
+                </span>
+              )}
             </div>
           ))}
         </div>

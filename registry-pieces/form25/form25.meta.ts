@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "form25",
   title: "Tick Slider",
   description:
-    "Labeled-tick slider with a primary fill, a value pill in the header, and the active tick bolded.",
+    "Labeled-tick slider with a primary fill and the active tick bolded.",
   category: "Form",
 };

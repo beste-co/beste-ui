@@ -12,6 +12,7 @@ interface Editor34Props {
   oldName?: string;
   newName?: string;
   matches?: Match[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,16 +24,16 @@ export const editor34Demo: Editor34Props = {
     { file: "app.tsx", count: 4 },
     { file: "welcome.tsx", count: 2 },
   ],
+  bordered: false,
 };
 
 export function Editor34({
   oldName = "old",
   newName = "new",
   matches = [],
+  bordered = false,
   className,
 }: Editor34Props) {
-  const total = matches.reduce((sum, m) => sum + m.count, 0);
-
   return (
     <div
       className={cn(
@@ -40,8 +41,8 @@ export function Editor34({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2 font-mono text-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-center gap-2 text-sm">
           <span className="rounded bg-rose-100 px-1.5 py-0.5 font-semibold text-rose-700 line-through dark:bg-rose-950 dark:text-rose-300">
             {oldName}
           </span>
@@ -52,11 +53,8 @@ export function Editor34({
           <span className="rounded bg-emerald-100 px-1.5 py-0.5 font-semibold text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
             {newName}
           </span>
-          <span className="ml-auto text-xs text-muted-foreground">
-            {total} refs
-          </span>
         </div>
-        <ul className="flex flex-col gap-0.5 border-t border-border pt-2 font-mono text-xs">
+        <ul className="flex flex-col gap-0.5 border-t border-border pt-2 text-xs">
           {matches.map((m, i) => (
             <li
               key={i}

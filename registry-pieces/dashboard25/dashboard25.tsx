@@ -48,32 +48,28 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard25Demo: Dashboard25Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   heading: "Services",
-  upLabel: "Operational",
-  degradedLabel: "Degraded",
-  downLabel: "Outage",
   services: [
     { name: "API", status: "up", uptime: "99.99%" },
     { name: "Ingest", status: "degraded", uptime: "99.82%" },
     { name: "Billing", status: "up", uptime: "99.97%" },
-    { name: "Workers", status: "up", uptime: "99.95%" },
   ],
 };
 
 export function Dashboard25({
   heading = "Services",
-  upLabel = "Operational",
-  degradedLabel = "Degraded",
-  downLabel = "Outage",
+  upLabel,
+  degradedLabel,
+  downLabel,
   services = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard25Props) {
-  const labels: Record<Status, string> = {
+  const labels: Record<Status, string | undefined> = {
     up: upLabel,
     degraded: degradedLabel,
     down: downLabel,
@@ -88,7 +84,7 @@ export function Dashboard25({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+        <span className="text-xs font-semibold text-current/60">
           {heading}
         </span>
         <ul className="flex flex-col divide-y divide-border">
@@ -114,11 +110,13 @@ export function Dashboard25({
                 <span className="truncate text-xs font-medium">
                   {s.name}
                 </span>
-                <span className="truncate text-xs text-current/60">
-                  {labels[s.status]}
-                </span>
+                {labels[s.status] && (
+                  <span className="truncate text-xs text-current/60">
+                    {labels[s.status]}
+                  </span>
+                )}
               </div>
-              <span className="shrink-0 font-mono text-xs tabular-nums">
+              <span className="shrink-0 text-xs tabular-nums">
                 {s.uptime}
               </span>
             </li>

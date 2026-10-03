@@ -16,6 +16,7 @@ interface Tooltip8Props {
   name?: string;
   hex?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,12 +35,14 @@ export const tooltip8Demo: Tooltip8Props = {
   name: "Sunset",
   hex: "#F97066",
   tone: "sunset",
+  bordered: false,
 };
 
 export function Tooltip8({
   name,
   hex,
   tone = "primary",
+  bordered = false,
   className,
 }: Tooltip8Props) {
   return (
@@ -50,7 +53,7 @@ export function Tooltip8({
       )}
     >
       <div className="relative">
-        <div className="flex items-center gap-2.5 rounded-lg border border-border bg-card py-1.5 pl-2 pr-3 shadow-lg">
+        <div className={cn("flex items-center gap-2.5 rounded-lg bg-card py-1.5 pl-2 pr-3 shadow-lg", bordered && "border border-border")}>
           <span
             className={cn(
               "size-6 rounded-md border border-border shadow-sm",
@@ -65,7 +68,7 @@ export function Tooltip8({
               </span>
             )}
             {hex && (
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="text-xs text-muted-foreground">
                 {hex}
               </span>
             )}

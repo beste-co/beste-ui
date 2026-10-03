@@ -13,21 +13,24 @@ interface Command {
 interface Editor9Props {
   query?: string;
   commands?: Command[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor9Demo: Editor9Props = {
   query: "format",
   commands: [
-    { label: "Format Document", hint: "Editor", shortcut: ["⌥", "⇧", "F"] },
-    { label: "Format Selection", hint: "Editor", shortcut: ["⌘", "K", "F"] },
-    { label: "Reveal in File Explorer", hint: "File" },
+    { label: "Format Document" },
+    { label: "Format Selection" },
+    { label: "Reveal in File Explorer" },
   ],
+  bordered: false,
 };
 
 export function Editor9({
   query = "",
   commands = [],
+  bordered = false,
   className,
 }: Editor9Props) {
   return (
@@ -37,7 +40,7 @@ export function Editor9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-lg bg-card shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2">
           <Search
             className="size-3.5 shrink-0 text-muted-foreground"
@@ -76,7 +79,7 @@ export function Editor9({
                           +
                         </span>
                       )}
-                      <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded border border-border border-b-2 bg-muted px-1 font-mono text-xs font-medium text-muted-foreground">
+                      <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded border border-border border-b-2 bg-muted px-1 text-xs font-medium text-muted-foreground">
                         {k}
                       </kbd>
                     </Fragment>

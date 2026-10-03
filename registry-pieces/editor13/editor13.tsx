@@ -8,6 +8,7 @@ interface Editor13Props {
   name?: string;
   code?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -36,15 +37,17 @@ const tonePairs: Record<Tone, { bg: string; text: string; caret: string }> = {
 };
 
 export const editor13Demo: Editor13Props = {
-  name: "Ayşe",
+  name: "Hania",
   code: "  return greet(name);",
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Editor13({
   name = "Collaborator",
   code = "",
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Editor13Props) {
   const cfg = tonePairs[tone];
@@ -56,7 +59,7 @@ export function Editor13({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-0 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-0 rounded-md bg-card px-3 py-2 text-xs shadow-sm", bordered && "border border-border")}>
         <span className="text-card-foreground">{code}</span>
         <div className="relative ml-0.5 flex flex-col items-start">
           <span

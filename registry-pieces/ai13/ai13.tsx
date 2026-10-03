@@ -65,9 +65,6 @@ export function Ai13({
                 className="absolute inset-0 size-full object-cover"
               />
             )}
-            <span className="absolute bottom-1 right-1 rounded-sm bg-black/60 px-1 font-mono text-xs font-semibold tabular-nums text-white">
-              {i + 1}
-            </span>
           </div>
         ))}
       </div>

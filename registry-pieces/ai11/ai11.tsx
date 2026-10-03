@@ -48,17 +48,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai11Demo: Ai11Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Thinking",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Ai11({
   label = "Thinking",
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai11Props) {

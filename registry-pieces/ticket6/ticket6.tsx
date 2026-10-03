@@ -36,14 +36,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ticket6Demo: Ticket6Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  code: "P-2891",
   headerLabel: "Parking",
   plate: "ABC 1234",
   spotPrefix: "Spot",
   enteredAt: "Jun 14 · 14:32",
-  level: "Level 2",
   spot: "B-08",
 };
 
@@ -56,7 +54,7 @@ export function Ticket6({
   level,
   spot,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ticket6Props) {
@@ -71,18 +69,16 @@ export function Ticket6({
     >
       <div className={cn("w-full max-w-80 overflow-hidden rounded-lg shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between bg-current/10 px-3 py-2">
-          <span className="text-xs font-semibold uppercase tracking-widest text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {headerLabel}
           </span>
-          <span className="font-mono text-xs font-semibold">
-            {code}
-          </span>
+          {code && <span className="text-xs font-semibold">{code}</span>}
         </div>
         <div className="flex flex-col gap-1.5 p-3">
-          <span className="font-mono text-xl font-bold tracking-wide">
+          <span className="text-xl font-bold">
             {plate}
           </span>
-          <div className="flex items-center justify-between text-xs text-current/60">
+          <div className="flex items-center justify-between text-xs tabular-nums text-current/60">
             <span>{enteredAt}</span>
             {(level || spot) && (
               <span>

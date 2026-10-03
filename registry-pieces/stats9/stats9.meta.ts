@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "stats9",
   title: "Rank Card",
   description:
-    "Gold trophy tile beside a #rank-of-total position, a context label, and an emerald percentile flag.",
+    "Trophy icon beside a rank out of the total and a short context label.",
   category: "Stats",
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Menu, MoreHorizontal, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -47,11 +47,9 @@ const fieldClasses: Record<Surface, string> = {
 
 export const editor46Demo: Editor46Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   componentId: "Feature177 Content",
-  componentTag: "#feature177",
-  locale: "🇺🇸",
   sizeLabel: "Size",
   headingLabel: "Heading",
   heading: "No tutorials needed.",
@@ -100,24 +98,6 @@ function Toolbar({
       >
         U
       </button>
-      <button
-        type="button"
-        className="rounded p-1 hover:bg-current/10"
-        aria-label="More formatting"
-      >
-        <MoreHorizontal className="size-3" aria-hidden="true" />
-      </button>
-      <span className="mx-1 h-4 w-px bg-border" aria-hidden="true" />
-      <button
-        type="button"
-        className="flex items-center gap-0.5 rounded px-1 py-0.5 hover:bg-current/10"
-        aria-label="Text color"
-      >
-        <span className="border-b-2 border-current text-xs font-semibold leading-none">
-          A
-        </span>
-        <ChevronDown className="size-3" aria-hidden="true" />
-      </button>
     </div>
   );
 }
@@ -132,7 +112,7 @@ export function Editor46({
   descriptionLabel,
   description,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor46Props) {
@@ -161,10 +141,6 @@ export function Editor46({
       >
         <div className="flex items-center justify-between gap-3 px-4 py-3">
           <div className="flex min-w-0 items-center gap-2">
-            <Menu
-              className="size-4 shrink-0 text-current/60"
-              aria-hidden="true"
-            />
             {componentId && (
               <span className="truncate text-sm font-semibold">
                 {componentId}
@@ -180,7 +156,7 @@ export function Editor46({
             {locale && (
               <button
                 type="button"
-                className="flex size-7 items-center justify-center overflow-hidden rounded-full border border-current/15 bg-background text-foreground"
+                className={cn("flex size-7 items-center justify-center overflow-hidden rounded-full text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")}
                 aria-label="Locale"
               >
                 <span className="text-base leading-none" aria-hidden="true">
@@ -190,7 +166,7 @@ export function Editor46({
             )}
             <button
               type="button"
-              className="flex size-7 items-center justify-center rounded-full border border-current/15 bg-background text-foreground/60 hover:bg-current/10"
+              className={cn("flex size-7 items-center justify-center rounded-full text-foreground/60 hover:bg-current/10", bordered ? "border border-current/15 bg-background" : "bg-current/10")}
               aria-label="Close"
             >
               <X className="size-3.5" aria-hidden="true" />
@@ -211,7 +187,8 @@ export function Editor46({
                 )}
                 <div
                   className={cn(
-                    "overflow-hidden rounded-lg border border-current/15",
+                    "overflow-hidden rounded-lg",
+              bordered ? "border border-current/15" : "bg-current/10",
                     fieldTone
                   )}
                 >
@@ -234,7 +211,8 @@ export function Editor46({
                 )}
                 <div
                   className={cn(
-                    "overflow-hidden rounded-lg border border-current/15",
+                    "overflow-hidden rounded-lg",
+              bordered ? "border border-current/15" : "bg-current/10",
                     fieldTone
                   )}
                 >

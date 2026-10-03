@@ -1,22 +1,24 @@
 "use client";
 
-import { ArrowDownToLine } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Editor36Props {
   value?: string;
   total?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor36Demo: Editor36Props = {
   value: "142",
   total: 386,
+  bordered: false,
 };
 
 export function Editor36({
   value = "",
   total = 0,
+  bordered = false,
   className,
 }: Editor36Props) {
   return (
@@ -26,15 +28,11 @@ export function Editor36({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-2 rounded-md border border-border bg-card px-3 py-2 shadow-md">
-        <ArrowDownToLine
-          className="size-3.5 shrink-0 text-muted-foreground"
-          aria-hidden="true"
-        />
+      <div className={cn("flex w-full max-w-72 items-center gap-2 rounded-md bg-card px-3 py-2 shadow-md", bordered && "border border-border")}>
         <div className="flex flex-1 items-center gap-0.5">
           <span className="text-xs text-muted-foreground">Go to line</span>
           <span
-            className="font-mono text-sm font-semibold tabular-nums text-card-foreground"
+            className="text-sm font-semibold tabular-nums text-card-foreground"
           >
             {value}
           </span>
@@ -43,7 +41,7 @@ export function Editor36({
             aria-hidden="true"
           />
         </div>
-        <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">
+        <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
           of {total}
         </span>
       </div>

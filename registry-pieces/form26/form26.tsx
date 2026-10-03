@@ -35,12 +35,12 @@ const swatchClasses: Record<SwatchTone, string> = {
 export const form26Demo: Form26Props = {
   label: "Accent color",
   swatches: [
-    { tone: "violet", name: "Violet", hex: "#6D5EFA" },
-    { tone: "sky", name: "Sky", hex: "#0EA5E9" },
-    { tone: "emerald", name: "Emerald", hex: "#10B981" },
-    { tone: "amber", name: "Amber", hex: "#F59E0B" },
-    { tone: "rose", name: "Rose", hex: "#EF4444" },
-    { tone: "slate", name: "Slate", hex: "#111827" },
+    { tone: "violet", name: "Violet" },
+    { tone: "sky", name: "Sky" },
+    { tone: "emerald", name: "Emerald" },
+    { tone: "amber", name: "Amber" },
+    { tone: "rose", name: "Rose" },
+    { tone: "slate", name: "Slate" },
   ],
   selectedIndex: 0,
 };
@@ -68,8 +68,9 @@ export function Form26({
             </label>
           )}
           {selected && (
-            <span className="font-mono text-xs text-muted-foreground">
-              {selected.name} · {selected.hex}
+            <span className="text-xs text-muted-foreground">
+              {selected.name}
+              {selected.hex ? ` · ${selected.hex}` : ""}
             </span>
           )}
         </div>

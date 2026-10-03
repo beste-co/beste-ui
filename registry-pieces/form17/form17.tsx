@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -14,18 +14,19 @@ interface Form17Props {
   emails?: EmailToken[];
   placeholder?: string;
   error?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const form17Demo: Form17Props = {
   label: "Invite by email",
   emails: [
-    { address: "lara@beste.co", valid: true },
-    { address: "nils@beste.co", valid: true },
-    { address: "om@acme", valid: false },
+    { address: "hello@beste.co", valid: true },
+    { address: "hello@beste", valid: false },
   ],
   placeholder: "Separate with commas",
-  error: "om@acme is missing the domain ending.",
+  error: "hello@beste is missing the domain ending.",
+  bordered: false,
 };
 
 export function Form17({
@@ -33,6 +34,7 @@ export function Form17({
   emails = [],
   placeholder = "email@company.com",
   error,
+  bordered = false,
   className,
 }: Form17Props) {
   return (
@@ -48,7 +50,7 @@ export function Form17({
             {label}
           </label>
         )}
-        <div className="flex flex-wrap items-center gap-1.5 rounded-md border border-border bg-card px-2 py-1.5 shadow-sm">
+        <div className={cn("flex flex-wrap items-center gap-1.5 rounded-md bg-card px-2 py-1.5 shadow-sm", bordered && "border border-border")}>
           {emails.map((t, idx) => (
             <span
               key={idx}
@@ -59,12 +61,6 @@ export function Form17({
                   : "bg-muted text-card-foreground"
               )}
             >
-              {t.valid === false && (
-                <AlertCircle
-                  className="size-3 text-rose-500"
-                  aria-hidden="true"
-                />
-              )}
               {t.address}
               <button
                 type="button"

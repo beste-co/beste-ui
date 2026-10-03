@@ -8,6 +8,7 @@ interface Money15Props {
   delta?: string;
   period?: string;
   points?: number[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,8 +16,8 @@ export const money15Demo: Money15Props = {
   label: "Portfolio",
   value: "$52,840",
   delta: "+12.4%",
-  period: "Past 12 months",
   points: [20, 24, 22, 30, 28, 36, 33, 42, 48, 45, 56, 62],
+  bordered: false,
 };
 
 function buildPath(points: number[]) {
@@ -40,6 +41,7 @@ export function Money15({
   delta,
   period,
   points = [],
+  bordered = false,
   className,
 }: Money15Props) {
   const path = buildPath(points);
@@ -51,11 +53,11 @@ export function Money15({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-lg border border-border bg-card px-4 py-3.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-lg bg-card px-4 py-3.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             {label && (
-              <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              <span className="text-xs font-medium text-muted-foreground">
                 {label}
               </span>
             )}

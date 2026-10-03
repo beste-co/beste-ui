@@ -1,6 +1,5 @@
 "use client";
 
-import { Bell, CalendarClock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -19,6 +18,7 @@ interface Commerce27Props {
   price?: string;
   notified?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -47,8 +47,8 @@ export const commerce27Demo: Commerce27Props = {
   releaseDate: "Ships May 15",
   badge: "Pre-order",
   price: "$159",
-  notified: 1284,
   tone: "primary",
+  bordered: false,
 };
 
 export function Commerce27({
@@ -58,6 +58,7 @@ export function Commerce27({
   price,
   notified,
   tone = "primary",
+  bordered = false,
   className,
 }: Commerce27Props) {
   return (
@@ -67,19 +68,18 @@ export function Commerce27({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <span
             className={cn(
-              "rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wide",
+              "rounded-full px-2 py-0.5 text-xs font-semibold",
               badgeClasses[tone]
             )}
           >
             {badge}
           </span>
           {typeof notified === "number" && (
-            <span className="inline-flex items-center gap-0.5 text-xs text-muted-foreground">
-              <Bell className="size-3" aria-hidden="true" />
+            <span className="text-xs tabular-nums text-muted-foreground">
               {notified.toLocaleString()} notified
             </span>
           )}
@@ -88,14 +88,13 @@ export function Commerce27({
           <span className="text-sm font-semibold text-card-foreground">
             {name}
           </span>
-          <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-            <CalendarClock className="size-3" aria-hidden="true" />
+          <span className="text-xs text-muted-foreground">
             {releaseDate}
           </span>
         </div>
         <div className="flex items-center justify-between gap-2">
           {price && (
-            <span className="font-mono text-base font-semibold tabular-nums text-card-foreground">
+            <span className="text-base font-semibold tabular-nums text-card-foreground">
               {price}
             </span>
           )}

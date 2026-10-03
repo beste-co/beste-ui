@@ -52,7 +52,7 @@ export function Logo3({
       `}</style>
       <div className="flex w-full max-w-80 flex-col gap-2">
         {heading && (
-          <span className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <span className="text-center text-xs font-semibold text-muted-foreground">
             {heading}
           </span>
         )}

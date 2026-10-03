@@ -1,6 +1,5 @@
 "use client";
 
-import { Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Avatar {
@@ -12,6 +11,7 @@ interface Event8Props {
   total?: number;
   avatars?: Avatar[];
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,20 +33,14 @@ export const event8Demo: Event8Props = {
       image:
         "https://images.unsplash.com/photo-1646678669631-a88ba087bdac?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D",
     },
-    {
-      initials: "KO",
-      image:
-        "https://images.unsplash.com/photo-1642635785885-f0883f842c38?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8",
-    },
-    { initials: "JR" },
   ],
-  label: "Beste Sözen, Andrea Kim and 126 others are going",
+  bordered: false,
 };
 
-export function Event8({ total = 0, avatars = [], label, className }: Event8Props) {
+export function Event8({ total = 0, avatars = [], label, bordered = false, className }: Event8Props) {
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex -space-x-2">
           {avatars.map((a, idx) => (
             <span
@@ -60,12 +54,12 @@ export function Event8({ total = 0, avatars = [], label, className }: Event8Prop
               )}
             </span>
           ))}
-          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-semibold text-card-foreground ring-2 ring-card">
+          <span className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-semibold tabular-nums text-card-foreground ring-2 ring-card">
             +{Math.max(0, total - avatars.length)}
           </span>
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
-          <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold tabular-nums text-muted-foreground">
             {total} attending
           </span>
           {label && <span className="truncate text-xs text-card-foreground">{label}</span>}

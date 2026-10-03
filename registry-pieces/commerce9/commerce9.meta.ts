@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "commerce9",
   title: "Order Confirmation",
   description:
-    "Post-purchase card with an emerald check, order id, total price, a package-arrival line, and the receipt email destination.",
+    "Post-purchase card with an emerald check, the order total, and an arrival line.",
   category: "Commerce",
 };

@@ -12,7 +12,7 @@ The catalog has four tiers:
 
 - **Blocks** (https://ui.beste.co/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
 - **Pages** (https://ui.beste.co/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
-- **Pieces** (https://ui.beste.co/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,326 pieces in 46 categories, all free.
+- **Pieces** (https://ui.beste.co/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,325 pieces in 46 categories, all free.
 - **Components** (https://ui.beste.co/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 291 components in 40 categories, all free.
 
 Every asset has a detail page with a live preview, the install command in both flavors, its props and a README. Blocks live at `/block/{name}`, pages at `/page/{name}`, pieces at `/piece/{name}` and components at `/component/{name}`.
@@ -501,7 +501,7 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 
 ## Pieces
 
-1,326 small widgets, all free. Listing: https://ui.beste.co/pieces. Each category page lists every piece in it.
+1,325 small widgets, all free. Listing: https://ui.beste.co/pieces. Each category page lists every piece in it.
 
 - [Isometric](https://ui.beste.co/pieces/isometric): 250 pieces
 - [Shapes](https://ui.beste.co/pieces/shapes): 80 pieces
@@ -517,10 +517,10 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 - [Input](https://ui.beste.co/pieces/input): 33 pieces
 - [Upload](https://ui.beste.co/pieces/upload): 33 pieces
 - [Health](https://ui.beste.co/pieces/health): 31 pieces
-- [Legal](https://ui.beste.co/pieces/legal): 31 pieces
 - [Nav](https://ui.beste.co/pieces/nav): 31 pieces
 - [Travel](https://ui.beste.co/pieces/travel): 31 pieces
 - [Education](https://ui.beste.co/pieces/education): 30 pieces
+- [Legal](https://ui.beste.co/pieces/legal): 30 pieces
 - [Media](https://ui.beste.co/pieces/media): 27 pieces
 - [Search](https://ui.beste.co/pieces/search): 25 pieces
 - [Monitoring](https://ui.beste.co/pieces/monitoring): 24 pieces

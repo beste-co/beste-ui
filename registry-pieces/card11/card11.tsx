@@ -36,16 +36,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const card11Demo: Card11Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Starter",
   price: "$12",
   period: "/ mo",
-  tagline: "Everything a small team needs to ship.",
   features: [
     "Up to 5 editors",
     "25 GB asset storage",
-    "Weekly analytics email",
     "Community support",
   ],
   action: "Choose Starter",
@@ -59,7 +57,7 @@ export function Card11({
   features = [],
   action,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Card11Props) {
@@ -75,12 +73,12 @@ export function Card11({
       <div className={cn("flex w-full max-w-64 flex-col gap-3 rounded-xl p-4 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex flex-col gap-1">
           {name && (
-            <span className="text-sm font-semibold uppercase tracking-wide text-current/60">
+            <span className="text-sm font-semibold text-current/60">
               {name}
             </span>
           )}
           <div className="flex items-baseline gap-1">
-            <span className="font-mono text-3xl font-bold">
+            <span className="text-3xl font-bold tabular-nums">
               {price}
             </span>
             <span className="text-sm text-current/60">{period}</span>
@@ -96,14 +94,14 @@ export function Card11({
                 className="mt-0.5 size-3.5 shrink-0 text-emerald-500"
                 aria-hidden="true"
               />
-              <span className="">{f}</span>
+              <span>{f}</span>
             </div>
           ))}
         </div>
         {action && (
           <button
             type="button"
-            className="rounded-md border border-current/15 bg-background px-3 py-2 text-xs font-semibold shadow-sm hover:bg-current/10 text-foreground"
+            className={cn("rounded-md px-3 py-2 text-xs font-semibold shadow-sm hover:bg-current/10 text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")}
           >
             {action}
           </button>

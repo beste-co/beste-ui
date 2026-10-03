@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "form13",
   title: "Password Toggle",
   description:
-    "Masked password input with a caps-lock alert pill and an eye button that flips visibility.",
+    "Masked password input with an eye button that flips visibility and an optional caps-lock pill.",
   category: "Form",
 };

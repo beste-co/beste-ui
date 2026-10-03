@@ -11,6 +11,7 @@ interface Education18Props {
   lesson?: string;
   highlights?: Highlight[];
   note?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,12 +35,14 @@ export const education18Demo: Education18Props = {
     },
   ],
   note: "Ask Priya about the stale-closure example in office hours.",
+  bordered: false,
 };
 
 export function Education18({
   lesson,
   highlights = [],
   note,
+  bordered = false,
   className,
 }: Education18Props) {
   return (
@@ -49,9 +52,9 @@ export function Education18({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {lesson && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {lesson}
           </span>
         )}

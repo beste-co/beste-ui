@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "automation16",
   title: "HTTP Action",
   description:
-    "Custom HTTP request card with a semantic method pill, full endpoint URL, and a list of key/value request headers in monospace.",
+    "Custom HTTP request card with a method pill, the endpoint URL, and a short list of request headers.",
   category: "Automation",
 };

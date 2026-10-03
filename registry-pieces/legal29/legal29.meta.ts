@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "legal29",
   title: "Regulatory Update",
   description:
-    "Regulatory-change card tinted by severity info, warning, or critical, with an effective-date footer.",
+    "Regulatory-change card with a title, a severity pill for info, warning, or critical, and a short body.",
   category: "Legal",
 };

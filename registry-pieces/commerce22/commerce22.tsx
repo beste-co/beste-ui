@@ -22,6 +22,7 @@ interface Commerce22Props {
   trackingId?: string;
   steps?: Commerce22Step[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -44,20 +45,21 @@ const lineColor: Record<Tone, string> = {
 };
 
 export const commerce22Demo: Commerce22Props = {
-  trackingId: "1Z999AA10123456784",
   tone: "foreground",
   steps: [
-    { label: "Order placed", time: "Apr 20, 2:14pm", status: "done" },
-    { label: "Packed", time: "Apr 21, 9:00am", status: "done" },
+    { label: "Order placed", status: "done" },
+    { label: "Packed", status: "done" },
     { label: "Shipped", time: "Apr 21, 4:30pm", status: "active" },
     { label: "Delivered", time: "Estimated Apr 22", status: "pending" },
   ],
+  bordered: false,
 };
 
 export function Commerce22({
   trackingId,
   steps = [],
   tone = "foreground",
+  bordered = false,
   className,
 }: Commerce22Props) {
   return (
@@ -67,13 +69,13 @@ export function Commerce22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             Tracking
           </span>
           {trackingId && (
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {trackingId}
             </span>
           )}

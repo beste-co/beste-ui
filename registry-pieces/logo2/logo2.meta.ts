@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Larger brand mark with an icon tile, bold wordmark, and a small tagline underneath.",
   category: "Logo",
+  cardScale: 0.75,
 };

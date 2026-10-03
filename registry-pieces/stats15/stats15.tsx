@@ -44,7 +44,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats15Demo: Stats15Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Capacity used",
   percent: 78,
@@ -57,7 +57,7 @@ export function Stats15({
   caption,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Stats15Props) {

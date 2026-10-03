@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -55,13 +54,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const realestate4Demo: Realestate4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   neighborhood: "Levent · Istanbul",
   medianPrice: "$1.08M median",
   trend: "+4.2% YoY",
   daysOnMarket: "18 avg days on market",
-  listings: "142 active listings",
   tone: "primary",
 };
 
@@ -73,7 +71,7 @@ export function Realestate4({
   listings,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Realestate4Props) {
@@ -96,24 +94,25 @@ export function Realestate4({
           {trend && (
             <span
               className={cn(
-                "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold",
+                "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums",
                 pillClasses[tone]
               )}
             >
-              <TrendingUp className="size-3" aria-hidden="true" />
               {trend}
             </span>
           )}
         </div>
         {medianPrice && (
-          <span className="font-mono text-xl font-bold">
+          <span className="text-xl font-bold tabular-nums">
             {medianPrice}
           </span>
         )}
-        <div className="flex items-center justify-between border-t border-current/15 pt-2 text-xs text-current/60">
-          {daysOnMarket && <span>{daysOnMarket}</span>}
-          {listings && <span>{listings}</span>}
-        </div>
+        {(daysOnMarket || listings) && (
+          <div className="flex items-center justify-between border-t border-current/15 pt-2 text-xs text-current/60">
+            {daysOnMarket && <span>{daysOnMarket}</span>}
+            {listings && <span>{listings}</span>}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "upload22",
   title: "File Row",
   description:
-    "File manager row with a rose PDF tile, metadata line, owner avatar, and a more-actions button.",
+    "File manager row with a file icon, the filename and size, and a more-actions button.",
   category: "Upload",
 };

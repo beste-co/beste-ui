@@ -42,7 +42,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chart5Demo: Chart5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "MRR · 90d",
   value: "$124K",
@@ -56,7 +56,7 @@ export function Chart5({
   data = [],
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Chart5Props) {

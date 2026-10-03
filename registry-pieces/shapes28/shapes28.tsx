@@ -18,9 +18,9 @@ export function Shapes28({ className }: Shapes28Props) {
       )}
     >
       <div className="flex items-center gap-2" aria-hidden="true">
-        <span className="h-1.5 w-8 rounded-full bg-muted" />
+        <span className="h-1.5 w-8 rounded-full bg-foreground/15" />
         <ChevronRight className="size-3 text-muted-foreground" />
-        <span className="h-1.5 w-10 rounded-full bg-muted" />
+        <span className="h-1.5 w-10 rounded-full bg-foreground/15" />
         <ChevronRight className="size-3 text-muted-foreground" />
         <span className="h-1.5 w-6 rounded-full bg-foreground" />
       </div>

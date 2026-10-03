@@ -1,6 +1,6 @@
 "use client";
 
-import { ArchiveRestore, HardDrive } from "lucide-react";
+import { HardDrive } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -18,16 +18,17 @@ interface Upload29Props {
   percent?: number;
   plan?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary/15 text-primary",
-  foreground: "bg-foreground/15 text-foreground",
-  ocean: "bg-indigo-500/15 text-indigo-500",
-  sunset: "bg-orange-500/15 text-orange-500",
-  violet: "bg-violet-500/15 text-violet-500",
-  emerald: "bg-emerald-500/15 text-emerald-500",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  ocean: "text-indigo-500",
+  sunset: "text-orange-500",
+  violet: "text-violet-500",
+  emerald: "text-emerald-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -43,8 +44,8 @@ export const upload29Demo: Upload29Props = {
   used: "184.2 GB",
   total: "250 GB",
   percent: 74,
-  plan: "Growth plan · shared with team",
   tone: "primary",
+  bordered: false,
 };
 
 export function Upload29({
@@ -53,6 +54,7 @@ export function Upload29({
   percent = 0,
   plan,
   tone = "ocean",
+  bordered = false,
   className,
 }: Upload29Props) {
   const pct = Math.max(0, Math.min(100, percent));
@@ -64,16 +66,12 @@ export function Upload29({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              tileClasses[tone]
-            )}
-          >
-            <HardDrive className="size-4" aria-hidden="true" />
-          </div>
+          <HardDrive
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="text-sm font-semibold text-card-foreground">
               Storage
@@ -84,7 +82,7 @@ export function Upload29({
               </span>
             )}
           </div>
-          <span className="font-mono text-xs text-card-foreground">
+          <span className="text-xs tabular-nums text-card-foreground">
             {used} / {total}
           </span>
         </div>
@@ -97,13 +95,11 @@ export function Upload29({
             style={{ width: `${pct}%` }}
           />
         </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>{pct}% used</span>
+        <div className="flex justify-end">
           <button
             type="button"
-            className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+            className="text-xs font-semibold text-primary hover:underline"
           >
-            <ArchiveRestore className="size-3" aria-hidden="true" />
             Free up space
           </button>
         </div>

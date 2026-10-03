@@ -24,6 +24,7 @@ interface Realestate8Props {
   summary?: string;
   items?: WalkItem[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -53,6 +54,7 @@ export const realestate8Demo: Realestate8Props = {
     { label: "Austrian Lycée", distance: "12 min walk", icon: "school" },
   ],
   tone: "primary",
+  bordered: false,
 };
 
 export function Realestate8({
@@ -61,6 +63,7 @@ export function Realestate8({
   summary,
   items = [],
   tone = "primary",
+  bordered = false,
   className,
 }: Realestate8Props) {
   const pct = Math.max(0, Math.min(100, walkScore));
@@ -72,11 +75,11 @@ export function Realestate8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <div
             className={cn(
-              "flex size-12 shrink-0 items-center justify-center rounded-full font-mono text-lg font-bold",
+              "flex size-12 shrink-0 items-center justify-center rounded-full text-lg font-bold",
               scoreClasses[tone]
             )}
           >
@@ -84,7 +87,7 @@ export function Realestate8({
           </div>
           <div className="flex flex-col">
             {label && (
-              <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-semibold text-muted-foreground">
                 {label}
               </span>
             )}

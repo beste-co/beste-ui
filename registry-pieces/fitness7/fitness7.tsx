@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, PlayCircle } from "lucide-react";
+import { PlayCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -19,18 +19,19 @@ interface Fitness7Props {
   cues?: string[];
   avoid?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const bulletClasses: Record<Tone, string> = {
@@ -46,14 +47,14 @@ const bulletClasses: Record<Tone, string> = {
 
 export const fitness7Demo: Fitness7Props = {
   exercise: "Romanian deadlift",
-  muscleGroup: "Hamstrings · Glutes · Back",
   cues: [
     "Brace core before each rep",
     "Hinge at the hips, knees soft",
     "Keep the bar close to the shins",
   ],
   avoid: "Rounded lower back at the bottom",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Fitness7({
@@ -61,7 +62,8 @@ export function Fitness7({
   muscleGroup,
   cues = [],
   avoid,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Fitness7Props) {
   return (
@@ -71,16 +73,12 @@ export function Fitness7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <PlayCircle className="size-4" aria-hidden="true" />
-          </div>
+          <PlayCircle
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex flex-col">
             {exercise && (
               <span className="text-sm font-semibold text-card-foreground">
@@ -109,14 +107,8 @@ export function Fitness7({
           ))}
         </div>
         {avoid && (
-          <div className="flex items-start gap-2 rounded-md bg-rose-500/10 p-2 text-sm">
-            <AlertCircle
-              className="mt-0.5 size-3.5 shrink-0 text-rose-500"
-              aria-hidden="true"
-            />
-            <span className="text-rose-700 dark:text-rose-300">
-              Avoid · {avoid}
-            </span>
+          <div className="rounded-md bg-rose-500/10 p-2 text-sm text-rose-700 dark:text-rose-300">
+            Avoid · {avoid}
           </div>
         )}
       </div>

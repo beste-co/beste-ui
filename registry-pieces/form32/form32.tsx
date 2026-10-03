@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Copy, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Form32Props {
@@ -9,6 +9,7 @@ interface Form32Props {
   masked?: boolean;
   visible?: boolean;
   copied?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,6 +24,7 @@ export const form32Demo: Form32Props = {
   masked: true,
   visible: false,
   copied: true,
+  bordered: false,
 };
 
 export function Form32({
@@ -31,6 +33,7 @@ export function Form32({
   masked = false,
   visible = true,
   copied = false,
+  bordered = false,
   className,
 }: Form32Props) {
   const display = masked && !visible ? maskValue(value) : value;
@@ -48,8 +51,8 @@ export function Form32({
             {label}
           </label>
         )}
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 shadow-sm">
-          <span className="flex-1 truncate font-mono text-sm text-card-foreground">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+          <span className="flex-1 truncate text-sm text-card-foreground">
             {display}
           </span>
           {masked && (
@@ -68,23 +71,13 @@ export function Form32({
           <button
             type="button"
             className={cn(
-              "inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold transition-colors",
+              "inline-flex shrink-0 items-center rounded-md px-2 py-1 text-xs font-semibold transition-colors",
               copied
                 ? "bg-emerald-500 text-white"
                 : "bg-foreground text-background hover:opacity-90"
             )}
           >
-            {copied ? (
-              <>
-                <Check className="size-3" aria-hidden="true" />
-                Copied
-              </>
-            ) : (
-              <>
-                <Copy className="size-3" aria-hidden="true" />
-                Copy
-              </>
-            )}
+            {copied ? "Copied" : "Copy"}
           </button>
         </div>
       </div>

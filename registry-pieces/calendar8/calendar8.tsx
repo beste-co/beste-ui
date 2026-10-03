@@ -5,12 +5,13 @@ import { cn } from "@/lib/utils";
 interface Calendar8Props {
   label?: string;
   caption?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const calendar8Demo: Calendar8Props = {
-  label: "Commit activity",
   caption: "342 commits in the last year",
+  bordered: false,
 };
 
 const weeks = 20;
@@ -32,6 +33,7 @@ const intensityClasses = [
 export function Calendar8({
   label,
   caption,
+  bordered = false,
   className,
 }: Calendar8Props) {
   return (
@@ -41,9 +43,9 @@ export function Calendar8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
         )}
@@ -69,16 +71,11 @@ export function Calendar8({
             );
           })}
         </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>{caption}</span>
-          <div className="flex items-center gap-1" aria-hidden="true">
-            <span>Less</span>
-            {intensityClasses.map((c, idx) => (
-              <span key={idx} className={cn("size-2 rounded-sm", c)} />
-            ))}
-            <span>More</span>
-          </div>
-        </div>
+        {caption && (
+          <span className="text-xs tabular-nums text-muted-foreground">
+            {caption}
+          </span>
+        )}
       </div>
     </div>
   );

@@ -84,19 +84,12 @@ export function Tooltip7({
             cardClasses[tone]
           )}
         >
-          <div className="flex items-center justify-between">
-            <span
-              className={cn(
-                "rounded-full px-2 py-0.5 text-xs font-semibold",
-                pillClasses[tone]
-              )}
-            >
-              Step {step} of {total}
-            </span>
+          <div className="flex items-start justify-between gap-2">
+            {title && <span className="text-sm font-semibold">{title}</span>}
             <button
               type="button"
               className={cn(
-                "flex size-5 items-center justify-center rounded hover:opacity-80",
+                "ml-auto flex size-5 shrink-0 items-center justify-center rounded hover:opacity-80",
                 pillClasses[tone]
               )}
               aria-label="Dismiss"
@@ -104,7 +97,6 @@ export function Tooltip7({
               <X className="size-3" aria-hidden="true" />
             </button>
           </div>
-          {title && <span className="text-sm font-semibold">{title}</span>}
           {description && (
             <span className="text-xs leading-snug opacity-80">
               {description}

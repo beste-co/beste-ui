@@ -16,6 +16,7 @@ interface Ai44Props {
   failed?: number;
   total?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -29,19 +30,21 @@ const barClasses: Record<Tone, string> = {
 };
 
 export const ai44Demo: Ai44Props = {
-  id: "batch_01HX9K2",
+  id: "Nightly embeddings",
   completed: 820,
   failed: 4,
   total: 1000,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai44({
-  id = "batch_…",
+  id,
   completed = 0,
   failed = 0,
   total = 1,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai44Props) {
   const done = Math.min(100, (completed / total) * 100);
@@ -54,12 +57,14 @@ export function Ai44({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
-          <span className="truncate font-mono text-xs text-card-foreground">
-            {id}
-          </span>
-          <span className="font-mono text-xs tabular-nums text-muted-foreground">
+          {id && (
+            <span className="truncate text-xs text-card-foreground">
+              {id}
+            </span>
+          )}
+          <span className="text-xs tabular-nums text-muted-foreground">
             {completed.toLocaleString()}/{total.toLocaleString()}
           </span>
         </div>
@@ -75,16 +80,11 @@ export function Ai44({
             aria-hidden="true"
           />
         </div>
-        <div className="flex items-center gap-3 font-mono text-xs">
-          <span className="text-muted-foreground">
-            ok {completed.toLocaleString()}
+        {failed > 0 && (
+          <span className="text-xs tabular-nums text-rose-600 dark:text-rose-400">
+            fail {failed}
           </span>
-          {failed > 0 && (
-            <span className="text-rose-600 dark:text-rose-400">
-              fail {failed}
-            </span>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ interface StepItem {
 
 interface Terminal6Props {
   steps?: StepItem[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,6 +23,7 @@ export const terminal6Demo: Terminal6Props = {
     { label: "Optimizing output", status: "running" },
     { label: "Publishing build", status: "pending" },
   ],
+  bordered: false,
 };
 
 const labelClasses: Record<StepStatus, string> = {
@@ -30,7 +32,7 @@ const labelClasses: Record<StepStatus, string> = {
   pending: "text-zinc-600",
 };
 
-export function Terminal6({ steps = [], className }: Terminal6Props) {
+export function Terminal6({ steps = [], bordered = false, className }: Terminal6Props) {
   return (
     <div
       className={cn(
@@ -38,7 +40,7 @@ export function Terminal6({ steps = [], className }: Terminal6Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-2 rounded-lg border border-zinc-800 bg-zinc-950 p-3 font-mono text-xs shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-2 rounded-lg bg-zinc-950 p-3 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         {steps.map((step, index) => (
           <div key={index} className="flex items-center gap-2">
             {step.status === "done" && (

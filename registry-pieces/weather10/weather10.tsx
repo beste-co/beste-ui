@@ -11,6 +11,7 @@ interface Weather10Props {
   title?: string;
   detail?: string;
   until?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,7 +31,7 @@ export const weather10Demo: Weather10Props = {
   severity: "advisory",
   title: "Heat Advisory",
   detail: "Heat index up to 38°C this afternoon. Stay hydrated and avoid direct sun.",
-  until: "Until 9:00 PM tonight",
+  bordered: false,
 };
 
 export function Weather10({
@@ -38,6 +39,7 @@ export function Weather10({
   title,
   detail,
   until,
+  bordered = false,
   className,
 }: Weather10Props) {
   return (
@@ -47,7 +49,7 @@ export function Weather10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <TriangleAlert
           className={cn("mt-0.5 size-5 shrink-0", severityClasses[severity])}
           aria-hidden="true"
@@ -59,7 +61,7 @@ export function Weather10({
             </span>
             <span
               className={cn(
-                "text-xs font-bold uppercase tracking-wider",
+                "text-xs font-bold",
                 severityClasses[severity]
               )}
             >

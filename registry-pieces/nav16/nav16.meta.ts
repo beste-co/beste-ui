@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "nav16",
   title: "Dropdown Menu",
   description:
-    "Shadow-lifted menu with icon rows, shortcut hints on the right, and a tinted destructive Delete action.",
+    "Shadow-lifted menu with plain action rows and a tinted destructive Delete action below a divider.",
   category: "Nav",
 };

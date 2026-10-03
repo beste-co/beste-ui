@@ -11,6 +11,7 @@ interface DiffLine {
 
 interface Code4Props {
   lines?: DiffLine[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,6 +22,7 @@ export const code4Demo: Code4Props = {
     { kind: "add", text: "  return `Hello, ${name}!`;" },
     { kind: "context", text: "}" },
   ],
+  bordered: false,
 };
 
 const lineClasses: Record<DiffKind, string> = {
@@ -35,7 +37,7 @@ const prefixMap: Record<DiffKind, string> = {
   context: " ",
 };
 
-export function Code4({ lines = [], className }: Code4Props) {
+export function Code4({ lines = [], bordered = false, className }: Code4Props) {
   return (
     <div
       className={cn(
@@ -43,7 +45,7 @@ export function Code4({ lines = [], className }: Code4Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 overflow-hidden rounded-lg border border-border bg-card font-mono text-xs leading-relaxed shadow-sm">
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-lg bg-card font-mono text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {lines.map((line, i) => (
           <div
             key={i}

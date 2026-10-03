@@ -1,25 +1,26 @@
 "use client";
 
-import { Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Commerce4Props {
   remaining?: number;
   total?: number;
   watchers?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const commerce4Demo: Commerce4Props = {
   remaining: 3,
   total: 50,
-  watchers: 18,
+  bordered: false,
 };
 
 export function Commerce4({
   remaining = 0,
   total = 100,
   watchers,
+  bordered = false,
   className,
 }: Commerce4Props) {
   const pct = Math.max(2, Math.min(100, (remaining / Math.max(1, total)) * 100));
@@ -49,7 +50,7 @@ export function Commerce4({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-1.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-1.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1.5">
             <span
@@ -61,8 +62,7 @@ export function Commerce4({
             </span>
           </div>
           {typeof watchers === "number" && (
-            <span className="inline-flex items-center gap-0.5 text-xs text-muted-foreground">
-              <Flame className="size-3" aria-hidden="true" />
+            <span className="text-xs tabular-nums text-muted-foreground">
               {watchers} watching
             </span>
           )}

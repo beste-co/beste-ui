@@ -48,19 +48,19 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const badge4Demo: Badge4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Beste",
   handle: "@withbeste",
-  tone: "sky",
+  tone: "primary",
 };
 
 export function Badge4({
   name = "Account",
   handle,
-  tone = "sky",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Badge4Props) {

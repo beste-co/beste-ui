@@ -19,24 +19,24 @@ export const media7Demo: Media7Props = {
   stories: [
     {
       src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face",
-      alt: "Ayşe",
-      fallback: "AK",
+      alt: "Hania Rani",
+      fallback: "HR",
     },
     {
       src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
-      alt: "Merve",
-      fallback: "MÖ",
+      alt: "Nils Frahm",
+      fallback: "NF",
     },
     {
       src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
-      alt: "Sarah",
-      fallback: "SB",
+      alt: "Agnes Obel",
+      fallback: "AO",
       seen: true,
     },
     {
       src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
-      alt: "John",
-      fallback: "JD",
+      alt: "Ólafur Arnalds",
+      fallback: "ÓA",
     },
   ],
 };

@@ -1,6 +1,5 @@
 "use client";
 
-import { PenLine } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -34,11 +33,10 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const legal2Demo: Legal2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Sign here",
-  name: "Beste Sözen",
-  role: "Principal, Beste Design Studio",
+  name: "Nils Frahm",
   dateLine: "Date: __ / __ / ____",
 };
 
@@ -48,7 +46,7 @@ export function Legal2({
   role,
   dateLine = "Date: __ / __ / ____",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Legal2Props) {
@@ -64,13 +62,9 @@ export function Legal2({
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg p-4 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="relative flex h-20 items-end border-b-2 border-dashed border-muted-foreground/40 px-2 pb-1">
           <span
-            className="absolute -left-1 -top-1 -rotate-12 rounded-md bg-rose-500 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm"
+            className="absolute -left-1 -top-1 -rotate-12 rounded-md bg-rose-500 px-2 py-0.5 text-xs font-bold text-white shadow-sm"
             aria-hidden="true"
           >
-            <PenLine
-              className="mr-1 inline-block size-3"
-              aria-hidden="true"
-            />
             {label}
           </span>
           <span className="text-current/25">×</span>
@@ -84,7 +78,7 @@ export function Legal2({
               <span className="text-current/60">{role}</span>
             )}
           </div>
-          <span className="font-mono text-current/60">{dateLine}</span>
+          <span className="text-current/60">{dateLine}</span>
         </div>
       </div>
     </div>

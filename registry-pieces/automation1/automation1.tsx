@@ -92,7 +92,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation1Demo: Automation1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   triggerLabel: "When",
   actionLabel: "Then",
@@ -150,7 +150,7 @@ function Row({ kind, step }: { kind: string; step: Automation1Step }) {
       <Tile step={step} />
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex items-baseline gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {kind}
           </span>
           <span className="truncate text-xs font-semibold">
@@ -171,7 +171,7 @@ export function Automation1({
   triggerLabel = "When",
   actionLabel = "Then",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation1Props) {

@@ -35,6 +35,7 @@ const SQL_KEYWORDS = new Set([
 
 interface Code10Props {
   query?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -46,6 +47,7 @@ export const code10Demo: Code10Props = {
     "ORDER BY created_at DESC",
     "LIMIT 10;",
   ].join("\n"),
+  bordered: false,
 };
 
 function tokenize(line: string) {
@@ -73,7 +75,7 @@ function classFor(token: string): string {
   return "text-card-foreground";
 }
 
-export function Code10({ query = "", className }: Code10Props) {
+export function Code10({ query = "", bordered = false, className }: Code10Props) {
   const lines = query.split("\n");
   return (
     <div
@@ -82,7 +84,7 @@ export function Code10({ query = "", className }: Code10Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-lg border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <div className={cn("w-full max-w-80 rounded-lg bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {lines.map((line, i) => (
           <div key={i} className="truncate">
             {tokenize(line).map((token, j) => (

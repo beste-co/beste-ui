@@ -15,6 +15,7 @@ type Anchor =
 
 interface Toolbar15Props {
   anchor?: Anchor;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -32,9 +33,10 @@ const anchors: Anchor[] = [
 
 export const toolbar15Demo: Toolbar15Props = {
   anchor: "mc",
+  bordered: false,
 };
 
-export function Toolbar15({ anchor = "tl", className }: Toolbar15Props) {
+export function Toolbar15({ anchor = "tl", bordered = false, className }: Toolbar15Props) {
   return (
     <div
       className={cn(
@@ -42,7 +44,7 @@ export function Toolbar15({ anchor = "tl", className }: Toolbar15Props) {
         className
       )}
     >
-      <div className="grid grid-cols-3 gap-1 rounded-lg border border-border bg-card p-2 shadow-sm">
+      <div className={cn("grid grid-cols-3 gap-1 rounded-lg bg-card p-2 shadow-sm", bordered && "border border-border")}>
         {anchors.map((a) => {
           const isActive = a === anchor;
           return (

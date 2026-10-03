@@ -1,6 +1,5 @@
 "use client";
 
-import { MoreHorizontal, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -56,11 +55,10 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats14Demo: Stats14Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Support Queue",
   value: "1,284",
-  deltaLabel: "312 cleared today",
   segments: [
     { label: "New", value: 420, tone: "emerald" },
     { label: "Active", value: 610, tone: "amber" },
@@ -74,7 +72,7 @@ export function Stats14({
   deltaLabel,
   segments = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Stats14Props) {
@@ -101,24 +99,14 @@ export function Stats14({
       )}
     >
       <div className={cn("w-full max-w-96 rounded-md p-5 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
-        <div className="mb-4 flex items-center justify-between">
-          <p className="text-base font-medium">{title}</p>
-          <MoreHorizontal
-            className="size-4 text-current/60"
-            aria-hidden="true"
-          />
-        </div>
+        <p className="mb-4 text-base font-medium">{title}</p>
 
         <div className="flex items-baseline gap-2">
-          <span className="text-4xl font-semibold tracking-tight">
+          <span className="text-4xl font-semibold tracking-tight tabular-nums">
             {value}
           </span>
           {deltaLabel && (
             <span className="flex items-center gap-1 text-sm text-current/60">
-              <TrendingUp
-                className="size-4 text-emerald-600"
-                aria-hidden="true"
-              />
               <span className="font-medium text-emerald-600">
                 {deltaLabel.split(" ")[0]}
               </span>
@@ -149,7 +137,7 @@ export function Stats14({
                 )}
                 aria-hidden="true"
               />
-              <span className="font-medium">
+              <span className="font-medium tabular-nums">
                 {segment.value}
               </span>
               <span className="text-current/60">{segment.label}</span>

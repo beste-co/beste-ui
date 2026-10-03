@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Socialproof11Props {
   prefix?: string;
   brand?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const socialproof11Demo: Socialproof11Props = {
   prefix: "Payments by",
   brand: "Stripe",
+  bordered: false,
 };
 
 export function Socialproof11({
   prefix = "Powered by",
   brand = "Partner",
+  bordered = false,
   className,
 }: Socialproof11Props) {
   return (
@@ -26,7 +29,7 @@ export function Socialproof11({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-full bg-card px-3 py-1.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex size-4 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white">
           <Check className="size-2.5" strokeWidth={3} aria-hidden="true" />
         </div>

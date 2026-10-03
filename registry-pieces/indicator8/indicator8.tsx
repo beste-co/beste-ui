@@ -55,7 +55,7 @@ export function Indicator8({
       <div className="inline-flex items-baseline gap-2">
         <span
           className={cn(
-            "inline-flex items-center gap-1 font-mono text-lg font-bold tabular-nums",
+            "inline-flex items-center gap-1 text-lg font-bold tabular-nums",
             config.text
           )}
         >

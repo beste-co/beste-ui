@@ -33,12 +33,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai15Demo: Ai15Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   reaction: "up",
 };
 
-export function Ai15({ reaction = null, surface = "card", bordered = true, inverted = false, className }: Ai15Props) {
+export function Ai15({ reaction = null, surface = "card", bordered = false, inverted = false, className }: Ai15Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

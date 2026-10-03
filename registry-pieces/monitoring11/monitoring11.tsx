@@ -15,6 +15,7 @@ type Tone =
 interface Monitoring11Props {
   data?: number[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -49,12 +50,14 @@ const defaultData = [
 
 export const monitoring11Demo: Monitoring11Props = {
   data: defaultData,
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring11({
   data = defaultData,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring11Props) {
   return (
@@ -66,7 +69,8 @@ export function Monitoring11({
     >
       <div
         className={cn(
-          "rounded-lg border border-border bg-card p-3 shadow-sm",
+          "rounded-lg bg-card p-3 shadow-sm",
+          bordered && "border border-border",
           wrapperClasses[tone]
         )}
       >

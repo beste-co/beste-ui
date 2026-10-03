@@ -24,7 +24,7 @@ export function Chat18({ count = 1, className }: Chat18Props) {
           className="h-px flex-1 bg-rose-500/60"
           aria-hidden="true"
         />
-        <span className="rounded-full bg-rose-500 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-white">
+        <span className="rounded-full bg-rose-500 px-2.5 py-0.5 text-xs font-semibold text-white">
           {count} unread
         </span>
         <span

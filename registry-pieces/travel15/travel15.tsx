@@ -1,6 +1,5 @@
 "use client";
 
-import { IdCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Travel15Props {
@@ -10,16 +9,15 @@ interface Travel15Props {
   frequentFlyer?: string;
   birthDate?: string;
   seat?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel15Demo: Travel15Props = {
-  name: "Oud Beste",
-  passportNo: "TR P 284 911 58",
-  nationality: "Türkiye",
-  frequentFlyer: "Elite Gold · 284 519",
-  birthDate: "1991-08-19",
-  seat: "12D",
+  name: "Ólafur Arnalds",
+  passportNo: "A 284 911 58",
+  nationality: "Iceland",
+  bordered: false,
 };
 
 export function Travel15({
@@ -29,6 +27,7 @@ export function Travel15({
   frequentFlyer,
   birthDate,
   seat,
+  bordered = false,
   className,
 }: Travel15Props) {
   return (
@@ -38,46 +37,48 @@ export function Travel15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex size-8 items-center justify-center rounded-md bg-slate-900 text-slate-100 dark:bg-slate-100 dark:text-slate-900">
-              <IdCard className="size-4" aria-hidden="true" />
-            </div>
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Passenger info
-            </span>
-          </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-center justify-between gap-2">
+          <span className="truncate text-sm font-semibold text-card-foreground">
+            {name}
+          </span>
           {seat && (
-            <span className="rounded-md bg-muted px-2 py-0.5 font-mono text-xs font-semibold text-card-foreground">
+            <span className="shrink-0 rounded-md bg-muted px-2 py-0.5 text-xs font-semibold text-card-foreground">
               Seat {seat}
             </span>
           )}
         </div>
-        <span className="text-sm font-semibold text-card-foreground">
-          {name}
-        </span>
-        <div className="grid grid-cols-2 gap-1 text-xs">
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">Passport</span>
-            <span className="font-mono text-card-foreground">
-              {passportNo}
-            </span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">Nationality</span>
-            <span className="text-card-foreground">{nationality}</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">DOB</span>
-            <span className="font-mono text-card-foreground">{birthDate}</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">FF status</span>
-            <span className="truncate text-card-foreground">
-              {frequentFlyer}
-            </span>
-          </div>
+        <div className="grid grid-cols-2 gap-2 text-xs">
+          {passportNo && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">Passport</span>
+              <span className="tabular-nums text-card-foreground">
+                {passportNo}
+              </span>
+            </div>
+          )}
+          {nationality && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">Nationality</span>
+              <span className="text-card-foreground">{nationality}</span>
+            </div>
+          )}
+          {birthDate && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">Date of birth</span>
+              <span className="tabular-nums text-card-foreground">
+                {birthDate}
+              </span>
+            </div>
+          )}
+          {frequentFlyer && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">Loyalty</span>
+              <span className="truncate text-card-foreground">
+                {frequentFlyer}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>

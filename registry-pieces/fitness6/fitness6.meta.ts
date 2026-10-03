@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "fitness6",
   title: "Fitness Goal",
   description:
-    "Goal tracker with a rose icon, target line, warm gradient progress bar, and current status plus deadline.",
+    "Goal tracker with a goal icon, a progress bar, and a current status line.",
   category: "Fitness",
 };

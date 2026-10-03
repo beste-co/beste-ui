@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "fitness4",
   title: "Gym Check-in",
   description:
-    "Check-in streak card with a flame tile, day count, seven-day attendance row, and weekly/monthly counts.",
+    "Check-in streak card with a flame icon, the day count, and a seven-day attendance row.",
   category: "Fitness",
 };

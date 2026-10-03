@@ -22,7 +22,6 @@ interface Keyboard16Props {
 export const keyboard16Demo: Keyboard16Props = {
   state: "playing",
   track: "Porcelain · Moby",
-  elapsed: "2:18 / 4:01",
 };
 
 export function Keyboard16({
@@ -64,7 +63,7 @@ export function Keyboard16({
                 key={idx}
                 aria-label={key.label}
                 className={cn(
-                  "flex size-10 items-center justify-center rounded-lg border font-mono shadow-sm",
+                  "flex size-10 items-center justify-center rounded-lg border shadow-sm",
                   key.active
                     ? "border-primary bg-primary text-primary-foreground border-b-2"
                     : "border-border border-b-2 bg-gradient-to-b from-card to-muted text-card-foreground"
@@ -79,7 +78,7 @@ export function Keyboard16({
           })}
         </div>
         {elapsed && (
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className="text-xs tabular-nums text-muted-foreground">
             {elapsed}
           </span>
         )}

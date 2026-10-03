@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "calendar9",
   title: "Recurring Schedule",
   description:
-    "Weekly recurrence card with a repeat icon, time window, highlighted day-of-week pills, and an end date.",
+    "Weekly recurrence card with a title, time window, and highlighted day-of-week pills.",
   category: "Calendar",
 };

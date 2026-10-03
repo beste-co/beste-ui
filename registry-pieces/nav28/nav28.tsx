@@ -8,6 +8,7 @@ interface Nav28Props {
   avatarSrc?: string;
   avatarAlt?: string;
   initials?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const nav28Demo: Nav28Props = {
   avatarSrc: defaultAvatar,
   avatarAlt: "Account",
   initials: "BS",
+  bordered: false,
 };
 
 export function Nav28({
@@ -25,6 +27,7 @@ export function Nav28({
   avatarSrc = defaultAvatar,
   avatarAlt,
   initials = "BS",
+  bordered = false,
   className,
 }: Nav28Props) {
   return (
@@ -34,7 +37,7 @@ export function Nav28({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center justify-between rounded-full border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center justify-between rounded-full bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           className="flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted"

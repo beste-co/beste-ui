@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Search5Props {
   placeholder?: string;
   filters?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const search5Demo: Search5Props = {
   placeholder: "Search issues…",
-  filters: ["status: open", "priority: high", "label: bug"],
+  filters: ["status: open", "label: bug"],
+  bordered: false,
 };
 
 export function Search5({
   placeholder = "Search…",
   filters = [],
+  bordered = false,
   className,
 }: Search5Props) {
   return (
@@ -26,7 +29,7 @@ export function Search5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-wrap items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-wrap items-center gap-1.5 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <Search
           className="size-3.5 shrink-0 text-muted-foreground"
           aria-hidden="true"

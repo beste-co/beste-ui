@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "dashboard13",
   title: "Goal Card",
   description:
-    "Target-tracking card with a target icon, current / goal values, a tone-colored progress bar, and a deadline footer.",
+    "Target-tracking card with a label, the current value against the goal, and a tone-colored progress bar.",
   category: "Dashboard",
 };

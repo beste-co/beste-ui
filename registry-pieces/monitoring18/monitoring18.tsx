@@ -16,6 +16,7 @@ interface Monitoring18Props {
   depth?: number;
   capacity?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,13 +36,15 @@ const SEGMENTS = 12;
 export const monitoring18Demo: Monitoring18Props = {
   depth: 8,
   capacity: 12,
-  tone: "amber",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring18({
   depth = 0,
   capacity = SEGMENTS,
-  tone = "amber",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring18Props) {
   const safeCapacity = Math.max(1, capacity);
@@ -55,7 +58,7 @@ export function Monitoring18({
         className
       )}
     >
-      <div className="flex items-center gap-3 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex items-center gap-3 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div
           className="flex flex-col-reverse gap-0.5"
           aria-hidden="true"

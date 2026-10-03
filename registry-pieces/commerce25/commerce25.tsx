@@ -1,6 +1,5 @@
 "use client";
 
-import { Receipt } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Commerce25Line {
@@ -20,16 +19,13 @@ interface Commerce25Props {
 }
 
 export const commerce25Demo: Commerce25Props = {
-  storeName: "Beste Goods · SF",
-  orderId: "INV-2026-0421",
+  storeName: "Beste Goods",
   lines: [
     { qty: 2, name: "Air Max 90", price: "$258.00" },
     { qty: 1, name: "Cotton Tee", price: "$48.00" },
     { qty: 1, name: "Retro Shades", price: "$38.00" },
   ],
-  subtotal: "$344.00",
-  total: "$368.14",
-  paid: "Visa ending 4242",
+  total: "$344.00",
 };
 
 export function Commerce25({
@@ -48,17 +44,11 @@ export function Commerce25({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-md border border-dashed border-border bg-card p-3 font-mono shadow-sm">
+      <div className="flex w-full max-w-72 flex-col gap-2 rounded-md border border-dashed border-border bg-card p-3 shadow-sm">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            <Receipt
-              className="size-3.5 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <span className="text-xs font-semibold text-card-foreground">
-              {storeName}
-            </span>
-          </div>
+          <span className="text-xs font-semibold text-card-foreground">
+            {storeName}
+          </span>
           {orderId && (
             <span className="text-xs text-muted-foreground">{orderId}</span>
           )}
@@ -85,7 +75,7 @@ export function Commerce25({
           </div>
         )}
         <div className="flex items-baseline justify-between border-t border-dashed border-border pt-1.5">
-          <span className="text-xs font-semibold uppercase tracking-wide text-card-foreground">
+          <span className="text-xs font-semibold text-card-foreground">
             Total
           </span>
           <span className="text-base font-semibold tabular-nums text-card-foreground">

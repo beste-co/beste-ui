@@ -45,15 +45,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard31Demo: Dashboard31Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Shared Drive",
   items: [
-    { name: "Northwind_Brand_Guidelines.pdf", tone: "pdf" },
-    { name: "Launch_Copy_Deck_v4.docx", tone: "doc" },
-    { name: "Media_Budget_2026.xlsx", tone: "sheet" },
-    { name: "Homepage_Wireframes.pdf", tone: "pdf" },
-    { name: "Retro_Notes_March.docx", tone: "doc" },
+    { name: "Brand_Guidelines.pdf", tone: "pdf" },
+    { name: "Launch_Copy_Deck.docx", tone: "doc" },
+    { name: "Media_Budget.xlsx", tone: "sheet" },
   ],
 };
 
@@ -61,7 +59,7 @@ export function Dashboard31({
   title = "Files",
   items = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard31Props) {
@@ -82,7 +80,7 @@ export function Dashboard31({
           {items.map((item, index) => (
             <div
               key={index}
-              className="flex items-center gap-2.5 rounded-md border border-current/15 px-2.5 py-2"
+              className={cn("flex items-center gap-2.5 rounded-md px-2.5 py-2", bordered ? "border border-current/15" : "bg-current/10")}
             >
               <span
                 className={cn(

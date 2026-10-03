@@ -20,6 +20,7 @@ interface Calendar33Props {
   pickSlot?: number;
   holdMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -57,6 +58,7 @@ export const calendar33Demo: Calendar33Props = {
   pickIndex: 3,
   pickSlot: 1,
   tone: "primary",
+  bordered: false,
 };
 
 export function Calendar33({
@@ -68,6 +70,7 @@ export function Calendar33({
   pickSlot = 1,
   holdMs = 2600,
   tone = "primary",
+  bordered = false,
   className,
 }: Calendar33Props) {
   const [step, setStep] = useState(0);
@@ -94,7 +97,7 @@ export function Calendar33({
       )}
     >
       <style>{`@keyframes calendar33-in { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <p className="text-sm font-medium text-card-foreground">{title}</p>
 
         <div className="relative grid grid-cols-7">

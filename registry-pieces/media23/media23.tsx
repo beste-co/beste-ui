@@ -13,8 +13,8 @@ interface Media23Props {
 export const media23Demo: Media23Props = {
   src: "https://images.unsplash.com/photo-1509460913899-515f1df34fea?q=80&w=300&auto=format&fit=crop",
   alt: "Portrait",
-  name: "Mara Lindqvist",
-  role: "Creative Director",
+  name: "Agnes Obel",
+  role: "Pianist",
   stat: "★ 98",
 };
 
@@ -48,7 +48,7 @@ export function Media23({
               aria-hidden="true"
             />
             {stat && (
-              <span className="absolute left-1.5 top-1.5 rounded-full bg-black/60 px-2 py-0.5 text-xs font-bold text-white backdrop-blur-sm">
+              <span className="absolute left-1.5 top-1.5 rounded-full bg-black/60 px-2 py-0.5 text-xs font-bold tabular-nums text-white backdrop-blur-sm">
                 {stat}
               </span>
             )}

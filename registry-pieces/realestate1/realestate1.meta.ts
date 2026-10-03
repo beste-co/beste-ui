@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "realestate1",
   title: "Listing Card",
   description:
-    "Property listing with a warm gradient photo, status pill, save heart, price chip, and beds/baths footer.",
+    "Property listing with a photo, price chip, address, and a beds, baths, and area row.",
   category: "Realestate",
 };

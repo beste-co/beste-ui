@@ -39,10 +39,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const legal1Demo: Legal1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Master services agreement",
-  reference: "MSA-2026-0421",
   party1: "Beste Technologies Inc.",
   party2: "Beste Design Studio",
   effectiveDate: "May 1, 2026",
@@ -63,7 +62,7 @@ export function Legal1({
   party2Label = "Party B",
   effectiveLabel = "Effective",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Legal1Props) {
@@ -77,10 +76,11 @@ export function Legal1({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2.5 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-start gap-2.5">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
-            <FileText className="size-4" aria-hidden="true" />
-          </div>
+        <div className="flex items-center gap-2.5">
+          <FileText
+            className="size-5 shrink-0 text-indigo-600 dark:text-indigo-300"
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
               <span className="truncate text-sm font-semibold">
@@ -88,7 +88,7 @@ export function Legal1({
               </span>
             )}
             {reference && (
-              <span className="truncate font-mono text-xs text-current/60">
+              <span className="truncate text-xs text-current/60">
                 {reference}
               </span>
             )}
@@ -105,7 +105,7 @@ export function Legal1({
           </div>
           <div className="flex items-center justify-between gap-2">
             <span className="text-current/60">{effectiveLabel}</span>
-            <span className="">{effectiveDate}</span>
+            <span>{effectiveDate}</span>
           </div>
         </div>
         {status && (

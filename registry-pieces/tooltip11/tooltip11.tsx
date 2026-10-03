@@ -1,12 +1,12 @@
 "use client";
 
-import { BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Tooltip11Props {
   term?: string;
   definition?: string;
   source?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,13 +14,14 @@ export const tooltip11Demo: Tooltip11Props = {
   term: "Churn rate",
   definition:
     "Percentage of customers who cancel during a period, divided by customers at the start of that period.",
-  source: "Glossary · Metrics",
+  bordered: false,
 };
 
 export function Tooltip11({
   term,
   definition,
   source,
+  bordered = false,
   className,
 }: Tooltip11Props) {
   return (
@@ -31,17 +32,11 @@ export function Tooltip11({
       )}
     >
       <div className="relative">
-        <div className="flex w-64 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-lg">
+        <div className={cn("flex w-64 flex-col gap-2 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
           {term && (
-            <div className="flex items-center gap-2">
-              <BookOpen
-                className="size-3.5 text-violet-500"
-                aria-hidden="true"
-              />
-              <span className="text-sm font-semibold text-card-foreground">
-                {term}
-              </span>
-            </div>
+            <span className="text-sm font-semibold text-card-foreground">
+              {term}
+            </span>
           )}
           {definition && (
             <span className="text-xs leading-snug text-muted-foreground">
@@ -49,7 +44,7 @@ export function Tooltip11({
             </span>
           )}
           {source && (
-            <span className="border-t border-border pt-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="border-t border-border pt-2 text-xs font-medium text-muted-foreground">
               {source}
             </span>
           )}

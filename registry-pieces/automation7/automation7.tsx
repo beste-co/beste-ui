@@ -25,7 +25,7 @@ interface Automation7Step {
   image?: string;
   alt?: string;
   label: string;
-  detail: string;
+  detail?: string;
 }
 
 interface Automation7Props {
@@ -67,33 +67,23 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation7Demo: Automation7Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  headerLabel: "Workflow",
   steps: [
     {
       image: "https://oud.pics/sm/l/stripe.jpeg",
       alt: "Stripe",
       label: "New payment received",
-      detail: "Stripe · over $100",
     },
     {
       image: "https://oud.pics/sm/l/gmail.jpeg",
       alt: "Gmail",
       label: "Send welcome email",
-      detail: "Gmail · template:onboarding",
-    },
-    {
-      image: "https://oud.pics/sm/l/notion.png",
-      alt: "Notion",
-      label: "Create CRM page",
-      detail: "Notion · DB:Leads",
     },
     {
       image: "https://oud.pics/sm/l/slack.svg",
       alt: "Slack",
       label: "Notify #revenue",
-      detail: "Slack · with link",
     },
   ],
 };
@@ -130,9 +120,9 @@ function StepTile({ step }: { step: Automation7Step }) {
 
 export function Automation7({
   steps = [],
-  headerLabel = "Workflow",
+  headerLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation7Props) {
@@ -146,9 +136,11 @@ export function Automation7({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="pb-1 text-xs font-semibold uppercase tracking-wide text-current/60">
-          {headerLabel}
-        </span>
+        {headerLabel && (
+          <span className="pb-1 text-xs font-medium text-current/60">
+            {headerLabel}
+          </span>
+        )}
         <ol className="flex flex-col">
           {steps.map((s, i) => {
             const isLast = i === steps.length - 1;
@@ -163,13 +155,21 @@ export function Automation7({
                     />
                   )}
                 </div>
-                <div className="flex flex-1 flex-col pb-3 pt-0.5">
+                <div
+                  className={cn(
+                    "flex flex-1 flex-col",
+                    s.detail ? "pt-0.5" : "pt-1.5",
+                    !isLast && "pb-3"
+                  )}
+                >
                   <span className="text-xs font-medium">
                     {s.label}
                   </span>
-                  <span className="text-xs text-current/60">
-                    {s.detail}
-                  </span>
+                  {s.detail && (
+                    <span className="text-xs text-current/60">
+                      {s.detail}
+                    </span>
+                  )}
                 </div>
               </li>
             );

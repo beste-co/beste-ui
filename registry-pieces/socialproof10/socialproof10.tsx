@@ -40,7 +40,7 @@ export function Socialproof10({
             <span className="text-xl font-bold tabular-nums text-card-foreground">
               {s.value}
             </span>
-            <span className="text-xs uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {s.label}
             </span>
           </div>

@@ -13,6 +13,7 @@ interface Travel19Props {
   tripType?: string;
   image?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,14 +28,14 @@ const avatarClasses: Record<Tone, string> = {
 };
 
 export const travel19Demo: Travel19Props = {
-  author: "Andrea P.",
-  role: "Solo trip · Jun 2026",
+  author: "Hania Rani",
+  role: "Solo trip",
   rating: 5,
-  body: "Staff remembered our names by day two. The rooftop at sunset alone is worth the trip — would book again in a heartbeat.",
-  tripType: "Stayed 4 nights",
+  body: "Staff remembered our names by day two. The rooftop at sunset alone is worth the trip.",
   image:
     "https://images.unsplash.com/photo-1576775068668-c147f14c36f7?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D",
   tone: "primary",
+  bordered: false,
 };
 
 export function Travel19({
@@ -45,11 +46,12 @@ export function Travel19({
   tripType,
   image,
   tone = "primary",
+  bordered = false,
   className,
 }: Travel19Props) {
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <div
             className={cn(

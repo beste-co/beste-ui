@@ -53,12 +53,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai18Demo: Ai18Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Context window",
   used: 92000,
   max: 200000,
-  usageSuffix: "of window in use",
   tone: "primary",
 };
 
@@ -66,10 +65,10 @@ export function Ai18({
   label = "Context window",
   used = 0,
   max = 1,
-  usageSuffix = "of window in use",
+  usageSuffix,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai18Props) {
@@ -86,10 +85,10 @@ export function Ai18({
     >
       <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-md px-3 py-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
-          <span className="font-mono text-xs tabular-nums">
+          <span className="text-xs tabular-nums">
             {(used / 1000).toFixed(1)}K / {(max / 1000).toFixed(0)}K
           </span>
         </div>
@@ -103,9 +102,11 @@ export function Ai18({
             aria-hidden="true"
           />
         </div>
-        <span className="text-xs text-current/60">
-          {Math.round(pct)}% {usageSuffix}
-        </span>
+        {usageSuffix && (
+          <span className="text-xs tabular-nums text-current/60">
+            {Math.round(pct)}% {usageSuffix}
+          </span>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowDownLeft, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Role = "received" | "sent";
@@ -18,7 +17,7 @@ interface Chat30Props {
 export const chat30Demo: Chat30Props = {
   amount: "48.60",
   currency: "$",
-  note: "Dinner split · Packer's Coffee",
+  note: "Dinner split",
   direction: "request",
   role: "received",
 };
@@ -33,7 +32,6 @@ export function Chat30({
 }: Chat30Props) {
   const isSent = role === "sent";
   const isRequest = direction === "request";
-  const Icon = isRequest ? ArrowDownLeft : ArrowUpRight;
 
   return (
     <div
@@ -50,24 +48,14 @@ export function Chat30({
             : "mr-auto rounded-bl-md bg-muted text-card-foreground"
         )}
       >
-        <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 shrink-0 items-center justify-center rounded-full",
-              isSent ? "bg-primary-foreground/20" : "bg-card"
-            )}
-          >
-            <Icon className="size-4" aria-hidden="true" />
-          </div>
-          <span
-            className={cn(
-              "text-xs font-semibold uppercase tracking-wide",
-              isSent ? "text-primary-foreground/80" : "text-muted-foreground"
-            )}
-          >
-            {isRequest ? "Payment request" : "Sent you"}
-          </span>
-        </div>
+        <span
+          className={cn(
+            "text-xs font-medium",
+            isSent ? "text-primary-foreground/80" : "text-muted-foreground"
+          )}
+        >
+          {isRequest ? "Payment request" : "Sent you"}
+        </span>
         <div className="flex items-baseline gap-1">
           <span
             className={cn(

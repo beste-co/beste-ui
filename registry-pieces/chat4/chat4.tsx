@@ -25,14 +25,13 @@ export const chat4Demo: Chat4Props = {
     { label: "Stay in, order pizza", votes: 9 },
   ],
   role: "received",
-  votesLabel: "votes",
 };
 
 export function Chat4({
   question,
   options = [],
   role = "received",
-  votesLabel = "votes",
+  votesLabel,
   className,
 }: Chat4Props) {
   const isSent = role === "sent";
@@ -83,21 +82,23 @@ export function Chat4({
                 <span className="relative truncate font-medium">
                   {opt.label}
                 </span>
-                <span className="relative shrink-0 font-mono tabular-nums">
+                <span className="relative shrink-0 tabular-nums">
                   {opt.votes}
                 </span>
               </li>
             );
           })}
         </ul>
-        <span
-          className={cn(
-            "text-xs",
-            isSent ? "text-primary-foreground/70" : "text-muted-foreground"
-          )}
-        >
-          {total} {votesLabel}
-        </span>
+        {votesLabel && (
+          <span
+            className={cn(
+              "text-xs tabular-nums",
+              isSent ? "text-primary-foreground/70" : "text-muted-foreground"
+            )}
+          >
+            {total} {votesLabel}
+          </span>
+        )}
       </div>
     </div>
   );

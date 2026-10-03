@@ -11,6 +11,7 @@ interface TestItem {
 interface Terminal12Props {
   tests?: TestItem[];
   duration?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,12 +21,13 @@ export const terminal12Demo: Terminal12Props = {
     { name: "fires onClick", passed: true },
     { name: "respects disabled state", passed: false },
   ],
-  duration: "1.24s",
+  bordered: false,
 };
 
 export function Terminal12({
   tests = [],
   duration,
+  bordered = false,
   className,
 }: Terminal12Props) {
   const passed = tests.filter((test) => test.passed).length;
@@ -38,7 +40,7 @@ export function Terminal12({
         className
       )}
     >
-      <div className="w-full max-w-72 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 font-mono text-xs shadow-sm">
+      <div className={cn("w-full max-w-72 overflow-hidden rounded-lg bg-zinc-950 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         <div className="flex flex-col gap-1.5 p-3">
           {tests.map((test, index) => (
             <div key={index} className="flex items-center gap-2">

@@ -13,6 +13,7 @@ interface Chat16Props {
   name?: string;
   lastSeen?: string;
   presence?: Presence;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,6 +31,7 @@ export const chat16Demo: Chat16Props = {
   name: "John Doe",
   presence: "online",
   lastSeen: "Active now",
+  bordered: false,
 };
 
 export function Chat16({
@@ -39,6 +41,7 @@ export function Chat16({
   name,
   lastSeen,
   presence = "offline",
+  bordered = false,
   className,
 }: Chat16Props) {
   const cfg = presenceClasses[presence];
@@ -50,7 +53,7 @@ export function Chat16({
         className
       )}
     >
-      <div className="flex w-full max-w-64 items-center gap-3 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-64 items-center gap-3 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="relative shrink-0">
           <Avatar className="size-11">
             <AvatarImage src={src} alt={alt} className="object-cover" />

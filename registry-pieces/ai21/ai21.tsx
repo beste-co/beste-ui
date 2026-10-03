@@ -1,23 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Eye, EyeOff, KeyRound } from "lucide-react";
+import { Copy, Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Ai21Props {
   label?: string;
   value?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const ai21Demo: Ai21Props = {
   label: "OPENAI_API_KEY",
   value: "sk-proj-EXAMPLE-NOT-A-REAL-KEY-0000",
+  bordered: false,
 };
 
 export function Ai21({
   label = "API_KEY",
   value = "sk-••••••••••••••••",
+  bordered = false,
   className,
 }: Ai21Props) {
   const [shown, setShown] = useState(false);
@@ -31,12 +34,9 @@ export function Ai21({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
-        <div className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-          <KeyRound className="size-3" aria-hidden="true" />
-          <span>{label}</span>
-        </div>
-        <div className="flex items-center gap-1 rounded-md border border-border bg-card px-3 py-2 shadow-sm">
-          <span className="flex-1 truncate font-mono text-xs text-card-foreground">
+        <span className="text-xs text-muted-foreground">{label}</span>
+        <div className={cn("flex items-center gap-1 rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+          <span className="flex-1 truncate text-xs text-card-foreground">
             {shown ? value : masked}
           </span>
           <button

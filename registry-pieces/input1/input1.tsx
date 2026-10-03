@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const input1Demo: Input1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   placeholder: "you@company.com",
   cta: "Subscribe",
@@ -42,7 +42,7 @@ export function Input1({
   placeholder = "Enter your email",
   cta = "Submit",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Input1Props) {

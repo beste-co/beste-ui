@@ -9,6 +9,7 @@ interface ImportLine {
 
 interface Code6Props {
   imports?: ImportLine[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,9 +19,10 @@ export const code6Demo: Code6Props = {
     { names: ["Button"], source: "@/ui/button" },
     { names: ["cn"], source: "@/lib/utils" },
   ],
+  bordered: false,
 };
 
-export function Code6({ imports = [], className }: Code6Props) {
+export function Code6({ imports = [], bordered = false, className }: Code6Props) {
   return (
     <div
       className={cn(
@@ -28,7 +30,7 @@ export function Code6({ imports = [], className }: Code6Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-lg border border-border bg-card px-3 py-2 font-mono text-sm leading-relaxed shadow-sm">
+      <div className={cn("w-full max-w-80 rounded-lg bg-card px-3 py-2 font-mono text-sm leading-relaxed shadow-sm", bordered && "border border-border")}>
         {imports.map((line, i) => (
           <div key={i} className="flex flex-wrap items-baseline gap-x-1 truncate">
             <span className="text-violet-600 dark:text-violet-400">import</span>

@@ -34,13 +34,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const form10Demo: Form10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Invite teammates",
   placeholder: "name@company.com",
-  value: "lara@beste.co",
+  value: "hello@beste.co",
   action: "Send invite",
-  hint: "They'll get an email with a link that expires in 72 hours.",
 };
 
 export function Form10({
@@ -50,7 +49,7 @@ export function Form10({
   action = "Send",
   hint,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Form10Props) {

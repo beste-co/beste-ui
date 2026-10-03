@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "money2",
   title: "Exchange Rate",
   description:
-    "Two currency columns linked by an arrow, with a rate caption beneath.",
+    "Two currency columns linked by an arrow, with an optional rate caption beneath.",
   category: "Finance",
 };

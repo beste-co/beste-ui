@@ -9,6 +9,7 @@ interface Money20Props {
   balance?: string;
   burnLabel?: string;
   burn?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,6 +20,7 @@ export const money20Demo: Money20Props = {
   balance: "$420k",
   burnLabel: "Monthly burn",
   burn: "$30k",
+  bordered: false,
 };
 
 export function Money20({
@@ -28,6 +30,7 @@ export function Money20({
   balance = "$0",
   burnLabel = "Monthly burn",
   burn = "$0",
+  bordered = false,
   className,
 }: Money20Props) {
   return (
@@ -37,9 +40,9 @@ export function Money20({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-lg border border-border bg-card px-4 py-3.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-lg bg-card px-4 py-3.5 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {label}
           </span>
         )}

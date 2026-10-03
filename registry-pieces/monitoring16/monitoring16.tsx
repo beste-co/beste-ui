@@ -9,6 +9,7 @@ interface Monitoring16Props {
   to?: string;
   latency?: string;
   status?: LinkStatus;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -38,6 +39,7 @@ export const monitoring16Demo: Monitoring16Props = {
   to: "db",
   latency: "42ms",
   status: "healthy",
+  bordered: false,
 };
 
 export function Monitoring16({
@@ -45,6 +47,7 @@ export function Monitoring16({
   to = "b",
   latency,
   status = "healthy",
+  bordered = false,
   className,
 }: Monitoring16Props) {
   const styles = linkStyles[status];
@@ -56,8 +59,8 @@ export function Monitoring16({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-2 rounded-full border border-border bg-card px-3 py-2 shadow-sm">
-        <span className="font-mono text-xs text-card-foreground">{from}</span>
+      <div className={cn("flex w-full max-w-72 items-center gap-2 rounded-full bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+        <span className="text-xs text-card-foreground">{from}</span>
         <div className="relative flex flex-1 items-center">
           <span
             className={cn(
@@ -88,7 +91,7 @@ export function Monitoring16({
             </span>
           )}
         </div>
-        <span className="font-mono text-xs text-card-foreground">{to}</span>
+        <span className="text-xs text-card-foreground">{to}</span>
       </div>
     </div>
   );

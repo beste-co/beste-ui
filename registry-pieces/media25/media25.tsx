@@ -38,18 +38,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const media25Demo: Media25Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   thumbnail: {
     src: "https://images.unsplash.com/photo-1678380003465-e8b1b9e3877c?q=80&w=2228&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     alt: "A small team talking around a laptop",
   },
   title: "A day inside the workspace",
-  meta: "Product tour",
   duration: "2:48",
 };
 
-export function Media25({ thumbnail, title, meta, duration, surface = "card", bordered = true, inverted = false, className }: Media25Props) {
+export function Media25({ thumbnail, title, meta, duration, surface = "card", bordered = false, inverted = false, className }: Media25Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -70,12 +69,12 @@ export function Media25({ thumbnail, title, meta, duration, surface = "card", bo
           )}
         </div>
 
-        <div className="p-4">
+        <div className="flex flex-col gap-1 p-4">
           {meta && (
             <p className="text-xs text-current/60">{meta}</p>
           )}
           {title && (
-            <p className="mt-1 text-sm font-medium">{title}</p>
+            <p className="text-sm font-medium">{title}</p>
           )}
         </div>
       </div>

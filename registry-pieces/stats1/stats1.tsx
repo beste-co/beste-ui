@@ -35,7 +35,7 @@ export function Stats1({
           </span>
         )}
         {label && (
-          <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-sm font-medium text-muted-foreground">
             {label}
           </span>
         )}

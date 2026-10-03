@@ -37,5 +37,5 @@ export function RelatedPreviewByName({
     })
     .filter((x): x is RelatedPreviewItem => Boolean(x));
 
-  return <RelatedPreviewGrid items={items} />;
+  return <RelatedPreviewGrid items={items} kind={kind} />;
 }

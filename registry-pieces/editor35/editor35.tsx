@@ -7,6 +7,7 @@ type Theme = "light" | "dark" | "system";
 
 interface Editor35Props {
   active?: Theme;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,9 +19,10 @@ const themes: { id: Theme; Icon: typeof Sun; label: string }[] = [
 
 export const editor35Demo: Editor35Props = {
   active: "system",
+  bordered: false,
 };
 
-export function Editor35({ active = "system", className }: Editor35Props) {
+export function Editor35({ active = "system", bordered = false, className }: Editor35Props) {
   return (
     <div
       className={cn(
@@ -28,11 +30,11 @@ export function Editor35({ active = "system", className }: Editor35Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <span className="text-xs font-semibold text-muted-foreground">
           Theme
         </span>
-        <div className="inline-flex items-center gap-0.5 rounded-md border border-border bg-card p-0.5">
+        <div className={cn("inline-flex items-center gap-0.5 rounded-md p-0.5", bordered ? "border border-border bg-card" : "bg-muted")}>
           {themes.map(({ id, Icon, label }) => {
             const isActive = id === active;
             return (

@@ -7,14 +7,15 @@ interface Weather6Props {
   sunset?: string;
   daylight?: string;
   dayProgress?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const weather6Demo: Weather6Props = {
   sunrise: "6:14 AM",
   sunset: "8:42 PM",
-  daylight: "14h 28m",
   dayProgress: 0.42,
+  bordered: false,
 };
 
 export function Weather6({
@@ -22,6 +23,7 @@ export function Weather6({
   sunset,
   daylight,
   dayProgress = 0.5,
+  bordered = false,
   className,
 }: Weather6Props) {
   const clamped = Math.max(0, Math.min(1, dayProgress));
@@ -32,8 +34,8 @@ export function Weather6({
         className
       )}
     >
-      <div className="w-full max-w-72 rounded-xl border border-border bg-card px-3 py-3 shadow-sm">
-        <div className="flex items-baseline justify-between text-xs uppercase tracking-wide text-muted-foreground">
+      <div className={cn("w-full max-w-72 rounded-xl bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-baseline justify-between text-xs text-muted-foreground">
           <span>Sunrise</span>
           <span>Sunset</span>
         </div>

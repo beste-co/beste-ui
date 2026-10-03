@@ -37,7 +37,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const event12Demo: Event12Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Opens to everyone in",
   units: [
@@ -45,10 +45,9 @@ export const event12Demo: Event12Props = {
     { value: "06", label: "hrs" },
     { value: "48", label: "min" },
   ],
-  caption: "Early access closes when the counter runs out.",
 };
 
-export function Event12({ title, units = [], caption, surface = "card", bordered = true, inverted = false, className }: Event12Props) {
+export function Event12({ title, units = [], caption, surface = "card", bordered = false, inverted = false, className }: Event12Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

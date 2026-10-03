@@ -46,21 +46,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const food5Demo: Food5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  restaurant: "Lokal · Modern Türk",
+  restaurant: "Lokal",
   items: [
     { qty: 2, name: "Meze plate", price: "₺320" },
     { qty: 1, name: "Roasted miso salmon", price: "₺240" },
     { qty: 1, name: "Pistachio baklava", price: "₺110" },
   ],
-  subtotal: "₺670",
-  delivery: "₺35",
-  tip: "₺50",
-  total: "₺755",
-  subtotalLabel: "Subtotal",
-  deliveryLabel: "Delivery",
-  tipLabel: "Tip",
+  total: "₺670",
   totalLabel: "Total",
 };
 
@@ -76,7 +70,7 @@ export function Food5({
   tipLabel = "Tip",
   totalLabel = "Total",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Food5Props) {
@@ -91,11 +85,9 @@ export function Food5({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-amber-500/15 text-amber-500">
-            <Receipt className="size-3.5" aria-hidden="true" />
-          </div>
+          <Receipt className="size-4 shrink-0 text-amber-500" aria-hidden="true" />
           {restaurant && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+            <span className="text-xs font-semibold text-current/60">
               {restaurant}
             </span>
           )}
@@ -104,49 +96,47 @@ export function Food5({
           {items.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-between py-1.5 text-xs"
+              className="flex items-center justify-between py-1.5 text-xs tabular-nums"
             >
               <span className="flex-1 truncate">
-                <span className="font-mono text-current/60">
+                <span className="text-current/60">
                   {item.qty}×
                 </span>{" "}
                 {item.name}
               </span>
-              <span className="font-mono">
+              <span>
                 {item.price}
               </span>
             </div>
           ))}
         </div>
-        <div className="flex flex-col gap-1 border-t border-dashed border-current/15 pt-2 text-xs">
-          {subtotal && (
-            <div className="flex justify-between">
-              <span className="text-current/60">{subtotalLabel}</span>
-              <span className="font-mono">
-                {subtotal}
-              </span>
-            </div>
-          )}
-          {delivery && (
-            <div className="flex justify-between">
-              <span className="text-current/60">{deliveryLabel}</span>
-              <span className="font-mono">
-                {delivery}
-              </span>
-            </div>
-          )}
-          {tip && (
-            <div className="flex justify-between">
-              <span className="text-current/60">{tipLabel}</span>
-              <span className="font-mono">{tip}</span>
-            </div>
-          )}
-        </div>
+        {(subtotal || delivery || tip) && (
+          <div className="flex flex-col gap-1 border-t border-dashed border-current/15 pt-2 text-xs tabular-nums">
+            {subtotal && (
+              <div className="flex justify-between">
+                <span className="text-current/60">{subtotalLabel}</span>
+                <span>{subtotal}</span>
+              </div>
+            )}
+            {delivery && (
+              <div className="flex justify-between">
+                <span className="text-current/60">{deliveryLabel}</span>
+                <span>{delivery}</span>
+              </div>
+            )}
+            {tip && (
+              <div className="flex justify-between">
+                <span className="text-current/60">{tipLabel}</span>
+                <span>{tip}</span>
+              </div>
+            )}
+          </div>
+        )}
         <div className="flex items-baseline justify-between border-t border-current/15 pt-2">
           <span className="text-sm font-semibold">
             {totalLabel}
           </span>
-          <span className="font-mono text-lg font-bold">
+          <span className="text-lg font-bold tabular-nums">
             {total}
           </span>
         </div>

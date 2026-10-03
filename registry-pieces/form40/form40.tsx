@@ -40,13 +40,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const form40Demo: Form40Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   domain: "yourdomain.com",
   title: "This site is private",
   placeholder: "Enter a password",
   submitLabel: "Apply",
-  note: "Every page is covered, not only this one.",
   length: 8,
   stepMs: 190,
 };
@@ -68,7 +67,7 @@ export function Form40({
   length = 8,
   stepMs = 190,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Form40Props) {
@@ -101,25 +100,20 @@ export function Form40({
         )}
       >
         <div className="flex flex-col items-center gap-1.5 text-center">
-          <span
-            className="flex size-8 items-center justify-center rounded-full bg-current/10"
-            aria-hidden="true"
-          >
-            <Lock className="size-3.5 text-current/60" />
-          </span>
+          <Lock className="size-4 shrink-0 text-current/60" aria-hidden="true" />
           {title && (
             <span className="block text-sm font-semibold">
               {title}
             </span>
           )}
           {domain && (
-            <span className="font-mono text-xs text-current/60">
+            <span className="text-xs text-current/60">
               {domain}
             </span>
           )}
         </div>
 
-        <div className="flex h-8 items-center gap-1 rounded-md border border-current/15 bg-background px-2.5 text-foreground">
+        <div className={cn("flex h-8 items-center gap-1 rounded-md px-2.5 text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")}>
           {!filled && placeholder && (
             <span className="text-xs text-current/60">{placeholder}</span>
           )}

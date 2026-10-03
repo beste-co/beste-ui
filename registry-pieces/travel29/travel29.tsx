@@ -36,12 +36,11 @@ const cardClasses: Record<Tone, string> = {
 };
 
 export const travel29Demo: Travel29Props = {
-  carrier: "Airalo · Japan eSIM",
+  carrier: "Japan eSIM",
   plan: "5 GB · 15 days",
   dataUsed: "2.4 GB",
   dataTotal: "5 GB",
   percent: 48,
-  validity: "12 days left · Expires May 4",
   tone: "neutral",
 };
 
@@ -72,9 +71,7 @@ export function Travel29({
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex size-8 items-center justify-center rounded-md bg-current/10 backdrop-blur">
-              <Wifi className="size-4" aria-hidden="true" />
-            </div>
+            <Wifi className="size-5 shrink-0" aria-hidden="true" />
             <div className="flex flex-col">
               {carrier && (
                 <span className="text-sm font-semibold">{carrier}</span>
@@ -84,9 +81,11 @@ export function Travel29({
               )}
             </div>
           </div>
-          <span className="rounded-full bg-current/10 px-2 py-0.5 font-mono text-xs">
-            {dataUsed} / {dataTotal}
-          </span>
+          {(dataUsed || dataTotal) && (
+            <span className="rounded-full bg-current/10 px-2 py-0.5 text-xs tabular-nums">
+              {[dataUsed, dataTotal].filter(Boolean).join(" / ")}
+            </span>
+          )}
         </div>
         <div
           className="h-1.5 overflow-hidden rounded-full bg-current/20"

@@ -17,6 +17,7 @@ interface Weather11Props {
   frames?: Frame[];
   unit?: "C" | "F";
   intervalMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -49,6 +50,7 @@ export const weather11Demo: Weather11Props = {
     { label: "18:00", temp: 17, condition: "rain" },
     { label: "21:00", temp: 15, condition: "cloud" },
   ],
+  bordered: false,
 };
 
 export function Weather11({
@@ -56,6 +58,7 @@ export function Weather11({
   frames = [],
   unit = "C",
   intervalMs = 2800,
+  bordered = false,
   className,
 }: Weather11Props) {
   const [index, setIndex] = useState(0);
@@ -87,7 +90,7 @@ export function Weather11({
 @keyframes weather11-rise { from { opacity: 0; transform: translateY(0.5rem); } to { opacity: 1; transform: none; } }
 `}</style>
 
-      <div className="flex w-full max-w-64 flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-3 rounded-2xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-card-foreground">{place}</span>
           <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground tabular-nums">

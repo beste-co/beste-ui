@@ -1,6 +1,5 @@
 "use client";
 
-import { Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -20,6 +19,7 @@ interface Calendar30Props {
   daylightHours?: string;
   trend?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -39,8 +39,8 @@ export const calendar30Demo: Calendar30Props = {
   sunrise: "06:18",
   sunset: "19:52",
   daylightHours: "13h 34m",
-  trend: "+2 min vs yesterday",
   tone: "neutral",
+  bordered: false,
 };
 
 export function Calendar30({
@@ -50,6 +50,7 @@ export function Calendar30({
   daylightHours,
   trend,
   tone = "neutral",
+  bordered = false,
   className,
 }: Calendar30Props) {
   return (
@@ -59,36 +60,30 @@ export function Calendar30({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <Sun
-            className={cn("size-4", accentClasses[tone])}
-            aria-hidden="true"
-          />
-          {date && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {date}
-            </span>
-          )}
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {date && (
+          <span className="text-xs font-semibold text-muted-foreground">
+            {date}
+          </span>
+        )}
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <span className="text-xs text-muted-foreground">Sunrise</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {sunrise}
             </span>
           </div>
           <div className="flex flex-col items-center">
             <span className="text-xs text-muted-foreground">Daylight</span>
             <span
-              className={cn("font-mono text-xl font-bold", accentClasses[tone])}
+              className={cn("text-xl font-bold tabular-nums", accentClasses[tone])}
             >
               {daylightHours}
             </span>
           </div>
           <div className="flex flex-col items-end">
             <span className="text-xs text-muted-foreground">Sunset</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {sunset}
             </span>
           </div>

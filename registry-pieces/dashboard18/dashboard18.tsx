@@ -74,14 +74,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard18Demo: Dashboard18Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Sessions",
   currentLabel: "This week",
   previousLabel: "Last week",
   current: [22, 28, 24, 33, 31, 40, 46],
   previous: [18, 21, 26, 25, 29, 32, 30],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard18({
@@ -90,9 +90,9 @@ export function Dashboard18({
   previous = [],
   currentLabel = "This period",
   previousLabel = "Previous",
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard18Props) {
@@ -110,7 +110,7 @@ export function Dashboard18({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+        <span className="text-xs font-semibold text-current/60">
           {title}
         </span>
         <svg

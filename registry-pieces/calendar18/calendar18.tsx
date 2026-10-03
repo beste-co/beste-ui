@@ -1,11 +1,11 @@
 "use client";
 
-import { DoorOpen, Users, Video } from "lucide-react";
+import { Users, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Room {
   name: string;
-  floor: string;
+  floor?: string;
   capacity: number;
   availableFrom: string;
   video?: boolean;
@@ -15,39 +15,37 @@ interface Room {
 interface Calendar18Props {
   heading?: string;
   rooms?: Room[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const calendar18Demo: Calendar18Props = {
-  heading: "Pick a room · Thu 14:00 – 14:30",
+  heading: "Pick a room",
   rooms: [
     {
       name: "The Archive",
-      floor: "Floor 2 · North",
       capacity: 8,
       availableFrom: "Free now",
-      video: true,
       active: true,
     },
     {
       name: "Orbit",
-      floor: "Floor 3",
       capacity: 4,
-      availableFrom: "Free from 14:15",
+      availableFrom: "Free at 14:15",
     },
     {
       name: "Boardroom",
-      floor: "Floor 5 · Executive",
       capacity: 12,
-      availableFrom: "Booked · next at 16:00",
-      video: true,
+      availableFrom: "Booked",
     },
   ],
+  bordered: false,
 };
 
 export function Calendar18({
   heading,
   rooms = [],
+  bordered = false,
   className,
 }: Calendar18Props) {
   return (
@@ -57,9 +55,9 @@ export function Calendar18({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {heading}
           </span>
         )}
@@ -74,19 +72,18 @@ export function Calendar18({
                   : "border-border bg-card"
               )}
             >
-              <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground">
-                <DoorOpen className="size-4" aria-hidden="true" />
-              </div>
               <div className="flex min-w-0 flex-1 flex-col">
                 <span className="truncate text-sm font-semibold text-card-foreground">
                   {room.name}
                 </span>
-                <span className="truncate text-xs text-muted-foreground">
-                  {room.floor}
-                </span>
+                {room.floor && (
+                  <span className="truncate text-xs text-muted-foreground">
+                    {room.floor}
+                  </span>
+                )}
               </div>
               <div className="flex flex-col items-end text-xs">
-                <span className="inline-flex items-center gap-1 text-muted-foreground">
+                <span className="inline-flex items-center gap-1 tabular-nums text-muted-foreground">
                   <Users className="size-3" aria-hidden="true" />
                   {room.capacity}
                 </span>

@@ -35,15 +35,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const commerce1Demo: Commerce1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   image:
     "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=512&auto=format&fit=crop",
   name: "Air Max 90 Essential",
   price: "$129",
   rating: 4.7,
-  reviews: 284,
-  tag: "New",
 };
 
 export function Commerce1({
@@ -54,7 +52,7 @@ export function Commerce1({
   reviews,
   tag,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Commerce1Props) {
@@ -77,7 +75,7 @@ export function Commerce1({
             />
           )}
           {tag && (
-            <span className="absolute left-2 top-2 rounded-sm bg-foreground px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-background">
+            <span className="absolute left-2 top-2 rounded-sm bg-foreground px-1.5 py-0.5 text-xs font-semibold text-background">
               {tag}
             </span>
           )}
@@ -94,7 +92,7 @@ export function Commerce1({
             {name}
           </span>
           <div className="flex items-baseline justify-between gap-2">
-            <span className="font-mono text-sm font-semibold tabular-nums">
+            <span className="text-sm font-semibold tabular-nums">
               {price}
             </span>
             {typeof rating === "number" && (
@@ -103,9 +101,9 @@ export function Commerce1({
                   className="size-3 fill-amber-500 text-amber-500"
                   aria-hidden="true"
                 />
-                <span className="font-mono tabular-nums">{rating}</span>
+                <span className="tabular-nums">{rating}</span>
                 {typeof reviews === "number" && (
-                  <span className="font-mono tabular-nums">({reviews})</span>
+                  <span className="tabular-nums">({reviews})</span>
                 )}
               </span>
             )}

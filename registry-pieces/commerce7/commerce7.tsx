@@ -14,7 +14,7 @@ type Tone =
 interface Commerce7Item {
   image: string;
   name: string;
-  price: string;
+  price?: string;
 }
 
 interface Commerce7Props {
@@ -23,6 +23,7 @@ interface Commerce7Props {
   total?: string;
   savings?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -45,22 +46,20 @@ export const commerce7Demo: Commerce7Props = {
       image:
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=160&auto=format&fit=crop",
       name: "Air Max 90",
-      price: "$129",
     },
     {
       image:
         "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=160&auto=format&fit=crop",
       name: "Cotton Tee",
-      price: "$48",
     },
     {
       image:
         "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=160&auto=format&fit=crop",
       name: "Retro Shades",
-      price: "$38",
     },
   ],
   tone: "foreground",
+  bordered: false,
 };
 
 export function Commerce7({
@@ -69,6 +68,7 @@ export function Commerce7({
   total = "$0",
   savings,
   tone = "foreground",
+  bordered = false,
   className,
 }: Commerce7Props) {
   return (
@@ -78,7 +78,7 @@ export function Commerce7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <span className="text-xs font-semibold text-card-foreground">
           {title}
         </span>
@@ -86,16 +86,18 @@ export function Commerce7({
           {items.map((it, i) => (
             <div key={i} className="flex items-center gap-1.5">
               <div className="flex flex-col items-center gap-1">
-                <div className="relative size-14 overflow-hidden rounded-sm border border-border bg-muted">
+                <div className={cn("relative size-14 overflow-hidden rounded-sm bg-muted", bordered && "border border-border")}>
                   <img
                     src={it.image}
                     alt={it.name}
                     className="absolute inset-0 size-full object-cover"
                   />
                 </div>
-                <span className="font-mono text-xs tabular-nums text-muted-foreground">
-                  {it.price}
-                </span>
+                {it.price && (
+                  <span className="text-xs tabular-nums text-muted-foreground">
+                    {it.price}
+                  </span>
+                )}
               </div>
               {i < items.length - 1 && (
                 <Plus
@@ -108,7 +110,7 @@ export function Commerce7({
         </div>
         <div className="flex items-center justify-between border-t border-border pt-2">
           <div className="flex items-baseline gap-2">
-            <span className="font-mono text-sm font-semibold tabular-nums text-card-foreground">
+            <span className="text-sm font-semibold tabular-nums text-card-foreground">
               {total}
             </span>
             {savings && (

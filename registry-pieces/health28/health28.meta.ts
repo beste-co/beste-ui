@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "health28",
   title: "Prescription",
   description:
-    "Prescription card with a dose line, schedule note, supply bar that flips rose when low, and refill date.",
+    "Prescription card with a dose line, a supply bar that flips rose when low, and the refill date.",
   category: "Health",
 };

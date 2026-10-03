@@ -65,18 +65,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation8Demo: Automation8Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Stripe → Slack revenue alerts",
   description: "Posts a message in #revenue when a payment over $500 lands.",
   image: "https://oud.pics/sm/l/stripe.jpeg",
   alt: "Stripe",
   active: true,
-  runsToday: 28,
-  activeLabel: "Active",
-  pausedLabel: "Paused",
-  runsLabel: "runs today",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Automation8({
@@ -86,16 +82,18 @@ export function Automation8({
   alt,
   active = false,
   runsToday,
-  activeLabel = "Active",
-  pausedLabel = "Paused",
+  activeLabel,
+  pausedLabel,
   runsLabel = "runs today",
-  tone = "emerald",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation8Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const statusLabel = active ? activeLabel : pausedLabel;
+  const hasRuns = typeof runsToday === "number";
 
   return (
     <div
@@ -149,21 +147,25 @@ export function Automation8({
               {description}
             </p>
           )}
-          <div className="flex items-center justify-between pt-1 text-xs">
-            <span
-              className={cn(
-                "font-medium",
-                active ? switchTextOn[tone] : "text-current/60"
+          {(statusLabel || hasRuns) && (
+            <div className="flex items-center justify-between gap-2 pt-1 text-xs">
+              {statusLabel && (
+                <span
+                  className={cn(
+                    "font-medium",
+                    active ? switchTextOn[tone] : "text-current/60"
+                  )}
+                >
+                  {statusLabel}
+                </span>
               )}
-            >
-              {active ? activeLabel : pausedLabel}
-            </span>
-            {typeof runsToday === "number" && (
-              <span className="font-mono tabular-nums text-current/60">
-                {runsToday} {runsLabel}
-              </span>
-            )}
-          </div>
+              {hasRuns && (
+                <span className="ml-auto tabular-nums text-current/60">
+                  {runsToday} {runsLabel}
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

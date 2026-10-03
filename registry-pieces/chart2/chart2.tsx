@@ -86,7 +86,7 @@ export function Chart2({
         </div>
         {label && (
           <div className="flex flex-col">
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-medium text-muted-foreground">
               {label}
             </span>
             {caption && (

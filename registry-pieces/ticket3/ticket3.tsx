@@ -36,7 +36,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ticket3Demo: Ticket3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   origin: "Berlin Hbf",
   destination: "München Hbf",
@@ -56,7 +56,7 @@ export function Ticket3({
   platform,
   platformLabel = "Platform",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ticket3Props) {
@@ -72,7 +72,7 @@ export function Ticket3({
       <div className={cn("w-full max-w-80 overflow-hidden rounded-lg shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center p-3">
           <div className="min-w-0 flex-1">
-            <div className="font-mono text-base font-bold">
+            <div className="text-base font-bold">
               {departTime}
             </div>
             <div className="truncate text-sm">
@@ -86,7 +86,7 @@ export function Ticket3({
             →
           </span>
           <div className="min-w-0 flex-1 text-right">
-            <div className="font-mono text-base font-bold">
+            <div className="text-base font-bold">
               {arriveTime}
             </div>
             <div className="truncate text-sm">
@@ -99,7 +99,7 @@ export function Ticket3({
           aria-hidden="true"
         />
         <div className="flex items-center justify-between bg-current/10 px-3 py-1.5 text-xs">
-          <span className="font-mono font-semibold">
+          <span className="font-semibold">
             {service}
           </span>
           {platform && (

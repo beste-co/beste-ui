@@ -10,19 +10,21 @@ interface Metric {
 
 interface Weather5Props {
   metrics?: Metric[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const weather5Demo: Weather5Props = {
   metrics: [
     { label: "Humidity", value: "64%" },
-    { label: "Wind", value: "12 km/h", detail: "NE" },
+    { label: "Wind", value: "12 km/h" },
     { label: "Pressure", value: "1018 hPa" },
-    { label: "UV Index", value: "6", detail: "High" },
+    { label: "UV index", value: "6" },
   ],
+  bordered: false,
 };
 
-export function Weather5({ metrics = [], className }: Weather5Props) {
+export function Weather5({ metrics = [], bordered = false, className }: Weather5Props) {
   return (
     <div
       className={cn(
@@ -30,7 +32,7 @@ export function Weather5({ metrics = [], className }: Weather5Props) {
         className
       )}
     >
-      <div className="grid w-full max-w-64 grid-cols-2 overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={cn("grid w-full max-w-64 grid-cols-2 overflow-hidden rounded-xl bg-card shadow-sm", bordered && "border border-border")}>
         {metrics.map((m, i) => {
           const isLeft = i % 2 === 0;
           const isTop = i < 2;
@@ -43,7 +45,7 @@ export function Weather5({ metrics = [], className }: Weather5Props) {
                 isTop && "border-b border-border"
               )}
             >
-              <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-semibold text-muted-foreground">
                 {m.label}
               </span>
               <span className="text-base font-bold tabular-nums text-card-foreground">

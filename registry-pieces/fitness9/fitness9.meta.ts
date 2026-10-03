@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "fitness9",
   title: "Recovery Day",
   description:
-    "Recovery-day card with an indigo moon tile, readiness line, and sparkle-bulleted active-recovery items.",
+    "Recovery-day card with a moon icon and a short list of dotted active-recovery items.",
   category: "Fitness",
 };

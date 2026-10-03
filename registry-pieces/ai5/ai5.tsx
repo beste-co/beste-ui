@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai5Demo: Ai5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   used: 4820,
   total: 8192,
@@ -44,7 +44,7 @@ export function Ai5({
   total = 1,
   label = "Tokens",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai5Props) {
@@ -67,10 +67,10 @@ export function Ai5({
     >
       <div className={cn("flex w-full max-w-64 flex-col gap-1.5 rounded-md px-3 py-2 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-medium uppercase tracking-wide text-current/60">
+          <span className="text-xs font-medium text-current/60">
             {label}
           </span>
-          <span className="font-mono text-xs tabular-nums">
+          <span className="text-xs tabular-nums">
             <span className="font-semibold">
               {used.toLocaleString()}
             </span>

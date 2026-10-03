@@ -30,11 +30,9 @@ export function Money8({
       )}
     >
       <div className="inline-flex items-center gap-3 rounded-lg border-2 border-dashed border-border bg-card px-4 py-3 shadow-sm">
-        <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-          <Banknote className="size-5" aria-hidden="true" />
-        </div>
+        <Banknote className="size-6 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
         <div className="flex flex-col">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
           <div className="flex items-baseline gap-1">

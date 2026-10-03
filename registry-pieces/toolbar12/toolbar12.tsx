@@ -9,6 +9,7 @@ interface Toolbar12Props {
   field?: string;
   fields?: string[];
   direction?: Direction;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,12 +17,14 @@ export const toolbar12Demo: Toolbar12Props = {
   field: "Date",
   fields: ["Name", "Date", "Size"],
   direction: "desc",
+  bordered: false,
 };
 
 export function Toolbar12({
   field = "Name",
   fields = ["Name"],
   direction = "asc",
+  bordered = false,
   className,
 }: Toolbar12Props) {
   return (
@@ -31,8 +34,8 @@ export function Toolbar12({
         className
       )}
     >
-      <div className="inline-flex items-center gap-1 rounded-md border border-border bg-card px-1 py-0.5 shadow-sm">
-        <span className="px-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+      <div className={cn("inline-flex items-center gap-1 rounded-md bg-card px-1 py-0.5 shadow-sm", bordered && "border border-border")}>
+        <span className="px-2 text-xs font-medium text-muted-foreground">
           Sort
         </span>
         <div className="h-5 w-px bg-border" aria-hidden="true" />

@@ -14,7 +14,6 @@ export const form11Demo: Form11Props = {
   label: "Enter the 6-digit code",
   digits: ["4", "7", "1", "9", "", ""],
   activeIndex: 4,
-  hint: "We sent it to m•••@beste.co just now.",
 };
 
 export function Form11({
@@ -42,7 +41,7 @@ export function Form11({
             <div
               key={idx}
               className={cn(
-                "flex size-10 items-center justify-center rounded-md border bg-card font-mono text-lg font-semibold shadow-sm",
+                "flex size-10 items-center justify-center rounded-md border bg-card text-lg font-semibold shadow-sm",
                 idx === activeIndex
                   ? "border-2 border-primary text-card-foreground ring-2 ring-primary/20"
                   : digit

@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, ShoppingBag } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -58,15 +58,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const card10Demo: Card10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Linen boucle cushion",
-  tag: "Limited run",
   price: "$48",
   original: "$64",
   image:
     "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=400&auto=format&fit=crop",
-  tone: "amber",
+  tone: "primary",
 };
 
 export function Card10({
@@ -75,9 +74,9 @@ export function Card10({
   price,
   original,
   image,
-  tone = "amber",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Card10Props) {
@@ -107,17 +106,10 @@ export function Card10({
             <ShoppingBag className="size-8" aria-hidden="true" />
           )}
           {tag && (
-            <span className="absolute left-2 top-2 rounded-full bg-card/80 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-card-foreground backdrop-blur">
+            <span className="absolute left-2 top-2 rounded-full bg-card/80 px-2 py-0.5 text-xs font-semibold text-card-foreground backdrop-blur">
               {tag}
             </span>
           )}
-          <button
-            type="button"
-            className="absolute right-2 top-2 flex size-7 items-center justify-center rounded-full bg-card/90 text-muted-foreground backdrop-blur hover:text-rose-500"
-            aria-label="Save"
-          >
-            <Heart className="size-3.5" aria-hidden="true" />
-          </button>
         </div>
         <div className="flex flex-col gap-1 p-3">
           {name && (
@@ -127,12 +119,12 @@ export function Card10({
           )}
           <div className="flex items-baseline gap-2">
             {price && (
-              <span className="font-mono text-base font-bold">
+              <span className="text-base font-bold tabular-nums">
                 {price}
               </span>
             )}
             {original && (
-              <span className="font-mono text-xs text-current/60 line-through">
+              <span className="text-xs text-current/60 line-through tabular-nums">
                 {original}
               </span>
             )}

@@ -17,6 +17,7 @@ interface Action {
 
 interface Toolbar20Props {
   items?: Action[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,9 +28,10 @@ export const toolbar20Demo: Toolbar20Props = {
     { icon: MessageSquarePlus, label: "Message" },
     { icon: Search, label: "Search" },
   ],
+  bordered: false,
 };
 
-export function Toolbar20({ items = [], className }: Toolbar20Props) {
+export function Toolbar20({ items = [], bordered = false, className }: Toolbar20Props) {
   return (
     <div
       className={cn(
@@ -37,7 +39,7 @@ export function Toolbar20({ items = [], className }: Toolbar20Props) {
         className
       )}
     >
-      <div className="flex items-center gap-1 rounded-full border border-border bg-card p-1.5 shadow-xl">
+      <div className={cn("flex items-center gap-1 rounded-full bg-card p-1.5 shadow-xl", bordered && "border border-border")}>
         {items.map((item, index) => {
           const Icon = item.icon;
           return (

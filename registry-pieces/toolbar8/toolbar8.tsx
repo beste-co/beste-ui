@@ -13,6 +13,7 @@ type ToolId = "select" | "move" | "hand" | "zoom" | "crop";
 
 interface Toolbar8Props {
   active?: ToolId;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -26,10 +27,12 @@ const tools: { id: ToolId; Icon: typeof MousePointer; label: string }[] = [
 
 export const toolbar8Demo: Toolbar8Props = {
   active: "select",
+  bordered: false,
 };
 
 export function Toolbar8({
   active = "select",
+  bordered = false,
   className,
 }: Toolbar8Props) {
   return (
@@ -39,7 +42,7 @@ export function Toolbar8({
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-lg border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-lg bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {tools.map(({ id, Icon, label }) => {
           const isActive = id === active;
           return (

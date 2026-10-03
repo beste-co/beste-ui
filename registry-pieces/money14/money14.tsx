@@ -10,6 +10,7 @@ interface Money14Props {
   expenses?: string;
   netLabel?: string;
   net?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,6 +22,7 @@ export const money14Demo: Money14Props = {
   expenses: "$5,180",
   netLabel: "Net",
   net: "+$3,240",
+  bordered: false,
 };
 
 export function Money14({
@@ -31,6 +33,7 @@ export function Money14({
   expenses = "$0",
   netLabel = "Net",
   net = "$0",
+  bordered = false,
   className,
 }: Money14Props) {
   return (
@@ -40,9 +43,9 @@ export function Money14({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col rounded-lg border border-border bg-card px-4 py-3 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col rounded-lg bg-card px-4 py-3 shadow-sm", bordered && "border border-border")}>
         {title && (
-          <span className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="mb-2 text-xs font-medium text-muted-foreground">
             {title}
           </span>
         )}

@@ -39,30 +39,24 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const receipt3Demo: Receipt3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   status: "Payment received",
   amount: "$1,240.00",
   caption: "Bramble Health · May care plan",
   rows: [
     { label: "Method", value: "Visa ending 4417" },
-    { label: "Reference", value: "SIR-4821" },
     { label: "Settled", value: "In 2 working days" },
   ],
 };
 
-export function Receipt3({ status, amount, caption, rows = [], surface = "card", bordered = true, inverted = false, className }: Receipt3Props) {
+export function Receipt3({ status, amount, caption, rows = [], surface = "card", bordered = false, inverted = false, className }: Receipt3Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
       <div className={cn("w-full max-w-72 rounded-md p-5 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
-        <span
-          className="flex size-9 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600"
-          aria-hidden="true"
-        >
-          <Check className="size-4" />
-        </span>
+        <Check className="size-5 text-emerald-600" aria-hidden="true" />
 
         {status && <p className="mt-3 text-sm text-current/60">{status}</p>}
         {amount && (

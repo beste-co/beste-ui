@@ -31,12 +31,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const toolbar2Demo: Toolbar2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   playing: true,
 };
 
-export function Toolbar2({ playing = false, surface = "card", bordered = true, inverted = false, className }: Toolbar2Props) {
+export function Toolbar2({ playing = false, surface = "card", bordered = false, inverted = false, className }: Toolbar2Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

@@ -35,7 +35,7 @@ const barClasses: Record<Tone, string> = {
 export const chat37Demo: Chat37Props = {
   name: "Erykah Badu",
   durationSec: 14,
-  tone: "sky",
+  tone: "primary",
 };
 
 function format(sec: number): string {
@@ -50,7 +50,7 @@ export function Chat37({
   bars = 48,
   secMs = 380,
   holdMs = 2200,
-  tone = "sky",
+  tone = "primary",
   className,
 }: Chat37Props) {
   const [elapsed, setElapsed] = useState(0);

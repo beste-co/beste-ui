@@ -9,6 +9,7 @@ interface Form12Props {
   value?: string;
   strength?: Strength;
   hint?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -46,7 +47,7 @@ export const form12Demo: Form12Props = {
   label: "Choose a password",
   value: "••••••••••••",
   strength: "strong",
-  hint: "Use 12+ characters, mixed case, and a number or symbol.",
+  bordered: false,
 };
 
 export function Form12({
@@ -54,6 +55,7 @@ export function Form12({
   value = "",
   strength = "fair",
   hint,
+  bordered = false,
   className,
 }: Form12Props) {
   const config = strengthConfig[strength];
@@ -71,8 +73,8 @@ export function Form12({
             {label}
           </label>
         )}
-        <div className="rounded-md border border-border bg-card px-3 py-2 shadow-sm">
-          <span className="block truncate font-mono text-sm tracking-wider text-card-foreground">
+        <div className={cn("rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+          <span className="block truncate text-sm text-card-foreground">
             {value}
           </span>
         </div>

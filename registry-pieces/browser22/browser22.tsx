@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Browser22Props {
   from?: string;
   to?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser22Demo: Browser22Props = {
-  from: "Türkçe",
+  from: "Deutsch",
   to: "English",
+  bordered: false,
 };
 
 export function Browser22({
   from = "Source",
   to = "Target",
+  bordered = false,
   className,
 }: Browser22Props) {
   return (
@@ -26,10 +29,11 @@ export function Browser22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-md">
-        <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600 dark:bg-sky-950 dark:text-sky-400">
-          <Languages className="size-5" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-lg bg-card p-3 shadow-md", bordered && "border border-border")}>
+        <Languages
+          className="size-6 shrink-0 text-sky-600 dark:text-sky-400"
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span className="text-sm font-semibold text-card-foreground">
             Translate this page?

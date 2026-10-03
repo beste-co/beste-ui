@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Ai33Props {
   name?: string;
   policies?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const ai33Demo: Ai33Props = {
   name: "Guardrails",
   policies: ["PII redaction", "Toxicity", "Prompt injection"],
+  bordered: false,
 };
 
 export function Ai33({
   name = "Guardrails",
   policies = [],
+  bordered = false,
   className,
 }: Ai33Props) {
   return (
@@ -26,7 +29,7 @@ export function Ai33({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-1.5">
           <ShieldCheck
             className="size-3.5 text-emerald-500"
@@ -43,7 +46,7 @@ export function Ai33({
           {policies.map((p) => (
             <span
               key={p}
-              className="rounded-sm border border-border bg-muted px-1.5 py-0.5 text-xs text-card-foreground"
+              className={cn("rounded-sm bg-muted px-1.5 py-0.5 text-xs text-card-foreground", bordered && "border border-border")}
             >
               {p}
             </span>

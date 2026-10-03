@@ -8,6 +8,7 @@ interface Card7Props {
   method?: Method;
   path?: string;
   summary?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,12 +25,14 @@ export const card7Demo: Card7Props = {
   method: "POST",
   path: "/v1/payment_intents",
   summary: "Create a payment intent",
+  bordered: false,
 };
 
 export function Card7({
   method = "GET",
   path = "/",
   summary,
+  bordered = false,
   className,
 }: Card7Props) {
   return (
@@ -39,17 +42,17 @@ export function Card7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <span
             className={cn(
-              "rounded-md px-1.5 py-0.5 font-mono text-xs font-bold",
+              "rounded-md px-1.5 py-0.5 text-xs font-bold",
               methodClasses[method]
             )}
           >
             {method}
           </span>
-          <code className="flex-1 truncate font-mono text-sm text-card-foreground">
+          <code className="flex-1 truncate text-sm text-card-foreground">
             {path}
           </code>
         </div>

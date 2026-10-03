@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, X } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Chat23Props {
@@ -31,7 +31,6 @@ export function Chat23({
           {message}
         </div>
         <div className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
-          <Clock className="size-3" aria-hidden="true" />
           <span>Sends {sendAt}</span>
           <button
             type="button"

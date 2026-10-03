@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "automation3",
   title: "Schedule Chip",
   description:
-    "Cron-based schedule card with a sky repeat tile, human-readable cadence, monospace cron expression, next run countdown, and timezone.",
+    "Schedule card with a sky repeat icon, a human-readable cadence, and the next run.",
   category: "Automation",
 };

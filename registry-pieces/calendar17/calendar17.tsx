@@ -1,46 +1,36 @@
 "use client";
 
-import { Globe2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface TimezoneRow {
   city: string;
-  zone: string;
+  zone?: string;
   time: string;
-  offset: string;
+  offset?: string;
   isLocal?: boolean;
 }
 
 interface Calendar17Props {
   heading?: string;
   rows?: TimezoneRow[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const calendar17Demo: Calendar17Props = {
-  heading: "Meeting in multiple zones",
+  heading: "Meeting time",
   rows: [
-    {
-      city: "Istanbul",
-      zone: "Europe/Istanbul",
-      time: "14:00",
-      offset: "GMT+3",
-      isLocal: true,
-    },
-    { city: "London", zone: "Europe/London", time: "12:00", offset: "GMT+1" },
-    {
-      city: "San Francisco",
-      zone: "America/Los_Angeles",
-      time: "04:00",
-      offset: "GMT-7",
-    },
-    { city: "Tokyo", zone: "Asia/Tokyo", time: "20:00", offset: "GMT+9" },
+    { city: "Istanbul", time: "14:00", isLocal: true },
+    { city: "London", time: "12:00" },
+    { city: "Tokyo", time: "20:00" },
   ],
+  bordered: false,
 };
 
 export function Calendar17({
   heading,
   rows = [],
+  bordered = false,
   className,
 }: Calendar17Props) {
   return (
@@ -50,18 +40,12 @@ export function Calendar17({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <Globe2
-            className="size-3.5 text-muted-foreground"
-            aria-hidden="true"
-          />
-          {heading && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {heading}
-            </span>
-          )}
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {heading && (
+          <span className="text-xs font-semibold text-muted-foreground">
+            {heading}
+          </span>
+        )}
         <div className="flex flex-col divide-y divide-border">
           {rows.map((r, idx) => (
             <div
@@ -80,17 +64,21 @@ export function Calendar17({
                     </span>
                   )}
                 </span>
-                <span className="truncate font-mono text-xs text-muted-foreground">
-                  {r.zone}
-                </span>
+                {r.zone && (
+                  <span className="truncate text-xs text-muted-foreground">
+                    {r.zone}
+                  </span>
+                )}
               </div>
               <div className="flex flex-col items-end">
-                <span className="font-mono text-sm font-bold text-card-foreground">
+                <span className="text-sm font-bold tabular-nums text-card-foreground">
                   {r.time}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">
-                  {r.offset}
-                </span>
+                {r.offset && (
+                  <span className="text-xs text-muted-foreground">
+                    {r.offset}
+                  </span>
+                )}
               </div>
             </div>
           ))}

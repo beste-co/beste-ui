@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 
 interface Browser12Props {
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,9 +21,11 @@ const extensions = [
   { Icon: Wand2, tint: "text-violet-500", label: "AI Helper" },
 ];
 
-export const browser12Demo: Browser12Props = {};
+export const browser12Demo: Browser12Props = {
+  bordered: false,
+};
 
-export function Browser12({ className }: Browser12Props) {
+export function Browser12({ bordered = false, className }: Browser12Props) {
   return (
     <div
       className={cn(
@@ -30,7 +33,7 @@ export function Browser12({ className }: Browser12Props) {
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-md border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-md bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {extensions.map(({ Icon, tint, label }) => (
           <button
             key={label}

@@ -26,7 +26,7 @@ function ArrowKey({
   return (
     <kbd
       className={cn(
-        "flex size-9 items-center justify-center rounded-md border border-border font-mono text-sm transition-colors",
+        "flex size-9 items-center justify-center rounded-md border border-border text-sm transition-colors",
         active
           ? "border-b-2 border-primary bg-primary text-primary-foreground shadow-inner"
           : "border-b-2 bg-muted text-card-foreground"
@@ -59,7 +59,7 @@ export function Keyboard6({
           <ArrowKey icon={ArrowRight} active={active === "right"} />
         </div>
         {label && (
-          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {label}
           </span>
         )}

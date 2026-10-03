@@ -11,24 +11,25 @@ interface Swatch {
 interface Toolbar6Props {
   swatches?: Swatch[];
   active?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const toolbar6Demo: Toolbar6Props = {
   swatches: [
     { color: "#0f172a", label: "Slate" },
-    { color: "#ef4444", label: "Rose" },
     { color: "#f59e0b", label: "Amber" },
     { color: "#10b981", label: "Emerald" },
     { color: "#0ea5e9", label: "Sky" },
-    { color: "#8b5cf6", label: "Violet" },
   ],
   active: "#10b981",
+  bordered: false,
 };
 
 export function Toolbar6({
   swatches = [],
   active,
+  bordered = false,
   className,
 }: Toolbar6Props) {
   return (
@@ -38,7 +39,7 @@ export function Toolbar6({
         className
       )}
     >
-      <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-1 rounded-full bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {swatches.map((s) => {
           const isActive = s.color === active;
           return (

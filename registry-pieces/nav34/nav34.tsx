@@ -11,6 +11,7 @@ interface Tab {
 interface Nav34Props {
   tabs?: Tab[];
   intervalMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,9 +22,10 @@ export const nav34Demo: Nav34Props = {
     { label: "Settings", content: "Two-factor auth is on for 8 of 9 members" },
     { label: "Billing", content: "Next invoice: $1,240 on 1 Oct" },
   ],
+  bordered: false,
 };
 
-export function Nav34({ tabs = [], intervalMs = 2200, className }: Nav34Props) {
+export function Nav34({ tabs = [], intervalMs = 2200, bordered = false, className }: Nav34Props) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ export function Nav34({ tabs = [], intervalMs = 2200, className }: Nav34Props) {
       )}
     >
       <style>{`@keyframes nav34-fade { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative flex rounded-lg bg-muted p-1" role="tablist">
           <span
             className="absolute inset-y-1 left-1 rounded-md bg-card shadow-sm transition-transform duration-500 ease-in-out motion-reduce:transition-none"

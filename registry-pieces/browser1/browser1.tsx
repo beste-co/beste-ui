@@ -40,7 +40,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser1Demo: Browser1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   url: "https://stripe.com",
   tone: "muted",
@@ -50,7 +50,7 @@ export function Browser1({
   url,
   tone = "foreground",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser1Props) {

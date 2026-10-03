@@ -11,6 +11,7 @@ interface IconTab {
 interface Nav12Props {
   tabs?: IconTab[];
   activeIndex?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -29,11 +30,13 @@ export const nav12Demo: Nav12Props = {
     { label: "Settings", icon: "settings" },
   ],
   activeIndex: 0,
+  bordered: false,
 };
 
 export function Nav12({
   tabs = [],
   activeIndex = 0,
+  bordered = false,
   className,
 }: Nav12Props) {
   return (
@@ -43,7 +46,7 @@ export function Nav12({
         className
       )}
     >
-      <div className="inline-flex items-center gap-1 rounded-lg border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-1 rounded-lg bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {tabs.map((tab, idx) => {
           const Icon = iconMap[tab.icon];
           return (

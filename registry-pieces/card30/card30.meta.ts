@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "card30",
   title: "Empty State",
   description:
-    "Dashed empty-state panel with an inbox tile, headline, supporting copy, and a dark CTA button.",
+    "Dashed empty-state panel with an inbox icon, headline, supporting copy, and a dark CTA button.",
   category: "Card",
 };

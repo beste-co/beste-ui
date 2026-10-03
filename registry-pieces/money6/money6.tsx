@@ -9,6 +9,7 @@ interface Money6Props {
   price?: string;
   delta?: number;
   data?: number[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const money6Demo: Money6Props = {
   price: "$218.42",
   delta: 1.8,
   data: [12, 18, 14, 22, 20, 28, 24, 32, 30, 38, 36, 44],
+  bordered: false,
 };
 
 export function Money6({
@@ -26,6 +28,7 @@ export function Money6({
   price,
   delta = 0,
   data = [],
+  bordered = false,
   className,
 }: Money6Props) {
   const isUp = delta >= 0;
@@ -58,10 +61,10 @@ export function Money6({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-center gap-1.5">
-            <span className="font-mono text-sm font-bold uppercase tracking-wide text-card-foreground">
+            <span className="text-sm font-bold text-card-foreground">
               {symbol}
             </span>
             {name && (

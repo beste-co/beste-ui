@@ -34,16 +34,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chat34Demo: Chat34Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   question: "How many rooms were unused last Tuesday?",
   answer:
     "Three, all at Kingsway between 13:00 and 16:00. Two were held for a clinic that was cancelled on the Friday before.",
-  sourcesLabel: "Answered from",
   sources: ["Rota", "Bookings", "Cancellations"],
 };
 
-export function Chat34({ question, answer, sourcesLabel, sources = [], surface = "card", bordered = true, inverted = false, className }: Chat34Props) {
+export function Chat34({ question, answer, sourcesLabel, sources = [], surface = "card", bordered = false, inverted = false, className }: Chat34Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -62,12 +61,10 @@ export function Chat34({ question, answer, sourcesLabel, sources = [], surface =
         )}
 
         <div className="mt-3 flex gap-2.5">
-          <span
-            className="flex size-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary"
+          <Sparkles
+            className="mt-1 size-4 shrink-0 text-primary"
             aria-hidden="true"
-          >
-            <Sparkles className="size-3.5" />
-          </span>
+          />
           {answer && (
             <p className="text-sm leading-relaxed">{answer}</p>
           )}
@@ -81,7 +78,7 @@ export function Chat34({ question, answer, sourcesLabel, sources = [], surface =
             {sources.map((source, index) => (
               <span
                 key={index}
-                className="rounded-full border border-current/15 px-2 py-0.5 text-xs text-current/60"
+                className={cn("rounded-full px-2 py-0.5 text-xs text-current/60", bordered ? "border border-current/15" : "bg-current/10")}
               >
                 {source}
               </span>

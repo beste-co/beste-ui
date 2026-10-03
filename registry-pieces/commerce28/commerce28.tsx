@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronRight, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Stock = "in" | "low" | "out";
@@ -13,6 +12,7 @@ interface Commerce28Store {
 
 interface Commerce28Props {
   stores?: Commerce28Store[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,9 +43,10 @@ export const commerce28Demo: Commerce28Props = {
     { name: "Hayes Valley", distance: "1.2 mi", stock: "low" },
     { name: "Mission District", distance: "2.8 mi", stock: "out" },
   ],
+  bordered: false,
 };
 
-export function Commerce28({ stores = [], className }: Commerce28Props) {
+export function Commerce28({ stores = [], bordered = false, className }: Commerce28Props) {
   return (
     <div
       className={cn(
@@ -53,42 +54,27 @@ export function Commerce28({ stores = [], className }: Commerce28Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-md border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-1.5 pb-1">
-          <MapPin
-            className="size-3.5 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Find in store
-          </span>
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <span className="pb-1 text-xs font-semibold text-muted-foreground">
+          Find in store
+        </span>
         <ul className="flex flex-col divide-y divide-border">
           {stores.map((s) => {
             const cfg = STOCK[s.stock];
             return (
-              <li
-                key={s.name}
-                className="flex items-center justify-between gap-2 py-2"
-              >
-                <div className="flex min-w-0 items-center gap-2">
-                  <span
-                    className={cn("size-2 shrink-0 rounded-full", cfg.dot)}
-                    aria-hidden="true"
-                  />
-                  <div className="flex min-w-0 flex-col">
-                    <span className="truncate text-xs font-medium text-card-foreground">
-                      {s.name}
-                    </span>
-                    <span className={cn("text-xs", cfg.color)}>
-                      {cfg.label} · {s.distance}
-                    </span>
-                  </div>
-                </div>
-                <ChevronRight
-                  className="size-4 shrink-0 text-muted-foreground"
+              <li key={s.name} className="flex items-center gap-2 py-2">
+                <span
+                  className={cn("size-2 shrink-0 rounded-full", cfg.dot)}
                   aria-hidden="true"
                 />
+                <div className="flex min-w-0 flex-col">
+                  <span className="truncate text-xs font-medium text-card-foreground">
+                    {s.name}
+                  </span>
+                  <span className={cn("text-xs tabular-nums", cfg.color)}>
+                    {cfg.label} · {s.distance}
+                  </span>
+                </div>
               </li>
             );
           })}

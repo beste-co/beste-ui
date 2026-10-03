@@ -8,6 +8,7 @@ interface Notification5Props {
   channel?: string;
   quote?: string;
   time?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,7 +16,7 @@ export const notification5Demo: Notification5Props = {
   username: "maya.dev",
   channel: "#design-review",
   quote: "Can you take a look at the new pricing layout when you're free?",
-  time: "5m ago",
+  bordered: false,
 };
 
 export function Notification5({
@@ -23,6 +24,7 @@ export function Notification5({
   channel,
   quote,
   time,
+  bordered = false,
   className,
 }: Notification5Props) {
   return (
@@ -32,10 +34,11 @@ export function Notification5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-start gap-3 rounded-lg border border-border bg-card p-3 shadow-lg">
-        <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400">
-          <AtSign className="size-4" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-80 items-start gap-3 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
+        <AtSign
+          className="mt-0.5 size-5 shrink-0 text-sky-600 dark:text-sky-400"
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <span className="text-sm text-card-foreground">
             <span className="font-semibold">@{username}</span>

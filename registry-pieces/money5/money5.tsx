@@ -30,7 +30,7 @@ const toneClasses: Record<Tone, string> = {
 
 export const money5Demo: Money5Props = {
   last4: "4242",
-  holder: "Deniz Arslan",
+  holder: "Hania Rani",
   expiry: "08/28",
   brand: "VISA",
   tone: "midnight",
@@ -69,21 +69,21 @@ export function Money5({
               <span className="rounded-sm bg-amber-700/50" />
             </div>
           </div>
-          <span className="font-mono text-xs font-bold uppercase tracking-widest opacity-90">
+          <span className="text-xs font-bold opacity-90">
             {brand}
           </span>
         </div>
-        <div className="flex items-center gap-2 font-mono text-sm tracking-widest">
+        <div className="flex items-center gap-2 text-sm">
           <span className="opacity-60">••••</span>
           <span className="opacity-60">••••</span>
           <span className="opacity-60">••••</span>
           <span>{last4}</span>
         </div>
         <div className="flex items-end justify-between">
-          <span className="max-w-32 truncate text-xs font-semibold uppercase tracking-wide">
+          <span className="max-w-32 truncate text-xs font-semibold">
             {holder}
           </span>
-          <span className="font-mono text-xs tabular-nums">{expiry}</span>
+          <span className="text-xs tabular-nums">{expiry}</span>
         </div>
       </div>
     </div>

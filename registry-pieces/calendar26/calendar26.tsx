@@ -16,17 +16,18 @@ interface Calendar26Props {
   attendees?: Attendee[];
   joinLabel?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const buttonClasses: Record<Tone, string> = {
@@ -51,7 +52,7 @@ const avatarClasses: Record<Tone, string> = {
 
 export const calendar26Demo: Calendar26Props = {
   title: "Release planning · Q3",
-  window: "In 3 min · 30 minutes",
+  window: "In 3 min",
   joinLabel: "Join",
   attendees: [
     {
@@ -64,15 +65,14 @@ export const calendar26Demo: Calendar26Props = {
       image:
         "https://images.unsplash.com/photo-1568392021577-fad7eb6efba1?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D",
     },
-    { initials: "AK" },
     {
       initials: "JP",
       image:
         "https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjg2fHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D",
     },
-    { initials: "NA" },
   ],
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Calendar26({
@@ -80,21 +80,18 @@ export function Calendar26({
   window,
   attendees = [],
   joinLabel = "Join",
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Calendar26Props) {
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-full",
-              iconClasses[tone]
-            )}
-          >
-            <Video className="size-4" aria-hidden="true" />
-          </div>
+          <Video
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
               <span className="truncate text-sm font-semibold text-card-foreground">{title}</span>
@@ -113,7 +110,7 @@ export function Calendar26({
             {joinLabel}
           </button>
         </div>
-        <div className="flex items-center justify-between gap-2">
+        {attendees.length > 0 && (
           <div className="flex -space-x-1.5">
             {attendees.map((a, idx) => (
               <span
@@ -135,7 +132,7 @@ export function Calendar26({
               </span>
             ))}
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

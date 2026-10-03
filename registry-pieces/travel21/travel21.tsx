@@ -7,19 +7,21 @@ interface Travel21Props {
   refund?: string;
   cancelBy?: string;
   note?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel21Demo: Travel21Props = {
   refund: "Full refund",
-  cancelBy: "Cancel free before May 10 · 23:59 local",
-  note: "50% refund if cancelled between May 11 and May 20. Non-refundable after.",
+  cancelBy: "Cancel free before May 10",
+  bordered: false,
 };
 
 export function Travel21({
   refund,
   cancelBy,
   note,
+  bordered = false,
   className,
 }: Travel21Props) {
   return (
@@ -29,13 +31,11 @@ export function Travel21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-emerald-500 bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-emerald-500")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-emerald-500 text-white">
-            <RotateCcw className="size-4" aria-hidden="true" />
-          </div>
+          <RotateCcw className="size-5 shrink-0 text-emerald-500" aria-hidden="true" />
           <div className="flex flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+            <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
               Cancellation policy
             </span>
             {refund && (

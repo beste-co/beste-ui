@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "automation13",
   title: "Delay Step",
   description:
-    "Pause-step card with a dashed border, a tone-tinted timer tile, the wait duration, and a subtle continuation note.",
+    "Pause-step card with a dashed border, a tone-colored timer icon, the wait duration, and a subtle continuation note.",
   category: "Automation",
 };

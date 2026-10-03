@@ -5,15 +5,18 @@ import { cn } from "@/lib/utils";
 
 interface Commerce15Props {
   total?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const commerce15Demo: Commerce15Props = {
   total: "$284.00",
+  bordered: false,
 };
 
 export function Commerce15({
   total = "$0.00",
+  bordered = false,
   className,
 }: Commerce15Props) {
   return (
@@ -23,12 +26,12 @@ export function Commerce15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             Express checkout
           </span>
-          <span className="font-mono text-xs tabular-nums text-card-foreground">
+          <span className="text-xs tabular-nums text-card-foreground">
             {total}
           </span>
         </div>
@@ -65,13 +68,6 @@ export function Commerce15({
               Pay<span className="text-sky-700">Pal</span>
             </span>
           </button>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="h-px flex-1 bg-border" aria-hidden="true" />
-          <span className="text-xs text-muted-foreground">
-            or pay with card
-          </span>
-          <span className="h-px flex-1 bg-border" aria-hidden="true" />
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
 "use client";
-import { ArrowRight, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -22,6 +21,7 @@ interface Commerce12Props {
   items?: Commerce12Item[];
   subtotal?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -54,12 +54,14 @@ export const commerce12Demo: Commerce12Props = {
   ],
   subtotal: "$369",
   tone: "foreground",
+  bordered: false,
 };
 
 export function Commerce12({
   items = [],
   subtotal = "$0",
   tone = "foreground",
+  bordered = false,
   className,
 }: Commerce12Props) {
   const count = items.reduce((s, i) => s + i.qty, 0);
@@ -71,17 +73,13 @@ export function Commerce12({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2 border-b border-border px-3 py-2">
           <div className="flex items-center gap-1.5">
-            <ShoppingBag
-              className="size-3.5 text-muted-foreground"
-              aria-hidden="true"
-            />
             <span className="text-xs font-semibold text-card-foreground">
               Your bag
             </span>
-            <span className="rounded-full bg-muted px-1.5 py-0.5 font-mono text-xs tabular-nums text-muted-foreground">
+            <span className="rounded-full bg-muted px-1.5 py-0.5 text-xs tabular-nums text-muted-foreground">
               {count}
             </span>
           </div>
@@ -100,11 +98,13 @@ export function Commerce12({
                 <span className="truncate text-xs font-medium text-card-foreground">
                   {it.name}
                 </span>
-                <span className="text-xs text-muted-foreground">
-                  Qty {it.qty}
-                </span>
+                {it.qty > 1 && (
+                  <span className="text-xs tabular-nums text-muted-foreground">
+                    Qty {it.qty}
+                  </span>
+                )}
               </div>
-              <span className="shrink-0 font-mono text-xs tabular-nums text-card-foreground">
+              <span className="shrink-0 text-xs tabular-nums text-card-foreground">
                 {it.price}
               </span>
             </li>
@@ -113,7 +113,7 @@ export function Commerce12({
         <div className="flex items-center justify-between gap-2 border-t border-border px-3 py-2">
           <div className="flex items-baseline gap-1.5">
             <span className="text-xs text-muted-foreground">Subtotal</span>
-            <span className="font-mono text-sm font-semibold tabular-nums text-card-foreground">
+            <span className="text-sm font-semibold tabular-nums text-card-foreground">
               {subtotal}
             </span>
           </div>
@@ -125,7 +125,6 @@ export function Commerce12({
             )}
           >
             Checkout
-            <ArrowRight className="size-3" aria-hidden="true" />
           </button>
         </div>
       </div>

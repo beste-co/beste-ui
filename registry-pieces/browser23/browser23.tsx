@@ -5,14 +5,16 @@ import { cn } from "@/lib/utils";
 
 interface Browser23Props {
   blocked?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser23Demo: Browser23Props = {
   blocked: 17,
+  bordered: false,
 };
 
-export function Browser23({ blocked = 0, className }: Browser23Props) {
+export function Browser23({ blocked = 0, bordered = false, className }: Browser23Props) {
   return (
     <div
       className={cn(
@@ -20,13 +22,11 @@ export function Browser23({ blocked = 0, className }: Browser23Props) {
         className
       )}
     >
-      <div className="inline-flex items-center gap-2.5 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
-        <div
-          className="flex size-9 shrink-0 items-center justify-center rounded-md bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400"
+      <div className={cn("inline-flex items-center gap-2.5 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+        <ShieldCheck
+          className="size-5 shrink-0 text-emerald-600 dark:text-emerald-400"
           aria-hidden="true"
-        >
-          <ShieldCheck className="size-4" aria-hidden="true" />
-        </div>
+        />
         <div className="flex flex-col">
           <span className="text-lg font-bold tabular-nums leading-none text-card-foreground">
             {blocked}

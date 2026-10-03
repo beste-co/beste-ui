@@ -10,6 +10,7 @@ interface Browser8Props {
   status?: number;
   time?: string;
   size?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,7 +28,7 @@ export const browser8Demo: Browser8Props = {
   path: "/api/users?page=2",
   status: 200,
   time: "142ms",
-  size: "3.4 KB",
+  bordered: false,
 };
 
 export function Browser8({
@@ -36,6 +37,7 @@ export function Browser8({
   status = 200,
   time,
   size,
+  bordered = false,
   className,
 }: Browser8Props) {
   const statusClass =
@@ -54,7 +56,7 @@ export function Browser8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-2 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-2 rounded-md bg-card px-3 py-2 text-xs shadow-sm", bordered && "border border-border")}>
         <span
           className={cn(
             "shrink-0 rounded px-1.5 py-0.5 font-bold",

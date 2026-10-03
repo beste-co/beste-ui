@@ -33,14 +33,14 @@ interface Health2Props {
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-current/10 text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-current",
+  primary: "text-primary",
+  foreground: "text-current",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const statusConfig: Record<
@@ -87,13 +87,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const health2Demo: Health2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   systolic: 118,
   diastolic: 76,
   status: "normal",
   statusLabel: "Normal",
-  measured: "Measured at 08:42",
   label: "Blood pressure",
   unitLabel: "mmHg",
   tone: "neutral",
@@ -109,7 +108,7 @@ export function Health2({
   unitLabel = "mmHg",
   tone = "neutral",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Health2Props) {
@@ -127,15 +126,11 @@ export function Health2({
       <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div
-              className={cn(
-                "flex size-8 items-center justify-center rounded-full",
-                iconClasses[tone]
-              )}
-            >
-              <Activity className="size-4" aria-hidden="true" />
-            </div>
-            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+            <Activity
+              className={cn("size-5 shrink-0", iconClasses[tone])}
+              aria-hidden="true"
+            />
+            <span className="text-xs font-semibold text-current/60">
               {label}
             </span>
           </div>
@@ -153,11 +148,11 @@ export function Health2({
           </span>
         </div>
         <div className="flex items-baseline gap-1">
-          <span className="font-mono text-3xl font-bold">
+          <span className="text-3xl font-bold tabular-nums">
             {systolic}
           </span>
           <span className="text-current/60">/</span>
-          <span className="font-mono text-2xl font-semibold text-current/60">
+          <span className="text-2xl font-semibold tabular-nums text-current/60">
             {diastolic}
           </span>
           <span className="ml-1 text-xs text-current/60">

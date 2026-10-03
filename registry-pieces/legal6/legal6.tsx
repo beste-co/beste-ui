@@ -15,6 +15,7 @@ interface Legal6Props {
   status?: DocStatus;
   docName?: string;
   updated?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -57,13 +58,14 @@ const statusConfig: Record<
 export const legal6Demo: Legal6Props = {
   status: "review",
   docName: "Series A investors' rights agreement",
-  updated: "Updated 4 hours ago",
+  bordered: false,
 };
 
 export function Legal6({
   status = "draft",
   docName,
   updated,
+  bordered = false,
   className,
 }: Legal6Props) {
   const config = statusConfig[status];
@@ -76,7 +78,7 @@ export function Legal6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <Icon
           className={cn("size-6 shrink-0", config.iconColor)}
           aria-hidden="true"

@@ -3,14 +3,10 @@
 import { Waves } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface Amenity {
-  label: string;
-  icon: string;
-}
-
 interface Travel22Props {
   title?: string;
   amenities?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,14 +17,14 @@ export const travel22Demo: Travel22Props = {
     "Rooftop pool",
     "Air-conditioning",
     "Breakfast included",
-    "Airport shuttle",
-    "Pet friendly",
   ],
+  bordered: false,
 };
 
 export function Travel22({
   title,
   amenities = [],
+  bordered = false,
   className,
 }: Travel22Props) {
   return (
@@ -38,13 +34,11 @@ export function Travel22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-sky-500/15 text-sky-500">
-            <Waves className="size-3.5" aria-hidden="true" />
-          </div>
+          <Waves className="size-4 shrink-0 text-sky-500" aria-hidden="true" />
           {title && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {title}
             </span>
           )}

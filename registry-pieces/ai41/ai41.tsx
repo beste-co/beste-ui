@@ -10,6 +10,7 @@ interface Ai41Intent {
 interface Ai41Props {
   input?: string;
   intents?: Ai41Intent[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,9 +21,10 @@ export const ai41Demo: Ai41Props = {
     { label: "shipping_eta", score: 0.09 },
     { label: "refund_request", score: 0.04 },
   ],
+  bordered: false,
 };
 
-export function Ai41({ input, intents = [], className }: Ai41Props) {
+export function Ai41({ input, intents = [], bordered = false, className }: Ai41Props) {
   return (
     <div
       className={cn(
@@ -30,7 +32,7 @@ export function Ai41({ input, intents = [], className }: Ai41Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {input && (
           <p className="truncate rounded-sm bg-muted px-2 py-1 text-xs italic text-muted-foreground">
             "{input}"
@@ -44,7 +46,7 @@ export function Ai41({ input, intents = [], className }: Ai41Props) {
               <div key={it.label} className="flex items-center gap-2">
                 <span
                   className={cn(
-                    "w-28 truncate font-mono text-xs",
+                    "w-28 truncate text-xs",
                     isTop
                       ? "font-semibold text-card-foreground"
                       : "text-muted-foreground"
@@ -62,9 +64,6 @@ export function Ai41({ input, intents = [], className }: Ai41Props) {
                     aria-hidden="true"
                   />
                 </div>
-                <span className="w-10 text-right font-mono text-xs tabular-nums text-muted-foreground">
-                  {pct}%
-                </span>
               </div>
             );
           })}

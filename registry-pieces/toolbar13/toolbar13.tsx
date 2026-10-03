@@ -11,17 +11,20 @@ import { cn } from "@/lib/utils";
 interface Toolbar13Props {
   current?: number;
   total?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const toolbar13Demo: Toolbar13Props = {
   current: 5,
   total: 24,
+  bordered: false,
 };
 
 export function Toolbar13({
   current = 1,
   total = 1,
+  bordered = false,
   className,
 }: Toolbar13Props) {
   const clamped = Math.max(1, Math.min(current, Math.max(1, total)));
@@ -33,7 +36,7 @@ export function Toolbar13({
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-md border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-md bg-card p-1 shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           aria-label="First page"
@@ -50,7 +53,7 @@ export function Toolbar13({
         >
           <ChevronLeft className="size-3.5" aria-hidden="true" />
         </button>
-        <span className="mx-1 font-mono text-xs tabular-nums text-card-foreground">
+        <span className="mx-1 text-xs tabular-nums text-card-foreground">
           {clamped}{" "}
           <span className="text-muted-foreground">/ {total}</span>
         </span>

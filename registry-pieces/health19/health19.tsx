@@ -18,6 +18,7 @@ interface Health19Props {
   goal?: string;
   fillPercent?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -48,7 +49,8 @@ export const health19Demo: Health19Props = {
   current: "1.8 L",
   goal: "2.5 L",
   fillPercent: 72,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health19({
@@ -56,7 +58,8 @@ export function Health19({
   current,
   goal,
   fillPercent = 0,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health19Props) {
   const pct = Math.max(0, Math.min(100, fillPercent));
@@ -68,7 +71,7 @@ export function Health19({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div
           className={cn(
             "relative flex h-20 w-12 items-end justify-center overflow-hidden rounded-b-full rounded-t-md border-2",
@@ -82,11 +85,11 @@ export function Health19({
           />
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="font-mono text-2xl font-bold text-card-foreground">
+            <span className="text-2xl font-bold text-card-foreground">
               {current}
             </span>
             <span className="text-xs text-muted-foreground">/ {goal}</span>

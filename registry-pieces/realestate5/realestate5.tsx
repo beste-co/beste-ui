@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -57,13 +57,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const realestate5Demo: Realestate5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  name: "Sofia Romano",
-  firm: "Riverside Realty · Broker",
-  initials: "SR",
+  name: "Hania Rani",
+  firm: "Riverside Realty",
+  initials: "HR",
   rating: "4.9",
-  deals: "42 deals closed",
   phone: "+90 532 000 12 34",
   image:
     "https://images.unsplash.com/photo-1763478959183-136fe6bdcc93?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJlYWwlMjBlc3RhdGUlMjB3b21hbnxlbnwwfHwwfHx8MA%3D%3D",
@@ -80,7 +79,7 @@ export function Realestate5({
   image,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Realestate5Props) {
@@ -141,9 +140,8 @@ export function Realestate5({
         {phone && (
           <button
             type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-3 py-1.5 text-sm font-semibold text-background hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-md bg-foreground px-3 py-1.5 text-sm font-semibold tabular-nums text-background hover:opacity-90"
           >
-            <Phone className="size-3.5" aria-hidden="true" />
             {phone}
           </button>
         )}

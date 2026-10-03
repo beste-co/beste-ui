@@ -34,7 +34,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser38Demo: Browser38Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "We use cookies",
   description:
@@ -62,7 +62,7 @@ export function Browser38({
   customizeLabel,
   acceptLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser38Props) {
@@ -103,7 +103,7 @@ export function Browser38({
             {rejectLabel && (
               <button
                 type="button"
-                className="rounded-md border border-current/15 px-2.5 py-1 text-xs font-medium"
+                className={cn("rounded-md px-2.5 py-1 text-xs font-medium", bordered ? "border border-current/15" : "bg-current/10")}
               >
                 {rejectLabel}
               </button>

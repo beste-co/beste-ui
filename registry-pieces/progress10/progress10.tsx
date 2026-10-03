@@ -35,11 +35,8 @@ const toneClasses: Record<Tone, string> = {
 
 export const progress10Demo: Progress10Props = {
   streak: 27,
-  longest: 42,
-  longestLabel: "Longest",
-  longestSuffix: "days",
   label: "Day streak",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Progress10({
@@ -71,7 +68,7 @@ export function Progress10({
               {streak}
             </span>
             {label && (
-              <span className="text-xs font-semibold uppercase tracking-wide opacity-80">
+              <span className="text-xs font-semibold opacity-80">
                 {label}
               </span>
             )}

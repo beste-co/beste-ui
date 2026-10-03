@@ -1,5 +1,5 @@
 "use client";
-import { Clock, MapPin, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -40,16 +40,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const food2Demo: Food2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  name: "Lokal · Modern Türk",
-  cuisine: "Anatolian · Small plates",
+  name: "Lokal",
   neighborhood: "Karaköy",
   rating: "4.7",
-  priceRange: "₺₺₺",
-  eta: "30–45 min",
   imageSrc: defaultImage,
-  alt: "Lokal · dining room",
+  alt: "Lokal dining room",
 };
 
 export function Food2({
@@ -62,7 +59,7 @@ export function Food2({
   imageSrc = defaultImage,
   alt,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Food2Props) {
@@ -82,16 +79,20 @@ export function Food2({
             alt={alt ?? name ?? ""}
             className="absolute inset-0 size-full object-cover"
           />
-          <span className="absolute bottom-2 left-2 rounded-full bg-background/90 px-2 py-0.5 text-xs font-semibold backdrop-blur text-foreground">
-            {cuisine}
-          </span>
-          <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/90 px-2 py-0.5 text-xs font-semibold backdrop-blur text-foreground">
-            <Star
-              className="size-3 fill-amber-400 text-amber-400"
-              aria-hidden="true"
-            />
-            {rating}
-          </span>
+          {cuisine && (
+            <span className="absolute bottom-2 left-2 rounded-full bg-background/90 px-2 py-0.5 text-xs font-semibold backdrop-blur text-foreground">
+              {cuisine}
+            </span>
+          )}
+          {rating && (
+            <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/90 px-2 py-0.5 text-xs font-semibold tabular-nums backdrop-blur text-foreground">
+              <Star
+                className="size-3 fill-amber-400 text-amber-400"
+                aria-hidden="true"
+              />
+              {rating}
+            </span>
+          )}
         </div>
         <div className="flex flex-col gap-1 p-3">
           {name && (
@@ -99,21 +100,13 @@ export function Food2({
               {name}
             </span>
           )}
-          <div className="flex items-center gap-3 text-xs text-current/60">
-            {neighborhood && (
-              <span className="inline-flex items-center gap-1">
-                <MapPin className="size-3" aria-hidden="true" />
-                {neighborhood}
-              </span>
-            )}
-            {eta && (
-              <span className="inline-flex items-center gap-1">
-                <Clock className="size-3" aria-hidden="true" />
-                {eta}
-              </span>
-            )}
-            {priceRange && <span className="font-mono">{priceRange}</span>}
-          </div>
+          {(neighborhood || eta || priceRange) && (
+            <div className="flex items-center gap-3 text-xs text-current/60">
+              {neighborhood && <span>{neighborhood}</span>}
+              {eta && <span>{eta}</span>}
+              {priceRange && <span>{priceRange}</span>}
+            </div>
+          )}
         </div>
       </div>
     </div>

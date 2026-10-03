@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "input30",
   title: "Wallet Input",
   description:
-    "Crypto address field with a gradient Ξ avatar, shortened mono address, and an ENS lookup chip.",
+    "Crypto address field with a gradient Ξ avatar, shortened address, and an ENS lookup chip.",
   category: "Input",
 };

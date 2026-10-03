@@ -46,17 +46,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser34Demo: Browser34Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   url: "app.sirius.care/members",
   rows: [
-    { name: "Rowan Blake", status: "Active", tone: "emerald" },
-    { name: "Amelia Frost", status: "Intake", tone: "amber" },
-    { name: "Noah Reyes", status: "Discharged", tone: "muted" },
+    { name: "Nils Frahm", status: "Active", tone: "emerald" },
+    { name: "Hania Rani", status: "Intake", tone: "amber" },
+    { name: "Ólafur Arnalds", status: "Discharged", tone: "muted" },
   ],
 };
 
-export function Browser34({ url, rows = [], surface = "card", bordered = true, inverted = false, className }: Browser34Props) {
+export function Browser34({ url, rows = [], surface = "card", bordered = false, inverted = false, className }: Browser34Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -74,12 +74,12 @@ export function Browser34({ url, rows = [], surface = "card", bordered = true, i
             <span className="size-2.5 rounded-full bg-emerald-400" />
           </div>
           {url && (
-            <div className="ml-2 flex flex-1 items-center gap-1.5 rounded-md border border-current/15 bg-background px-2.5 py-1 text-foreground">
+            <div className={cn("ml-2 flex flex-1 items-center gap-1.5 rounded-md px-2.5 py-1 text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")}>
               <Lock
                 className="size-3 shrink-0 text-current/60"
                 aria-hidden="true"
               />
-              <span className="truncate font-mono text-xs text-current/60">
+              <span className="truncate text-xs text-current/60">
                 {url}
               </span>
             </div>
@@ -90,7 +90,7 @@ export function Browser34({ url, rows = [], surface = "card", bordered = true, i
           {rows.map((row, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 rounded-md border border-current/15 px-3 py-2"
+              className={cn("flex items-center gap-3 rounded-md px-3 py-2", bordered ? "border border-current/15" : "bg-current/10")}
             >
               <span
                 className="flex size-7 shrink-0 items-center justify-center rounded-full bg-current/10 text-xs font-semibold text-current/60"

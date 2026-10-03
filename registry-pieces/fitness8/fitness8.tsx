@@ -23,6 +23,7 @@ interface Fitness8Props {
   items?: WarmUp[];
   totalTime?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -51,13 +52,13 @@ const pillClasses: Record<Tone, string> = {
 export const fitness8Demo: Fitness8Props = {
   heading: "Pre-lift warm-up",
   items: [
-    { movement: "Rowing machine", duration: "3 min easy" },
-    { movement: "World's greatest stretch", duration: "1 min each side" },
+    { movement: "Rowing machine", duration: "3 min" },
+    { movement: "Hip stretch", duration: "2 min" },
     { movement: "Bodyweight squats", duration: "12 reps" },
-    { movement: "Band pull-aparts", duration: "15 reps × 2" },
   ],
-  totalTime: "~ 8 minutes",
+  totalTime: "6 min",
   tone: "neutral",
+  bordered: false,
 };
 
 export function Fitness8({
@@ -65,6 +66,7 @@ export function Fitness8({
   items = [],
   totalTime,
   tone = "neutral",
+  bordered = false,
   className,
 }: Fitness8Props) {
   return (
@@ -74,7 +76,7 @@ export function Fitness8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Flame
@@ -82,7 +84,7 @@ export function Fitness8({
               aria-hidden="true"
             />
             {heading && (
-              <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-semibold text-muted-foreground">
                 {heading}
               </span>
             )}
@@ -104,13 +106,13 @@ export function Fitness8({
               key={idx}
               className="flex items-center gap-2 py-1.5 text-sm"
             >
-              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-muted font-mono text-xs font-bold text-card-foreground">
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-card-foreground">
                 {idx + 1}
               </span>
               <span className="flex-1 truncate text-card-foreground">
                 {item.movement}
               </span>
-              <span className="shrink-0 font-mono text-xs text-muted-foreground">
+              <span className="shrink-0 text-xs text-muted-foreground">
                 {item.duration}
               </span>
             </div>

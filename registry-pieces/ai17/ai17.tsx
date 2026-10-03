@@ -53,7 +53,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai17Demo: Ai17Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Weekly summary",
   bullets: [
@@ -61,17 +61,16 @@ export const ai17Demo: Ai17Props = {
     "Pricing experiment lifts conversion by 14%",
     "Two critical bugs filed, one already patched",
   ],
-  source: "Synthesized from 3 documents",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Ai17({
   title = "Summary",
   bullets = [],
   source,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai17Props) {
@@ -90,7 +89,7 @@ export function Ai17({
             className={cn("size-3.5", iconClasses[tone])}
             aria-hidden="true"
           />
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {title}
           </span>
         </div>

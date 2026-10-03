@@ -17,6 +17,7 @@ interface Socialproof28Props {
   items?: Signup[];
   intervalMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -41,8 +42,6 @@ const dotClasses: Record<Tone, string> = {
   violet: "bg-violet-500",
 };
 
-const ages = ["Just now", "1 min ago", "3 min ago", "6 min ago"];
-
 export const socialproof28Demo: Socialproof28Props = {
   heading: "Recent signups",
   action: "just signed up",
@@ -66,11 +65,9 @@ export const socialproof28Demo: Socialproof28Props = {
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
     },
     { name: "Patti Smith", city: "Chicago" },
-    { name: "Prince", city: "Minneapolis" },
-    { name: "Aretha Franklin", city: "Detroit" },
-    { name: "Herbie Hancock", city: "Los Angeles" },
   ],
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 function initials(name: string) {
@@ -87,7 +84,8 @@ export function Socialproof28({
   action = "just signed up",
   items = [],
   intervalMs = 2000,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Socialproof28Props) {
   // Newest card sits first, so the seed ids count down and every new id is unique.
@@ -117,7 +115,7 @@ export function Socialproof28({
       )}
     >
       <style>{`@keyframes socialproof28-in { from { opacity: 0; transform: translateY(-0.75rem) scale(0.97); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between px-1">
           <span className="text-sm font-medium text-card-foreground">{heading}</span>
           <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -166,14 +164,9 @@ export function Socialproof28({
                 </span>
               )}
               <div className="min-w-0 flex-1">
-                <div className="flex items-baseline justify-between gap-2">
-                  <span className="truncate text-sm font-medium text-card-foreground">
-                    {entry.item.name}
-                  </span>
-                  <span className="shrink-0 text-xs text-muted-foreground">
-                    {ages[index] ?? ages[ages.length - 1]}
-                  </span>
-                </div>
+                <p className="truncate text-sm font-medium text-card-foreground">
+                  {entry.item.name}
+                </p>
                 <p className="truncate text-xs text-muted-foreground">
                   {entry.item.city} · {action}
                 </p>

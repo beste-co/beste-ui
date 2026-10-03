@@ -18,6 +18,7 @@ interface Media8Props {
   host?: string;
   duration?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,9 +44,10 @@ export const media8Demo: Media8Props = {
   src: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=300&fit=crop",
   alt: "Podcast cover art",
   title: "The Quiet Startup",
-  host: "Ceren Yıldırım",
+  host: "Max Richter",
   duration: "48 min",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Media8({
@@ -55,6 +57,7 @@ export function Media8({
   host,
   duration,
   tone = "ocean",
+  bordered = false,
   className,
 }: Media8Props) {
   return (
@@ -64,7 +67,7 @@ export function Media8({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-lg border border-border bg-card p-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg bg-card p-2.5 shadow-sm", bordered && "border border-border")}>
         <div
           className={cn(
             "relative size-14 shrink-0 overflow-hidden rounded-md shadow-sm",
@@ -78,9 +81,11 @@ export function Media8({
               className="absolute inset-0 size-full object-cover"
             />
           )}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-            <Mic className="size-5 text-white" aria-hidden="true" />
-          </div>
+          {!src && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Mic className="size-5 text-white" aria-hidden="true" />
+            </div>
+          )}
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           {title && (

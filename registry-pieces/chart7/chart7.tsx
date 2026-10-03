@@ -37,10 +37,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chart7Demo: Chart7Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Where the week went",
-  caption: "Booked hours by appointment type",
   items: [
     { label: "Consultations", percent: 42 },
     { label: "Follow-ups", percent: 28 },
@@ -49,7 +48,7 @@ export const chart7Demo: Chart7Props = {
   ],
 };
 
-export function Chart7({ title, caption, items = [], surface = "card", bordered = true, inverted = false, className }: Chart7Props) {
+export function Chart7({ title, caption, items = [], surface = "card", bordered = false, inverted = false, className }: Chart7Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

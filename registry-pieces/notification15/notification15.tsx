@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2, X } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "primary" | "foreground" | "sky" | "emerald" | "violet";
@@ -10,6 +10,7 @@ interface Notification15Props {
   filename?: string;
   percent?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,14 +34,16 @@ export const notification15Demo: Notification15Props = {
   label: "Uploading",
   filename: "product-hero-final.mp4",
   percent: 64,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Notification15({
   label = "Uploading",
   filename,
   percent = 0,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Notification15Props) {
   const clamped = Math.max(0, Math.min(100, percent));
@@ -52,7 +55,7 @@ export function Notification15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <Loader2
             className={cn("size-4 animate-spin", textClasses[tone])}
@@ -61,16 +64,9 @@ export function Notification15({
           <span className="text-sm font-semibold text-card-foreground">
             {label}
           </span>
-          <span className="ml-auto text-xs font-mono text-muted-foreground">
+          <span className="ml-auto text-xs tabular-nums text-muted-foreground">
             {clamped}%
           </span>
-          <button
-            type="button"
-            className="flex size-5 items-center justify-center rounded text-muted-foreground hover:bg-muted"
-            aria-label="Cancel"
-          >
-            <X className="size-3" aria-hidden="true" />
-          </button>
         </div>
         {filename && (
           <span className="truncate text-xs text-muted-foreground">

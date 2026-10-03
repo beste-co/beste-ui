@@ -7,6 +7,7 @@ type ViewMode = "grid" | "list" | "rows";
 
 interface Toolbar11Props {
   active?: ViewMode;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,10 +19,12 @@ const modes: { id: ViewMode; Icon: typeof LayoutGrid; label: string }[] = [
 
 export const toolbar11Demo: Toolbar11Props = {
   active: "grid",
+  bordered: false,
 };
 
 export function Toolbar11({
   active = "grid",
+  bordered = false,
   className,
 }: Toolbar11Props) {
   return (
@@ -31,7 +34,7 @@ export function Toolbar11({
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-md border border-border bg-card p-0.5 shadow-sm">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-md bg-card p-0.5 shadow-sm", bordered && "border border-border")}>
         {modes.map(({ id, Icon, label }) => {
           const isActive = id === active;
           return (

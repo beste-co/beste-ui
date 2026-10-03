@@ -13,15 +13,16 @@ interface Travel30Props {
   heading?: string;
   total?: string;
   steps?: Step[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel30Demo: Travel30Props = {
   heading: "Drive · 42 min",
-  total: "58 km · Tolls €3.20",
+  total: "58 km",
   steps: [
     {
-      label: "Start · Hotel Alma Soho",
+      label: "Hotel Alma Soho",
       distance: "0 km",
       type: "start",
     },
@@ -31,22 +32,19 @@ export const travel30Demo: Travel30Props = {
       type: "turn",
     },
     {
-      label: "Exit 24 · Alcochete",
-      distance: "36 km",
-      type: "turn",
-    },
-    {
-      label: "Arrive · Casa da Vinha",
+      label: "Casa da Vinha",
       distance: "58 km",
       type: "end",
     },
   ],
+  bordered: false,
 };
 
 export function Travel30({
   heading,
   total,
   steps = [],
+  bordered = false,
   className,
 }: Travel30Props) {
   return (
@@ -56,11 +54,9 @@ export function Travel30({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-sky-500/15 text-sky-500">
-            <Route className="size-4" aria-hidden="true" />
-          </div>
+          <Route className="size-5 shrink-0 text-sky-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {heading && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -97,7 +93,7 @@ export function Travel30({
                 <span className="truncate text-xs font-semibold text-card-foreground">
                   {s.label}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">
+                <span className="text-xs tabular-nums text-muted-foreground">
                   {s.distance}
                 </span>
               </div>

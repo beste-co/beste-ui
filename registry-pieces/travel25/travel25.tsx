@@ -1,29 +1,29 @@
 "use client";
 
-import { CheckSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Travel25Props {
   title?: string;
   items?: { label: string; done?: boolean }[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel25Demo: Travel25Props = {
-  title: "Packing list · Lisbon",
+  title: "Packing list",
   items: [
     { label: "Passport + photocopy", done: true },
     { label: "Universal adapter", done: true },
     { label: "Sunscreen SPF 50" },
     { label: "Running shoes" },
-    { label: "Reusable water bottle", done: true },
-    { label: "Light jacket" },
   ],
+  bordered: false,
 };
 
 export function Travel25({
   title,
   items = [],
+  bordered = false,
   className,
 }: Travel25Props) {
   const done = items.filter((i) => i.done).length;
@@ -35,20 +35,12 @@ export function Travel25({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <CheckSquare
-              className="size-3.5 text-muted-foreground"
-              aria-hidden="true"
-            />
-            {title && (
-              <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                {title}
-              </span>
-            )}
-          </div>
-          <span className="font-mono text-xs text-card-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
+            {title}
+          </span>
+          <span className="text-xs tabular-nums text-card-foreground">
             {done} / {items.length}
           </span>
         </div>

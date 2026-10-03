@@ -7,6 +7,7 @@ interface Location7Props {
   name?: string;
   address?: string;
   status?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const location7Demo: Location7Props = {
   name: "Brightwell · Camden",
   address: "18 Parkway, London NW1",
   status: "Open · closes 6pm",
+  bordered: false,
 };
 
 export function Location7({
   name = "Location",
   address,
   status,
+  bordered = false,
   className,
 }: Location7Props) {
   return (
@@ -29,14 +32,9 @@ export function Location7({
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-4 shadow-xl">
+      <div className={cn("w-full max-w-80 rounded-md bg-card p-4 shadow-xl", bordered && "border border-border")}>
         <div className="flex items-start gap-3">
-          <span
-            className="flex size-10 shrink-0 items-center justify-center rounded-md bg-muted text-foreground"
-            aria-hidden="true"
-          >
-            <MapPin className="size-5" />
-          </span>
+          <MapPin className="size-6 shrink-0 text-foreground" aria-hidden="true" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold text-card-foreground">
               {name}

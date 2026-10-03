@@ -50,13 +50,10 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const food4Demo: Food4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   phase: "riding",
   eta: "15–20 min",
-  courier: "Emre · Scooter · 4.9★",
-  trackingLabel: "Order tracking",
-  etaPrefix: "ETA",
   receivedLabel: "Order",
   preparingLabel: "Kitchen",
   ridingLabel: "On the way",
@@ -67,14 +64,14 @@ export function Food4({
   phase = "received",
   eta,
   courier,
-  trackingLabel = "Order tracking",
-  etaPrefix = "ETA",
+  trackingLabel,
+  etaPrefix,
   receivedLabel = "Order",
   preparingLabel = "Kitchen",
   ridingLabel = "On the way",
   deliveredLabel = "Delivered",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Food4Props) {
@@ -96,16 +93,21 @@ export function Food4({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-            {trackingLabel}
-          </span>
-          {eta && (
-            <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-300">
-              {etaPrefix} {eta}
-            </span>
-          )}
-        </div>
+        {(trackingLabel || eta) && (
+          <div className="flex items-center justify-between">
+            {trackingLabel && (
+              <span className="text-xs font-semibold text-current/60">
+                {trackingLabel}
+              </span>
+            )}
+            {eta && (
+              <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-semibold tabular-nums text-amber-700 dark:text-amber-300">
+                {etaPrefix ? `${etaPrefix} ` : ""}
+                {eta}
+              </span>
+            )}
+          </div>
+        )}
         <div className="flex items-center justify-between">
           {phaseOrder.map((key, idx) => {
             const Icon = stepIcons[key];

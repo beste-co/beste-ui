@@ -18,6 +18,7 @@ interface Dashboard34Props {
   prefix?: string;
   slices?: Slice[];
   sweepMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,7 +44,6 @@ const GAP = 1.5;
 
 export const dashboard34Demo: Dashboard34Props = {
   title: "Revenue by plan",
-  range: "This quarter",
   totalLabel: "total",
   prefix: "$",
   slices: [
@@ -52,6 +52,7 @@ export const dashboard34Demo: Dashboard34Props = {
     { label: "Starter", value: 17900, tone: "violet" },
     { label: "Add-ons", value: 8300, tone: "emerald" },
   ],
+  bordered: false,
 };
 
 export function Dashboard34({
@@ -61,6 +62,7 @@ export function Dashboard34({
   prefix = "",
   slices = [],
   sweepMs = 1600,
+  bordered = false,
   className,
 }: Dashboard34Props) {
   const [ready, setReady] = useState(false);
@@ -101,7 +103,7 @@ export function Dashboard34({
       )}
     >
       <style>{`@keyframes dashboard34-in { from { opacity: 0; transform: translateX(0.5rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between gap-3">
           <span className="truncate text-sm font-medium text-card-foreground">{title}</span>
           {range && <span className="shrink-0 text-xs text-muted-foreground">{range}</span>}

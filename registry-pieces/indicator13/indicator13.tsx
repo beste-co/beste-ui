@@ -13,6 +13,7 @@ interface StatusRow {
 interface Indicator13Props {
   title?: string;
   items?: StatusRow[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -29,11 +30,13 @@ export const indicator13Demo: Indicator13Props = {
     { label: "Billing sync", status: "Operational", tone: "emerald" },
     { label: "Records export", status: "Degraded", tone: "amber" },
   ],
+  bordered: false,
 };
 
 export function Indicator13({
   title,
   items = [],
+  bordered = false,
   className,
 }: Indicator13Props) {
   return (
@@ -43,7 +46,7 @@ export function Indicator13({
         className
       )}
     >
-      <div className="w-full max-w-72 rounded-md border border-border bg-card p-4 shadow-xl">
+      <div className={cn("w-full max-w-72 rounded-md bg-card p-4 shadow-xl", bordered && "border border-border")}>
         {title && (
           <p className="mb-3 text-sm font-semibold text-card-foreground">
             {title}

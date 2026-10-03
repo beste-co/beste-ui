@@ -48,27 +48,26 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const notification3Demo: Notification3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   appName: "Linear",
   title: "New issue assigned",
-  description: "ENG-482 · Crash on checkout submit",
-  time: "now",
+  description: "Crash on checkout submit",
   image: "https://oud.pics/sm/l/linear.jpeg",
   alt: "Linear",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Notification3({
   appName = "Linear",
   title,
   description,
-  time = "now",
+  time,
   image,
   alt,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Notification3Props) {
@@ -91,10 +90,10 @@ export function Notification3({
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+            <span className="text-xs font-semibold text-current/60">
               {appName}
             </span>
-            <span className="text-xs text-current/60">{time}</span>
+            {time && <span className="text-xs text-current/60">{time}</span>}
           </div>
           {title && <span className="text-sm font-semibold">{title}</span>}
           {description && (

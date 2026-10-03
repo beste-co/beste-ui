@@ -36,9 +36,7 @@ export const card17Demo: Card17Props = {
   amount: "$50",
   brand: "Beste",
   code: "BSTE-7Z91-X2Q",
-  expiry: "Expires 31 Dec 2027",
-  label: "Gift card",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Card17({
@@ -46,8 +44,8 @@ export function Card17({
   brand = "Brand",
   code,
   expiry,
-  label = "Gift card",
-  tone = "emerald",
+  label,
+  tone = "primary",
   className,
 }: Card17Props) {
   return (
@@ -64,18 +62,16 @@ export function Card17({
         )}
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-widest">
-            {label}
-          </span>
-          <Gift className="size-5" aria-hidden="true" />
+          {label && <span className="text-xs font-semibold">{label}</span>}
+          <Gift className="ml-auto size-5" aria-hidden="true" />
         </div>
         <div className="mt-2 flex items-baseline gap-2">
-          <span className="font-mono text-4xl font-bold">{amount}</span>
+          <span className="text-4xl font-bold tabular-nums">{amount}</span>
           <span className="text-sm opacity-70">·</span>
           <span className="text-sm font-semibold">{brand}</span>
         </div>
         {code && (
-          <span className="mt-3 truncate rounded-md bg-current/15 px-2 py-1 font-mono text-xs font-semibold tracking-widest">
+          <span className="mt-3 truncate rounded-md bg-current/15 px-2 py-1 text-xs font-semibold">
             {code}
           </span>
         )}

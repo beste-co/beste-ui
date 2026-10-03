@@ -42,7 +42,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chat3Demo: Chat3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Design Team",
   count: 12,
@@ -72,7 +72,7 @@ export function Chat3({
   count,
   membersLabel = "members",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Chat3Props) {

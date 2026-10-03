@@ -35,13 +35,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const money2Demo: Money2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   fromCurrency: "USD",
   fromAmount: "1.00",
   toCurrency: "EUR",
   toAmount: "0.92",
-  rate: "1 USD = 0.92 EUR",
 };
 
 export function Money2({
@@ -51,7 +50,7 @@ export function Money2({
   toAmount = "0.92",
   rate,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Money2Props) {
@@ -67,7 +66,7 @@ export function Money2({
       <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-lg px-3 py-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
           <div className="flex flex-1 flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wider text-current/60">
+            <span className="text-xs font-semibold text-current/60">
               {fromCurrency}
             </span>
             <span className="text-xl font-bold tabular-nums">
@@ -79,7 +78,7 @@ export function Money2({
             aria-hidden="true"
           />
           <div className="flex flex-1 flex-col items-end">
-            <span className="text-xs font-semibold uppercase tracking-wider text-current/60">
+            <span className="text-xs font-semibold text-current/60">
               {toCurrency}
             </span>
             <span className="text-xl font-bold tabular-nums">

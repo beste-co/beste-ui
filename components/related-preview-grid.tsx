@@ -8,7 +8,6 @@ import Link from "next/link";
 import { SourceCodeIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CardDemo } from "@/components/card-demo";
-import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
 export interface RelatedPreviewItem {
@@ -25,7 +24,13 @@ export interface RelatedPreviewItem {
   cardScale?: number;
 }
 
-export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
+export function RelatedPreviewGrid({
+  items,
+  kind = "component",
+}: {
+  items: RelatedPreviewItem[];
+  kind?: "piece" | "component";
+}) {
   if (items.length === 0) return null;
 
   return (
@@ -53,22 +58,19 @@ export function RelatedPreviewGrid({ items }: { items: RelatedPreviewItem[] }) {
               // change while typing. inert also implies pointer-events:none, so
               // clicks still fall through to the card's navigation.
               inert
-              className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background"
+              className={cn(
+                "relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md",
+                // Pieces sit straight on the card; components keep a surface of their own
+                kind === "component" && "bg-background",
+              )}
             >
-              <CardDemo entry={c} />
+              <CardDemo entry={c} kind={kind} />
               <div
                 className="pointer-events-none absolute right-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-md border bg-background opacity-0 transition-opacity group-hover:opacity-100"
                 aria-hidden="true"
               >
                 <HugeiconsIcon icon={SourceCodeIcon} size={14} strokeWidth={2} />
               </div>
-            </div>
-            {/* Title alone: the registry name is what you type into a terminal, not
-                what you scan a grid for, and the card's overlay already carries the
-                accessible name. */}
-            <div className="relative flex flex-col gap-1 px-1 pb-1">
-              <h3 className={typography.cardTitle}>{c.title}</h3>
-              <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
             </div>
           </div>
         );

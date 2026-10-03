@@ -1,22 +1,24 @@
 "use client";
 
-import { Hash } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Input29Props {
   label?: string;
   value?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const input29Demo: Input29Props = {
   label: "Invoice number",
   value: "INV-2026-00421",
+  bordered: false,
 };
 
 export function Input29({
   label,
   value,
+  bordered = false,
   className,
 }: Input29Props) {
   return (
@@ -32,15 +34,11 @@ export function Input29({
             {label}
           </label>
         )}
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 shadow-sm">
-          <Hash
-            className="size-3.5 shrink-0 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <span className="flex-1 truncate font-mono text-sm font-semibold tracking-wider text-card-foreground">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+          <span className="flex-1 truncate text-sm font-semibold tabular-nums text-card-foreground">
             {value}
           </span>
-          <span className="shrink-0 rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-muted-foreground">
+          <span className="shrink-0 rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
             Auto
           </span>
         </div>

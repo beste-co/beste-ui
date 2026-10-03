@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Chat26Props {
@@ -9,6 +8,7 @@ interface Chat26Props {
   after?: string;
   author?: string;
   time?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,8 +16,8 @@ export const chat26Demo: Chat26Props = {
   before: "Let me know what you think about the new ",
   match: "onboarding",
   after: " flow we pushed yesterday.",
-  author: "Ayşe",
-  time: "Yesterday · 15:22",
+  author: "Hania Rani",
+  bordered: false,
 };
 
 export function Chat26({
@@ -26,6 +26,7 @@ export function Chat26({
   after,
   author,
   time,
+  bordered = false,
   className,
 }: Chat26Props) {
   return (
@@ -37,7 +38,7 @@ export function Chat26({
     >
       <button
         type="button"
-        className="flex w-full max-w-80 items-center gap-3 rounded-lg border border-border bg-card px-3 py-2.5 text-left shadow-sm transition-colors hover:bg-muted"
+        className={cn("flex w-full max-w-80 items-center gap-3 rounded-lg px-3 py-2.5 text-left shadow-sm transition-colors hover:bg-muted", bordered ? "border border-border bg-card" : "bg-muted hover:bg-muted-foreground/15")}
       >
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <div className="flex items-baseline justify-between gap-2">
@@ -58,10 +59,6 @@ export function Chat26({
             {after}
           </p>
         </div>
-        <ArrowRight
-          className="size-4 shrink-0 text-muted-foreground"
-          aria-hidden="true"
-        />
       </button>
     </div>
   );

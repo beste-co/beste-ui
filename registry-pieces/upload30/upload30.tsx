@@ -36,12 +36,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const upload30Demo: Upload30Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   filename: "project-handoff.zip",
   totalSize: "248 MB",
   files: 42,
-  savings: "Compressed from 612 MB · 59% smaller",
   filesLabel: "files",
   downloadLabel: "Download",
 };
@@ -54,7 +53,7 @@ export function Upload30({
   filesLabel = "files",
   downloadLabel = "Download",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Upload30Props) {
@@ -68,16 +67,14 @@ export function Upload30({
       )}
     >
       <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-amber-500/15 text-amber-500">
-          <FileArchive className="size-5" aria-hidden="true" />
-        </div>
+        <FileArchive className="size-6 shrink-0 text-amber-500" aria-hidden="true" />
         <div className="flex min-w-0 flex-1 flex-col">
           {filename && (
             <span className="truncate text-sm font-semibold">
               {filename}
             </span>
           )}
-          <span className="text-xs text-current/60">
+          <span className="text-xs tabular-nums text-current/60">
             {files} {filesLabel} · {totalSize}
           </span>
           {savings && (

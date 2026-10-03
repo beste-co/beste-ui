@@ -14,7 +14,6 @@ import { changelog } from "@/data/changelog";
 import { recentBlockDates } from "@/lib/changelog-dates";
 import { registryComponents } from "@/lib/registry-components";
 import { typography } from "@/lib/typography";
-import { cn } from "@/lib/utils";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
 const SITE_DESCRIPTION =
@@ -298,24 +297,11 @@ export default async function HomePage() {
                 >
                   <RegistryComponentDemo name={c.name} />
                 </div>
-                {/*
-                Not positioned. The link below stretches itself with an absolutely
-                positioned pseudo-element, and `inset-0` measures from the nearest
-                positioned ancestor — with a `relative` here, the clickable area
-                stopped at the title and the description instead of covering the
-                card. The article is the one that is `relative`, and it should be.
-              */}
-                <div className="flex flex-col gap-1 px-1 pb-1">
-                  <h3 className={typography.cardTitle}>
-                    <Link
-                      href={`/component/${c.name}`}
-                      className="outline-none before:absolute before:inset-0 before:rounded-xl before:content-['']"
-                    >
-                      {c.title}
-                    </Link>
-                  </h3>
-                  <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
-                </div>
+                <Link
+                  href={`/component/${c.name}`}
+                  aria-label={c.title}
+                  className="absolute inset-0 z-10 rounded-xl outline-none"
+                />
               </article>
             ))}
           </div>
@@ -357,30 +343,15 @@ export default async function HomePage() {
               */}
                 <div
                   inert
-                  className="pointer-events-none relative flex aspect-[4/3] select-none items-center justify-center overflow-hidden rounded-md bg-background"
+                  className="pointer-events-none relative flex aspect-[4/3] select-none items-center justify-center overflow-hidden rounded-md"
                 >
                   <ComponentDemo name={c.name} />
                 </div>
-                {/*
-                Not positioned. The link below stretches itself with an absolutely
-                positioned pseudo-element, and `inset-0` measures from the nearest
-                positioned ancestor — with a `relative` here, the clickable area
-                stopped at the title and the description instead of covering the
-                card. The article is the one that is `relative`, and it should be.
-              */}
-                <div className="flex flex-col gap-1 px-1 pb-1">
-                  {/* The pseudo-element stretches this one link over the whole card,
-                    which is the same shape the listing grids use. */}
-                  <h3 className={typography.cardTitle}>
-                    <Link
-                      href={`/piece/${c.name}`}
-                      className="outline-none before:absolute before:inset-0 before:rounded-xl before:content-['']"
-                    >
-                      {c.title}
-                    </Link>
-                  </h3>
-                  <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
-                </div>
+                <Link
+                  href={`/piece/${c.name}`}
+                  aria-label={c.title}
+                  className="absolute inset-0 z-10 rounded-xl outline-none"
+                />
               </article>
             ))}
           </div>

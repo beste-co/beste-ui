@@ -22,6 +22,7 @@ interface Monitoring10Props {
   delta?: string;
   trend?: Trend;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -48,7 +49,8 @@ export const monitoring10Demo: Monitoring10Props = {
   unit: "req/s",
   delta: "+12%",
   trend: "up",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring10({
@@ -57,7 +59,8 @@ export function Monitoring10({
   unit,
   delta,
   trend = "up",
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring10Props) {
   const Icon = trendIcon[trend];
@@ -69,8 +72,8 @@ export function Monitoring10({
         className
       )}
     >
-      <div className="flex w-full max-w-60 flex-col gap-1.5 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
-        <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+      <div className={cn("flex w-full max-w-60 flex-col gap-1.5 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
+        <span className="text-xs font-medium text-muted-foreground">
           {label}
         </span>
         <div className="flex items-baseline gap-1">

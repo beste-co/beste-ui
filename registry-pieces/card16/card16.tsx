@@ -1,6 +1,5 @@
 "use client";
 
-import { Tag, Timer } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Card16Props {
@@ -9,6 +8,7 @@ interface Card16Props {
   sale?: string;
   discount?: string;
   ends?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,7 +17,7 @@ export const card16Demo: Card16Props = {
   original: "$299",
   sale: "$149",
   discount: "50% off",
-  ends: "Ends in 2d 14h",
+  bordered: false,
 };
 
 export function Card16({
@@ -26,6 +26,7 @@ export function Card16({
   sale,
   discount,
   ends,
+  bordered = false,
   className,
 }: Card16Props) {
   return (
@@ -35,15 +36,13 @@ export function Card16({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-rose-500/50 bg-gradient-to-br from-rose-500/10 via-orange-500/10 to-amber-500/10 p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl bg-gradient-to-br from-rose-500/10 via-orange-500/10 to-amber-500/10 p-4 shadow-sm", bordered && "border border-rose-500/50")}>
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-1 rounded-full bg-rose-500 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-white">
-            <Tag className="size-3" aria-hidden="true" />
+          <span className="inline-flex items-center rounded-full bg-rose-500 px-2 py-0.5 text-xs font-bold text-white">
             {discount}
           </span>
           {ends && (
-            <span className="inline-flex items-center gap-1 text-xs font-semibold text-rose-600 dark:text-rose-400">
-              <Timer className="size-3" aria-hidden="true" />
+            <span className="text-xs font-semibold text-rose-600 dark:text-rose-400">
               {ends}
             </span>
           )}
@@ -54,11 +53,11 @@ export function Card16({
           </span>
         )}
         <div className="flex items-baseline gap-2">
-          <span className="font-mono text-3xl font-bold text-card-foreground">
+          <span className="text-3xl font-bold tabular-nums text-card-foreground">
             {sale}
           </span>
           {original && (
-            <span className="font-mono text-sm text-muted-foreground line-through">
+            <span className="text-sm text-muted-foreground line-through">
               {original}
             </span>
           )}

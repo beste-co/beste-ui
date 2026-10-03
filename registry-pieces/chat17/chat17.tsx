@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Chat17Props {
   placeholder?: string;
   value?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const chat17Demo: Chat17Props = {
   placeholder: "Message Ayşe",
   value: "",
+  bordered: false,
 };
 
 export function Chat17({
   placeholder = "Message",
   value = "",
+  bordered = false,
   className,
 }: Chat17Props) {
   const hasValue = value.length > 0;
@@ -28,7 +31,7 @@ export function Chat17({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-1 rounded-full border border-border bg-card py-1 pl-1 pr-1.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-1 rounded-full bg-card py-1 pl-1 pr-1.5 shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           aria-label="Attach file"

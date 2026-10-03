@@ -45,7 +45,7 @@ export function Keyboard12({
     >
       <div className="flex flex-col items-center gap-3">
         {caption && (
-          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {caption}
           </span>
         )}
@@ -67,7 +67,7 @@ export function Keyboard12({
             ) : (
               <kbd
                 key={idx}
-                className="flex size-10 items-center justify-center rounded-lg border border-border border-b-2 bg-gradient-to-b from-card to-muted font-mono text-lg font-semibold text-card-foreground shadow-sm"
+                className="flex size-10 items-center justify-center rounded-lg border border-border border-b-2 bg-gradient-to-b from-card to-muted text-lg font-semibold text-card-foreground shadow-sm"
               >
                 {label}
               </kbd>

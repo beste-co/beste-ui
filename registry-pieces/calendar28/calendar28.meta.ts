@@ -4,6 +4,7 @@ export const meta: ComponentMeta = {
   name: "calendar28",
   title: "Roadmap Timeline",
   description:
-    "Quarterly roadmap strip with violet-ringed milestone dots spaced along a rail and labels underneath.",
+    "Quarterly roadmap strip with ringed milestone dots spaced along a rail and labels underneath.",
   category: "Calendar",
+  cardScale: 0.75,
 };

@@ -38,7 +38,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar6Demo: Calendar6Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   heading: "Apr 20 – Apr 26",
   days: [
@@ -56,7 +56,7 @@ export function Calendar6({
   heading,
   days = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar6Props) {
@@ -71,7 +71,7 @@ export function Calendar6({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {heading}
           </span>
         )}
@@ -86,12 +86,12 @@ export function Calendar6({
                   : "border-current/15"
               )}
             >
-              <span className="text-xs font-medium uppercase tracking-wide text-current/60">
+              <span className="text-xs font-medium text-current/60">
                 {d.weekday}
               </span>
               <span
                 className={cn(
-                  "font-mono text-base font-semibold",
+                  "text-base font-semibold",
                   d.today ? "text-primary" : ""
                 )}
               >

@@ -7,7 +7,7 @@ type Surface = "card" | "glass";
 interface Stop {
   time: string;
   title: string;
-  place: string;
+  place?: string;
 }
 
 interface Travel3Props {
@@ -40,16 +40,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const travel3Demo: Travel3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   day: 3,
   destination: "Lisbon",
-  date: "Sat, Jun 14",
   dayLabel: "Day",
   stops: [
-    { time: "09:00", title: "Time Out Market", place: "Cais do Sodré" },
-    { time: "12:30", title: "Ride Tram 28", place: "Praça Luís Camões" },
-    { time: "18:00", title: "Miradouro sunset", place: "Graça" },
+    { time: "09:00", title: "Time Out Market" },
+    { time: "12:30", title: "Ride Tram 28" },
+    { time: "18:00", title: "Miradouro sunset" },
   ],
 };
 
@@ -60,7 +59,7 @@ export function Travel3({
   stops = [],
   dayLabel = "Day",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Travel3Props) {
@@ -76,7 +75,7 @@ export function Travel3({
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between">
           <div className="flex items-center gap-2">
-            <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+            <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-xs font-semibold text-sky-700 dark:text-sky-300">
               {dayLabel} {day}
             </span>
             <span className="text-sm font-semibold">
@@ -106,15 +105,17 @@ export function Travel3({
                 />
               </span>
               <div className="flex min-w-0 flex-1 flex-col">
-                <span className="text-xs text-current/60">
+                <span className="text-xs tabular-nums text-current/60">
                   {stop.time}
                 </span>
                 <span className="text-sm font-medium">
                   {stop.title}
                 </span>
-                <span className="text-xs text-current/60">
-                  {stop.place}
-                </span>
+                {stop.place && (
+                  <span className="text-xs text-current/60">
+                    {stop.place}
+                  </span>
+                )}
               </div>
             </div>
           ))}

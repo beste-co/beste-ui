@@ -57,7 +57,7 @@ export function Logo9({
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center gap-4">
           <Side brand={left} />
-          <span className="font-serif text-xs italic uppercase tracking-widest text-muted-foreground">
+          <span className="font-serif text-xs italic text-muted-foreground">
             {separator}
           </span>
           <Side brand={right} />

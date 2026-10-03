@@ -1,6 +1,6 @@
 "use client";
 
-import { Blocks, Plus } from "lucide-react";
+import { Blocks } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -56,21 +56,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor47Demo: Editor47Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Your page looks empty",
   description: "Start by adding your first block.",
   buttonLabel: "Add Block",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Editor47({
   title,
   description,
   buttonLabel,
-  tone = "emerald",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor47Props) {
@@ -84,12 +84,7 @@ export function Editor47({
       )}
     >
       <div className={cn("flex w-full max-w-xs flex-col items-center gap-5 rounded-xl px-6 py-10 text-center shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div
-          className="flex size-10 items-center justify-center rounded-lg bg-current/10"
-          aria-hidden="true"
-        >
-          <Blocks className="size-4 text-current/60" />
-        </div>
+        <Blocks className="size-5 text-current/60" aria-hidden="true" />
         {(title || description) && (
           <div className="flex flex-col items-center gap-0.5">
             {title && (
@@ -110,7 +105,6 @@ export function Editor47({
               buttonClasses[tone]
             )}
           >
-            <Plus className="size-3.5" aria-hidden="true" />
             {buttonLabel}
           </button>
         )}

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "chat23",
   title: "Scheduled Message",
   description:
-    "Dashed-border outgoing bubble above a Clock chip showing when it will send.",
+    "Dashed-border outgoing bubble above a chip showing when it will send.",
   category: "Chat",
 };

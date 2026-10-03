@@ -19,18 +19,19 @@ interface Health16Props {
   changeLabel?: string;
   series?: number[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const traceClasses: Record<Tone, string> = {
@@ -60,7 +61,8 @@ export const health16Demo: Health16Props = {
   goalWeight: "Goal 72.0 kg",
   changeLabel: "- 1.8 kg in 30 days",
   series: [76, 75.8, 75.4, 75.6, 75.2, 74.8, 74.4, 74.5, 74.2],
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health16({
@@ -68,7 +70,8 @@ export function Health16({
   goalWeight,
   changeLabel,
   series = [],
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health16Props) {
   const min = Math.min(...series);
@@ -93,19 +96,15 @@ export function Health16({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div
-              className={cn(
-                "flex size-8 items-center justify-center rounded-md",
-                iconClasses[tone]
-              )}
-            >
-              <Scale className="size-4" aria-hidden="true" />
-            </div>
+            <Scale
+              className={cn("size-5 shrink-0", iconClasses[tone])}
+              aria-hidden="true"
+            />
             <div className="flex flex-col">
-              <span className="font-mono text-xl font-bold text-card-foreground">
+              <span className="text-xl font-bold text-card-foreground">
                 {currentWeight}
               </span>
               <span className="text-xs text-muted-foreground">

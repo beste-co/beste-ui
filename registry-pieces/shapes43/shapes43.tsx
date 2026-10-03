@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes43Demo: Shapes43Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes43({ surface = "card", bordered = true, inverted = false, className }: Shapes43Props) {
+export function Shapes43({ surface = "card", bordered = false, inverted = false, className }: Shapes43Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -49,7 +49,7 @@ export function Shapes43({ surface = "card", bordered = true, inverted = false, 
       >
         <div className="flex items-center justify-between gap-2 px-3 py-2">
           <span className="h-1.5 w-16 rounded-full bg-current/70" />
-          <div className="relative h-3.5 w-7 rounded-full bg-emerald-500">
+          <div className="relative h-3.5 w-7 rounded-full bg-primary">
             <span className="absolute right-0.5 top-0.5 size-2.5 rounded-full bg-current/10" />
           </div>
         </div>

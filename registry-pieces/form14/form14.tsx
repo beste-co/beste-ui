@@ -8,14 +8,15 @@ interface Form14Props {
   tags?: string[];
   placeholder?: string;
   hint?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const form14Demo: Form14Props = {
   label: "Topics",
   tags: ["design systems", "typography", "motion"],
-  placeholder: "Type and press ↵",
-  hint: "Up to 8 tags. Use hyphens instead of spaces.",
+  placeholder: "Add a tag",
+  bordered: false,
 };
 
 export function Form14({
@@ -23,6 +24,7 @@ export function Form14({
   tags = [],
   placeholder = "Add a tag",
   hint,
+  bordered = false,
   className,
 }: Form14Props) {
   return (
@@ -38,7 +40,7 @@ export function Form14({
             {label}
           </label>
         )}
-        <div className="flex flex-wrap items-center gap-1.5 rounded-md border border-border bg-card px-2 py-1.5 shadow-sm">
+        <div className={cn("flex flex-wrap items-center gap-1.5 rounded-md bg-card px-2 py-1.5 shadow-sm", bordered && "border border-border")}>
           {tags.map((tag, idx) => (
             <span
               key={idx}

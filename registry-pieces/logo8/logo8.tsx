@@ -45,11 +45,11 @@ export function Logo8({
         )}
         <div className="flex flex-col leading-tight">
           {brand && (
-            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {brand}
             </span>
           )}
-          <span className="font-mono text-2xl font-bold text-card-foreground">
+          <span className="text-2xl font-bold text-card-foreground">
             {metric}
           </span>
           {description && (

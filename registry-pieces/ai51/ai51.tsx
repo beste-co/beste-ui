@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Brain, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Ai51Props {
@@ -9,6 +9,7 @@ interface Ai51Props {
   steps?: string[];
   answer?: string;
   stepMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,6 +21,7 @@ export const ai51Demo: Ai51Props = {
     "Weigh a targeted email against a pricing rollback",
   ],
   answer: "Send a clarifying email to annual plan customers first; roll back only if refunds stay high next week.",
+  bordered: false,
 };
 
 export function Ai51({
@@ -27,6 +29,7 @@ export function Ai51({
   steps = [],
   answer = "",
   stepMs = 650,
+  bordered = false,
   className,
 }: Ai51Props) {
   const [visible, setVisible] = useState(0);
@@ -46,16 +49,8 @@ export function Ai51({
       )}
     >
       <style>{`@keyframes ai51-in { from { opacity: 0; transform: translateY(0.375rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
-        <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-2 text-sm font-medium text-card-foreground">
-            <Brain className="size-4 text-violet-500" aria-hidden="true" />
-            {title}
-          </span>
-          <span className="text-xs tabular-nums text-muted-foreground">
-            {steps.length} steps
-          </span>
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-2xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
+        <span className="text-sm font-medium text-card-foreground">{title}</span>
 
         <ol className="flex flex-col">
           {steps.map((step, i) => {
@@ -93,10 +88,7 @@ export function Ai51({
             >
               <Check className="size-3.5" />
             </span>
-            <span className="flex min-w-0 flex-col gap-0.5 pt-0.5">
-              <span className="text-xs font-medium text-muted-foreground">Final answer</span>
-              <span className="text-sm leading-snug text-card-foreground">{answer}</span>
-            </span>
+            <span className="min-w-0 pt-0.5 text-sm leading-snug text-card-foreground">{answer}</span>
           </li>
         </ol>
       </div>

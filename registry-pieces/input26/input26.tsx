@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Input26Props {
   listening?: boolean;
   transcript?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const input26Demo: Input26Props = {
   listening: true,
   transcript: "Remind me to buy coffee beans on my way home",
+  bordered: false,
 };
 
 export function Input26({
   listening = false,
   transcript,
+  bordered = false,
   className,
 }: Input26Props) {
   return (
@@ -26,7 +29,7 @@ export function Input26({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-full border border-border bg-card py-2 pl-3 pr-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-full bg-card py-2 pl-3 pr-2 shadow-sm", bordered && "border border-border")}>
         <span className="flex-1 truncate text-sm text-card-foreground">
           {transcript}
           {listening && (

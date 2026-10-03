@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "notification14",
   title: "Comment Reply",
   description:
-    "Reply-to-your-comment notification with quoted text, like count, and an inline reply action.",
+    "Reply-to-your-comment notification with the author, the quoted reply, and inline like and reply actions.",
   category: "Notification",
 };

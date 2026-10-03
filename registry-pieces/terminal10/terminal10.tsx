@@ -6,15 +6,16 @@ import { cn } from "@/lib/utils";
 interface Terminal10Props {
   label?: string;
   hint?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const terminal10Demo: Terminal10Props = {
   label: "Installing packages",
-  hint: "ctrl-c to cancel",
+  bordered: false,
 };
 
-export function Terminal10({ label, hint, className }: Terminal10Props) {
+export function Terminal10({ label, hint, bordered = false, className }: Terminal10Props) {
   return (
     <div
       className={cn(
@@ -22,7 +23,7 @@ export function Terminal10({ label, hint, className }: Terminal10Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2.5 font-mono text-xs shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-2 rounded-lg bg-zinc-950 px-3 py-2.5 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         <Loader2
           className="size-3.5 shrink-0 animate-spin text-emerald-400"
           aria-hidden="true"

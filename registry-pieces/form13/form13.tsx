@@ -9,6 +9,7 @@ interface Form13Props {
   value?: string;
   defaultVisible?: boolean;
   caps?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,7 +21,7 @@ export const form13Demo: Form13Props = {
   label: "Current password",
   value: "correct-horse-battery",
   defaultVisible: false,
-  caps: true,
+  bordered: false,
 };
 
 export function Form13({
@@ -28,6 +29,7 @@ export function Form13({
   value = "",
   defaultVisible = false,
   caps = false,
+  bordered = false,
   className,
 }: Form13Props) {
   const [visible, setVisible] = useState(defaultVisible);
@@ -45,12 +47,12 @@ export function Form13({
             {label}
           </label>
         )}
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 shadow-sm">
-          <span className="flex-1 truncate font-mono text-sm tracking-wider text-card-foreground">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+          <span className="flex-1 truncate text-sm text-card-foreground">
             {visible ? value : mask(value)}
           </span>
           {caps && (
-            <span className="shrink-0 rounded bg-amber-500/10 px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-400">
+            <span className="shrink-0 rounded bg-amber-500/10 px-1.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
               Caps
             </span>
           )}

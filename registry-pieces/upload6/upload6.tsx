@@ -7,6 +7,7 @@ interface Upload6Props {
   title?: string;
   hint?: string;
   action?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const upload6Demo: Upload6Props = {
   title: "Add a cover image",
   hint: "Recommended 1600 × 600, up to 4 MB",
   action: "Upload",
+  bordered: false,
 };
 
 export function Upload6({
   title,
   hint,
   action = "Upload",
+  bordered = false,
   className,
 }: Upload6Props) {
   return (
@@ -29,15 +32,13 @@ export function Upload6({
         className
       )}
     >
-      <div className="relative flex aspect-video w-full max-w-80 items-center justify-center overflow-hidden rounded-xl border border-border bg-muted">
+      <div className={cn("relative flex aspect-video w-full max-w-80 items-center justify-center overflow-hidden rounded-xl bg-muted", bordered && "border border-border")}>
         <div
           className="absolute inset-3 rounded-lg border-2 border-dashed border-border"
           aria-hidden="true"
         />
         <div className="relative flex flex-col items-center gap-1.5 text-foreground">
-          <div className="flex size-9 items-center justify-center rounded-full bg-card text-foreground">
-            <ImagePlus className="size-4" aria-hidden="true" />
-          </div>
+          <ImagePlus className="size-5 shrink-0 text-foreground" aria-hidden="true" />
           {title && <span className="text-sm font-semibold">{title}</span>}
           {hint && (
             <span className="text-xs text-muted-foreground">{hint}</span>

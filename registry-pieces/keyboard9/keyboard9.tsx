@@ -6,19 +6,21 @@ interface Keyboard9Props {
   keyLabel?: string;
   description?: string;
   enabled?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 export const keyboard9Demo: Keyboard9Props = {
   keyLabel: "Caps Lock",
-  description: "Type in uppercase",
   enabled: true,
+  bordered: false,
 };
 
 export function Keyboard9({
   keyLabel = "Caps Lock",
   description,
   enabled = false,
+  bordered = false,
   className,
 }: Keyboard9Props) {
   return (
@@ -28,10 +30,10 @@ export function Keyboard9({
         className
       )}
     >
-      <div className="flex w-full max-w-64 items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-64 items-center gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <kbd
           className={cn(
-            "relative flex h-10 min-w-16 items-center justify-start rounded-md border border-border border-b-2 bg-muted px-3 font-mono text-xs font-medium text-card-foreground"
+            "relative flex h-10 min-w-16 items-center justify-start rounded-md border border-border border-b-2 bg-muted px-3 text-xs font-medium text-card-foreground"
           )}
         >
           <span

@@ -52,7 +52,7 @@ export function Nav24({ steps = [], className }: Nav24Props) {
               ) : step.state === "current" ? (
                 <Circle className="size-2 fill-current" aria-hidden="true" />
               ) : (
-                <span className="font-mono">{idx + 1}</span>
+                <span>{idx + 1}</span>
               )}
             </span>
             <span

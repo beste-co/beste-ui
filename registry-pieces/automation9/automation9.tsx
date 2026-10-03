@@ -1,6 +1,5 @@
 "use client";
 
-import { Filter, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -40,11 +39,10 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation9Demo: Automation9Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   match: "all",
   headerLabel: "Only run if",
-  addFilterLabel: "Add filter",
   filters: [
     { field: "status", op: "is", value: '"paid"' },
     { field: "amount", op: ">", value: "100" },
@@ -56,9 +54,9 @@ export function Automation9({
   match = "all",
   filters = [],
   headerLabel = "Only run if",
-  addFilterLabel = "Add filter",
+  addFilterLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation9Props) {
@@ -73,16 +71,10 @@ export function Automation9({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5">
-            <Filter
-              className="size-3.5 text-current/60"
-              aria-hidden="true"
-            />
-            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-              {headerLabel}
-            </span>
-          </div>
-          <div className="inline-flex overflow-hidden rounded-sm border border-current/15 text-xs">
+          <span className="text-xs font-medium text-current/60">
+            {headerLabel}
+          </span>
+          <div className={cn("inline-flex overflow-hidden rounded-sm text-xs", bordered ? "border border-current/15" : "bg-current/10")}>
             <span
               className={cn(
                 "px-1.5 py-0.5",
@@ -109,7 +101,7 @@ export function Automation9({
           {filters.map((f, i) => (
             <li
               key={i}
-              className="flex items-center gap-1 rounded-sm border border-current/15 bg-current/5 px-2 py-1 font-mono text-xs"
+              className={cn("flex items-center gap-1 rounded-sm bg-current/5 px-2 py-1 text-xs", bordered && "border border-current/15")}
             >
               <span className="font-semibold">
                 {f.field}
@@ -119,13 +111,14 @@ export function Automation9({
             </li>
           ))}
         </ul>
-        <button
-          type="button"
-          className="inline-flex w-fit items-center gap-1 text-xs text-current/60 hover:text-foreground"
-        >
-          <Plus className="size-3" aria-hidden="true" />
-          {addFilterLabel}
-        </button>
+        {addFilterLabel && (
+          <button
+            type="button"
+            className="inline-flex w-fit cursor-pointer items-center text-xs text-current/60 hover:text-foreground"
+          >
+            {addFilterLabel}
+          </button>
+        )}
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ interface Progress17Props {
   caption?: string;
   durationMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,8 +31,8 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 export const progress17Demo: Progress17Props = {
   value: 82,
   label: "Storage used",
-  caption: "82 GB of 100 GB, upgrade before Friday",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Progress17({
@@ -39,7 +40,8 @@ export function Progress17({
   label = "Progress",
   caption,
   durationMs = 1200,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Progress17Props) {
   const target = Math.max(0, Math.min(100, value));
@@ -72,7 +74,7 @@ export function Progress17({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col items-center gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col items-center gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <span className="text-sm text-muted-foreground">{label}</span>
 
         <div className="relative size-24">

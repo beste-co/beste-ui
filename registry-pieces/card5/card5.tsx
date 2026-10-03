@@ -50,12 +50,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const card5Demo: Card5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   task: "Review Q2 roadmap with design team",
   priority: "high",
   due: "Tomorrow",
-  duePrefix: "Due",
   done: false,
 };
 
@@ -64,9 +63,9 @@ export function Card5({
   priority = "medium",
   done = false,
   due,
-  duePrefix = "Due",
+  duePrefix,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Card5Props) {
@@ -115,7 +114,8 @@ export function Card5({
             </span>
             {due && (
               <span className="text-xs text-current/60">
-                {duePrefix} {due}
+                {duePrefix ? `${duePrefix} ` : ""}
+                {due}
               </span>
             )}
           </div>

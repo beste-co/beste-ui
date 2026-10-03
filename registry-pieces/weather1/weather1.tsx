@@ -31,37 +31,32 @@ interface Weather1Props {
 
 const conditionConfig: Record<
   Condition,
-  { icon: typeof Sun; label: string; iconColor: string; bubble: string }
+  { icon: typeof Sun; label: string; iconColor: string }
 > = {
   sunny: {
     icon: Sun,
     label: "Sunny",
     iconColor: "text-amber-500",
-    bubble: "bg-amber-100 dark:bg-amber-950",
   },
   cloudy: {
     icon: Cloud,
     label: "Cloudy",
     iconColor: "text-slate-500",
-    bubble: "bg-slate-100 dark:bg-slate-900",
   },
   rainy: {
     icon: CloudRain,
     label: "Rainy",
     iconColor: "text-sky-500",
-    bubble: "bg-sky-100 dark:bg-sky-950",
   },
   snowy: {
     icon: CloudSnow,
     label: "Snowing",
     iconColor: "text-cyan-500",
-    bubble: "bg-cyan-100 dark:bg-cyan-950",
   },
   night: {
     icon: Moon,
     label: "Clear night",
     iconColor: "text-indigo-400",
-    bubble: "bg-indigo-100 dark:bg-indigo-950",
   },
 };
 
@@ -83,7 +78,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const weather1Demo: Weather1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   city: "Istanbul",
   temp: 18,
@@ -106,7 +101,7 @@ export function Weather1({
   lowPrefix = "L:",
   unit = "C",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Weather1Props) {
@@ -124,20 +119,13 @@ export function Weather1({
       )}
     >
       <div className={cn("flex w-full max-w-64 items-center gap-3 rounded-xl px-4 py-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div
-          className={cn(
-            "flex size-12 items-center justify-center rounded-lg",
-            config.bubble
-          )}
-        >
-          <Icon
-            className={cn("size-6", config.iconColor)}
-            aria-hidden="true"
-          />
-        </div>
+        <Icon
+          className={cn("size-7 shrink-0", config.iconColor)}
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           {city && (
-            <span className="truncate text-xs font-medium uppercase tracking-wide text-current/60">
+            <span className="truncate text-xs font-medium text-current/60">
               {city}
             </span>
           )}

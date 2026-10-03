@@ -5,14 +5,16 @@ import { cn } from "@/lib/utils";
 
 interface Browser24Props {
   zoom?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser24Demo: Browser24Props = {
   zoom: 110,
+  bordered: false,
 };
 
-export function Browser24({ zoom = 100, className }: Browser24Props) {
+export function Browser24({ zoom = 100, bordered = false, className }: Browser24Props) {
   const pct = Math.max(25, Math.min(500, Math.round(zoom)));
 
   return (
@@ -22,7 +24,7 @@ export function Browser24({ zoom = 100, className }: Browser24Props) {
         className
       )}
     >
-      <div className="inline-flex items-center overflow-hidden rounded-full border border-border bg-card shadow-sm">
+      <div className={cn("inline-flex items-center overflow-hidden rounded-full bg-card shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           aria-label="Zoom out"
@@ -30,7 +32,7 @@ export function Browser24({ zoom = 100, className }: Browser24Props) {
         >
           <Minus className="size-3.5" aria-hidden="true" />
         </button>
-        <span className="flex h-8 min-w-12 items-center justify-center border-x border-border px-2 font-mono text-xs font-semibold tabular-nums text-card-foreground">
+        <span className="flex h-8 min-w-12 items-center justify-center border-x border-border px-2 text-xs font-semibold tabular-nums text-card-foreground">
           {pct}%
         </span>
         <button

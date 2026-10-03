@@ -11,6 +11,7 @@ interface Form28Props {
   status?: SaveStatus;
   savedAt?: string;
   hint?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -37,11 +38,10 @@ const statusConfig: Record<
 
 export const form28Demo: Form28Props = {
   label: "Display name",
-  value: "Beste Sözen",
+  value: "Hania Rani",
   placeholder: "How should we call you?",
   status: "saved",
-  savedAt: "Saved just now",
-  hint: "Auto-saves as you type.",
+  bordered: false,
 };
 
 export function Form28({
@@ -51,9 +51,11 @@ export function Form28({
   status = "saved",
   savedAt,
   hint,
+  bordered = false,
   className,
 }: Form28Props) {
   const config = statusConfig[status];
+  const showSavedAt = Boolean(savedAt) && status === "saved";
 
   return (
     <div
@@ -82,7 +84,7 @@ export function Form28({
             {config.label}
           </span>
         </div>
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 shadow-sm">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
           <span
             className={cn(
               "flex-1 truncate text-sm",
@@ -92,14 +94,16 @@ export function Form28({
             {value || placeholder}
           </span>
         </div>
-        <div className="flex items-center justify-between">
-          {hint && (
-            <span className="text-xs text-muted-foreground">{hint}</span>
-          )}
-          {savedAt && status === "saved" && (
-            <span className="text-xs text-muted-foreground">{savedAt}</span>
-          )}
-        </div>
+        {(hint || showSavedAt) && (
+          <div className="flex items-center justify-between">
+            {hint && (
+              <span className="text-xs text-muted-foreground">{hint}</span>
+            )}
+            {showSavedAt && (
+              <span className="text-xs text-muted-foreground">{savedAt}</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

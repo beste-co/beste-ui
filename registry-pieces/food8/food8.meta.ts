@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "food8",
   title: "Cook Step Timer",
   description:
-    "Recipe-step card with a step pill, mono MM:SS countdown, instruction paragraph, and rose progress bar.",
+    "Recipe-step card with a step pill, a MM:SS countdown, and a short instruction.",
   category: "Food",
 };

@@ -7,19 +7,21 @@ interface Search7Props {
   query?: string;
   suggestion?: string;
   tip?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const search7Demo: Search7Props = {
   query: "invioce",
   suggestion: "Did you mean invoice?",
-  tip: "Try fewer keywords or check spelling.",
+  bordered: false,
 };
 
 export function Search7({
   query,
   suggestion,
   tip,
+  bordered = false,
   className,
 }: Search7Props) {
   return (
@@ -29,13 +31,14 @@ export function Search7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col items-center gap-2 rounded-xl border border-border bg-card px-4 py-5 text-center shadow-sm">
-        <div className="flex size-10 items-center justify-center rounded-full bg-muted text-muted-foreground">
-          <SearchX className="size-5" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col items-center gap-2 rounded-xl bg-card px-4 py-5 text-center shadow-sm", bordered && "border border-border")}>
+        <SearchX
+          className="size-6 shrink-0 text-muted-foreground"
+          aria-hidden="true"
+        />
         <span className="text-sm font-semibold text-card-foreground">
           No results for{" "}
-          <span className="font-mono text-card-foreground">“{query}”</span>
+          <span className="text-card-foreground">“{query}”</span>
         </span>
         {suggestion && (
           <button

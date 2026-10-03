@@ -11,6 +11,7 @@ interface Form9Props {
   legend?: string;
   description?: string;
   fields?: Field[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,12 +23,14 @@ export const form9Demo: Form9Props = {
     { label: "City", value: "Istanbul" },
     { label: "Postal code", value: "34381" },
   ],
+  bordered: false,
 };
 
 export function Form9({
   legend,
   description,
   fields = [],
+  bordered = false,
   className,
 }: Form9Props) {
   return (
@@ -37,7 +40,7 @@ export function Form9({
         className
       )}
     >
-      <fieldset className="flex w-full max-w-80 flex-col gap-3 rounded-lg border border-border bg-card p-4 shadow-sm">
+      <fieldset className={cn("flex w-full max-w-80 flex-col gap-3 rounded-lg bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col gap-0.5">
           {legend && (
             <legend className="text-sm font-semibold text-card-foreground">
@@ -56,7 +59,7 @@ export function Form9({
               <label className="text-xs font-medium text-muted-foreground">
                 {field.label}
               </label>
-              <div className="rounded-md border border-border bg-background px-3 py-1.5">
+              <div className={cn("rounded-md px-3 py-1.5", bordered ? "border border-border bg-background" : "bg-muted")}>
                 <span className="block truncate text-sm text-card-foreground">
                   {field.value}
                 </span>

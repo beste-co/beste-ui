@@ -37,16 +37,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const event10Demo: Event10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   event: "Design Matters · Day 1",
-  attendee: "Beste Sözen",
-  code: "DMX-4K91-N8",
+  attendee: "Nils Frahm",
   seat: "Floor A",
   seatLabel: "Seat",
   gate: "Gate 2 · 09:00",
   gateLabel: "Gate",
-  label: "Admit one",
 };
 
 export function Event10({
@@ -57,9 +55,9 @@ export function Event10({
   seatLabel = "Seat",
   gate,
   gateLabel = "Gate",
-  label = "Admit one",
+  label,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Event10Props) {
@@ -73,16 +71,20 @@ export function Event10({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-widest text-current/60">
-            {label}
-          </span>
-          {code && (
-            <span className="font-mono text-xs text-current/60">
-              {code}
-            </span>
-          )}
-        </div>
+        {(label || code) && (
+          <div className="flex items-center justify-between gap-3">
+            {label && (
+              <span className="text-xs font-semibold text-current/60">
+                {label}
+              </span>
+            )}
+            {code && (
+              <span className="ml-auto text-xs text-current/60">
+                {code}
+              </span>
+            )}
+          </div>
+        )}
         {attendee && (
           <span className="truncate text-lg font-bold tracking-tight">
             {attendee}
@@ -93,28 +95,30 @@ export function Event10({
             {event}
           </span>
         )}
-        <div className="mt-1 flex items-center gap-4 border-t border-current/15 pt-2 text-xs">
-          {seat && (
-            <div className="flex flex-col">
-              <span className="uppercase tracking-wide text-current/60">
-                {seatLabel}
-              </span>
-              <span className="font-mono font-semibold">
-                {seat}
-              </span>
-            </div>
-          )}
-          {gate && (
-            <div className="flex flex-col">
-              <span className="uppercase tracking-wide text-current/60">
-                {gateLabel}
-              </span>
-              <span className="font-mono font-semibold">
-                {gate}
-              </span>
-            </div>
-          )}
-        </div>
+        {(seat || gate) && (
+          <div className="mt-1 flex items-center gap-4 border-t border-current/15 pt-2 text-xs">
+            {seat && (
+              <div className="flex flex-col">
+                <span className="text-current/60">
+                  {seatLabel}
+                </span>
+                <span className="font-semibold">
+                  {seat}
+                </span>
+              </div>
+            )}
+            {gate && (
+              <div className="flex flex-col">
+                <span className="text-current/60">
+                  {gateLabel}
+                </span>
+                <span className="font-semibold">
+                  {gate}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

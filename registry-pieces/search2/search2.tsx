@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Search2Props {
   query?: string;
   resultCount?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const search2Demo: Search2Props = {
   query: "design tokens",
   resultCount: 42,
+  bordered: false,
 };
 
 export function Search2({
   query = "",
   resultCount,
+  bordered = false,
   className,
 }: Search2Props) {
   return (
@@ -26,7 +29,7 @@ export function Search2({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-2 rounded-lg border-2 border-primary bg-card px-3 py-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-2 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border-2 border-primary")}>
         <Search
           className="size-4 shrink-0 text-primary"
           aria-hidden="true"

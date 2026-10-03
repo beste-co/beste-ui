@@ -13,6 +13,7 @@ interface Education11Props {
   totalQuestions?: number;
   question?: string;
   options?: Option[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -26,6 +27,7 @@ export const education11Demo: Education11Props = {
     { letter: "C", label: "useMemo", state: "idle" },
     { letter: "D", label: "useDeferredValue", state: "idle" },
   ],
+  bordered: false,
 };
 
 const stateClasses: Record<NonNullable<Option["state"]>, string> = {
@@ -47,6 +49,7 @@ export function Education11({
   totalQuestions = 1,
   question,
   options = [],
+  bordered = false,
   className,
 }: Education11Props) {
   return (
@@ -56,18 +59,10 @@ export function Education11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2.5 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Question {questionIndex} / {totalQuestions}
-          </span>
-          <div className="h-1 w-20 overflow-hidden rounded-full bg-muted" aria-hidden="true">
-            <div
-              className="h-full rounded-full bg-primary"
-              style={{ width: `${(questionIndex / totalQuestions) * 100}%` }}
-            />
-          </div>
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2.5 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <span className="text-xs font-medium tabular-nums text-muted-foreground">
+          Question {questionIndex} of {totalQuestions}
+        </span>
         {question && (
           <span className="text-sm font-semibold leading-snug text-card-foreground">
             {question}
@@ -87,7 +82,7 @@ export function Education11({
               >
                 <span
                   className={cn(
-                    "flex size-5 shrink-0 items-center justify-center rounded font-mono text-xs font-bold",
+                    "flex size-5 shrink-0 items-center justify-center rounded text-xs font-bold",
                     letterClasses[state]
                   )}
                 >

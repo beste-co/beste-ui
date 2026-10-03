@@ -8,6 +8,7 @@ interface Location5Props {
   distance?: string;
   duration?: string;
   mode?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,7 +17,7 @@ export const location5Demo: Location5Props = {
   destination: "Beste HQ · Brooklyn",
   distance: "4.2 mi",
   duration: "12 min",
-  mode: "by car",
+  bordered: false,
 };
 
 export function Location5({
@@ -25,6 +26,7 @@ export function Location5({
   distance,
   duration,
   mode,
+  bordered = false,
   className,
 }: Location5Props) {
   return (
@@ -34,7 +36,7 @@ export function Location5({
         className
       )}
     >
-      <div className="w-full max-w-72 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-72 overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col gap-1 p-3 text-sm">
           <div className="flex items-center gap-2">
             <span
@@ -54,7 +56,7 @@ export function Location5({
             <span className="truncate text-card-foreground">{destination}</span>
           </div>
         </div>
-        <div className="flex items-center gap-2 bg-muted px-3 py-1.5 text-xs text-muted-foreground">
+        <div className="flex items-center gap-2 bg-muted px-3 py-1.5 text-xs tabular-nums text-muted-foreground">
           {distance && (
             <span className="font-semibold text-card-foreground">
               {distance}

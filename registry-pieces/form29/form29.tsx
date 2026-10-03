@@ -16,6 +16,7 @@ interface Form29Props {
   selectedHint?: string;
   items?: Item[];
   selectedIndex?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,28 +25,29 @@ export const form29Demo: Form29Props = {
   selectedHint: "Start typing to search",
   items: [
     {
-      name: "Beste Sözen",
+      name: "Nils Frahm",
       hint: "Design lead",
-      initial: "M",
-      imageSrc: "https://oud.pics/sm/l/gmail.jpeg",
-      alt: "Beste Sözen",
-    },
-    {
-      name: "Mirko Petrov",
-      hint: "Engineer",
-      initial: "M",
-      imageSrc: "https://oud.pics/sm/l/stripe.jpeg",
-      alt: "Mirko Petrov",
-    },
-    {
-      name: "Noor Ahmed",
-      hint: "Product",
       initial: "N",
+      imageSrc: "https://oud.pics/sm/l/gmail.jpeg",
+      alt: "Nils Frahm",
+    },
+    {
+      name: "Hania Rani",
+      hint: "Engineer",
+      initial: "H",
+      imageSrc: "https://oud.pics/sm/l/stripe.jpeg",
+      alt: "Hania Rani",
+    },
+    {
+      name: "Ólafur Arnalds",
+      hint: "Product",
+      initial: "Ó",
       imageSrc: "https://oud.pics/sm/l/notion.png",
-      alt: "Noor Ahmed",
+      alt: "Ólafur Arnalds",
     },
   ],
   selectedIndex: 0,
+  bordered: false,
 };
 
 export function Form29({
@@ -53,6 +55,7 @@ export function Form29({
   selectedHint,
   items = [],
   selectedIndex = 0,
+  bordered = false,
   className,
 }: Form29Props) {
   return (
@@ -63,7 +66,7 @@ export function Form29({
           <Search className="size-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
           <span className="flex-1 truncate text-sm text-muted-foreground">{selectedHint}</span>
         </div>
-        <div className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
+        <div className={cn("flex flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
           {items.map((item, idx) => (
             <div
               key={idx}

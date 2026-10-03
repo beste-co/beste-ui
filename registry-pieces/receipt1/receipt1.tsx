@@ -18,8 +18,7 @@ interface Receipt1Props {
 
 export const receipt1Demo: Receipt1Props = {
   merchant: "Packer's Coffee",
-  receiptLabel: "*** RECEIPT ***",
-  totalLabel: "TOTAL",
+  totalLabel: "Total",
   items: [
     { label: "Latte", amount: "$4.50" },
     { label: "Croissant", amount: "$3.25" },
@@ -30,10 +29,10 @@ export const receipt1Demo: Receipt1Props = {
 
 export function Receipt1({
   merchant = "Store",
-  receiptLabel = "*** RECEIPT ***",
+  receiptLabel,
   items = [],
   total,
-  totalLabel = "TOTAL",
+  totalLabel = "Total",
   className,
 }: Receipt1Props) {
   return (
@@ -44,17 +43,19 @@ export function Receipt1({
       )}
     >
       <div
-        className="flex w-full max-w-56 flex-col gap-2 bg-white p-3 font-mono text-xs text-zinc-800 shadow-lg shadow-black/20"
+        className="flex w-full max-w-56 flex-col gap-2 bg-white p-3 text-xs text-zinc-800 shadow-lg shadow-black/20"
         style={{
           clipPath:
             "polygon(0 0, 100% 0, 100% 97%, 92% 100%, 84% 97%, 76% 100%, 68% 97%, 60% 100%, 52% 97%, 44% 100%, 36% 97%, 28% 100%, 20% 97%, 12% 100%, 4% 97%, 0 100%)",
         }}
       >
         <div className="flex flex-col items-center gap-0.5 border-b border-dashed border-zinc-300 pb-2">
-          <span className="text-sm font-bold uppercase tracking-widest">
+          <span className="text-sm font-bold">
             {merchant}
           </span>
-          <span className="text-xs text-zinc-500">{receiptLabel}</span>
+          {receiptLabel && (
+            <span className="text-xs text-zinc-500">{receiptLabel}</span>
+          )}
         </div>
         <ul className="flex flex-col gap-1">
           {items.map((item, i) => (

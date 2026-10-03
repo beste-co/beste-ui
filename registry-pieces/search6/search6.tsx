@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface Search6Props {
   placeholder?: string;
   recents?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,13 +16,14 @@ export const search6Demo: Search6Props = {
     "invoice template",
     "onboarding checklist",
     "Q1 roadmap",
-    "kickoff notes",
   ],
+  bordered: false,
 };
 
 export function Search6({
   placeholder = "Search…",
   recents = [],
+  bordered = false,
   className,
 }: Search6Props) {
   return (
@@ -31,7 +33,7 @@ export function Search6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xl">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-xl bg-card shadow-xl", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2.5">
           <Search
             className="size-4 shrink-0 text-muted-foreground"
@@ -42,9 +44,6 @@ export function Search6({
           </span>
         </div>
         <div className="flex flex-col gap-0.5 p-2">
-          <span className="px-2 pb-1 pt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Recent
-          </span>
           {recents.map((item, idx) => (
             <div
               key={idx}

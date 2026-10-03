@@ -49,14 +49,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ticket5Demo: Ticket5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  id: "BUG-1432",
   title: "Login fails on Safari 17 after the OAuth redirect",
   status: "in-progress",
   priority: "P1",
-  assignee: "ada",
-  age: "2d",
+  assignee: "nils",
   openLabel: "Open",
   inProgressLabel: "In Progress",
   blockedLabel: "Blocked",
@@ -75,7 +73,7 @@ export function Ticket5({
   blockedLabel = "Blocked",
   doneLabel = "Done",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ticket5Props) {
@@ -96,9 +94,11 @@ export function Ticket5({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between gap-2">
-          <span className="font-mono text-xs font-semibold tracking-wide text-current/60">
-            {id}
-          </span>
+          {id && (
+            <span className="text-xs font-semibold text-current/60">
+              {id}
+            </span>
+          )}
           <span
             className={cn(
               "rounded-full border bg-current/10 px-2 py-0.5 text-xs font-semibold",
@@ -113,7 +113,7 @@ export function Ticket5({
         </p>
         <div className="flex items-center gap-2 text-xs text-current/60">
           {priority && (
-            <span className="rounded bg-current/10 px-1.5 py-0.5 font-mono font-semibold">
+            <span className="rounded bg-current/10 px-1.5 py-0.5 font-semibold">
               {priority}
             </span>
           )}

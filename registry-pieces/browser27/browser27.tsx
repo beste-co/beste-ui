@@ -52,7 +52,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser27Demo: Browser27Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   domain: "stripe.com",
   connectionLabel: "Connection is secure",
@@ -71,7 +71,7 @@ export function Browser27({
   defaultGrantedLabel = "Allowed",
   defaultDeniedLabel = "Ask",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser27Props) {
@@ -92,9 +92,10 @@ export function Browser27({
         )}
       >
         <div className="flex items-center gap-2">
-          <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-            <Lock className="size-3.5" aria-hidden="true" />
-          </div>
+          <Lock
+            className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400"
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-semibold">
               {domain}

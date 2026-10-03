@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, FileText, Hash, Search, User } from "lucide-react";
+import { FileText, Hash, Search, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -45,15 +45,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const search3Demo: Search3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   query: "launch",
   results: [
-    { icon: "page", label: "Launch plan Q2", hint: "Docs" },
-    { icon: "channel", label: "launch-prep", hint: "Channel" },
-    { icon: "user", label: "Laura Ng", hint: "Launch lead" },
+    { icon: "page", label: "Launch plan Q2" },
+    { icon: "channel", label: "launch-prep" },
+    { icon: "user", label: "Laura Marling" },
   ],
-  footerHint: "↑↓ to navigate",
 };
 
 export function Search3({
@@ -61,7 +60,7 @@ export function Search3({
   results = [],
   footerHint,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Search3Props) {
@@ -89,9 +88,6 @@ export function Search3({
           <span className="flex-1 truncate text-sm">
             {query}
           </span>
-          <kbd className="inline-flex h-5 items-center rounded-md border border-current/15 bg-current/10 px-1.5 font-mono text-xs text-current/60">
-            esc
-          </kbd>
         </div>
         <div className="flex flex-col p-1">
           {results.map((item, idx) => {
@@ -116,12 +112,6 @@ export function Search3({
                     {item.hint}
                   </span>
                 )}
-                {idx === 0 && (
-                  <ArrowUpRight
-                    className="size-3.5 shrink-0 text-current/60"
-                    aria-hidden="true"
-                  />
-                )}
               </div>
             );
           })}
@@ -129,7 +119,7 @@ export function Search3({
         {footerHint && (
           <div className="flex items-center justify-between border-t border-current/15 bg-current/5 px-3 py-1.5 text-xs text-current/60">
             <span>{footerHint}</span>
-            <kbd className="inline-flex h-4 items-center rounded border border-current/15 bg-current/10 px-1 font-mono text-xs">
+            <kbd className="inline-flex h-4 items-center rounded border border-current/15 bg-current/10 px-1 text-xs">
               ↵
             </kbd>
           </div>

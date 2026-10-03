@@ -7,6 +7,7 @@ interface Chat6Props {
   name?: string;
   duration?: string;
   muted?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const chat6Demo: Chat6Props = {
   name: "Ayşe Kaya",
   duration: "02:14",
   muted: false,
+  bordered: false,
 };
 
 export function Chat6({
   name = "Caller",
   duration = "00:00",
   muted = false,
+  bordered = false,
   className,
 }: Chat6Props) {
   return (
@@ -29,7 +32,7 @@ export function Chat6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-full border border-emerald-500/40 bg-emerald-50 px-2 py-1.5 shadow-md dark:bg-emerald-950">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-full bg-emerald-50 px-2 py-1.5 shadow-md dark:bg-emerald-950", bordered && "border border-emerald-500/40")}>
         <div className="relative flex size-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white">
           <span
             className="absolute inset-0 animate-ping rounded-full bg-emerald-500 opacity-40"
@@ -41,7 +44,7 @@ export function Chat6({
           <span className="truncate text-sm font-semibold text-emerald-800 dark:text-emerald-100">
             On call with {name}
           </span>
-          <span className="font-mono text-xs tabular-nums text-emerald-700/80 dark:text-emerald-200/70">
+          <span className="text-xs tabular-nums text-emerald-700/80 dark:text-emerald-200/70">
             {duration}
           </span>
         </div>

@@ -12,13 +12,12 @@ interface Socialproof20Props {
 
 export const socialproof20Demo: Socialproof20Props = {
   rating: 4.9,
-  outOf: 5,
   caption: "From 2,400+ reviews",
 };
 
 export function Socialproof20({
   rating = 0,
-  outOf = 5,
+  outOf,
   caption,
   className,
 }: Socialproof20Props) {
@@ -50,7 +49,9 @@ export function Socialproof20({
           <span className="text-3xl font-bold leading-none tabular-nums text-card-foreground">
             {rating.toFixed(1)}
           </span>
-          <span className="text-sm text-muted-foreground">out of {outOf}</span>
+          {typeof outOf === "number" && (
+            <span className="text-sm text-muted-foreground">out of {outOf}</span>
+          )}
         </div>
         {caption && (
           <span className="text-sm text-muted-foreground">{caption}</span>

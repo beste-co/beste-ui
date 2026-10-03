@@ -9,6 +9,7 @@ interface Calendar16Props {
   daysInMonth?: number;
   eventsByDay?: Record<number, ("work" | "personal" | "health")[]>;
   today?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,6 +35,7 @@ export const calendar16Demo: Calendar16Props = {
     23: ["work", "personal", "health"],
     28: ["personal"],
   },
+  bordered: false,
 };
 
 export function Calendar16({
@@ -43,6 +45,7 @@ export function Calendar16({
   daysInMonth = 30,
   eventsByDay = {},
   today,
+  bordered = false,
   className,
 }: Calendar16Props) {
   const cells: (number | null)[] = [];
@@ -56,7 +59,7 @@ export function Calendar16({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <span className="text-sm font-semibold text-card-foreground">
           {month} {year}
         </span>
@@ -76,7 +79,7 @@ export function Calendar16({
               <div
                 key={idx}
                 className={cn(
-                  "flex aspect-square flex-col items-center justify-start gap-0.5 rounded-md p-0.5 font-mono text-xs",
+                  "flex aspect-square flex-col items-center justify-start gap-0.5 rounded-md p-0.5 text-xs",
                   isToday
                     ? "bg-primary font-bold text-primary-foreground"
                     : d

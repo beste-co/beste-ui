@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Clock } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Lesson {
@@ -13,6 +13,7 @@ interface Education5Props {
   moduleIndex?: number;
   lessons?: Lesson[];
   expanded?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -25,6 +26,7 @@ export const education5Demo: Education5Props = {
     { title: "Pairing display with body", duration: "11:05" },
   ],
   expanded: true,
+  bordered: false,
 };
 
 export function Education5({
@@ -32,13 +34,9 @@ export function Education5({
   moduleIndex = 1,
   lessons = [],
   expanded = true,
+  bordered = false,
   className,
 }: Education5Props) {
-  const totalMin = lessons.reduce((acc, l) => {
-    const [m] = l.duration.split(":");
-    return acc + Number(m ?? 0);
-  }, 0);
-
   return (
     <div
       className={cn(
@@ -46,9 +44,9 @@ export function Education5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3 border-b border-border px-3 py-2.5">
-          <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted font-mono text-xs font-semibold text-card-foreground">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-semibold text-card-foreground">
             {moduleIndex}
           </span>
           <div className="flex min-w-0 flex-1 flex-col">
@@ -56,7 +54,7 @@ export function Education5({
               {moduleTitle}
             </span>
             <span className="text-xs text-muted-foreground">
-              {lessons.length} lessons · {totalMin} min
+              {lessons.length} lessons
             </span>
           </div>
           <ChevronDown
@@ -74,14 +72,10 @@ export function Education5({
                 key={idx}
                 className="flex items-center gap-2 px-3 py-2 text-xs"
               >
-                <span className="font-mono text-muted-foreground">
-                  {(idx + 1).toString().padStart(2, "0")}
-                </span>
                 <span className="flex-1 truncate text-card-foreground">
                   {lesson.title}
                 </span>
-                <span className="inline-flex items-center gap-1 text-muted-foreground">
-                  <Clock className="size-3" aria-hidden="true" />
+                <span className="tabular-nums text-muted-foreground">
                   {lesson.duration}
                 </span>
               </div>

@@ -7,6 +7,7 @@ type Tag = "new" | "beta" | "stable" | "deprecated";
 interface Badge2Props {
   version?: string;
   tag?: Tag;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,20 +19,22 @@ const tagClasses: Record<Tag, string> = {
 };
 
 const tagLabel: Record<Tag, string> = {
-  new: "NEW",
-  beta: "BETA",
-  stable: "STABLE",
-  deprecated: "DEPRECATED",
+  new: "New",
+  beta: "Beta",
+  stable: "Stable",
+  deprecated: "Deprecated",
 };
 
 export const badge2Demo: Badge2Props = {
   version: "v2.4.1",
   tag: "new",
+  bordered: false,
 };
 
 export function Badge2({
   version = "v1.0.0",
   tag,
+  bordered = false,
   className,
 }: Badge2Props) {
   return (
@@ -41,14 +44,14 @@ export function Badge2({
         className
       )}
     >
-      <div className="inline-flex items-stretch overflow-hidden rounded-md border border-border text-xs shadow-sm">
-        <span className="flex items-center bg-card px-2.5 py-1 font-mono font-semibold text-card-foreground">
+      <div className={cn("inline-flex items-stretch overflow-hidden rounded-md text-xs shadow-sm", bordered && "border border-border")}>
+        <span className="flex items-center bg-card px-2.5 py-1 font-semibold text-card-foreground">
           {version}
         </span>
         {tag && (
           <span
             className={cn(
-              "flex items-center px-2 py-1 font-bold uppercase tracking-wide",
+              "flex items-center px-2 py-1 font-bold",
               tagClasses[tag]
             )}
           >

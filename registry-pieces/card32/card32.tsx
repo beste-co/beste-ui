@@ -85,13 +85,13 @@ export function Card32({
               aria-hidden="true"
             />
 
-            <p className="mt-auto font-mono text-lg tracking-widest">
+            <p className="mt-auto text-lg tabular-nums">
               <span aria-hidden="true">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; </span>
               {number}
             </p>
 
             <div className="mt-2 flex items-end justify-between text-xs">
-              <span className="uppercase tracking-wide">{holder}</span>
+              <span>{holder}</span>
               <span className="tabular-nums opacity-80">{expiry}</span>
             </div>
           </div>
@@ -109,13 +109,10 @@ export function Card32({
             />
             <div className="mt-4 flex items-center gap-2">
               <span className="h-8 flex-1 rounded-sm bg-current opacity-20" aria-hidden="true" />
-              <span className="rounded-sm border border-current px-2 py-1 font-mono text-sm tabular-nums">
+              <span className="rounded-sm border border-current px-2 py-1 text-sm tabular-nums">
                 {cvc}
               </span>
             </div>
-            <p className="mt-auto text-xs opacity-80">
-              Report a lost card at hello@beste.co
-            </p>
           </div>
         </div>
       </div>

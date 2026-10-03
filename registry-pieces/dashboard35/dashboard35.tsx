@@ -41,12 +41,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard35Demo: Dashboard35Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   projects: [
-    { domain: "aurora-clinic.com", planLabel: "Pro" },
-    { domain: "monteverdi-studio.com", planLabel: "Pro" },
-    { domain: "harbourfront.co", planLabel: "Pro" },
+    { domain: "aurora-clinic.com" },
+    { domain: "monteverdi-studio.com" },
+    { domain: "harbourfront.co" },
   ],
   limit: 25,
   ofWord: "of",
@@ -67,7 +67,7 @@ export function Dashboard35({
   billingValue,
   stepMs = 420,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard35Props) {
@@ -120,7 +120,7 @@ export function Dashboard35({
                 index < landed ? "dashboard35-in" : "invisible"
               )}
             >
-              <span className="truncate font-mono text-xs">
+              <span className="truncate text-xs">
                 {project.domain}
               </span>
               {project.planLabel && (

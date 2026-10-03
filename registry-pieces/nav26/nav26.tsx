@@ -13,6 +13,7 @@ interface TreeItem {
 
 interface Nav26Props {
   items?: TreeItem[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,6 +35,7 @@ export const nav26Demo: Nav26Props = {
     },
     { label: "tailwind.config.ts", type: "file" },
   ],
+  bordered: false,
 };
 
 function Row({
@@ -74,7 +76,7 @@ function Row({
           )}
           aria-hidden="true"
         />
-        <span className="truncate font-mono">{item.label}</span>
+        <span className="truncate">{item.label}</span>
       </div>
       {item.open &&
         item.children?.map((child, idx) => (
@@ -84,7 +86,7 @@ function Row({
   );
 }
 
-export function Nav26({ items = [], className }: Nav26Props) {
+export function Nav26({ items = [], bordered = false, className }: Nav26Props) {
   return (
     <div
       className={cn(
@@ -92,7 +94,7 @@ export function Nav26({ items = [], className }: Nav26Props) {
         className
       )}
     >
-      <div className="flex w-60 flex-col gap-0.5 rounded-md border border-border bg-card p-1 shadow-sm">
+      <div className={cn("flex w-60 flex-col gap-0.5 rounded-md bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {items.map((item, idx) => (
           <Row key={idx} item={item} depth={0} />
         ))}

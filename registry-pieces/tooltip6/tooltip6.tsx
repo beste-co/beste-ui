@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Trend = "up" | "down" | "flat";
@@ -11,23 +10,14 @@ interface Tooltip6Props {
   value?: string;
   change?: string;
   trend?: Trend;
+  bordered?: boolean;
   className?: string;
 }
 
-const trendConfig: Record<Trend, { icon: typeof TrendingUp; pill: string }> = {
-  up: {
-    icon: TrendingUp,
-    pill:
-      "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
-  },
-  down: {
-    icon: TrendingDown,
-    pill: "bg-rose-500/15 text-rose-700 dark:text-rose-400",
-  },
-  flat: {
-    icon: TrendingUp,
-    pill: "bg-muted text-muted-foreground",
-  },
+const trendPill: Record<Trend, string> = {
+  up: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
+  down: "bg-rose-500/15 text-rose-700 dark:text-rose-400",
+  flat: "bg-muted text-muted-foreground",
 };
 
 export const tooltip6Demo: Tooltip6Props = {
@@ -36,6 +26,7 @@ export const tooltip6Demo: Tooltip6Props = {
   value: "12,480",
   change: "+8.2%",
   trend: "up",
+  bordered: false,
 };
 
 export function Tooltip6({
@@ -44,11 +35,9 @@ export function Tooltip6({
   value,
   change,
   trend = "up",
+  bordered = false,
   className,
 }: Tooltip6Props) {
-  const config = trendConfig[trend];
-  const Icon = config.icon;
-
   return (
     <div
       className={cn(
@@ -57,26 +46,25 @@ export function Tooltip6({
       )}
     >
       <div className="relative">
-        <div className="flex flex-col gap-1 rounded-lg border border-border bg-card px-3 py-2 shadow-lg">
+        <div className={cn("flex flex-col gap-1 rounded-lg bg-card px-3 py-2 shadow-lg", bordered && "border border-border")}>
           {date && (
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-medium text-muted-foreground">
               {date}
             </span>
           )}
           <div className="flex items-baseline gap-2">
             {value && (
-              <span className="font-mono text-xl font-semibold text-card-foreground">
+              <span className="text-xl font-semibold tabular-nums text-card-foreground">
                 {value}
               </span>
             )}
             {change && (
               <span
                 className={cn(
-                  "inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-xs font-semibold",
-                  config.pill
+                  "rounded-full px-1.5 py-0.5 text-xs font-semibold tabular-nums",
+                  trendPill[trend]
                 )}
               >
-                <Icon className="size-3" aria-hidden="true" />
                 {change}
               </span>
             )}

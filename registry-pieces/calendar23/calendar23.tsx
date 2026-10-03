@@ -8,6 +8,7 @@ interface Calendar23Props {
   country?: string;
   date?: string;
   type?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,7 +16,7 @@ export const calendar23Demo: Calendar23Props = {
   holidayName: "Republic Day",
   country: "Türkiye",
   date: "Wed, Oct 29",
-  type: "National · Public holiday",
+  bordered: false,
 };
 
 export function Calendar23({
@@ -23,6 +24,7 @@ export function Calendar23({
   country,
   date,
   type,
+  bordered = false,
   className,
 }: Calendar23Props) {
   return (
@@ -32,10 +34,8 @@ export function Calendar23({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-xl border border-border bg-gradient-to-br from-rose-500/15 via-transparent to-transparent p-3 shadow-sm">
-        <div className="flex size-10 items-center justify-center rounded-md bg-rose-500 text-white shadow-md">
-          <BookOpen className="size-4" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-xl bg-gradient-to-br from-rose-500/15 via-transparent to-transparent p-3 shadow-sm", bordered && "border border-border")}>
+        <BookOpen className="size-5 shrink-0 text-rose-500" aria-hidden="true" />
         <div className="flex min-w-0 flex-1 flex-col">
           {holidayName && (
             <span className="truncate text-sm font-semibold text-card-foreground">
@@ -54,7 +54,7 @@ export function Calendar23({
           )}
         </div>
         {date && (
-          <span className="shrink-0 rounded-md bg-card px-2 py-1 font-mono text-xs font-semibold text-card-foreground shadow-sm">
+          <span className="shrink-0 rounded-md bg-card px-2 py-1 text-xs font-semibold text-card-foreground shadow-sm">
             {date}
           </span>
         )}

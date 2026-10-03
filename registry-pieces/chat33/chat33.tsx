@@ -39,10 +39,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chat33Demo: Chat33Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Care team",
-  status: "Online",
   items: [
     { from: "them", text: "Rowan's intake is ready for review." },
     { from: "me", text: "Great, I'll approve the plan now." },
@@ -50,7 +49,7 @@ export const chat33Demo: Chat33Props = {
   ],
 };
 
-export function Chat33({ name, status, items = [], surface = "card", bordered = true, inverted = false, className }: Chat33Props) {
+export function Chat33({ name, status, items = [], surface = "card", bordered = false, inverted = false, className }: Chat33Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

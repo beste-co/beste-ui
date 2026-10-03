@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Browser9Props {
   domain?: string;
   message?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser9Demo: Browser9Props = {
   domain: "beste.co",
   message: "wants to send you notifications",
+  bordered: false,
 };
 
 export function Browser9({
   domain = "example.com",
   message = "wants to send you notifications",
+  bordered = false,
   className,
 }: Browser9Props) {
   return (
@@ -26,11 +29,12 @@ export function Browser9({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-start gap-3">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600 dark:bg-sky-950 dark:text-sky-400">
-            <Bell className="size-4" aria-hidden="true" />
-          </div>
+          <Bell
+            className="mt-0.5 size-5 shrink-0 text-sky-600 dark:text-sky-400"
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col gap-0.5">
             <span className="truncate text-sm font-semibold text-card-foreground">
               {domain}
@@ -43,7 +47,7 @@ export function Browser9({
         <div className="flex items-center justify-end gap-2">
           <button
             type="button"
-            className="rounded-md border border-border bg-card px-3 py-1 text-xs font-medium text-card-foreground transition-colors hover:bg-muted"
+            className={cn("rounded-md px-3 py-1 text-xs font-medium text-card-foreground transition-colors hover:bg-muted", bordered ? "border border-border bg-card" : "bg-muted hover:bg-muted-foreground/15")}
           >
             Block
           </button>

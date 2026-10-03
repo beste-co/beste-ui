@@ -14,36 +14,38 @@ interface Form15Props {
   leading?: string;
   query?: string;
   suggestions?: Suggestion[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const form15Demo: Form15Props = {
   label: "Mention a teammate",
   leading: "Looks good, ",
-  query: "mir",
+  query: "ni",
   suggestions: [
     {
-      name: "Beste Sözen",
-      handle: "mira",
-      initials: "BS",
+      name: "Nils Frahm",
+      handle: "nils",
+      initials: "NF",
       imageSrc: "https://oud.pics/sm/l/gmail.jpeg",
-      alt: "Beste Sözen",
+      alt: "Nils Frahm",
     },
     {
-      name: "Miranda Chase",
-      handle: "miranda",
-      initials: "MC",
+      name: "Nina Simone",
+      handle: "nina",
+      initials: "NS",
       imageSrc: "https://oud.pics/sm/l/stripe.jpeg",
-      alt: "Miranda Chase",
+      alt: "Nina Simone",
     },
     {
-      name: "Mirko Petrov",
-      handle: "mirko",
-      initials: "MP",
+      name: "Nico Muhly",
+      handle: "nico",
+      initials: "NM",
       imageSrc: "https://oud.pics/sm/l/notion.png",
-      alt: "Mirko Petrov",
+      alt: "Nico Muhly",
     },
   ],
+  bordered: false,
 };
 
 export function Form15({
@@ -51,6 +53,7 @@ export function Form15({
   leading,
   query = "",
   suggestions = [],
+  bordered = false,
   className,
 }: Form15Props) {
   return (
@@ -67,7 +70,7 @@ export function Form15({
           </label>
         )}
         <div className="relative">
-          <div className="rounded-md border border-border bg-card px-3 py-2 shadow-sm">
+          <div className={cn("rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
             <span className="text-sm text-card-foreground">
               {leading}
               <span className="rounded bg-sky-500/10 px-1 text-sky-700 dark:text-sky-400">
@@ -79,7 +82,7 @@ export function Form15({
               </span>
             </span>
           </div>
-          <div className="mt-1 flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md">
+          <div className={cn("mt-1 flex flex-col overflow-hidden rounded-lg bg-card shadow-md", bordered && "border border-border")}>
             {suggestions.map((s, idx) => (
               <div
                 key={idx}

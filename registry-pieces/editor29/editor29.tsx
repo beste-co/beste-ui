@@ -3,15 +3,18 @@
 import { cn } from "@/lib/utils";
 
 interface Editor29Props {
+  bordered?: boolean;
   className?: string;
 }
 
-export const editor29Demo: Editor29Props = {};
+export const editor29Demo: Editor29Props = {
+  bordered: false,
+};
 
 const hintClass =
-  "rounded-sm bg-muted px-1 font-mono text-xs font-medium italic text-muted-foreground";
+  "rounded-sm bg-muted px-1 text-xs font-medium italic text-muted-foreground";
 
-export function Editor29({ className }: Editor29Props) {
+export function Editor29({ bordered = false, className }: Editor29Props) {
   return (
     <div
       className={cn(
@@ -19,7 +22,7 @@ export function Editor29({ className }: Editor29Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col gap-0.5 overflow-hidden whitespace-normal rounded-md border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col gap-0.5 overflow-hidden whitespace-normal rounded-md bg-card px-3 py-2 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline gap-3">
           <span className="w-4 shrink-0 select-none text-right tabular-nums text-muted-foreground/60">
             1
@@ -32,7 +35,7 @@ export function Editor29({ className }: Editor29Props) {
             <span className="text-card-foreground">(</span>
             <span className={hintClass}>name:</span>
             <span className="text-emerald-600 dark:text-emerald-400">
-              {' "Ayşe"'}
+              {' "Nils"'}
             </span>
             <span className="text-card-foreground">, </span>
             <span className={hintClass}>role:</span>
@@ -41,10 +44,6 @@ export function Editor29({ className }: Editor29Props) {
             </span>
             <span className="text-card-foreground">);</span>
           </code>
-        </div>
-        <div className="mt-1 flex items-center gap-1.5 border-t border-border pt-1 text-xs text-muted-foreground">
-          <span className={hintClass}>name</span>
-          <span>inlay parameter hints</span>
         </div>
       </pre>
     </div>

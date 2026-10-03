@@ -17,6 +17,7 @@ interface Media26Props {
   tickMs?: number;
   stepSeconds?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,19 +44,15 @@ export const media26Demo: Media26Props = {
     { title: "Hyperballad", artist: "Björk", duration: 219 },
   ],
   tone: "primary",
+  bordered: false,
 };
-
-function formatTime(seconds: number) {
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return `${m}:${s.toString().padStart(2, "0")}`;
-}
 
 export function Media26({
   tracks = [],
   tickMs = 400,
   stepSeconds = 8,
   tone = "primary",
+  bordered = false,
   className,
 }: Media26Props) {
   const [playing, setPlaying] = useState(true);
@@ -88,7 +85,7 @@ export function Media26({
       )}
     >
       <style>{`@keyframes media26-fade { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <span
           className={cn(
             "flex size-14 shrink-0 items-center justify-center rounded-lg",
@@ -121,11 +118,6 @@ export function Media26({
               )}
               style={{ width: `${percent}%`, transitionDuration: `${tickMs}ms` }}
             />
-          </div>
-
-          <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
-            <span>{formatTime(state.elapsed)}</span>
-            <span>{formatTime(duration)}</span>
           </div>
         </div>
 

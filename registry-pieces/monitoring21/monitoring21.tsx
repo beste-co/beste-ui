@@ -14,6 +14,7 @@ interface Monitoring21Props {
   bars?: number;
   intervalMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -31,7 +32,8 @@ export const monitoring21Demo: Monitoring21Props = {
   baseline: 120,
   spread: 60,
   warnAt: 200,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 function seed(i: number, baseline: number, spread: number): number {
@@ -48,7 +50,8 @@ export function Monitoring21({
   warnAt = 200,
   bars = 28,
   intervalMs = 600,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring21Props) {
   const [series, setSeries] = useState<number[]>(() =>
@@ -71,8 +74,6 @@ export function Monitoring21({
 
   const current = series[series.length - 1] ?? baseline;
   const max = Math.max(warnAt * 1.2, ...series);
-  const sorted = [...series].sort((a, b) => a - b);
-  const p95 = sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * 0.95))] ?? current;
   const isWarn = current >= warnAt;
 
   return (
@@ -82,41 +83,35 @@ export function Monitoring21({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
-        <div className="flex items-start justify-between">
-          <div className="flex flex-col">
-            <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-              <span className="relative flex size-1.5" aria-hidden="true">
-                <span
-                  className={cn(
-                    "absolute inline-flex size-full animate-ping rounded-full opacity-75 motion-reduce:animate-none",
-                    isWarn ? "bg-amber-500" : "bg-emerald-500"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "relative inline-flex size-1.5 rounded-full",
-                    isWarn ? "bg-amber-500" : "bg-emerald-500"
-                  )}
-                />
-              </span>
-              {label}
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
+        <div className="flex flex-col">
+          <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+            <span className="relative flex size-1.5" aria-hidden="true">
+              <span
+                className={cn(
+                  "absolute inline-flex size-full animate-ping rounded-full opacity-75 motion-reduce:animate-none",
+                  isWarn ? "bg-amber-500" : "bg-emerald-500"
+                )}
+              />
+              <span
+                className={cn(
+                  "relative inline-flex size-1.5 rounded-full",
+                  isWarn ? "bg-amber-500" : "bg-emerald-500"
+                )}
+              />
             </span>
-            <span
-              className={cn(
-                "text-2xl font-semibold tabular-nums transition-colors",
-                isWarn ? "text-amber-500" : "text-card-foreground"
-              )}
-            >
-              {current}
-              <span className="ml-0.5 text-sm font-normal text-muted-foreground">
-                {unit}
-              </span>
+            {label}
+          </span>
+          <span
+            className={cn(
+              "text-2xl font-semibold tabular-nums transition-colors",
+              isWarn ? "text-amber-500" : "text-card-foreground"
+            )}
+          >
+            {current}
+            <span className="ml-0.5 text-sm font-normal text-muted-foreground">
+              {unit}
             </span>
-          </div>
-          <span className="rounded-full border border-border px-2 py-0.5 text-xs tabular-nums text-muted-foreground">
-            p95 {p95}
-            {unit}
           </span>
         </div>
 

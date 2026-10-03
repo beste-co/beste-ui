@@ -12,6 +12,7 @@ interface Region {
 
 interface Monitoring7Props {
   regions?: Region[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,10 +31,12 @@ const defaultRegions: Region[] = [
 
 export const monitoring7Demo: Monitoring7Props = {
   regions: defaultRegions,
+  bordered: false,
 };
 
 export function Monitoring7({
   regions = defaultRegions,
+  bordered = false,
   className,
 }: Monitoring7Props) {
   return (
@@ -43,7 +46,7 @@ export function Monitoring7({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-1 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-1 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         {regions.map((region) => (
           <div
             key={region.code}
@@ -57,7 +60,7 @@ export function Monitoring7({
                 )}
                 aria-hidden="true"
               />
-              <span className="truncate font-mono text-xs text-card-foreground">
+              <span className="truncate text-xs text-card-foreground">
                 {region.code}
               </span>
             </div>

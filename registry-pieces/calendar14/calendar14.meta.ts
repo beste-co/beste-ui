@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "calendar14",
   title: "Booking Confirmed",
   description:
-    "Meeting-booked card with an emerald check header, when/where/guests rows, and add to calendar plus reschedule.",
+    "Meeting-booked card with a check header, the time and place, and add to calendar plus reschedule buttons.",
   category: "Calendar",
 };

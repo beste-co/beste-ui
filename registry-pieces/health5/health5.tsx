@@ -13,6 +13,7 @@ interface Ring {
 
 interface Health5Props {
   rings?: Ring[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -45,10 +46,12 @@ const defaultRings: Ring[] = [
 
 export const health5Demo: Health5Props = {
   rings: defaultRings,
+  bordered: false,
 };
 
 export function Health5({
   rings = defaultRings,
+  bordered = false,
   className,
 }: Health5Props) {
   const radii = [28, 21, 14];
@@ -60,7 +63,7 @@ export function Health5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-4 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-4 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <svg
           width="80"
           height="80"
@@ -104,10 +107,10 @@ export function Health5({
                 aria-hidden="true"
               />
               <div className="flex flex-col">
-                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <span className="text-xs font-semibold text-muted-foreground">
                   {ring.label}
                 </span>
-                <span className="font-mono text-xs text-card-foreground">
+                <span className="text-xs text-card-foreground">
                   <span className="font-semibold">{ring.value}</span>
                   <span className="text-muted-foreground"> / {ring.goal}</span>
                 </span>

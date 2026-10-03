@@ -24,7 +24,7 @@ export const progress8Demo: Progress8Props = {
   value: 78,
   label: "Load",
   unit: "%",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Progress8({
@@ -98,7 +98,7 @@ export function Progress8({
             </span>
           </span>
           {label && (
-            <span className="text-xs uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {label}
             </span>
           )}

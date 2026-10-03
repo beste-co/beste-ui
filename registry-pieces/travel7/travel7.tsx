@@ -12,18 +12,18 @@ interface Travel7Props {
   items?: LineItem[];
   total?: string;
   perPerson?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel7Demo: Travel7Props = {
-  title: "Fare breakdown",
   items: [
     { label: "Base fare", value: "$284.00" },
     { label: "Taxes & fees", value: "$28.40" },
     { label: "Seat selection", value: "$12.00" },
   ],
   total: "$324.40",
-  perPerson: "For 1 adult",
+  bordered: false,
 };
 
 export function Travel7({
@@ -31,6 +31,7 @@ export function Travel7({
   items = [],
   total,
   perPerson,
+  bordered = false,
   className,
 }: Travel7Props) {
   return (
@@ -40,9 +41,9 @@ export function Travel7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {title && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {title}
           </span>
         )}
@@ -53,7 +54,7 @@ export function Travel7({
               className="flex items-center justify-between text-xs"
             >
               <span className="text-muted-foreground">{item.label}</span>
-              <span className="font-mono text-card-foreground">
+              <span className="tabular-nums text-card-foreground">
                 {item.value}
               </span>
             </div>
@@ -64,7 +65,7 @@ export function Travel7({
             <span className="text-sm font-semibold text-card-foreground">
               Total
             </span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {total}
             </span>
           </div>

@@ -5,28 +5,31 @@ import { cn } from "@/lib/utils";
 
 interface SavedQuery {
   name: string;
-  query: string;
+  query?: string;
   pinned?: boolean;
 }
 
 interface Search21Props {
   placeholder?: string;
   saved?: SavedQuery[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const search21Demo: Search21Props = {
   placeholder: "Search issues…",
   saved: [
-    { name: "My open issues", query: "assignee:me is:open", pinned: true },
-    { name: "This week's bugs", query: "label:bug created:>7d" },
-    { name: "Stale PRs", query: "is:pr draft:false updated:<14d" },
+    { name: "My open issues", pinned: true },
+    { name: "This week's bugs" },
+    { name: "Stale PRs" },
   ],
+  bordered: false,
 };
 
 export function Search21({
   placeholder = "Search…",
   saved = [],
+  bordered = false,
   className,
 }: Search21Props) {
   return (
@@ -36,7 +39,7 @@ export function Search21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-xl border border-border bg-card shadow-md">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-xl bg-card shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2">
           <Search
             className="size-3.5 shrink-0 text-muted-foreground"
@@ -47,9 +50,6 @@ export function Search21({
           </span>
         </div>
         <div className="flex flex-col gap-0.5 p-2">
-          <span className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Saved searches
-          </span>
           {saved.map((item, idx) => (
             <div
               key={idx}
@@ -70,9 +70,11 @@ export function Search21({
                 <span className="truncate text-sm font-medium text-card-foreground">
                   {item.name}
                 </span>
-                <span className="truncate font-mono text-xs text-muted-foreground">
-                  {item.query}
-                </span>
+                {item.query && (
+                  <span className="truncate text-xs text-muted-foreground">
+                    {item.query}
+                  </span>
+                )}
               </div>
             </div>
           ))}

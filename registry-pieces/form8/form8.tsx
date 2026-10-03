@@ -9,6 +9,7 @@ interface Field {
 
 interface Form8Props {
   fields?: Field[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,9 +18,10 @@ export const form8Demo: Form8Props = {
     { label: "First name", value: "Mira" },
     { label: "Last name", value: "Beste" },
   ],
+  bordered: false,
 };
 
-export function Form8({ fields = [], className }: Form8Props) {
+export function Form8({ fields = [], bordered = false, className }: Form8Props) {
   return (
     <div
       className={cn(
@@ -33,7 +35,7 @@ export function Form8({ fields = [], className }: Form8Props) {
             <label className="text-xs font-medium text-card-foreground">
               {field.label}
             </label>
-            <div className="rounded-md border border-border bg-card px-3 py-2 shadow-sm">
+            <div className={cn("rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
               <span className="block truncate text-sm text-card-foreground">
                 {field.value}
               </span>

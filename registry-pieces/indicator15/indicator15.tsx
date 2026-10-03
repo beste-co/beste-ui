@@ -11,6 +11,7 @@ interface Indicator15Props {
   deployingLabel?: string;
   liveLabel?: string;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -26,6 +27,7 @@ export const indicator15Demo: Indicator15Props = {
   buildingLabel: "Building",
   deployingLabel: "Deploying",
   liveLabel: "Live",
+  bordered: false,
 };
 
 export function Indicator15({
@@ -33,6 +35,7 @@ export function Indicator15({
   deployingLabel = "Deploying",
   liveLabel = "Live",
   holdMs = 1600,
+  bordered = false,
   className,
 }: Indicator15Props) {
   const [state, setState] = useState<{ status: Status; prev: Status | null }>({
@@ -75,7 +78,8 @@ export function Indicator15({
       <style>{`@keyframes indicator15-in { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } } @keyframes indicator15-out { from { opacity: 1; } to { opacity: 0; } }`}</style>
       <span
         className={cn(
-          "inline-flex h-8 items-center rounded-full border bg-card px-3 text-sm font-medium shadow-sm transition-colors duration-500 ease-in-out",
+          "inline-flex h-8 items-center rounded-full bg-card px-3 text-sm font-medium shadow-sm transition-colors duration-500 ease-in-out",
+          bordered && "border",
           pillClasses[status]
         )}
       >

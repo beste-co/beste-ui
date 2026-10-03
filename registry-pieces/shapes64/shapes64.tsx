@@ -30,13 +30,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes64Demo: Shapes64Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
 const ICONS = [Twitter, Github, Linkedin, Youtube, Instagram];
 
-export function Shapes64({ surface = "card", bordered = true, inverted = false, className }: Shapes64Props) {
+export function Shapes64({ surface = "card", bordered = false, inverted = false, className }: Shapes64Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

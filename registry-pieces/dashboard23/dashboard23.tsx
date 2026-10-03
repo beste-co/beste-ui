@@ -45,15 +45,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard23Demo: Dashboard23Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Traffic by device",
-  total: "9,420 sessions",
   segments: [
     { label: "Mobile", value: 58 },
-    { label: "Desktop", value: 32 },
+    { label: "Desktop", value: 34 },
     { label: "Tablet", value: 8 },
-    { label: "Other", value: 2 },
   ],
 };
 
@@ -62,7 +60,7 @@ export function Dashboard23({
   total,
   segments = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard23Props) {
@@ -79,11 +77,11 @@ export function Dashboard23({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {title}
           </span>
           {total && (
-            <span className="font-mono text-xs text-current/60">
+            <span className="text-xs text-current/60">
               {total}
             </span>
           )}
@@ -115,8 +113,8 @@ export function Dashboard23({
                   className={cn("size-2 rounded-sm", cls.dot)}
                   aria-hidden="true"
                 />
-                <span className="">{s.label}</span>
-                <span className="font-mono tabular-nums text-current/60">
+                <span>{s.label}</span>
+                <span className="tabular-nums text-current/60">
                   {pct}%
                 </span>
               </li>

@@ -31,7 +31,7 @@ const nodeClasses: Record<Tone, string> = {
 
 export const ai38Demo: Ai38Props = {
   steps: ["Query", "Retrieve", "Rerank", "Answer"],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Ai38({ steps = [], tone = "violet", className }: Ai38Props) {
@@ -47,7 +47,7 @@ export function Ai38({ steps = [], tone = "violet", className }: Ai38Props) {
           <div key={s} className="flex items-center gap-1">
             <span
               className={cn(
-                "rounded-sm border px-2 py-1 font-mono text-xs",
+                "rounded-sm border px-2 py-1 text-xs",
                 nodeClasses[tone]
               )}
             >

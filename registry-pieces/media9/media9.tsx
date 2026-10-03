@@ -9,11 +9,12 @@ interface Swatch {
 interface Media9Props {
   label?: string;
   swatches?: Swatch[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const media9Demo: Media9Props = {
-  label: "Sunset · 05",
+  label: "Sunset",
   swatches: [
     { hex: "#0f172a" },
     { hex: "#7c3aed" },
@@ -21,11 +22,13 @@ export const media9Demo: Media9Props = {
     { hex: "#f97316" },
     { hex: "#facc15" },
   ],
+  bordered: false,
 };
 
 export function Media9({
   label,
   swatches = [],
+  bordered = false,
   className,
 }: Media9Props) {
   return (
@@ -35,16 +38,11 @@ export function Media9({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-card-foreground">
-              {label}
-            </span>
-            <span className="font-mono text-xs text-muted-foreground">
-              {swatches.length} colors
-            </span>
-          </div>
+          <span className="text-sm font-semibold text-card-foreground">
+            {label}
+          </span>
         )}
         <div className="flex overflow-hidden rounded-md" aria-hidden="true">
           {swatches.map((s, i) => (
@@ -59,7 +57,7 @@ export function Media9({
           {swatches.map((s, i) => (
             <span
               key={i}
-              className="flex-1 truncate text-center font-mono text-xs uppercase tracking-tight text-muted-foreground"
+              className="flex-1 truncate text-center text-xs tracking-tight text-muted-foreground"
             >
               {s.hex.replace("#", "")}
             </span>

@@ -40,7 +40,7 @@ export function Nav21({ columns = [], className }: Nav21Props) {
       <div className="grid w-full max-w-80 grid-cols-3 gap-3">
         {columns.map((col, idx) => (
           <div key={idx} className="flex flex-col gap-1">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {col.heading}
             </span>
             <div className="flex flex-col gap-0.5">

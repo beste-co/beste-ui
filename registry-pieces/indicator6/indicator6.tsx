@@ -8,6 +8,7 @@ interface Indicator6Props {
   level?: number;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,13 +24,15 @@ const toneClasses: Record<Tone, string> = {
 export const indicator6Demo: Indicator6Props = {
   level: 68,
   label: "Room temp",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Indicator6({
   level = 0,
   label,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Indicator6Props) {
   const pct = Math.max(0, Math.min(100, level));
@@ -41,7 +44,7 @@ export function Indicator6({
         className
       )}
     >
-      <div className="inline-flex items-center gap-3 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("inline-flex items-center gap-3 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative flex h-20 w-3 flex-col justify-end">
           <div className="absolute inset-0 rounded-full border-2 border-muted bg-muted" />
           <div

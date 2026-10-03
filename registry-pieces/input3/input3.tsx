@@ -6,6 +6,7 @@ interface Input3Props {
   label?: string;
   description?: string;
   enabled?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const input3Demo: Input3Props = {
   label: "Email notifications",
   description: "Get updates when teammates comment",
   enabled: true,
+  bordered: false,
 };
 
 export function Input3({
   label,
   description,
   enabled = false,
+  bordered = false,
   className,
 }: Input3Props) {
   return (
@@ -28,7 +31,7 @@ export function Input3({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center justify-between gap-3 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center justify-between gap-3 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex min-w-0 flex-1 flex-col">
           {label && (
             <span className="truncate text-sm font-semibold text-card-foreground">

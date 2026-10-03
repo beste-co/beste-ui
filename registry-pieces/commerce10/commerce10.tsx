@@ -8,6 +8,7 @@ interface Commerce10Props {
   price?: string;
   saved?: boolean;
   savedCount?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,7 +18,7 @@ export const commerce10Demo: Commerce10Props = {
   name: "Field Leather Backpack",
   price: "$340",
   saved: true,
-  savedCount: 1284,
+  bordered: false,
 };
 
 export function Commerce10({
@@ -26,6 +27,7 @@ export function Commerce10({
   price = "$0",
   saved = false,
   savedCount,
+  bordered = false,
   className,
 }: Commerce10Props) {
   return (
@@ -35,7 +37,7 @@ export function Commerce10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-md border border-border bg-card p-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-md bg-card p-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="relative size-12 shrink-0 overflow-hidden rounded-sm bg-muted">
           {image && (
             <img
@@ -49,7 +51,7 @@ export function Commerce10({
           <span className="truncate text-xs font-semibold text-card-foreground">
             {name}
           </span>
-          <span className="font-mono text-sm tabular-nums text-card-foreground">
+          <span className="text-sm tabular-nums text-card-foreground">
             {price}
           </span>
         </div>
@@ -73,7 +75,7 @@ export function Commerce10({
           />
           {saved ? "Saved" : "Save"}
           {typeof savedCount === "number" && (
-            <span className="font-mono tabular-nums opacity-80">
+            <span className="tabular-nums opacity-80">
               {savedCount.toLocaleString()}
             </span>
           )}

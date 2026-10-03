@@ -8,6 +8,7 @@ interface Commerce5Props {
   original?: string;
   offPercent?: number;
   endsIn?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,7 +17,7 @@ export const commerce5Demo: Commerce5Props = {
   sale: "$189",
   original: "$260",
   offPercent: 27,
-  endsIn: "Sale ends in 2d 4h",
+  bordered: false,
 };
 
 export function Commerce5({
@@ -25,6 +26,7 @@ export function Commerce5({
   original,
   offPercent,
   endsIn,
+  bordered = false,
   className,
 }: Commerce5Props) {
   return (
@@ -34,16 +36,16 @@ export function Commerce5({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-1 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-1 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <span className="truncate text-xs font-medium text-card-foreground">
           {name}
         </span>
         <div className="flex items-baseline gap-2">
-          <span className="font-mono text-xl font-semibold tabular-nums text-rose-600 dark:text-rose-400">
+          <span className="text-xl font-semibold tabular-nums text-rose-600 dark:text-rose-400">
             {sale}
           </span>
           {original && (
-            <span className="font-mono text-sm tabular-nums text-muted-foreground line-through">
+            <span className="text-sm tabular-nums text-muted-foreground line-through">
               {original}
             </span>
           )}

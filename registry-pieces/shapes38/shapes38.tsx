@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes38Demo: Shapes38Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes38({ surface = "card", bordered = true, inverted = false, className }: Shapes38Props) {
+export function Shapes38({ surface = "card", bordered = false, inverted = false, className }: Shapes38Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

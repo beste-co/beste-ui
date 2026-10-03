@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "weather10",
   title: "Weather Alert",
   description:
-    "Severity-colored triangle alert with title, severity badge, descriptive detail, and an Until line.",
+    "Severity-colored triangle alert with title, severity badge, and a short detail.",
   category: "Weather",
 };

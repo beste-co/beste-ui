@@ -8,6 +8,7 @@ interface Upload7Props {
   placeholder?: string;
   value?: string;
   action?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const upload7Demo: Upload7Props = {
   placeholder: "https://figma.com/file/…",
   value: "https://www.figma.com/design/wQb4…",
   action: "Import",
+  bordered: false,
 };
 
 export function Upload7({
@@ -23,6 +25,7 @@ export function Upload7({
   placeholder,
   value,
   action = "Import",
+  bordered = false,
   className,
 }: Upload7Props) {
   return (
@@ -38,13 +41,13 @@ export function Upload7({
             {label}
           </label>
         )}
-        <div className="flex items-stretch overflow-hidden rounded-md border border-border bg-card shadow-sm">
+        <div className={cn("flex items-stretch overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
           <span className="flex items-center border-r border-border bg-muted px-2.5 text-muted-foreground">
             <Link className="size-3.5" aria-hidden="true" />
           </span>
           <span
             className={cn(
-              "flex-1 truncate px-3 py-2 font-mono text-xs",
+              "flex-1 truncate px-3 py-2 text-xs",
               value ? "text-card-foreground" : "text-muted-foreground"
             )}
           >

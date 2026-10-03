@@ -1,13 +1,12 @@
 "use client";
 
-import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
 
 interface SiteRow {
   name: string;
-  meta: string;
+  meta?: string;
   value: string;
 }
 
@@ -41,14 +40,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const location8Demo: Location8Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Sites on this plan",
-  region: "United Kingdom",
   sites: [
-    { name: "Bramble Health", meta: "Bristol", value: "6 rooms" },
-    { name: "Kingsway Clinic", meta: "Leeds", value: "4 rooms" },
-    { name: "Harbour Practice", meta: "Southampton", value: "3 rooms" },
+    { name: "Bramble Health", value: "6 rooms" },
+    { name: "Kingsway Clinic", value: "4 rooms" },
+    { name: "Harbour Practice", value: "3 rooms" },
   ],
   total: "13",
   totalLabel: "rooms live across three sites",
@@ -61,7 +59,7 @@ export function Location8({
   total,
   totalLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Location8Props) {
@@ -78,15 +76,11 @@ export function Location8({
         <div className="mt-3 flex flex-col gap-2.5">
           {sites.map((site, index) => (
             <div key={index} className="flex items-center gap-3">
-              <span
-                className="flex size-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary"
-                aria-hidden="true"
-              >
-                <MapPin className="size-3.5" />
-              </span>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm">{site.name}</p>
-                <p className="truncate text-xs text-current/60">{site.meta}</p>
+                {site.meta && (
+                  <p className="truncate text-xs text-current/60">{site.meta}</p>
+                )}
               </div>
               <span className="shrink-0 text-sm tabular-nums text-current/60">
                 {site.value}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, ChevronDown, SlidersHorizontal } from "lucide-react";
+import { ChevronDown, SlidersHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -33,11 +33,10 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard7Demo: Dashboard7Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   range: "Apr 1 – Apr 21",
   compare: "vs previous",
-  segment: "All segments",
 };
 
 export function Dashboard7({
@@ -45,7 +44,7 @@ export function Dashboard7({
   compare,
   segment,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard7Props) {
@@ -63,7 +62,6 @@ export function Dashboard7({
           type="button"
           className="flex flex-1 items-center gap-1.5 rounded-sm bg-current/10 px-2 py-1 text-xs font-medium"
         >
-          <Calendar className="size-3" aria-hidden="true" />
           <span className="truncate">{range}</span>
           <ChevronDown
             className="ml-auto size-3 text-current/60"

@@ -6,6 +6,7 @@ interface Terminal8Props {
   dir?: string;
   branch?: string;
   dirty?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const terminal8Demo: Terminal8Props = {
   dir: "beste-ui",
   branch: "main",
   dirty: true,
+  bordered: false,
 };
 
 export function Terminal8({
   dir = "~",
   branch,
   dirty = false,
+  bordered = false,
   className,
 }: Terminal8Props) {
   const statusClass = dirty ? "text-amber-400" : "text-emerald-400";
@@ -30,7 +33,7 @@ export function Terminal8({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-1.5 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2.5 font-mono text-xs shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-1.5 rounded-lg bg-zinc-950 px-3 py-2.5 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         <span className="text-emerald-400">➜</span>
         <span className="font-semibold text-sky-400">{dir}</span>
         {branch && (

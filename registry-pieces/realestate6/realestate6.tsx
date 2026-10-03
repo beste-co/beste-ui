@@ -19,26 +19,27 @@ interface Realestate6Props {
   leaseStart?: string;
   tenantName?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 export const realestate6Demo: Realestate6Props = {
   title: "Lease · 221B Riverside Ave #3",
   rent: "$3,400 / mo",
   deposit: "$3,400 deposit",
-  leaseStart: "Starts Jun 1, 2026 · 12-month term",
-  tenantName: "Tenant · Beste Sözen",
+  tenantName: "Ólafur Arnalds",
   tone: "primary",
+  bordered: false,
 };
 
 export function Realestate6({
@@ -48,6 +49,7 @@ export function Realestate6({
   leaseStart,
   tenantName,
   tone = "primary",
+  bordered = false,
   className,
 }: Realestate6Props) {
   return (
@@ -57,16 +59,12 @@ export function Realestate6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Key className="size-4" aria-hidden="true" />
-          </div>
+          <Key
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -82,14 +80,16 @@ export function Realestate6({
         </div>
         <div className="flex items-baseline justify-between rounded-md bg-muted p-2">
           <span className="text-sm text-muted-foreground">Monthly</span>
-          <span className="font-mono text-xl font-bold text-card-foreground">
+          <span className="text-xl font-bold tabular-nums text-card-foreground">
             {rent}
           </span>
         </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          {deposit && <span>{deposit}</span>}
-          {leaseStart && <span className="text-right">{leaseStart}</span>}
-        </div>
+        {(deposit || leaseStart) && (
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            {deposit && <span>{deposit}</span>}
+            {leaseStart && <span className="text-right">{leaseStart}</span>}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ interface Travel31Props {
   stepMs?: number;
   holdMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -41,22 +42,23 @@ function formatRemaining(minutes: number) {
 }
 
 export const travel31Demo: Travel31Props = {
-  flight: "BA 117",
-  from: { code: "LHR", time: "09:40", city: "London" },
-  to: { code: "JFK", time: "12:50", city: "New York" },
+  from: { code: "LHR", time: "09:40" },
+  to: { code: "JFK", time: "12:50" },
   remainingMinutes: 130,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Travel31({
-  flight = "Flight",
+  flight,
   from = { code: "AAA", time: "00:00" },
   to = { code: "BBB", time: "00:00" },
   remainingMinutes = 130,
   steps = 20,
   stepMs = 300,
   holdMs = 2600,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Travel31Props) {
   const [state, setState] = useState({ step: 0, cycle: 0 });
@@ -82,20 +84,10 @@ export function Travel31({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-4 shadow-sm">
-        <div className="flex items-center justify-between">
-          <span className="font-mono text-xs text-muted-foreground">{flight}</span>
-          <span
-            className={cn(
-              "rounded-full px-2 py-0.5 text-xs font-medium transition-colors duration-500",
-              landed
-                ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                : "bg-sky-500/10 text-sky-600 dark:text-sky-400"
-            )}
-          >
-            {landed ? "Landed" : "In flight"}
-          </span>
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
+        {flight && (
+          <span className="text-xs text-muted-foreground">{flight}</span>
+        )}
 
         <div className="flex items-start justify-between">
           <div className="flex flex-col">
@@ -167,14 +159,9 @@ export function Travel31({
           </g>
         </svg>
 
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-card-foreground">
-            {landed ? `Arrived at ${to.code}` : `Landing in ${formatRemaining(remaining)}`}
-          </span>
-          <span className="text-sm font-medium tabular-nums text-muted-foreground">
-            {Math.round(progress * 100)}%
-          </span>
-        </div>
+        <span className="text-sm tabular-nums text-card-foreground">
+          {landed ? `Arrived at ${to.code}` : `Landing in ${formatRemaining(remaining)}`}
+        </span>
       </div>
     </div>
   );

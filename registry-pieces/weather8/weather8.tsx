@@ -9,6 +9,7 @@ interface Weather8Props {
   unit?: string;
   direction?: Direction;
   gust?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,7 +28,7 @@ export const weather8Demo: Weather8Props = {
   speed: 12,
   unit: "km/h",
   direction: "NE",
-  gust: 18,
+  bordered: false,
 };
 
 export function Weather8({
@@ -35,6 +36,7 @@ export function Weather8({
   unit = "km/h",
   direction = "N",
   gust,
+  bordered = false,
   className,
 }: Weather8Props) {
   const angle = directionAngles[direction];
@@ -45,7 +47,7 @@ export function Weather8({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-xl border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-xl bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         <svg
           viewBox="0 0 100 100"
           className="size-20 shrink-0"

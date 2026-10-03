@@ -16,6 +16,7 @@ interface Source {
 
 interface Upload9Props {
   sources?: Source[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -31,12 +32,11 @@ export const upload9Demo: Upload9Props = {
     {
       id: "drive",
       name: "Google Drive",
-      description: "mira@beste.co",
+      description: "hello@beste.co",
       icon: "drive",
       src: "https://oud.pics/sm/l/google-drive.avif",
       alt: "Google Drive",
       connected: true,
-      fileCount: "1,248 files",
     },
     {
       id: "figma",
@@ -46,7 +46,6 @@ export const upload9Demo: Upload9Props = {
       src: "https://oud.pics/sm/l/figma.png",
       alt: "Figma",
       connected: true,
-      fileCount: "86 files",
     },
     {
       id: "dropbox",
@@ -59,17 +58,19 @@ export const upload9Demo: Upload9Props = {
     {
       id: "device",
       name: "This device",
-      description: "macOS · 248 GB free",
+      description: "Files on this Mac",
       icon: "device",
       src: "https://oud.pics/sm/l/apple.png",
       alt: "This device",
       connected: true,
     },
   ],
+  bordered: false,
 };
 
 export function Upload9({
   sources = [],
+  bordered = false,
   className,
 }: Upload9Props) {
   return (
@@ -79,10 +80,7 @@ export function Upload9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-xl border border-border bg-card p-2 shadow-sm">
-        <span className="px-2 pb-1 pt-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Import from
-        </span>
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-xl bg-card p-2 shadow-sm", bordered && "border border-border")}>
         {sources.map((s) => {
           const Icon = iconMap[s.icon];
           return (
@@ -116,7 +114,7 @@ export function Upload9({
               {s.connected ? (
                 <>
                   {s.fileCount && (
-                    <span className="shrink-0 text-xs text-muted-foreground">
+                    <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
                       {s.fileCount}
                     </span>
                   )}
@@ -126,7 +124,7 @@ export function Upload9({
                   />
                 </>
               ) : (
-                <span className="shrink-0 rounded-md border border-border bg-background px-2 py-0.5 text-xs font-semibold text-card-foreground">
+                <span className={cn("shrink-0 rounded-md px-2 py-0.5 text-xs font-semibold text-card-foreground", bordered ? "border border-border bg-background" : "bg-muted")}>
                   Connect
                 </span>
               )}

@@ -43,19 +43,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const socialproof27Demo: Socialproof27Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   avatar: {
     src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop",
-    alt: "Portrait of Tom Ashby",
+    alt: "Portrait of Ólafur Arnalds",
   },
-  name: "Tom Ashby",
-  handle: "@tomashby",
+  name: "Ólafur Arnalds",
+  handle: "@olafurarnalds",
   body: "Four clinics, one waiting list, and the first Monday in years where nobody rang round to fill a cancellation.",
-  time: "2h",
-  replies: "12",
-  reposts: "34",
-  likes: "218",
 };
 
 export function Socialproof27({
@@ -68,7 +64,7 @@ export function Socialproof27({
   reposts,
   likes,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Socialproof27Props) {
@@ -98,26 +94,28 @@ export function Socialproof27({
           <p className="mt-3 text-sm leading-relaxed">{body}</p>
         )}
 
-        <div className="mt-4 flex items-center gap-5 border-t border-current/15 pt-3">
-          {replies && (
-            <span className="flex items-center gap-1.5 text-sm text-current/60">
-              <MessageCircle className="size-3.5" aria-hidden="true" />
-              {replies}
-            </span>
-          )}
-          {reposts && (
-            <span className="flex items-center gap-1.5 text-sm text-current/60">
-              <Repeat2 className="size-3.5" aria-hidden="true" />
-              {reposts}
-            </span>
-          )}
-          {likes && (
-            <span className="flex items-center gap-1.5 text-sm text-current/60">
-              <Heart className="size-3.5" aria-hidden="true" />
-              {likes}
-            </span>
-          )}
-        </div>
+        {(replies || reposts || likes) && (
+          <div className="mt-4 flex items-center gap-5 border-t border-current/15 pt-3">
+            {replies && (
+              <span className="flex items-center gap-1.5 text-sm tabular-nums text-current/60">
+                <MessageCircle className="size-3.5" aria-hidden="true" />
+                {replies}
+              </span>
+            )}
+            {reposts && (
+              <span className="flex items-center gap-1.5 text-sm tabular-nums text-current/60">
+                <Repeat2 className="size-3.5" aria-hidden="true" />
+                {reposts}
+              </span>
+            )}
+            {likes && (
+              <span className="flex items-center gap-1.5 text-sm tabular-nums text-current/60">
+                <Heart className="size-3.5" aria-hidden="true" />
+                {likes}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

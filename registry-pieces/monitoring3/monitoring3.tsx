@@ -1,6 +1,5 @@
 "use client";
 
-import { Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -26,17 +25,6 @@ interface Monitoring3Props {
   inverted?: boolean;
   className?: string;
 }
-
-const iconClasses: Record<Tone, string> = {
-  neutral: "text-current/60",
-  primary: "text-primary",
-  foreground: "text-foreground",
-  rose: "text-rose-500",
-  amber: "text-amber-500",
-  sky: "text-sky-500",
-  emerald: "text-emerald-500",
-  violet: "text-violet-500",
-};
 
 const tagClasses: Record<Tone, string> = {
   neutral: "border-current/15 bg-current/10 text-foreground",
@@ -70,13 +58,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const monitoring3Demo: Monitoring3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Critical",
   title: "5xx error rate above 2%",
   service: "checkout-api",
-  time: "2m ago",
-  tone: "rose",
+  tone: "primary",
 };
 
 export function Monitoring3({
@@ -84,9 +71,9 @@ export function Monitoring3({
   title = "Incident triggered",
   service,
   time,
-  tone = "rose",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Monitoring3Props) {
@@ -99,36 +86,30 @@ export function Monitoring3({
         className
       )}
     >
-      <div className={cn("flex w-full max-w-72 items-start gap-3 rounded-lg p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <Bell
-          className={cn("mt-0.5 size-4 shrink-0", iconClasses[tone])}
-          aria-hidden="true"
-        />
-        <div className="flex min-w-0 flex-1 flex-col gap-1">
-          <div className="flex items-center justify-between gap-2">
-            <span
-              className={cn(
-                "inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-semibold uppercase tracking-wide",
-                tagClasses[tone]
-              )}
-            >
-              {label}
-            </span>
-            {time && (
-              <span className="text-xs tabular-nums text-current/60">
-                {time}
-              </span>
+      <div className={cn("flex w-full max-w-72 flex-col gap-1.5 rounded-lg p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+        <div className="flex items-center justify-between gap-2">
+          <span
+            className={cn(
+              "inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-semibold",
+              tagClasses[tone]
             )}
-          </div>
-          <p className="text-sm font-medium leading-snug">
-            {title}
-          </p>
-          {service && (
-            <p className="font-mono text-xs text-current/60">
-              {service}
-            </p>
+          >
+            {label}
+          </span>
+          {time && (
+            <span className="text-xs tabular-nums text-current/60">
+              {time}
+            </span>
           )}
         </div>
+        <p className="text-sm font-medium leading-snug">
+          {title}
+        </p>
+        {service && (
+          <p className="text-xs text-current/60">
+            {service}
+          </p>
+        )}
       </div>
     </div>
   );

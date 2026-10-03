@@ -17,6 +17,7 @@ interface Realestate7Props {
   annualSavings?: string;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -45,7 +46,8 @@ export const realestate7Demo: Realestate7Props = {
   score: "92 / 100",
   annualSavings: "~$1,820 annual utility savings",
   label: "Energy efficiency",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Realestate7({
@@ -53,7 +55,8 @@ export function Realestate7({
   score,
   annualSavings,
   label,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Realestate7Props) {
   return (
@@ -63,7 +66,7 @@ export function Realestate7({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div
           className={cn(
             "flex size-14 shrink-0 flex-col items-center justify-center rounded-xl shadow-md",
@@ -73,17 +76,17 @@ export function Realestate7({
           <span className="font-serif text-2xl font-bold leading-none">
             {rating}
           </span>
-          <span className="text-xs font-semibold uppercase tracking-wide">
+          <span className="text-xs font-semibold">
             Rated
           </span>
         </div>
         <div className="flex flex-col gap-0.5">
           {label && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {label}
             </span>
           )}
-          <span className="font-mono text-lg font-bold text-card-foreground">
+          <span className="text-lg font-bold text-card-foreground">
             {score}
           </span>
           {annualSavings && (

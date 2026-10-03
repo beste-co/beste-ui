@@ -10,24 +10,26 @@ interface Education2Props {
   title?: string;
   duration?: string;
   status?: LessonStatus;
+  bordered?: boolean;
   className?: string;
 }
 
 export const education2Demo: Education2Props = {
-  index: 3,
   title: "Composing tokens with Tailwind",
   duration: "18 min",
   status: "current",
+  bordered: false,
 };
 
 export function Education2({
-  index = 1,
+  index,
   title,
   duration,
   status = "current",
+  bordered = false,
   className,
 }: Education2Props) {
-  const padded = index.toString().padStart(2, "0");
+  const padded = (index ?? 1).toString().padStart(2, "0");
 
   return (
     <div
@@ -38,7 +40,8 @@ export function Education2({
     >
       <div
         className={cn(
-          "flex w-full max-w-80 items-center gap-3 rounded-lg border bg-card p-3 shadow-sm",
+          "flex w-full max-w-80 items-center gap-3 rounded-lg bg-card p-3 shadow-sm",
+          bordered && "border",
           status === "current"
             ? "border-primary ring-2 ring-primary/20"
             : "border-border"
@@ -55,7 +58,7 @@ export function Education2({
             aria-hidden="true"
           />
         ) : (
-          <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-border font-mono text-xs font-semibold text-muted-foreground">
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold tabular-nums text-muted-foreground">
             {padded}
           </span>
         )}
@@ -76,9 +79,11 @@ export function Education2({
             <span className="text-xs text-muted-foreground">{duration}</span>
           )}
         </div>
-        <span className="shrink-0 font-mono text-xs text-muted-foreground">
-          {padded}
-        </span>
+        {index !== undefined && status !== "locked" && (
+          <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+            {padded}
+          </span>
+        )}
       </div>
     </div>
   );

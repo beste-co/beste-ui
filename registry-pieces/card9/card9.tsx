@@ -10,6 +10,7 @@ interface Card9Props {
   items?: number;
   status?: Status;
   eta?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -41,16 +42,17 @@ const statusConfig: Record<
 
 export const card9Demo: Card9Props = {
   orderId: "BES-20481",
-  items: 3,
   status: "shipped",
   eta: "Arrives Fri",
+  bordered: false,
 };
 
 export function Card9({
   orderId = "ORDER-0001",
-  items = 1,
+  items,
   status = "placed",
   eta,
+  bordered = false,
   className,
 }: Card9Props) {
   const config = statusConfig[status];
@@ -62,18 +64,21 @@ export function Card9({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
-        <div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground">
-          <Package className="size-4" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
+        <Package
+          className="size-5 shrink-0 text-muted-foreground"
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <div className="flex items-center gap-2">
-            <span className="truncate font-mono text-sm font-semibold text-card-foreground">
+            <span className="truncate text-sm font-semibold text-card-foreground">
               #{orderId}
             </span>
-            <span className="text-xs text-muted-foreground">
-              · {items} item{items === 1 ? "" : "s"}
-            </span>
+            {typeof items === "number" && (
+              <span className="text-xs text-muted-foreground tabular-nums">
+                · {items} item{items === 1 ? "" : "s"}
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-1.5">
             <span

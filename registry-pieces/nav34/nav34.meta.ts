@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Segmented tab bar whose active pill glides from tab to tab on a timer while the summary line beneath cross-fades to match.",
   category: "Nav",
+  cardScale: 0.75,
 };

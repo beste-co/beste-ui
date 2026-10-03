@@ -48,7 +48,7 @@ export function Form30({
               {label}
             </label>
           )}
-          <span className="rounded-full bg-muted px-2 py-0.5 font-mono text-xs font-semibold text-card-foreground">
+          <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-semibold tabular-nums text-card-foreground">
             {value}
           </span>
         </div>
@@ -80,7 +80,7 @@ export function Form30({
             aria-hidden="true"
           />
         </div>
-        <div className="flex justify-between text-xs text-muted-foreground">
+        <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
           <span>{min}</span>
           <span>{max}</span>
         </div>

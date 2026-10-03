@@ -9,6 +9,7 @@ interface Media24Props {
   progress?: number;
   current?: string;
   duration?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,10 +20,10 @@ const BARS = [
 
 export const media24Demo: Media24Props = {
   title: "Running a calmer front desk",
-  subtitle: "The Sirius Podcast · Ep. 12",
+  subtitle: "The Sirius Podcast",
   progress: 0.4,
-  current: "12:04",
   duration: "31:20",
+  bordered: false,
 };
 
 export function Media24({
@@ -31,6 +32,7 @@ export function Media24({
   progress = 0,
   current,
   duration,
+  bordered = false,
   className,
 }: Media24Props) {
   const played = Math.max(0, Math.min(progress, 1)) * BARS.length;
@@ -42,7 +44,7 @@ export function Media24({
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-4 shadow-xl">
+      <div className={cn("w-full max-w-80 rounded-md bg-card p-4 shadow-xl", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <span
             className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground"
@@ -78,7 +80,7 @@ export function Media24({
         </div>
 
         {(current || duration) && (
-          <div className="mt-2 flex justify-between text-xs text-muted-foreground">
+          <div className="mt-2 flex justify-between text-xs tabular-nums text-muted-foreground">
             <span>{current}</span>
             <span>{duration}</span>
           </div>

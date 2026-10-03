@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "media26",
   title: "Now Playing",
   description:
-    "Compact player whose progress bar creeps forward in time with the elapsed clock, then fades the title over to the next track when one finishes.",
+    "Compact player whose progress bar creeps forward as the track plays, then fades the title over to the next track when one finishes.",
   category: "Media",
 };

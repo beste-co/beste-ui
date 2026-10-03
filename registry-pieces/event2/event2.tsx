@@ -1,6 +1,5 @@
 "use client";
 
-import { Check, HelpCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -42,13 +41,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const event2Demo: Event2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   event: "Team offsite · Bodrum",
   when: "May 12 – 15",
   response: "going",
-  going: 28,
-  maybe: 4,
   goingLabel: "Going",
   maybeLabel: "Maybe",
   noLabel: "No",
@@ -60,15 +57,15 @@ export function Event2({
   event,
   when,
   response = "unset",
-  going = 0,
-  maybe = 0,
+  going,
+  maybe,
   goingLabel = "Going",
   maybeLabel = "Maybe",
   noLabel = "No",
   goingSuffix = "going",
   maybeSuffix = "maybe",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Event2Props) {
@@ -98,56 +95,59 @@ export function Event2({
           <button
             type="button"
             className={cn(
-              "inline-flex flex-1 items-center justify-center gap-1 rounded-md border px-2 py-1 text-xs font-semibold transition-colors",
+              "inline-flex flex-1 items-center justify-center rounded-md border px-2 py-1 text-xs font-semibold transition-colors",
               response === "going"
                 ? "border-emerald-500 bg-emerald-500 text-white"
                 : "border-current/15 bg-current/10 hover:bg-current/10"
             )}
           >
-            <Check className="size-3" aria-hidden="true" />
             {goingLabel}
           </button>
           <button
             type="button"
             className={cn(
-              "inline-flex flex-1 items-center justify-center gap-1 rounded-md border px-2 py-1 text-xs font-semibold transition-colors",
+              "inline-flex flex-1 items-center justify-center rounded-md border px-2 py-1 text-xs font-semibold transition-colors",
               response === "maybe"
                 ? "border-amber-500 bg-amber-500 text-white"
                 : "border-current/15 bg-current/10 hover:bg-current/10"
             )}
           >
-            <HelpCircle className="size-3" aria-hidden="true" />
             {maybeLabel}
           </button>
           <button
             type="button"
             className={cn(
-              "inline-flex flex-1 items-center justify-center gap-1 rounded-md border px-2 py-1 text-xs font-semibold transition-colors",
+              "inline-flex flex-1 items-center justify-center rounded-md border px-2 py-1 text-xs font-semibold transition-colors",
               response === "no"
                 ? "border-rose-500 bg-rose-500 text-white"
                 : "border-current/15 bg-current/10 hover:bg-current/10"
             )}
           >
-            <X className="size-3" aria-hidden="true" />
             {noLabel}
           </button>
         </div>
-        <div className="flex items-center gap-3 border-t border-current/15 pt-2 text-xs text-current/60">
-          <span className="inline-flex items-center gap-1">
-            <span
-              className="size-1.5 rounded-full bg-emerald-500"
-              aria-hidden="true"
-            />
-            {going} {goingSuffix}
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <span
-              className="size-1.5 rounded-full bg-amber-500"
-              aria-hidden="true"
-            />
-            {maybe} {maybeSuffix}
-          </span>
-        </div>
+        {(going !== undefined || maybe !== undefined) && (
+          <div className="flex items-center gap-3 border-t border-current/15 pt-2 text-xs tabular-nums text-current/60">
+            {going !== undefined && (
+              <span className="inline-flex items-center gap-1">
+                <span
+                  className="size-1.5 rounded-full bg-emerald-500"
+                  aria-hidden="true"
+                />
+                {going} {goingSuffix}
+              </span>
+            )}
+            {maybe !== undefined && (
+              <span className="inline-flex items-center gap-1">
+                <span
+                  className="size-1.5 rounded-full bg-amber-500"
+                  aria-hidden="true"
+                />
+                {maybe} {maybeSuffix}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

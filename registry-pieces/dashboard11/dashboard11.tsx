@@ -42,13 +42,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard11Demo: Dashboard11Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Top performers",
   entries: [
-    { name: "Ada L.", score: "12,840" },
-    { name: "Marcus R.", score: "10,320" },
-    { name: "Priya S.", score: "8,960" },
+    { name: "Nils Frahm", score: "12,840" },
+    { name: "Hania Rani", score: "10,320" },
+    { name: "Ólafur Arnalds", score: "8,960" },
   ],
 };
 
@@ -56,7 +56,7 @@ export function Dashboard11({
   title = "Leaderboard",
   entries = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard11Props) {
@@ -70,7 +70,7 @@ export function Dashboard11({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+        <span className="text-xs font-semibold text-current/60">
           {title}
         </span>
         <div className="flex flex-col gap-1.5">
@@ -78,7 +78,7 @@ export function Dashboard11({
             <div key={e.name} className="flex items-center gap-2">
               <span
                 className={cn(
-                  "flex size-6 shrink-0 items-center justify-center rounded-full font-mono text-xs font-bold",
+                  "flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold",
                   MEDALS[i]
                 )}
                 aria-hidden="true"
@@ -88,7 +88,7 @@ export function Dashboard11({
               <span className="flex-1 truncate text-xs font-medium">
                 {e.name}
               </span>
-              <span className="shrink-0 font-mono text-sm font-semibold tabular-nums">
+              <span className="shrink-0 text-sm font-semibold tabular-nums">
                 {e.score}
               </span>
             </div>

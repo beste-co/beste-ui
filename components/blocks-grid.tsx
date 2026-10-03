@@ -15,7 +15,6 @@ import { getBlockObfuscated } from "@/lib/blocks-obfuscated";
 import { blockInstallCommand } from "@/lib/install-command";
 import { useFavorites } from "@/lib/favorites-context";
 import { typography } from "@/lib/typography";
-import { cn } from "@/lib/utils";
 
 /**
  * Card thumbnail — the block, rendered scaled down. It resolves the component
@@ -212,14 +211,11 @@ export function BlocksGrid({
 
         {/* Block info */}
         <div className="relative flex-1 px-1 pb-1">
-          <h3 className={cn(typography.cardTitle, "mb-1")}>
+          <h3 className={typography.cardTitle}>
             {/* Plain text: the card's own overlay link already carries this name, and
                 two anchors to one page is one more than a reader or a crawler needs. */}
             {block.title}
           </h3>
-          <p className={cn(typography.cardText, "line-clamp-2 min-h-10")}>
-            {block.description}
-          </p>
         </div>
       </div>
     );

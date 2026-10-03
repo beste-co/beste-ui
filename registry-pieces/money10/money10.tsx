@@ -13,6 +13,7 @@ interface Money10Props {
   total?: string;
   perPerson?: string;
   people?: Person[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,31 +23,33 @@ export const money10Demo: Money10Props = {
   people: [
     {
       src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face",
-      alt: "Ayşe",
-      fallback: "AK",
+      alt: "Hania Rani",
+      fallback: "HR",
     },
     {
       src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
-      alt: "Merve",
-      fallback: "MÖ",
+      alt: "Nils Frahm",
+      fallback: "NF",
     },
     {
       src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
-      alt: "Sarah",
-      fallback: "SB",
+      alt: "Poppy Ackroyd",
+      fallback: "PA",
     },
     {
       src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face",
-      alt: "John",
-      fallback: "JD",
+      alt: "Ólafur Arnalds",
+      fallback: "ÓA",
     },
   ],
+  bordered: false,
 };
 
 export function Money10({
   total = "$0",
   perPerson,
   people = [],
+  bordered = false,
   className,
 }: Money10Props) {
   return (
@@ -56,9 +59,9 @@ export function Money10({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             Split bill
           </span>
           <span className="text-lg font-bold tabular-nums text-card-foreground">
@@ -83,16 +86,11 @@ export function Money10({
               </Avatar>
             ))}
           </div>
-          <div className="flex flex-col items-end">
-            <span className="text-xs text-muted-foreground">
-              {people.length} ways
+          {perPerson && (
+            <span className="text-sm font-semibold tabular-nums text-card-foreground">
+              {perPerson} each
             </span>
-            {perPerson && (
-              <span className="text-sm font-semibold tabular-nums text-card-foreground">
-                {perPerson} each
-              </span>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </div>

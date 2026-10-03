@@ -1,6 +1,6 @@
 "use client";
 
-import { CaseSensitive, ChevronDown, ChevronUp, Regex, X } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Editor11Props {
@@ -8,6 +8,7 @@ interface Editor11Props {
   replace?: string;
   current?: number;
   total?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const editor11Demo: Editor11Props = {
   replace: "activation",
   current: 3,
   total: 12,
+  bordered: false,
 };
 
 export function Editor11({
@@ -23,6 +25,7 @@ export function Editor11({
   replace = "",
   current = 0,
   total = 0,
+  bordered = false,
   className,
 }: Editor11Props) {
   return (
@@ -32,32 +35,16 @@ export function Editor11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-md border border-border bg-card px-2 py-1.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md bg-card px-2 py-1.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-1">
-          <div className="flex flex-1 items-center gap-1.5 rounded border border-border bg-card px-2 py-1">
-            <span className="flex-1 truncate font-mono text-xs text-card-foreground">
+          <div className={cn("flex flex-1 items-center gap-1.5 rounded px-2 py-1", bordered ? "border border-border bg-card" : "bg-muted")}>
+            <span className="flex-1 truncate text-xs text-card-foreground">
               {query}
             </span>
-            <span className="font-mono text-xs tabular-nums text-muted-foreground">
+            <span className="text-xs tabular-nums text-muted-foreground">
               {current}/{total}
             </span>
           </div>
-          <button
-            type="button"
-            aria-label="Match case"
-            className="flex size-6 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground"
-          >
-            <CaseSensitive className="size-3.5" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            aria-label="Use regex"
-            className="flex size-6 items-center justify-center rounded bg-muted text-card-foreground"
-            aria-pressed
-          >
-            <Regex className="size-3.5" aria-hidden="true" />
-          </button>
-          <div className="h-5 w-px bg-border" aria-hidden="true" />
           <button
             type="button"
             aria-label="Previous"
@@ -72,17 +59,10 @@ export function Editor11({
           >
             <ChevronDown className="size-3.5" aria-hidden="true" />
           </button>
-          <button
-            type="button"
-            aria-label="Close"
-            className="flex size-6 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground"
-          >
-            <X className="size-3.5" aria-hidden="true" />
-          </button>
         </div>
         <div className="flex items-center gap-1">
-          <div className="flex flex-1 items-center gap-1.5 rounded border border-border bg-card px-2 py-1">
-            <span className="flex-1 truncate font-mono text-xs text-card-foreground">
+          <div className={cn("flex flex-1 items-center gap-1.5 rounded px-2 py-1", bordered ? "border border-border bg-card" : "bg-muted")}>
+            <span className="flex-1 truncate text-xs text-card-foreground">
               {replace}
             </span>
           </div>

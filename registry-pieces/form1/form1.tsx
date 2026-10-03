@@ -33,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const form1Demo: Form1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Workspace name",
   placeholder: "Beste Studio",
@@ -47,7 +47,7 @@ export function Form1({
   value,
   helper,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Form1Props) {

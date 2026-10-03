@@ -33,17 +33,16 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const search1Demo: Search1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   placeholder: "Search anything...",
-  shortcut: ["⌘", "K"],
 };
 
 export function Search1({
   placeholder = "Search...",
   shortcut,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Search1Props) {
@@ -71,7 +70,7 @@ export function Search1({
                 {i > 0 && (
                   <span className="text-xs text-current/35">+</span>
                 )}
-                <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-current/15 border-b-2 bg-current/10 px-1 font-mono text-xs font-medium text-current/60">
+                <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-current/15 border-b-2 bg-current/10 px-1 text-xs font-medium text-current/60">
                   {key}
                 </kbd>
               </Fragment>

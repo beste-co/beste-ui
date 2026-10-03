@@ -20,18 +20,19 @@ interface Fitness6Props {
   percent?: number;
   deadline?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -58,11 +59,10 @@ const deadlineClasses: Record<Tone, string> = {
 
 export const fitness6Demo: Fitness6Props = {
   goal: "Run a half marathon",
-  target: "21.1 km without stopping",
   current: "17.2 km longest run",
   percent: 82,
-  deadline: "Target by Jun 28",
   tone: "neutral",
+  bordered: false,
 };
 
 export function Fitness6({
@@ -72,6 +72,7 @@ export function Fitness6({
   percent = 0,
   deadline,
   tone = "neutral",
+  bordered = false,
   className,
 }: Fitness6Props) {
   const pct = Math.max(0, Math.min(100, percent));
@@ -83,16 +84,12 @@ export function Fitness6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Goal className="size-4" aria-hidden="true" />
-          </div>
+          <Goal
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex flex-col">
             {goal && (
               <span className="text-sm font-semibold text-card-foreground">
@@ -104,28 +101,25 @@ export function Fitness6({
             )}
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div
+          className="h-1.5 overflow-hidden rounded-full bg-muted"
+          aria-hidden="true"
+        >
           <div
-            className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted"
-            aria-hidden="true"
-          >
-            <div
-              className={cn("h-full rounded-full", barClasses[tone])}
-              style={{ width: `${pct}%` }}
-            />
+            className={cn("h-full rounded-full", barClasses[tone])}
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+        {(current || deadline) && (
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            {current && <span>{current}</span>}
+            {deadline && (
+              <span className={cn("font-semibold", deadlineClasses[tone])}>
+                {deadline}
+              </span>
+            )}
           </div>
-          <span className="font-mono text-sm font-semibold text-card-foreground">
-            {pct}%
-          </span>
-        </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          {current && <span>{current}</span>}
-          {deadline && (
-            <span className={cn("font-semibold", deadlineClasses[tone])}>
-              {deadline}
-            </span>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

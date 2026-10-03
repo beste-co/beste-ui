@@ -13,10 +13,9 @@ interface Education13Props {
 }
 
 export const education13Demo: Education13Props = {
-  recipient: "Beste Sözen",
+  recipient: "Ólafur Arnalds",
   courseName: "Advanced React Performance",
-  issuedOn: "Issued Apr 23, 2026",
-  credentialId: "BSTE-CRT-4K91-ZN12",
+  issuedOn: "Apr 23, 2026",
   issuer: "Beste Academy",
 };
 
@@ -41,10 +40,8 @@ export function Education13({
           aria-hidden="true"
         />
         <div className="relative flex flex-col items-center gap-2 text-center">
-          <div className="flex size-10 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
-            <Award className="size-5" aria-hidden="true" />
-          </div>
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-300">
+          <Award className="size-6 shrink-0 text-amber-500" aria-hidden="true" />
+          <span className="text-xs font-semibold text-amber-700 dark:text-amber-300">
             Certificate of completion
           </span>
           <span className="font-serif text-xl italic text-card-foreground">
@@ -56,12 +53,14 @@ export function Education13({
           <span className="text-sm font-semibold text-card-foreground">
             {courseName}
           </span>
-          <div className="mt-1 flex w-full items-center justify-between border-t border-amber-500/20 pt-2 text-xs">
-            <span className="text-muted-foreground">{issuedOn}</span>
-            {issuer && <span className="font-semibold text-card-foreground">{issuer}</span>}
-          </div>
+          {(issuedOn || issuer) && (
+            <div className="mt-1 flex w-full items-center justify-between border-t border-amber-500/20 pt-2 text-xs">
+              <span className="text-muted-foreground">{issuedOn}</span>
+              {issuer && <span className="font-semibold text-card-foreground">{issuer}</span>}
+            </div>
+          )}
           {credentialId && (
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {credentialId}
             </span>
           )}

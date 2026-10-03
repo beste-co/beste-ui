@@ -1,12 +1,13 @@
 "use client";
 
-import { Paperclip, X } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Input18Props {
   label?: string;
   filename?: string;
   size?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const input18Demo: Input18Props = {
   label: "Attach ID document",
   filename: "passport-scan.pdf",
   size: "842 KB",
+  bordered: false,
 };
 
 export function Input18({
   label,
   filename,
   size,
+  bordered = false,
   className,
 }: Input18Props) {
   return (
@@ -35,24 +38,20 @@ export function Input18({
             {label}
           </label>
         )}
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card p-1.5 shadow-sm">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card p-1.5 shadow-sm", bordered && "border border-border")}>
           <button
             type="button"
-            className="shrink-0 rounded-md border border-border bg-muted px-2.5 py-1.5 text-xs font-semibold text-card-foreground hover:bg-muted-foreground/10"
+            className={cn("shrink-0 rounded-md bg-muted px-2.5 py-1.5 text-xs font-semibold text-card-foreground hover:bg-muted-foreground/10", bordered && "border border-border")}
           >
             Choose file
           </button>
           {filename ? (
             <div className="flex min-w-0 flex-1 items-center gap-2">
-              <Paperclip
-                className="size-3.5 shrink-0 text-muted-foreground"
-                aria-hidden="true"
-              />
               <span className="truncate text-xs font-medium text-card-foreground">
                 {filename}
               </span>
               {size && (
-                <span className="shrink-0 text-xs text-muted-foreground">
+                <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
                   {size}
                 </span>
               )}

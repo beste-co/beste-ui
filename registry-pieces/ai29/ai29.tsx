@@ -17,6 +17,7 @@ interface Ai29Props {
   totalSteps?: number;
   loss?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,7 +36,8 @@ export const ai29Demo: Ai29Props = {
   step: 1280,
   totalSteps: 2000,
   loss: 0.0421,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai29({
@@ -44,7 +46,8 @@ export function Ai29({
   step = 0,
   totalSteps = 1000,
   loss,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai29Props) {
   const pct = Math.min(100, (step / totalSteps) * 100);
@@ -56,20 +59,20 @@ export function Ai29({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
           <div className="flex items-baseline gap-1.5">
             <span className="text-xs font-medium text-card-foreground">
               Epoch
             </span>
-            <span className="font-mono text-xs tabular-nums text-card-foreground">
+            <span className="text-xs tabular-nums text-card-foreground">
               {epoch}/{totalEpochs}
             </span>
           </div>
           {typeof loss === "number" && (
             <div className="flex items-baseline gap-1">
               <span className="text-xs text-muted-foreground">loss</span>
-              <span className="font-mono text-xs tabular-nums font-semibold text-card-foreground">
+              <span className="text-xs tabular-nums font-semibold text-card-foreground">
                 {loss.toFixed(4)}
               </span>
             </div>
@@ -85,12 +88,9 @@ export function Ai29({
             aria-hidden="true"
           />
         </div>
-        <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
-          <span>
-            step {step.toLocaleString()}/{totalSteps.toLocaleString()}
-          </span>
-          <span>{pct.toFixed(0)}%</span>
-        </div>
+        <span className="text-xs tabular-nums text-muted-foreground">
+          step {step.toLocaleString()}/{totalSteps.toLocaleString()}
+        </span>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "primary" | "foreground" | "emerald" | "sky" | "violet";
@@ -20,6 +19,7 @@ interface Money26Props {
   travelMs?: number;
   holdMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -47,17 +47,12 @@ const trackClasses: Record<Tone, string> = {
   violet: "bg-violet-500",
 };
 
-const statusLabels: Record<Phase, string> = {
-  idle: "Ready",
-  travel: "Sending",
-  arrived: "Delivered",
-};
-
 export const money26Demo: Money26Props = {
   sender: { name: "Nina Simone", initials: "NS" },
   recipient: { name: "Miles Davis", initials: "MD" },
   amount: 250,
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Money26({
@@ -67,7 +62,8 @@ export function Money26({
   idleMs = 900,
   travelMs = 1400,
   holdMs = 2400,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Money26Props) {
   const [phase, setPhase] = useState<Phase>("idle");
@@ -109,12 +105,7 @@ export function Money26({
 @keyframes money26-in { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }
 `}</style>
 
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>Transfer</span>
-          <span>{statusLabels[phase]}</span>
-        </div>
-
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start pt-3">
           <div className="flex w-16 shrink-0 flex-col items-center gap-1.5">
             <span
@@ -211,10 +202,9 @@ export function Money26({
         <div className="flex h-5 items-center justify-center">
           {arrived ? (
             <span
-              className="inline-flex items-center gap-1 text-sm font-medium tabular-nums text-card-foreground"
+              className="text-sm font-medium tabular-nums text-card-foreground"
               style={{ animation: "money26-in 350ms ease-out" }}
             >
-              <Check className="size-3.5 text-emerald-500" aria-hidden="true" />
               {formatted} delivered
             </span>
           ) : (

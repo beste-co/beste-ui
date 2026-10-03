@@ -13,22 +13,24 @@ interface Step {
 interface Education7Props {
   title?: string;
   steps?: Step[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const education7Demo: Education7Props = {
-  title: "Your learning path",
   steps: [
     { title: "Foundations", status: "done" },
     { title: "Patterns & hooks", status: "done" },
     { title: "Performance tuning", status: "current" },
     { title: "Shipping at scale", status: "locked" },
   ],
+  bordered: false,
 };
 
 export function Education7({
   title,
   steps = [],
+  bordered = false,
   className,
 }: Education7Props) {
   return (
@@ -38,9 +40,9 @@ export function Education7({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {title && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {title}
           </span>
         )}

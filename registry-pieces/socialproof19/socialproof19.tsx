@@ -38,7 +38,7 @@ export function Socialproof19({
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-6">
         {caption && (
-          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {caption}
           </span>
         )}

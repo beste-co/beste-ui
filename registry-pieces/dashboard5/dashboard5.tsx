@@ -55,7 +55,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard5Demo: Dashboard5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Top sources",
   items: [
@@ -64,34 +64,14 @@ export const dashboard5Demo: Dashboard5Props = {
     { label: "Twitter", value: 1890 },
     { label: "Referral", value: 980 },
   ],
-  tone: "violet",
+  tone: "primary",
 };
 
-function Row({
-  rank,
-  label,
-  value,
-  inverted,
-}: {
-  rank: number;
-  label: string;
-  value: string;
-  inverted?: boolean;
-}) {
+function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between gap-2 px-2 py-1 text-xs">
-      <div className="flex min-w-0 items-center gap-2">
-        <span
-          className={cn(
-            "w-3 shrink-0 text-right font-mono",
-            inverted ? "opacity-70" : "text-current/60"
-          )}
-        >
-          {rank}
-        </span>
-        <span className="truncate font-medium">{label}</span>
-      </div>
-      <span className="shrink-0 font-mono tabular-nums">{value}</span>
+      <span className="truncate font-medium">{label}</span>
+      <span className="shrink-0 tabular-nums">{value}</span>
     </div>
   );
 }
@@ -100,9 +80,9 @@ export function Dashboard5({
   title = "Top items",
   items = [],
   format = (n: number) => n.toLocaleString(),
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard5Props) {
@@ -124,21 +104,17 @@ export function Dashboard5({
           bordered && "border border-current/15"
         )}
       >
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+        <span className="text-xs font-semibold text-current/60">
           {title}
         </span>
         <div className="flex flex-col gap-1.5">
-          {items.map((it, i) => {
+          {items.map((it) => {
             const pct = (it.value / max) * 100;
             const formatted = format(it.value);
             return (
               <div key={it.label} className="relative">
                 <div className="rounded-sm bg-current/10">
-                  <Row
-                    rank={i + 1}
-                    label={it.label}
-                    value={formatted}
-                  />
+                  <Row label={it.label} value={formatted} />
                 </div>
                 <div
                   className={cn(
@@ -150,12 +126,7 @@ export function Dashboard5({
                   }}
                   aria-hidden="true"
                 >
-                  <Row
-                    rank={i + 1}
-                    label={it.label}
-                    value={formatted}
-                    inverted
-                  />
+                  <Row label={it.label} value={formatted} />
                 </div>
               </div>
             );

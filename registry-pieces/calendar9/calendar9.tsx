@@ -1,6 +1,5 @@
 "use client";
 
-import { Repeat } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Calendar9Props {
@@ -9,6 +8,7 @@ interface Calendar9Props {
   activeDays?: string[];
   time?: string;
   endsOn?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,7 +17,7 @@ export const calendar9Demo: Calendar9Props = {
   days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   activeDays: ["Tue", "Thu", "Fri"],
   time: "09:30 – 09:45",
-  endsOn: "Ends Dec 19, 2026",
+  bordered: false,
 };
 
 export function Calendar9({
@@ -26,6 +26,7 @@ export function Calendar9({
   activeDays = [],
   time,
   endsOn,
+  bordered = false,
   className,
 }: Calendar9Props) {
   return (
@@ -35,23 +36,18 @@ export function Calendar9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-full bg-indigo-500/15 text-indigo-500">
-            <Repeat className="size-3.5" aria-hidden="true" />
-          </div>
-          <div className="flex min-w-0 flex-1 flex-col">
-            {label && (
-              <span className="truncate text-sm font-semibold text-card-foreground">
-                {label}
-              </span>
-            )}
-            {time && (
-              <span className="truncate text-xs text-muted-foreground">
-                {time}
-              </span>
-            )}
-          </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex min-w-0 flex-col">
+          {label && (
+            <span className="truncate text-sm font-semibold text-card-foreground">
+              {label}
+            </span>
+          )}
+          {time && (
+            <span className="truncate text-xs tabular-nums text-muted-foreground">
+              {time}
+            </span>
+          )}
         </div>
         <div className="flex items-center gap-1">
           {days.map((d, idx) => {

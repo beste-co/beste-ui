@@ -18,6 +18,7 @@ interface Monitoring6Props {
   value?: string;
   data?: number[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -65,7 +66,8 @@ export const monitoring6Demo: Monitoring6Props = {
   metric: "p95",
   value: "182ms",
   data: [120, 138, 124, 156, 142, 168, 154, 172, 148, 182, 176, 182],
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring6({
@@ -73,7 +75,8 @@ export function Monitoring6({
   metric = "p95",
   value,
   data = [],
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring6Props) {
   const { line, area } = buildPaths(data, 100, 30);
@@ -85,12 +88,12 @@ export function Monitoring6({
         className
       )}
     >
-      <div className="flex w-full max-w-60 flex-col gap-2 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-60 flex-col gap-2 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-2">
             <span
               className={cn(
-                "inline-flex items-center rounded-full px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide",
+                "inline-flex items-center rounded-full px-1.5 py-0.5 text-xs font-semibold",
                 tagClasses[tone]
               )}
             >

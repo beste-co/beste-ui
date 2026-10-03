@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Play } from "lucide-react";
+import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -16,6 +16,7 @@ interface Upload16Props {
   percent?: number;
   remaining?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -50,14 +51,16 @@ export const upload16Demo: Upload16Props = {
   filename: "keynote-rehearsal.mp4",
   percent: 34,
   remaining: "Paused · 212 MB left",
-  tone: "amber",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Upload16({
   filename,
   percent = 0,
   remaining,
-  tone = "amber",
+  tone = "primary",
+  bordered = false,
   className,
 }: Upload16Props) {
   const pct = Math.max(0, Math.min(100, percent));
@@ -69,11 +72,9 @@ export function Upload16({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2.5">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground">
-            <FileText className="size-4" aria-hidden="true" />
-          </div>
+          <FileText className="size-5 shrink-0 text-muted-foreground" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-semibold text-card-foreground">
               {filename}
@@ -87,12 +88,10 @@ export function Upload16({
           <button
             type="button"
             className={cn(
-              "inline-flex shrink-0 items-center gap-1 rounded-md px-2.5 py-1 text-xs font-semibold hover:opacity-90",
+              "inline-flex shrink-0 items-center rounded-md px-2.5 py-1 text-xs font-semibold hover:opacity-90",
               buttonClasses[tone]
             )}
-            aria-label="Resume"
           >
-            <Play className="size-3" aria-hidden="true" />
             Resume
           </button>
         </div>

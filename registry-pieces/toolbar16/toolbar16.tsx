@@ -10,22 +10,25 @@ interface Filter {
 interface Toolbar16Props {
   filters?: Filter[];
   active?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const toolbar16Demo: Toolbar16Props = {
   filters: [
-    { label: "All", count: 42 },
-    { label: "Active", count: 18 },
-    { label: "Completed", count: 22 },
-    { label: "Archived", count: 2 },
+    { label: "All" },
+    { label: "Active" },
+    { label: "Completed" },
+    { label: "Archived" },
   ],
   active: "Active",
+  bordered: false,
 };
 
 export function Toolbar16({
   filters = [],
   active,
+  bordered = false,
   className,
 }: Toolbar16Props) {
   return (
@@ -35,7 +38,7 @@ export function Toolbar16({
         className
       )}
     >
-      <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-1 rounded-full bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {filters.map((f) => {
           const isActive = f.label === active;
           return (
@@ -54,7 +57,7 @@ export function Toolbar16({
               {typeof f.count === "number" && (
                 <span
                   className={cn(
-                    "font-mono tabular-nums",
+                    "tabular-nums",
                     isActive
                       ? "text-background/70"
                       : "text-muted-foreground/70"

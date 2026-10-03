@@ -19,11 +19,7 @@ interface Chat5Props {
 
 export const chat5Demo: Chat5Props = {
   message: "Shipped the v2 onboarding this morning 🚀",
-  reactions: [
-    { emoji: "🔥", count: 4, mine: true },
-    { emoji: "🎉", count: 2 },
-    { emoji: "❤️", count: 1 },
-  ],
+  reactions: [{ emoji: "🔥", count: 4, mine: true }],
   role: "received",
 };
 

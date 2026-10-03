@@ -20,20 +20,19 @@ interface Notification2Props {
 
 const severityConfig: Record<
   Severity,
-  { icon: typeof Info; bubble: string }
+  { icon: typeof Info; color: string }
 > = {
   error: {
     icon: TriangleAlert,
-    bubble: "bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400",
+    color: "text-rose-600 dark:text-rose-400",
   },
   warning: {
     icon: AlertTriangle,
-    bubble:
-      "bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400",
+    color: "text-amber-600 dark:text-amber-400",
   },
   info: {
     icon: Info,
-    bubble: "bg-sky-100 text-sky-600 dark:bg-sky-950 dark:text-sky-400",
+    color: "text-sky-600 dark:text-sky-400",
   },
 };
 
@@ -55,7 +54,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const notification2Demo: Notification2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Your card was declined",
   description: "Update the payment method on file to retry the charge.",
@@ -69,7 +68,7 @@ export function Notification2({
   severity = "info",
   dismissible = false,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Notification2Props) {
@@ -86,14 +85,10 @@ export function Notification2({
       )}
     >
       <div className={cn("flex w-full max-w-72 items-start gap-3 rounded-lg p-3 shadow-lg", surfaceTone, bordered && "border border-current/15")}>
-        <div
-          className={cn(
-            "flex size-8 shrink-0 items-center justify-center rounded-full",
-            config.bubble
-          )}
-        >
-          <Icon className="size-4" aria-hidden="true" />
-        </div>
+        <Icon
+          className={cn("mt-0.5 size-5 shrink-0", config.color)}
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           {title && (
             <span className="text-sm font-semibold">

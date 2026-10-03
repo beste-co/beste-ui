@@ -20,6 +20,7 @@ interface Health14Props {
   note?: string;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -37,11 +38,10 @@ const barClasses: Record<Tone, string> = {
 export const health14Demo: Health14Props = {
   bedtime: "23:15",
   wake: "06:45",
-  target: "8 hours",
   consistency: 92,
-  note: "6 days on schedule this week",
   label: "Sleep schedule",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health14({
@@ -51,7 +51,8 @@ export function Health14({
   consistency = 0,
   note,
   label = "Sleep schedule",
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health14Props) {
   const pct = Math.max(0, Math.min(100, consistency));
@@ -63,9 +64,9 @@ export function Health14({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
           {target && (
@@ -77,7 +78,7 @@ export function Health14({
         <div className="flex items-center justify-between gap-3">
           <div className="flex flex-col">
             <span className="text-xs text-muted-foreground">Bedtime</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {bedtime}
             </span>
           </div>
@@ -87,7 +88,7 @@ export function Health14({
           />
           <div className="flex flex-col items-end">
             <span className="text-xs text-muted-foreground">Wake</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {wake}
             </span>
           </div>

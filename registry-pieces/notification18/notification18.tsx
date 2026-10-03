@@ -9,52 +9,51 @@ interface Activity {
   icon?: LucideIcon;
   title: string;
   meta: string;
-  time: string;
+  time?: string;
   tone?: Tone;
 }
 
 interface Notification18Props {
   title?: string;
   items?: Activity[];
+  bordered?: boolean;
   className?: string;
 }
 
-const chipStyles: Record<Tone, string> = {
-  primary: "bg-primary/10 text-primary",
-  emerald: "bg-emerald-500/10 text-emerald-600",
-  amber: "bg-amber-500/10 text-amber-600",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  emerald: "text-emerald-600",
+  amber: "text-amber-600",
 };
 
 export const notification18Demo: Notification18Props = {
-  title: "Activity",
   items: [
     {
       icon: CalendarCheck,
-      title: "Rowan Blake confirmed",
-      meta: "Intake · 09:00",
-      time: "2m",
+      title: "Nils Frahm confirmed",
+      meta: "Intake at 09:00",
       tone: "emerald",
     },
     {
       icon: CreditCard,
-      title: "Invoice #4821 paid",
-      meta: "$1,240 · Card",
-      time: "18m",
+      title: "Invoice paid",
+      meta: "$1,240 by card",
       tone: "primary",
     },
     {
       icon: Bell,
       title: "Renewal due soon",
       meta: "3 members this week",
-      time: "1h",
       tone: "amber",
     },
   ],
+  bordered: false,
 };
 
 export function Notification18({
   title,
   items = [],
+  bordered = false,
   className,
 }: Notification18Props) {
   return (
@@ -64,7 +63,7 @@ export function Notification18({
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-md border border-border bg-card p-4 shadow-xl">
+      <div className={cn("w-full max-w-80 rounded-md bg-card p-4 shadow-xl", bordered && "border border-border")}>
         {title && (
           <p className="mb-3 px-1 text-sm font-semibold text-card-foreground">
             {title}
@@ -78,15 +77,13 @@ export function Notification18({
                 key={index}
                 className="flex items-center gap-3 rounded-md px-1 py-2"
               >
-                <span
+                <Icon
                   className={cn(
-                    "flex size-9 shrink-0 items-center justify-center rounded-md",
-                    chipStyles[item.tone ?? "primary"]
+                    "size-5 shrink-0",
+                    iconClasses[item.tone ?? "primary"]
                   )}
                   aria-hidden="true"
-                >
-                  <Icon className="size-4" />
-                </span>
+                />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-card-foreground">
                     {item.title}
@@ -95,9 +92,11 @@ export function Notification18({
                     {item.meta}
                   </p>
                 </div>
-                <span className="shrink-0 text-xs text-muted-foreground">
-                  {item.time}
-                </span>
+                {item.time && (
+                  <span className="shrink-0 text-xs text-muted-foreground">
+                    {item.time}
+                  </span>
+                )}
               </div>
             );
           })}

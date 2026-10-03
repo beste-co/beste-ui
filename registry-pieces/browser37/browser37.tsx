@@ -10,6 +10,7 @@ interface Browser37Props {
   body?: string;
   loadMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const browser37Demo: Browser37Props = {
   url: "beste.co/changelog",
   heading: "Shipped this week",
   body: "Faster previews, a rebuilt search index, and twenty new pieces for your media slots.",
+  bordered: false,
 };
 
 export function Browser37({
@@ -25,6 +27,7 @@ export function Browser37({
   body = "",
   loadMs = 1800,
   holdMs = 2600,
+  bordered = false,
   className,
 }: Browser37Props) {
   const [ratio, setRatio] = useState(0);
@@ -63,7 +66,7 @@ export function Browser37({
 @keyframes browser37-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 `}</style>
 
-      <div className="w-full max-w-80 overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-xl bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border p-2.5">
           <span className="flex gap-1" aria-hidden="true">
             <span className="size-2.5 rounded-full bg-muted" />

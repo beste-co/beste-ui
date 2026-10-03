@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -34,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const card1Demo: Card1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Monthly revenue",
   value: "$12,459",
@@ -48,12 +47,11 @@ export function Card1({
   trend,
   direction = "up",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Card1Props) {
   const isUp = direction === "up";
-  const TrendIcon = isUp ? TrendingUp : TrendingDown;
   const trendColor = isUp
     ? "text-emerald-600 dark:text-emerald-400"
     : "text-rose-600 dark:text-rose-400";
@@ -69,7 +67,7 @@ export function Card1({
     >
       <div className={cn("flex w-full max-w-52 flex-col gap-1 rounded-lg px-4 py-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {label && (
-          <span className="text-xs font-medium uppercase tracking-wide text-current/60">
+          <span className="text-xs font-medium text-current/60">
             {label}
           </span>
         )}
@@ -81,12 +79,8 @@ export function Card1({
           )}
           {typeof trend === "number" && (
             <span
-              className={cn(
-                "inline-flex items-center gap-0.5 text-xs font-semibold",
-                trendColor
-              )}
+              className={cn("text-xs font-semibold tabular-nums", trendColor)}
             >
-              <TrendIcon className="size-3" aria-hidden="true" />
               {isUp ? "+" : "−"}
               {Math.abs(trend)}%
             </span>

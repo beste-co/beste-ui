@@ -13,6 +13,7 @@ interface EnvEntry {
 
 interface Code12Props {
   entries?: EnvEntry[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,14 +22,12 @@ export const code12Demo: Code12Props = {
     { kind: "comment", text: "# Database" },
     { kind: "entry", key: "DATABASE_URL", value: "postgres://localhost/beste" },
     { kind: "entry", key: "REDIS_URL", value: "redis://localhost:6379" },
-    { kind: "blank" },
-    { kind: "comment", text: "# API" },
-    { kind: "entry", key: "API_KEY", value: "sk_test_EXAMPLE_0000" },
     { kind: "entry", key: "PORT", value: "3000" },
   ],
+  bordered: false,
 };
 
-export function Code12({ entries = [], className }: Code12Props) {
+export function Code12({ entries = [], bordered = false, className }: Code12Props) {
   return (
     <div
       className={cn(
@@ -36,7 +35,7 @@ export function Code12({ entries = [], className }: Code12Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-lg border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <div className={cn("w-full max-w-80 rounded-lg bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {entries.map((entry, i) => {
           if (entry.kind === "blank") {
             return (

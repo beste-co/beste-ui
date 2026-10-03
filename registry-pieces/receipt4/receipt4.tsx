@@ -14,18 +14,19 @@ interface Receipt4Props {
   items?: LineItem[];
   taxRate?: number;
   printMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const receipt4Demo: Receipt4Props = {
   store: "Beste Records",
-  reference: "Order 4821",
   items: [
     { label: "Blue Note Vinyl", amount: 34 },
     { label: "Tote Bag", amount: 18 },
     { label: "Espresso", amount: 4.5 },
   ],
   taxRate: 0.08,
+  bordered: false,
 };
 
 function money(value: number): string {
@@ -37,10 +38,11 @@ function money(value: number): string {
 
 export function Receipt4({
   store = "Store",
-  reference = "Receipt",
+  reference,
   items = [],
   taxRate = 0,
   printMs = 1400,
+  bordered = false,
   className,
 }: Receipt4Props) {
   const [printed, setPrinted] = useState(false);
@@ -72,14 +74,16 @@ export function Receipt4({
             className="motion-reduce:animate-none"
             style={{ animation: `receipt4-print ${printMs}ms ease-out both` }}
           >
-            <div className="border border-b-0 border-border bg-card px-4 pb-1 pt-4 shadow-md">
+            <div className={cn("border-b-0 bg-card px-4 pb-1 pt-4 shadow-md", bordered && "border border-border")}>
               <div className="flex flex-col items-center gap-0.5">
                 <span className="text-sm font-semibold text-card-foreground">
                   {store}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">
-                  {reference}
-                </span>
+                {reference && (
+                  <span className="text-xs text-muted-foreground">
+                    {reference}
+                  </span>
+                )}
               </div>
 
               <div className="mt-3 flex flex-col gap-1.5 border-t border-dashed border-border pt-3">
@@ -141,7 +145,7 @@ export function Receipt4({
               {Array.from({ length: 24 }).map((_, i) => (
                 <span
                   key={i}
-                  className="size-2 shrink-0 -translate-y-1 rotate-45 border border-border bg-card"
+                  className={cn("size-2 shrink-0 -translate-y-1 rotate-45 bg-card", bordered && "border border-border")}
                 />
               ))}
             </div>

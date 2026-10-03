@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "chat33",
   title: "Team Thread Card",
   description:
-    "A short message thread with a header contact, an online marker, and alternating incoming and outgoing bubbles.",
+    "A short message thread with a header contact and alternating incoming and outgoing bubbles.",
   category: "Chat",
 };

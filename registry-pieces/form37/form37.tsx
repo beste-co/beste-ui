@@ -21,6 +21,7 @@ interface Form37Props {
   loadingLabel?: string;
   doneLabel?: string;
   charMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,6 +35,7 @@ export const form37Demo: Form37Props = {
   submitLabel: "Continue",
   loadingLabel: "Setting things up",
   doneLabel: "You're in",
+  bordered: false,
 };
 
 export function Form37({
@@ -43,6 +45,7 @@ export function Form37({
   loadingLabel = "Submitting",
   doneLabel = "Done",
   charMs = 70,
+  bordered = false,
   className,
 }: Form37Props) {
   const baseId = useId();
@@ -80,7 +83,7 @@ export function Form37({
       )}
     >
       <style>{`@keyframes form37-pop { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }`}</style>
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         {heading && (
           <p className="text-sm font-semibold text-card-foreground">{heading}</p>
         )}

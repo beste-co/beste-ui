@@ -10,6 +10,7 @@ interface Ai23Step {
 
 interface Ai23Props {
   steps?: Ai23Step[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,9 +21,10 @@ export const ai23Demo: Ai23Props = {
     { label: "Draft response", status: "active" },
     { label: "Format citations", status: "pending" },
   ],
+  bordered: false,
 };
 
-export function Ai23({ steps = [], className }: Ai23Props) {
+export function Ai23({ steps = [], bordered = false, className }: Ai23Props) {
   return (
     <div
       className={cn(
@@ -30,7 +32,7 @@ export function Ai23({ steps = [], className }: Ai23Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {steps.map((s, i) => (
           <div key={i} className="flex items-center gap-2">
             <span

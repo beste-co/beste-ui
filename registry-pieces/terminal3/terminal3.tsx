@@ -9,15 +9,16 @@ interface Terminal3Props {
   command?: string;
   output?: string[];
   success?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const terminal3Demo: Terminal3Props = {
-  title: "deploy",
   prompt: "$",
   command: "beste deploy --prod",
   output: ["Building application…", "Uploading assets…"],
   success: "Deployed in 4.2s",
+  bordered: false,
 };
 
 export function Terminal3({
@@ -26,6 +27,7 @@ export function Terminal3({
   command,
   output = [],
   success,
+  bordered = false,
   className,
 }: Terminal3Props) {
   return (
@@ -35,7 +37,7 @@ export function Terminal3({
         className
       )}
     >
-      <div className="w-full max-w-72 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 font-mono text-xs shadow-sm">
+      <div className={cn("w-full max-w-72 overflow-hidden rounded-lg bg-zinc-950 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         <div className="flex items-center gap-1.5 border-b border-zinc-800 px-3 py-2">
           <span className="size-2.5 rounded-full bg-red-500" aria-hidden="true" />
           <span

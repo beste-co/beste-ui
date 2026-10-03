@@ -15,18 +15,19 @@ interface Code15Props {
   tests?: TestCase[];
   runMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const code15Demo: Code15Props = {
   filename: "checkout.test.ts",
   tests: [
-    { name: "renders cart summary", duration: 18 },
-    { name: "applies coupon code", duration: 42 },
-    { name: "rejects expired coupon", duration: 31 },
-    { name: "calculates shipping", duration: 124, fails: true },
-    { name: "charges saved card", duration: 87 },
+    { name: "renders cart summary" },
+    { name: "applies coupon code" },
+    { name: "calculates shipping", fails: true },
+    { name: "charges saved card" },
   ],
+  bordered: false,
 };
 
 export function Code15({
@@ -34,6 +35,7 @@ export function Code15({
   tests = [],
   runMs = 650,
   holdMs = 2600,
+  bordered = false,
   className,
 }: Code15Props) {
   const [done, setDone] = useState(0);
@@ -50,8 +52,7 @@ export function Code15({
   }, [done, total, runMs, holdMs]);
 
   const finished = total > 0 && done >= total;
-  const passed = tests.slice(0, done).filter((t) => !t.fails).length;
-  const failed = done - passed;
+  const failed = tests.slice(0, done).filter((t) => t.fails).length;
 
   return (
     <div
@@ -61,7 +62,7 @@ export function Code15({
       )}
     >
       <style>{`@keyframes code15-pop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="relative w-full max-w-80 overflow-hidden rounded-md border border-border bg-card shadow-xl">
+      <div className={cn("relative w-full max-w-80 overflow-hidden rounded-md bg-card shadow-xl", bordered && "border border-border")}>
         <div className="absolute inset-x-0 top-0 h-0.5 bg-muted" aria-hidden="true">
           <span
             className={cn(
@@ -79,19 +80,12 @@ export function Code15({
           <span className="font-mono text-xs text-muted-foreground">{filename}</span>
           <span
             className={cn(
-              "inline-flex items-center gap-1.5 text-xs font-medium",
+              "text-xs font-medium",
               !finished && "text-muted-foreground",
               finished && (failed ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400")
             )}
           >
-            {finished ? (
-              failed ? "Failed" : "Passed"
-            ) : (
-              <>
-                <Loader2 className="size-3 animate-spin motion-reduce:animate-none" aria-hidden="true" />
-                Running
-              </>
-            )}
+            {finished ? (failed ? "Failed" : "Passed") : "Running"}
           </span>
         </div>
 
@@ -115,7 +109,7 @@ export function Code15({
                   ) : isRunning ? (
                     <Loader2 className="size-4 animate-spin text-muted-foreground motion-reduce:animate-none" />
                   ) : (
-                    <span className="size-3.5 rounded-full border border-border" />
+                    <span className={cn("size-3.5 rounded-full", bordered ? "border border-border" : "bg-muted")} />
                   )}
                 </span>
                 <span
@@ -128,28 +122,15 @@ export function Code15({
                 >
                   {test.name}
                 </span>
-                <span className="w-12 shrink-0 text-right text-xs tabular-nums text-muted-foreground">
-                  {isDone && test.duration !== undefined ? `${test.duration} ms` : ""}
-                </span>
+                {test.duration !== undefined && (
+                  <span className="w-12 shrink-0 text-right text-xs tabular-nums text-muted-foreground">
+                    {isDone ? `${test.duration} ms` : ""}
+                  </span>
+                )}
               </li>
             );
           })}
         </ul>
-
-        <div className="flex items-center justify-between border-t border-border px-3 py-2 text-xs tabular-nums">
-          <span className="text-card-foreground">
-            <span className={passed ? "text-emerald-600 dark:text-emerald-400" : undefined}>
-              {passed} passed
-            </span>
-            <span className="text-muted-foreground">, </span>
-            <span className={failed ? "text-rose-600 dark:text-rose-400" : undefined}>
-              {failed} failed
-            </span>
-          </span>
-          <span className="text-muted-foreground">
-            {done} of {total}
-          </span>
-        </div>
       </div>
     </div>
   );

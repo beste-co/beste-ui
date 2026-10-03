@@ -9,23 +9,24 @@ interface Education19Props {
   raisedHands?: number;
   micOn?: boolean;
   durationSoFar?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const education19Demo: Education19Props = {
-  title: "Live class · Typescript generics",
+  title: "TypeScript generics",
   attendees: 142,
-  raisedHands: 3,
   micOn: false,
-  durationSoFar: "42:18 into class",
+  bordered: false,
 };
 
 export function Education19({
   title,
   attendees = 0,
-  raisedHands = 0,
+  raisedHands,
   micOn = false,
   durationSoFar,
+  bordered = false,
   className,
 }: Education19Props) {
   return (
@@ -35,7 +36,7 @@ export function Education19({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-foreground p-3 text-background shadow-md">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-foreground p-3 text-background shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1 rounded-full bg-rose-500 px-2 py-0.5 text-xs font-semibold">
             <span
@@ -45,7 +46,7 @@ export function Education19({
             Live
           </span>
           {durationSoFar && (
-            <span className="text-xs font-mono text-background/70">
+            <span className="text-xs text-background/70">
               {durationSoFar}
             </span>
           )}
@@ -54,15 +55,17 @@ export function Education19({
           <span className="text-sm font-semibold">{title}</span>
         )}
         <div className="flex items-center justify-between rounded-lg bg-background/10 p-2 text-xs">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 tabular-nums">
             <span className="inline-flex items-center gap-1">
               <Users className="size-3.5" aria-hidden="true" />
               {attendees}
             </span>
-            <span className="inline-flex items-center gap-1 text-amber-300">
-              <Hand className="size-3.5" aria-hidden="true" />
-              {raisedHands}
-            </span>
+            {raisedHands != null && (
+              <span className="inline-flex items-center gap-1 text-amber-300">
+                <Hand className="size-3.5" aria-hidden="true" />
+                {raisedHands}
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-1.5">
             <button

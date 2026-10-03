@@ -35,14 +35,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation12Demo: Automation12Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   status: "success",
   runLabel: "Test run",
   statusCode: "200 OK",
-  duration: "142 ms",
   body: `{
-  "id": "evt_8a2k4f",
   "type": "payment.succeeded",
   "amount": 4200,
   "currency": "usd"
@@ -56,7 +54,7 @@ export function Automation12({
   duration,
   body = "{}",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation12Props) {
@@ -90,7 +88,7 @@ export function Automation12({
             </span>
             <span
               className={cn(
-                "font-mono text-xs font-semibold",
+                "text-xs font-semibold",
                 success
                   ? "text-emerald-600 dark:text-emerald-400"
                   : "text-rose-600 dark:text-rose-400"
@@ -100,12 +98,12 @@ export function Automation12({
             </span>
           </div>
           {duration && (
-            <span className="font-mono text-xs text-current/60">
+            <span className="text-xs tabular-nums text-current/60">
               {duration}
             </span>
           )}
         </div>
-        <pre className="max-h-28 overflow-hidden whitespace-pre bg-current/5 px-3 py-2 font-mono text-xs leading-relaxed">
+        <pre className="max-h-28 overflow-hidden whitespace-pre bg-current/5 px-3 py-2 text-xs leading-relaxed">
           {body}
         </pre>
       </div>

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface Code2Props {
   title?: string;
   lines?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,9 +18,10 @@ export const code2Demo: Code2Props = {
     "",
     "console.log(greet(\"Beste\"));",
   ],
+  bordered: false,
 };
 
-export function Code2({ title, lines = [], className }: Code2Props) {
+export function Code2({ title, lines = [], bordered = false, className }: Code2Props) {
   return (
     <div
       className={cn(
@@ -27,7 +29,7 @@ export function Code2({ title, lines = [], className }: Code2Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-lg bg-zinc-950 shadow-lg", bordered && "border border-zinc-800")}>
         {title && (
           <div className="flex items-center justify-between border-b border-zinc-800 px-3 py-1.5">
             <div className="flex items-center gap-1.5" aria-hidden="true">

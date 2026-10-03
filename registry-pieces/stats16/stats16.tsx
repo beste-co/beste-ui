@@ -38,13 +38,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats16Demo: Stats16Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Visits this month",
   value: "1,284",
   delta: "12.4%",
   direction: "up",
-  caption: "vs. 1,142 last month",
   bars: [38, 52, 44, 61, 55, 72, 68, 86],
 };
 
@@ -56,7 +55,7 @@ export function Stats16({
   caption,
   bars = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Stats16Props) {

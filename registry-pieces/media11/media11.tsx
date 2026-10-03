@@ -17,6 +17,7 @@ interface Media11Props {
   title?: string;
   viewers?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -32,9 +33,9 @@ const toneClasses: Record<Tone, string> = {
 export const media11Demo: Media11Props = {
   src: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=400&fit=crop",
   alt: "Live event scene",
-  title: "Launch Week · Day 3",
-  viewers: "1.2K",
+  title: "Launch Week",
   tone: "midnight",
+  bordered: false,
 };
 
 export function Media11({
@@ -43,6 +44,7 @@ export function Media11({
   title,
   viewers,
   tone = "midnight",
+  bordered = false,
   className,
 }: Media11Props) {
   return (
@@ -54,7 +56,8 @@ export function Media11({
     >
       <div
         className={cn(
-          "relative aspect-video w-full max-w-64 overflow-hidden rounded-lg border border-border shadow-md",
+          "relative aspect-video w-full max-w-64 overflow-hidden rounded-lg shadow-md",
+          bordered && "border border-border",
           !src && toneClasses[tone]
         )}
       >
@@ -65,7 +68,7 @@ export function Media11({
             className="absolute inset-0 size-full object-cover"
           />
         )}
-        <span className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-md bg-rose-500 px-1.5 py-0.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm">
+        <span className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-md bg-rose-500 px-1.5 py-0.5 text-xs font-bold text-white shadow-sm">
           <span
             className="size-1.5 animate-pulse rounded-full bg-white"
             aria-hidden="true"
@@ -73,7 +76,7 @@ export function Media11({
           Live
         </span>
         {viewers && (
-          <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-md bg-black/70 px-1.5 py-0.5 text-xs font-medium text-white">
+          <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-md bg-black/70 px-1.5 py-0.5 text-xs font-medium tabular-nums text-white">
             <Eye className="size-3" aria-hidden="true" />
             {viewers}
           </span>

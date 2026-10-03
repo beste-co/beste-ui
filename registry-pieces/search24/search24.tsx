@@ -7,7 +7,7 @@ type Surface = "card" | "glass";
 
 interface ResultRow {
   title: string;
-  meta: string;
+  meta?: string;
   kind: string;
 }
 
@@ -40,19 +40,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const search24Demo: Search24Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  query: "rowan",
-  groupLabel: "Members",
+  query: "hania",
   results: [
-    { title: "Rowan Blake", meta: "Active · Clinic 2", kind: "Member" },
-    { title: "Rowan Blake · Intake notes", meta: "Updated 3 days ago", kind: "Document" },
-    { title: "Invoice #4821", meta: "Rowan Blake · Paid", kind: "Billing" },
+    { title: "Hania Rani", kind: "Member" },
+    { title: "Intake notes for Hania Rani", kind: "Document" },
+    { title: "Invoice for Hania Rani", kind: "Billing" },
   ],
-  footer: "3 of 11 matches shown",
 };
 
-export function Search24({ query, groupLabel, results = [], footer, surface = "card", bordered = true, inverted = false, className }: Search24Props) {
+export function Search24({ query, groupLabel, results = [], footer, surface = "card", bordered = false, inverted = false, className }: Search24Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -71,7 +69,7 @@ export function Search24({ query, groupLabel, results = [], footer, surface = "c
         </div>
 
         {groupLabel && (
-          <p className="px-4 pt-3 font-mono text-xs uppercase tracking-widest text-current/60">
+          <p className="px-4 pt-3 text-xs text-current/60">
             {groupLabel}
           </p>
         )}
@@ -87,9 +85,11 @@ export function Search24({ query, groupLabel, results = [], footer, surface = "c
             >
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{result.title}</p>
-                <p className="truncate text-xs text-current/60">{result.meta}</p>
+                {result.meta && (
+                  <p className="truncate text-xs text-current/60">{result.meta}</p>
+                )}
               </div>
-              <span className="shrink-0 rounded-full border border-current/15 px-2 py-0.5 text-xs text-current/60">
+              <span className={cn("shrink-0 rounded-full px-2 py-0.5 text-xs text-current/60", bordered ? "border border-current/15" : "bg-current/10")}>
                 {result.kind}
               </span>
             </div>

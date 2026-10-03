@@ -24,35 +24,37 @@ interface Health20Props {
   heading?: string;
   reminders?: Reminder[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 export const health20Demo: Health20Props = {
-  heading: "Medication · Today",
+  heading: "Medication",
   reminders: [
     { time: "08:00", name: "Metformin", dose: "500 mg", taken: true },
     { time: "13:00", name: "Vitamin D", dose: "1000 IU", taken: true },
     { time: "19:30", name: "Lisinopril", dose: "10 mg" },
-    { time: "22:00", name: "Atorvastatin", dose: "20 mg" },
   ],
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health20({
   heading,
   reminders = [],
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health20Props) {
   return (
@@ -62,18 +64,14 @@ export function Health20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-7 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Bell className="size-3.5" aria-hidden="true" />
-          </div>
+          <Bell
+            className={cn("size-4 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           {heading && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {heading}
             </span>
           )}
@@ -87,7 +85,7 @@ export function Health20({
                 r.taken && "opacity-70"
               )}
             >
-              <span className="w-10 shrink-0 font-mono text-xs text-muted-foreground">
+              <span className="w-10 shrink-0 text-xs tabular-nums text-muted-foreground">
                 {r.time}
               </span>
               <div className="flex min-w-0 flex-1 flex-col">

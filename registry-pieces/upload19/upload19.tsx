@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, ListChecks, Loader2 } from "lucide-react";
+import { ListChecks } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -18,16 +18,17 @@ interface Upload19Props {
   overallPercent?: number;
   speed?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary/15 text-primary",
-  foreground: "bg-foreground/15 text-foreground",
-  sky: "bg-sky-500/15 text-sky-500",
-  emerald: "bg-emerald-500/15 text-emerald-500",
-  violet: "bg-violet-500/15 text-violet-500",
-  amber: "bg-amber-500/15 text-amber-500",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -53,8 +54,8 @@ export const upload19Demo: Upload19Props = {
   uploading: 3,
   done: 18,
   overallPercent: 74,
-  speed: "9.2 MB/s overall",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Upload19({
@@ -63,7 +64,8 @@ export function Upload19({
   done = 0,
   overallPercent = 0,
   speed,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Upload19Props) {
   const pct = Math.max(0, Math.min(100, overallPercent));
@@ -76,16 +78,12 @@ export function Upload19({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              tileClasses[tone]
-            )}
-          >
-            <ListChecks className="size-4" aria-hidden="true" />
-          </div>
+          <ListChecks
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-semibold text-card-foreground">
               Uploading {total} files
@@ -94,7 +92,7 @@ export function Upload19({
               <span className="text-xs text-muted-foreground">{speed}</span>
             )}
           </div>
-          <span className="shrink-0 font-mono text-sm font-semibold text-card-foreground">
+          <span className="shrink-0 text-sm font-semibold tabular-nums text-card-foreground">
             {pct}%
           </span>
         </div>
@@ -107,27 +105,15 @@ export function Upload19({
             style={{ width: `${pct}%` }}
           />
         </div>
-        <div className="grid grid-cols-3 gap-1 rounded-md bg-muted/60 p-2 text-center text-xs">
+        <div className="grid grid-cols-3 gap-1 rounded-md bg-muted/60 p-2 text-center text-xs tabular-nums">
           <div className="flex flex-col">
-            <span className="inline-flex items-center justify-center gap-1 text-emerald-600 dark:text-emerald-400">
-              <CheckCircle2 className="size-3" aria-hidden="true" />
+            <span className="text-emerald-600 dark:text-emerald-400">
               {done}
             </span>
             <span className="text-muted-foreground">Done</span>
           </div>
           <div className="flex flex-col">
-            <span
-              className={cn(
-                "inline-flex items-center justify-center gap-1",
-                spinnerClasses[tone]
-              )}
-            >
-              <Loader2
-                className="size-3 animate-spin"
-                aria-hidden="true"
-              />
-              {uploading}
-            </span>
+            <span className={spinnerClasses[tone]}>{uploading}</span>
             <span className="text-muted-foreground">Uploading</span>
           </div>
           <div className="flex flex-col">

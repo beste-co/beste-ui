@@ -15,6 +15,7 @@ interface Weather4Props {
   condition?: Condition;
   conditionLabel?: string;
   unit?: "C" | "F";
+  bordered?: boolean;
   className?: string;
 }
 
@@ -45,11 +46,11 @@ const conditionDefaultLabel: Record<Condition, string> = {
 export const weather4Demo: Weather4Props = {
   city: "Istanbul",
   temp: 22,
-  feels: 24,
   high: 25,
   low: 14,
   condition: "sunny",
   unit: "C",
+  bordered: false,
 };
 
 export function Weather4({
@@ -61,6 +62,7 @@ export function Weather4({
   condition = "sunny",
   conditionLabel,
   unit = "C",
+  bordered = false,
   className,
 }: Weather4Props) {
   const Icon = iconMap[condition];
@@ -72,10 +74,10 @@ export function Weather4({
         className
       )}
     >
-      <div className="w-full max-w-64 rounded-xl border border-border bg-card px-4 py-3 shadow-sm">
+      <div className={cn("w-full max-w-64 rounded-xl bg-card px-4 py-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start justify-between gap-2">
           {city && (
-            <span className="truncate text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <span className="truncate text-xs font-semibold text-muted-foreground">
               {city}
             </span>
           )}

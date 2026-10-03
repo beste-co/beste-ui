@@ -20,18 +20,19 @@ interface Fitness4Props {
   weeklyGoal?: number;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-foreground text-background",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const dotClasses: Record<Tone, string> = {
@@ -50,19 +51,19 @@ const dayLabels = ["M", "T", "W", "T", "F", "S", "S"];
 export const fitness4Demo: Fitness4Props = {
   streak: 14,
   week: [true, true, true, false, true, true, false],
-  monthVisits: 18,
-  weeklyGoal: 5,
   label: "Gym streak",
   tone: "neutral",
+  bordered: false,
 };
 
 export function Fitness4({
   streak = 0,
   week = [],
-  monthVisits = 0,
-  weeklyGoal = 0,
+  monthVisits,
+  weeklyGoal,
   label = "Gym streak",
   tone = "neutral",
+  bordered = false,
   className,
 }: Fitness4Props) {
   const thisWeek = week.filter(Boolean).length;
@@ -74,21 +75,17 @@ export function Fitness4({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-9 items-center justify-center rounded-xl shadow-md",
-              iconClasses[tone]
-            )}
-          >
-            <Flame className="size-4" aria-hidden="true" />
-          </div>
+          <Flame
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {label}
             </span>
-            <span className="font-mono text-xl font-bold text-card-foreground">
+            <span className="text-xl font-bold tabular-nums text-card-foreground">
               {streak} days
             </span>
           </div>
@@ -113,12 +110,18 @@ export function Fitness4({
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>
-            {thisWeek} of {weeklyGoal} this week
-          </span>
-          <span>{monthVisits} visits this month</span>
-        </div>
+        {(weeklyGoal !== undefined || monthVisits !== undefined) && (
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            {weeklyGoal !== undefined && (
+              <span>
+                {thisWeek} of {weeklyGoal} this week
+              </span>
+            )}
+            {monthVisits !== undefined && (
+              <span>{monthVisits} visits this month</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

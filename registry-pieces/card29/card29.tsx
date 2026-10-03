@@ -8,14 +8,14 @@ interface Card29Props {
   initials?: string;
   stats?: { label: string; value: string }[];
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const card29Demo: Card29Props = {
-  name: "Noor Ahmed",
-  handle: "noor.codes",
-  bio: "Writing small notes about large systems.",
-  initials: "NA",
+  name: "Kaitlyn Aurelia Smith",
+  handle: "kaitlyn.smith",
+  initials: "KS",
   stats: [
     { label: "Posts", value: "142" },
     { label: "Following", value: "318" },
@@ -23,6 +23,7 @@ export const card29Demo: Card29Props = {
   ],
   image:
     "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop",
+  bordered: false,
 };
 
 export function Card29({
@@ -32,6 +33,7 @@ export function Card29({
   initials = "??",
   stats = [],
   image,
+  bordered = false,
   className,
 }: Card29Props) {
   return (
@@ -41,7 +43,7 @@ export function Card29({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-md">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl bg-card p-3 shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <div className="relative flex size-9 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-xs font-bold text-white">
             {image ? (
@@ -73,7 +75,7 @@ export function Card29({
         <div className="grid grid-cols-3 gap-1 border-t border-border pt-2 text-center">
           {stats.map((s, idx) => (
             <div key={idx} className="flex flex-col">
-              <span className="font-mono text-sm font-semibold text-card-foreground">
+              <span className="text-sm font-semibold tabular-nums text-card-foreground">
                 {s.value}
               </span>
               <span className="text-xs text-muted-foreground">{s.label}</span>

@@ -35,10 +35,8 @@ const cardClasses: Record<Tone, string> = {
 export const event1Demo: Event1Props = {
   eventName: "Midnight Tape · Live",
   date: "Sat, Jun 14 · 21:00",
-  venue: "Zorlu PSM · Istanbul",
   section: "GA Floor",
   seat: "A · 042",
-  ticketCode: "MT-7Z91-X2Q",
   sectionLabel: "Section",
   seatLabel: "Seat",
   tone: "neutral",
@@ -89,25 +87,33 @@ export function Event1({
           {venue && (
             <span className="block text-xs opacity-70">{venue}</span>
           )}
-          <div className="mt-2 flex items-center gap-3 text-xs">
-            <div className="flex flex-col">
-              <span className="opacity-60">{sectionLabel}</span>
-              <span className="font-mono font-semibold">{section}</span>
+          {(section || seat) && (
+            <div className="mt-2 flex items-center gap-3 text-xs">
+              {section && (
+                <div className="flex flex-col">
+                  <span className="opacity-60">{sectionLabel}</span>
+                  <span className="font-semibold">{section}</span>
+                </div>
+              )}
+              {seat && (
+                <div className="flex flex-col">
+                  <span className="opacity-60">{seatLabel}</span>
+                  <span className="font-semibold">{seat}</span>
+                </div>
+              )}
             </div>
-            <div className="flex flex-col">
-              <span className="opacity-60">{seatLabel}</span>
-              <span className="font-mono font-semibold">{seat}</span>
-            </div>
+          )}
+        </div>
+        {ticketCode && (
+          <div className="flex items-center border-l border-dashed border-current/30 px-3">
+            <span
+              className="text-xs font-semibold"
+              style={{ writingMode: "vertical-rl" }}
+            >
+              {ticketCode}
+            </span>
           </div>
-        </div>
-        <div className="flex items-center border-l border-dashed border-current/30 px-3">
-          <span
-            className="font-mono text-xs font-semibold uppercase tracking-widest"
-            style={{ writingMode: "vertical-rl" }}
-          >
-            {ticketCode}
-          </span>
-        </div>
+        )}
       </div>
     </div>
   );

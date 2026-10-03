@@ -12,14 +12,13 @@ interface GutterLine {
 
 interface Editor30Props {
   lines?: GutterLine[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor30Demo: Editor30Props = {
   lines: [
-    { line: 10, code: "import { greet } from './greet';", kind: "unchanged" },
-    { line: 11, code: "", kind: "unchanged" },
-    { line: 12, code: "const user = { name: 'Ayşe' };", kind: "added" },
+    { line: 12, code: "const user = { name: 'Nils' };", kind: "added" },
     {
       line: 13,
       code: "const msg = greet(user.name);",
@@ -28,6 +27,7 @@ export const editor30Demo: Editor30Props = {
     { line: 14, code: "console.log(msg);", kind: "unchanged" },
     { line: 15, code: "", kind: "removed" },
   ],
+  bordered: false,
 };
 
 const kindClass: Record<ChangeKind, string> = {
@@ -37,7 +37,7 @@ const kindClass: Record<ChangeKind, string> = {
   unchanged: "bg-transparent",
 };
 
-export function Editor30({ lines = [], className }: Editor30Props) {
+export function Editor30({ lines = [], bordered = false, className }: Editor30Props) {
   return (
     <div
       className={cn(
@@ -45,7 +45,7 @@ export function Editor30({ lines = [], className }: Editor30Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card py-1 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card py-1 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {lines.map((l, i) => (
           <div key={i} className="flex items-center gap-0">
             <span

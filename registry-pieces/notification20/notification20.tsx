@@ -36,11 +36,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const notification20Demo: Notification20Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   icon: UserPlus,
   title: "Access request",
-  meta: "Noah Reyes wants the records role",
+  meta: "Joep Beving wants the records role",
   primaryLabel: "Approve",
   secondaryLabel: "Decline",
 };
@@ -52,7 +52,7 @@ export function Notification20({
   primaryLabel,
   secondaryLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Notification20Props) {
@@ -62,12 +62,10 @@ export function Notification20({
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
       <div className={cn("w-full max-w-80 rounded-md p-4 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-start gap-3">
-          <span
-            className="flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary"
+          <Icon
+            className="mt-0.5 size-5 shrink-0 text-primary"
             aria-hidden="true"
-          >
-            <Icon className="size-4" />
-          </span>
+          />
           <div className="min-w-0 flex-1">
             {title && (
               <p className="truncate text-sm font-semibold">{title}</p>
@@ -88,7 +86,7 @@ export function Notification20({
           {secondaryLabel && (
             <button
               type="button"
-              className="h-8 flex-1 cursor-pointer rounded-md border border-current/15 bg-transparent text-sm font-medium transition-colors hover:bg-current/10"
+              className={cn("h-8 flex-1 cursor-pointer rounded-md bg-transparent text-sm font-medium transition-colors hover:bg-current/10", bordered && "border border-current/15")}
             >
               {secondaryLabel}
             </button>

@@ -7,6 +7,7 @@ interface Money12Props {
   amount?: string;
   delta?: string;
   period?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const money12Demo: Money12Props = {
   amount: "$248,910",
   delta: "+4.2%",
   period: "this quarter",
+  bordered: false,
 };
 
 export function Money12({
@@ -22,6 +24,7 @@ export function Money12({
   amount = "$0",
   delta,
   period,
+  bordered = false,
   className,
 }: Money12Props) {
   return (
@@ -31,9 +34,9 @@ export function Money12({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-3 rounded-lg border border-border bg-card px-4 py-4 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-3 rounded-lg bg-card px-4 py-4 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {label}
           </span>
         )}

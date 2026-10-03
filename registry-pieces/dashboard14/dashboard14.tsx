@@ -55,21 +55,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard14Demo: Dashboard14Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "System health",
   score: 82,
   status: "Healthy",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Dashboard14({
   label = "Score",
   score = 0,
   status,
-  tone = "emerald",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard14Props) {
@@ -86,7 +86,7 @@ export function Dashboard14({
       )}
     >
       <div className={cn("flex w-full max-w-64 flex-col items-center gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+        <span className="text-xs font-semibold text-current/60">
           {label}
         </span>
         <div className={cn("relative h-12 w-24", arcClasses[tone])}>
@@ -112,7 +112,7 @@ export function Dashboard14({
               strokeDashoffset={offset}
             />
           </svg>
-          <span className="absolute inset-x-0 bottom-0 text-center font-mono text-xl font-semibold tabular-nums">
+          <span className="absolute inset-x-0 bottom-0 text-center text-xl font-semibold tabular-nums">
             {Math.round(pct)}
           </span>
         </div>

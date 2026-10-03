@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser3Demo: Browser3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   url: "ui.beste.co/components",
   title: "Beste UI",
@@ -42,7 +42,7 @@ export function Browser3({
   url = "example.com",
   title,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser3Props) {
@@ -68,12 +68,12 @@ export function Browser3({
             <span className="size-2.5 rounded-full bg-amber-500" />
             <span className="size-2.5 rounded-full bg-emerald-500" />
           </div>
-          <div className="flex flex-1 items-center gap-1.5 rounded-md border border-current/15 bg-current/10 px-2 py-0.5">
+          <div className={cn("flex flex-1 items-center gap-1.5 rounded-md bg-current/10 px-2 py-0.5", bordered && "border border-current/15")}>
             <Globe
               className="size-3 shrink-0 text-current/60"
               aria-hidden="true"
             />
-            <span className="truncate font-mono text-xs text-current/60">
+            <span className="truncate text-xs text-current/60">
               {url}
             </span>
           </div>

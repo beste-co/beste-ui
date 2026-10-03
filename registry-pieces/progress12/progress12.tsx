@@ -5,17 +5,20 @@ import { cn } from "@/lib/utils";
 interface Progress12Props {
   lines?: number;
   withAvatar?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 export const progress12Demo: Progress12Props = {
   lines: 3,
   withAvatar: true,
+  bordered: false,
 };
 
 export function Progress12({
   lines = 3,
   withAvatar = false,
+  bordered = false,
   className,
 }: Progress12Props) {
   return (
@@ -25,7 +28,7 @@ export function Progress12({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-start gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-start gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {withAvatar && (
           <span
             className="size-10 shrink-0 animate-pulse rounded-full bg-muted"

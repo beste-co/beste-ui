@@ -1,6 +1,6 @@
 "use client";
 
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Education26Props {
@@ -11,19 +11,21 @@ interface Education26Props {
   alt?: string;
   rating?: number;
   body?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 const defaultImage = "https://images.unsplash.com/photo-1521146764736-56c929d59c83?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fHBvcnRyYWl0fGVufDB8fDB8fHww";
 
 export const education26Demo: Education26Props = {
-  author: "Andrea Kim",
-  cohort: "Cohort 12 · Graduated Mar 2026",
-  initials: "AK",
+  author: "Agnes Obel",
+  cohort: "Cohort 12",
+  initials: "AO",
   imageSrc: defaultImage,
-  alt: "Andrea Kim",
+  alt: "Agnes Obel",
   rating: 5,
   body: "The office hours alone were worth the tuition. I came in wanting to learn Next.js and left with a new role.",
+  bordered: false,
 };
 
 export function Education26({
@@ -34,6 +36,7 @@ export function Education26({
   alt,
   rating = 0,
   body,
+  bordered = false,
   className,
 }: Education26Props) {
   return (
@@ -43,26 +46,20 @@ export function Education26({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <Quote
-            className="size-4 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <div className="flex items-center">
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <Star
-                key={idx}
-                className={cn(
-                  "size-3.5",
-                  idx < rating
-                    ? "fill-amber-400 text-amber-400"
-                    : "text-muted-foreground"
-                )}
-                aria-hidden="true"
-              />
-            ))}
-          </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-center">
+          {Array.from({ length: 5 }).map((_, idx) => (
+            <Star
+              key={idx}
+              className={cn(
+                "size-3.5",
+                idx < rating
+                  ? "fill-amber-400 text-amber-400"
+                  : "text-muted-foreground"
+              )}
+              aria-hidden="true"
+            />
+          ))}
         </div>
         {body && (
           <p className="text-xs leading-snug text-card-foreground">{body}</p>

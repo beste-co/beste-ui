@@ -12,6 +12,7 @@ interface DiffLine {
 interface Terminal9Props {
   filename?: string;
   lines?: DiffLine[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,9 +36,10 @@ export const terminal9Demo: Terminal9Props = {
     { type: "add", text: '  return <button className="btn">{label}</button>;' },
     { type: "context", text: "}" },
   ],
+  bordered: false,
 };
 
-export function Terminal9({ filename, lines = [], className }: Terminal9Props) {
+export function Terminal9({ filename, lines = [], bordered = false, className }: Terminal9Props) {
   return (
     <div
       className={cn(
@@ -45,7 +47,7 @@ export function Terminal9({ filename, lines = [], className }: Terminal9Props) {
         className
       )}
     >
-      <div className="w-full max-w-72 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 font-mono text-xs shadow-sm">
+      <div className={cn("w-full max-w-72 overflow-hidden rounded-lg bg-zinc-950 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         {filename && (
           <div className="border-b border-zinc-800 px-3 py-2 text-zinc-400">
             {filename}

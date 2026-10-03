@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Two named carets share a document: one hops between finished lines while the other types a new sentence at the bottom, over and over.",
   category: "Editor",
+  cardScale: 0.75,
 };

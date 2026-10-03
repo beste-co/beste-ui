@@ -35,14 +35,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ticket1Demo: Ticket1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   event: "Midnight Synth Tour",
   date: "Fri, Jun 14",
   time: "8:00 PM",
   seat: "Row C · Seat 12",
   admitLabel: "Admit",
-  oneLabel: "ONE",
+  oneLabel: "One",
 };
 
 export function Ticket1({
@@ -51,9 +51,9 @@ export function Ticket1({
   time,
   seat,
   admitLabel = "Admit",
-  oneLabel = "ONE",
+  oneLabel = "One",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ticket1Props) {
@@ -69,7 +69,7 @@ export function Ticket1({
       <div className={cn("flex w-full max-w-80 overflow-hidden rounded-lg shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex flex-1 flex-col gap-1 p-3">
           {date && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+            <span className="text-xs font-semibold text-current/60">
               {date}
             </span>
           )}
@@ -87,7 +87,7 @@ export function Ticket1({
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-0.5 border-l-2 border-dashed border-current/15 bg-current/10 px-3 py-2">
-          <span className="text-xs font-semibold uppercase tracking-widest text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {admitLabel}
           </span>
           <span className="text-sm font-bold">

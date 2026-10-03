@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "chat15",
   title: "File Attachment",
   description:
-    "Chat bubble with a file icon tile, filename, size and page count, and a download button.",
+    "Chat bubble with a file icon tile, filename, size, and a download button.",
   category: "Chat",
 };

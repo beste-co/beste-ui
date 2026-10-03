@@ -5,13 +5,14 @@ import { cn } from "@/lib/utils";
 interface BlameLine {
   line: number;
   author: string;
-  time: string;
-  hash: string;
+  time?: string;
+  hash?: string;
   code: string;
 }
 
 interface Editor20Props {
   lines?: BlameLine[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,29 +20,24 @@ export const editor20Demo: Editor20Props = {
   lines: [
     {
       line: 40,
-      author: "Ayşe",
-      time: "3d ago",
-      hash: "a1b2c3d",
+      author: "Hania",
       code: "const greet = (name: string) =>",
     },
     {
       line: 41,
-      author: "Merve",
-      time: "today",
-      hash: "9f0e4c2",
-      code: "  `Merhaba, ${name}!`;",
+      author: "Nils",
+      code: "  `Hello, ${name}!`;",
     },
     {
       line: 42,
-      author: "Ayşe",
-      time: "3d ago",
-      hash: "a1b2c3d",
+      author: "Hania",
       code: "",
     },
   ],
+  bordered: false,
 };
 
-export function Editor20({ lines = [], className }: Editor20Props) {
+export function Editor20({ lines = [], bordered = false, className }: Editor20Props) {
   return (
     <div
       className={cn(
@@ -49,7 +45,7 @@ export function Editor20({ lines = [], className }: Editor20Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card py-1 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card py-1 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {lines.map((l, i) => (
           <div
             key={i}
@@ -66,12 +62,20 @@ export function Editor20({ lines = [], className }: Editor20Props) {
             </code>
             <span className="ml-auto flex shrink-0 items-center gap-1 text-muted-foreground">
               <span className="text-card-foreground">{l.author}</span>
-              <span>·</span>
-              <span>{l.time}</span>
-              <span>·</span>
-              <span className="rounded-sm bg-muted px-1 tabular-nums">
-                {l.hash.slice(0, 7)}
-              </span>
+              {l.time && (
+                <>
+                  <span>·</span>
+                  <span>{l.time}</span>
+                </>
+              )}
+              {l.hash && (
+                <>
+                  <span>·</span>
+                  <span className="rounded-sm bg-muted px-1 tabular-nums">
+                    {l.hash.slice(0, 7)}
+                  </span>
+                </>
+              )}
             </span>
           </div>
         ))}

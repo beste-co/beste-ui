@@ -1,6 +1,5 @@
 "use client";
 
-import { Calendar, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Education24Props {
@@ -10,16 +9,17 @@ interface Education24Props {
   duration?: string;
   enrolled?: string;
   ctaLabel?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const education24Demo: Education24Props = {
-  title: "Live workshop · TypeScript generics",
+  title: "TypeScript generics",
   date: "Thu, May 2",
-  time: "18:00 UTC+3",
-  duration: "90 minutes",
-  enrolled: "412 enrolled · 88 seats left",
+  time: "18:00",
+  enrolled: "412 enrolled",
   ctaLabel: "Save my seat",
+  bordered: false,
 };
 
 export function Education24({
@@ -29,6 +29,7 @@ export function Education24({
   duration,
   enrolled,
   ctaLabel = "Join",
+  bordered = false,
   className,
 }: Education24Props) {
   return (
@@ -38,7 +39,7 @@ export function Education24({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <span className="inline-flex w-fit items-center gap-1 rounded-full bg-rose-500 px-2 py-0.5 text-xs font-semibold text-white">
           <span
             className="size-1.5 animate-pulse rounded-full bg-white"
@@ -51,24 +52,14 @@ export function Education24({
             {title}
           </span>
         )}
-        <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-          {date && (
-            <span className="inline-flex items-center gap-1">
-              <Calendar className="size-3" aria-hidden="true" />
-              {date}
-            </span>
-          )}
-          {time && (
-            <span className="inline-flex items-center gap-1">
-              <Clock className="size-3" aria-hidden="true" />
-              {time}
-            </span>
-          )}
+        <div className="flex flex-wrap items-center gap-3 text-xs tabular-nums text-muted-foreground">
+          {date && <span>{date}</span>}
+          {time && <span>{time}</span>}
           {duration && <span>{duration}</span>}
         </div>
         <div className="flex items-center justify-between border-t border-border pt-2">
           {enrolled && (
-            <span className="text-xs text-muted-foreground">{enrolled}</span>
+            <span className="text-xs tabular-nums text-muted-foreground">{enrolled}</span>
           )}
           <button
             type="button"

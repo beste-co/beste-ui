@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDown, Mail, MoreVertical } from "lucide-react";
+import { Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -41,14 +41,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation2Demo: Automation2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  kind: "Action",
   app: "Gmail",
   event: "Send email",
   image: "https://oud.pics/sm/l/gmail.jpeg",
   alt: "Gmail",
-  configureLabel: "Configure",
   fields: [
     { label: "To", value: "{{customer.email}}" },
     { label: "Subject", value: "Your receipt is ready" },
@@ -57,15 +55,15 @@ export const automation2Demo: Automation2Props = {
 };
 
 export function Automation2({
-  kind = "Step",
+  kind,
   app = "App",
   event = "Event",
   image,
   alt,
   fields = [],
-  configureLabel = "Configure",
+  configureLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation2Props) {
@@ -97,20 +95,15 @@ export function Automation2({
             </span>
           )}
           <div className="flex min-w-0 flex-1 flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-              {kind}
-            </span>
+            {kind && (
+              <span className="text-xs font-medium text-current/60">
+                {kind}
+              </span>
+            )}
             <span className="truncate text-sm font-semibold">
               {app} · {event}
             </span>
           </div>
-          <button
-            type="button"
-            className="text-current/60 hover:text-foreground"
-            aria-label="More"
-          >
-            <MoreVertical className="size-4" />
-          </button>
         </div>
         <div className="flex flex-col">
           {fields.map((f, i) => (
@@ -119,15 +112,16 @@ export function Automation2({
               className="flex items-center justify-between gap-2 border-t border-current/15 px-3 py-1.5 first:border-t-0"
             >
               <span className="text-xs text-current/60">{f.label}</span>
-              <span className="truncate font-mono text-xs">
+              <span className="truncate text-xs">
                 {f.value}
               </span>
             </div>
           ))}
-          <div className="flex items-center justify-center gap-1 border-t border-current/15 bg-current/5 py-1.5 text-xs text-current/60">
-            <ChevronDown className="size-3" aria-hidden="true" />
-            <span>{configureLabel}</span>
-          </div>
+          {configureLabel && (
+            <div className="flex items-center justify-center border-t border-current/15 bg-current/5 py-1.5 text-xs text-current/60">
+              {configureLabel}
+            </div>
+          )}
         </div>
       </div>
     </div>

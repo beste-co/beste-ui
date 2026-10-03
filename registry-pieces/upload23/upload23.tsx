@@ -7,6 +7,7 @@ interface Upload23Props {
   dimensions?: string;
   size?: string;
   imageSrc?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const upload23Demo: Upload23Props = {
   dimensions: "2400 × 1600",
   size: "1.4 MB",
   imageSrc: defaultImage,
+  bordered: false,
 };
 
 export function Upload23({
@@ -25,6 +27,7 @@ export function Upload23({
   dimensions,
   size,
   imageSrc = defaultImage,
+  bordered = false,
   className,
 }: Upload23Props) {
   return (
@@ -34,7 +37,7 @@ export function Upload23({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-md border border-border bg-card p-2 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-md bg-card p-2 shadow-sm", bordered && "border border-border")}>
         <img
           src={imageSrc}
           alt="Image Row"

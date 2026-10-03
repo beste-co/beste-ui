@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "monitoring9",
   title: "Metric Ring",
   description:
-    "Circular progress dial holding a percentage at its center, captioned with a label and supporting hint.",
+    "Circular progress dial holding a percentage at its center, captioned with a label.",
   category: "Monitoring",
 };

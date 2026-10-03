@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "primary" | "foreground" | "emerald" | "sky" | "violet";
@@ -14,6 +13,7 @@ interface Chart8Props {
   suffix?: string;
   drawMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,11 +27,11 @@ const strokeClasses: Record<Tone, string> = {
 
 export const chart8Demo: Chart8Props = {
   label: "Monthly recurring revenue",
-  caption: "Last 12 months",
   values: [18.2, 21.4, 20.9, 24.8, 27.1, 26.4, 30.2, 33.8, 33.1, 38.6, 41.9, 46.3],
   prefix: "$",
   suffix: "k",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 const W = 240;
@@ -47,7 +47,8 @@ export function Chart8({
   prefix = "",
   suffix = "",
   drawMs = 1400,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Chart8Props) {
   const [drawn, setDrawn] = useState(false);
@@ -84,7 +85,7 @@ export function Chart8({
       )}
     >
       <style>{`@keyframes chart8-pulse { 0% { transform: scale(1); opacity: 0.45; } 100% { transform: scale(3.2); opacity: 0; } }`}</style>
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 flex-col">
             <span className="truncate text-sm font-medium text-card-foreground">{label}</span>
@@ -94,7 +95,7 @@ export function Chart8({
           </div>
           <span
             className={cn(
-              "inline-flex shrink-0 items-center gap-0.5 rounded-full px-1.5 py-0.5 text-xs font-medium tabular-nums transition-opacity duration-500 ease-out motion-reduce:transition-none",
+              "inline-flex shrink-0 items-center rounded-full px-1.5 py-0.5 text-xs font-medium tabular-nums transition-opacity duration-500 ease-out motion-reduce:transition-none",
               delta >= 0
                 ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
                 : "bg-rose-500/10 text-rose-600 dark:text-rose-400",
@@ -102,11 +103,6 @@ export function Chart8({
             )}
             style={{ transitionDelay: `${drawMs}ms` }}
           >
-            {delta >= 0 ? (
-              <TrendingUp className="size-3" aria-hidden="true" />
-            ) : (
-              <TrendingDown className="size-3" aria-hidden="true" />
-            )}
             {delta >= 0 ? "+" : ""}
             {delta.toFixed(1)}%
           </span>

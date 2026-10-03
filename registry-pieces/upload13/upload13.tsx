@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, FileText, Loader2, XCircle } from "lucide-react";
+import { CheckCircle2, Loader2, XCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type FileState = "uploading" | "done" | "failed";
@@ -14,6 +14,7 @@ interface UploadRow {
 
 interface Upload13Props {
   files?: UploadRow[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -26,12 +27,12 @@ export const upload13Demo: Upload13Props = {
       state: "uploading",
       percent: 62,
     },
-    { filename: "logo-dark.svg", size: "18 KB", state: "done" },
     { filename: "pricing.xlsx", size: "2.1 MB", state: "failed" },
   ],
+  bordered: false,
 };
 
-export function Upload13({ files = [], className }: Upload13Props) {
+export function Upload13({ files = [], bordered = false, className }: Upload13Props) {
   return (
     <div
       className={cn(
@@ -39,13 +40,9 @@ export function Upload13({ files = [], className }: Upload13Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col divide-y divide-border overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col divide-y divide-border overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         {files.map((f, idx) => (
           <div key={idx} className="flex items-center gap-2 px-3 py-2">
-            <FileText
-              className="size-3.5 shrink-0 text-muted-foreground"
-              aria-hidden="true"
-            />
             <div className="flex min-w-0 flex-1 flex-col">
               <span className="truncate text-xs font-medium text-card-foreground">
                 {f.filename}
@@ -61,7 +58,7 @@ export function Upload13({ files = [], className }: Upload13Props) {
                   />
                 </div>
               ) : (
-                <span className="text-xs text-muted-foreground">{f.size}</span>
+                <span className="text-xs text-muted-foreground tabular-nums">{f.size}</span>
               )}
             </div>
             {f.state === "done" && (

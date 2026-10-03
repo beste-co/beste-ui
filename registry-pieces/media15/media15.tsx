@@ -10,6 +10,7 @@ interface Slide {
 
 interface Media15Props {
   images?: Slide[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -28,9 +29,10 @@ export const media15Demo: Media15Props = {
       alt: "Forest canopy",
     },
   ],
+  bordered: false,
 };
 
-export function Media15({ images = [], className }: Media15Props) {
+export function Media15({ images = [], bordered = false, className }: Media15Props) {
   const [index, setIndex] = useState(0);
   const count = images.length;
   const current = images[index];
@@ -47,7 +49,7 @@ export function Media15({ images = [], className }: Media15Props) {
         className
       )}
     >
-      <div className="relative h-48 w-40 overflow-hidden rounded-lg border border-border bg-muted shadow-sm">
+      <div className={cn("relative h-48 w-40 overflow-hidden rounded-lg bg-muted shadow-sm", bordered && "border border-border")}>
         {current?.src && (
           <img
             key={index}
@@ -75,9 +77,6 @@ export function Media15({ images = [], className }: Media15Props) {
             >
               <ChevronRight className="size-4" />
             </button>
-            <div className="absolute right-2 top-2 rounded-full bg-black/60 px-2 py-0.5 text-xs font-medium text-white backdrop-blur-sm">
-              {index + 1} / {count}
-            </div>
             <div className="absolute inset-x-0 bottom-2 flex justify-center gap-1.5">
               {images.map((_, i) => (
                 <span

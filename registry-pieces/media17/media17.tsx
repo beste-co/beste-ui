@@ -9,6 +9,7 @@ interface Media17Props {
   title?: string;
   artist?: string;
   progress?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const media17Demo: Media17Props = {
   title: "Night Drive",
   artist: "Lumen",
   progress: 42,
+  bordered: false,
 };
 
 export function Media17({
@@ -26,6 +28,7 @@ export function Media17({
   title,
   artist,
   progress = 0,
+  bordered = false,
   className,
 }: Media17Props) {
   const [playing, setPlaying] = useState(false);
@@ -38,7 +41,7 @@ export function Media17({
         className
       )}
     >
-      <div className="flex w-full max-w-64 items-center gap-3 rounded-lg border border-border bg-card p-2 shadow-sm">
+      <div className={cn("flex w-full max-w-64 items-center gap-3 rounded-lg bg-card p-2 shadow-sm", bordered && "border border-border")}>
         <div className="relative size-12 shrink-0 overflow-hidden rounded-md bg-muted">
           {src && (
             <img

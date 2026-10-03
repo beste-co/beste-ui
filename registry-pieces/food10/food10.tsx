@@ -15,49 +15,44 @@ type Tone =
 
 interface Pairing {
   name: string;
-  type: string;
-  notes: string;
+  type?: string;
+  notes?: string;
 }
 
 interface Food10Props {
   dish?: string;
   pairings?: Pairing[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-card-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  rose: "bg-rose-500 text-white",
-  amber: "bg-amber-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  sky: "bg-sky-500 text-white",
-  violet: "bg-violet-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  neutral: "text-card-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  rose: "text-rose-500",
+  amber: "text-amber-500",
+  emerald: "text-emerald-500",
+  sky: "text-sky-500",
+  violet: "text-violet-500",
 };
 
 export const food10Demo: Food10Props = {
   dish: "Seared duck breast",
   pairings: [
-    {
-      name: "Pinot Noir · Willamette",
-      type: "Red · 2021",
-      notes: "Bright cherry, subtle forest floor.",
-    },
-    {
-      name: "Bourbon old-fashioned",
-      type: "Cocktail",
-      notes: "Bittersweet, amplifies the glaze.",
-    },
+    { name: "Pinot Noir", type: "Red" },
+    { name: "Old-fashioned", type: "Cocktail" },
   ],
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Food10({
   dish,
   pairings = [],
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Food10Props) {
   return (
@@ -67,18 +62,14 @@ export function Food10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-7 items-center justify-center rounded-md",
-              tileClasses[tone]
-            )}
-          >
-            <Wine className="size-3.5" aria-hidden="true" />
-          </div>
+          <Wine
+            className={cn("size-4 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               Pairs well with
             </span>
             {dish && (
@@ -92,15 +83,19 @@ export function Food10({
           {pairings.map((p, idx) => (
             <div
               key={idx}
-              className="rounded-md border border-border bg-muted p-2 text-xs"
+              className={cn("rounded-md bg-muted p-2 text-xs", bordered && "border border-border")}
             >
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-card-foreground">
                   {p.name}
                 </span>
-                <span className="text-muted-foreground">{p.type}</span>
+                {p.type && (
+                  <span className="text-muted-foreground">{p.type}</span>
+                )}
               </div>
-              <span className="italic text-muted-foreground">{p.notes}</span>
+              {p.notes && (
+                <span className="italic text-muted-foreground">{p.notes}</span>
+              )}
             </div>
           ))}
         </div>

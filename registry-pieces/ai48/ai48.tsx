@@ -11,6 +11,7 @@ interface Ai48Props {
   model?: string;
   stepMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -25,17 +26,17 @@ const steps = [
 export const ai48Demo: Ai48Props = {
   src: "https://images.unsplash.com/photo-1519627457373-b60a0da1706b?w=300&auto=format&fit=crop&q=60",
   alt: "Generated image preview",
-  size: "1024 x 1024",
-  model: "image-1",
+  bordered: false,
 };
 
 export function Ai48({
   src = "https://images.unsplash.com/photo-1519627457373-b60a0da1706b?w=300&auto=format&fit=crop&q=60",
   alt = "Generated image preview",
-  size = "1024 x 1024",
-  model = "image-1",
+  size,
+  model,
   stepMs = 1300,
   holdMs = 2800,
+  bordered = false,
   className,
 }: Ai48Props) {
   const [step, setStep] = useState(0);
@@ -70,7 +71,7 @@ export function Ai48({
       )}
     >
       <style>{`@keyframes ai48-in { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-64 flex-col gap-2.5 rounded-2xl border border-border bg-card p-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-2.5 rounded-2xl bg-card p-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-muted">
           <img
             src={src}
@@ -103,16 +104,12 @@ export function Ai48({
         </div>
 
         <div className="flex flex-col gap-1.5 px-0.5">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span className="font-mono">{model}</span>
-            <span className="tabular-nums">
-              {size}
-              <span className="mx-1.5" aria-hidden="true">
-                &middot;
-              </span>
-              <span className="font-medium text-card-foreground">{pct}%</span>
-            </span>
-          </div>
+          {(model || size) && (
+            <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+              <span>{model}</span>
+              <span className="tabular-nums">{size}</span>
+            </div>
+          )}
           <div className="h-1 w-full overflow-hidden rounded-full bg-muted" aria-hidden="true">
             <div
               className={cn(

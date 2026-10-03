@@ -26,7 +26,6 @@ const barClasses: Record<Tone, string> = {
 
 export const badge5Demo: Badge5Props = {
   title: "Level 7 unlocked",
-  caption: "Longest review streak on the team",
   points: 250,
   progress: 62,
   nextLabel: "Level 8 at 400 points",

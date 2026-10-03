@@ -10,6 +10,7 @@ interface Calendar21Props {
   checkOut?: string;
   total?: string;
   status?: "confirmed" | "pending" | "cancelled";
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,12 +34,12 @@ const statusClasses: Record<
 
 export const calendar21Demo: Calendar21Props = {
   title: "Casa Mariposa · Lisbon",
-  confirmation: "Booking #A-7812-55",
   partySize: "2 guests",
-  checkIn: "Jun 14 · After 16:00",
-  checkOut: "Jun 18 · Before 11:00",
-  total: "€736 · 4 nights",
+  checkIn: "Jun 14",
+  checkOut: "Jun 18",
+  total: "€736",
   status: "confirmed",
+  bordered: false,
 };
 
 export function Calendar21({
@@ -49,6 +50,7 @@ export function Calendar21({
   checkOut,
   total,
   status = "confirmed",
+  bordered = false,
   className,
 }: Calendar21Props) {
   const s = statusClasses[status];
@@ -60,7 +62,7 @@ export function Calendar21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
@@ -69,7 +71,7 @@ export function Calendar21({
               </span>
             )}
             {confirmation && (
-              <span className="truncate font-mono text-xs text-muted-foreground">
+              <span className="truncate text-xs text-muted-foreground">
                 {confirmation}
               </span>
             )}
@@ -93,7 +95,7 @@ export function Calendar21({
             <span className="text-muted-foreground">{partySize}</span>
           )}
           {total && (
-            <span className="font-mono text-sm font-bold text-card-foreground">
+            <span className="text-sm font-bold tabular-nums text-card-foreground">
               {total}
             </span>
           )}

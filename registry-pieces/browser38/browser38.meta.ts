@@ -6,5 +6,6 @@ export const meta: ComponentMeta = {
   description:
     "The notice a visitor meets before anything non-essential loads. It rises into place once, with refuse and customise sitting level with accept rather than tucked away.",
   category: "Browser",
+  cardScale: 0.75,
   isAnimated: true,
 };

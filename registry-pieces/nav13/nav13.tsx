@@ -5,14 +5,16 @@ import { cn } from "@/lib/utils";
 
 interface Nav13Props {
   segments?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const nav13Demo: Nav13Props = {
   segments: ["acme-studio", "marketing-site", "docs", "overview.mdx"],
+  bordered: false,
 };
 
-export function Nav13({ segments = [], className }: Nav13Props) {
+export function Nav13({ segments = [], bordered = false, className }: Nav13Props) {
   return (
     <div
       className={cn(
@@ -20,14 +22,14 @@ export function Nav13({ segments = [], className }: Nav13Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center overflow-hidden rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         {segments.map((seg, idx) => {
           const isLast = idx === segments.length - 1;
           return (
             <div
               key={idx}
               className={cn(
-                "flex items-center font-mono text-xs",
+                "flex items-center text-xs",
                 isLast ? "flex-1" : ""
               )}
             >

@@ -8,6 +8,7 @@ type Tone = "primary" | "foreground" | "muted";
 interface Indicator3Props {
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,11 +21,13 @@ const toneClasses: Record<Tone, string> = {
 export const indicator3Demo: Indicator3Props = {
   label: "Syncing workspace",
   tone: "primary",
+  bordered: false,
 };
 
 export function Indicator3({
   label,
   tone = "primary",
+  bordered = false,
   className,
 }: Indicator3Props) {
   return (
@@ -34,7 +37,7 @@ export function Indicator3({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-full bg-card px-3 py-1.5 shadow-sm", bordered && "border border-border")}>
         <Loader2
           className={cn("size-3.5 animate-spin", toneClasses[tone])}
           aria-hidden="true"

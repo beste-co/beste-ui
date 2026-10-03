@@ -32,7 +32,7 @@ const capClasses: Record<Tone, string> = {
 export const keyboard7Demo: Keyboard7Props = {
   keyLabel: "Space",
   caption: "Press to continue",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Keyboard7({
@@ -59,7 +59,7 @@ export function Keyboard7({
           />
           <kbd
             className={cn(
-              "relative flex h-12 min-w-32 items-center justify-center rounded-xl border border-b-2 px-4 font-mono text-sm font-semibold shadow-lg",
+              "relative flex h-12 min-w-32 items-center justify-center rounded-xl border border-b-2 px-4 text-sm font-semibold shadow-lg",
               capClasses[tone]
             )}
           >

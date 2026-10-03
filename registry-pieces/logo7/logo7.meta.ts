@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Overlapping circle-cropped brand logos with a +N overflow chip and a two-line social-proof copy.",
   category: "Logo",
+  cardScale: 0.75,
 };

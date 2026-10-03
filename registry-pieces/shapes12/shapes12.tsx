@@ -18,8 +18,8 @@ export function Shapes12({ className }: Shapes12Props) {
     >
       <div className="flex -space-x-3" aria-hidden="true">
         <span className="size-10 rounded-full border-2 border-card bg-foreground" />
-        <span className="size-10 rounded-full border-2 border-card bg-amber-400" />
-        <span className="size-10 rounded-full border-2 border-card bg-emerald-500" />
+        <span className="size-10 rounded-full border-2 border-card bg-muted-foreground" />
+        <span className="size-10 rounded-full border-2 border-card bg-primary" />
       </div>
     </div>
   );

@@ -204,9 +204,9 @@ export function ComponentsContent({
                   className="absolute inset-0 z-10 rounded-xl outline-none"
                 />
                 <div
-                  className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-background"
+                  className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md"
                 >
-                  <CardDemo key={replays[c.name] ?? 0} entry={{ component: c.component, demoProps: c.demoProps, cardScale: c.cardScale, category: c.category }} />
+                  <CardDemo key={replays[c.name] ?? 0} kind="piece" entry={{ component: c.component, demoProps: c.demoProps, cardScale: c.cardScale, category: c.category }} />
                   {/* The corner marks as one cluster: the badge holds the
                       corner and the source-code hint fades in beside it, rather
                       than the two landing on the same spot. It sits above the
@@ -226,13 +226,6 @@ export function ComponentsContent({
                     </div>
                     {isNewPiece(c.name) && <NewBadge />}
                   </div>
-                </div>
-                {/* Title alone: the registry name is what you type into a terminal,
-                    not what you scan a grid for, and the overlay above already carries
-                    the accessible name. */}
-                <div className="relative flex flex-col gap-1 px-1 pb-1">
-                  <h3 className={typography.cardTitle}>{c.title}</h3>
-                  <p className={cn(typography.cardText, "line-clamp-2")}>{c.description}</p>
                 </div>
               </div>
             );

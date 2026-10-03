@@ -8,6 +8,7 @@ interface Form31Props {
   value?: string;
   draft?: string;
   editing?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const form31Demo: Form31Props = {
   value: "Mira Studio",
   draft: "Mira & Co.",
   editing: true,
+  bordered: false,
 };
 
 export function Form31({
@@ -23,6 +25,7 @@ export function Form31({
   value,
   draft,
   editing = false,
+  bordered = false,
   className,
 }: Form31Props) {
   return (
@@ -58,7 +61,7 @@ export function Form31({
             </button>
             <button
               type="button"
-              className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-card text-muted-foreground hover:bg-muted"
+              className={cn("flex size-9 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-muted", bordered ? "border border-border bg-card" : "bg-card")}
               aria-label="Cancel"
             >
               <X className="size-4" aria-hidden="true" />

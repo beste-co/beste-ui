@@ -37,7 +37,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chat10Demo: Chat10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   time: "09:42",
   status: "read",
@@ -59,7 +59,7 @@ export function Chat10({
   deliveredLabel = "Delivered",
   readLabel = "Read",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Chat10Props) {
@@ -77,7 +77,7 @@ export function Chat10({
       )}
     >
       <div className={cn("inline-flex items-center gap-1.5 rounded-full px-3 py-1 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="font-mono text-xs tabular-nums text-current/60">
+        <span className="text-xs tabular-nums text-current/60">
           {time}
         </span>
         <CheckCheck

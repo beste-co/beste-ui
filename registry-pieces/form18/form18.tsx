@@ -15,19 +15,21 @@ interface Form18Props {
   query?: string;
   options?: ComboOption[];
   selectedIndex?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const form18Demo: Form18Props = {
   label: "Primary workspace",
-  value: "Mira Studio",
-  query: "acm",
+  value: "Beste Studio",
+  query: "bes",
   options: [
-    { label: "Beste Studio", detail: "Design · 12 members" },
-    { label: "Besteworks", detail: "Engineering · 34 members" },
-    { label: "Beste Labs", detail: "Research · 6 members" },
+    { label: "Beste Studio" },
+    { label: "Besteworks" },
+    { label: "Beste Labs" },
   ],
   selectedIndex: 0,
+  bordered: false,
 };
 
 export function Form18({
@@ -36,6 +38,7 @@ export function Form18({
   query = "",
   options = [],
   selectedIndex = 0,
+  bordered = false,
   className,
 }: Form18Props) {
   return (
@@ -51,7 +54,7 @@ export function Form18({
             {label}
           </label>
         )}
-        <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 shadow-sm">
+        <div className={cn("flex items-center gap-2 rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
           <span className="flex-1 truncate text-sm text-card-foreground">
             {value}
           </span>
@@ -60,7 +63,7 @@ export function Form18({
             aria-hidden="true"
           />
         </div>
-        <div className="flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md">
+        <div className={cn("flex flex-col overflow-hidden rounded-lg bg-card shadow-md", bordered && "border border-border")}>
           <div className="border-b border-border px-3 py-2">
             <span className="text-sm text-muted-foreground">
               {query}

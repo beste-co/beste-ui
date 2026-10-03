@@ -7,6 +7,7 @@ interface Input6Props {
   value?: number;
   min?: number;
   max?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const input6Demo: Input6Props = {
   value: 4,
   min: 0,
   max: 12,
+  bordered: false,
 };
 
 export function Input6({
   value = 0,
   min = 0,
   max = 99,
+  bordered = false,
   className,
 }: Input6Props) {
   const canDec = value > min;
@@ -32,7 +35,7 @@ export function Input6({
         className
       )}
     >
-      <div className="flex items-stretch overflow-hidden rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("flex items-stretch overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           disabled={!canDec}
@@ -41,7 +44,7 @@ export function Input6({
         >
           <Minus className="size-4" aria-hidden="true" />
         </button>
-        <span className="flex min-w-14 items-center justify-center px-3 font-mono text-sm font-semibold text-card-foreground">
+        <span className="flex min-w-14 items-center justify-center px-3 text-sm font-semibold text-card-foreground">
           {value}
         </span>
         <button

@@ -11,16 +11,17 @@ interface Milestone {
 interface Legal17Props {
   heading?: string;
   milestones?: Milestone[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal17Demo: Legal17Props = {
-  heading: "Agreement lifecycle",
   milestones: [
     { label: "Effective date", date: "May 1, 2026", status: "past" },
     { label: "First renewal", date: "May 1, 2027", status: "current" },
     { label: "Term end", date: "May 1, 2029", status: "future" },
   ],
+  bordered: false,
 };
 
 const statusClasses: Record<Milestone["status"], string> = {
@@ -32,6 +33,7 @@ const statusClasses: Record<Milestone["status"], string> = {
 export function Legal17({
   heading,
   milestones = [],
+  bordered = false,
   className,
 }: Legal17Props) {
   return (
@@ -41,9 +43,9 @@ export function Legal17({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {heading}
           </span>
         )}

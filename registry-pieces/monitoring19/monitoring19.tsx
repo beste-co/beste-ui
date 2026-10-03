@@ -19,6 +19,7 @@ interface Monitoring19Props {
   bandStart?: number;
   bandEnd?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -50,7 +51,8 @@ export const monitoring19Demo: Monitoring19Props = {
   position: 38,
   bandStart: 18,
   bandEnd: 52,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring19({
@@ -59,7 +61,8 @@ export function Monitoring19({
   position = 0,
   bandStart = 0,
   bandEnd = 100,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring19Props) {
   const pos = Math.min(100, Math.max(0, position));
@@ -73,7 +76,7 @@ export function Monitoring19({
         className
       )}
     >
-      <div className="flex w-full max-w-60 flex-col gap-1.5 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("flex w-full max-w-60 flex-col gap-1.5 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         <div
           className="relative h-1.5 w-full rounded-full bg-muted"
           aria-hidden="true"
@@ -93,7 +96,7 @@ export function Monitoring19({
             style={{ left: `${pos}%` }}
           />
         </div>
-        <div className="flex justify-between font-mono text-xs text-muted-foreground">
+        <div className="flex justify-between text-xs text-muted-foreground">
           <span>{min}</span>
           <span>{max}</span>
         </div>

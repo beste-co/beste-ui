@@ -38,7 +38,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const upload32Demo: Upload32Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Import member records",
   hint: "Drop a CSV or browse — we map the fields",
@@ -50,7 +50,7 @@ export function Upload32({
   hint,
   file,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Upload32Props) {
@@ -65,12 +65,7 @@ export function Upload32({
     >
       <div className={cn("w-full max-w-80 rounded-md p-4 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex flex-col items-center gap-2 rounded-md border border-dashed border-current/15 bg-current/10 px-4 py-6 text-center">
-          <span
-            className="flex size-10 items-center justify-center rounded-md bg-background text-foreground/60"
-            aria-hidden="true"
-          >
-            <UploadCloud className="size-5" />
-          </span>
+          <UploadCloud className="size-6 shrink-0 text-current/60" aria-hidden="true" />
           {title && (
             <p className="text-sm font-medium">{title}</p>
           )}

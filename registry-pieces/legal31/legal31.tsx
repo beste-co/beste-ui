@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BadgeCheck, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Legal31Props {
@@ -10,14 +10,15 @@ interface Legal31Props {
   signerName?: string;
   signedAt?: string;
   drawMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal31Demo: Legal31Props = {
   documentTitle: "Master services agreement",
-  reference: "MSA-2291",
   signerName: "Nina Simone",
   signedAt: "Signed today at 09:41",
+  bordered: false,
 };
 
 const SIGNATURE =
@@ -30,6 +31,7 @@ export function Legal31({
   signerName = "Signer",
   signedAt,
   drawMs = 1600,
+  bordered = false,
   className,
 }: Legal31Props) {
   const [drawn, setDrawn] = useState(false);
@@ -55,30 +57,24 @@ export function Legal31({
 @keyframes legal31-in { from { opacity: 0; transform: translateY(0.375rem); } to { opacity: 1; transform: none; } }
 `}</style>
 
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <span
-            className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground"
-            aria-hidden="true"
-          >
-            <FileText className="size-4" />
-          </span>
+          <FileText className="size-5 shrink-0 text-muted-foreground" aria-hidden="true" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-card-foreground">
               {documentTitle}
             </p>
             {reference && (
-              <p className="font-mono text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground">
                 {reference}
               </p>
             )}
           </div>
           {sealed && (
             <span
-              className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400"
+              className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400"
               style={{ animation: "legal31-in 400ms ease-out" }}
             >
-              <BadgeCheck className="size-3" aria-hidden="true" />
               Signed
             </span>
           )}

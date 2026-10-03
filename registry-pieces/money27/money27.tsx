@@ -12,6 +12,7 @@ interface Ticker {
 interface Money27Props {
   tickers?: Ticker[];
   intervalMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,6 +28,7 @@ export const money27Demo: Money27Props = {
     { symbol: "ETH", name: "Ethereum", price: 3412.2 },
     { symbol: "AAPL", name: "Apple", price: 189.35 },
   ],
+  bordered: false,
 };
 
 function money(value: number): string {
@@ -39,6 +41,7 @@ function money(value: number): string {
 export function Money27({
   tickers = [],
   intervalMs = 1200,
+  bordered = false,
   className,
 }: Money27Props) {
   const [rows, setRows] = useState<Row[]>(() =>
@@ -75,18 +78,8 @@ export function Money27({
       )}
     >
       <style>{`@keyframes money27-flash { from { opacity: 1; } to { opacity: 0; } } @keyframes money27-pop { from { opacity: 0; transform: translateY(0.2rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-72 flex-col rounded-xl border border-border bg-card shadow-sm">
-        <div className="flex items-center justify-between border-b border-border px-4 py-2 text-xs text-muted-foreground">
-          <span>Markets</span>
-          <span className="inline-flex items-center gap-1.5">
-            <span className="relative flex size-1.5" aria-hidden="true">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-75 motion-reduce:animate-none" />
-              <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
-            </span>
-            Live
-          </span>
-        </div>
-        <ul className="flex flex-col">
+      <div className={cn("flex w-full max-w-72 flex-col rounded-xl bg-card shadow-sm", bordered && "border border-border")}>
+        <ul className="flex flex-col py-1.5">
           {rows.map((row) => {
             const pct = ((row.price - row.base) / row.base) * 100;
             const positive = pct >= 0;

@@ -21,6 +21,7 @@ interface Food8Props {
   minutes?: number;
   seconds?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,17 +34,6 @@ const pillClasses: Record<Tone, string> = {
   emerald: "bg-emerald-500 text-white",
   sky: "bg-sky-500 text-white",
   violet: "bg-violet-500 text-white",
-};
-
-const barClasses: Record<Tone, string> = {
-  neutral: "bg-foreground",
-  primary: "bg-primary",
-  foreground: "bg-foreground",
-  rose: "bg-rose-500",
-  amber: "bg-amber-500",
-  emerald: "bg-emerald-500",
-  sky: "bg-sky-500",
-  violet: "bg-violet-500",
 };
 
 const iconClasses: Record<Tone, string> = {
@@ -59,13 +49,13 @@ const iconClasses: Record<Tone, string> = {
 
 export const food8Demo: Food8Props = {
   step: "Simmer the sauce",
-  instruction:
-    "Keep at a gentle simmer, stirring every two minutes so the garlic doesn't scorch.",
+  instruction: "Keep it at a gentle simmer and stir now and then.",
   stepIndex: 4,
   totalSteps: 7,
   minutes: 7,
   seconds: 42,
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Food8({
@@ -75,7 +65,8 @@ export function Food8({
   totalSteps = 1,
   minutes = 0,
   seconds = 0,
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Food8Props) {
   return (
@@ -85,17 +76,17 @@ export function Food8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <span
             className={cn(
-              "rounded-full px-2 py-0.5 text-xs font-semibold",
+              "rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums",
               pillClasses[tone]
             )}
           >
-            Step {stepIndex} / {totalSteps}
+            Step {stepIndex} of {totalSteps}
           </span>
-          <span className="inline-flex items-center gap-1 font-mono text-sm font-bold text-card-foreground">
+          <span className="inline-flex items-center gap-1 text-sm font-bold tabular-nums text-card-foreground">
             <Timer
               className={cn("size-3.5", iconClasses[tone])}
               aria-hidden="true"
@@ -114,15 +105,6 @@ export function Food8({
             {instruction}
           </p>
         )}
-        <div
-          className="h-1 overflow-hidden rounded-full bg-muted"
-          aria-hidden="true"
-        >
-          <div
-            className={cn("h-full rounded-full", barClasses[tone])}
-            style={{ width: `${(stepIndex / Math.max(1, totalSteps)) * 100}%` }}
-          />
-        </div>
       </div>
     </div>
   );

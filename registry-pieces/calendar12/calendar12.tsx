@@ -21,28 +21,29 @@ interface Calendar12Props {
   minutes?: number;
   seconds?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-foreground text-background",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 export const calendar12Demo: Calendar12Props = {
   label: "Launch countdown",
-  targetDate: "May 1, 2026 · 09:00 UTC",
   days: 8,
   hours: 11,
   minutes: 42,
   seconds: 7,
   tone: "neutral",
+  bordered: false,
 };
 
 export function Calendar12({
@@ -53,6 +54,7 @@ export function Calendar12({
   minutes = 0,
   seconds = 0,
   tone = "neutral",
+  bordered = false,
   className,
 }: Calendar12Props) {
   const units = [
@@ -69,16 +71,12 @@ export function Calendar12({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <CalendarClock className="size-4" aria-hidden="true" />
-          </div>
+          <CalendarClock
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {label && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -98,10 +96,10 @@ export function Calendar12({
               key={idx}
               className="flex flex-col items-center gap-0.5 rounded-lg bg-muted py-2"
             >
-              <span className="font-mono text-xl font-bold text-card-foreground">
+              <span className="text-xl font-bold tabular-nums text-card-foreground">
                 {u.value.toString().padStart(2, "0")}
               </span>
-              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-medium text-muted-foreground">
                 {u.label}
               </span>
             </div>

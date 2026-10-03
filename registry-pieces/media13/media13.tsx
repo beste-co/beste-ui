@@ -68,17 +68,10 @@ export function Media13({
             aria-hidden="true"
           />
         </div>
-        <div className="absolute bottom-1.5 left-1/2 flex -translate-x-1/2 items-center gap-2 font-mono text-xs text-white/90">
+        <div className="absolute bottom-1.5 left-1/2 flex -translate-x-1/2 items-center gap-2 text-xs tabular-nums text-white/90">
           {iso && <span>{iso}</span>}
           {shutter && <span>{shutter}</span>}
           {aperture && <span>{aperture}</span>}
-        </div>
-        <div
-          className="absolute left-1.5 top-1.5 flex items-center gap-1 text-xs font-bold text-rose-500"
-          aria-hidden="true"
-        >
-          <span className="size-1.5 animate-pulse rounded-full bg-rose-500" />
-          REC
         </div>
       </div>
     </div>

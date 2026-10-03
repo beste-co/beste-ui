@@ -27,9 +27,7 @@ export function Upload4({
       )}
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-2 rounded-xl border-2 border-dashed border-foreground bg-card px-6 py-8 text-center shadow-sm">
-        <div className="flex size-10 items-center justify-center rounded-full bg-muted text-foreground">
-          <Download className="size-5" aria-hidden="true" />
-        </div>
+        <Download className="size-6 shrink-0 text-foreground" aria-hidden="true" />
         <span className="text-sm font-semibold text-foreground">
           {title}
         </span>

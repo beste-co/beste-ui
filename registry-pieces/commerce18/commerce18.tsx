@@ -1,6 +1,5 @@
 "use client";
 
-import { Gift } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -17,6 +16,7 @@ interface Commerce18Props {
   selected?: number;
   currency?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,14 +34,16 @@ export const commerce18Demo: Commerce18Props = {
   amounts: [25, 50, 100, 250],
   selected: 100,
   currency: "$",
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Commerce18({
   amounts = [],
   selected,
   currency = "$",
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Commerce18Props) {
   return (
@@ -51,16 +53,10 @@ export function Commerce18({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-1.5">
-          <Gift
-            className="size-3.5 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Gift card amount
-          </span>
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <span className="text-xs font-semibold text-muted-foreground">
+          Gift card amount
+        </span>
         <div className="grid grid-cols-4 gap-1.5">
           {amounts.map((a) => {
             const isSelected = a === selected;
@@ -70,7 +66,7 @@ export function Commerce18({
                 type="button"
                 aria-pressed={isSelected}
                 className={cn(
-                  "rounded-sm border px-2 py-2 font-mono text-sm font-semibold tabular-nums transition-colors",
+                  "rounded-sm border px-2 py-2 text-sm font-semibold tabular-nums transition-colors",
                   isSelected
                     ? selectedClasses[tone]
                     : "border-border bg-card text-card-foreground hover:bg-muted"
@@ -81,14 +77,6 @@ export function Commerce18({
               </button>
             );
           })}
-        </div>
-        <div className="flex items-center gap-2 rounded-sm border border-dashed border-border px-2 py-1.5">
-          <span className="font-mono text-xs text-muted-foreground">
-            {currency}
-          </span>
-          <span className="flex-1 font-mono text-xs text-muted-foreground">
-            Custom amount
-          </span>
         </div>
       </div>
     </div>

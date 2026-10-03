@@ -9,15 +9,16 @@ interface Education30Props {
   course?: string;
   answers?: number;
   unanswered?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const education30Demo: Education30Props = {
   title: "Ask me anything · Career pivots",
   excerpt: "Share your story and the thing you wish you knew earlier. I'll reply over the weekend.",
-  course: "Cohort 12 · Mentor hours",
+  course: "Mentor hours",
   answers: 38,
-  unanswered: 7,
+  bordered: false,
 };
 
 export function Education30({
@@ -26,6 +27,7 @@ export function Education30({
   course,
   answers = 0,
   unanswered = 0,
+  bordered = false,
   className,
 }: Education30Props) {
   return (
@@ -35,11 +37,9 @@ export function Education30({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-sky-500/15 text-sky-500">
-            <MessageSquare className="size-4" aria-hidden="true" />
-          </div>
+          <MessageSquare className="size-5 shrink-0 text-sky-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -58,7 +58,7 @@ export function Education30({
             {excerpt}
           </p>
         )}
-        <div className="flex items-center gap-3 border-t border-border pt-2 text-xs">
+        <div className="flex items-center gap-3 border-t border-border pt-2 text-xs tabular-nums">
           <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-300">
             <span
               className="size-1.5 rounded-full bg-emerald-500"

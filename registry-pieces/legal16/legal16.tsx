@@ -12,6 +12,7 @@ interface Legal16Props {
   label?: string;
   summary?: string;
   items?: ComplianceItem[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,13 +31,12 @@ const statusLabel: Record<"pass" | "warn" | "fail", string> = {
 export const legal16Demo: Legal16Props = {
   score: 86,
   label: "Compliance score",
-  summary: "GDPR & SOC 2 ready. 2 items need review.",
   items: [
     { name: "Data processing agreement", status: "pass" },
     { name: "Vendor subprocessor list", status: "pass" },
     { name: "Breach notification SLA", status: "warn" },
-    { name: "Retention policy", status: "warn" },
   ],
+  bordered: false,
 };
 
 export function Legal16({
@@ -44,6 +44,7 @@ export function Legal16({
   label = "Compliance score",
   summary,
   items = [],
+  bordered = false,
   className,
 }: Legal16Props) {
   const pct = Math.max(0, Math.min(100, score));
@@ -55,17 +56,13 @@ export function Legal16({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
-          <span className="font-mono text-xl font-bold text-card-foreground">
+          <span className="text-xl font-bold tabular-nums text-card-foreground">
             {pct}
-            <span className="text-xs font-normal text-muted-foreground">
-              {" "}
-              / 100
-            </span>
           </span>
         </div>
         <div

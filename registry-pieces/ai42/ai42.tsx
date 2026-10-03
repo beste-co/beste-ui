@@ -14,6 +14,7 @@ interface Ai42Props {
   tokens?: string[];
   tokensPerSecond?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,15 +28,17 @@ const chipClasses: Record<Tone, string> = {
 };
 
 export const ai42Demo: Ai42Props = {
-  tokens: ["The", " quick", " brown", " fox", " jumps", " over"],
+  tokens: ["The", " quick", " brown", " fox"],
   tokensPerSecond: 142,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai42({
   tokens = [],
-  tokensPerSecond = 0,
-  tone = "violet",
+  tokensPerSecond,
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai42Props) {
   return (
@@ -45,17 +48,18 @@ export function Ai42({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-md border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
-          <span>stream</span>
-          <span>{tokensPerSecond} tok/s</span>
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {typeof tokensPerSecond === "number" && (
+          <span className="self-end text-xs tabular-nums text-muted-foreground">
+            {tokensPerSecond} tok/s
+          </span>
+        )}
         <div className="flex flex-wrap gap-0.5">
           {tokens.map((t, i) => (
             <span
               key={i}
               className={cn(
-                "rounded-sm px-1 font-mono text-xs",
+                "rounded-sm px-1 text-xs",
                 chipClasses[tone]
               )}
             >

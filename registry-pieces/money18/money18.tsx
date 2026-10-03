@@ -8,6 +8,7 @@ interface Money18Props {
   min?: number;
   max?: number;
   status?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const money18Demo: Money18Props = {
   min: 300,
   max: 850,
   status: "Good",
+  bordered: false,
 };
 
 export function Money18({
@@ -25,6 +27,7 @@ export function Money18({
   min = 300,
   max = 850,
   status,
+  bordered = false,
   className,
 }: Money18Props) {
   const clamped = Math.max(min, Math.min(max, score));
@@ -37,10 +40,10 @@ export function Money18({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-3 rounded-lg border border-border bg-card px-4 py-3.5 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-3 rounded-lg bg-card px-4 py-3.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between gap-2">
           {label && (
-            <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            <span className="text-xs font-medium text-muted-foreground">
               {label}
             </span>
           )}

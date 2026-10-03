@@ -12,6 +12,7 @@ interface StackFrame {
 interface Code9Props {
   error?: string;
   frames?: StackFrame[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,9 +23,10 @@ export const code9Demo: Code9Props = {
     { fn: "handler", file: "src/server.ts", line: 42, column: 8 },
     { fn: "processRequest", file: "src/api.ts", line: 88, column: 4 },
   ],
+  bordered: false,
 };
 
-export function Code9({ error, frames = [], className }: Code9Props) {
+export function Code9({ error, frames = [], bordered = false, className }: Code9Props) {
   return (
     <div
       className={cn(
@@ -32,7 +34,7 @@ export function Code9({ error, frames = [], className }: Code9Props) {
         className
       )}
     >
-      <div className="w-full max-w-96 rounded-lg border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <div className={cn("w-full max-w-96 rounded-lg bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {error && (
           <div className="truncate text-rose-600 dark:text-rose-400">
             {error}

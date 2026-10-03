@@ -18,6 +18,7 @@ interface Monitoring9Props {
   unit?: string;
   hint?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -36,8 +37,8 @@ export const monitoring9Demo: Monitoring9Props = {
   label: "Cache hit",
   value: 87,
   unit: "%",
-  hint: "last 1h",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring9({
@@ -45,7 +46,8 @@ export function Monitoring9({
   value = 0,
   unit = "%",
   hint,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring9Props) {
   const safe = Math.min(100, Math.max(0, value));
@@ -60,7 +62,7 @@ export function Monitoring9({
         className
       )}
     >
-      <div className="flex w-full max-w-60 items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-60 items-center gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative size-14 shrink-0">
           <svg
             viewBox="0 0 64 64"

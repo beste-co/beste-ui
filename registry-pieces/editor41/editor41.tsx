@@ -12,6 +12,7 @@ interface DebugLine {
 
 interface Editor41Props {
   lines?: DebugLine[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,9 +23,10 @@ export const editor41Demo: Editor41Props = {
     { line: 42, code: "  render(user);", current: true },
     { line: 43, code: "}" },
   ],
+  bordered: false,
 };
 
-export function Editor41({ lines = [], className }: Editor41Props) {
+export function Editor41({ lines = [], bordered = false, className }: Editor41Props) {
   return (
     <div
       className={cn(
@@ -32,7 +34,7 @@ export function Editor41({ lines = [], className }: Editor41Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {lines.map((l) => (
           <div
             key={l.line}

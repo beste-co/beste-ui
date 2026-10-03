@@ -20,27 +20,28 @@ interface Health21Props {
   location?: string;
   reason?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 export const health21Demo: Health21Props = {
-  provider: "Dr. Rana Elgin, MD",
+  provider: "Dr. Hania Rani",
   specialty: "Endocrinology",
   when: "Thu, May 2 · 09:30",
-  location: "Memorial West · Suite 412",
-  reason: "Annual check-up",
-  tone: "sky",
+  location: "Memorial West",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health21({
@@ -49,7 +50,8 @@ export function Health21({
   when,
   location,
   reason,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health21Props) {
   return (
@@ -59,16 +61,12 @@ export function Health21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Stethoscope className="size-4" aria-hidden="true" />
-          </div>
+          <Stethoscope
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {provider && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -82,18 +80,20 @@ export function Health21({
             )}
           </div>
         </div>
-        <div className="rounded-md bg-muted p-2 text-sm">
-          {when && (
-            <span className="block font-semibold text-card-foreground">
-              {when}
-            </span>
-          )}
-          {location && (
-            <span className="block text-xs text-muted-foreground">
-              {location}
-            </span>
-          )}
-        </div>
+        {(when || location) && (
+          <div className="rounded-md bg-muted p-2 text-sm">
+            {when && (
+              <span className="block font-semibold tabular-nums text-card-foreground">
+                {when}
+              </span>
+            )}
+            {location && (
+              <span className="block text-xs text-muted-foreground">
+                {location}
+              </span>
+            )}
+          </div>
+        )}
         {reason && (
           <span className="text-xs italic text-muted-foreground">
             {reason}

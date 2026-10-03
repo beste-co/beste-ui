@@ -39,17 +39,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const legal4Demo: Legal4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Mutual NDA",
   disclosingParty: "Beste Technologies Inc.",
   receivingParty: "Kestrel Labs",
-  term: "3 years from the effective date",
-  jurisdiction: "Delaware, USA",
-  confidentialLabel: "Confidential",
+  term: "3 year term",
   disclosingLabel: "Disclosing",
   receivingLabel: "Receiving",
-  termPrefix: "Term",
 };
 
 export function Legal4({
@@ -58,12 +55,12 @@ export function Legal4({
   receivingParty,
   term,
   jurisdiction,
-  confidentialLabel = "Confidential",
+  confidentialLabel,
   disclosingLabel = "Disclosing",
   receivingLabel = "Receiving",
-  termPrefix = "Term",
+  termPrefix,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Legal4Props) {
@@ -78,18 +75,18 @@ export function Legal4({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2.5 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-9 items-center justify-center rounded-md bg-slate-900 text-slate-100 dark:bg-slate-100 dark:text-slate-900">
-            <ShieldCheck className="size-4" aria-hidden="true" />
-          </div>
+          <ShieldCheck className="size-5 shrink-0" aria-hidden="true" />
           <div className="flex flex-col">
             {title && (
               <span className="text-sm font-semibold">
                 {title}
               </span>
             )}
-            <span className="text-xs font-medium uppercase tracking-wide text-current/60">
-              {confidentialLabel}
-            </span>
+            {confidentialLabel && (
+              <span className="text-xs font-medium text-current/60">
+                {confidentialLabel}
+              </span>
+            )}
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2 rounded-md bg-current/10 p-2 text-xs">
@@ -106,17 +103,17 @@ export function Legal4({
             </span>
           </div>
         </div>
-        <div className="flex items-center justify-between border-t border-current/15 pt-2 text-xs">
-          {term && (
-            <span className="text-current/60">
-              {termPrefix} ·{" "}
-              <span className="">{term}</span>
-            </span>
-          )}
-          {jurisdiction && (
-            <span className="text-current/60">{jurisdiction}</span>
-          )}
-        </div>
+        {(term || jurisdiction) && (
+          <div className="flex items-center justify-between gap-2 text-xs text-current/60">
+            {term && (
+              <span>
+                {termPrefix ? `${termPrefix} · ` : ""}
+                {term}
+              </span>
+            )}
+            {jurisdiction && <span>{jurisdiction}</span>}
+          </div>
+        )}
       </div>
     </div>
   );

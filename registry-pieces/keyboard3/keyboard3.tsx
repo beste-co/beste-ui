@@ -11,22 +11,24 @@ interface Shortcut {
 interface Keyboard3Props {
   title?: string;
   shortcuts?: Shortcut[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const keyboard3Demo: Keyboard3Props = {
-  title: "Keyboard shortcuts",
   shortcuts: [
     { label: "Open search", keys: ["⌘", "K"] },
     { label: "New file", keys: ["⌘", "N"] },
     { label: "Toggle sidebar", keys: ["⌘", "B"] },
     { label: "Switch workspace", keys: ["⌘", "⇧", "O"] },
   ],
+  bordered: false,
 };
 
 export function Keyboard3({
-  title = "Keyboard shortcuts",
+  title,
   shortcuts = [],
+  bordered = false,
   className,
 }: Keyboard3Props) {
   return (
@@ -36,10 +38,12 @@ export function Keyboard3({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          {title}
-        </span>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {title && (
+          <span className="text-xs font-semibold text-muted-foreground">
+            {title}
+          </span>
+        )}
         <div className="flex flex-col gap-1">
           {shortcuts.map((item, idx) => (
             <div
@@ -60,7 +64,7 @@ export function Keyboard3({
                         +
                       </span>
                     )}
-                    <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-border border-b-2 bg-muted px-1.5 font-mono text-xs font-medium text-card-foreground">
+                    <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-border border-b-2 bg-muted px-1.5 text-xs font-medium text-card-foreground">
                       {key}
                     </kbd>
                   </Fragment>

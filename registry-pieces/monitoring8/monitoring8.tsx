@@ -9,40 +9,42 @@ interface Monitoring8Props {
   level?: LogLevel;
   source?: string;
   message?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 const levelStyles: Record<LogLevel, { text: string; label: string }> = {
   debug: {
     text: "text-slate-500 dark:text-slate-400",
-    label: "DEBUG",
+    label: "Debug",
   },
   info: {
     text: "text-sky-600 dark:text-sky-400",
-    label: "INFO ",
+    label: "Info",
   },
   warn: {
     text: "text-amber-600 dark:text-amber-400",
-    label: "WARN ",
+    label: "Warn",
   },
   error: {
     text: "text-rose-600 dark:text-rose-400",
-    label: "ERROR",
+    label: "Error",
   },
 };
 
 export const monitoring8Demo: Monitoring8Props = {
-  timestamp: "12:34:56",
   level: "warn",
   source: "auth.session",
-  message: "token refresh retry 2/3",
+  message: "Token refresh retry 2 of 3",
+  bordered: false,
 };
 
 export function Monitoring8({
-  timestamp = "00:00:00",
+  timestamp,
   level = "info",
   source,
   message,
+  bordered = false,
   className,
 }: Monitoring8Props) {
   const styles = levelStyles[level];
@@ -54,10 +56,12 @@ export function Monitoring8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-2 overflow-hidden rounded-md border border-border bg-card px-3 py-2 font-mono text-xs shadow-sm">
-        <span className="shrink-0 tabular-nums text-muted-foreground">
-          {timestamp}
-        </span>
+      <div className={cn("flex w-full max-w-80 items-center gap-2 overflow-hidden rounded-md bg-card px-3 py-2 text-xs shadow-sm", bordered && "border border-border")}>
+        {timestamp && (
+          <span className="shrink-0 tabular-nums text-muted-foreground">
+            {timestamp}
+          </span>
+        )}
         <span className={cn("shrink-0 font-semibold", styles.text)}>
           {styles.label}
         </span>

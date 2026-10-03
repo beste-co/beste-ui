@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "dashboard25",
   title: "Service List",
   description:
-    "Service health rows with a pinging status dot, operational label, and a monospaced uptime percentage.",
+    "Service health rows with a pinging status dot, the service name, and its uptime percentage.",
   category: "Dashboard",
 };

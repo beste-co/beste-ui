@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser6Demo: Browser6Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   canGoBack: true,
   canGoForward: false,
@@ -42,7 +42,7 @@ export function Browser6({
   canGoBack = true,
   canGoForward = true,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser6Props) {

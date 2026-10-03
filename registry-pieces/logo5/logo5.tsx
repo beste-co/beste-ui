@@ -10,6 +10,7 @@ interface Logo {
 interface Logo5Props {
   heading?: string;
   logos?: Logo[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,11 +24,13 @@ export const logo5Demo: Logo5Props = {
     { name: "Dropbox", src: "https://oud.pics/sm/l/dropbox.png" },
     { name: "Gmail", src: "https://oud.pics/sm/l/gmail.jpeg" },
   ],
+  bordered: false,
 };
 
 export function Logo5({
   heading,
   logos = [],
+  bordered = false,
   className,
 }: Logo5Props) {
   return (
@@ -39,7 +42,7 @@ export function Logo5({
     >
       <div className="flex w-full max-w-80 flex-col gap-3">
         {heading && (
-          <span className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <span className="text-center text-xs font-semibold text-muted-foreground">
             {heading}
           </span>
         )}
@@ -47,7 +50,7 @@ export function Logo5({
           {logos.map((logo, idx) => (
             <div
               key={idx}
-              className="flex aspect-square items-center justify-center rounded-lg border border-border bg-card p-3 shadow-sm"
+              className={cn("flex aspect-square items-center justify-center rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}
               title={logo.name}
             >
               <div className="relative size-8">

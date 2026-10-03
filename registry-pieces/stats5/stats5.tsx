@@ -9,6 +9,7 @@ interface Stats5Props {
   after?: string;
   beforeCaption?: string;
   afterCaption?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const stats5Demo: Stats5Props = {
   after: "0.8s",
   beforeCaption: "Before",
   afterCaption: "After",
+  bordered: false,
 };
 
 export function Stats5({
@@ -26,6 +28,7 @@ export function Stats5({
   after = "0",
   beforeCaption = "Before",
   afterCaption = "After",
+  bordered = false,
   className,
 }: Stats5Props) {
   return (
@@ -35,9 +38,9 @@ export function Stats5({
         className
       )}
     >
-      <div className="flex w-fit max-w-64 flex-col gap-2 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
+      <div className={cn("flex w-fit max-w-64 flex-col gap-2 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {label}
           </span>
         )}

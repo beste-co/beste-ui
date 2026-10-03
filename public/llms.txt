@@ -21,7 +21,7 @@ Beste UI is made by [beste.co](https://beste.co), an opinionated block-based sit
 
 - [Blocks](https://ui.beste.co/blocks): 168 full page sections in 41 categories. 168 are free, the rest are Pro.
 - [Pages](https://ui.beste.co/pages): 0 whole pages composed from the blocks. One command installs a page and every block inside it.
-- [Pieces](https://ui.beste.co/pieces): 1,326 small widgets in 46 categories that drop into the media slots of a block. Free.
+- [Pieces](https://ui.beste.co/pieces): 1,325 small widgets in 46 categories that drop into the media slots of a block. Free.
 - [Components](https://ui.beste.co/components): 291 styled primitives in 40 categories: buttons, badges, cards, text effects, inspector controls. Free.
 - [Search](https://ui.beste.co/search): Search every tier by name or by describing what you need.
 

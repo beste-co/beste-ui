@@ -8,6 +8,7 @@ interface Upload8Props {
   formats?: string[];
   limit?: string;
   action?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const upload8Demo: Upload8Props = {
   formats: ["PNG", "JPG", "SVG", "WebP"],
   limit: "Up to 10 MB",
   action: "Browse files",
+  bordered: false,
 };
 
 export function Upload8({
@@ -23,6 +25,7 @@ export function Upload8({
   formats = [],
   limit,
   action = "Browse",
+  bordered = false,
   className,
 }: Upload8Props) {
   return (
@@ -33,9 +36,7 @@ export function Upload8({
       )}
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-3 rounded-xl border-2 border-dashed border-border bg-card px-5 py-6 text-center shadow-sm">
-        <div className="flex size-9 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-          <FileUp className="size-4" aria-hidden="true" />
-        </div>
+        <FileUp className="size-5 shrink-0 text-muted-foreground" aria-hidden="true" />
         {title && (
           <span className="text-sm font-semibold text-card-foreground">
             {title}
@@ -46,7 +47,7 @@ export function Upload8({
             {formats.map((fmt, idx) => (
               <span
                 key={idx}
-                className="rounded-full border border-border bg-muted px-2 py-0.5 font-mono text-xs text-muted-foreground"
+                className={cn("rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground", bordered && "border border-border")}
               >
                 {fmt}
               </span>
@@ -58,7 +59,7 @@ export function Upload8({
         )}
         <button
           type="button"
-          className="rounded-md border border-border bg-background px-3 py-1.5 text-xs font-semibold text-card-foreground shadow-sm hover:bg-muted"
+          className={cn("rounded-md px-3 py-1.5 text-xs font-semibold text-card-foreground shadow-sm hover:bg-muted", bordered ? "border border-border bg-background" : "bg-muted hover:bg-muted-foreground/15")}
         >
           {action}
         </button>

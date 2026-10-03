@@ -8,6 +8,7 @@ interface Upload28Props {
   url?: string;
   expiry?: string;
   viewers?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,7 +16,7 @@ export const upload28Demo: Upload28Props = {
   filename: "board-deck.pdf",
   url: "beste.co/share/Kq91-2Xa",
   expiry: "Expires in 7 days",
-  viewers: "Anyone with the link · Viewer",
+  bordered: false,
 };
 
 export function Upload28({
@@ -23,6 +24,7 @@ export function Upload28({
   url,
   expiry,
   viewers,
+  bordered = false,
   className,
 }: Upload28Props) {
   return (
@@ -32,11 +34,9 @@ export function Upload28({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-sky-500/15 text-sky-500">
-            <Share2 className="size-4" aria-hidden="true" />
-          </div>
+          <Share2 className="size-5 shrink-0 text-sky-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-semibold text-card-foreground">
               {filename}
@@ -48,8 +48,8 @@ export function Upload28({
             )}
           </div>
         </div>
-        <div className="flex items-center overflow-hidden rounded-md border border-border bg-muted">
-          <span className="flex-1 truncate px-3 py-1.5 font-mono text-xs text-card-foreground">
+        <div className={cn("flex items-center overflow-hidden rounded-md bg-muted", bordered && "border border-border")}>
+          <span className="flex-1 truncate px-3 py-1.5 text-xs text-card-foreground">
             {url}
           </span>
           <button

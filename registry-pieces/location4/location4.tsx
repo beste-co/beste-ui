@@ -6,6 +6,7 @@ interface Location4Props {
   latitude?: string;
   longitude?: string;
   place?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const location4Demo: Location4Props = {
   latitude: "40.7580° N",
   longitude: "73.9855° W",
   place: "Times Square, NY",
+  bordered: false,
 };
 
 export function Location4({
   latitude,
   longitude,
   place,
+  bordered = false,
   className,
 }: Location4Props) {
   return (
@@ -28,11 +31,8 @@ export function Location4({
         className
       )}
     >
-      <div className="w-full max-w-72 rounded-lg border border-border bg-card p-3 shadow-sm">
-        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Coordinates
-        </span>
-        <div className="mt-1 font-mono text-base font-semibold text-card-foreground">
+      <div className={cn("w-full max-w-72 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="text-base font-semibold text-card-foreground">
           <div className="tabular-nums">{latitude}</div>
           <div className="tabular-nums">{longitude}</div>
         </div>

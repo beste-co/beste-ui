@@ -48,7 +48,7 @@ export function Input24({
               {label}
             </label>
           )}
-          <span className="font-mono text-xs font-semibold text-card-foreground">
+          <span className="text-xs font-semibold text-card-foreground">
             {unit}
             {low} – {unit}
             {high}

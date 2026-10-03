@@ -228,17 +228,6 @@ export function RegistryComponentsContent({
                     {isNewComponent(c.name) && <NewBadge />}
                   </div>
                 </div>
-                <div className="relative flex flex-col gap-1 px-1 pb-1">
-                  {/* Plain text: the card's own overlay link already carries this name,
-                      and two anchors to one page is one more than a reader or a
-                      crawler needs. The registry name is gone from here — it is what
-                      you type into a terminal, not what you scan a grid for, and it
-                      is on the page this card opens. */}
-                  <h3 className={typography.cardTitle}>{c.title}</h3>
-                  <p className={cn(typography.cardText, "line-clamp-2")}>
-                    {c.description}
-                  </p>
-                </div>
               </div>
             );
           })}

@@ -14,7 +14,6 @@ export const form25Demo: Form25Props = {
   label: "Tone of voice",
   ticks: ["Formal", "Neutral", "Friendly", "Playful"],
   tickIndex: 2,
-  value: "Friendly",
 };
 
 export function Form25({

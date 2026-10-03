@@ -65,14 +65,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor2Demo: Editor2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   prefix: "user.",
   items: [
     { label: "id", kind: "variable", detail: "string" },
     { label: "name", kind: "variable", detail: "string", active: true },
     { label: "email", kind: "variable", detail: "string" },
-    { label: "isAdmin", kind: "variable", detail: "boolean" },
     { label: "save", kind: "function", detail: "(): Promise<void>" },
   ],
 };
@@ -81,7 +80,7 @@ export function Editor2({
   prefix = "",
   items = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor2Props) {
@@ -95,21 +94,21 @@ export function Editor2({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1">
-        <div className={cn("flex items-center gap-0 rounded-md px-3 py-2 font-mono text-xs shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-          <span className="">{prefix}</span>
+        <div className={cn("flex items-center gap-0 rounded-md px-3 py-2 text-xs shadow-sm", surfaceTone, bordered && "border border-current/15")}>
+          <span>{prefix}</span>
           <span
             className="h-3.5 w-px animate-pulse bg-current"
             aria-hidden="true"
           />
         </div>
-        <ul className="flex flex-col overflow-hidden rounded-md border border-current/15 bg-current/10 shadow-md">
+        <ul className={cn("flex flex-col overflow-hidden rounded-md bg-current/10 shadow-md", bordered && "border border-current/15")}>
           {items.map((it, i) => {
             const cfg = kindConfig[it.kind];
             return (
               <li
                 key={i}
                 className={cn(
-                  "flex items-center gap-2 px-2 py-1 font-mono text-xs",
+                  "flex items-center gap-2 px-2 py-1 text-xs",
                   it.active && "bg-current/10"
                 )}
               >

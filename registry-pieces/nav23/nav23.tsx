@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface MegaItem {
@@ -13,14 +12,14 @@ interface Nav23Props {
   items?: MegaItem[];
   imageSrc?: string;
   alt?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 const defaultImage =
-  "https://images.unsplash.com/photo-1719951565103-6069b7ae047d?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8";
+  "https://images.unsplash.com/photo-1719951565103-6069b7ae047d?q=80&w=400&h=600&auto=format&fit=crop";
 
 export const nav23Demo: Nav23Props = {
-  heading: "Products",
   items: [
     {
       label: "Blocks",
@@ -37,6 +36,7 @@ export const nav23Demo: Nav23Props = {
   ],
   imageSrc: defaultImage,
   alt: "Products preview",
+  bordered: false,
 };
 
 export function Nav23({
@@ -44,6 +44,7 @@ export function Nav23({
   items = [],
   imageSrc = defaultImage,
   alt,
+  bordered = false,
   className,
 }: Nav23Props) {
   return (
@@ -53,10 +54,10 @@ export function Nav23({
         className
       )}
     >
-      <div className="flex w-full max-w-80 overflow-hidden rounded-lg border border-border bg-card shadow-lg">
+      <div className={cn("flex w-full max-w-80 overflow-hidden rounded-lg bg-card shadow-lg", bordered && "border border-border")}>
         <div className="flex flex-1 flex-col gap-1 p-2">
           {heading && (
-            <span className="px-2 pb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="px-2 pb-1 text-xs font-semibold text-muted-foreground">
               {heading}
             </span>
           )}
@@ -64,25 +65,19 @@ export function Nav23({
             <button
               key={idx}
               type="button"
-              className="group flex items-start gap-2 rounded-md px-2 py-1.5 text-left hover:bg-muted"
+              className="flex min-w-0 flex-col rounded-md px-2 py-1.5 text-left hover:bg-muted"
             >
-              <div className="flex min-w-0 flex-1 flex-col">
-                <span className="text-sm font-semibold text-card-foreground">
-                  {item.label}
-                </span>
-                <span className="truncate text-xs text-muted-foreground">
-                  {item.description}
-                </span>
-              </div>
-              <ArrowUpRight
-                className="size-3 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
+              <span className="text-sm font-semibold text-card-foreground">
+                {item.label}
+              </span>
+              <span className="truncate text-xs text-muted-foreground">
+                {item.description}
+              </span>
             </button>
           ))}
         </div>
         {imageSrc && (
-          <div className="relative w-28 shrink-0 border-l border-border">
+          <div className="relative w-28 shrink-0 self-stretch overflow-hidden border-l border-border">
             <img
               src={imageSrc}
               alt={alt ?? ""}

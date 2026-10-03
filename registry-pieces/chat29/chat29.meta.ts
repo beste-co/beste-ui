@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "chat29",
   title: "Location Share",
   description:
-    "Chat bubble with a faux-map preview, a pulsing pin, and the place name, address, and distance beneath.",
+    "Chat bubble with a location photo and the place name and address beneath.",
   category: "Chat",
 };

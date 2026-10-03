@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface Calendar22Props {
   label?: string;
   upcoming?: { label: string; date: string }[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,11 +17,13 @@ export const calendar22Demo: Calendar22Props = {
     { label: "Product review", date: "May 19" },
     { label: "Design + Eng sync", date: "May 23" },
   ],
+  bordered: false,
 };
 
 export function Calendar22({
   label,
   upcoming = [],
+  bordered = false,
   className,
 }: Calendar22Props) {
   return (
@@ -30,9 +33,9 @@ export function Calendar22({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-1.5 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-1.5 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
         )}
@@ -45,10 +48,10 @@ export function Calendar22({
                 className="flex items-center gap-3 py-1"
               >
                 <div className="flex w-10 shrink-0 items-baseline gap-1">
-                  <span className="font-mono text-sm font-bold tabular-nums text-card-foreground">
+                  <span className="text-sm font-bold tabular-nums text-card-foreground">
                     {day}
                   </span>
-                  <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                  <span className="text-xs text-muted-foreground">
                     {month}
                   </span>
                 </div>

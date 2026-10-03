@@ -12,6 +12,7 @@ interface ChordStep {
 interface Keyboard5Props {
   steps?: ChordStep[];
   hint?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,12 +21,13 @@ export const keyboard5Demo: Keyboard5Props = {
     { keys: ["G"], label: "Leader" },
     { keys: ["P"], label: "Go to project" },
   ],
-  hint: "Press in sequence",
+  bordered: false,
 };
 
 export function Keyboard5({
   steps = [],
   hint,
+  bordered = false,
   className,
 }: Keyboard5Props) {
   return (
@@ -35,7 +37,7 @@ export function Keyboard5({
         className
       )}
     >
-      <div className="flex flex-col items-center gap-2 rounded-lg border border-border bg-card px-4 py-3 shadow-sm">
+      <div className={cn("flex flex-col items-center gap-2 rounded-lg bg-card px-4 py-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           {steps.map((step, idx) => (
             <Fragment key={idx}>
@@ -50,7 +52,7 @@ export function Keyboard5({
                   {step.keys.map((key, kIdx) => (
                     <kbd
                       key={kIdx}
-                      className="inline-flex h-7 min-w-7 items-center justify-center rounded-md border border-border border-b-2 bg-muted px-2 font-mono text-sm font-semibold text-card-foreground"
+                      className="inline-flex h-7 min-w-7 items-center justify-center rounded-md border border-border border-b-2 bg-muted px-2 text-sm font-semibold text-card-foreground"
                     >
                       {key}
                     </kbd>

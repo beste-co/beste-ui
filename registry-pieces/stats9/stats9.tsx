@@ -17,26 +17,25 @@ interface Stats9Props {
   label?: string;
   percentile?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const toneClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  gold: "bg-gradient-to-br from-amber-400 to-orange-500 text-white",
-  violet:
-    "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white",
-  emerald:
-    "bg-gradient-to-br from-emerald-400 to-teal-500 text-white",
-  ocean: "bg-gradient-to-br from-sky-500 to-indigo-600 text-white",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  gold: "text-amber-500",
+  violet: "text-violet-500",
+  emerald: "text-emerald-500",
+  ocean: "text-sky-500",
 };
 
 export const stats9Demo: Stats9Props = {
   rank: 12,
   total: 500,
   label: "Weekly leaderboard",
-  percentile: "Top 3%",
   tone: "primary",
+  bordered: false,
 };
 
 export function Stats9({
@@ -45,6 +44,7 @@ export function Stats9({
   label,
   percentile,
   tone = "primary",
+  bordered = false,
   className,
 }: Stats9Props) {
   return (
@@ -54,16 +54,8 @@ export function Stats9({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
-        <div
-          className={cn(
-            "flex size-12 shrink-0 items-center justify-center rounded-full shadow-sm",
-            toneClasses[tone]
-          )}
-          aria-hidden="true"
-        >
-          <Trophy className="size-5" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
+        <Trophy className={cn("size-6 shrink-0", iconClasses[tone])} aria-hidden="true" />
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-baseline gap-1.5">
             <span className="text-2xl font-bold tabular-nums leading-none text-card-foreground">

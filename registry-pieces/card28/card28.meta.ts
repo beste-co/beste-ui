@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "card28",
   title: "Developer Bio",
   description:
-    "Developer profile with a boxy mono avatar, github handle, stack chips, contributions, and streak flame.",
+    "Developer profile with a square avatar, a handle, stack chips, and a contributions line.",
   category: "Card",
 };

@@ -6,6 +6,7 @@ interface Terminal5Props {
   label?: string;
   percent?: number;
   segments?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const terminal5Demo: Terminal5Props = {
   label: "Installing dependencies",
   percent: 72,
   segments: 12,
+  bordered: false,
 };
 
 export function Terminal5({
   label,
   percent = 0,
   segments = 12,
+  bordered = false,
   className,
 }: Terminal5Props) {
   const clamped = Math.max(0, Math.min(100, percent));
@@ -31,7 +34,7 @@ export function Terminal5({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2.5 font-mono text-xs shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-lg bg-zinc-950 px-3 py-2.5 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         <div className="flex items-center justify-between gap-2">
           {label && <span className="truncate text-zinc-300">{label}</span>}
           <span className="shrink-0 tabular-nums text-emerald-400">

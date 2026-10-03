@@ -88,7 +88,7 @@ export function Ai49({
 
         <span
           key={`${mode}-label`}
-          className="text-sm font-medium tracking-wide text-foreground"
+          className="text-sm font-medium text-foreground"
           style={{ animation: "ai49-in 350ms ease-out" }}
         >
           {labels[mode]}

@@ -17,11 +17,11 @@ export function Shapes8({ className }: Shapes8Props) {
       )}
     >
       <div className="flex h-20 items-end gap-2" aria-hidden="true">
-        <span className="h-1/2 w-3 rounded-sm bg-foreground" />
-        <span className="h-3/4 w-3 rounded-sm bg-foreground" />
-        <span className="h-1/3 w-3 rounded-sm bg-foreground" />
-        <span className="h-full w-3 rounded-sm bg-emerald-500" />
-        <span className="h-2/3 w-3 rounded-sm bg-foreground" />
+        <span className="h-1/2 w-3 rounded-sm bg-foreground/20" />
+        <span className="h-3/4 w-3 rounded-sm bg-foreground/20" />
+        <span className="h-1/3 w-3 rounded-sm bg-foreground/20" />
+        <span className="h-full w-3 rounded-sm bg-primary" />
+        <span className="h-2/3 w-3 rounded-sm bg-foreground/20" />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, FileText, Paperclip } from "lucide-react";
+import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Status = "draft" | "submitted" | "late" | "graded";
@@ -11,6 +11,7 @@ interface Education15Props {
   due?: string;
   attachments?: number;
   status?: Status;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,11 +35,11 @@ const statusConfig: Record<Status, { label: string; pill: string }> = {
 };
 
 export const education15Demo: Education15Props = {
-  title: "Project 2 · State management patterns",
-  course: "CS 401 · Advanced React",
-  due: "Due Apr 30, 23:59",
-  attachments: 3,
+  title: "State management patterns",
+  course: "Advanced React",
+  due: "Due Apr 30",
   status: "submitted",
+  bordered: false,
 };
 
 export function Education15({
@@ -47,6 +48,7 @@ export function Education15({
   due,
   attachments = 0,
   status = "draft",
+  bordered = false,
   className,
 }: Education15Props) {
   const config = statusConfig[status];
@@ -58,14 +60,12 @@ export function Education15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex size-8 items-center justify-center rounded-md bg-violet-500/15 text-violet-500">
-              <FileText className="size-4" aria-hidden="true" />
-            </div>
+            <FileText className="size-5 shrink-0 text-violet-500" aria-hidden="true" />
             {course && (
-              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-medium text-muted-foreground">
                 {course}
               </span>
             )}
@@ -84,20 +84,12 @@ export function Education15({
             {title}
           </span>
         )}
-        <div className="flex items-center justify-between border-t border-border pt-2 text-xs text-muted-foreground">
-          {due && (
-            <span className="inline-flex items-center gap-1">
-              <Calendar className="size-3" aria-hidden="true" />
-              {due}
-            </span>
-          )}
-          {attachments > 0 && (
-            <span className="inline-flex items-center gap-1">
-              <Paperclip className="size-3" aria-hidden="true" />
-              {attachments} files
-            </span>
-          )}
-        </div>
+        {(due || attachments > 0) && (
+          <div className="flex items-center justify-between border-t border-border pt-2 text-xs tabular-nums text-muted-foreground">
+            {due && <span>{due}</span>}
+            {attachments > 0 && <span>{attachments} files</span>}
+          </div>
+        )}
       </div>
     </div>
   );

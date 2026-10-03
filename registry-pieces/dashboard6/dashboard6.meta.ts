@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "dashboard6",
   title: "Funnel",
   description:
-    "Conversion funnel stages where each row's bar narrows against the top stage and a rose drop-off percentage marks churn.",
+    "Conversion funnel where each stage shows its label, its count, and a bar that narrows against the top stage.",
   category: "Dashboard",
 };

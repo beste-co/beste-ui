@@ -45,7 +45,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor52Demo: Editor52Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Appearance",
   groups: [
@@ -60,7 +60,7 @@ export const editor52Demo: Editor52Props = {
       label: "Motion",
       rows: [
         { label: "Section animation", value: "Blur in" },
-        { label: "Animation speed", value: "Slow (0.8s)" },
+        { label: "Animation speed", value: "Slow" },
       ],
     },
   ],
@@ -80,7 +80,7 @@ export function Editor52({
   groups = [],
   stepMs = 340,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor52Props) {

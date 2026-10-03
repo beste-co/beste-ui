@@ -47,10 +47,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard33Demo: Dashboard33Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "This week",
-  range: "Mon – Sun",
   items: [
     { label: "Booked", value: "142", delta: "+9", direction: "up" },
     { label: "No-shows", value: "3", delta: "-4", direction: "down" },
@@ -58,16 +57,18 @@ export const dashboard33Demo: Dashboard33Props = {
   ],
 };
 
-export function Dashboard33({ title, range, items = [], surface = "card", bordered = true, inverted = false, className }: Dashboard33Props) {
+export function Dashboard33({ title, range, items = [], surface = "card", bordered = false, inverted = false, className }: Dashboard33Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
       <div className={cn("w-full max-w-96 rounded-md shadow-xl", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-baseline justify-between gap-3 border-b border-current/15 px-5 py-3">
-          {title && <p className="text-sm font-semibold">{title}</p>}
-          {range && <span className="text-xs text-current/60">{range}</span>}
-        </div>
+        {(title || range) && (
+          <div className="flex items-baseline justify-between gap-3 border-b border-current/15 px-5 py-3">
+            {title && <p className="text-sm font-semibold">{title}</p>}
+            {range && <span className="text-xs text-current/60">{range}</span>}
+          </div>
+        )}
 
         <div className="grid grid-cols-3 divide-x divide-border">
           {items.map((item, index) => (

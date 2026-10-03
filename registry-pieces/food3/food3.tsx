@@ -14,26 +14,24 @@ interface Food3Props {
   guestsLabel?: string;
   seatingLabel?: string;
   codeLabel?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const food3Demo: Food3Props = {
-  restaurant: "Lokal · Modern Türk",
+  restaurant: "Lokal",
   when: "Thu, Apr 25 · 20:00",
   partySize: 4,
-  table: "Patio · Table 12",
-  confirmationCode: "LKL-7Z91",
   confirmedLabel: "Reservation confirmed",
   whenLabel: "When",
   guestsLabel: "Guests",
-  seatingLabel: "Seating",
-  codeLabel: "Code",
+  bordered: false,
 };
 
 export function Food3({
   restaurant,
   when,
-  partySize = 0,
+  partySize,
   table,
   confirmationCode,
   confirmedLabel = "Reservation confirmed",
@@ -41,6 +39,7 @@ export function Food3({
   guestsLabel = "Guests",
   seatingLabel = "Seating",
   codeLabel = "Code",
+  bordered = false,
   className,
 }: Food3Props) {
   return (
@@ -50,13 +49,11 @@ export function Food3({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/5 p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-emerald-500/5 p-3 shadow-sm", bordered && "border border-emerald-500/40")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-full bg-emerald-500 text-white">
-            <Check className="size-4" aria-hidden="true" />
-          </div>
+          <Check className="size-5 shrink-0 text-emerald-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+            <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
               {confirmedLabel}
             </span>
             {restaurant && (
@@ -67,26 +64,36 @@ export function Food3({
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2 rounded-md bg-card p-2 text-xs">
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">{whenLabel}</span>
-            <span className="font-semibold text-card-foreground">{when}</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">{guestsLabel}</span>
-            <span className="font-semibold text-card-foreground">
-              {partySize}
-            </span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">{seatingLabel}</span>
-            <span className="truncate text-card-foreground">{table}</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-muted-foreground">{codeLabel}</span>
-            <span className="font-mono text-card-foreground">
-              {confirmationCode}
-            </span>
-          </div>
+          {when && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">{whenLabel}</span>
+              <span className="font-semibold tabular-nums text-card-foreground">
+                {when}
+              </span>
+            </div>
+          )}
+          {partySize !== undefined && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">{guestsLabel}</span>
+              <span className="font-semibold tabular-nums text-card-foreground">
+                {partySize}
+              </span>
+            </div>
+          )}
+          {table && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">{seatingLabel}</span>
+              <span className="truncate text-card-foreground">{table}</span>
+            </div>
+          )}
+          {confirmationCode && (
+            <div className="flex flex-col">
+              <span className="text-muted-foreground">{codeLabel}</span>
+              <span className="text-card-foreground">
+                {confirmationCode}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>

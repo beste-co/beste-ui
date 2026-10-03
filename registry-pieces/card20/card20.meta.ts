@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "card20",
   title: "Profile Card",
   description:
-    "User profile card with a gradient avatar, role, location, a short bio, and a trailing social icon button.",
+    "User profile card with an avatar, a name, a role, and a short bio.",
   category: "Card",
 };

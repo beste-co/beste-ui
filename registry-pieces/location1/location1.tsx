@@ -19,10 +19,10 @@ interface Location1Props {
 }
 
 const tonePinClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  destructive: "bg-destructive text-white",
-  warning: "bg-amber-500 text-white",
+  primary: "text-primary",
+  foreground: "text-current",
+  destructive: "text-destructive",
+  warning: "text-amber-500",
 };
 
 
@@ -43,11 +43,10 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const location1Demo: Location1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   city: "Istanbul",
   country: "Türkiye",
-  coordinate: "41.01°N · 28.98°E",
   tone: "primary",
 };
 
@@ -57,7 +56,7 @@ export function Location1({
   coordinate,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Location1Props) {
@@ -71,17 +70,10 @@ export function Location1({
       )}
     >
       <div className={cn("flex w-full max-w-60 items-center gap-3 rounded-lg px-3 py-2 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div
-          className={cn(
-            "flex size-9 shrink-0 items-center justify-center rounded-full shadow-sm",
-            tonePinClasses[tone]
-          )}
-        >
-          <MapPin
-            className="size-4 fill-white/20"
-            aria-hidden="true"
-          />
-        </div>
+        <MapPin
+          className={cn("size-5 shrink-0 fill-current/20", tonePinClasses[tone])}
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-baseline gap-1.5">
             <span className="truncate text-sm font-semibold">
@@ -94,7 +86,7 @@ export function Location1({
             )}
           </div>
           {coordinate && (
-            <span className="truncate font-mono text-xs text-current/60">
+            <span className="truncate text-xs tabular-nums text-current/60">
               {coordinate}
             </span>
           )}

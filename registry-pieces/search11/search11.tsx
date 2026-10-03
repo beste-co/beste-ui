@@ -7,19 +7,21 @@ interface Search11Props {
   query?: string;
   hint?: string;
   skeletonRows?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const search11Demo: Search11Props = {
   query: "design tokens",
-  hint: "Searching across 42 workspaces…",
   skeletonRows: 3,
+  bordered: false,
 };
 
 export function Search11({
   query = "",
   hint,
   skeletonRows = 3,
+  bordered = false,
   className,
 }: Search11Props) {
   return (
@@ -29,7 +31,7 @@ export function Search11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xl">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-xl bg-card shadow-xl", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2.5">
           <Search
             className="size-4 shrink-0 text-muted-foreground"

@@ -7,6 +7,7 @@ interface Form16Props {
   label?: string;
   selected?: string[];
   placeholder?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const form16Demo: Form16Props = {
   label: "Project labels",
   selected: ["Design", "Polish", "Good first issue"],
   placeholder: "Add label",
+  bordered: false,
 };
 
 export function Form16({
   label,
   selected = [],
   placeholder = "Add label",
+  bordered = false,
   className,
 }: Form16Props) {
   return (
@@ -35,7 +38,7 @@ export function Form16({
             {label}
           </label>
         )}
-        <div className="flex min-h-10 flex-wrap items-center gap-1.5 rounded-md border border-border bg-card py-1.5 pl-2 pr-1 shadow-sm">
+        <div className={cn("flex min-h-10 flex-wrap items-center gap-1.5 rounded-md bg-card py-1.5 pl-2 pr-1 shadow-sm", bordered && "border border-border")}>
           {selected.map((chip, idx) => (
             <span
               key={idx}

@@ -19,6 +19,7 @@ interface Fitness10Props {
   xpLabel?: string;
   image?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -67,19 +68,18 @@ const barClasses: Record<Tone, string> = {
 };
 
 export const fitness10Demo: Fitness10Props = {
-  athlete: "Beste Sözen",
-  tier: "Silver · tier 4",
-  initials: "BS",
+  athlete: "Hania Rani",
+  tier: "Silver tier",
+  initials: "HR",
   stats: [
     { label: "Sessions", value: "142" },
     { label: "Hours", value: "184h" },
     { label: "PRs", value: "12" },
   ],
-  xp: 72,
-  xpLabel: "% to gold",
   image:
     "https://images.unsplash.com/photo-1740510294148-2b8f82471496?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI1fHx8ZW58MHx8fHx8",
   tone: "neutral",
+  bordered: false,
 };
 
 export function Fitness10({
@@ -87,17 +87,18 @@ export function Fitness10({
   tier,
   initials = "??",
   stats = [],
-  xp = 0,
-  xpLabel = "% to gold",
+  xp,
+  xpLabel,
   image,
   tone = "neutral",
+  bordered = false,
   className,
 }: Fitness10Props) {
-  const pct = Math.max(0, Math.min(100, xp));
+  const pct = Math.max(0, Math.min(100, xp ?? 0));
 
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <div className="relative shrink-0">
             <div
@@ -134,23 +135,27 @@ export function Fitness10({
         <div className="grid grid-cols-3 gap-1 rounded-md bg-muted p-2 text-center">
           {stats.map((s, idx) => (
             <div key={idx} className="flex flex-col">
-              <span className="font-mono text-sm font-bold text-card-foreground">{s.value}</span>
+              <span className="text-sm font-bold tabular-nums text-card-foreground">{s.value}</span>
               <span className="text-xs text-muted-foreground">{s.label}</span>
             </div>
           ))}
         </div>
-        <div className="flex items-center gap-2">
-          <div className="h-1 flex-1 overflow-hidden rounded-full bg-muted" aria-hidden="true">
-            <div
-              className={cn("h-full rounded-full", barClasses[tone])}
-              style={{ width: `${pct}%` }}
-            />
+        {xp !== undefined && (
+          <div className="flex items-center gap-2">
+            <div className="h-1 flex-1 overflow-hidden rounded-full bg-muted" aria-hidden="true">
+              <div
+                className={cn("h-full rounded-full", barClasses[tone])}
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+            {xpLabel && (
+              <span className="text-xs tabular-nums text-muted-foreground">
+                {pct}
+                {xpLabel}
+              </span>
+            )}
           </div>
-          <span className="font-mono text-xs text-muted-foreground">
-            {pct}
-            {xpLabel}
-          </span>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -5,17 +5,20 @@ import { cn } from "@/lib/utils";
 interface Terminal1Props {
   prompt?: string;
   command?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const terminal1Demo: Terminal1Props = {
   prompt: "$",
   command: "npx beste-ui@latest init",
+  bordered: false,
 };
 
 export function Terminal1({
   prompt = "$",
   command,
+  bordered = false,
   className,
 }: Terminal1Props) {
   return (
@@ -25,7 +28,7 @@ export function Terminal1({
         className
       )}
     >
-      <div className="flex w-full max-w-64 items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2.5 font-mono text-xs text-zinc-50 shadow-sm">
+      <div className={cn("flex w-full max-w-64 items-center gap-2 rounded-lg bg-zinc-950 px-3 py-2.5 font-mono text-xs text-zinc-50 shadow-sm", bordered && "border border-zinc-800")}>
         <span className="shrink-0 text-emerald-400">{prompt}</span>
         <span className="flex-1 truncate">{command}</span>
         <span

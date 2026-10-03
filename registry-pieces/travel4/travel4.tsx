@@ -10,6 +10,7 @@ interface Travel4Props {
   status?: FlightStatus;
   gate?: string;
   updated?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,8 +44,8 @@ export const travel4Demo: Travel4Props = {
   flight: "PC 1142",
   route: "SAW → AMS",
   status: "boarding",
-  gate: "Gate 34 · closing in 8 min",
-  updated: "Updated 1 min ago",
+  gate: "Gate 34",
+  bordered: false,
 };
 
 export function Travel4({
@@ -53,6 +54,7 @@ export function Travel4({
   status = "on-time",
   gate,
   updated,
+  bordered = false,
   className,
 }: Travel4Props) {
   const config = statusConfig[status];
@@ -64,10 +66,10 @@ export function Travel4({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="font-mono text-sm font-semibold text-card-foreground">
+            <span className="text-sm font-semibold text-card-foreground">
               {flight}
             </span>
             <span className="text-xs text-muted-foreground">{route}</span>

@@ -16,7 +16,7 @@ type Tone =
 interface Week {
   week: number;
   focus: string;
-  sessions: number;
+  sessions?: number;
   completed?: boolean;
   current?: boolean;
 }
@@ -25,18 +25,19 @@ interface Fitness3Props {
   program?: string;
   weeks?: Week[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const currentClasses: Record<Tone, string> = {
@@ -62,20 +63,22 @@ const currentPillClasses: Record<Tone, string> = {
 };
 
 export const fitness3Demo: Fitness3Props = {
-  program: "Hypertrophy 12 · Phase 2",
+  program: "Hypertrophy 12",
   weeks: [
-    { week: 5, focus: "Volume peak", sessions: 5, completed: true },
-    { week: 6, focus: "Deload", sessions: 3, completed: true },
-    { week: 7, focus: "Strength push", sessions: 5, current: true },
-    { week: 8, focus: "Strength test", sessions: 4 },
+    { week: 5, focus: "Volume peak", completed: true },
+    { week: 6, focus: "Deload", completed: true },
+    { week: 7, focus: "Strength push", current: true },
+    { week: 8, focus: "Strength test" },
   ],
   tone: "neutral",
+  bordered: false,
 };
 
 export function Fitness3({
   program,
   weeks = [],
   tone = "neutral",
+  bordered = false,
   className,
 }: Fitness3Props) {
   return (
@@ -85,18 +88,14 @@ export function Fitness3({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-7 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Dumbbell className="size-3.5" aria-hidden="true" />
-          </div>
+          <Dumbbell
+            className={cn("size-4 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           {program && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {program}
             </span>
           )}
@@ -109,7 +108,7 @@ export function Fitness3({
             >
               <span
                 className={cn(
-                  "flex size-7 shrink-0 items-center justify-center rounded-md font-mono text-xs font-bold",
+                  "flex size-7 shrink-0 items-center justify-center rounded-md text-xs font-bold",
                   w.completed
                     ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
                     : w.current
@@ -123,9 +122,11 @@ export function Fitness3({
                 <span className="truncate font-medium text-card-foreground">
                   {w.focus}
                 </span>
-                <span className="text-xs text-muted-foreground">
-                  {w.sessions} sessions
-                </span>
+                {w.sessions !== undefined && (
+                  <span className="text-xs text-muted-foreground">
+                    {w.sessions} sessions
+                  </span>
+                )}
               </div>
               {w.current && (
                 <span

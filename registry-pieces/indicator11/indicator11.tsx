@@ -7,6 +7,7 @@ type Env = "production" | "staging" | "preview" | "development" | "local";
 interface Indicator11Props {
   env?: Env;
   branch?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -44,11 +45,13 @@ const envConfig: Record<
 export const indicator11Demo: Indicator11Props = {
   env: "staging",
   branch: "feat/onboarding-v3",
+  bordered: false,
 };
 
 export function Indicator11({
   env = "production",
   branch,
+  bordered = false,
   className,
 }: Indicator11Props) {
   const config = envConfig[env];
@@ -60,14 +63,14 @@ export function Indicator11({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-2.5 py-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-full bg-card px-2.5 py-1 shadow-sm", bordered && "border border-border")}>
         <span
           className={cn("size-1.5 rounded-full", config.dot)}
           aria-hidden="true"
         />
         <span
           className={cn(
-            "text-xs font-semibold uppercase tracking-wider",
+            "text-xs font-semibold",
             config.text
           )}
         >
@@ -76,7 +79,7 @@ export function Indicator11({
         {branch && (
           <>
             <span className="h-3 w-px bg-border" aria-hidden="true" />
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {branch}
             </span>
           </>

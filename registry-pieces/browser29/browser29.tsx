@@ -8,14 +8,16 @@ interface Browser29Props {
   username?: string;
   saveLabel?: string;
   dismissLabel?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser29Demo: Browser29Props = {
   domain: "stripe.com",
-  username: "mara@auralis.studio",
+  username: "hello@beste.co",
   saveLabel: "Save",
   dismissLabel: "Never",
+  bordered: false,
 };
 
 export function Browser29({
@@ -23,6 +25,7 @@ export function Browser29({
   username = "you@example.com",
   saveLabel = "Save",
   dismissLabel = "Never",
+  bordered = false,
   className,
 }: Browser29Props) {
   return (
@@ -32,25 +35,26 @@ export function Browser29({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-lg border border-border bg-card p-3 shadow-md">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-lg bg-card p-3 shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2.5">
-          <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-            <KeyRound className="size-3.5" aria-hidden="true" />
-          </div>
+          <KeyRound
+            className="size-4 shrink-0 text-muted-foreground"
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-col">
             <span className="text-sm font-semibold text-card-foreground">
               Save password?
             </span>
-            <span className="truncate font-mono text-xs text-muted-foreground">
+            <span className="truncate text-xs text-muted-foreground">
               {domain}
             </span>
           </div>
         </div>
-        <div className="flex flex-col gap-1.5 rounded-md border border-border bg-background px-2.5 py-2">
+        <div className={cn("flex flex-col gap-1.5 rounded-md px-2.5 py-2", bordered ? "border border-border bg-background" : "bg-muted")}>
           <span className="truncate text-sm text-card-foreground">
             {username}
           </span>
-          <span className="text-sm tracking-widest text-muted-foreground">
+          <span className="text-sm text-muted-foreground">
             ••••••••••
           </span>
         </div>

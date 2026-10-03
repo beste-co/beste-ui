@@ -4,6 +4,7 @@ export const meta: ComponentMeta = {
   name: "nav19",
   title: "Bottom Nav",
   description:
-    "Mobile tab bar with labeled icons, a raised center create button, and a rose unread counter badge.",
+    "Mobile tab bar with labeled icons and a raised center create button, plus an optional unread counter badge.",
   category: "Nav",
+  cardScale: 0.75,
 };

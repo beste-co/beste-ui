@@ -44,15 +44,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar19Demo: Calendar19Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   date: "Mon · Apr 27",
   blocks: [
-    { start: "09:00", label: "Focus · API refactor", tone: "focus" },
+    { start: "09:00", label: "API refactor", tone: "focus" },
     { start: "10:30", label: "Standup", tone: "meeting" },
-    { start: "11:00", label: "Focus · API refactor", tone: "focus" },
     { start: "12:00", label: "Lunch", tone: "break" },
-    { start: "13:00", label: "Design review", tone: "meeting" },
     { start: "14:30", label: "Email & admin", tone: "admin" },
   ],
 };
@@ -61,7 +59,7 @@ export function Calendar19({
   date,
   blocks = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar19Props) {
@@ -76,14 +74,14 @@ export function Calendar19({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {date && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {date}
           </span>
         )}
         <div className="flex flex-col gap-1.5">
           {blocks.map((b, idx) => (
             <div key={idx} className="flex items-center gap-3">
-              <span className="w-12 shrink-0 text-right font-mono text-xs text-current/60">
+              <span className="w-12 shrink-0 text-right text-xs tabular-nums text-current/60">
                 {b.start}
               </span>
               <div

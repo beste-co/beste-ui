@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Two brand tiles framing an italic separator like vs, with a neutral caption underneath for context.",
   category: "Logo",
+  cardScale: 0.75,
 };

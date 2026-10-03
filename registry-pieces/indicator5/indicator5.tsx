@@ -6,6 +6,7 @@ interface Indicator5Props {
   bars?: number;
   total?: number;
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const indicator5Demo: Indicator5Props = {
   bars: 3,
   total: 4,
   label: "5G",
+  bordered: false,
 };
 
 export function Indicator5({
   bars = 0,
   total = 4,
   label,
+  bordered = false,
   className,
 }: Indicator5Props) {
   const clampedTotal = Math.max(1, total);
@@ -31,7 +34,7 @@ export function Indicator5({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <div
           className="flex items-end gap-0.5"
           aria-hidden="true"
@@ -51,7 +54,7 @@ export function Indicator5({
           })}
         </div>
         {label && (
-          <span className="font-mono text-xs font-semibold uppercase text-card-foreground">
+          <span className="text-xs font-semibold text-card-foreground">
             {label}
           </span>
         )}

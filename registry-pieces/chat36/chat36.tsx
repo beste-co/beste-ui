@@ -15,6 +15,7 @@ interface Chat36Props {
   reactions?: Reaction[];
   tickMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,6 +28,7 @@ export const chat36Demo: Chat36Props = {
     { emoji: "💜", count: 3 },
     { emoji: "🎉", count: 2 },
   ],
+  bordered: false,
 };
 
 export function Chat36({
@@ -36,6 +38,7 @@ export function Chat36({
   reactions = [],
   tickMs = 450,
   holdMs = 2600,
+  bordered = false,
   className,
 }: Chat36Props) {
   const [tick, setTick] = useState(0);
@@ -82,7 +85,7 @@ export function Chat36({
               counts[i] > 0 ? (
                 <span
                   key={r.emoji}
-                  className="inline-flex h-6 items-center gap-1 rounded-full border border-border bg-card px-2 text-xs shadow-sm"
+                  className={cn("inline-flex h-6 items-center gap-1 rounded-full bg-card px-2 text-xs shadow-sm", bordered && "border border-border")}
                   style={{ animation: "chat36-pop 400ms ease-out" }}
                 >
                   <span aria-hidden="true">{r.emoji}</span>

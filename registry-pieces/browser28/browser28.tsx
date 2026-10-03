@@ -31,7 +31,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser28Demo: Browser28Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   domains: [
     "customer.beste.co",
@@ -86,7 +86,7 @@ const LAYERS = [
 
 const TRAFFIC = ["bg-rose-400", "bg-amber-400", "bg-emerald-400"];
 
-export function Browser28({ domains = [], surface = "card", bordered = true, inverted = false, className }: Browser28Props) {
+export function Browser28({ domains = [], surface = "card", bordered = false, inverted = false, className }: Browser28Props) {
   const list = domains.slice(0, LAYERS.length);
   const label = `Stacked browser windows for ${list.join(", ")}`;
 

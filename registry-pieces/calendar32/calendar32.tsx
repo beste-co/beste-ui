@@ -40,7 +40,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar32Demo: Calendar32Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Pick a day",
   month: "May",
@@ -54,7 +54,6 @@ export const calendar32Demo: Calendar32Props = {
     { weekday: "S", date: "18", slots: 0 },
   ],
   selectedIndex: 2,
-  caption: "6 slots open on Wednesday, from 08:00 to 16:30.",
 };
 
 export function Calendar32({
@@ -64,7 +63,7 @@ export function Calendar32({
   selectedIndex = 0,
   caption,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar32Props) {

@@ -70,10 +70,10 @@ export function Media6({
             toneClasses[tone]
           )}
         >
-          <span className="truncate font-mono text-xs font-bold uppercase tracking-wider">
+          <span className="truncate text-xs font-bold">
             {title}
           </span>
-          <span className="rounded-sm border border-current px-1 font-mono text-xs font-bold">
+          <span className="rounded-sm border border-current px-1 text-xs font-bold">
             {side}
           </span>
         </div>

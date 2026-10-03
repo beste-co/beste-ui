@@ -1,6 +1,5 @@
 "use client";
 
-import { CornerDownRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Role = "received" | "sent";
@@ -14,7 +13,7 @@ interface Chat7Props {
 }
 
 export const chat7Demo: Chat7Props = {
-  replyAuthor: "Ayşe",
+  replyAuthor: "Hania",
   replyPreview: "What time are we demoing tomorrow?",
   message: "10 AM Istanbul, same Zoom link as last week.",
   role: "sent",
@@ -42,15 +41,12 @@ export function Chat7({
           isSent ? "ml-auto items-end" : "mr-auto items-start"
         )}
       >
-        <div className="flex items-center gap-1.5 px-1 text-xs text-muted-foreground">
-          <CornerDownRight className="size-3" aria-hidden="true" />
-          <span>
-            Replying to{" "}
-            <span className="font-semibold text-card-foreground">
-              {replyAuthor}
-            </span>
+        <span className="px-1 text-xs text-muted-foreground">
+          Replying to{" "}
+          <span className="font-semibold text-card-foreground">
+            {replyAuthor}
           </span>
-        </div>
+        </span>
         {replyPreview && (
           <div
             className={cn(

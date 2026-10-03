@@ -1,7 +1,6 @@
 "use client";
 
 import { Fragment } from "react";
-import { FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -34,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const keyboard2Demo: Keyboard2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   action: "Go to file",
   hint: "Jump to any file in the workspace",
@@ -46,7 +45,7 @@ export function Keyboard2({
   hint,
   keys = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Keyboard2Props) {
@@ -59,10 +58,7 @@ export function Keyboard2({
         className
       )}
     >
-      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-lg p-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-current/10 text-current/60">
-          <FileText className="size-4" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-lg px-3 py-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex min-w-0 flex-1 flex-col">
           {action && (
             <span className="truncate text-sm font-medium">
@@ -87,7 +83,7 @@ export function Keyboard2({
                     +
                   </span>
                 )}
-                <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-current/15 border-b-2 bg-background px-1.5 font-mono text-xs font-medium text-foreground/60">
+                <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-current/15 border-b-2 bg-background px-1.5 text-xs font-medium text-foreground/60">
                   {key}
                 </kbd>
               </Fragment>

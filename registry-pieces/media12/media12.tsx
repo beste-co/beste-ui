@@ -28,7 +28,7 @@ const toneClasses: Record<Tone, string> = {
 export const media12Demo: Media12Props = {
   src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&fit=crop",
   alt: "Album art",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Media12({

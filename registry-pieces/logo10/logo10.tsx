@@ -11,6 +11,7 @@ interface Logo10Props {
   label?: string;
   logos?: Logo[];
   durationMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,12 +24,14 @@ export const logo10Demo: Logo10Props = {
     { src: "https://oud.pics/sm/l/figma.png", alt: "Figma" },
     { src: "https://oud.pics/sm/l/dropbox.png", alt: "Dropbox" },
   ],
+  bordered: false,
 };
 
 export function Logo10({
   label,
   logos = [],
   durationMs = 18000,
+  bordered = false,
   className,
 }: Logo10Props) {
   return (
@@ -42,7 +45,7 @@ export function Logo10({
 @keyframes logo10-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 `}</style>
 
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         {label && (
           <p className="text-center text-xs text-muted-foreground">{label}</p>
         )}

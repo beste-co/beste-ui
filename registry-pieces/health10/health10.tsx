@@ -14,6 +14,7 @@ interface Health10Props {
   heading?: string;
   subtitle?: string;
   vitals?: Vital[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -25,27 +26,28 @@ const iconMap = {
 };
 
 const iconColor: Record<Vital["icon"], string> = {
-  heart: "bg-rose-500/15 text-rose-500",
-  temp: "bg-orange-500/15 text-orange-500",
-  bp: "bg-sky-500/15 text-sky-500",
-  spo2: "bg-emerald-500/15 text-emerald-500",
+  heart: "text-rose-500",
+  temp: "text-orange-500",
+  bp: "text-sky-500",
+  spo2: "text-emerald-500",
 };
 
 export const health10Demo: Health10Props = {
   heading: "Morning vitals",
-  subtitle: "Tue, Apr 22 · 08:14",
   vitals: [
     { icon: "heart", label: "Heart", value: "72", unit: "bpm" },
     { icon: "temp", label: "Temp", value: "36.6", unit: "°C" },
     { icon: "bp", label: "BP", value: "118/76", unit: "mmHg" },
     { icon: "spo2", label: "SpO₂", value: "98", unit: "%" },
   ],
+  bordered: false,
 };
 
 export function Health10({
   heading,
   subtitle,
   vitals = [],
+  bordered = false,
   className,
 }: Health10Props) {
   return (
@@ -55,7 +57,7 @@ export function Health10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col">
           {heading && (
             <span className="text-sm font-semibold text-card-foreground">
@@ -74,19 +76,15 @@ export function Health10({
                 key={idx}
                 className="flex items-center gap-2 rounded-lg bg-muted p-2"
               >
-                <div
-                  className={cn(
-                    "flex size-7 shrink-0 items-center justify-center rounded-full",
-                    iconColor[v.icon]
-                  )}
-                >
-                  <Icon className="size-3.5" aria-hidden="true" />
-                </div>
+                <Icon
+                  className={cn("size-4 shrink-0", iconColor[v.icon])}
+                  aria-hidden="true"
+                />
                 <div className="flex min-w-0 flex-1 flex-col">
                   <span className="truncate text-xs text-muted-foreground">
                     {v.label}
                   </span>
-                  <span className="font-mono text-sm font-semibold text-card-foreground">
+                  <span className="text-sm font-semibold tabular-nums text-card-foreground">
                     {v.value}
                     <span className="ml-0.5 text-xs font-normal text-muted-foreground">
                       {v.unit}

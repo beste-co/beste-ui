@@ -20,28 +20,30 @@ interface Monitoring22Props {
   incidents?: Incident[];
   cellMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const monitoring22Demo: Monitoring22Props = {
   title: "API",
   uptime: "99.98% uptime",
-  range: "Last 90 days",
   incidents: [
     { index: 23, level: "warn" },
     { index: 61, level: "down" },
   ],
+  bordered: false,
 };
 
 export function Monitoring22({
   title = "Service",
   uptime = "100% uptime",
-  range = "Last 90 days",
+  range,
   rows = 7,
   cols = 12,
   incidents = [],
   cellMs = 40,
   holdMs = 2500,
+  bordered = false,
   className,
 }: Monitoring22Props) {
   const total = rows * cols;
@@ -79,7 +81,7 @@ export function Monitoring22({
       )}
     >
       <style>{`@keyframes monitoring22-in { from { transform: scale(0.4); opacity: 0.4; } to { transform: none; opacity: 1; } }`}</style>
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between gap-3">
           <span className="truncate text-sm font-medium text-card-foreground">{title}</span>
           <span className="shrink-0 text-sm font-medium tabular-nums text-emerald-500">
@@ -111,23 +113,9 @@ export function Monitoring22({
           })}
         </div>
 
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>{range}</span>
-          <span className="inline-flex items-center gap-2">
-            <span className="inline-flex items-center gap-1">
-              <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
-              Up
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="size-1.5 rounded-full bg-amber-500" aria-hidden="true" />
-              Degraded
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <span className="size-1.5 rounded-full bg-rose-500" aria-hidden="true" />
-              Down
-            </span>
-          </span>
-        </div>
+        {range && (
+          <span className="text-xs text-muted-foreground">{range}</span>
+        )}
       </div>
     </div>
   );

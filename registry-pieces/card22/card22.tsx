@@ -1,6 +1,5 @@
 "use client";
 
-import { Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Card22Props {
@@ -12,19 +11,20 @@ interface Card22Props {
   initials?: string;
   following?: boolean;
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const card22Demo: Card22Props = {
-  name: "Jordan Reyes",
-  handle: "jordan.builds",
+  name: "Ólafur Arnalds",
+  handle: "olafur.arnalds",
   bio: "Shipping tiny tools for bigger teams. Runs, coffee, small synths.",
   followers: "12.4K followers",
-  mutuals: "Andrea Kim + 8 mutuals",
-  initials: "JR",
+  initials: "ÓA",
   following: false,
   image:
     "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop",
+  bordered: false,
 };
 
 export function Card22({
@@ -36,6 +36,7 @@ export function Card22({
   initials = "??",
   following = false,
   image,
+  bordered = false,
   className,
 }: Card22Props) {
   return (
@@ -45,7 +46,7 @@ export function Card22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <div className="relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-sm font-bold text-white">
             {image ? (
@@ -87,15 +88,12 @@ export function Card22({
             {bio}
           </p>
         )}
-        <div className="flex items-center gap-3 text-xs text-muted-foreground">
-          {followers && <span>{followers}</span>}
-          {mutuals && (
-            <span className="inline-flex items-center gap-1">
-              <Users className="size-3" aria-hidden="true" />
-              {mutuals}
-            </span>
-          )}
-        </div>
+        {(followers || mutuals) && (
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            {followers && <span className="tabular-nums">{followers}</span>}
+            {mutuals && <span className="truncate">{mutuals}</span>}
+          </div>
+        )}
       </div>
     </div>
   );

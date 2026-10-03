@@ -7,6 +7,7 @@ interface Health26Props {
   phase?: "inhale" | "hold" | "exhale";
   secondsLeft?: number;
   cycle?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -31,13 +32,15 @@ const phaseConfig = {
 export const health26Demo: Health26Props = {
   phase: "inhale",
   secondsLeft: 3,
-  cycle: "4-7-8 · Round 2 of 4",
+  cycle: "Round 2 of 4",
+  bordered: false,
 };
 
 export function Health26({
   phase = "inhale",
   secondsLeft = 0,
   cycle,
+  bordered = false,
   className,
 }: Health26Props) {
   const config = phaseConfig[phase];
@@ -49,7 +52,7 @@ export function Health26({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col items-center gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col items-center gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="relative flex size-24 items-center justify-center">
           <span
             className={cn(
@@ -70,7 +73,7 @@ export function Health26({
           <span className="text-lg font-bold text-card-foreground">
             {config.label}
           </span>
-          <span className="font-mono text-3xl font-bold text-sky-500">
+          <span className="text-3xl font-bold tabular-nums text-sky-500">
             {secondsLeft}
           </span>
           {cycle && (

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "notification7",
   title: "Deployment Toast",
   description:
-    "CI/CD status card with branch, short commit sha, duration, and a building or failed state.",
+    "CI/CD status card with a building, deployed, or failed pill, the commit message, and the branch.",
   category: "Notification",
 };

@@ -1,6 +1,5 @@
 "use client";
 
-import { CheckCircle2, MessageCircle, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Education16Props {
@@ -13,22 +12,22 @@ interface Education16Props {
   replies?: number;
   likes?: number;
   resolved?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 const defaultImage = "https://images.unsplash.com/photo-1685703206477-aa1df00a1f0e?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTJ8fHBvcnRyYWl0fGVufDB8fDB8fHww";
 
 export const education16Demo: Education16Props = {
-  author: "Noor Ahmed",
-  role: "Student · Cohort 12",
-  initials: "NA",
+  author: "Hania Rani",
+  initials: "HR",
   imageSrc: defaultImage,
-  alt: "Noor Ahmed",
+  alt: "Hania Rani",
   question:
     "In lesson 6, the dependency array skips the `setCount` setter. Isn't it a stale closure risk?",
   replies: 4,
-  likes: 12,
   resolved: true,
+  bordered: false,
 };
 
 export function Education16({
@@ -39,8 +38,9 @@ export function Education16({
   alt,
   question,
   replies = 0,
-  likes = 0,
+  likes,
   resolved = false,
+  bordered = false,
   className,
 }: Education16Props) {
   return (
@@ -50,7 +50,7 @@ export function Education16({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <div
             className={cn(
@@ -82,8 +82,7 @@ export function Education16({
             )}
           </div>
           {resolved && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-semibold text-white">
-              <CheckCircle2 className="size-3" aria-hidden="true" />
+            <span className="shrink-0 rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-semibold text-white">
               Resolved
             </span>
           )}
@@ -93,15 +92,9 @@ export function Education16({
             {question}
           </p>
         )}
-        <div className="flex items-center gap-4 border-t border-border pt-2 text-xs text-muted-foreground">
-          <span className="inline-flex items-center gap-1">
-            <MessageCircle className="size-3" aria-hidden="true" />
-            {replies} replies
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <ThumbsUp className="size-3" aria-hidden="true" />
-            {likes}
-          </span>
+        <div className="flex items-center gap-4 border-t border-border pt-2 text-xs tabular-nums text-muted-foreground">
+          <span>{replies} replies</span>
+          {likes != null && <span>{likes} likes</span>}
         </div>
       </div>
     </div>

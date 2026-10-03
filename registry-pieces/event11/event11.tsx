@@ -1,6 +1,5 @@
 "use client";
 
-import { Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Event11Props {
@@ -9,15 +8,17 @@ interface Event11Props {
   title?: string;
   meta?: string;
   action?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const event11Demo: Event11Props = {
   month: "May",
   day: "12",
-  title: "Consultation · Rowan Blake",
+  title: "Consultation · Joep Beving",
   meta: "09:00 – 09:45 · Room 2",
   action: "Join",
+  bordered: false,
 };
 
 export function Event11({
@@ -26,6 +27,7 @@ export function Event11({
   title,
   meta,
   action,
+  bordered = false,
   className,
 }: Event11Props) {
   return (
@@ -35,15 +37,15 @@ export function Event11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-4 rounded-md border border-border bg-card p-4 shadow-xl">
+      <div className={cn("flex w-full max-w-80 items-center gap-4 rounded-md bg-card p-4 shadow-xl", bordered && "border border-border")}>
         <div className="flex size-14 shrink-0 flex-col items-center justify-center rounded-md bg-muted">
           {month && (
-            <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {month}
             </span>
           )}
           {day && (
-            <span className="text-xl font-semibold leading-tight text-card-foreground">
+            <span className="text-xl font-semibold leading-tight tabular-nums text-card-foreground">
               {day}
             </span>
           )}
@@ -61,8 +63,7 @@ export function Event11({
         </div>
 
         {action && (
-          <span className="flex shrink-0 items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground">
-            <Video className="size-3.5" aria-hidden="true" />
+          <span className="shrink-0 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground">
             {action}
           </span>
         )}

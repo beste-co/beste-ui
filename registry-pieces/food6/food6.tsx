@@ -14,6 +14,7 @@ interface Food6Props {
   dish?: string;
   kcal?: string;
   macros?: Macro[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -25,12 +26,14 @@ export const food6Demo: Food6Props = {
     { label: "Protein", grams: 42, pct: 34, color: "bg-emerald-500" },
     { label: "Fat", grams: 22, pct: 26, color: "bg-amber-500" },
   ],
+  bordered: false,
 };
 
 export function Food6({
   dish,
   kcal,
   macros = [],
+  bordered = false,
   className,
 }: Food6Props) {
   return (
@@ -40,11 +43,9 @@ export function Food6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-emerald-500/15 text-emerald-500">
-            <Scale className="size-3.5" aria-hidden="true" />
-          </div>
+          <Scale className="size-4 shrink-0 text-emerald-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {dish && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -75,7 +76,7 @@ export function Food6({
                 />
                 {m.label}
               </span>
-              <span className="font-mono font-semibold text-card-foreground">
+              <span className="font-semibold text-card-foreground">
                 {m.grams} g
               </span>
             </div>

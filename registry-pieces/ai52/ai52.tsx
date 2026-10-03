@@ -39,7 +39,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai52Demo: Ai52Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Give Claude access",
   subject: "yourdomain.com",
@@ -67,7 +67,7 @@ export function Ai52({
   approveLabel,
   stepMs = 400,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai52Props) {
@@ -105,7 +105,7 @@ export function Ai52({
             </span>
           )}
           {subject && (
-            <span className="shrink-0 font-mono text-xs text-current/60">
+            <span className="shrink-0 text-xs text-current/60">
               {subject}
             </span>
           )}

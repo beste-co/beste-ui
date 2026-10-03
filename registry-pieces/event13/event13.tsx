@@ -16,7 +16,6 @@ const LABELS = ["hours", "minutes", "seconds"];
 export const event13Demo: Event13Props = {
   title: "Doors open in",
   start: "00:15:00",
-  caption: "Early access closes when the clock hits zero.",
 };
 
 function parse(start: string): number {
@@ -142,7 +141,7 @@ export function Event13({
                     <Flap key={di} value={d} />
                   ))}
                 </div>
-                <span className="text-xs uppercase tracking-wider opacity-60">
+                <span className="text-xs opacity-60">
                   {LABELS[gi]}
                 </span>
               </div>

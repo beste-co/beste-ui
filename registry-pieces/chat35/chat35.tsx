@@ -16,6 +16,7 @@ interface Chat35Props {
   themInitials?: string;
   gapMs?: number;
   typingMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -25,10 +26,10 @@ export const chat35Demo: Chat35Props = {
     { from: "me", text: "Almost. Bouncing the final version now." },
     { from: "them", text: "Perfect. Can you send the stems too?" },
     { from: "me", text: "Sure, sharing the folder in a minute." },
-    { from: "them", text: "You are the best. Thank you!" },
   ],
   themName: "Nina Simone",
   themInitials: "NS",
+  bordered: false,
 };
 
 export function Chat35({
@@ -37,6 +38,7 @@ export function Chat35({
   themInitials = "??",
   gapMs = 700,
   typingMs = 1300,
+  bordered = false,
   className,
 }: Chat35Props) {
   const [shown, setShown] = useState(0);
@@ -68,7 +70,7 @@ export function Chat35({
       )}
     >
       <style>{`@keyframes chat35-in { from { opacity: 0; transform: translateY(0.5rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-2xl bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2.5 border-b border-border px-3 py-2.5">
           <span
             className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-semibold text-card-foreground"
@@ -76,18 +78,9 @@ export function Chat35({
           >
             {themInitials}
           </span>
-          <div className="flex min-w-0 flex-col">
-            <span className="truncate text-sm font-medium text-card-foreground">
-              {themName}
-            </span>
-            <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-              <span
-                className="size-1.5 rounded-full bg-emerald-500"
-                aria-hidden="true"
-              />
-              {typing ? "Typing" : "Active now"}
-            </span>
-          </div>
+          <span className="min-w-0 truncate text-sm font-medium text-card-foreground">
+            {themName}
+          </span>
         </div>
 
         <div className="flex h-60 flex-col justify-end gap-2 overflow-hidden p-3">

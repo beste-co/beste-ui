@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "calendar13",
   title: "Availability Grid",
   description:
-    "Day-over-hour heatmap with rose busy cells against muted free slots and a simple busy/free legend.",
+    "Day-over-hour grid with tone-colored busy cells against muted free slots.",
   category: "Calendar",
 };

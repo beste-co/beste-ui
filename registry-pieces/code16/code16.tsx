@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, Copy } from "lucide-react";
+import { Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -36,11 +36,10 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const code16Demo: Code16Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   command: "npx shadcn@latest add https://ui.beste.co/r/hero181.json",
   files: ["components/hero181.tsx", "components/ui/button.tsx"],
-  note: "MIT licensed, no account needed",
   stepMs: 520,
 };
 
@@ -58,7 +57,7 @@ export function Code16({
   note,
   stepMs = 520,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Code16Props) {
@@ -99,10 +98,6 @@ export function Code16({
             <code className="min-w-0 flex-1 break-all font-mono text-xs leading-relaxed">
               {command}
             </code>
-            <Copy
-              className="size-3 shrink-0 text-current/60"
-              aria-hidden="true"
-            />
           </div>
         )}
 

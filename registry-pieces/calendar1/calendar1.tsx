@@ -41,9 +41,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar1Demo: Calendar1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  month: "APR",
+  month: "Apr",
   day: "21",
   weekday: "Tuesday",
   tone: "destructive",
@@ -55,7 +55,7 @@ export function Calendar1({
   weekday,
   tone = "destructive",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar1Props) {
@@ -71,7 +71,7 @@ export function Calendar1({
       <div className={cn("flex w-24 flex-col overflow-hidden rounded-lg shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div
           className={cn(
-            "flex h-5 items-center justify-center text-xs font-bold uppercase tracking-wider",
+            "flex h-5 items-center justify-center text-xs font-bold",
             toneStripClasses[tone]
           )}
         >
@@ -81,7 +81,7 @@ export function Calendar1({
           <span className="text-3xl font-bold leading-none tabular-nums">
             {day}
           </span>
-          <span className="text-xs font-medium uppercase tracking-wide text-current/60">
+          <span className="text-xs font-medium text-current/60">
             {weekday}
           </span>
         </div>

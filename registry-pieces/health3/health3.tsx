@@ -21,18 +21,19 @@ interface Health3Props {
   restSeconds?: number;
   completed?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -54,6 +55,7 @@ export const health3Demo: Health3Props = {
   restSeconds: 90,
   completed: 3,
   tone: "neutral",
+  bordered: false,
 };
 
 export function Health3({
@@ -64,6 +66,7 @@ export function Health3({
   restSeconds = 0,
   completed = 0,
   tone = "neutral",
+  bordered = false,
   className,
 }: Health3Props) {
   const mm = Math.floor(restSeconds / 60);
@@ -76,25 +79,22 @@ export function Health3({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Dumbbell className="size-4" aria-hidden="true" />
-          </div>
+          <Dumbbell
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-semibold text-card-foreground">
               {exercise}
             </span>
             <span className="text-xs text-muted-foreground">
-              {sets} × {reps} · {weight}
+              {sets} × {reps}
+              {weight ? ` · ${weight}` : ""}
             </span>
           </div>
-          <span className="rounded-full bg-muted px-2 py-1 font-mono text-xs font-semibold text-card-foreground">
+          <span className="rounded-full bg-muted px-2 py-1 text-xs font-semibold tabular-nums text-card-foreground">
             {mm}:{ss}
           </span>
         </div>
@@ -109,9 +109,6 @@ export function Health3({
             />
           ))}
         </div>
-        <span className="text-xs font-medium text-muted-foreground">
-          Set {completed + 1} of {sets} · Keep going
-        </span>
       </div>
     </div>
   );

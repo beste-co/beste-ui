@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "travel18",
   title: "Tour Booking",
   description:
-    "Activity card with a Skip-the-line pill, title, city and duration row, rating line, and per-person price.",
+    "Activity card with a Skip-the-line pill, the title, a city and duration row, and the per-person price.",
   category: "Travel",
 };

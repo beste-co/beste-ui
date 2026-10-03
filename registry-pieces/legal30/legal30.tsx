@@ -9,15 +9,15 @@ interface Legal30Props {
   settlement?: string;
   feeShare?: string;
   status?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal30Demo: Legal30Props = {
-  matter: "Doe v. Synapse Health (class action)",
-  jurisdiction: "N.D. Cal.",
+  matter: "Doe v. Synapse Health",
   settlement: "$12.4M",
-  feeShare: "30% contingency",
   status: "Court approval pending",
+  bordered: false,
 };
 
 export function Legal30({
@@ -26,6 +26,7 @@ export function Legal30({
   settlement,
   feeShare,
   status,
+  bordered = false,
   className,
 }: Legal30Props) {
   return (
@@ -35,11 +36,9 @@ export function Legal30({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-emerald-500/15 text-emerald-500">
-            <Banknote className="size-4" aria-hidden="true" />
-          </div>
+          <Banknote className="size-5 shrink-0 text-emerald-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {matter && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -54,21 +53,23 @@ export function Legal30({
           </div>
         </div>
         <div className="flex items-baseline justify-between rounded-md bg-emerald-500/10 p-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+          <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
             Settlement
           </span>
-          <span className="font-mono text-2xl font-bold text-card-foreground">
+          <span className="text-2xl font-bold tabular-nums text-card-foreground">
             {settlement}
           </span>
         </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          {feeShare && <span>{feeShare}</span>}
-          {status && (
-            <span className="font-semibold text-amber-700 dark:text-amber-300">
-              {status}
-            </span>
-          )}
-        </div>
+        {(feeShare || status) && (
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            {feeShare && <span>{feeShare}</span>}
+            {status && (
+              <span className="font-semibold text-amber-700 dark:text-amber-300">
+                {status}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

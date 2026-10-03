@@ -11,17 +11,17 @@ interface Commerce13Props {
   title?: string;
   body?: string;
   verified?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 export const commerce13Demo: Commerce13Props = {
-  reviewer: "Ada Lovelace",
-  initials: "AL",
+  reviewer: "Hania Rani",
+  initials: "HR",
   rating: 5,
-  date: "2 days ago",
   title: "Exactly as described",
   body: "Sizing runs true and the leather softens beautifully after a week. Would buy again.",
-  verified: true,
+  bordered: false,
 };
 
 export function Commerce13({
@@ -32,6 +32,7 @@ export function Commerce13({
   title,
   body,
   verified,
+  bordered = false,
   className,
 }: Commerce13Props) {
   return (
@@ -41,7 +42,7 @@ export function Commerce13({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <span
             className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-semibold text-card-foreground"
@@ -61,7 +62,9 @@ export function Commerce13({
                 />
               )}
             </div>
-            <span className="text-xs text-muted-foreground">{date}</span>
+            {date && (
+              <span className="text-xs text-muted-foreground">{date}</span>
+            )}
           </div>
           <div className="flex shrink-0 items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (

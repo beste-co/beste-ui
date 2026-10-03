@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, Circle, Lock } from "lucide-react";
+import { Check, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Phase = "typing" | "hold" | "clearing" | "pause";
@@ -86,12 +86,11 @@ export function Input32({
 
         <div
           className={cn(
-            "flex h-10 items-center gap-2 rounded-md border bg-card px-3 shadow-sm transition-colors duration-300",
+            "flex h-10 items-center rounded-md border bg-card px-3 shadow-sm transition-colors duration-300",
             phase === "typing" ? "border-primary ring-2 ring-primary/20" : "border-border"
           )}
         >
-          <Lock className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-          <span className="flex min-w-0 flex-1 items-center text-sm tracking-widest text-card-foreground">
+          <span className="flex min-w-0 flex-1 items-center text-sm text-card-foreground">
             <span className="sr-only">{typed.length} characters entered</span>
             <span className="truncate" aria-hidden="true">
               {"•".repeat(count)}

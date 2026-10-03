@@ -7,6 +7,7 @@ interface Card13Props {
   monthlyPrice?: string;
   yearlyPrice?: string;
   savings?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const card13Demo: Card13Props = {
   monthlyPrice: "$19",
   yearlyPrice: "$15",
   savings: "Save 20%",
+  bordered: false,
 };
 
 export function Card13({
@@ -22,6 +24,7 @@ export function Card13({
   monthlyPrice = "$0",
   yearlyPrice = "$0",
   savings,
+  bordered = false,
   className,
 }: Card13Props) {
   const activePrice = billing === "yearly" ? yearlyPrice : monthlyPrice;
@@ -33,7 +36,7 @@ export function Card13({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between rounded-full bg-muted p-1">
           <button
             type="button"
@@ -64,16 +67,11 @@ export function Card13({
           </button>
         </div>
         <div className="flex items-baseline gap-1">
-          <span className="font-mono text-4xl font-bold text-card-foreground">
+          <span className="text-4xl font-bold tabular-nums text-card-foreground">
             {activePrice}
           </span>
           <span className="text-sm text-muted-foreground">/ mo</span>
         </div>
-        <span className="text-xs text-muted-foreground">
-          {billing === "yearly"
-            ? "Billed annually. Cancel anytime."
-            : "Billed monthly. Switch to yearly to save."}
-        </span>
         <button
           type="button"
           className="rounded-md bg-foreground px-3 py-2 text-xs font-semibold text-background hover:opacity-90"

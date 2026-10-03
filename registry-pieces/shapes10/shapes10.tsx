@@ -17,10 +17,10 @@ export function Shapes10({ className }: Shapes10Props) {
       )}
     >
       <div className="flex flex-col gap-3" aria-hidden="true">
-        <div className="relative h-6 w-11 rounded-full bg-emerald-500">
+        <div className="relative h-6 w-11 rounded-full bg-primary">
           <span className="absolute right-0.5 top-0.5 size-5 rounded-full bg-card shadow-sm" />
         </div>
-        <div className="relative h-6 w-11 rounded-full bg-muted">
+        <div className="relative h-6 w-11 rounded-full bg-foreground/15">
           <span className="absolute left-0.5 top-0.5 size-5 rounded-full bg-card shadow-sm" />
         </div>
       </div>

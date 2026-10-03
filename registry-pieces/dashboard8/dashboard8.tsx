@@ -65,7 +65,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard8Demo: Dashboard8Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Events this week",
   total: "2,840",
@@ -78,16 +78,16 @@ export const dashboard8Demo: Dashboard8Props = {
     { label: "Sat", value: 480 },
     { label: "Sun", value: 130, today: true },
   ],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard8({
   title = "This week",
   total,
   days = [],
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard8Props) {
@@ -104,11 +104,11 @@ export function Dashboard8({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {title}
           </span>
           {total && (
-            <span className="font-mono text-sm font-semibold tabular-nums">
+            <span className="text-sm font-semibold tabular-nums">
               {total}
             </span>
           )}

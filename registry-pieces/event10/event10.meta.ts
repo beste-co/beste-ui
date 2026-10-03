@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "event10",
   title: "Entry QR",
   description:
-    "Scannable entry card with a fake QR grid on the left and attendee, code, seat, and gate info on the right.",
+    "Entry pass with the attendee name, the event, and seat and gate details.",
   category: "Event",
 };

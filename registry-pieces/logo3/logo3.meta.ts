@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Slow-scrolling horizontal logo strip with edge fades that loops forever, set via a duration prop.",
   category: "Logo",
+  cardScale: 0.75,
 };

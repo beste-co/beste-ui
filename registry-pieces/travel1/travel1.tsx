@@ -31,14 +31,14 @@ interface Travel1Props {
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-current/10 text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-current",
+  primary: "text-primary",
+  foreground: "text-current",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 
@@ -59,14 +59,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const travel1Demo: Travel1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   airline: "Turkish Airlines",
   from: "IST",
   to: "LHR",
   departTime: "09:40",
   arriveTime: "12:20",
-  duration: "4h 40m · Direct",
+  duration: "4h 40m",
   price: "$312",
   tone: "neutral",
 };
@@ -81,7 +81,7 @@ export function Travel1({
   price,
   tone = "neutral",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Travel1Props) {
@@ -97,27 +97,20 @@ export function Travel1({
       <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div
-              className={cn(
-                "flex size-7 items-center justify-center rounded-md",
-                iconClasses[tone]
-              )}
-            >
-              <Plane className="size-3.5" aria-hidden="true" />
-            </div>
+            <Plane className={cn("size-4 shrink-0", iconClasses[tone])} aria-hidden="true" />
             <span className="text-xs font-semibold">
               {airline}
             </span>
           </div>
           {price && (
-            <span className="font-mono text-sm font-semibold">
+            <span className="text-sm font-semibold tabular-nums">
               {price}
             </span>
           )}
         </div>
         <div className="flex items-center gap-3">
           <div className="flex flex-col">
-            <span className="font-mono text-xl font-semibold">
+            <span className="text-xl font-semibold tabular-nums">
               {departTime}
             </span>
             <span className="text-xs text-current/60">{from}</span>
@@ -140,7 +133,7 @@ export function Travel1({
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <span className="font-mono text-xl font-semibold">
+            <span className="text-xl font-semibold tabular-nums">
               {arriveTime}
             </span>
             <span className="text-xs text-current/60">{to}</span>

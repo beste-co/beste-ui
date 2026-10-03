@@ -21,6 +21,7 @@ interface Commerce3Props {
   selected?: string;
   sizeGuideLabel?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -36,7 +37,6 @@ const selectedClasses: Record<Tone, string> = {
 export const commerce3Demo: Commerce3Props = {
   title: "Size",
   selected: "M",
-  sizeGuideLabel: "Size guide",
   sizes: [
     { label: "XS" },
     { label: "S", soldOut: true },
@@ -46,6 +46,7 @@ export const commerce3Demo: Commerce3Props = {
     { label: "XXL", soldOut: true },
   ],
   tone: "foreground",
+  bordered: false,
 };
 
 export function Commerce3({
@@ -54,6 +55,7 @@ export function Commerce3({
   selected,
   sizeGuideLabel,
   tone = "foreground",
+  bordered = false,
   className,
 }: Commerce3Props) {
   return (
@@ -63,9 +65,9 @@ export function Commerce3({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {title}
           </span>
           {sizeGuideLabel && (

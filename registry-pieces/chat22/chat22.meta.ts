@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "chat22",
   title: "Thread Chip",
   description:
-    "Thread pill with a 3-avatar stack, a reply count in primary, and a last-reply timestamp.",
+    "Thread pill with a 3-avatar stack and a reply count in primary.",
   category: "Chat",
   registryDependencies: ["avatar"],
 };

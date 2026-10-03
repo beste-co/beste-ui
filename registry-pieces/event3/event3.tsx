@@ -37,35 +37,34 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const event3Demo: Event3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  heading: "Opening-day speakers",
   speakers: [
     {
-      name: "Priya Shah",
+      name: "Hania Rani",
       role: "Design · Linear",
-      initials: "PS",
+      initials: "HR",
       image:
         "https://images.unsplash.com/photo-1528892952291-009c663ce843?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvcnRyYWl0fGVufDB8fDB8fHww",
     },
     {
-      name: "Kian Okafor",
+      name: "Ólafur Arnalds",
       role: "Engineering · Beste",
-      initials: "KO",
+      initials: "ÓA",
       image:
         "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHBvcnRyYWl0fGVufDB8fDB8fHww",
     },
   ],
 };
 
-export function Event3({ heading, speakers = [], surface = "card", bordered = true, inverted = false, className }: Event3Props) {
+export function Event3({ heading, speakers = [], surface = "card", bordered = false, inverted = false, className }: Event3Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {heading}
           </span>
         )}

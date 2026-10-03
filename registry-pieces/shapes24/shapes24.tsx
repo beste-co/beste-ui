@@ -2,13 +2,35 @@
 
 import { cn } from "@/lib/utils";
 
+type Surface = "card" | "glass";
+
 interface Shapes24Props {
+  surface?: Surface;
+  bordered?: boolean;
+  inverted?: boolean;
   className?: string;
 }
 
-export const shapes24Demo: Shapes24Props = {};
+// Everything inside the card is drawn in `current`, so inverting is two classes
+const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
+  card: {
+    plain: "bg-card text-card-foreground",
+    inverted: "bg-foreground text-background",
+  },
+  glass: {
+    plain: "bg-card/60 text-card-foreground backdrop-blur-md",
+    inverted: "bg-foreground/60 text-background backdrop-blur-md",
+  },
+};
 
-export function Shapes24({ className }: Shapes24Props) {
+export const shapes24Demo: Shapes24Props = {
+  surface: "card",
+  bordered: false,
+  inverted: false,
+};
+
+export function Shapes24({ surface = "card", bordered = false, inverted = false, className }: Shapes24Props) {
+  const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
   const selectedRow = 1;
   const selectedCol = 3;
 
@@ -19,10 +41,13 @@ export function Shapes24({ className }: Shapes24Props) {
         className
       )}
     >
-      <div className="flex flex-col gap-1.5" aria-hidden="true">
+      <div
+        className={cn("flex flex-col gap-1.5 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}
+        aria-hidden="true"
+      >
         <div className="grid grid-cols-7 gap-1">
           {Array.from({ length: 7 }).map((_, i) => (
-            <span key={i} className="h-1 rounded-full bg-muted-foreground/40" />
+            <span key={i} className="h-1 rounded-full bg-current/30" />
           ))}
         </div>
         {Array.from({ length: 4 }).map((_, row) => (
@@ -34,7 +59,7 @@ export function Shapes24({ className }: Shapes24Props) {
                   key={col}
                   className={cn(
                     "size-3 rounded-sm",
-                    isSelected ? "bg-foreground" : "bg-muted"
+                    isSelected ? "bg-current" : "bg-current/10"
                   )}
                 />
               );

@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDown, Plus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Workspace {
@@ -13,6 +13,7 @@ interface Nav27Props {
   current?: Workspace;
   workspaces?: Workspace[];
   open?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -44,6 +45,7 @@ export const nav27Demo: Nav27Props = {
     },
   ],
   open: true,
+  bordered: false,
 };
 
 function WorkspaceAvatar({
@@ -79,6 +81,7 @@ export function Nav27({
   current,
   workspaces = [],
   open = false,
+  bordered = false,
   className,
 }: Nav27Props) {
   return (
@@ -91,7 +94,7 @@ export function Nav27({
       <div className="flex w-56 flex-col gap-1">
         <button
           type="button"
-          className="flex items-center gap-2 rounded-md border border-border bg-card px-2 py-2 shadow-sm"
+          className={cn("flex items-center gap-2 rounded-md bg-card px-2 py-2 shadow-sm", bordered && "border border-border")}
         >
           {current && <WorkspaceAvatar workspace={current} size={28} />}
           <span className="flex-1 truncate text-left text-sm font-semibold text-card-foreground">
@@ -106,7 +109,7 @@ export function Nav27({
           />
         </button>
         {open && (
-          <div className="flex flex-col gap-0.5 rounded-md border border-border bg-card p-1 shadow-md">
+          <div className={cn("flex flex-col gap-0.5 rounded-md bg-card p-1 shadow-md", bordered && "border border-border")}>
             {workspaces.map((w, idx) => (
               <button
                 key={idx}
@@ -130,7 +133,6 @@ export function Nav27({
               type="button"
               className="flex items-center gap-2 rounded px-2 py-1.5 text-sm text-muted-foreground hover:bg-muted/60 hover:text-card-foreground"
             >
-              <Plus className="size-3.5" aria-hidden="true" />
               New workspace
             </button>
           </div>

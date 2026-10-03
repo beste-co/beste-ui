@@ -30,11 +30,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes56Demo: Shapes56Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes56({ surface = "card", bordered = true, inverted = false, className }: Shapes56Props) {
+export function Shapes56({ surface = "card", bordered = false, inverted = false, className }: Shapes56Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -50,7 +50,7 @@ export function Shapes56({ surface = "card", bordered = true, inverted = false, 
       >
         <div className="flex items-center gap-0.5">
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="size-3 fill-amber-400 text-amber-400" />
+            <Star key={i} className="size-3 fill-primary text-primary" />
           ))}
         </div>
         <span className="h-1.5 w-full rounded-full bg-current/10" />

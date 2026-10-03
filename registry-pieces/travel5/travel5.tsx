@@ -18,6 +18,7 @@ interface Travel5Props {
   toCode?: string;
   duration?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -38,6 +39,7 @@ export const travel5Demo: Travel5Props = {
   toCode: "HND",
   duration: "11h 05m · Nonstop",
   tone: "primary",
+  bordered: false,
 };
 
 export function Travel5({
@@ -47,6 +49,7 @@ export function Travel5({
   toCode,
   duration,
   tone = "primary",
+  bordered = false,
   className,
 }: Travel5Props) {
   return (
@@ -56,10 +59,10 @@ export function Travel5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold text-card-foreground">
               {fromCode}
             </span>
             <span className="text-xs text-muted-foreground">{from}</span>
@@ -82,7 +85,7 @@ export function Travel5({
             </svg>
           </div>
           <div className="flex flex-col items-end">
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold text-card-foreground">
               {toCode}
             </span>
             <span className="text-xs text-muted-foreground">{to}</span>

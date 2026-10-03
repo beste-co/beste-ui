@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "education17",
   title: "Class Announcement",
   description:
-    "Left-ruled amber announcement from an instructor with a megaphone chip, title, body, and timestamp.",
+    "Instructor announcement with an amber megaphone icon, a title, and a short body.",
   category: "Education",
 };

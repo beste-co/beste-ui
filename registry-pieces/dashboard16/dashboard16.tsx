@@ -54,23 +54,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard16Demo: Dashboard16Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   service: "api.prod.example",
   uptime: "99.94%",
   days: buildDemoDays(),
-  startLabel: "60 days ago",
-  endLabel: "Today",
 };
 
 export function Dashboard16({
   service = "Service",
   uptime,
   days = [],
-  startLabel = "60 days ago",
-  endLabel = "Today",
+  startLabel,
+  endLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard16Props) {
@@ -91,11 +89,11 @@ export function Dashboard16({
         )}
       >
         <div className="flex items-baseline justify-between gap-2">
-          <span className="truncate font-mono text-xs font-medium">
+          <span className="truncate text-xs font-medium">
             {service}
           </span>
           {uptime && (
-            <span className="font-mono text-xs font-medium tabular-nums text-emerald-600 dark:text-emerald-400">
+            <span className="text-xs font-medium tabular-nums text-emerald-600 dark:text-emerald-400">
               {uptime}
             </span>
           )}
@@ -112,10 +110,12 @@ export function Dashboard16({
             />
           ))}
         </div>
-        <div className="flex items-center justify-between text-xs text-current/60">
-          <span>{startLabel}</span>
-          <span>{endLabel}</span>
-        </div>
+        {(startLabel || endLabel) && (
+          <div className="flex items-center justify-between text-xs text-current/60">
+            <span>{startLabel}</span>
+            <span>{endLabel}</span>
+          </div>
+        )}
       </div>
     </div>
   );

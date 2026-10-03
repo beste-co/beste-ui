@@ -7,19 +7,21 @@ interface Editor23Props {
   filename?: string;
   dirty?: boolean;
   savedAt?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const editor23Demo: Editor23Props = {
   filename: "button.tsx",
   dirty: false,
-  savedAt: "Saved 3s ago",
+  bordered: false,
 };
 
 export function Editor23({
   filename = "file",
   dirty = false,
   savedAt,
+  bordered = false,
   className,
 }: Editor23Props) {
   return (
@@ -29,7 +31,7 @@ export function Editor23({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2.5 rounded-md border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2.5 rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         {dirty ? (
           <Circle
             className="size-3 shrink-0 fill-sky-500 text-sky-500"
@@ -40,7 +42,7 @@ export function Editor23({
             <Check className="size-2" strokeWidth={3.5} aria-hidden="true" />
           </div>
         )}
-        <span className="font-mono text-xs font-semibold text-card-foreground">
+        <span className="text-xs font-semibold text-card-foreground">
           {filename}
         </span>
         <span className="text-xs text-muted-foreground">

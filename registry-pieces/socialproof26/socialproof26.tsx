@@ -39,7 +39,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const socialproof26Demo: Socialproof26Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   quote: "We moved eleven years of records over a weekend and nobody had to work Monday twice.",
   name: "Elena Rourke",
@@ -50,7 +50,7 @@ export const socialproof26Demo: Socialproof26Props = {
   },
 };
 
-export function Socialproof26({ quote, name, role, avatar, surface = "card", bordered = true, inverted = false, className }: Socialproof26Props) {
+export function Socialproof26({ quote, name, role, avatar, surface = "card", bordered = false, inverted = false, className }: Socialproof26Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

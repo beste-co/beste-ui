@@ -141,7 +141,7 @@ export const PIECE_SURFACE_CONTROLS: PlaygroundControl[] = [
     default: "card",
     group: "Surface",
   },
-  { prop: "bordered", label: "Border", kind: "switch", default: true, group: "Surface" },
+  { prop: "bordered", label: "Border", kind: "switch", default: false, group: "Surface" },
   { prop: "inverted", label: "Invert", kind: "switch", default: false, group: "Surface" },
 ];
 

@@ -31,7 +31,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const stats10Demo: Stats10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   value: "1,284",
   label: "Online now",
@@ -41,7 +41,7 @@ export function Stats10({
   value = "0",
   label,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Stats10Props) {
@@ -70,7 +70,7 @@ export function Stats10({
             {value}
           </span>
           {label && (
-            <span className="text-xs font-medium uppercase tracking-wide text-current/60">
+            <span className="text-xs font-medium text-current/60">
               {label}
             </span>
           )}

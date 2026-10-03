@@ -19,16 +19,17 @@ interface Upload12Props {
   eta?: string;
   percent?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary/15 text-primary",
-  foreground: "bg-foreground/15 text-foreground",
-  sky: "bg-sky-500/15 text-sky-500",
-  emerald: "bg-emerald-500/15 text-emerald-500",
-  violet: "bg-violet-500/15 text-violet-500",
-  amber: "bg-amber-500/15 text-amber-500",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -44,10 +45,9 @@ export const upload12Demo: Upload12Props = {
   filename: "campaign-edit-01.mov",
   bytesUploaded: "184 MB",
   bytesTotal: "312 MB",
-  speed: "12.4 MB/s",
-  eta: "10s left",
   percent: 59,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Upload12({
@@ -57,10 +57,19 @@ export function Upload12({
   speed,
   eta,
   percent = 0,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Upload12Props) {
   const pct = Math.max(0, Math.min(100, percent));
+  const sizeLine = [
+    bytesUploaded && bytesTotal
+      ? `${bytesUploaded} of ${bytesTotal}`
+      : bytesUploaded || bytesTotal,
+    speed,
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <div
@@ -69,23 +78,21 @@ export function Upload12({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2.5">
-          <div
-            className={cn(
-              "flex size-9 shrink-0 items-center justify-center rounded-md",
-              tileClasses[tone]
-            )}
-          >
-            <FileText className="size-4" aria-hidden="true" />
-          </div>
+          <FileText
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-semibold text-card-foreground">
               {filename}
             </span>
-            <span className="truncate text-xs text-muted-foreground">
-              {bytesUploaded} of {bytesTotal} · {speed}
-            </span>
+            {sizeLine && (
+              <span className="truncate text-xs text-muted-foreground tabular-nums">
+                {sizeLine}
+              </span>
+            )}
           </div>
           <button
             type="button"
@@ -111,10 +118,11 @@ export function Upload12({
             style={{ width: `${pct}%` }}
           />
         </div>
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-mono text-muted-foreground">{pct}%</span>
-          <span className="font-medium text-muted-foreground">{eta}</span>
-        </div>
+        {eta && (
+          <span className="text-xs text-muted-foreground tabular-nums">
+            {eta}
+          </span>
+        )}
       </div>
     </div>
   );

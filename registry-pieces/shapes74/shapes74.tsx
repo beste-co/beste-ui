@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes74Demo: Shapes74Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes74({ surface = "card", bordered = true, inverted = false, className }: Shapes74Props) {
+export function Shapes74({ surface = "card", bordered = false, inverted = false, className }: Shapes74Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -54,7 +54,7 @@ export function Shapes74({ surface = "card", bordered = true, inverted = false, 
         </div>
         <div className="flex items-center gap-2">
           <div className="relative h-1.5 flex-1 rounded-full bg-current/10">
-            <span className="absolute inset-y-0 left-0 w-3/5 rounded-full bg-emerald-500" />
+            <span className="absolute inset-y-0 left-0 w-3/5 rounded-full bg-primary" />
           </div>
           <span className="h-1 w-6 rounded-full bg-current/70" />
         </div>

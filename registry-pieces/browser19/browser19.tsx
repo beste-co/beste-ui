@@ -13,6 +13,7 @@ interface Shortcut {
 
 interface Browser19Props {
   shortcuts?: Shortcut[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -28,7 +29,6 @@ const tintClasses: Record<TileTint, string> = {
 export const browser19Demo: Browser19Props = {
   shortcuts: [
     { name: "GitHub", url: "github.com", tint: "slate" },
-    { name: "Linear", url: "linear.app", tint: "violet" },
     {
       name: "Stripe",
       url: "stripe.com",
@@ -43,24 +43,11 @@ export const browser19Demo: Browser19Props = {
       src: "https://oud.pics/sm/l/notion.png",
       alt: "Notion",
     },
-    {
-      name: "Slack",
-      url: "slack.com",
-      tint: "violet",
-      src: "https://oud.pics/sm/l/slack.svg",
-      alt: "Slack",
-    },
-    {
-      name: "Gmail",
-      url: "gmail.com",
-      tint: "rose",
-      src: "https://oud.pics/sm/l/gmail.jpeg",
-      alt: "Gmail",
-    },
   ],
+  bordered: false,
 };
 
-export function Browser19({ shortcuts = [], className }: Browser19Props) {
+export function Browser19({ shortcuts = [], bordered = false, className }: Browser19Props) {
   return (
     <div
       className={cn(
@@ -68,12 +55,12 @@ export function Browser19({ shortcuts = [], className }: Browser19Props) {
         className
       )}
     >
-      <div className="grid w-full max-w-72 grid-cols-3 gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("grid w-full max-w-72 grid-cols-3 gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {shortcuts.slice(0, 6).map((s, i) => (
           <div key={i} className="flex flex-col items-center gap-1.5">
             <div
               className={cn(
-                "relative flex size-10 items-center justify-center overflow-hidden rounded-xl font-mono text-sm font-bold shadow-sm",
+                "relative flex size-10 items-center justify-center overflow-hidden rounded-xl text-sm font-bold shadow-sm",
                 s.src ? "bg-card" : tintClasses[s.tint]
               )}
               aria-hidden="true"

@@ -39,16 +39,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ticket2Demo: Ticket2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   movie: "Dune: Part Two",
-  hall: "Hall 4",
   row: "J",
   seat: "12",
   date: "Fri Jun 14",
   time: "9:30 PM",
   format: "IMAX",
-  nowShowingLabel: "Now Showing",
   rowPrefix: "Row",
   seatPrefix: "Seat",
 };
@@ -61,15 +59,23 @@ export function Ticket2({
   date,
   time,
   format,
-  nowShowingLabel = "Now Showing",
+  nowShowingLabel,
   rowPrefix = "Row",
   seatPrefix = "Seat",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ticket2Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
+  const seating = [
+    hall,
+    row && `${rowPrefix} ${row}`,
+    seat && `${seatPrefix} ${seat}`,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const showing = [date, time].filter(Boolean).join(" · ");
 
   return (
     <div
@@ -80,26 +86,26 @@ export function Ticket2({
     >
       <div className={cn("w-full max-w-80 overflow-hidden rounded-lg shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex flex-col gap-0.5 p-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-current/60">
-            {nowShowingLabel}
-          </span>
+          {nowShowingLabel && (
+            <span className="text-xs font-semibold text-current/60">
+              {nowShowingLabel}
+            </span>
+          )}
           <span className="text-base font-bold leading-tight">
             {movie}
           </span>
-          <span className="text-xs text-current/60">
-            {hall} · {rowPrefix} {row} · {seatPrefix} {seat}
-          </span>
+          {seating && (
+            <span className="text-xs text-current/60">{seating}</span>
+          )}
         </div>
         <div
           className="border-t border-dashed border-current/15"
           aria-hidden="true"
         />
         <div className="flex items-center justify-between bg-current/10 px-3 py-2 text-xs">
-          <span className="font-mono">
-            {date} · {time}
-          </span>
+          <span className="tabular-nums">{showing}</span>
           {format && (
-            <span className="rounded border border-current/15 bg-current/10 px-1.5 py-0.5 font-mono font-semibold uppercase tracking-wide text-current/60">
+            <span className={cn("rounded bg-current/10 px-1.5 py-0.5 font-semibold text-current/60", bordered && "border border-current/15")}>
               {format}
             </span>
           )}

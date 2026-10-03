@@ -10,6 +10,7 @@ interface LensItem {
 interface Editor22Props {
   items?: LensItem[];
   signature?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,11 +21,13 @@ export const editor22Demo: Editor22Props = {
     { label: "run test" },
   ],
   signature: "function greet(name: string)",
+  bordered: false,
 };
 
 export function Editor22({
   items = [],
   signature,
+  bordered = false,
   className,
 }: Editor22Props) {
   return (
@@ -34,7 +37,7 @@ export function Editor22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3 px-3 pt-2 text-xs">
           {items.map((it, i) => (
             <button
@@ -54,7 +57,7 @@ export function Editor22({
           ))}
         </div>
         {signature && (
-          <pre className="px-3 pb-2 pt-1 font-mono text-xs leading-relaxed text-card-foreground">
+          <pre className="px-3 pb-2 pt-1 text-xs leading-relaxed text-card-foreground">
             <code>
               <span className="text-violet-600 dark:text-violet-400">
                 {signature.split(" ")[0]}

@@ -42,7 +42,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chart1Demo: Chart1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Sessions · this week",
   value: "8,214",
@@ -56,7 +56,7 @@ export function Chart1({
   data = [],
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Chart1Props) {

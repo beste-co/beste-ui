@@ -9,26 +9,27 @@ interface Education12Props {
   passing?: number;
   timeTaken?: string;
   result?: "passed" | "failed";
+  bordered?: boolean;
   className?: string;
 }
 
 export const education12Demo: Education12Props = {
   score: 8,
   total: 10,
-  passing: 7,
   timeTaken: "12:42",
   result: "passed",
+  bordered: false,
 };
 
 export function Education12({
   score = 0,
   total = 1,
-  passing = 1,
+  passing,
   timeTaken,
   result = "passed",
+  bordered = false,
   className,
 }: Education12Props) {
-  const pct = Math.round((score / Math.max(1, total)) * 100);
   const passed = result === "passed";
 
   return (
@@ -40,23 +41,23 @@ export function Education12({
     >
       <div
         className={cn(
-          "flex w-full max-w-72 flex-col items-center gap-2 rounded-xl border p-4 text-center shadow-sm",
+          "flex w-full max-w-72 flex-col items-center gap-2 rounded-xl p-4 text-center shadow-sm",
+          bordered && "border",
           passed
             ? "border-emerald-500/50 bg-emerald-500/5"
             : "border-rose-500/50 bg-rose-500/5"
         )}
       >
-        <div
+        <Trophy
           className={cn(
-            "flex size-12 items-center justify-center rounded-full text-white shadow-md",
-            passed ? "bg-emerald-500" : "bg-rose-500"
+            "size-6 shrink-0",
+            passed ? "text-emerald-500" : "text-rose-500"
           )}
-        >
-          <Trophy className="size-5" aria-hidden="true" />
-        </div>
+          aria-hidden="true"
+        />
         <span
           className={cn(
-            "text-xs font-semibold uppercase tracking-wide",
+            "text-xs font-semibold",
             passed
               ? "text-emerald-700 dark:text-emerald-300"
               : "text-rose-700 dark:text-rose-300"
@@ -64,7 +65,7 @@ export function Education12({
         >
           {passed ? "You passed" : "Try again"}
         </span>
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-2 tabular-nums">
           <span className="text-2xl font-bold text-card-foreground">
             {score}
           </span>
@@ -72,11 +73,13 @@ export function Education12({
             / {total}
           </span>
         </div>
-        <span className="text-xs text-muted-foreground">
-          {pct}% · Passing mark {passing}/{total}
-        </span>
+        {passing !== undefined && (
+          <span className="text-xs tabular-nums text-muted-foreground">
+            Passing mark {passing} of {total}
+          </span>
+        )}
         {timeTaken && (
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs tabular-nums text-muted-foreground">
             Finished in {timeTaken}
           </span>
         )}

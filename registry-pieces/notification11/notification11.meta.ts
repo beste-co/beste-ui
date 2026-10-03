@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "notification11",
   title: "Email Preview",
   description:
-    "Inbox row with sender, subject line, two-line body preview, attachment clip, and star.",
+    "Inbox row with sender, subject line, two-line body preview, and a star.",
   category: "Notification",
 };

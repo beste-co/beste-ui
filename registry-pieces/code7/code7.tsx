@@ -11,17 +11,17 @@ interface JsonEntry {
 
 interface Code7Props {
   entries?: JsonEntry[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const code7Demo: Code7Props = {
   entries: [
     { key: "name", value: "Beste" },
-    { key: "version", value: "1.0.0" },
     { key: "active", value: true },
     { key: "count", value: 42 },
-    { key: "owner", value: null },
   ],
+  bordered: false,
 };
 
 function ValueSpan({ value }: { value: JsonValue }) {
@@ -43,7 +43,7 @@ function ValueSpan({ value }: { value: JsonValue }) {
   return <span className="text-muted-foreground">null</span>;
 }
 
-export function Code7({ entries = [], className }: Code7Props) {
+export function Code7({ entries = [], bordered = false, className }: Code7Props) {
   return (
     <div
       className={cn(
@@ -51,7 +51,7 @@ export function Code7({ entries = [], className }: Code7Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-lg border border-border bg-card px-3 py-2 font-mono text-sm leading-relaxed shadow-sm">
+      <div className={cn("w-full max-w-80 rounded-lg bg-card px-3 py-2 font-mono text-sm leading-relaxed shadow-sm", bordered && "border border-border")}>
         <div className="text-muted-foreground">{"{"}</div>
         {entries.map((entry, i) => (
           <div key={entry.key} className="flex gap-1 truncate pl-3">

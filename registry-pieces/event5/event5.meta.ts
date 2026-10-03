@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "event5",
   title: "Venue Card",
   description:
-    "Venue panel with a gridded mini-map tile, name, address, city, capacity, and an italic directions line.",
+    "Venue panel with a pin, the venue name, its address and city.",
   category: "Event",
 };

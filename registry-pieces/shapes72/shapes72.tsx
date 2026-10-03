@@ -30,11 +30,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes72Demo: Shapes72Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes72({ surface = "card", bordered = true, inverted = false, className }: Shapes72Props) {
+export function Shapes72({ surface = "card", bordered = false, inverted = false, className }: Shapes72Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -48,7 +48,7 @@ export function Shapes72({ surface = "card", bordered = true, inverted = false, 
         className={cn("flex w-48 items-center gap-2.5 rounded-md p-3 shadow-md", surfaceTone, bordered && "border border-current/15")}
         aria-hidden="true"
       >
-        <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-500">
+        <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary">
           <Check className="size-3.5 text-white" />
         </span>
         <div className="flex flex-1 flex-col gap-1">

@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Mic, Pause, Square } from "lucide-react";
+import { Pause, Square } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Toolbar22Props {
   label?: string;
   bars?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const toolbar22Demo: Toolbar22Props = {
   label: "Recording screen",
   bars: 14,
+  bordered: false,
 };
 
 function format(seconds: number) {
@@ -26,6 +28,7 @@ function format(seconds: number) {
 export function Toolbar22({
   label = "Recording",
   bars = 12,
+  bordered = false,
   className,
 }: Toolbar22Props) {
   const [seconds, setSeconds] = useState(0);
@@ -46,7 +49,7 @@ export function Toolbar22({
 @keyframes toolbar22-bar { 0%, 100% { transform: scaleY(0.28); } 50% { transform: scaleY(1); } }
 `}</style>
 
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-full border border-border bg-card p-2 pl-3 shadow-md">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-full bg-card p-2 pl-3 shadow-md", bordered && "border border-border")}>
         <span className="relative flex size-2.5 shrink-0" aria-hidden="true">
           <span className="absolute inline-flex size-full animate-ping rounded-full bg-rose-500 opacity-75 motion-reduce:animate-none" />
           <span className="relative inline-flex size-2.5 rounded-full bg-rose-500" />
@@ -73,13 +76,6 @@ export function Toolbar22({
         </span>
 
         <span className="flex items-center gap-1">
-          <button
-            type="button"
-            className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground motion-reduce:transition-none"
-            aria-label="Mute microphone"
-          >
-            <Mic className="size-4" aria-hidden="true" />
-          </button>
           <button
             type="button"
             className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-card-foreground motion-reduce:transition-none"

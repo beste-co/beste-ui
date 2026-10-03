@@ -63,7 +63,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser10Demo: Browser10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   message: "We use cookies to measure traffic and improve your experience.",
   rejectLabel: "Reject",
@@ -77,7 +77,7 @@ export function Browser10({
   acceptLabel = "Accept",
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser10Props) {

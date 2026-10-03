@@ -46,7 +46,7 @@ export function Input19({
               {label}
             </label>
           )}
-          <span className="font-mono text-sm font-semibold text-primary">
+          <span className="text-sm font-semibold text-primary">
             {unit}
             {value}
           </span>

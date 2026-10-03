@@ -25,14 +25,14 @@ export const money3Demo: Money3Props = {
   balance: "12,459.20",
   currency: "USD",
   label: "Available balance",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Money3({
   balance = "0.00",
   currency = "USD",
   label,
-  tone = "emerald",
+  tone = "primary",
   className,
 }: Money3Props) {
   return (
@@ -50,7 +50,7 @@ export function Money3({
       >
         <div className="flex items-center justify-between">
           {label && (
-            <span className="text-xs font-medium uppercase tracking-wide opacity-80">
+            <span className="text-xs font-medium opacity-80">
               {label}
             </span>
           )}

@@ -8,19 +8,21 @@ interface Browser21Props {
   title?: string;
   url?: string;
   time?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser21Demo: Browser21Props = {
   title: "React Server Components Explained",
   url: "dev.to/reactjs/react-server-components-explained",
-  time: "12 min ago",
+  bordered: false,
 };
 
 export function Browser21({
   title = "Page title",
   url = "example.com",
   time,
+  bordered = false,
   className,
 }: Browser21Props) {
   return (
@@ -30,15 +32,16 @@ export function Browser21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-start gap-3 rounded-md border border-border bg-card px-3 py-2.5 shadow-sm">
-        <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground">
-          <Globe className="size-4" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-80 items-start gap-3 rounded-md bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
+        <Globe
+          className="mt-0.5 size-5 shrink-0 text-muted-foreground"
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span className="truncate text-sm font-semibold text-card-foreground">
             {title}
           </span>
-          <span className="truncate font-mono text-xs text-muted-foreground">
+          <span className="truncate text-xs text-muted-foreground">
             {url}
           </span>
         </div>

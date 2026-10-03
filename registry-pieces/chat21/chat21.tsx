@@ -5,15 +5,18 @@ import { cn } from "@/lib/utils";
 
 interface Chat21Props {
   emojis?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const chat21Demo: Chat21Props = {
-  emojis: ["👍", "❤️", "😂", "🎉", "🔥", "😮"],
+  emojis: ["👍", "❤️", "😂", "🎉"],
+  bordered: false,
 };
 
 export function Chat21({
   emojis = ["👍", "❤️", "😂"],
+  bordered = false,
   className,
 }: Chat21Props) {
   return (
@@ -23,7 +26,7 @@ export function Chat21({
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-full border border-border bg-card p-1 shadow-md">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-full bg-card p-1 shadow-md", bordered && "border border-border")}>
         {emojis.slice(0, 6).map((e, i) => (
           <button
             key={i}

@@ -11,6 +11,7 @@ interface EmojiItem {
 interface Editor33Props {
   query?: string;
   items?: EmojiItem[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,11 +23,13 @@ export const editor33Demo: Editor33Props = {
     { shortcode: ":first_place:", emoji: "🥇" },
     { shortcode: ":fish:", emoji: "🐟" },
   ],
+  bordered: false,
 };
 
 export function Editor33({
   query = "",
   items = [],
+  bordered = false,
   className,
 }: Editor33Props) {
   return (
@@ -37,19 +40,19 @@ export function Editor33({
       )}
     >
       <div className="flex w-full max-w-64 flex-col gap-1">
-        <div className="flex items-center gap-0 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs shadow-sm">
+        <div className={cn("flex items-center gap-0 rounded-md bg-card px-3 py-2 text-xs shadow-sm", bordered && "border border-border")}>
           <span className="text-card-foreground">{query}</span>
           <span
             className="h-3.5 w-px animate-pulse bg-foreground"
             aria-hidden="true"
           />
         </div>
-        <ul className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-md">
+        <ul className={cn("flex flex-col overflow-hidden rounded-md bg-card shadow-md", bordered && "border border-border")}>
           {items.map((it, i) => (
             <li
               key={i}
               className={cn(
-                "flex items-center gap-2 px-2 py-1 font-mono text-xs",
+                "flex items-center gap-2 px-2 py-1 text-xs",
                 it.active && "bg-muted"
               )}
             >

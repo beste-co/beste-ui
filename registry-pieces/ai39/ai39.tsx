@@ -7,6 +7,7 @@ type Provider = "openai" | "anthropic" | "google" | "mistral" | "meta";
 interface Ai39Props {
   provider?: Provider;
   model?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,11 +25,13 @@ const PROVIDERS: Record<
 export const ai39Demo: Ai39Props = {
   provider: "anthropic",
   model: "claude-sonnet-4",
+  bordered: false,
 };
 
 export function Ai39({
   provider = "openai",
   model = "model",
+  bordered = false,
   className,
 }: Ai39Props) {
   const p = PROVIDERS[provider];
@@ -40,7 +43,7 @@ export function Ai39({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-2 py-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-full bg-card px-2 py-1 shadow-sm", bordered && "border border-border")}>
         <span
           className={cn(
             "flex size-5 items-center justify-center rounded-full text-xs font-bold text-white",
@@ -54,7 +57,7 @@ export function Ai39({
           <span className="text-xs font-semibold text-card-foreground">
             {p.label}
           </span>
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className="text-xs text-muted-foreground">
             {model}
           </span>
         </div>

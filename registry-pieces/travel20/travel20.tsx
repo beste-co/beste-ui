@@ -14,23 +14,25 @@ interface Travel20Props {
   passenger?: string;
   items?: BaggageItem[];
   limit?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const travel20Demo: Travel20Props = {
-  passenger: "Beste Sözen · 12D",
+  passenger: "Ólafur Arnalds",
   items: [
     { label: "Cabin bag", weight: "8 kg", count: 1, included: true },
     { label: "Checked suitcase", weight: "23 kg", count: 2 },
     { label: "Personal item", weight: "2 kg", count: 1, included: true },
   ],
-  limit: "Total allowance 54 kg",
+  bordered: false,
 };
 
 export function Travel20({
   passenger,
   items = [],
   limit,
+  bordered = false,
   className,
 }: Travel20Props) {
   return (
@@ -40,13 +42,11 @@ export function Travel20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-violet-500/15 text-violet-500">
-            <Luggage className="size-4" aria-hidden="true" />
-          </div>
+          <Luggage className="size-5 shrink-0 text-violet-500" aria-hidden="true" />
           {passenger && (
-            <span className="truncate text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="truncate text-xs font-semibold text-muted-foreground">
               {passenger}
             </span>
           )}
@@ -61,7 +61,7 @@ export function Travel20({
                 <span className="font-medium text-card-foreground">
                   {item.label}
                 </span>
-                <span className="text-muted-foreground">
+                <span className="tabular-nums text-muted-foreground">
                   {item.weight} · {item.count} {item.count === 1 ? "piece" : "pieces"}
                 </span>
               </div>

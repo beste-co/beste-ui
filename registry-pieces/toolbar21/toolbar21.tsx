@@ -1,7 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { CalendarDays, Filter, List, Rows3 } from "lucide-react";
+import { CalendarDays, List, Rows3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -40,7 +40,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const toolbar21Demo: Toolbar21Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   segments: [
     { icon: List, label: "List" },
@@ -58,7 +58,7 @@ export function Toolbar21({
   count,
   filterLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Toolbar21Props) {
@@ -97,8 +97,7 @@ export function Toolbar21({
         <div className="flex items-center justify-between gap-3">
           {count && <span className="text-sm tabular-nums text-current/60">{count}</span>}
           {filterLabel && (
-            <span className="flex items-center gap-1.5 rounded-md border border-current/15 px-2.5 py-1 text-sm">
-              <Filter className="size-3.5 text-current/60" aria-hidden="true" />
+            <span className={cn("rounded-md px-2.5 py-1 text-sm", bordered ? "border border-current/15" : "bg-current/10")}>
               {filterLabel}
             </span>
           )}

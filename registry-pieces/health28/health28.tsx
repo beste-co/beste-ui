@@ -22,18 +22,19 @@ interface Health28Props {
   remaining?: number;
   total?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -49,13 +50,12 @@ const barClasses: Record<Tone, string> = {
 
 export const health28Demo: Health28Props = {
   medication: "Lisinopril",
-  dose: "10 mg · 1 tab daily",
-  schedule: "Morning with food",
-  pharmacy: "Green Cross Pharmacy",
+  dose: "10 mg daily",
   refill: "Refill on May 12",
   remaining: 8,
   total: 30,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health28({
@@ -66,7 +66,8 @@ export function Health28({
   refill,
   remaining = 0,
   total = 1,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health28Props) {
   const pct = Math.round((remaining / Math.max(1, total)) * 100);
@@ -79,16 +80,12 @@ export function Health28({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Pill className="size-4" aria-hidden="true" />
-          </div>
+          <Pill
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {medication && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -108,12 +105,14 @@ export function Health28({
           </span>
         )}
         <div className="flex items-center justify-between text-xs">
-          <span className="text-muted-foreground">
+          <span className="tabular-nums text-muted-foreground">
             {remaining} of {total} left
           </span>
-          <span className="font-semibold text-amber-700 dark:text-amber-300">
-            {refill}
-          </span>
+          {refill && (
+            <span className="font-semibold text-amber-700 dark:text-amber-300">
+              {refill}
+            </span>
+          )}
         </div>
         <div
           className="h-1.5 overflow-hidden rounded-full bg-muted"

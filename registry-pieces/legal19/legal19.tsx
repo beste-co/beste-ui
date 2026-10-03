@@ -4,12 +4,13 @@ import { cn } from "@/lib/utils";
 
 interface Turn {
   role: "Q" | "A" | "By";
-  speaker: string;
+  speaker?: string;
   line: string;
 }
 
 interface Legal19Props {
   turns?: Turn[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,20 +18,18 @@ export const legal19Demo: Legal19Props = {
   turns: [
     {
       role: "Q",
-      speaker: "Counsel",
       line: "And you first saw the shipment on what date?",
     },
     {
       role: "A",
-      speaker: "Witness",
       line: "The morning of March fourteenth, around eight thirty.",
     },
     {
       role: "Q",
-      speaker: "Counsel",
       line: "Who else was present at that time?",
     },
   ],
+  bordered: false,
 };
 
 const roleClasses: Record<Turn["role"], string> = {
@@ -41,6 +40,7 @@ const roleClasses: Record<Turn["role"], string> = {
 
 export function Legal19({
   turns = [],
+  bordered = false,
   className,
 }: Legal19Props) {
   return (
@@ -50,23 +50,24 @@ export function Legal19({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-      
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col gap-1.5">
           {turns.map((t, idx) => (
             <div key={idx} className="flex gap-2">
               <span
                 className={cn(
-                  "inline-flex size-5 shrink-0 items-center justify-center rounded font-mono text-xs font-bold",
+                  "inline-flex size-5 shrink-0 items-center justify-center rounded text-xs font-bold",
                   roleClasses[t.role]
                 )}
               >
                 {t.role}
               </span>
               <div className="flex min-w-0 flex-1 flex-col">
-                <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  {t.speaker}
-                </span>
+                {t.speaker && (
+                  <span className="text-xs font-semibold text-muted-foreground">
+                    {t.speaker}
+                  </span>
+                )}
                 <span className="text-sm leading-snug text-card-foreground">
                   {t.line}
                 </span>

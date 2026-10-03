@@ -19,12 +19,12 @@ export function Shapes2({ className }: Shapes2Props) {
       <div className="flex items-center gap-2.5" aria-hidden="true">
         <svg
           viewBox="0 0 24 24"
-          className="size-10 text-amber-400"
+          className="size-10 text-primary"
           fill="currentColor"
         >
           <polygon points="12,3 22,21 2,21" />
         </svg>
-        <span className="size-10 rounded-full bg-emerald-500" />
+        <span className="size-10 rounded-full bg-muted-foreground" />
         <span className="size-10 rounded-md bg-foreground" />
       </div>
     </div>

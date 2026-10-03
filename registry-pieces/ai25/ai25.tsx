@@ -20,6 +20,7 @@ interface Ai25Props {
   name?: string;
   segments?: Segment[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -36,7 +37,6 @@ const varClasses: Record<Tone, string> = {
 };
 
 export const ai25Demo: Ai25Props = {
-  name: "support-reply",
   segments: [
     { type: "text", value: "You are a helpful assistant. The user asked: " },
     { type: "var", value: "question" },
@@ -44,13 +44,15 @@ export const ai25Demo: Ai25Props = {
     { type: "var", value: "tone" },
     { type: "text", value: " tone." },
   ],
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai25({
-  name = "template",
+  name,
   segments = [],
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai25Props) {
   return (
@@ -61,10 +63,10 @@ export function Ai25({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
-        <div className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-          <span>{name}.prompt</span>
-        </div>
-        <div className="rounded-md border border-border bg-card p-3 font-mono text-xs leading-relaxed shadow-sm">
+        {name && (
+          <span className="text-xs text-muted-foreground">{name}.prompt</span>
+        )}
+        <div className={cn("rounded-md bg-card p-3 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
           {segments.map((s, i) => (
             <Fragment key={i}>
               {s.type === "text" ? (

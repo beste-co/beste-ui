@@ -36,13 +36,13 @@ export const ai24Demo: Ai24Props = {
     "Leaky bucket gives smoother traffic than fixed window.",
     "Redis INCR with TTL is the simplest implementation.",
   ],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Ai24({
   title = "Chain of thought",
   thoughts = [],
-  tone = "violet",
+  tone = "primary",
   className,
 }: Ai24Props) {
   return (

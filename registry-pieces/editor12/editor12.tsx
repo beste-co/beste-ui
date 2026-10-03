@@ -13,6 +13,7 @@ interface OutlineItem {
 
 interface Editor12Props {
   items?: OutlineItem[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,14 +44,14 @@ const kindConfig: Record<
 export const editor12Demo: Editor12Props = {
   items: [
     { label: "Dashboard", kind: "class", depth: 0 },
-    { label: "constructor", kind: "method", depth: 1 },
     { label: "state", kind: "prop", depth: 1 },
     { label: "render", kind: "method", depth: 1, active: true },
     { label: "computeStats", kind: "function", depth: 0 },
   ],
+  bordered: false,
 };
 
-export function Editor12({ items = [], className }: Editor12Props) {
+export function Editor12({ items = [], bordered = false, className }: Editor12Props) {
   return (
     <div
       className={cn(
@@ -58,10 +59,7 @@ export function Editor12({ items = [], className }: Editor12Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-60 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
-        <div className="border-b border-border px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Outline
-        </div>
+      <div className={cn("flex w-full max-w-60 flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         <ul className="flex flex-col py-1">
           {items.map((item, i) => {
             const cfg = kindConfig[item.kind];
@@ -69,7 +67,7 @@ export function Editor12({ items = [], className }: Editor12Props) {
               <li
                 key={i}
                 className={cn(
-                  "flex items-center gap-2 px-2 py-1 font-mono text-xs",
+                  "flex items-center gap-2 px-2 py-1 text-xs",
                   item.active && "bg-muted"
                 )}
                 style={{ paddingLeft: `${0.5 + (item.depth ?? 0) * 1}rem` }}

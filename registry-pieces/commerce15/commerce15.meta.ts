@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "commerce15",
   title: "Express Checkout",
   description:
-    "Wallet-pay button row with Apple Pay, Google Pay, and PayPal in their brand colors above an or-pay-with-card divider, with the order total in the header.",
+    "Wallet-pay button row with Apple Pay, Google Pay, and PayPal in their brand colors, with the order total in the header.",
   category: "Commerce",
 };

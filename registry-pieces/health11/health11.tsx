@@ -13,6 +13,7 @@ interface MealDay {
 interface Health11Props {
   week?: string;
   days?: MealDay[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,11 +31,13 @@ export const health11Demo: Health11Props = {
     },
     { day: "Thu", breakfast: "Eggs", lunch: "Soup", dinner: "Pasta" },
   ],
+  bordered: false,
 };
 
 export function Health11({
   week,
   days = [],
+  bordered = false,
   className,
 }: Health11Props) {
   return (
@@ -44,9 +47,9 @@ export function Health11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {week && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {week}
           </span>
         )}
@@ -61,7 +64,7 @@ export function Health11({
             >
               <span
                 className={cn(
-                  "w-10 shrink-0 font-semibold uppercase tracking-wide",
+                  "w-10 shrink-0 font-semibold",
                   d.today ? "text-primary" : "text-muted-foreground"
                 )}
               >

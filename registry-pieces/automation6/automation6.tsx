@@ -1,6 +1,6 @@
 "use client";
 
-import { Copy, Webhook } from "lucide-react";
+import { Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -43,14 +43,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation6Demo: Automation6Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   url: "https://hooks.beste.co/wf/8a2k4f1m9n",
   method: "POST",
-  lastReceived: "Last event 14s ago",
-  secretSet: true,
-  headerLabel: "Webhook",
-  signedLabel: "Signed",
+  lastReceived: "Listening for events",
 };
 
 export function Automation6({
@@ -58,10 +55,10 @@ export function Automation6({
   method = "POST",
   lastReceived,
   secretSet,
-  headerLabel = "Webhook",
+  headerLabel,
   signedLabel = "Signed",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation6Props) {
@@ -75,34 +72,34 @@ export function Automation6({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center gap-1.5">
-          <Webhook
-            className="size-3.5 text-current/60"
-            aria-hidden="true"
-          />
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-            {headerLabel}
-          </span>
-          {secretSet && (
-            <span className="ml-auto inline-flex items-center gap-1 text-xs text-current/60">
-              <span
-                className="size-1.5 rounded-full bg-emerald-500"
-                aria-hidden="true"
-              />
-              {signedLabel}
-            </span>
-          )}
-        </div>
-        <div className="flex items-center gap-1.5 overflow-hidden rounded-sm border border-current/15 bg-current/5 pl-1.5 pr-1 py-1">
+        {(headerLabel || secretSet) && (
+          <div className="flex items-center gap-1.5">
+            {headerLabel && (
+              <span className="text-xs font-medium text-current/60">
+                {headerLabel}
+              </span>
+            )}
+            {secretSet && (
+              <span className="ml-auto inline-flex items-center gap-1 text-xs text-current/60">
+                <span
+                  className="size-1.5 rounded-full bg-emerald-500"
+                  aria-hidden="true"
+                />
+                {signedLabel}
+              </span>
+            )}
+          </div>
+        )}
+        <div className={cn("flex items-center gap-1.5 overflow-hidden rounded-sm bg-current/5 pl-1.5 pr-1 py-1", bordered && "border border-current/15")}>
           <span
             className={cn(
-              "shrink-0 rounded-sm px-1.5 py-0.5 font-mono text-xs font-bold",
+              "shrink-0 rounded-sm px-1.5 py-0.5 text-xs font-bold",
               methodClasses[method]
             )}
           >
             {method}
           </span>
-          <span className="flex-1 truncate font-mono text-xs">
+          <span className="flex-1 truncate text-xs">
             {url}
           </span>
           <button

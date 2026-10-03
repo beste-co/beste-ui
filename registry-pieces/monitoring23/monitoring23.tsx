@@ -7,7 +7,7 @@ type Tone = "primary" | "foreground" | "emerald" | "sky" | "violet";
 
 interface Server {
   name: string;
-  region: string;
+  region?: string;
   cpu: number;
   memory: number;
 }
@@ -18,6 +18,7 @@ interface Monitoring23Props {
   criticalAt?: number;
   intervalMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -36,13 +37,14 @@ const barClasses: Record<Tone, string> = {
 
 export const monitoring23Demo: Monitoring23Props = {
   servers: [
-    { name: "web-01", region: "fra1", cpu: 42, memory: 61 },
-    { name: "web-02", region: "iad1", cpu: 67, memory: 58 },
-    { name: "worker-01", region: "sfo1", cpu: 23, memory: 74 },
+    { name: "web-01", cpu: 42, memory: 61 },
+    { name: "web-02", cpu: 67, memory: 58 },
+    { name: "worker-01", cpu: 23, memory: 74 },
   ],
   warnAt: 70,
   criticalAt: 90,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 function walk(value: number, base: number): number {
@@ -57,7 +59,8 @@ export function Monitoring23({
   warnAt = 70,
   criticalAt = 90,
   intervalMs = 900,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring23Props) {
   const [readings, setReadings] = useState<Reading[]>(() =>
@@ -97,7 +100,7 @@ export function Monitoring23({
         className
       )}
     >
-      <div className="w-full max-w-80 divide-y divide-border rounded-xl border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-80 divide-y divide-border rounded-xl bg-card shadow-sm", bordered && "border border-border")}>
         {servers.map((server, i) => {
           const reading = readings[i] ?? { cpu: server.cpu, memory: server.memory };
           const dot = dotClass(reading.cpu, reading.memory);
@@ -114,16 +117,18 @@ export function Monitoring23({
                     />
                     <span className={cn("relative inline-flex size-1.5 rounded-full", dot)} />
                   </span>
-                  <span className="font-mono">{server.name}</span>
+                  <span>{server.name}</span>
                 </span>
-                <span className="text-xs text-muted-foreground">{server.region}</span>
+                {server.region && (
+                  <span className="text-xs text-muted-foreground">{server.region}</span>
+                )}
               </div>
               {(["cpu", "memory"] as const).map((key) => {
                 const value = reading[key];
                 return (
                   <div key={key} className="flex items-center gap-2">
-                    <span className="w-8 shrink-0 text-xs uppercase text-muted-foreground">
-                      {key === "cpu" ? "CPU" : "MEM"}
+                    <span className="w-8 shrink-0 text-xs text-muted-foreground">
+                      {key === "cpu" ? "CPU" : "RAM"}
                     </span>
                     <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted" aria-hidden="true">
                       <span
@@ -133,9 +138,6 @@ export function Monitoring23({
                         )}
                         style={{ width: `${value}%` }}
                       />
-                    </span>
-                    <span className="w-8 shrink-0 text-right text-xs tabular-nums text-card-foreground">
-                      {value}%
                     </span>
                   </div>
                 );

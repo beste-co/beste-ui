@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "education9",
   title: "Learning Streak",
   description:
-    "Streak card with a flame badge, seven-day dot grid, and an encouraging caption underneath.",
+    "Streak card with a flame icon, the day count, and a seven-day dot grid.",
   category: "Education",
 };

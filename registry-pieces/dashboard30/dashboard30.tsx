@@ -70,36 +70,33 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard30Demo: Dashboard30Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   rows: [
     {
       label: "Signups",
       value: "382",
-      delta: "+12%",
       values: [14, 18, 16, 22, 24, 28, 32],
     },
     {
       label: "Revenue",
       value: "$18.4K",
-      delta: "+6%",
       values: [120, 132, 128, 140, 152, 168, 184],
     },
     {
       label: "MAU",
       value: "9.8K",
-      delta: "+3%",
       values: [80, 82, 85, 84, 88, 92, 98],
     },
   ],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard30({
   rows = [],
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard30Props) {
@@ -120,7 +117,7 @@ export function Dashboard30({
           >
             <div className="flex w-20 shrink-0 flex-col">
               <span className="text-xs text-current/60">{r.label}</span>
-              <span className="font-mono text-sm font-semibold tabular-nums">
+              <span className="text-sm font-semibold tabular-nums">
                 {r.value}
               </span>
             </div>
@@ -140,7 +137,7 @@ export function Dashboard30({
               />
             </svg>
             {r.delta && (
-              <span className="shrink-0 font-mono text-xs font-medium text-emerald-600 dark:text-emerald-400">
+              <span className="shrink-0 text-xs font-medium text-emerald-600 dark:text-emerald-400">
                 {r.delta}
               </span>
             )}

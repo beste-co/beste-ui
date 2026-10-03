@@ -12,6 +12,7 @@ interface Editor39Props {
   typo?: string;
   suffix?: string;
   suggestions?: Suggestion[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,6 +25,7 @@ export const editor39Demo: Editor39Props = {
     { label: "implements" },
     { label: "implemented" },
   ],
+  bordered: false,
 };
 
 export function Editor39({
@@ -31,6 +33,7 @@ export function Editor39({
   typo = "",
   suffix = "",
   suggestions = [],
+  bordered = false,
   className,
 }: Editor39Props) {
   return (
@@ -41,14 +44,14 @@ export function Editor39({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
-        <div className="rounded-md border border-border bg-card px-3 py-2 text-sm leading-snug shadow-sm">
+        <div className={cn("rounded-md bg-card px-3 py-2 text-sm leading-snug shadow-sm", bordered && "border border-border")}>
           <span className="text-card-foreground">{prefix}</span>
           <span className="text-card-foreground underline decoration-rose-500 decoration-wavy underline-offset-4">
             {typo}
           </span>
           <span className="text-card-foreground">{suffix}</span>
         </div>
-        <ul className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-md">
+        <ul className={cn("flex flex-col overflow-hidden rounded-md bg-card shadow-md", bordered && "border border-border")}>
           {suggestions.map((s, i) => (
             <li
               key={i}

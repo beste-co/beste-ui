@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "realestate3",
   title: "Open House",
   description:
-    "Open-house invite with an amber door icon, date window, RSVP count, and realtor host footer.",
+    "Open-house invite with a door icon, the date window, and an RSVP count.",
   category: "Realestate",
 };

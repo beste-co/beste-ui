@@ -18,7 +18,6 @@ interface Event4Props {
 
 export const event4Demo: Event4Props = {
   title: "Shipmas 2026",
-  startsAt: "Dec 1 · 09:00 UTC",
   days: 42,
   hours: 8,
   minutes: 21,
@@ -71,10 +70,10 @@ export function Event4({
               key={idx}
               className="flex flex-col items-center gap-0.5 rounded-lg bg-background/10 py-2"
             >
-              <span className="font-mono text-xl font-bold">
+              <span className="text-xl font-bold tabular-nums">
                 {u.value.toString().padStart(2, "0")}
               </span>
-              <span className="text-xs font-medium uppercase tracking-wide text-background/70">
+              <span className="text-xs font-medium text-background/70">
                 {u.label}
               </span>
             </div>

@@ -15,6 +15,7 @@ type Tone =
 interface Monitoring17Props {
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,12 +35,14 @@ const wavePath =
 
 export const monitoring17Demo: Monitoring17Props = {
   label: "live",
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Monitoring17({
   label,
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Monitoring17Props) {
   return (
@@ -51,7 +54,8 @@ export function Monitoring17({
     >
       <div
         className={cn(
-          "flex w-full max-w-56 items-center gap-2 rounded-full border border-border bg-card px-3 py-2 shadow-sm",
+          "flex w-full max-w-56 items-center gap-2 rounded-full bg-card px-3 py-2 shadow-sm",
+          bordered && "border border-border",
           colorClasses[tone]
         )}
       >
@@ -81,7 +85,7 @@ export function Monitoring17({
           />
         </span>
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-wide">
+          <span className="text-xs font-semibold">
             {label}
           </span>
         )}

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "notification18",
   title: "Activity Feed Card",
   description:
-    "A stacked activity feed where each row carries a tinted icon chip, a title and meta line, and a relative timestamp.",
+    "A stacked activity feed where each row carries a tone-colored icon, a title, and a meta line.",
   category: "Notification",
 };

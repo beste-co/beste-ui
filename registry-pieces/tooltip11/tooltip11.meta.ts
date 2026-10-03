@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "tooltip11",
   title: "Glossary Tooltip",
   description:
-    "Definition popover with a book icon, term headline, explanation, and source footer.",
+    "Definition popover with a term headline and its explanation.",
   category: "Tooltip",
 };

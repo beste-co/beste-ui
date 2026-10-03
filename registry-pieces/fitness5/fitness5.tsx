@@ -20,6 +20,7 @@ interface Fitness5Props {
   measuredAt?: string;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -39,9 +40,9 @@ export const fitness5Demo: Fitness5Props = {
   bodyFat: "16.8%",
   muscle: "38.6 kg",
   waterPct: "58.2%",
-  measuredAt: "Smart scale · this morning",
   label: "Body composition",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Fitness5({
@@ -51,7 +52,8 @@ export function Fitness5({
   waterPct,
   measuredAt,
   label = "Body composition",
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Fitness5Props) {
   return (
@@ -61,10 +63,10 @@ export function Fitness5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <span
           className={cn(
-            "text-xs font-semibold uppercase tracking-wide",
+            "text-xs font-semibold",
             labelClasses[tone]
           )}
         >
@@ -73,25 +75,25 @@ export function Fitness5({
         <div className="grid grid-cols-2 gap-2 text-sm">
           <div className="flex flex-col gap-0.5 rounded-md bg-muted p-2">
             <span className="text-xs text-muted-foreground">Weight</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {weight}
             </span>
           </div>
           <div className="flex flex-col gap-0.5 rounded-md bg-muted p-2">
             <span className="text-xs text-muted-foreground">Body fat</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {bodyFat}
             </span>
           </div>
           <div className="flex flex-col gap-0.5 rounded-md bg-muted p-2">
             <span className="text-xs text-muted-foreground">Muscle mass</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {muscle}
             </span>
           </div>
           <div className="flex flex-col gap-0.5 rounded-md bg-muted p-2">
             <span className="text-xs text-muted-foreground">Water</span>
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {waterPct}
             </span>
           </div>

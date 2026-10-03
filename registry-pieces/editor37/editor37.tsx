@@ -11,6 +11,7 @@ interface Key {
 interface Editor37Props {
   title?: string;
   bindings?: Key[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,11 +23,13 @@ export const editor37Demo: Editor37Props = {
     { action: "Toggle terminal", keys: ["⌃", "`"] },
     { action: "Format document", keys: ["⌥", "⇧", "F"] },
   ],
+  bordered: false,
 };
 
 export function Editor37({
   title = "Keybindings",
   bindings = [],
+  bordered = false,
   className,
 }: Editor37Props) {
   return (
@@ -36,8 +39,8 @@ export function Editor37({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
-        <div className="border-b border-border px-3 py-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
+        <div className="border-b border-border px-3 py-1.5 text-xs font-semibold text-muted-foreground">
           {title}
         </div>
         <ul className="flex flex-col divide-y divide-border">
@@ -57,7 +60,7 @@ export function Editor37({
                         +
                       </span>
                     )}
-                    <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded border border-border border-b-2 bg-muted px-1 font-mono text-xs font-medium text-card-foreground">
+                    <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded border border-border border-b-2 bg-muted px-1 text-xs font-medium text-card-foreground">
                       {k}
                     </kbd>
                   </Fragment>

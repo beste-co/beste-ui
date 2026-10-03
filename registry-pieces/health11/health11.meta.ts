@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Week-at-a-glance meal plan with breakfast, lunch, and dinner columns and today highlighted in primary.",
   category: "Health",
+  cardScale: 0.75,
 };

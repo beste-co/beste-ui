@@ -7,7 +7,6 @@ import {
   Hash,
   Mail,
   MessageSquare,
-  Plus,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -81,7 +80,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation10Demo: Automation10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   apps: [
     { image: "https://oud.pics/sm/l/stripe.jpeg", alt: "Stripe" },
@@ -91,8 +90,6 @@ export const automation10Demo: Automation10Props = {
   name: "Sync paid invoices to Notion and ping Slack",
   description:
     "Triggers on Stripe payment, logs the invoice in Notion, and posts a thread to #revenue.",
-  installs: 4280,
-  installsLabel: "installs",
   ctaLabel: "Use recipe",
   tone: "primary",
 };
@@ -141,7 +138,7 @@ export function Automation10({
   ctaLabel = "Use recipe",
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation10Props) {
@@ -178,18 +175,17 @@ export function Automation10({
         )}
         <div className="flex items-center justify-between border-t border-current/15 pt-2">
           {typeof installs === "number" && (
-            <span className="font-mono text-xs tabular-nums text-current/60">
+            <span className="text-xs tabular-nums text-current/60">
               {installs.toLocaleString()} {installsLabel}
             </span>
           )}
           <button
             type="button"
             className={cn(
-              "ml-auto inline-flex items-center gap-1 rounded-sm px-2.5 py-1 text-xs font-semibold transition-colors",
+              "ml-auto inline-flex items-center rounded-sm px-2.5 py-1 text-xs font-semibold transition-colors",
               ctaClasses[tone]
             )}
           >
-            <Plus className="size-3" aria-hidden="true" />
             {ctaLabel}
           </button>
         </div>

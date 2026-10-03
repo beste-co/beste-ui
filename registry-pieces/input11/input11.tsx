@@ -5,15 +5,18 @@ import { cn } from "@/lib/utils";
 
 interface Input11Props {
   length?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const input11Demo: Input11Props = {
   length: 16,
+  bordered: false,
 };
 
 export function Input11({
   length = 8,
+  bordered = false,
   className,
 }: Input11Props) {
   const dots = "•".repeat(Math.max(0, length));
@@ -25,8 +28,8 @@ export function Input11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center rounded-md border border-border bg-card px-3 py-2 shadow-sm">
-        <span className="flex-1 truncate font-mono text-base tracking-widest text-card-foreground">
+      <div className={cn("flex w-full max-w-80 items-center rounded-md bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
+        <span className="flex-1 truncate text-base text-card-foreground">
           {dots}
         </span>
         <button

@@ -6,14 +6,16 @@ interface Media20Props {
   alt?: string;
   masthead?: string;
   issue?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const media20Demo: Media20Props = {
   src: "https://images.unsplash.com/photo-1504275490777-45f30792f13f?w=300&auto=format&fit=crop&q=60",
   alt: "Studio portrait in soft light",
-  masthead: "AURALIS",
-  issue: "Issue 12 · 2026",
+  masthead: "Auralis",
+  issue: "Issue 12",
+  bordered: false,
 };
 
 export function Media20({
@@ -21,6 +23,7 @@ export function Media20({
   alt,
   masthead,
   issue,
+  bordered = false,
   className,
 }: Media20Props) {
   return (
@@ -30,7 +33,7 @@ export function Media20({
         className
       )}
     >
-      <div className="relative h-48 w-36 overflow-hidden rounded-md border border-border bg-muted shadow-lg shadow-black/20">
+      <div className={cn("relative h-48 w-36 overflow-hidden rounded-md bg-muted shadow-lg shadow-black/20", bordered && "border border-border")}>
         {src && (
           <img
             src={src}
@@ -44,12 +47,12 @@ export function Media20({
         />
         <div className="absolute inset-x-0 top-0 p-2.5 text-center">
           {masthead && (
-            <p className="font-serif text-xl font-bold uppercase tracking-wide text-white">
+            <p className="font-serif text-xl font-bold text-white">
               {masthead}
             </p>
           )}
           {issue && (
-            <p className="mt-0.5 text-xs font-medium uppercase tracking-widest text-white/80">
+            <p className="mt-0.5 text-xs font-medium text-white/80">
               {issue}
             </p>
           )}

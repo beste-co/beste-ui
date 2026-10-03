@@ -30,7 +30,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai9Demo: Ai9Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   prompts: [
     "Summarize this doc",
@@ -40,7 +40,7 @@ export const ai9Demo: Ai9Props = {
   ],
 };
 
-export function Ai9({ prompts = [], surface = "card", bordered = true, inverted = false, className }: Ai9Props) {
+export function Ai9({ prompts = [], surface = "card", bordered = false, inverted = false, className }: Ai9Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

@@ -51,18 +51,17 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard12Demo: Dashboard12Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   heading: "Retention",
-  cohorts: ["W0", "W1", "W2", "W3"],
-  weeks: ["W0", "W1", "W2", "W3", "W4"],
+  cohorts: ["W0", "W1", "W2"],
+  weeks: ["W0", "W1", "W2", "W3"],
   retention: [
-    [100, 64, 48, 41, 38],
-    [100, 71, 55, 46, 0],
-    [100, 68, 52, 0, 0],
-    [100, 74, 0, 0, 0],
+    [100, 64, 48, 41],
+    [100, 71, 55, 0],
+    [100, 68, 0, 0],
   ],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard12({
@@ -70,9 +69,9 @@ export function Dashboard12({
   cohorts = [],
   weeks = [],
   retention = [],
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard12Props) {
@@ -86,7 +85,7 @@ export function Dashboard12({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+        <span className="text-xs font-semibold text-current/60">
           {heading}
         </span>
         <div className="flex flex-col gap-1">
@@ -95,7 +94,7 @@ export function Dashboard12({
             {weeks.map((w) => (
               <span
                 key={w}
-                className="flex-1 text-center font-mono text-xs text-current/60"
+                className="flex-1 text-center text-xs text-current/60"
               >
                 {w}
               </span>
@@ -103,7 +102,7 @@ export function Dashboard12({
           </div>
           {retention.map((row, r) => (
             <div key={r} className="flex items-center gap-1">
-              <span className="w-7 shrink-0 font-mono text-xs text-current/60">
+              <span className="w-7 shrink-0 text-xs text-current/60">
                 {cohorts[r]}
               </span>
               {row.map((v, c) => {
@@ -125,7 +124,7 @@ export function Dashboard12({
                     />
                     <span
                       className={cn(
-                        "relative font-mono text-xs tabular-nums",
+                        "relative text-xs tabular-nums",
                         v >= 60
                           ? "font-semibold text-white"
                           : ""

@@ -1,6 +1,6 @@
 "use client";
 
-import { File, X } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface EditorTab {
@@ -19,7 +19,6 @@ export const editor6Demo: Editor6Props = {
     { filename: "index.tsx" },
     { filename: "button.tsx", active: true, dirty: true },
     { filename: "card.tsx" },
-    { filename: "theme.css" },
   ],
 };
 
@@ -36,16 +35,12 @@ export function Editor6({ tabs = [], className }: Editor6Props) {
           <div
             key={i}
             className={cn(
-              "flex items-center gap-2 rounded-t-md border border-b-0 px-3 py-1.5 font-mono text-xs",
+              "flex items-center gap-2 rounded-t-md border border-b-0 px-3 py-1.5 text-xs",
               tab.active
                 ? "border-border bg-card text-card-foreground"
                 : "border-transparent text-muted-foreground hover:bg-muted/50"
             )}
           >
-            <File
-              className="size-3 shrink-0 text-muted-foreground"
-              aria-hidden="true"
-            />
             <span className="max-w-24 truncate">{tab.filename}</span>
             {tab.dirty ? (
               <span

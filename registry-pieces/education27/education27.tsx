@@ -1,6 +1,6 @@
 "use client";
 
-import { Brain, Clock } from "lucide-react";
+import { Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Flashcard {
@@ -12,6 +12,7 @@ interface Education27Props {
   deck?: string;
   due?: string;
   cards?: Flashcard[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,20 +36,21 @@ const statusClasses: Record<Flashcard["status"], { pill: string; label: string }
 };
 
 export const education27Demo: Education27Props = {
-  deck: "Spanish vocab · Unit 4",
+  deck: "Spanish vocab",
   due: "12 due today",
   cards: [
     { front: "resolver", status: "review" },
     { front: "compartir", status: "learning" },
-    { front: "el idioma", status: "new" },
     { front: "bienvenida", status: "mastered" },
   ],
+  bordered: false,
 };
 
 export function Education27({
   deck,
   due,
   cards = [],
+  bordered = false,
   className,
 }: Education27Props) {
   return (
@@ -58,11 +60,9 @@ export function Education27({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-violet-500/15 text-violet-500">
-            <Brain className="size-3.5" aria-hidden="true" />
-          </div>
+          <Brain className="size-4 shrink-0 text-violet-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {deck && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -70,8 +70,7 @@ export function Education27({
               </span>
             )}
             {due && (
-              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                <Clock className="size-3" aria-hidden="true" />
+              <span className="truncate text-xs tabular-nums text-muted-foreground">
                 {due}
               </span>
             )}

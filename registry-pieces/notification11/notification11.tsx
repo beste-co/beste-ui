@@ -11,18 +11,17 @@ interface Notification11Props {
   time?: string;
   hasAttachment?: boolean;
   starred?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 export const notification11Demo: Notification11Props = {
   sender: "Stripe",
-  email: "receipts@stripe.com",
   subject: "Your February invoice is ready",
   preview:
-    "Your usage for February 1 – 29 totalled $1,284.00. Payment will be collected on the 3rd.",
-  time: "09:42",
-  hasAttachment: true,
+    "Your usage for February totalled $1,284.00. Payment will be collected on the 3rd.",
   starred: false,
+  bordered: false,
 };
 
 export function Notification11({
@@ -33,6 +32,7 @@ export function Notification11({
   time,
   hasAttachment = false,
   starred = false,
+  bordered = false,
   className,
 }: Notification11Props) {
   return (
@@ -42,7 +42,7 @@ export function Notification11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
           <div className="flex min-w-0 flex-1 items-center gap-2">
             {sender && (
@@ -73,7 +73,7 @@ export function Notification11({
               aria-hidden="true"
             />
             {time && (
-              <span className="text-xs text-muted-foreground">{time}</span>
+              <span className="text-xs tabular-nums text-muted-foreground">{time}</span>
             )}
           </div>
         </div>

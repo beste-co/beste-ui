@@ -9,6 +9,7 @@ interface ColorLine {
 
 interface Editor26Props {
   colors?: ColorLine[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,9 +19,10 @@ export const editor26Demo: Editor26Props = {
     { key: "--accent", value: "#8b5cf6" },
     { key: "--surface", value: "#0ea5e9" },
   ],
+  bordered: false,
 };
 
-export function Editor26({ colors = [], className }: Editor26Props) {
+export function Editor26({ colors = [], bordered = false, className }: Editor26Props) {
   return (
     <div
       className={cn(
@@ -28,7 +30,7 @@ export function Editor26({ colors = [], className }: Editor26Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col gap-0.5 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col gap-0.5 rounded-md bg-card px-3 py-2 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {colors.map((c, i) => (
           <div key={i} className="flex items-center gap-2">
             <span

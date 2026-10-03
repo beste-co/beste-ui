@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes49Demo: Shapes49Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes49({ surface = "card", bordered = true, inverted = false, className }: Shapes49Props) {
+export function Shapes49({ surface = "card", bordered = false, inverted = false, className }: Shapes49Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -52,15 +52,15 @@ export function Shapes49({ surface = "card", bordered = true, inverted = false, 
           <span className="mt-auto h-1 w-3/4 rounded-full bg-current/70" />
           <span className="h-1 w-1/2 rounded-full bg-current/10" />
         </div>
-        <div className="flex flex-col gap-1 rounded-md border border-current/15 bg-current/10 p-1.5">
+        <div className={cn("flex flex-col gap-1 rounded-md bg-current/10 p-1.5", bordered && "border border-current/15")}>
           <span className="size-2.5 rounded-sm bg-current/70" />
           <span className="mt-auto h-1 w-2/3 rounded-full bg-current/10" />
         </div>
-        <div className="flex flex-col gap-1 rounded-md border border-current/15 bg-current/10 p-1.5">
+        <div className={cn("flex flex-col gap-1 rounded-md bg-current/10 p-1.5", bordered && "border border-current/15")}>
           <span className="size-2.5 rounded-sm bg-current/70" />
           <span className="mt-auto h-1 w-3/4 rounded-full bg-current/10" />
         </div>
-        <div className="col-span-3 flex items-center gap-2 rounded-md border border-current/15 bg-current/10 p-2">
+        <div className={cn("col-span-3 flex items-center gap-2 rounded-md bg-current/10 p-2", bordered && "border border-current/15")}>
           <span className="size-3 shrink-0 rounded-sm bg-current/70" />
           <span className="h-1 w-1/3 rounded-full bg-current/70" />
           <span className="ml-auto h-1 w-8 rounded-full bg-current/10" />

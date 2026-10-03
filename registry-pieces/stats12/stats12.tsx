@@ -8,6 +8,7 @@ interface Stats12Props {
   likes?: string;
   comments?: string;
   shares?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const stats12Demo: Stats12Props = {
   likes: "3.1K",
   comments: "284",
   shares: "612",
+  bordered: false,
 };
 
 export function Stats12({
@@ -23,6 +25,7 @@ export function Stats12({
   likes,
   comments,
   shares,
+  bordered = false,
   className,
 }: Stats12Props) {
   const items = [
@@ -39,7 +42,7 @@ export function Stats12({
         className
       )}
     >
-      <div className="inline-flex items-center gap-4 rounded-full border border-border bg-card px-4 py-2 shadow-sm">
+      <div className={cn("inline-flex items-center gap-4 rounded-full bg-card px-4 py-2 shadow-sm", bordered && "border border-border")}>
         {items.map(({ Icon, value, label }, i) => (
           <div
             key={i}

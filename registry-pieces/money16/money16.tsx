@@ -7,6 +7,7 @@ interface Money16Props {
   rate?: string;
   unit?: string;
   note?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const money16Demo: Money16Props = {
   rate: "4.30%",
   unit: "APY",
   note: "Compounded daily, paid monthly",
+  bordered: false,
 };
 
 export function Money16({
@@ -22,6 +24,7 @@ export function Money16({
   rate = "0.00%",
   unit,
   note,
+  bordered = false,
   className,
 }: Money16Props) {
   return (
@@ -31,9 +34,9 @@ export function Money16({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-2 rounded-lg border border-border bg-card px-4 py-4 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-2 rounded-lg bg-card px-4 py-4 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {label}
           </span>
         )}

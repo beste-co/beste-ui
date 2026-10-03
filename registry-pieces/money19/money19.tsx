@@ -11,6 +11,7 @@ interface Category {
 interface Money19Props {
   title?: string;
   categories?: Category[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,9 +23,10 @@ export const money19Demo: Money19Props = {
     { label: "Transport", amount: "$220", pct: 12 },
     { label: "Leisure", amount: "$410", pct: 23 },
   ],
+  bordered: false,
 };
 
-export function Money19({ title, categories = [], className }: Money19Props) {
+export function Money19({ title, categories = [], bordered = false, className }: Money19Props) {
   return (
     <div
       className={cn(
@@ -32,9 +34,9 @@ export function Money19({ title, categories = [], className }: Money19Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-lg border border-border bg-card px-4 py-3.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-lg bg-card px-4 py-3.5 shadow-sm", bordered && "border border-border")}>
         {title && (
-          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {title}
           </span>
         )}

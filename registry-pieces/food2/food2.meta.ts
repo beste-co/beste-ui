@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "food2",
   title: "Restaurant Card",
   description:
-    "Venue tile with a warm gradient cover, floating cuisine and rating pills, and a neighborhood-ETA row.",
+    "Venue tile with a cover photo, a floating rating pill, and the name over a neighborhood line.",
   category: "Food",
 };

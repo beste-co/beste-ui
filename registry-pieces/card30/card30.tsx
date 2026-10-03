@@ -31,9 +31,7 @@ export function Card30({
       )}
     >
       <div className="flex w-full max-w-80 flex-col items-center gap-3 rounded-xl border border-dashed border-border bg-card p-6 text-center shadow-sm">
-        <div className="flex size-12 items-center justify-center rounded-full bg-muted text-muted-foreground">
-          <Inbox className="size-5" aria-hidden="true" />
-        </div>
+        <Inbox className="size-6 text-muted-foreground" aria-hidden="true" />
         {title && (
           <span className="text-sm font-semibold text-card-foreground">
             {title}

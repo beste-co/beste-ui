@@ -1,6 +1,5 @@
 "use client";
 
-import { Scroll } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Legal22Props {
@@ -9,6 +8,7 @@ interface Legal22Props {
   statement?: string;
   jurisdiction?: string;
   sealed?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,6 +19,7 @@ export const legal22Demo: Legal22Props = {
     "hereby affirm that the attached exhibits are true and correct copies of the originals in my possession as of April 21, 2026.",
   jurisdiction: "Notarized · State of New York",
   sealed: true,
+  bordered: false,
 };
 
 export function Legal22({
@@ -27,6 +28,7 @@ export function Legal22({
   statement,
   jurisdiction,
   sealed = false,
+  bordered = false,
   className,
 }: Legal22Props) {
   return (
@@ -36,16 +38,11 @@ export function Legal22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex size-7 items-center justify-center rounded-md bg-indigo-500/15 text-indigo-500">
-              <Scroll className="size-3.5" aria-hidden="true" />
-            </div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Affidavit
-            </span>
-          </div>
+          <span className="text-xs font-semibold text-muted-foreground">
+            Affidavit
+          </span>
           {sealed && (
             <span className="rounded-full bg-rose-500/15 px-2 py-0.5 text-xs font-semibold text-rose-700 dark:text-rose-300">
               Sealed

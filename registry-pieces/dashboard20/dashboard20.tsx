@@ -25,15 +25,15 @@ const SEVERITIES: Record<
 > = {
   critical: {
     icon: OctagonX,
-    classes: "bg-rose-500/15 text-rose-600 dark:text-rose-400",
+    classes: "text-rose-600 dark:text-rose-400",
   },
   warning: {
     icon: AlertTriangle,
-    classes: "bg-amber-500/15 text-amber-600 dark:text-amber-400",
+    classes: "text-amber-600 dark:text-amber-400",
   },
   info: {
     icon: Info,
-    classes: "bg-sky-500/15 text-sky-600 dark:text-sky-400",
+    classes: "text-sky-600 dark:text-sky-400",
   },
 };
 
@@ -55,7 +55,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard20Demo: Dashboard20Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   counts: { critical: 2, warning: 6, info: 14 },
   criticalLabel: "Critical",
@@ -69,7 +69,7 @@ export function Dashboard20({
   warningLabel = "Warning",
   infoLabel = "Info",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard20Props) {
@@ -99,16 +99,8 @@ export function Dashboard20({
               key={k}
               className={cn("flex flex-col items-start gap-1 rounded-md p-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}
             >
-              <span
-                className={cn(
-                  "flex size-6 items-center justify-center rounded-md",
-                  cfg.classes
-                )}
-                aria-hidden="true"
-              >
-                <Icon className="size-3.5" />
-              </span>
-              <span className="font-mono text-lg font-semibold tabular-nums">
+              <Icon className={cn("size-4", cfg.classes)} aria-hidden="true" />
+              <span className="text-lg font-semibold tabular-nums">
                 {n}
               </span>
               <span className="text-xs text-current/60">{labels[k]}</span>

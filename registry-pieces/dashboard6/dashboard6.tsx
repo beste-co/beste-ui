@@ -55,7 +55,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard6Demo: Dashboard6Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   stages: [
     { label: "Visit", value: 12400 },
@@ -68,9 +68,9 @@ export const dashboard6Demo: Dashboard6Props = {
 
 export function Dashboard6({
   stages = [],
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard6Props) {
@@ -86,29 +86,15 @@ export function Dashboard6({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        {stages.map((s, i) => {
+        {stages.map((s) => {
           const pct = (s.value / top) * 100;
-          const prev = stages[i - 1]?.value;
-          const dropoff =
-            typeof prev === "number"
-              ? Math.round(((prev - s.value) / prev) * 100)
-              : null;
           return (
             <div key={s.label} className="flex flex-col gap-1">
               <div className="flex items-baseline justify-between gap-2 text-xs">
-                <span className="font-medium">
-                  {s.label}
+                <span className="font-medium">{s.label}</span>
+                <span className="tabular-nums">
+                  {s.value.toLocaleString()}
                 </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-mono tabular-nums">
-                    {s.value.toLocaleString()}
-                  </span>
-                  {dropoff !== null && (
-                    <span className="font-mono text-xs text-rose-600 dark:text-rose-400">
-                      −{dropoff}%
-                    </span>
-                  )}
-                </div>
               </div>
               <div className="flex h-2 w-full items-center overflow-hidden rounded-sm bg-current/10">
                 <span

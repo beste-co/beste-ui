@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "card23",
   title: "Business Card",
   description:
-    "Printed-feel contact card with a decorative corner orb and rows for email, phone, and website.",
+    "Contact card with a name, a title, and plain rows for email, phone, and website.",
   category: "Card",
 };

@@ -65,26 +65,26 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard26Demo: Dashboard26Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   heading: "Milestones",
   steps: [
-    { label: "Design", date: "Apr 2" },
-    { label: "Build", date: "Apr 12" },
-    { label: "QA", date: "Apr 22" },
-    { label: "Launch", date: "May 3" },
+    { label: "Design" },
+    { label: "Build" },
+    { label: "QA" },
+    { label: "Launch" },
   ],
   current: 2,
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard26({
   heading = "Milestones",
   steps = [],
   current = 0,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard26Props) {
@@ -98,7 +98,7 @@ export function Dashboard26({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+        <span className="text-xs font-semibold text-current/60">
           {heading}
         </span>
         <div className="relative flex items-center justify-between">
@@ -156,7 +156,7 @@ export function Dashboard26({
                   {s.label}
                 </span>
                 {s.date && (
-                  <span className="font-mono text-xs text-current/60">
+                  <span className="text-xs text-current/60">
                     {s.date}
                   </span>
                 )}

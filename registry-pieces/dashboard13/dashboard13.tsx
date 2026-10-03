@@ -1,6 +1,5 @@
 "use client";
 
-import { Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -55,16 +54,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard13Demo: Dashboard13Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Q2 revenue goal",
   current: "$148K",
   target: "$240K",
   ofLabel: "of",
   progress: 62,
-  remaining: "$92K to goal",
-  deadline: "28 days left",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Dashboard13({
@@ -75,9 +72,9 @@ export function Dashboard13({
   progress = 0,
   remaining,
   deadline,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard13Props) {
@@ -93,20 +90,14 @@ export function Dashboard13({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center gap-1.5">
-          <Target
-            className="size-3.5 text-current/60"
-            aria-hidden="true"
-          />
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-            {label}
-          </span>
-        </div>
+        <span className="text-xs font-semibold text-current/60">
+          {label}
+        </span>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="font-mono text-xl font-semibold tabular-nums">
+          <span className="text-xl font-semibold tabular-nums">
             {current}
           </span>
-          <span className="font-mono text-xs tabular-nums text-current/60">
+          <span className="text-xs tabular-nums text-current/60">
             {ofLabel} {target}
           </span>
         </div>
@@ -117,10 +108,12 @@ export function Dashboard13({
             aria-hidden="true"
           />
         </div>
-        <div className="flex items-center justify-between font-mono text-xs text-current/60">
-          {remaining && <span>{remaining}</span>}
-          {deadline && <span>{deadline}</span>}
-        </div>
+        {(remaining || deadline) && (
+          <div className="flex items-center justify-between text-xs text-current/60">
+            {remaining && <span>{remaining}</span>}
+            {deadline && <span>{deadline}</span>}
+          </div>
+        )}
       </div>
     </div>
   );

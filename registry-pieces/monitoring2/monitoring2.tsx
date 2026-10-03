@@ -1,6 +1,5 @@
 "use client";
 
-import { Cpu, HardDrive, MemoryStick, Network } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -30,13 +29,6 @@ interface Monitoring2Props {
   inverted?: boolean;
   className?: string;
 }
-
-const resourceIcons: Record<Resource, typeof Cpu> = {
-  cpu: Cpu,
-  memory: MemoryStick,
-  disk: HardDrive,
-  network: Network,
-};
 
 const barClasses: Record<Tone, string> = {
   neutral: "bg-current/40",
@@ -78,11 +70,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const monitoring2Demo: Monitoring2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   resource: "cpu",
   value: 72,
-  tone: "emerald",
+  tone: "primary",
   cpuLabel: "CPU",
   memoryLabel: "Memory",
   diskLabel: "Disk",
@@ -92,13 +84,13 @@ export const monitoring2Demo: Monitoring2Props = {
 export function Monitoring2({
   resource = "cpu",
   value = 0,
-  tone = "emerald",
+  tone = "primary",
   cpuLabel = "CPU",
   memoryLabel = "Memory",
   diskLabel = "Disk",
   networkLabel = "Network",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Monitoring2Props) {
@@ -108,7 +100,6 @@ export function Monitoring2({
     disk: diskLabel,
     network: networkLabel,
   };
-  const Icon = resourceIcons[resource];
   const safe = Math.min(100, Math.max(0, value));
 
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
@@ -122,15 +113,9 @@ export function Monitoring2({
     >
       <div className={cn("flex w-full max-w-56 flex-col gap-2 rounded-lg px-3 py-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon
-              className="size-4 text-current/60"
-              aria-hidden="true"
-            />
-            <span className="text-xs font-medium text-current/60">
-              {labels[resource]}
-            </span>
-          </div>
+          <span className="text-xs font-medium text-current/60">
+            {labels[resource]}
+          </span>
           <span
             className={cn(
               "text-sm font-semibold tabular-nums",

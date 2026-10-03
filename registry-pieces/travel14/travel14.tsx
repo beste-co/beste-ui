@@ -14,6 +14,7 @@ interface Travel14Props {
   row?: number;
   seats?: Seat[];
   selectedLabel?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,7 +28,8 @@ export const travel14Demo: Travel14Props = {
     { label: "E", state: "available" },
     { label: "F", state: "exit" },
   ],
-  selectedLabel: "12D · Window",
+  selectedLabel: "Seat 12D",
+  bordered: false,
 };
 
 const stateClasses: Record<SeatState, string> = {
@@ -41,6 +43,7 @@ export function Travel14({
   row = 1,
   seats = [],
   selectedLabel,
+  bordered = false,
   className,
 }: Travel14Props) {
   return (
@@ -50,13 +53,13 @@ export function Travel14({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-4 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-4 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between text-xs">
-          <span className="font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="font-semibold text-muted-foreground">
             Row {row}
           </span>
           {selectedLabel && (
-            <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 font-mono font-semibold text-emerald-700 dark:text-emerald-300">
+            <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300">
               {selectedLabel}
             </span>
           )}
@@ -74,7 +77,7 @@ export function Travel14({
               )}
               <div
                 className={cn(
-                  "flex size-9 items-center justify-center rounded-t-lg border-2 font-mono text-sm font-semibold",
+                  "flex size-9 items-center justify-center rounded-t-lg border-2 text-sm font-semibold",
                   stateClasses[seat.state]
                 )}
               >

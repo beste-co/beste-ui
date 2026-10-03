@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes60Demo: Shapes60Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes60({ surface = "card", bordered = true, inverted = false, className }: Shapes60Props) {
+export function Shapes60({ surface = "card", bordered = false, inverted = false, className }: Shapes60Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -49,15 +49,15 @@ export function Shapes60({ surface = "card", bordered = true, inverted = false, 
       >
         <div className="flex flex-col gap-1">
           <span className="h-1 w-10 rounded-full bg-current/10" />
-          <span className="h-6 w-full rounded-sm border border-current/15 bg-background text-foreground" />
+          <span className={cn("h-6 w-full rounded-sm text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")} />
         </div>
         <div className="flex flex-col gap-1">
           <span className="h-1 w-12 rounded-full bg-current/10" />
-          <span className="h-6 w-full rounded-sm border border-current/15 bg-background text-foreground" />
+          <span className={cn("h-6 w-full rounded-sm text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")} />
         </div>
         <div className="flex flex-col gap-1">
           <span className="h-1 w-14 rounded-full bg-current/10" />
-          <span className="h-12 w-full rounded-sm border border-current/15 bg-background text-foreground" />
+          <span className={cn("h-12 w-full rounded-sm text-foreground", bordered ? "border border-current/15 bg-background" : "bg-current/10")} />
         </div>
         <span className="mt-1 h-6 w-full rounded-sm bg-current" />
       </div>

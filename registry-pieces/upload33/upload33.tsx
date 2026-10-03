@@ -8,13 +8,14 @@ type Kind = "image" | "document" | "video" | "archive";
 
 interface QueuedFile {
   name: string;
-  size: string;
+  size?: string;
   kind?: Kind;
 }
 
 interface Upload33Props {
   files?: QueuedFile[];
   stepMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,13 +28,14 @@ const icons: Record<Kind, typeof FileText> = {
 
 export const upload33Demo: Upload33Props = {
   files: [
-    { name: "album-cover.png", size: "2.4 MB", kind: "image" },
-    { name: "liner-notes.pdf", size: "860 KB", kind: "document" },
-    { name: "session-take-03.mp4", size: "48 MB", kind: "video" },
+    { name: "album-cover.png", kind: "image" },
+    { name: "liner-notes.pdf", kind: "document" },
+    { name: "session-take-03.mp4", kind: "video" },
   ],
+  bordered: false,
 };
 
-export function Upload33({ files = [], stepMs = 1000, className }: Upload33Props) {
+export function Upload33({ files = [], stepMs = 1000, bordered = false, className }: Upload33Props) {
   const [tick, setTick] = useState(0);
   const total = files.length;
   const allDone = total > 0 && tick > total;
@@ -54,7 +56,7 @@ export function Upload33({ files = [], stepMs = 1000, className }: Upload33Props
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium tabular-nums text-card-foreground">
             {allDone
@@ -93,24 +95,14 @@ export function Upload33({ files = [], stepMs = 1000, className }: Upload33Props
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline justify-between gap-2">
-                    <span className="flex min-w-0 items-baseline gap-1.5">
-                      <span className="truncate text-sm font-medium text-card-foreground">
-                        {file.name}
-                      </span>
-                      <span className="shrink-0 text-xs text-muted-foreground">
+                    <span className="truncate text-sm font-medium text-card-foreground">
+                      {file.name}
+                    </span>
+                    {file.size && (
+                      <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
                         {file.size}
                       </span>
-                    </span>
-                    <span
-                      className={cn(
-                        "shrink-0 text-xs transition-colors",
-                        done
-                          ? "text-emerald-600 dark:text-emerald-400"
-                          : "text-muted-foreground"
-                      )}
-                    >
-                      {done ? "Done" : started ? "Uploading" : "Queued"}
-                    </span>
+                    )}
                   </div>
                   <div
                     className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted"

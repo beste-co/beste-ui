@@ -12,7 +12,7 @@ interface Form2Props {
 
 export const form2Demo: Form2Props = {
   label: "Work email",
-  value: "mira@acme",
+  value: "hello@beste",
   error: "Enter a valid email address, including the domain.",
 };
 
@@ -46,7 +46,7 @@ export function Form2({
         </div>
         {error && (
           <span
-            className="inline-flex items-center gap-1 text-xs font-medium text-rose-600 dark:text-rose-400"
+            className="text-xs font-medium text-rose-600 dark:text-rose-400"
             role="alert"
           >
             {error}

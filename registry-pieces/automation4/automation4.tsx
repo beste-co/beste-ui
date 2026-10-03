@@ -8,10 +8,10 @@ type Surface = "card" | "glass";
 type RunStatus = "success" | "running" | "failed";
 
 interface Automation4Run {
-  id: string;
+  id?: string;
   status: RunStatus;
-  duration: string;
-  time: string;
+  duration?: string;
+  time?: string;
 }
 
 interface Automation4Props {
@@ -63,24 +63,22 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation4Demo: Automation4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   workflow: "Stripe → Slack",
-  headerLabel: "Recent runs",
   runs: [
-    { id: "run_8a2k", status: "success", duration: "412 ms", time: "2m ago" },
-    { id: "run_7f9p", status: "running", duration: "—", time: "now" },
-    { id: "run_7e1q", status: "failed", duration: "1.2 s", time: "8m ago" },
-    { id: "run_7d3m", status: "success", duration: "388 ms", time: "14m ago" },
+    { status: "success", duration: "412 ms" },
+    { status: "running" },
+    { status: "failed", duration: "1.2 s" },
   ],
 };
 
 export function Automation4({
   workflow = "Workflow",
-  headerLabel = "Recent runs",
+  headerLabel,
   runs = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation4Props) {
@@ -95,19 +93,21 @@ export function Automation4({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2 pb-1">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-            {headerLabel}
-          </span>
-          <span className="truncate text-xs">
+          {headerLabel && (
+            <span className="text-xs font-medium text-current/60">
+              {headerLabel}
+            </span>
+          )}
+          <span className="truncate text-xs font-medium">
             {workflow}
           </span>
         </div>
         <ul className="flex flex-col divide-y divide-border">
-          {runs.map((r) => {
+          {runs.map((r, i) => {
             const cfg = STATUS[r.status];
             return (
               <li
-                key={r.id}
+                key={r.id ?? i}
                 className="flex items-center gap-2 py-1.5"
               >
                 <span
@@ -127,15 +127,19 @@ export function Automation4({
                     <X className="size-3" strokeWidth={3} />
                   )}
                 </span>
-                <span className="flex-1 truncate font-mono text-xs">
-                  {r.id}
+                <span className="flex-1 truncate text-xs">
+                  {r.id ?? cfg.label}
                 </span>
-                <span className="shrink-0 font-mono text-xs tabular-nums text-current/60">
-                  {r.duration}
-                </span>
-                <span className="w-16 shrink-0 text-right text-xs text-current/60">
-                  {r.time}
-                </span>
+                {r.duration && (
+                  <span className="shrink-0 text-xs tabular-nums text-current/60">
+                    {r.duration}
+                  </span>
+                )}
+                {r.time && (
+                  <span className="w-16 shrink-0 text-right text-xs text-current/60">
+                    {r.time}
+                  </span>
+                )}
               </li>
             );
           })}

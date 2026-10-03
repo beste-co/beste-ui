@@ -20,6 +20,7 @@ interface Health29Props {
   moodNote?: string;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -49,10 +50,9 @@ export const health29Demo: Health29Props = {
   cycleDay: 14,
   cycleLength: 28,
   phase: "Ovulation window",
-  nextPeriod: "Period in ~14 days",
-  moodNote: "Energy usually peaks today.",
-  label: "Cycle",
-  tone: "rose",
+  nextPeriod: "Period in 14 days",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health29({
@@ -61,8 +61,9 @@ export function Health29({
   phase,
   nextPeriod,
   moodNote,
-  label = "Cycle",
-  tone = "rose",
+  label,
+  tone = "primary",
+  bordered = false,
   className,
 }: Health29Props) {
   const circ = 2 * Math.PI * 32;
@@ -75,7 +76,7 @@ export function Health29({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative shrink-0">
           <svg
             width="80"
@@ -104,20 +105,20 @@ export function Health29({
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-mono text-lg font-bold text-card-foreground">
+            <span className="text-lg font-bold tabular-nums text-card-foreground">
               {cycleDay}
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs tabular-nums text-muted-foreground">
               / {cycleLength}
             </span>
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-1">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          {label && (
+            <span className="text-xs font-semibold text-muted-foreground">
               {label}
             </span>
-          </div>
+          )}
           {phase && (
             <span className="text-sm font-semibold text-card-foreground">
               {phase}

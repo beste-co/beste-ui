@@ -1,12 +1,12 @@
 "use client";
 
-import { Leaf } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Food9Props {
   heading?: string;
   filters?: string[];
   active?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,19 +16,17 @@ export const food9Demo: Food9Props = {
     "Vegetarian",
     "Vegan",
     "Gluten-free",
-    "Lactose-free",
-    "Keto",
-    "Halal",
-    "Kosher",
     "Nut-free",
   ],
-  active: ["Vegetarian", "Gluten-free"],
+  active: ["Vegetarian"],
+  bordered: false,
 };
 
 export function Food9({
   heading,
   filters = [],
   active = [],
+  bordered = false,
   className,
 }: Food9Props) {
   return (
@@ -38,15 +36,12 @@ export function Food9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <Leaf className="size-3.5 text-emerald-500" aria-hidden="true" />
-          {heading && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {heading}
-            </span>
-          )}
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {heading && (
+          <span className="text-xs font-semibold text-muted-foreground">
+            {heading}
+          </span>
+        )}
         <div className="flex flex-wrap gap-1.5">
           {filters.map((f, idx) => {
             const isActive = active.includes(f);

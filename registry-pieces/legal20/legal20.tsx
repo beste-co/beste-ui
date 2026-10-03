@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Landmark, MapPin } from "lucide-react";
+import { Landmark } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Legal20Props {
@@ -11,17 +11,16 @@ interface Legal20Props {
   date?: string;
   courtroom?: string;
   type?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal20Demo: Legal20Props = {
   title: "Summary judgment hearing",
-  caseNo: "1:26-cv-04182-ABR",
-  court: "US District Court · SDNY",
-  judge: "Hon. Alana B. Reyes",
   date: "Wed, May 6 · 10:30",
   courtroom: "Courtroom 18B",
   type: "In-person appearance",
+  bordered: false,
 };
 
 export function Legal20({
@@ -32,6 +31,7 @@ export function Legal20({
   date,
   courtroom,
   type,
+  bordered = false,
   className,
 }: Legal20Props) {
   return (
@@ -41,11 +41,9 @@ export function Legal20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-9 items-center justify-center rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300">
-            <Landmark className="size-4" aria-hidden="true" />
-          </div>
+          <Landmark className="size-5 shrink-0 text-amber-600 dark:text-amber-300" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -53,7 +51,7 @@ export function Legal20({
               </span>
             )}
             {caseNo && (
-              <span className="truncate font-mono text-xs text-muted-foreground">
+              <span className="truncate text-xs text-muted-foreground">
                 {caseNo}
               </span>
             )}
@@ -61,24 +59,12 @@ export function Legal20({
         </div>
         <div className="flex flex-col gap-1 rounded-md bg-muted/60 p-2 text-xs">
           {date && (
-            <div className="flex items-center gap-1.5">
-              <Calendar
-                className="size-3 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <span className="font-semibold text-card-foreground">
-                {date}
-              </span>
-            </div>
+            <span className="font-semibold tabular-nums text-card-foreground">
+              {date}
+            </span>
           )}
           {courtroom && (
-            <div className="flex items-center gap-1.5">
-              <MapPin
-                className="size-3 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <span className="text-card-foreground">{courtroom}</span>
-            </div>
+            <span className="text-card-foreground">{courtroom}</span>
           )}
           {court && (
             <span className="text-muted-foreground">{court}</span>

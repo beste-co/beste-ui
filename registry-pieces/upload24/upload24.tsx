@@ -8,6 +8,7 @@ interface Upload24Props {
   duration?: string;
   size?: string;
   thumbnailSrc?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,6 +20,7 @@ export const upload24Demo: Upload24Props = {
   duration: "0:42",
   size: "54 MB",
   thumbnailSrc: defaultThumbnail,
+  bordered: false,
 };
 
 export function Upload24({
@@ -26,6 +28,7 @@ export function Upload24({
   duration,
   size,
   thumbnailSrc = defaultThumbnail,
+  bordered = false,
   className,
 }: Upload24Props) {
   return (
@@ -35,7 +38,7 @@ export function Upload24({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
         <div className="relative aspect-video overflow-hidden">
           <img
             src={thumbnailSrc}
@@ -48,7 +51,7 @@ export function Upload24({
             </div>
           </div>
           {duration && (
-            <span className="absolute bottom-2 right-2 rounded-md bg-background/80 px-1.5 py-0.5 font-mono text-xs text-card-foreground">
+            <span className="absolute bottom-2 right-2 rounded-md bg-background/80 px-1.5 py-0.5 text-xs text-card-foreground">
               {duration}
             </span>
           )}

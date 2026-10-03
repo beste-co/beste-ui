@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "weather4",
   title: "Hero Weather",
   description:
-    "Big tabular temperature anchored under a city header and condition icon, with high, low, and feels-like below.",
+    "Big tabular temperature anchored under a city header and condition icon, with the high and low below.",
   category: "Weather",
 };

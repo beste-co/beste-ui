@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "food5",
   title: "Order Receipt",
   description:
-    "Itemized food order receipt with qty-by-name lines, a subtotal/delivery/tip breakdown, and bold total.",
+    "Itemized food order receipt with qty-by-name lines and a bold total.",
   category: "Food",
 };

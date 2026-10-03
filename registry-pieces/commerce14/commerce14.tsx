@@ -58,9 +58,9 @@ const radioBorder: Record<Tone, string> = {
 export const commerce14Demo: Commerce14Props = {
   selected: "Standard",
   methods: [
-    { label: "Standard", eta: "3–5 business days", price: "Free", icon: "truck" },
-    { label: "Express", eta: "1–2 business days", price: "$9.99", icon: "plane" },
-    { label: "Same-day", eta: "By 9pm today", price: "$19.99", icon: "bolt" },
+    { label: "Standard", eta: "3 to 5 business days", price: "Free" },
+    { label: "Express", eta: "1 to 2 business days", price: "$9.99" },
+    { label: "Same-day", eta: "By 9pm today", price: "$19.99" },
   ],
   tone: "foreground",
 };
@@ -76,7 +76,7 @@ export function Commerce14({
       <div className="flex w-full max-w-80 flex-col gap-1.5">
         {methods.map((m) => {
           const isSelected = m.label === selected;
-          const Icon = m.icon ? ICONS[m.icon] : Truck;
+          const Icon = m.icon ? ICONS[m.icon] : null;
           const free = m.price.toLowerCase() === "free";
           return (
             <div
@@ -95,7 +95,9 @@ export function Commerce14({
               >
                 {isSelected && <span className={cn("size-2 rounded-full", radioDot[tone])} />}
               </span>
-              <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+              {Icon && (
+                <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+              )}
               <div className="flex min-w-0 flex-1 flex-col">
                 <span className="truncate text-xs font-semibold text-card-foreground">
                   {m.label}
@@ -104,7 +106,7 @@ export function Commerce14({
               </div>
               <span
                 className={cn(
-                  "shrink-0 font-mono text-xs tabular-nums",
+                  "shrink-0 text-xs tabular-nums",
                   free
                     ? "font-medium text-emerald-600 dark:text-emerald-400"
                     : "text-card-foreground"

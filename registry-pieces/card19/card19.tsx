@@ -21,18 +21,19 @@ interface Card19Props {
   creditsLabel?: string;
   action?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-foreground text-background",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const buttonClasses: Record<Tone, string> = {
@@ -49,11 +50,10 @@ const buttonClasses: Record<Tone, string> = {
 export const card19Demo: Card19Props = {
   credits: "1,000",
   price: "$8.00",
-  bonus: "+150 bonus credits",
-  perCredit: "$0.008 per credit",
   creditsLabel: "credits",
   action: "Top up",
   tone: "neutral",
+  bordered: false,
 };
 
 export function Card19({
@@ -64,6 +64,7 @@ export function Card19({
   creditsLabel = "credits",
   action = "Top up",
   tone = "neutral",
+  bordered = false,
   className,
 }: Card19Props) {
   return (
@@ -73,18 +74,14 @@ export function Card19({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-2 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-2 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-9 items-center justify-center rounded-full",
-              iconClasses[tone]
-            )}
-          >
-            <Coins className="size-4" aria-hidden="true" />
-          </div>
+          <Coins
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex flex-col">
-            <span className="font-mono text-2xl font-bold text-card-foreground">
+            <span className="text-2xl font-bold tabular-nums text-card-foreground">
               {credits}
             </span>
             <span className="text-xs text-muted-foreground">
@@ -98,7 +95,7 @@ export function Card19({
           </span>
         )}
         <div className="flex items-baseline justify-between border-t border-border pt-2">
-          <span className="font-mono text-lg font-bold text-card-foreground">
+          <span className="text-lg font-bold tabular-nums text-card-foreground">
             {price}
           </span>
           {perCredit && (

@@ -19,10 +19,10 @@ interface Notification19Props {
   className?: string;
 }
 
-const chipStyles: Record<Tone, string> = {
-  primary: "bg-primary/10 text-primary",
-  emerald: "bg-emerald-500/10 text-emerald-600",
-  amber: "bg-amber-500/10 text-amber-600",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  emerald: "text-emerald-600",
+  amber: "text-amber-600",
 };
 
 
@@ -43,12 +43,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const notification19Demo: Notification19Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "New booking confirmed",
-  meta: "Rowan Blake · 09:00",
-  time: "now",
-  tone: "emerald",
+  meta: "Max Richter at 09:00",
+  tone: "primary",
 };
 
 export function Notification19({
@@ -58,7 +57,7 @@ export function Notification19({
   time,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Notification19Props) {
@@ -72,15 +71,10 @@ export function Notification19({
       )}
     >
       <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-md p-3 shadow-xl", surfaceTone, bordered && "border border-current/15")}>
-        <span
-          className={cn(
-            "flex size-9 shrink-0 items-center justify-center rounded-md",
-            chipStyles[tone]
-          )}
+        <Icon
+          className={cn("size-5 shrink-0", iconClasses[tone])}
           aria-hidden="true"
-        >
-          <Icon className="size-4" />
-        </span>
+        />
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-medium">
             {title}

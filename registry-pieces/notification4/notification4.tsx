@@ -8,17 +8,18 @@ interface Notification4Props {
   time?: string;
   unread?: boolean;
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const notification4Demo: Notification4Props = {
-  sender: "Elena Park",
-  message: "Just pushed the redesign. Take a look when you have a sec 🙌",
-  initials: "EP",
-  time: "2m",
+  sender: "Hania Rani",
+  message: "Just pushed the redesign. Take a look when you have a sec.",
+  initials: "HR",
   unread: true,
   image:
     "https://images.unsplash.com/photo-1717853358193-216ad30189ab?w=80&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWxlbmF8ZW58MHx8MHx8fDA%3D",
+  bordered: false,
 };
 
 export function Notification4({
@@ -28,6 +29,7 @@ export function Notification4({
   time,
   unread = false,
   image,
+  bordered = false,
   className,
 }: Notification4Props) {
   return (
@@ -37,7 +39,7 @@ export function Notification4({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-start gap-3 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 items-start gap-3 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted text-xs font-semibold text-muted-foreground">
           {image ? (
             <img

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "browser30",
   title: "Profile Switcher",
   description:
-    "Account menu listing profiles with the active one checked and a manage row.",
+    "Account menu listing profiles with their portraits and the active one checked.",
   category: "Browser",
 };

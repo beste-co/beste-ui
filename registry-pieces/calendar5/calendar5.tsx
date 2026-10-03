@@ -39,7 +39,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar5Demo: Calendar5Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   month: "June",
   year: "2026",
@@ -61,7 +61,7 @@ export function Calendar5({
   weekdays = DEFAULT_WEEKDAYS,
   nightsLabel = "nights",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar5Props) {
@@ -94,7 +94,7 @@ export function Calendar5({
           {weekdays.map((w, idx) => (
             <span
               key={idx}
-              className="text-xs font-medium uppercase tracking-wide text-current/60"
+              className="text-xs font-medium text-current/60"
             >
               {w}
             </span>
@@ -107,7 +107,7 @@ export function Calendar5({
               <div
                 key={idx}
                 className={cn(
-                  "relative flex h-8 items-center justify-center py-0.5 font-mono text-sm",
+                  "relative flex h-8 items-center justify-center py-0.5 text-sm",
                   inRange && "bg-primary/15",
                   isStart && "rounded-l-full bg-primary/15",
                   isEnd && "rounded-r-full bg-primary/15"

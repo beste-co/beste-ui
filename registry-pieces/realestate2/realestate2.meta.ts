@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "realestate2",
   title: "Mortgage Calculator",
   description:
-    "Loan estimate card with a four-cell input grid for price, down, rate, term, and a bold monthly total.",
+    "Loan estimate card with home price and down payment cells above a bold monthly total.",
   category: "Realestate",
 };

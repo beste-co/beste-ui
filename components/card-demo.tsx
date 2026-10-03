@@ -103,7 +103,7 @@ export interface CardDemoEntry {
  * fill the card; everything else is fitted inside the card's padding, at
  * `cardScale` when the meta names one.
  */
-export function CardDemo({ entry }: { entry: CardDemoEntry }) {
+export function CardDemo({ entry, kind = "component" }: { entry: CardDemoEntry; kind?: "piece" | "component" }) {
   const Component = entry.component;
   const props = (entry.demoProps ?? {}) as Record<string, unknown>;
 
@@ -112,8 +112,9 @@ export function CardDemo({ entry }: { entry: CardDemoEntry }) {
     return <Component {...props} className={cn(given, "absolute inset-0 h-full min-h-0")} />;
   }
 
-  // Large surfaces keep their own fit unless the meta asks for a size
-  if (!entry.cardScale && FRAME_PREVIEW_CATEGORIES.has(entry.category ?? "")) {
+  // Large component surfaces keep their own fit unless the meta asks for a size.
+  // Pieces share category names (Dashboard, Card) but are card-sized already.
+  if (kind === "component" && !entry.cardScale && FRAME_PREVIEW_CATEGORIES.has(entry.category ?? "")) {
     return (
       <FitScale>
         <Component {...props} />

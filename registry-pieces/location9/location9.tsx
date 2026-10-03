@@ -18,6 +18,7 @@ interface Location9Props {
   tripMs?: number;
   holdMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -76,7 +77,8 @@ export const location9Demo: Location9Props = {
   courier: "Fela Kuti",
   destination: "Studio B, 14 Kreuzberg St",
   etaMinutes: 12,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Location9({
@@ -85,7 +87,8 @@ export function Location9({
   etaMinutes = 12,
   tripMs = 9000,
   holdMs = 2600,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Location9Props) {
   const [state, setState] = useState({ leg: 0, jump: false });
@@ -127,7 +130,7 @@ export function Location9({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative h-36 w-full overflow-hidden rounded-lg bg-muted">
           <svg viewBox={`0 0 ${W} ${H}`} className="size-full" aria-hidden="true">
             <g className="text-border" stroke="currentColor" strokeWidth={1}>
@@ -199,17 +202,14 @@ export function Location9({
               {arrived ? "Delivered to" : "Heading to"} {destination}
             </p>
           </div>
-          <div className="flex shrink-0 flex-col items-end">
-            <span
-              className={cn(
-                "text-base font-semibold tabular-nums transition-colors duration-500",
-                arrived ? "text-emerald-500" : "text-card-foreground"
-              )}
-            >
-              {arrived ? "Arrived" : `${minutes} min`}
-            </span>
-            <span className="text-xs text-muted-foreground">{arrived ? "On time" : "ETA"}</span>
-          </div>
+          <span
+            className={cn(
+              "shrink-0 text-base font-semibold tabular-nums transition-colors duration-500",
+              arrived ? "text-emerald-500" : "text-card-foreground"
+            )}
+          >
+            {arrived ? "Arrived" : `${minutes} min`}
+          </span>
         </div>
       </div>
     </div>

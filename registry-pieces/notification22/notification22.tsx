@@ -17,6 +17,7 @@ interface Notification22Props {
   toasts?: Toast[];
   intervalMs?: number;
   maxVisible?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -52,14 +53,15 @@ export const notification22Demo: Notification22Props = {
     { kind: "info", title: "New comment", body: "Nina Simone replied to your note." },
     { kind: "warning", title: "Storage almost full", body: "92% of 50 GB used." },
     { kind: "success", title: "Invite sent", body: "Miles Davis will get an email." },
-    { kind: "info", title: "Export ready", body: "Q3 report is available to download." },
   ],
+  bordered: false,
 };
 
 export function Notification22({
   toasts = [],
   intervalMs = 1500,
   maxVisible = 3,
+  bordered = false,
   className,
 }: Notification22Props) {
   const [entries, setEntries] = useState<Entry[]>(() => {
@@ -143,7 +145,8 @@ export function Notification22({
               <div className="min-h-0 overflow-hidden px-1">
                 <div
                   className={cn(
-                    "mb-2 flex items-start gap-2.5 rounded-xl border border-border bg-card p-3 shadow-md transition-all duration-500 ease-out motion-reduce:transition-none",
+                    "mb-2 flex items-start gap-2.5 rounded-xl bg-card p-3 shadow-md transition-all duration-500 ease-out motion-reduce:transition-none",
+            bordered && "border border-border",
                     shown ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
                   )}
                 >

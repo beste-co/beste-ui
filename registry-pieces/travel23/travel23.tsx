@@ -11,6 +11,7 @@ interface Hop {
 interface Travel23Props {
   hops?: Hop[];
   summary?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,13 +20,12 @@ export const travel23Demo: Travel23Props = {
     { code: "IST", caption: "Depart" },
     { code: "DOH", caption: "2h" },
     { code: "BKK", caption: "4 days" },
-    { code: "SIN", caption: "3 days" },
     { code: "TYO", caption: "Return" },
   ],
-  summary: "11-day multi-city itinerary",
+  bordered: false,
 };
 
-export function Travel23({ hops = [], summary, className }: Travel23Props) {
+export function Travel23({ hops = [], summary, bordered = false, className }: Travel23Props) {
   return (
     <div
       className={cn(
@@ -33,7 +33,7 @@ export function Travel23({ hops = [], summary, className }: Travel23Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col gap-1">
           <div className="flex items-center">
             {hops.map((_, idx) => (
@@ -62,7 +62,7 @@ export function Travel23({ hops = [], summary, className }: Travel23Props) {
                 key={idx}
                 className="flex flex-col items-center gap-0.5"
               >
-                <span className="font-mono text-sm font-semibold tracking-wider text-card-foreground">
+                <span className="text-sm font-semibold text-card-foreground">
                   {hop.code}
                 </span>
                 {hop.caption && (

@@ -47,7 +47,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard9Demo: Dashboard9Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   slices: [
     { label: "Subscriptions", value: 52 },
@@ -64,7 +64,7 @@ export function Dashboard9({
   total,
   totalLabel = "Total",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard9Props) {
@@ -117,11 +117,11 @@ export function Dashboard9({
         </svg>
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex items-baseline justify-between gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+            <span className="text-xs font-semibold text-current/60">
               {totalLabel}
             </span>
             {total && (
-              <span className="font-mono text-sm font-semibold tabular-nums">
+              <span className="text-sm font-semibold tabular-nums">
                 {total}
               </span>
             )}
@@ -144,7 +144,7 @@ export function Dashboard9({
                       {s.label}
                     </span>
                   </div>
-                  <span className="shrink-0 font-mono tabular-nums text-current/60">
+                  <span className="shrink-0 tabular-nums text-current/60">
                     {pct}%
                   </span>
                 </li>

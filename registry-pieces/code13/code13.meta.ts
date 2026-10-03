@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "code13",
   title: "SDK Snippet Card",
   description:
-    "A code card with a filename header and copy affordance over syntax-toned, line-numbered source.",
+    "A code card with a filename header over syntax-toned, line-numbered source.",
   category: "Code",
 };

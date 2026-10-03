@@ -7,6 +7,7 @@ type StatusVariant = "live" | "beta" | "paused" | "offline";
 interface Indicator1Props {
   label?: string;
   variant?: StatusVariant;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -43,11 +44,13 @@ const variantStyles: Record<
 export const indicator1Demo: Indicator1Props = {
   label: "Live",
   variant: "live",
+  bordered: false,
 };
 
 export function Indicator1({
   label = "Live",
   variant = "live",
+  bordered = false,
   className,
 }: Indicator1Props) {
   const styles = variantStyles[variant];
@@ -61,7 +64,8 @@ export function Indicator1({
     >
       <div
         className={cn(
-          "inline-flex items-center gap-2 rounded-full border px-3 py-1 shadow-sm backdrop-blur-sm",
+          "inline-flex items-center gap-2 rounded-full px-3 py-1 shadow-sm backdrop-blur-sm",
+          bordered && "border",
           styles.pill
         )}
       >
@@ -80,7 +84,7 @@ export function Indicator1({
         </span>
         <span
           className={cn(
-            "text-xs font-semibold uppercase tracking-wide",
+            "text-xs font-semibold",
             styles.text
           )}
         >

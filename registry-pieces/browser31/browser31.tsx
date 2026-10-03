@@ -8,6 +8,7 @@ interface Browser31Props {
   received?: string;
   total?: string;
   percent?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const browser31Demo: Browser31Props = {
   received: "4.2 MB",
   total: "12 MB",
   percent: 35,
+  bordered: false,
 };
 
 export function Browser31({
@@ -23,6 +25,7 @@ export function Browser31({
   received,
   total,
   percent = 0,
+  bordered = false,
   className,
 }: Browser31Props) {
   const clamped = Math.max(0, Math.min(100, percent));
@@ -34,19 +37,15 @@ export function Browser31({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-lg border border-border bg-card p-2.5 shadow-sm">
-        <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground">
-          <FileDown className="size-4" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg bg-card p-2.5 shadow-sm", bordered && "border border-border")}>
+        <FileDown
+          className="size-5 shrink-0 text-muted-foreground"
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-          <div className="flex items-center justify-between gap-2">
-            <span className="truncate text-sm font-medium text-card-foreground">
-              {filename}
-            </span>
-            <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
-              {clamped}%
-            </span>
-          </div>
+          <span className="truncate text-sm font-medium text-card-foreground">
+            {filename}
+          </span>
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
             <div
               className="h-full rounded-full bg-primary"
@@ -55,7 +54,7 @@ export function Browser31({
             />
           </div>
           {received && total && (
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs tabular-nums text-muted-foreground">
               {received} of {total}
             </span>
           )}

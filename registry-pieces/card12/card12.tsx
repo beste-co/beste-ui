@@ -67,7 +67,6 @@ export const card12Demo: Card12Props = {
   name: "Growth",
   price: "$48",
   period: "/ mo",
-  tagline: "For teams growing past launch.",
   features: [
     "Unlimited editors",
     "250 GB storage",
@@ -105,7 +104,7 @@ export function Card12({
             {name && (
               <span
                 className={cn(
-                  "text-sm font-semibold uppercase tracking-wide",
+                  "text-sm font-semibold",
                   labelClasses[tone]
                 )}
               >
@@ -113,7 +112,7 @@ export function Card12({
               </span>
             )}
             <div className="flex items-baseline gap-1">
-              <span className="font-mono text-3xl font-bold text-card-foreground">
+              <span className="text-3xl font-bold tabular-nums text-card-foreground">
                 {price}
               </span>
               <span className="text-sm text-muted-foreground">{period}</span>

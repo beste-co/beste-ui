@@ -41,7 +41,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor56Demo: Editor56Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Integrations",
   integrations: [
@@ -68,7 +68,7 @@ export function Editor56({
   activeLabel = "Active",
   stepMs = 420,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor56Props) {

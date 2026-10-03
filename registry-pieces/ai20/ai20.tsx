@@ -1,6 +1,5 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -17,6 +16,7 @@ interface Ai20Props {
   source?: string;
   excerpt?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,14 +34,16 @@ export const ai20Demo: Ai20Props = {
   index: 3,
   source: "beste.co/docs/onboarding",
   excerpt: "The onboarding flow now ships with three new interactive steps.",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai20({
   index = 1,
   source = "source",
   excerpt,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai20Props) {
   return (
@@ -51,10 +53,10 @@ export function Ai20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-start gap-3 rounded-md border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-start gap-3 rounded-md bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <span
           className={cn(
-            "flex size-6 shrink-0 items-center justify-center rounded-full font-mono text-xs font-bold",
+            "flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold",
             chipClasses[tone]
           )}
           aria-hidden="true"
@@ -67,10 +69,9 @@ export function Ai20({
               "{excerpt}"
             </p>
           )}
-          <div className="flex items-center gap-1 font-mono text-xs text-muted-foreground">
-            <ExternalLink className="size-3" aria-hidden="true" />
-            <span className="truncate">{source}</span>
-          </div>
+          <span className="truncate text-xs text-muted-foreground">
+            {source}
+          </span>
         </div>
       </div>
     </div>

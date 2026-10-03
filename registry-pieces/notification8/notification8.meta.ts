@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "notification8",
   title: "Follow Request",
   description:
-    "Incoming request card with avatar, handle, mutual-connections line, and accept or decline buttons.",
+    "Incoming request card with avatar, name, handle, and accept or decline buttons.",
   category: "Notification",
 };

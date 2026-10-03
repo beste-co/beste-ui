@@ -64,7 +64,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const monitoring1Demo: Monitoring1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   service: "API Gateway",
   status: "operational",
@@ -84,7 +84,7 @@ export function Monitoring1({
   outageLabel = "Outage",
   maintenanceLabel = "Maintenance",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Monitoring1Props) {

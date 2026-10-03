@@ -15,6 +15,7 @@ interface Stats13Props {
   value?: number;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -31,7 +32,8 @@ const toneClasses: Record<Tone, string> = {
 export const stats13Demo: Stats13Props = {
   value: 83,
   label: "Positive",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 const RADIUS = 40;
@@ -41,7 +43,8 @@ const ARC_PATH = "M 10 50 A 40 40 0 0 1 90 50";
 export function Stats13({
   value = 83,
   label = "Score",
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Stats13Props) {
   const clamped = Math.max(0, Math.min(100, value));
@@ -56,7 +59,8 @@ export function Stats13({
     >
       <div
         className={cn(
-          "flex flex-col items-center gap-2 rounded-xl border border-border bg-card px-5 py-4 shadow-sm",
+          "flex flex-col items-center gap-2 rounded-xl bg-card px-5 py-4 shadow-sm",
+          bordered && "border border-border",
           toneClasses[tone]
         )}
       >

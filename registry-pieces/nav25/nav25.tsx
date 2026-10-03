@@ -26,7 +26,6 @@ export const nav25Demo: Nav25Props = {
   tabs: [
     { label: "Home", icon: "home" },
     { label: "Explore", icon: "explore", active: true },
-    { label: "Inbox", icon: "inbox" },
     { label: "Alerts", icon: "notifications" },
     { label: "Me", icon: "profile" },
   ],

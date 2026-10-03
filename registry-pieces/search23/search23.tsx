@@ -32,17 +32,16 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const search23Demo: Search23Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   placeholder: "Search members, invoices, notes…",
-  shortcut: "⌘K",
 };
 
 export function Search23({
   placeholder = "Search…",
   shortcut,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Search23Props) {
@@ -61,7 +60,7 @@ export function Search23({
           {placeholder}
         </span>
         {shortcut && (
-          <kbd className="shrink-0 rounded border border-current/15 bg-current/10 px-1.5 py-0.5 font-mono text-xs text-current/60">
+          <kbd className="shrink-0 rounded border border-current/15 bg-current/10 px-1.5 py-0.5 text-xs text-current/60">
             {shortcut}
           </kbd>
         )}

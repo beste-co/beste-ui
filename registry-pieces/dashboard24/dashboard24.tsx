@@ -51,16 +51,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard24Demo: Dashboard24Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Last 24h",
-  peak: "peak at 14:00",
   values: [
     2, 1, 0, 0, 1, 2, 4, 8, 14, 22, 28, 34, 38, 42, 48, 40, 36, 30, 22, 18, 14,
     10, 6, 4,
   ],
   hourLabels: ["00", "06", "12", "18", "24"],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard24({
@@ -68,9 +67,9 @@ export function Dashboard24({
   peak,
   values = [],
   hourLabels = ["00", "06", "12", "18", "24"],
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard24Props) {
@@ -87,11 +86,11 @@ export function Dashboard24({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {title}
           </span>
           {peak && (
-            <span className="font-mono text-xs text-current/60">
+            <span className="text-xs text-current/60">
               {peak}
             </span>
           )}
@@ -109,7 +108,7 @@ export function Dashboard24({
             );
           })}
         </div>
-        <div className="flex items-center justify-between font-mono text-xs text-current/60">
+        <div className="flex items-center justify-between text-xs text-current/60">
           {hourLabels.map((label, i) => (
             <span key={i}>{label}</span>
           ))}

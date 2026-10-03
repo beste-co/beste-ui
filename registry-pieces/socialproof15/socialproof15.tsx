@@ -34,7 +34,7 @@ export function Socialproof15({
             {value}
           </span>
           {label && (
-            <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-sm font-semibold text-muted-foreground">
               {label}
             </span>
           )}

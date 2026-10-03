@@ -10,6 +10,7 @@ interface Notification17Props {
   label?: string;
   pinging?: boolean;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,14 +36,16 @@ export const notification17Demo: Notification17Props = {
   count: 12,
   label: "Notifications",
   pinging: true,
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Notification17({
   count = 0,
   label = "Notifications",
   pinging = true,
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Notification17Props) {
   const display = count > 99 ? "99+" : String(count);
@@ -54,7 +57,7 @@ export function Notification17({
         className
       )}
     >
-      <div className="flex items-center gap-3 rounded-full border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("flex items-center gap-3 rounded-full bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <div className="relative">
           <Bell className="size-5 text-card-foreground" aria-hidden="true" />
           {count > 0 && (

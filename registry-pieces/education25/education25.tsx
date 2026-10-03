@@ -1,6 +1,5 @@
 "use client";
 
-import { Tag } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PathStep {
@@ -13,19 +12,18 @@ interface Education25Props {
   subtitle?: string;
   steps?: PathStep[];
   totalHours?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const education25Demo: Education25Props = {
   pathName: "Backend engineer path",
-  subtitle: "12-course track · beginner to senior",
   steps: [
     { label: "Node.js fundamentals", hours: "8h" },
     { label: "Data modeling with Postgres", hours: "10h" },
     { label: "APIs & authentication", hours: "14h" },
-    { label: "Production operations", hours: "16h" },
   ],
-  totalHours: "Total 48 hours",
+  bordered: false,
 };
 
 export function Education25({
@@ -33,6 +31,7 @@ export function Education25({
   subtitle,
   steps = [],
   totalHours,
+  bordered = false,
   className,
 }: Education25Props) {
   return (
@@ -42,24 +41,18 @@ export function Education25({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-col">
-            {pathName && (
-              <span className="text-sm font-semibold text-card-foreground">
-                {pathName}
-              </span>
-            )}
-            {subtitle && (
-              <span className="text-xs text-muted-foreground">
-                {subtitle}
-              </span>
-            )}
-          </div>
-          <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/15 px-2 py-0.5 text-xs font-semibold text-primary">
-            <Tag className="size-3" aria-hidden="true" />
-            Path
-          </span>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex flex-col">
+          {pathName && (
+            <span className="text-sm font-semibold text-card-foreground">
+              {pathName}
+            </span>
+          )}
+          {subtitle && (
+            <span className="text-xs text-muted-foreground">
+              {subtitle}
+            </span>
+          )}
         </div>
         <div className="flex flex-col divide-y divide-border">
           {steps.map((s, idx) => (
@@ -67,13 +60,13 @@ export function Education25({
               key={idx}
               className="flex items-center gap-2 py-1.5 text-xs"
             >
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-muted font-mono text-xs font-bold text-card-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold tabular-nums text-card-foreground">
                 {idx + 1}
               </span>
               <span className="flex-1 truncate text-card-foreground">
                 {s.label}
               </span>
-              <span className="font-mono text-muted-foreground">
+              <span className="tabular-nums text-muted-foreground">
                 {s.hours}
               </span>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Users } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Event5Props {
@@ -9,6 +9,7 @@ interface Event5Props {
   city?: string;
   capacity?: string;
   directions?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,8 +17,7 @@ export const event5Demo: Event5Props = {
   venue: "Zorlu PSM · Grand Hall",
   address: "Levent · Beşiktaş",
   city: "Istanbul, Türkiye",
-  capacity: "2,400 capacity",
-  directions: "Metro M6 · Zincirlikuyu exit",
+  bordered: false,
 };
 
 export function Event5({
@@ -26,6 +26,7 @@ export function Event5({
   city,
   capacity,
   directions,
+  bordered = false,
   className,
 }: Event5Props) {
   return (
@@ -35,7 +36,7 @@ export function Event5({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start gap-2">
           <MapPin
             className="mt-0.5 size-4 shrink-0 text-muted-foreground"
@@ -62,10 +63,7 @@ export function Event5({
         {(capacity || directions) && (
           <div className="flex items-center justify-between gap-3 border-t border-border pt-2 text-xs text-muted-foreground">
             {capacity && (
-              <span className="inline-flex items-center gap-1">
-                <Users className="size-3" aria-hidden="true" />
-                {capacity}
-              </span>
+              <span className="shrink-0 tabular-nums">{capacity}</span>
             )}
             {directions && (
               <span className="truncate text-right">{directions}</span>

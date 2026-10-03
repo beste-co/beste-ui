@@ -6,6 +6,7 @@ interface Monitoring13Props {
   critical?: number;
   warning?: number;
   info?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const monitoring13Demo: Monitoring13Props = {
   critical: 12,
   warning: 4,
   info: 28,
+  bordered: false,
 };
 
 export function Monitoring13({
   critical = 0,
   warning = 0,
   info = 0,
+  bordered = false,
   className,
 }: Monitoring13Props) {
   const total = Math.max(1, critical + warning + info);
@@ -35,7 +38,7 @@ export function Monitoring13({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-2 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-2 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div
           className="flex h-2 w-full overflow-hidden rounded-full bg-muted"
           aria-hidden="true"

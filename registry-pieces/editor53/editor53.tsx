@@ -39,10 +39,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor53Demo: Editor53Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   fileName: "hero-photograph.jpg",
-  slotLabel: "Hero media",
   rows: [
     { label: "Entrance", value: "Blur in" },
     { label: "Scroll effect", value: "Parallax" },
@@ -69,7 +68,7 @@ export function Editor53({
   slotLabel,
   rows = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor53Props) {

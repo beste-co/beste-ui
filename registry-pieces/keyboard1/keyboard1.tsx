@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const keyboard1Demo: Keyboard1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   keys: ["⌘", "K"],
   label: "Quick search",
@@ -42,7 +42,7 @@ export function Keyboard1({
   keys = ["⌘", "K"],
   label,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Keyboard1Props) {
@@ -72,7 +72,7 @@ export function Keyboard1({
                   +
                 </span>
               )}
-              <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-current/15 border-b-2 bg-current/10 px-1.5 font-mono text-xs font-medium">
+              <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-current/15 border-b-2 bg-current/10 px-1.5 text-xs font-medium">
                 {key}
               </kbd>
             </Fragment>

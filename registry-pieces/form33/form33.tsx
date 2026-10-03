@@ -15,6 +15,7 @@ interface Form33Props {
   tail?: string;
   agreed?: boolean;
   required?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -28,6 +29,7 @@ export const form33Demo: Form33Props = {
   tail: ".",
   agreed: true,
   required: true,
+  bordered: false,
 };
 
 export function Form33({
@@ -37,6 +39,7 @@ export function Form33({
   tail,
   agreed = false,
   required = false,
+  bordered = false,
   className,
 }: Form33Props) {
   return (
@@ -46,7 +49,7 @@ export function Form33({
         className
       )}
     >
-      <label className="flex w-full max-w-80 cursor-pointer items-start gap-2.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <label className={cn("flex w-full max-w-80 cursor-pointer items-start gap-2.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <span
           className={cn(
             "mt-0.5 flex size-4 shrink-0 items-center justify-center rounded border transition-colors",

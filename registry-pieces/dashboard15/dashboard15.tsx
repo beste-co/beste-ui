@@ -56,7 +56,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard15Demo: Dashboard15Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   rings: [
     { label: "Move", value: 72, unit: "kcal", tone: "rose" },
@@ -65,7 +65,7 @@ export const dashboard15Demo: Dashboard15Props = {
   ],
 };
 
-export function Dashboard15({ rings = [], surface = "card", bordered = true, inverted = false, className }: Dashboard15Props) {
+export function Dashboard15({ rings = [], surface = "card", bordered = false, inverted = false, className }: Dashboard15Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -123,7 +123,7 @@ export function Dashboard15({ rings = [], surface = "card", bordered = true, inv
                 />
                 <span className="truncate">{r.label}</span>
               </div>
-              <span className="shrink-0 font-mono tabular-nums text-current/60">
+              <span className="shrink-0 tabular-nums text-current/60">
                 {r.value}
                 {r.unit ? ` ${r.unit}` : "%"}
               </span>

@@ -1,6 +1,5 @@
 "use client";
 
-import { ListChecks } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Deliverable {
@@ -12,6 +11,7 @@ interface Deliverable {
 interface Legal21Props {
   title?: string;
   items?: Deliverable[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,7 +35,6 @@ const statusConfig = {
 };
 
 export const legal21Demo: Legal21Props = {
-  title: "Engagement deliverables",
   items: [
     {
       label: "Regulatory filings · Q2",
@@ -53,11 +52,13 @@ export const legal21Demo: Legal21Props = {
       status: "delivered",
     },
   ],
+  bordered: false,
 };
 
 export function Legal21({
   title,
   items = [],
+  bordered = false,
   className,
 }: Legal21Props) {
   return (
@@ -67,17 +68,12 @@ export function Legal21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-violet-500/15 text-violet-500">
-            <ListChecks className="size-3.5" aria-hidden="true" />
-          </div>
-          {title && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {title}
-            </span>
-          )}
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {title && (
+          <span className="text-xs font-semibold text-muted-foreground">
+            {title}
+          </span>
+        )}
         <div className="flex flex-col divide-y divide-border">
           {items.map((item, idx) => {
             const s = statusConfig[item.status];

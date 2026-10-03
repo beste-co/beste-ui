@@ -1,6 +1,6 @@
 "use client";
 
-import { KeyRound, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -11,18 +11,20 @@ interface Suggestion {
 
 interface Browser18Props {
   suggestions?: Suggestion[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser18Demo: Browser18Props = {
   suggestions: [
-    { label: "hello@beste.co", meta: "Last used yesterday" },
-    { label: "hello@beste.co", meta: "Saved on Apr 12" },
+    { label: "hello@beste.co" },
   ],
+  bordered: false,
 };
 
 export function Browser18({
   suggestions = [],
+  bordered = false,
   className,
 }: Browser18Props) {
   return (
@@ -46,16 +48,10 @@ export function Browser18({
             aria-hidden="true"
           />
         </div>
-        <div className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-md">
-          <div className="flex items-center gap-1 border-b border-border bg-muted px-3 py-1">
-            <KeyRound
-              className="size-3 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Saved logins
-            </span>
-          </div>
+        <div className={cn("flex flex-col overflow-hidden rounded-md bg-card shadow-md", bordered && "border border-border")}>
+          <span className="border-b border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+            Saved logins
+          </span>
           {suggestions.map((s, i) => (
             <button
               key={i}

@@ -76,7 +76,7 @@ export function Chat27({
           </div>
           <span
             className={cn(
-              "shrink-0 font-mono text-xs tabular-nums",
+              "shrink-0 text-xs tabular-nums",
               isSent ? "text-primary-foreground/80" : "text-muted-foreground"
             )}
           >

@@ -1,11 +1,12 @@
 "use client";
 
-import { CornerDownLeft, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Search4Props {
   query?: string;
   suggestions?: string[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const search4Demo: Search4Props = {
     "shipping labels API",
     "shipping zones setup",
   ],
+  bordered: false,
 };
 
 function highlight(text: string, q: string) {
@@ -39,6 +41,7 @@ function highlight(text: string, q: string) {
 export function Search4({
   query = "",
   suggestions = [],
+  bordered = false,
   className,
 }: Search4Props) {
   return (
@@ -49,7 +52,7 @@ export function Search4({
       )}
     >
       <div className="flex w-full max-w-72 flex-col gap-1">
-        <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+        <div className={cn("flex items-center gap-2 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
           <Search
             className="size-3.5 shrink-0 text-muted-foreground"
             aria-hidden="true"
@@ -59,7 +62,7 @@ export function Search4({
           </span>
         </div>
         {suggestions.length > 0 && (
-          <div className="flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md">
+          <div className={cn("flex flex-col overflow-hidden rounded-lg bg-card shadow-md", bordered && "border border-border")}>
             {suggestions.map((item, idx) => (
               <div
                 key={idx}
@@ -68,19 +71,9 @@ export function Search4({
                   idx === 0 && "bg-muted/50"
                 )}
               >
-                <Search
-                  className="size-3 shrink-0 text-muted-foreground"
-                  aria-hidden="true"
-                />
                 <span className="flex-1 truncate">
                   {highlight(item, query)}
                 </span>
-                {idx === 0 && (
-                  <CornerDownLeft
-                    className="size-3 shrink-0 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                )}
               </div>
             ))}
           </div>

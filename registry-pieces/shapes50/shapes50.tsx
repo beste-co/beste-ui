@@ -29,7 +29,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes50Demo: Shapes50Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
@@ -39,7 +39,7 @@ const ROWS: { title: string; body: string }[] = [
   { title: "w-2/3", body: "w-5/6" },
 ];
 
-export function Shapes50({ surface = "card", bordered = true, inverted = false, className }: Shapes50Props) {
+export function Shapes50({ surface = "card", bordered = false, inverted = false, className }: Shapes50Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

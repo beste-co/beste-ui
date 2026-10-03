@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Input9Props {
   value?: string;
   placeholder?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const input9Demo: Input9Props = {
   value: "design tokens",
   placeholder: "Search files…",
+  bordered: false,
 };
 
 export function Input9({
   value = "",
   placeholder = "Search…",
+  bordered = false,
   className,
 }: Input9Props) {
   return (
@@ -26,7 +29,7 @@ export function Input9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-2 rounded-full border border-border bg-card px-4 py-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-2 rounded-full bg-card px-4 py-2 shadow-sm", bordered && "border border-border")}>
         <Search
           className="size-3.5 shrink-0 text-muted-foreground"
           aria-hidden="true"

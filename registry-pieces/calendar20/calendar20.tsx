@@ -1,6 +1,5 @@
 "use client";
 
-import { Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Reminder {
@@ -12,6 +11,7 @@ interface Reminder {
 interface Calendar20Props {
   heading?: string;
   reminders?: Reminder[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,30 +27,27 @@ export const calendar20Demo: Calendar20Props = {
   reminders: [
     {
       title: "Pay estimated tax",
-      when: "Thu, Apr 24 · 17:00",
+      when: "Thu 17:00",
       tone: "rose",
     },
     {
       title: "Annual review prep",
-      when: "Fri, Apr 25 · 09:00",
+      when: "Fri 09:00",
       tone: "sky",
     },
     {
       title: "Call parents",
-      when: "Sat, Apr 26 · 11:00",
+      when: "Sat 11:00",
       tone: "emerald",
     },
-    {
-      title: "Yoga class",
-      when: "Sun, Apr 27 · 08:00",
-      tone: "amber",
-    },
   ],
+  bordered: false,
 };
 
 export function Calendar20({
   heading,
   reminders = [],
+  bordered = false,
   className,
 }: Calendar20Props) {
   return (
@@ -60,17 +57,12 @@ export function Calendar20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <div className="flex size-7 items-center justify-center rounded-md bg-amber-500/15 text-amber-500">
-            <Bell className="size-3.5" aria-hidden="true" />
-          </div>
-          {heading && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              {heading}
-            </span>
-          )}
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {heading && (
+          <span className="text-xs font-semibold text-muted-foreground">
+            {heading}
+          </span>
+        )}
         <div className="flex flex-col divide-y divide-border">
           {reminders.map((r, idx) => (
             <div
@@ -87,7 +79,7 @@ export function Calendar20({
               <span className="flex-1 truncate text-sm font-medium text-card-foreground">
                 {r.title}
               </span>
-              <span className="shrink-0 font-mono text-xs text-muted-foreground">
+              <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
                 {r.when}
               </span>
             </div>

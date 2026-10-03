@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, MapPin, Mountain } from "lucide-react";
+import { Heart, Mountain } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -37,11 +37,9 @@ export const travel12Demo: Travel12Props = {
   city: "Kyoto",
   country: "Japan",
   tag: "Culture",
-  trending: "Trending this month",
-  savedCount: "64.1K saves",
   image:
     "https://images.unsplash.com/photo-1505069446780-4ef442b5207f?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGt5b3RvfGVufDB8fDB8fHww",
-  tone: "rose",
+  tone: "primary",
 };
 
 export function Travel12({
@@ -51,7 +49,7 @@ export function Travel12({
   trending,
   savedCount,
   image,
-  tone = "rose",
+  tone = "primary",
   className,
 }: Travel12Props) {
   return (
@@ -91,7 +89,7 @@ export function Travel12({
           </button>
 
           {tag && (
-            <span className="absolute right-3 top-3 rounded-full bg-black/40 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur">
+            <span className="absolute right-3 top-3 rounded-full bg-black/40 px-2 py-0.5 text-xs font-semibold text-white backdrop-blur">
               {tag}
             </span>
           )}
@@ -100,18 +98,17 @@ export function Travel12({
             <div className="flex flex-col">
               {city && <span className="text-xl font-bold">{city}</span>}
               {country && (
-                <span className="inline-flex items-center gap-1 text-xs text-white/80">
-                  <MapPin className="size-3" aria-hidden="true" />
-                  {country}
-                </span>
+                <span className="text-xs text-white/80">{country}</span>
               )}
             </div>
-            <div className="flex flex-col items-end text-xs">
-              {trending && <span className="text-white/80">{trending}</span>}
-              {savedCount && (
-                <span className="font-semibold">{savedCount}</span>
-              )}
-            </div>
+            {(trending || savedCount) && (
+              <div className="flex flex-col items-end text-xs">
+                {trending && <span className="text-white/80">{trending}</span>}
+                {savedCount && (
+                  <span className="font-semibold tabular-nums">{savedCount}</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

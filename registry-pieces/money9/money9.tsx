@@ -7,6 +7,7 @@ interface Money9Props {
   spent?: string;
   budget?: string;
   progress?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const money9Demo: Money9Props = {
   spent: "$284",
   budget: "$450",
   progress: 63,
+  bordered: false,
 };
 
 export function Money9({
@@ -22,6 +24,7 @@ export function Money9({
   spent = "$0",
   budget = "$0",
   progress = 0,
+  bordered = false,
   className,
 }: Money9Props) {
   const pct = Math.max(0, Math.min(100, progress));
@@ -39,7 +42,7 @@ export function Money9({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between">
           <span className="text-sm font-semibold text-card-foreground">
             {category}

@@ -23,7 +23,7 @@ export function Shapes9({ className }: Shapes9Props) {
         fill="none"
         strokeWidth="6"
       >
-        <circle cx="20" cy="20" r="14" stroke="currentColor" className="text-muted" />
+        <circle cx="20" cy="20" r="14" stroke="currentColor" className="text-foreground/10" />
         <circle
           cx="20"
           cy="20"

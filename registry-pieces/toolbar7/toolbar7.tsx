@@ -13,6 +13,7 @@ type ToolId = "pen" | "brush" | "eraser" | "text" | "shapes";
 
 interface Toolbar7Props {
   active?: ToolId;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -26,9 +27,10 @@ const tools: { id: ToolId; Icon: typeof PenTool; label: string }[] = [
 
 export const toolbar7Demo: Toolbar7Props = {
   active: "brush",
+  bordered: false,
 };
 
-export function Toolbar7({ active = "pen", className }: Toolbar7Props) {
+export function Toolbar7({ active = "pen", bordered = false, className }: Toolbar7Props) {
   return (
     <div
       className={cn(
@@ -36,7 +38,7 @@ export function Toolbar7({ active = "pen", className }: Toolbar7Props) {
         className
       )}
     >
-      <div className="inline-flex flex-col items-center gap-0.5 rounded-lg border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex flex-col items-center gap-0.5 rounded-lg bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {tools.map(({ id, Icon, label }) => {
           const isActive = id === active;
           return (

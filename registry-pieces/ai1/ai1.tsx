@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, Paperclip, Sparkles } from "lucide-react";
+import { ArrowUp, Paperclip } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai1Demo: Ai1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   placeholder: "Ask anything...",
   value: "Write a landing page hero for a coffee roaster",
@@ -42,7 +42,7 @@ export function Ai1({
   placeholder = "Ask",
   value = "",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai1Props) {
@@ -64,20 +64,14 @@ export function Ai1({
           bordered && "border border-current/15"
         )}
       >
-        <div className="flex items-start gap-2">
-          <Sparkles
-            className="mt-0.5 size-4 shrink-0 text-violet-500"
-            aria-hidden="true"
-          />
-          <p
-            className={cn(
-              "min-w-0 flex-1 text-sm leading-snug",
-              hasValue ? "" : "text-current/60"
-            )}
-          >
-            {hasValue ? value : placeholder}
-          </p>
-        </div>
+        <p
+          className={cn(
+            "text-sm leading-snug",
+            hasValue ? "" : "text-current/60"
+          )}
+        >
+          {hasValue ? value : placeholder}
+        </p>
         <div className="flex items-center justify-between">
           <button
             type="button"

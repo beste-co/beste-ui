@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "education4",
   title: "Video Lesson",
   description:
-    "Video lesson card with a play thumbnail, duration badge, watched bar, and a chapter eyebrow.",
+    "Video lesson card with a play thumbnail, duration badge, watched bar, and the lesson title.",
   category: "Education",
 };

@@ -14,6 +14,7 @@ interface Session {
 interface Event6Props {
   day?: string;
   sessions?: Session[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,13 +31,11 @@ export const event6Demo: Event6Props = {
     {
       time: "09:00",
       title: "Opening keynote",
-      track: "Main stage",
       tone: "opening",
     },
     {
       time: "10:00",
       title: "Designing with intent",
-      track: "Track A",
       tone: "talk",
     },
     {
@@ -47,15 +46,16 @@ export const event6Demo: Event6Props = {
     {
       time: "11:30",
       title: "Component systems workshop",
-      track: "Workshop room",
       tone: "workshop",
     },
   ],
+  bordered: false,
 };
 
 export function Event6({
   day,
   sessions = [],
+  bordered = false,
   className,
 }: Event6Props) {
   return (
@@ -65,9 +65,9 @@ export function Event6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {day && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {day}
           </span>
         )}
@@ -77,7 +77,7 @@ export function Event6({
               key={idx}
               className="flex items-center gap-3 py-1.5"
             >
-              <span className="w-12 shrink-0 text-right font-mono text-xs text-muted-foreground">
+              <span className="w-12 shrink-0 text-right text-xs tabular-nums text-muted-foreground">
                 {s.time}
               </span>
               <span

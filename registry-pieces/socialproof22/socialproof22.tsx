@@ -23,26 +23,20 @@ export const socialproof22Demo: Socialproof22Props = {
   avatars: [
     {
       src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-      alt: "Ayşe Kaya",
-      fallback: "AK",
+      alt: "Hania Rani",
+      fallback: "HR",
     },
     {
       src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-      alt: "Merve Özkan",
-      fallback: "MÖ",
+      alt: "Nils Frahm",
+      fallback: "NF",
     },
     {
       src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-      alt: "Sarah Brown",
-      fallback: "SB",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-      alt: "John Doe",
-      fallback: "JD",
+      alt: "Agnes Obel",
+      fallback: "AO",
     },
   ],
-  extraCount: 2000,
   title: "Loved by product teams everywhere",
   rating: 5,
   ratingNote: "4.9 average from 2,400+ reviews",

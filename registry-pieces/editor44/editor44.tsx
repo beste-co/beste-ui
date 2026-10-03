@@ -3,15 +3,18 @@
 import { cn } from "@/lib/utils";
 
 interface Editor44Props {
+  bordered?: boolean;
   className?: string;
 }
 
-export const editor44Demo: Editor44Props = {};
+export const editor44Demo: Editor44Props = {
+  bordered: false,
+};
 
 const dot = <span className="text-muted-foreground/50">·</span>;
 const arrow = <span className="text-muted-foreground/50">→</span>;
 
-export function Editor44({ className }: Editor44Props) {
+export function Editor44({ bordered = false, className }: Editor44Props) {
   return (
     <div
       className={cn(
@@ -19,7 +22,7 @@ export function Editor44({ className }: Editor44Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col rounded-md border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col rounded-md bg-card px-3 py-2 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline gap-3">
           <span className="w-4 shrink-0 text-right tabular-nums text-muted-foreground/60">
             1

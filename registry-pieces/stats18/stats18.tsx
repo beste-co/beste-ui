@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TrendingDown, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "primary" | "foreground" | "emerald" | "sky" | "violet";
@@ -14,6 +13,7 @@ interface Stats18Props {
   caption?: string;
   intervalMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -38,8 +38,8 @@ const DIGITS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 export const stats18Demo: Stats18Props = {
   label: "Active listeners",
   values: [24810, 24893, 24871, 24962, 25040, 24988],
-  caption: "Updating every few seconds",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 function Digit({ value }: { value: number }) {
@@ -66,7 +66,8 @@ export function Stats18({
   suffix = "",
   caption,
   intervalMs = 2400,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Stats18Props) {
   const [index, setIndex] = useState(0);
@@ -93,7 +94,7 @@ export function Stats18({
       )}
     >
       <style>{`@keyframes stats18-pop { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-64 flex-col gap-1 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-1 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">{label}</span>
           <span className="relative flex size-2" aria-hidden="true">
@@ -142,18 +143,13 @@ export function Stats18({
             <span
               key={index}
               className={cn(
-                "mb-1 inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-xs font-medium tabular-nums",
+                "mb-1 inline-flex items-center rounded-full px-1.5 py-0.5 text-xs font-medium tabular-nums",
                 delta >= 0
                   ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
                   : "bg-rose-500/10 text-rose-600 dark:text-rose-400"
               )}
               style={{ animation: "stats18-pop 500ms ease-out" }}
             >
-              {delta >= 0 ? (
-                <TrendingUp className="size-3" aria-hidden="true" />
-              ) : (
-                <TrendingDown className="size-3" aria-hidden="true" />
-              )}
               {delta >= 0 ? "+" : ""}
               {delta.toLocaleString("en-US")}
             </span>

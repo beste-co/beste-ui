@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "legal22",
   title: "Affidavit Excerpt",
   description:
-    "Notarized affidavit card with italic preamble, indigo ruled quote, and a rose sealed pill on the header.",
+    "Notarized affidavit card with an italic preamble, the sworn statement, and a rose sealed pill in the header.",
   category: "Legal",
 };

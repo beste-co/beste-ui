@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Legal18Props {
@@ -12,19 +12,19 @@ interface Legal18Props {
   rating?: string;
   initials?: string;
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal18Demo: Legal18Props = {
-  name: "Nadine Alcalá",
+  name: "Hania Rani",
   title: "Managing Partner",
-  firm: "Alcalá & Partners LLP",
-  practice: ["M&A", "Tech transactions", "Data privacy"],
-  barNumber: "NY Bar · 284,911",
-  rating: "4.9 across 128 matters",
-  initials: "NA",
+  firm: "Rani & Partners LLP",
+  practice: ["M&A", "Data privacy"],
+  initials: "HR",
   image:
     "https://images.unsplash.com/photo-1644375391947-eeee9b4fed17?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGIlMjZ3JTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D",
+  bordered: false,
 };
 
 export function Legal18({
@@ -36,6 +36,7 @@ export function Legal18({
   rating,
   initials = "??",
   image,
+  bordered = false,
   className,
 }: Legal18Props) {
   return (
@@ -45,7 +46,7 @@ export function Legal18({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <div className="relative flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 text-sm font-semibold text-white shadow-md">
             {image ? (
@@ -70,8 +71,7 @@ export function Legal18({
               </span>
             )}
             {firm && (
-              <span className="inline-flex items-center gap-1 truncate text-xs text-card-foreground">
-                <Briefcase className="size-3" aria-hidden="true" />
+              <span className="truncate text-xs text-card-foreground">
                 {firm}
               </span>
             )}
@@ -89,18 +89,20 @@ export function Legal18({
             ))}
           </div>
         )}
-        <div className="flex items-center justify-between border-t border-border pt-2 text-xs text-muted-foreground">
-          {barNumber && <span>{barNumber}</span>}
-          {rating && (
-            <span className="inline-flex items-center gap-1">
-              <Star
-                className="size-3 fill-amber-400 text-amber-400"
-                aria-hidden="true"
-              />
-              {rating}
-            </span>
-          )}
-        </div>
+        {(barNumber || rating) && (
+          <div className="flex items-center justify-between border-t border-border pt-2 text-xs text-muted-foreground">
+            {barNumber && <span className="tabular-nums">{barNumber}</span>}
+            {rating && (
+              <span className="inline-flex items-center gap-1 tabular-nums">
+                <Star
+                  className="size-3 fill-amber-400 text-amber-400"
+                  aria-hidden="true"
+                />
+                {rating}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

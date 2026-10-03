@@ -1,6 +1,5 @@
 "use client";
 
-import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Legal3Props {
@@ -10,16 +9,16 @@ interface Legal3Props {
   role?: string;
   eyebrowLabel?: string;
   signedLabel?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal3Demo: Legal3Props = {
-  signature: "Beste Sözen",
-  printedName: "Beste Sözen",
-  role: "Principal, Beste Design Studio",
-  date: "Signed Apr 21, 2026",
-  eyebrowLabel: "Signature",
+  signature: "Hania Rani",
+  printedName: "Hania Rani",
+  date: "Apr 21, 2026",
   signedLabel: "Signed",
+  bordered: false,
 };
 
 export function Legal3({
@@ -27,8 +26,9 @@ export function Legal3({
   printedName,
   role,
   date,
-  eyebrowLabel = "Signature",
+  eyebrowLabel,
   signedLabel = "Signed",
+  bordered = false,
   className,
 }: Legal3Props) {
   return (
@@ -38,13 +38,14 @@ export function Legal3({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-lg border border-emerald-500/40 bg-card p-4 shadow-sm ring-1 ring-emerald-500/10">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-lg bg-card p-4 shadow-sm ring-1 ring-emerald-500/10", bordered && "border border-emerald-500/40")}>
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            {eyebrowLabel}
-          </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-            <Check className="size-3" aria-hidden="true" />
+          {eyebrowLabel && (
+            <span className="text-xs font-semibold text-muted-foreground">
+              {eyebrowLabel}
+            </span>
+          )}
+          <span className="ml-auto inline-flex items-center rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
             {signedLabel}
           </span>
         </div>
@@ -65,7 +66,7 @@ export function Legal3({
             )}
           </div>
           {date && (
-            <span className="font-mono text-muted-foreground">{date}</span>
+            <span className="text-muted-foreground">{date}</span>
           )}
         </div>
       </div>

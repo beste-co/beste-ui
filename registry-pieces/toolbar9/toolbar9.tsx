@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Toolbar9Props {
   canUndo?: boolean;
   canRedo?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 export const toolbar9Demo: Toolbar9Props = {
   canUndo: true,
   canRedo: false,
+  bordered: false,
 };
 
 export function Toolbar9({
   canUndo = true,
   canRedo = true,
+  bordered = false,
   className,
 }: Toolbar9Props) {
   return (
@@ -26,7 +29,7 @@ export function Toolbar9({
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-lg border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-lg bg-card p-1 shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           aria-label="Undo"

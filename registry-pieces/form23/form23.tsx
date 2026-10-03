@@ -19,15 +19,15 @@ export const form23Demo: Form23Props = {
   options: [
     {
       label: "Standard",
-      description: "3–5 business days · Free",
+      description: "3 to 5 business days",
     },
     {
       label: "Express",
-      description: "Next business day · $8",
+      description: "Next business day",
     },
     {
       label: "Same-day",
-      description: "Order by noon · $14",
+      description: "Order by noon",
     },
   ],
   selectedIndex: 1,
@@ -48,7 +48,7 @@ export function Form23({
     >
       <div className="flex w-full max-w-80 flex-col gap-2">
         {legend && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {legend}
           </span>
         )}

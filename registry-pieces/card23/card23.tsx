@@ -1,7 +1,5 @@
 "use client";
 
-import { Globe, Mail, Phone } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 
 interface Card23Props {
@@ -10,15 +8,16 @@ interface Card23Props {
   email?: string;
   phone?: string;
   website?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const card23Demo: Card23Props = {
-  name: "Beste Sözen",
-  title: "Principal · Beste Design Studio",
-  email: "mira@solano.studio",
-  phone: "+90 532 000 12 34",
-  website: "solano.studio",
+  name: "Joep Beving",
+  title: "Principal, Beste Studio",
+  email: "hello@beste.co",
+  website: "beste.co",
+  bordered: false,
 };
 
 export function Card23({
@@ -27,6 +26,7 @@ export function Card23({
   email,
   phone,
   website,
+  bordered = false,
   className,
 }: Card23Props) {
   return (
@@ -36,7 +36,7 @@ export function Card23({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col">
           {name && (
             <span className="text-base font-semibold text-card-foreground">
@@ -47,39 +47,19 @@ export function Card23({
             <span className="text-xs text-muted-foreground">{title}</span>
           )}
         </div>
-        <div className="flex flex-col gap-1 border-t border-border pt-2 text-sm">
-          {email && (
-            <div className="flex items-center gap-2">
-              <Mail
-                className="size-3 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <span className="truncate text-card-foreground">
-                {email}
-              </span>
-            </div>
-          )}
-          {phone && (
-            <div className="flex items-center gap-2">
-              <Phone
-                className="size-3 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <span className="text-card-foreground">{phone}</span>
-            </div>
-          )}
-          {website && (
-            <div className="flex items-center gap-2">
-              <Globe
-                className="size-3 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <span className="truncate text-card-foreground">
-                {website}
-              </span>
-            </div>
-          )}
-        </div>
+        {(email || phone || website) && (
+          <div className="flex flex-col gap-1 border-t border-border pt-2 text-sm">
+            {email && (
+              <span className="truncate text-card-foreground">{email}</span>
+            )}
+            {phone && (
+              <span className="tabular-nums text-card-foreground">{phone}</span>
+            )}
+            {website && (
+              <span className="truncate text-card-foreground">{website}</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

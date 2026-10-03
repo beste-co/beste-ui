@@ -9,6 +9,7 @@ interface Education4Props {
   watched?: number;
   imageSrc?: string;
   alt?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,10 +19,10 @@ const defaultImage =
 export const education4Demo: Education4Props = {
   title: "Refactoring a big list into virtualized rows",
   duration: "12:48",
-  chapter: "Chapter 4 · Performance",
   watched: 40,
   imageSrc: defaultImage,
-  alt: "Refactoring a big list · lesson",
+  alt: "Refactoring a big list lesson",
+  bordered: false,
 };
 
 export function Education4({
@@ -31,6 +32,7 @@ export function Education4({
   watched = 0,
   imageSrc = defaultImage,
   alt,
+  bordered = false,
   className,
 }: Education4Props) {
   const pct = Math.max(0, Math.min(100, watched));
@@ -42,7 +44,7 @@ export function Education4({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-xl bg-card shadow-sm", bordered && "border border-border")}>
         <div className="relative aspect-video w-full overflow-hidden bg-muted">
           <img
             src={imageSrc}
@@ -55,7 +57,7 @@ export function Education4({
             </div>
           </div>
           {duration && (
-            <span className="absolute bottom-2 right-2 rounded-md bg-background/80 px-2 py-0.5 font-mono text-xs text-card-foreground">
+            <span className="absolute bottom-2 right-2 rounded-md bg-background/80 px-2 py-0.5 text-xs tabular-nums text-card-foreground">
               {duration}
             </span>
           )}
@@ -71,7 +73,7 @@ export function Education4({
         </div>
         <div className="flex flex-col gap-0.5 p-3">
           {chapter && (
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-medium text-muted-foreground">
               {chapter}
             </span>
           )}

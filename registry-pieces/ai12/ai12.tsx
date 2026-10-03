@@ -33,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai12Demo: Ai12Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   language: "ts",
   code: "const slug = (s: string) =>\n  s.toLowerCase().replace(/\\s+/g, '-');",
@@ -43,7 +43,7 @@ export function Ai12({
   language = "code",
   code = "",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai12Props) {
@@ -70,7 +70,7 @@ export function Ai12({
     >
       <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center justify-between border-b border-current/15 px-3 py-1.5">
-          <span className="font-mono text-xs font-semibold uppercase tracking-widest text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {language}
           </span>
           <div className="flex items-center gap-0.5">
@@ -95,7 +95,7 @@ export function Ai12({
             </button>
           </div>
         </div>
-        <pre className="overflow-auto px-3 py-2 font-mono text-xs leading-relaxed">
+        <pre className="overflow-auto px-3 py-2 text-xs leading-relaxed">
           {code}
         </pre>
       </div>

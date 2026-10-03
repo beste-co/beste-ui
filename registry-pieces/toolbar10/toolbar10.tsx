@@ -4,6 +4,7 @@ import { Link2, Linkedin, Mail, Twitter } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Toolbar10Props {
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,9 +15,11 @@ const shares = [
   { Icon: Mail, label: "Share via email" },
 ];
 
-export const toolbar10Demo: Toolbar10Props = {};
+export const toolbar10Demo: Toolbar10Props = {
+  bordered: false,
+};
 
-export function Toolbar10({ className }: Toolbar10Props) {
+export function Toolbar10({ bordered = false, className }: Toolbar10Props) {
   return (
     <div
       className={cn(
@@ -24,7 +27,7 @@ export function Toolbar10({ className }: Toolbar10Props) {
         className
       )}
     >
-      <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-1 rounded-full bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {shares.map(({ Icon, label }) => (
           <button
             key={label}

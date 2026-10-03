@@ -10,6 +10,7 @@ interface Notification13Props {
   carrier?: string;
   tracking?: string;
   eta?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -29,9 +30,8 @@ const statusLabel: Record<ShipStatus, string> = {
 
 export const notification13Demo: Notification13Props = {
   status: "out-for-delivery",
-  carrier: "DHL Express",
-  tracking: "1Z999AA10123456784",
   eta: "Arrives today before 18:00",
+  bordered: false,
 };
 
 export function Notification13({
@@ -39,6 +39,7 @@ export function Notification13({
   carrier,
   tracking,
   eta,
+  bordered = false,
   className,
 }: Notification13Props) {
   const currentIdx = steps.indexOf(status);
@@ -50,11 +51,12 @@ export function Notification13({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-start gap-3">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
-            <Package className="size-4" aria-hidden="true" />
-          </div>
+          <Package
+            className="mt-0.5 size-5 shrink-0 text-emerald-700 dark:text-emerald-400"
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="text-sm font-semibold text-card-foreground">
               {statusLabel[status]}
@@ -81,7 +83,7 @@ export function Notification13({
           <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
             {carrier && <span>{carrier}</span>}
             {tracking && (
-              <span className="truncate font-mono">{tracking}</span>
+              <span className="truncate">{tracking}</span>
             )}
           </div>
         )}

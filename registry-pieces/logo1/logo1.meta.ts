@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Square icon tile paired with a bold wordmark. Pick from four icons and three tones.",
   category: "Logo",
+  cardScale: 0.75,
 };

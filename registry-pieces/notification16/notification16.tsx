@@ -9,15 +9,15 @@ interface Notification16Props {
   description?: string;
   action?: string;
   dismissible?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 export const notification16Demo: Notification16Props = {
-  tag: "Announcement",
   title: "Beste v3 is now in open beta",
   description: "Early access to the new editor, theming, and live previews.",
   action: "Try it out",
-  dismissible: true,
+  bordered: false,
 };
 
 export function Notification16({
@@ -26,6 +26,7 @@ export function Notification16({
   description,
   action,
   dismissible = false,
+  bordered = false,
   className,
 }: Notification16Props) {
   return (
@@ -35,12 +36,12 @@ export function Notification16({
         className
       )}
     >
-      <div className="flex w-full items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-md items-center gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           {(tag || title) && (
             <div className="flex min-w-0 items-center gap-2">
               {tag && (
-                <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs font-semibold text-muted-foreground">
                   {tag}
                 </span>
               )}

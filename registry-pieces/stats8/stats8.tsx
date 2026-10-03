@@ -9,6 +9,7 @@ interface StatCell {
 
 interface Stats8Props {
   cells?: StatCell[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,9 +20,10 @@ export const stats8Demo: Stats8Props = {
     { value: "12.4%", label: "Conversion" },
     { value: "6:42", label: "Avg session" },
   ],
+  bordered: false,
 };
 
-export function Stats8({ cells = [], className }: Stats8Props) {
+export function Stats8({ cells = [], bordered = false, className }: Stats8Props) {
   const grid = cells.slice(0, 4);
 
   return (
@@ -31,7 +33,7 @@ export function Stats8({ cells = [], className }: Stats8Props) {
         className
       )}
     >
-      <div className="grid w-full max-w-72 grid-cols-2 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("grid w-full max-w-72 grid-cols-2 overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         {grid.map((cell, i) => (
           <div
             key={i}

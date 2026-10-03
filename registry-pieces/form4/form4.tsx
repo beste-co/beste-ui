@@ -34,10 +34,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const form4Demo: Form4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Full legal name",
-  requiredLabel: "Required",
   placeholder: "As shown on your ID",
   value: "Oud Beste",
   hint: "We use this for invoices and tax documents.",
@@ -45,12 +44,12 @@ export const form4Demo: Form4Props = {
 
 export function Form4({
   label,
-  requiredLabel = "Required",
+  requiredLabel,
   placeholder,
   value,
   hint,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Form4Props) {
@@ -76,9 +75,11 @@ export function Form4({
               </span>
             </label>
           )}
-          <span className="rounded-full bg-rose-500/10 px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-rose-600 dark:text-rose-400">
-            {requiredLabel}
-          </span>
+          {requiredLabel && (
+            <span className="rounded-full bg-rose-500/10 px-1.5 py-0.5 text-xs font-semibold text-rose-600 dark:text-rose-400">
+              {requiredLabel}
+            </span>
+          )}
         </div>
         <div className={cn("rounded-md px-3 py-2 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
           <span

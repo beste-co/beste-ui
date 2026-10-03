@@ -33,7 +33,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar4Demo: Calendar4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   weekday: "Thu",
   date: "Apr 23",
@@ -47,7 +47,7 @@ export function Calendar4({
   time,
   relative,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar4Props) {
@@ -73,12 +73,12 @@ export function Calendar4({
           </>
         )}
         {weekday && (
-          <span className="text-xs font-semibold uppercase tracking-widest text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {weekday}
           </span>
         )}
         {date && (
-          <span className="font-mono text-sm font-bold">
+          <span className="text-sm font-bold">
             {date}
           </span>
         )}
@@ -88,7 +88,7 @@ export function Calendar4({
               className="h-3 w-px bg-border"
               aria-hidden="true"
             />
-            <span className="font-mono text-sm text-current/60">
+            <span className="text-sm text-current/60">
               {time}
             </span>
           </>

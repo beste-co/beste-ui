@@ -1,6 +1,5 @@
 "use client";
 
-import { AlertTriangle, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Risk {
@@ -13,6 +12,7 @@ interface Legal25Props {
   matter?: string;
   overall?: "low" | "medium" | "high";
   risks?: Risk[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,12 +33,10 @@ const levelConfig = {
 
 export const legal25Demo: Legal25Props = {
   matter: "M&A risk assessment",
-  overall: "medium",
   risks: [
     {
       label: "Regulatory filings timing",
       level: "high",
-      note: "CFIUS window closes May 30",
     },
     {
       label: "IP assignment coverage",
@@ -49,15 +47,17 @@ export const legal25Demo: Legal25Props = {
       level: "low",
     },
   ],
+  bordered: false,
 };
 
 export function Legal25({
   matter,
-  overall = "low",
+  overall,
   risks = [],
+  bordered = false,
   className,
 }: Legal25Props) {
-  const o = levelConfig[overall];
+  const o = overall ? levelConfig[overall] : undefined;
 
   return (
     <div
@@ -66,22 +66,21 @@ export function Legal25({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex size-7 items-center justify-center rounded-md bg-indigo-500/15 text-indigo-500">
-              <ShieldCheck className="size-3.5" aria-hidden="true" />
-            </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        {(matter || o) && (
+          <div className="flex items-center justify-between gap-2">
             {matter && (
-              <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-semibold text-muted-foreground">
                 {matter}
               </span>
             )}
+            {o && (
+              <span className={cn("ml-auto shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold", o.pill)}>
+                {o.label} overall
+              </span>
+            )}
           </div>
-          <span className={cn("rounded-full px-2 py-0.5 text-xs font-semibold", o.pill)}>
-            {o.label} overall
-          </span>
-        </div>
+        )}
         <div className="flex flex-col divide-y divide-border">
           {risks.map((r, idx) => {
             const c = levelConfig[r.level];
@@ -95,11 +94,7 @@ export function Legal25({
                     {r.label}
                   </span>
                   {r.note && (
-                    <span className="inline-flex items-center gap-1 truncate text-xs text-muted-foreground">
-                      <AlertTriangle
-                        className="size-3 text-amber-500"
-                        aria-hidden="true"
-                      />
+                    <span className="truncate text-xs text-muted-foreground">
                       {r.note}
                     </span>
                   )}

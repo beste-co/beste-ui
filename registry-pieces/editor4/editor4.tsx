@@ -39,7 +39,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor4Demo: Editor4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   filename: "button.tsx",
   lines: [
@@ -75,7 +75,7 @@ export function Editor4({
   filename,
   lines = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor4Props) {
@@ -90,11 +90,11 @@ export function Editor4({
     >
       <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {filename && (
-          <div className="border-b border-current/15 px-3 py-1.5 font-mono text-xs text-current/60">
+          <div className="border-b border-current/15 px-3 py-1.5 text-xs text-current/60">
             {filename}
           </div>
         )}
-        <pre className="overflow-auto py-1 font-mono text-xs leading-relaxed">
+        <pre className="overflow-auto py-1 text-xs leading-relaxed">
           {lines.map((l, i) => {
             const cfg = diffConfig[l.kind];
             return (

@@ -6,6 +6,7 @@ interface Calendar27Props {
   label?: string;
   days?: { label: string; count: number }[];
   max?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,12 +20,14 @@ export const calendar27Demo: Calendar27Props = {
     { label: "Fri", count: 4 },
   ],
   max: 8,
+  bordered: false,
 };
 
 export function Calendar27({
   label,
   days = [],
   max,
+  bordered = false,
   className,
 }: Calendar27Props) {
   const resolvedMax = Math.max(
@@ -43,9 +46,9 @@ export function Calendar27({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
         )}
@@ -60,7 +63,7 @@ export function Calendar27({
               >
                 <span
                   className={cn(
-                    "font-mono text-xs tabular-nums",
+                    "text-xs tabular-nums",
                     isPeak
                       ? "font-semibold text-card-foreground"
                       : "text-muted-foreground"
@@ -76,7 +79,7 @@ export function Calendar27({
                   style={{ height: `${pct * 0.6}px` }}
                   aria-hidden="true"
                 />
-                <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <span className="text-xs font-medium text-muted-foreground">
                   {d.label}
                 </span>
               </div>

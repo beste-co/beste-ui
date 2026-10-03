@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Frame {
@@ -13,6 +12,7 @@ interface Frame {
 interface Editor43Props {
   title?: string;
   frames?: Frame[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,11 +23,13 @@ export const editor43Demo: Editor43Props = {
     { fn: "Dashboard", file: "dashboard.tsx", line: 14 },
     { fn: "App", file: "app.tsx", line: 8 },
   ],
+  bordered: false,
 };
 
 export function Editor43({
   title = "Call stack",
   frames = [],
+  bordered = false,
   className,
 }: Editor43Props) {
   return (
@@ -37,22 +39,16 @@ export function Editor43({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
-        <div className="flex items-center gap-1 border-b border-border px-3 py-1.5">
-          <ChevronDown
-            className="size-3 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            {title}
-          </span>
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
+        <div className="border-b border-border px-3 py-1.5 text-xs font-semibold text-muted-foreground">
+          {title}
         </div>
         <ul className="flex flex-col">
           {frames.map((f, i) => (
             <li
               key={i}
               className={cn(
-                "flex items-center gap-2 px-3 py-1.5 font-mono text-xs",
+                "flex items-center gap-2 px-3 py-1.5 text-xs",
                 f.current && "bg-amber-100 dark:bg-amber-950/60"
               )}
             >

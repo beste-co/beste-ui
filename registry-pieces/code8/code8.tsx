@@ -5,15 +5,17 @@ import { cn } from "@/lib/utils";
 interface Code8Props {
   keys?: string[];
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const code8Demo: Code8Props = {
   keys: ["⌘", "K"],
   label: "Open command palette",
+  bordered: false,
 };
 
-export function Code8({ keys = [], label, className }: Code8Props) {
+export function Code8({ keys = [], label, bordered = false, className }: Code8Props) {
   return (
     <div
       className={cn(
@@ -21,7 +23,7 @@ export function Code8({ keys = [], label, className }: Code8Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center justify-between gap-3 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center justify-between gap-3 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         {label && (
           <span className="truncate text-sm text-card-foreground">{label}</span>
         )}

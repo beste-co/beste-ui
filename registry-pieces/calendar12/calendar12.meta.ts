@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "calendar12",
   title: "Countdown",
   description:
-    "Launch-countdown card with an amber icon, target date, and four ring-bordered time-unit tiles.",
+    "Launch countdown card with a tone icon, a label, and four time-unit tiles.",
   category: "Calendar",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Bordered card bundling a legend, description, and a short stack of related inputs.",
   category: "Form",
+  cardScale: 0.75,
 };

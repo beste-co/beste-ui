@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Breadcrumb trail with a home icon, chevron separators, and a bold final crumb.",
   category: "Nav",
+  cardScale: 0.75,
 };

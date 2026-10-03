@@ -35,7 +35,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor1Demo: Editor1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   filename: "greet.ts",
   lines: [
@@ -83,7 +83,7 @@ export function Editor1({
   filename = "file.ts",
   lines = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor1Props) {
@@ -103,12 +103,12 @@ export function Editor1({
             <span className="size-2.5 rounded-full bg-amber-500" />
             <span className="size-2.5 rounded-full bg-emerald-500" />
           </div>
-          <span className="font-mono text-xs text-current/60">
+          <span className="text-xs text-current/60">
             {filename}
           </span>
           <span className="size-4" aria-hidden="true" />
         </div>
-        <pre className="overflow-auto px-3 py-2 font-mono text-xs leading-relaxed">
+        <pre className="overflow-auto px-3 py-2 text-xs leading-relaxed">
           {lines.map((line, i) => (
             <div key={i} className="flex gap-3">
               <span

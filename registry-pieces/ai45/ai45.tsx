@@ -6,15 +6,17 @@ import { cn } from "@/lib/utils";
 interface Ai45Props {
   before?: string;
   after?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const ai45Demo: Ai45Props = {
   before: "rate limited users get a 429 response",
   after: "rate-limited users get a 429 response with a Retry-After header",
+  bordered: false,
 };
 
-export function Ai45({ before, after, className }: Ai45Props) {
+export function Ai45({ before, after, bordered = false, className }: Ai45Props) {
   return (
     <div
       className={cn(
@@ -24,7 +26,7 @@ export function Ai45({ before, after, className }: Ai45Props) {
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
         {before && (
-          <div className="flex items-start gap-2 rounded-md border border-border bg-rose-500/10 px-2.5 py-1.5">
+          <div className={cn("flex items-start gap-2 rounded-md bg-rose-500/10 px-2.5 py-1.5", bordered && "border border-border")}>
             <span
               className="mt-0.5 flex size-3.5 shrink-0 items-center justify-center rounded-full bg-rose-500 text-white"
               aria-hidden="true"
@@ -37,7 +39,7 @@ export function Ai45({ before, after, className }: Ai45Props) {
           </div>
         )}
         {after && (
-          <div className="flex items-start gap-2 rounded-md border border-border bg-emerald-500/10 px-2.5 py-1.5">
+          <div className={cn("flex items-start gap-2 rounded-md bg-emerald-500/10 px-2.5 py-1.5", bordered && "border border-border")}>
             <span
               className="mt-0.5 flex size-3.5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white"
               aria-hidden="true"

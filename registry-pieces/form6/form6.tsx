@@ -10,7 +10,7 @@ interface Form6Props {
 
 export const form6Demo: Form6Props = {
   label: "Email address",
-  value: "mira@beste.co",
+  value: "hello@beste.co",
 };
 
 export function Form6({ label, value, className }: Form6Props) {

@@ -9,6 +9,7 @@ interface Indicator4Props {
   level?: number;
   charging?: boolean;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,13 +24,15 @@ const toneClasses: Record<Tone, string> = {
 export const indicator4Demo: Indicator4Props = {
   level: 42,
   charging: true,
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Indicator4({
   level = 0,
   charging = false,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Indicator4Props) {
   const pct = Math.max(0, Math.min(100, level));
@@ -41,7 +44,7 @@ export function Indicator4({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <div className="relative flex items-center">
           <div
             className="relative flex h-4 w-8 items-center rounded-sm border-2 border-card-foreground/80 p-0.5"

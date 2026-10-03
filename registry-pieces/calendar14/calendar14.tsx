@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Check, MapPin, Users } from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -20,18 +20,19 @@ interface Calendar14Props {
   guests?: string;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-foreground text-background",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const labelClasses: Record<Tone, string> = {
@@ -48,10 +49,10 @@ const labelClasses: Record<Tone, string> = {
 export const calendar14Demo: Calendar14Props = {
   title: "Discovery call with Kestrel Labs",
   when: "Thu, Apr 30 · 14:00 – 14:30",
-  where: "Google Meet · meet.beste.co/kestrel",
-  guests: "3 invited",
+  where: "Google Meet",
   label: "Meeting booked",
   tone: "neutral",
+  bordered: false,
 };
 
 export function Calendar14({
@@ -61,6 +62,7 @@ export function Calendar14({
   guests,
   label,
   tone = "neutral",
+  bordered = false,
   className,
 }: Calendar14Props) {
   return (
@@ -70,20 +72,16 @@ export function Calendar14({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-full",
-              iconClasses[tone]
-            )}
-          >
-            <Check className="size-4" aria-hidden="true" />
-          </div>
+          <Check
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           {label && (
             <span
               className={cn(
-                "text-xs font-semibold uppercase tracking-wide",
+                "text-xs font-semibold",
                 labelClasses[tone]
               )}
             >
@@ -98,27 +96,12 @@ export function Calendar14({
         )}
         <div className="flex flex-col gap-1 text-sm text-muted-foreground">
           {when && (
-            <span className="inline-flex items-center gap-2">
-              <Calendar className="size-3.5 shrink-0" aria-hidden="true" />
-              <span className="text-card-foreground">{when}</span>
-            </span>
+            <span className="tabular-nums text-card-foreground">{when}</span>
           )}
-          {where && (
-            <span className="inline-flex items-center gap-2">
-              <MapPin className="size-3.5 shrink-0" aria-hidden="true" />
-              <span className="truncate font-mono text-card-foreground">
-                {where}
-              </span>
-            </span>
-          )}
-          {guests && (
-            <span className="inline-flex items-center gap-2">
-              <Users className="size-3.5 shrink-0" aria-hidden="true" />
-              {guests}
-            </span>
-          )}
+          {where && <span className="truncate">{where}</span>}
+          {guests && <span className="truncate">{guests}</span>}
         </div>
-        <div className="flex gap-2 border-t border-border pt-2">
+        <div className="flex gap-2 pt-1">
           <button
             type="button"
             className="flex-1 rounded-md bg-foreground px-2 py-1.5 text-sm font-semibold text-background hover:opacity-90"
@@ -127,7 +110,7 @@ export function Calendar14({
           </button>
           <button
             type="button"
-            className="rounded-md border border-border bg-card px-2 py-1.5 text-sm font-semibold text-card-foreground hover:bg-muted"
+            className={cn("rounded-md px-2 py-1.5 text-sm font-semibold text-card-foreground hover:bg-muted", bordered ? "border border-border bg-card" : "bg-muted hover:bg-muted-foreground/15")}
           >
             Reschedule
           </button>

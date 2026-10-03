@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "education21",
   title: "Instructor Card",
   description:
-    "Teacher profile with a gradient avatar wearing an amber award badge, subject line, and rating row.",
+    "Teacher profile with an avatar, a subject line, and a student count and rating row.",
   category: "Education",
 };

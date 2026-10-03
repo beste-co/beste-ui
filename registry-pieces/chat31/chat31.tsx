@@ -17,12 +17,10 @@ interface Chat31Props {
 
 export const chat31Demo: Chat31Props = {
   src: "https://images.unsplash.com/photo-1577806934037-32d94e326e84?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTkxfHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D",
-  alt: "Ayşe",
-  fallback: "AK",
-  author: "Ayşe Kaya",
-  role: "Designer",
-  message: "Pushed a new pass on the empty states — peek when you have a sec 🎨",
-  time: "09:42",
+  alt: "Hania Rani",
+  fallback: "HR",
+  author: "Hania Rani",
+  message: "Pushed a new pass on the empty states, take a look when you can.",
 };
 
 export function Chat31({
@@ -55,12 +53,12 @@ export function Chat31({
               {author}
             </span>
             {role && (
-              <span className="shrink-0 rounded-full bg-primary/10 px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-primary">
+              <span className="shrink-0 rounded-full bg-primary/10 px-1.5 py-0.5 text-xs font-semibold text-primary">
                 {role}
               </span>
             )}
             {time && (
-              <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">
+              <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
                 {time}
               </span>
             )}

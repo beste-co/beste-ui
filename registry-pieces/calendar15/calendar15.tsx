@@ -12,6 +12,7 @@ interface Slot {
 interface Calendar15Props {
   heading?: string;
   slots?: Slot[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,18 +25,19 @@ const toneClasses: Record<Slot["tone"], string> = {
 };
 
 export const calendar15Demo: Calendar15Props = {
-  heading: "Thursday · 23 Apr",
+  heading: "Thursday",
   slots: [
-    { from: "09:00", to: "10:00", label: "Focus block · Design review", tone: "sky" },
-    { from: "10:30", to: "11:00", label: "1:1 with Mira", tone: "emerald" },
+    { from: "09:00", to: "10:00", label: "Design review", tone: "sky" },
+    { from: "10:30", to: "11:00", label: "1:1 with Hania", tone: "emerald" },
     { from: "13:00", to: "14:30", label: "Sprint planning", tone: "violet" },
-    { from: "16:00", to: "16:30", label: "Coffee with Jules", tone: "amber" },
   ],
+  bordered: false,
 };
 
 export function Calendar15({
   heading,
   slots = [],
+  bordered = false,
   className,
 }: Calendar15Props) {
   return (
@@ -45,9 +47,9 @@ export function Calendar15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {heading}
           </span>
         )}
@@ -60,7 +62,7 @@ export function Calendar15({
                 toneClasses[slot.tone]
               )}
             >
-              <div className="flex shrink-0 flex-col items-start font-mono">
+              <div className="flex shrink-0 flex-col items-start tabular-nums">
                 <span className="text-sm font-semibold">{slot.from}</span>
                 <span className="text-xs opacity-70">{slot.to}</span>
               </div>

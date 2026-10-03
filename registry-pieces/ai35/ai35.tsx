@@ -1,6 +1,5 @@
 "use client";
 
-import { Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -16,6 +15,7 @@ interface Ai35Props {
   prompt?: string;
   model?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -32,13 +32,15 @@ const runClasses: Record<Tone, string> = {
 export const ai35Demo: Ai35Props = {
   prompt: "Explain rate limiting strategies with simple examples.",
   model: "claude-sonnet",
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai35({
   prompt = "Write a prompt…",
   model = "model",
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai35Props) {
   return (
@@ -48,9 +50,9 @@ export function Ai35({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className="text-xs text-muted-foreground">
             {model}
           </span>
           <button
@@ -60,7 +62,6 @@ export function Ai35({
               runClasses[tone]
             )}
           >
-            <Play className="size-3 fill-current" aria-hidden="true" />
             Run
           </button>
         </div>

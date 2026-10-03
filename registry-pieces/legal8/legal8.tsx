@@ -1,25 +1,26 @@
 "use client";
 
-import { Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Legal8Props {
   caseNo?: string;
   label?: string;
   redacted?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal8Demo: Legal8Props = {
-  caseNo: "Case 1:26-cv-04182",
   label: "Confidential witness statement",
   redacted: true,
+  bordered: false,
 };
 
 export function Legal8({
   caseNo,
   label,
   redacted = true,
+  bordered = false,
   className,
 }: Legal8Props) {
   return (
@@ -29,11 +30,11 @@ export function Legal8({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex min-w-0 flex-col">
             {caseNo && (
-              <span className="font-mono text-xs font-semibold text-card-foreground">
+              <span className="text-xs font-semibold text-card-foreground">
                 {caseNo}
               </span>
             )}
@@ -43,23 +44,13 @@ export function Legal8({
           </div>
           <span
             className={cn(
-              "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold",
+              "inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-xs font-semibold",
               redacted
                 ? "bg-foreground text-background"
                 : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
             )}
           >
-            {redacted ? (
-              <>
-                <EyeOff className="size-3" aria-hidden="true" />
-                Redacted
-              </>
-            ) : (
-              <>
-                <Eye className="size-3" aria-hidden="true" />
-                Unsealed
-              </>
-            )}
+            {redacted ? "Redacted" : "Unsealed"}
           </span>
         </div>
         <div className="flex flex-col gap-1.5 text-xs leading-relaxed text-card-foreground">

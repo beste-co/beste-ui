@@ -31,9 +31,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser7Demo: Browser7Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  tabs: ["Elements", "Console", "Sources", "Network", "Performance"],
+  tabs: ["Elements", "Console", "Sources", "Network"],
   activeIndex: 3,
 };
 
@@ -41,7 +41,7 @@ export function Browser7({
   tabs = [],
   activeIndex = 0,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser7Props) {
@@ -62,7 +62,7 @@ export function Browser7({
               key={idx}
               type="button"
               className={cn(
-                "relative shrink-0 px-3 py-2 font-mono text-xs transition-colors",
+                "relative shrink-0 px-3 py-2 text-xs transition-colors",
                 isActive
                   ? ""
                   : "text-current/60 hover:text-current"

@@ -7,6 +7,7 @@ interface Input16Props {
   hours?: string;
   minutes?: string;
   meridiem?: "AM" | "PM";
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const input16Demo: Input16Props = {
   hours: "09",
   minutes: "30",
   meridiem: "AM",
+  bordered: false,
 };
 
 export function Input16({
   hours = "00",
   minutes = "00",
   meridiem,
+  bordered = false,
   className,
 }: Input16Props) {
   return (
@@ -29,12 +32,12 @@ export function Input16({
         className
       )}
     >
-      <div className="flex items-center gap-2 rounded-md border border-border bg-card px-2 py-1 shadow-sm">
+      <div className={cn("flex items-center gap-2 rounded-md bg-card px-2 py-1 shadow-sm", bordered && "border border-border")}>
         <Clock
           className="size-3.5 shrink-0 text-muted-foreground"
           aria-hidden="true"
         />
-        <div className="flex items-center gap-0.5 font-mono text-lg">
+        <div className="flex items-center gap-0.5 text-lg">
           <span className="flex size-9 items-center justify-center rounded-sm bg-muted font-semibold text-card-foreground">
             {hours}
           </span>

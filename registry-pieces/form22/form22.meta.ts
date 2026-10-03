@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "form22",
   title: "Checkbox Group",
   description:
-    "Legend-headed list of notification toggles with filled primary checks and muted helper lines.",
+    "Legend-headed list of notification toggles with filled primary checks.",
   category: "Form",
 };

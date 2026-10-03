@@ -19,6 +19,7 @@ interface Health8Props {
   label?: string;
   statusLabel?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -47,10 +48,10 @@ const statusClasses: Record<Tone, string> = {
 export const health8Demo: Health8Props = {
   spo2: 98,
   pulse: 68,
-  timestamp: "Measured just now",
   label: "SpO₂",
   statusLabel: "Normal range",
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health8({
@@ -59,7 +60,8 @@ export function Health8({
   timestamp,
   label = "SpO₂",
   statusLabel = "Normal range",
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health8Props) {
   const circumference = 2 * Math.PI * 32;
@@ -72,7 +74,7 @@ export function Health8({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative shrink-0">
           <svg
             width="80"
@@ -101,14 +103,14 @@ export function Health8({
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-mono text-xl font-bold text-card-foreground">
+            <span className="text-xl font-bold tabular-nums text-card-foreground">
               {spo2}
               <span className="text-xs text-muted-foreground">%</span>
             </span>
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
           <span className={cn("text-sm font-semibold", statusClasses[tone])}>

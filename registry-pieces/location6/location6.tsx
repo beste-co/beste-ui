@@ -11,6 +11,7 @@ interface Location6Props {
   reviewCount?: string;
   status?: Status;
   hours?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -30,9 +31,8 @@ export const location6Demo: Location6Props = {
   name: "Joe's Coffee",
   category: "Café",
   rating: 4.7,
-  reviewCount: "1.2k",
   status: "open",
-  hours: "Closes 9:00 PM",
+  bordered: false,
 };
 
 export function Location6({
@@ -42,6 +42,7 @@ export function Location6({
   reviewCount,
   status = "open",
   hours,
+  bordered = false,
   className,
 }: Location6Props) {
   return (
@@ -51,7 +52,7 @@ export function Location6({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-1 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-1 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {name && (
           <span className="text-base font-bold leading-tight text-card-foreground">
             {name}
@@ -63,7 +64,7 @@ export function Location6({
               <span className="text-amber-500" aria-hidden="true">
                 ★
               </span>
-              <span className="font-semibold text-card-foreground">
+              <span className="font-semibold tabular-nums text-card-foreground">
                 {rating.toFixed(1)}
               </span>
               {reviewCount && <span>({reviewCount})</span>}

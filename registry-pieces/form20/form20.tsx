@@ -15,6 +15,7 @@ interface Form20Props {
   label?: string;
   query?: string;
   people?: Assignee[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,38 +24,34 @@ export const form20Demo: Form20Props = {
   query: "",
   people: [
     {
-      name: "Beste Sözen",
-      initials: "BS",
+      name: "Nils Frahm",
+      initials: "NF",
       imageSrc: "https://oud.pics/sm/l/gmail.jpeg",
-      alt: "Beste Sözen",
+      alt: "Nils Frahm",
       selected: true,
     },
     {
-      name: "Andrea Kim",
-      initials: "AK",
+      name: "Hania Rani",
+      initials: "HR",
       imageSrc: "https://oud.pics/sm/l/stripe.jpeg",
-      alt: "Andrea Kim",
+      alt: "Hania Rani",
       selected: true,
     },
     {
-      name: "Noor Ahmed",
-      initials: "NA",
+      name: "Ólafur Arnalds",
+      initials: "ÓA",
       imageSrc: "https://oud.pics/sm/l/notion.png",
-      alt: "Noor Ahmed",
-    },
-    {
-      name: "Jules Park",
-      initials: "JP",
-      imageSrc: "https://oud.pics/sm/l/slack.svg",
-      alt: "Jules Park",
+      alt: "Ólafur Arnalds",
     },
   ],
+  bordered: false,
 };
 
 export function Form20({
   label,
   query = "",
   people = [],
+  bordered = false,
   className,
 }: Form20Props) {
   return (
@@ -64,9 +61,9 @@ export function Form20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md">
+      <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-lg bg-card shadow-md", bordered && "border border-border")}>
         {label && (
-          <div className="border-b border-border px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <div className="border-b border-border px-3 py-2 text-xs font-semibold text-muted-foreground">
             {label}
           </div>
         )}

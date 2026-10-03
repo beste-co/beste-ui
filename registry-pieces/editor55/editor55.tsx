@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDown, PanelRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -41,10 +41,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor55Demo: Editor55Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   sectionLabel: "Feature",
-  sectionId: "#feature283",
   rows: [
     { label: "Padding", value: "96 px" },
     { label: "Container", value: "7xl" },
@@ -68,7 +67,7 @@ export function Editor55({
   rows = [],
   dwellMs = 900,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor55Props) {
@@ -102,17 +101,13 @@ export function Editor55({
         )}
       >
         <div className="flex items-center gap-2">
-          <PanelRight
-            className="size-3.5 shrink-0 text-current/60"
-            aria-hidden="true"
-          />
           {sectionLabel && (
             <span className="truncate text-sm font-semibold">
               {sectionLabel}
             </span>
           )}
           {sectionId && (
-            <span className="truncate font-mono text-xs text-current/60">
+            <span className="truncate text-xs text-current/60">
               {sectionId}
             </span>
           )}

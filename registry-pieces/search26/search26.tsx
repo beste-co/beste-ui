@@ -50,9 +50,8 @@ export const search26Demo: Search26Props = {
     { id: "event103", kind: "Event", strength: 3 },
     { id: "feature287", kind: "Feature", strength: 2 },
   ],
-  restLabel: "24 more",
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   stepMs: 460,
 };
@@ -75,7 +74,7 @@ export function Search26({
   matches = [],
   restLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   stepMs = 460,
   className,
@@ -149,9 +148,9 @@ export function Search26({
                   shown ? "search26-in" : "invisible"
                 )}
               >
-                <code className="min-w-0 flex-1 truncate font-mono text-xs">
+                <span className="min-w-0 flex-1 truncate text-xs">
                   {match.id}
-                </code>
+                </span>
                 <span className="shrink-0 text-xs text-current/60">
                   {match.kind}
                 </span>

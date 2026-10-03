@@ -6,6 +6,7 @@ interface Input5Props {
   value?: string;
   placeholder?: string;
   focused?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,12 +14,14 @@ export const input5Demo: Input5Props = {
   value: "Beste Sözen",
   placeholder: "Type something",
   focused: true,
+  bordered: false,
 };
 
 export function Input5({
   value,
   placeholder,
   focused = false,
+  bordered = false,
   className,
 }: Input5Props) {
   return (
@@ -30,7 +33,8 @@ export function Input5({
     >
       <div
         className={cn(
-          "flex w-full max-w-80 items-center rounded-md border bg-card px-3 py-2 shadow-sm",
+          "flex w-full max-w-80 items-center rounded-md bg-card px-3 py-2 shadow-sm",
+          bordered && "border",
           focused
             ? "border-primary ring-2 ring-primary/20"
             : "border-border"

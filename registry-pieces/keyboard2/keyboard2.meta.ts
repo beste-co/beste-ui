@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "keyboard2",
   title: "Command Palette Row",
   description:
-    "Raycast-style action row with leading icon, description, and a trailing shortcut combo.",
+    "Raycast-style action row with a title, a short description, and a trailing shortcut combo.",
   category: "Keyboard",
 };

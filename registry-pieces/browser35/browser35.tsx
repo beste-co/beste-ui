@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ChevronLeft, Wifi } from "lucide-react";
+import { ChevronLeft, Wifi } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -41,16 +41,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const browser35Demo: Browser35Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   time: "09:41",
   title: "Appointment",
   status: "Confirmed",
   headline: "Wednesday, 14 May · 09:00",
   rows: [
-    { label: "With", value: "Dr Amelia Frost" },
+    { label: "With", value: "Dr Hania Rani" },
     { label: "Room", value: "Clinic 2, ground floor" },
-    { label: "Bring", value: "Referral letter" },
   ],
   action: "Add to calendar",
 };
@@ -63,7 +62,7 @@ export function Browser35({
   rows = [],
   action,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Browser35Props) {
@@ -79,7 +78,7 @@ export function Browser35({
         )}
       >
         <div className="flex items-center justify-between gap-3 border-b border-current/15 bg-current/10 px-4 py-2">
-          <span className="font-mono text-xs tabular-nums text-current/60">{time}</span>
+          <span className="text-xs tabular-nums text-current/60">{time}</span>
           <Wifi className="size-3 text-current/60" aria-hidden="true" />
         </div>
 
@@ -90,8 +89,7 @@ export function Browser35({
 
         <div className="p-4">
           {status && (
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600">
-              <Check className="size-3" aria-hidden="true" />
+            <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600">
               {status}
             </span>
           )}

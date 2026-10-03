@@ -36,7 +36,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const chart3Demo: Chart3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Revenue",
   currentValue: "$48.2K",
@@ -56,7 +56,7 @@ export function Chart3({
   currentLabel = "This week",
   previousLabel = "Last week",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Chart3Props) {
@@ -75,7 +75,7 @@ export function Chart3({
     >
       <div className={cn("flex w-full max-w-56 flex-col gap-2 rounded-lg px-3 py-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {label && (
-          <span className="text-xs font-medium uppercase tracking-wide text-current/60">
+          <span className="text-xs font-medium text-current/60">
             {label}
           </span>
         )}

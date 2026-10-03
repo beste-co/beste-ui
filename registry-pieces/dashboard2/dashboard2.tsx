@@ -63,13 +63,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard2Demo: Dashboard2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Active users",
   value: "4,821",
   delta: "+6.8%",
   values: [22, 28, 24, 33, 31, 40, 38, 46, 44, 52, 58, 64],
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Dashboard2({
@@ -77,9 +77,9 @@ export function Dashboard2({
   value = "—",
   delta,
   values = [],
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard2Props) {
@@ -108,16 +108,16 @@ export function Dashboard2({
     >
       <div className={cn("flex w-full max-w-64 flex-col gap-1 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
           {delta && (
-            <span className="font-mono text-xs font-medium text-emerald-600 dark:text-emerald-400">
+            <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
               {delta}
             </span>
           )}
         </div>
-        <span className="font-mono text-xl font-semibold tabular-nums">
+        <span className="text-xl font-semibold tabular-nums">
           {value}
         </span>
         <svg

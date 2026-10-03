@@ -9,6 +9,7 @@ interface Boarding1Props {
   date?: string;
   flight?: string;
   seat?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,8 +17,8 @@ export const boarding1Demo: Boarding1Props = {
   from: "IST",
   to: "LHR",
   date: "Jun 14",
-  flight: "TK 1971",
   seat: "12A",
+  bordered: false,
 };
 
 export function Boarding1({
@@ -26,6 +27,7 @@ export function Boarding1({
   date,
   flight,
   seat,
+  bordered = false,
   className,
 }: Boarding1Props) {
   return (
@@ -35,14 +37,11 @@ export function Boarding1({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-3">
-          <div className="flex flex-col">
-            <span className="text-3xl font-bold leading-none tabular-nums text-card-foreground">
-              {from}
-            </span>
-            <span className="text-xs text-muted-foreground">From</span>
-          </div>
+          <span className="text-3xl font-bold leading-none tabular-nums text-card-foreground">
+            {from}
+          </span>
           <div className="flex flex-1 items-center gap-1.5 px-2" aria-hidden="true">
             <span className="size-1.5 rounded-full bg-muted-foreground/40" />
             <span className="h-px flex-1 bg-muted-foreground/40" />
@@ -50,37 +49,36 @@ export function Boarding1({
             <span className="h-px flex-1 bg-muted-foreground/40" />
             <span className="size-1.5 rounded-full bg-muted-foreground/40" />
           </div>
-          <div className="flex flex-col items-end">
-            <span className="text-3xl font-bold leading-none tabular-nums text-card-foreground">
-              {to}
-            </span>
-            <span className="text-xs text-muted-foreground">To</span>
+          <span className="text-3xl font-bold leading-none tabular-nums text-card-foreground">
+            {to}
+          </span>
+        </div>
+        {(flight || date || seat) && (
+          <div className="flex items-center justify-between border-t border-dashed border-border pt-2 text-xs">
+            {flight && (
+              <div className="flex flex-col">
+                <span className="text-muted-foreground">Flight</span>
+                <span className="font-semibold text-card-foreground">
+                  {flight}
+                </span>
+              </div>
+            )}
+            {date && (
+              <div className="flex flex-col">
+                <span className="text-muted-foreground">Date</span>
+                <span className="font-semibold text-card-foreground">{date}</span>
+              </div>
+            )}
+            {seat && (
+              <div className="flex flex-col items-end">
+                <span className="text-muted-foreground">Seat</span>
+                <span className="font-semibold text-card-foreground">
+                  {seat}
+                </span>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="flex items-center justify-between border-t border-dashed border-border pt-2 text-xs">
-          {flight && (
-            <div className="flex flex-col">
-              <span className="text-muted-foreground">Flight</span>
-              <span className="font-mono font-semibold text-card-foreground">
-                {flight}
-              </span>
-            </div>
-          )}
-          {date && (
-            <div className="flex flex-col">
-              <span className="text-muted-foreground">Date</span>
-              <span className="font-semibold text-card-foreground">{date}</span>
-            </div>
-          )}
-          {seat && (
-            <div className="flex flex-col items-end">
-              <span className="text-muted-foreground">Seat</span>
-              <span className="font-mono font-semibold text-card-foreground">
-                {seat}
-              </span>
-            </div>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

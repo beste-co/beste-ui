@@ -5,13 +5,14 @@ import { cn } from "@/lib/utils";
 type Level = "info" | "warn" | "error" | "ok";
 
 interface LogEntry {
-  time: string;
+  time?: string;
   level: Level;
   message: string;
 }
 
 interface Terminal7Props {
   logs?: LogEntry[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,22 +24,23 @@ const levelClasses: Record<Level, string> = {
 };
 
 const levelLabel: Record<Level, string> = {
-  info: "INFO",
-  warn: "WARN",
-  error: "ERR",
-  ok: "OK",
+  info: "info",
+  warn: "warn",
+  error: "error",
+  ok: "ok",
 };
 
 export const terminal7Demo: Terminal7Props = {
   logs: [
-    { time: "12:04:01", level: "ok", message: "Server ready on port 3000" },
-    { time: "12:04:03", level: "info", message: "Compiled /dashboard in 240ms" },
-    { time: "12:04:06", level: "warn", message: "Slow query took 412ms" },
-    { time: "12:04:09", level: "error", message: "Failed to reach cache" },
+    { level: "ok", message: "Server ready" },
+    { level: "info", message: "Compiled /dashboard" },
+    { level: "warn", message: "Slow query" },
+    { level: "error", message: "Failed to reach cache" },
   ],
+  bordered: false,
 };
 
-export function Terminal7({ logs = [], className }: Terminal7Props) {
+export function Terminal7({ logs = [], bordered = false, className }: Terminal7Props) {
   return (
     <div
       className={cn(
@@ -46,15 +48,17 @@ export function Terminal7({ logs = [], className }: Terminal7Props) {
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1 rounded-lg border border-zinc-800 bg-zinc-950 p-3 font-mono text-xs shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1 rounded-lg bg-zinc-950 p-3 font-mono text-xs shadow-sm", bordered && "border border-zinc-800")}>
         {logs.map((log, index) => (
           <div key={index} className="flex items-baseline gap-2">
-            <span className="shrink-0 tabular-nums text-zinc-600">
-              {log.time}
-            </span>
+            {log.time && (
+              <span className="shrink-0 tabular-nums text-zinc-600">
+                {log.time}
+              </span>
+            )}
             <span
               className={cn(
-                "w-9 shrink-0 font-semibold",
+                "w-10 shrink-0 font-semibold",
                 levelClasses[log.level]
               )}
             >

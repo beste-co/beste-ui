@@ -21,6 +21,7 @@ interface Realestate10Props {
   title?: string;
   steps?: Step[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -73,12 +74,14 @@ export const realestate10Demo: Realestate10Props = {
     { label: "Closing", date: "May 22", status: "upcoming" },
   ],
   tone: "primary",
+  bordered: false,
 };
 
 export function Realestate10({
   title,
   steps = [],
   tone = "primary",
+  bordered = false,
   className,
 }: Realestate10Props) {
   return (
@@ -88,9 +91,9 @@ export function Realestate10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {title && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {title}
           </span>
         )}
@@ -147,7 +150,7 @@ export function Realestate10({
                 >
                   {s.label}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">
+                <span className="text-xs text-muted-foreground">
                   {s.date}
                 </span>
               </div>

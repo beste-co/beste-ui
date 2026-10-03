@@ -1,6 +1,5 @@
 "use client";
 
-import { AlertOctagon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Allergy {
@@ -12,6 +11,7 @@ interface Allergy {
 interface Health24Props {
   title?: string;
   allergies?: Allergy[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -29,16 +29,18 @@ export const health24Demo: Health24Props = {
       severity: "low",
     },
     {
-      name: "Pollen · grass",
+      name: "Pollen",
       reaction: "Congestion, sneezing",
       severity: "low",
     },
   ],
+  bordered: false,
 };
 
 export function Health24({
   title,
   allergies = [],
+  bordered = false,
   className,
 }: Health24Props) {
   return (
@@ -48,18 +50,12 @@ export function Health24({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-rose-500 bg-card p-3 shadow-sm">
-        <div className="flex items-center gap-2">
-          <AlertOctagon
-            className="size-4 text-rose-500"
-            aria-hidden="true"
-          />
-          {title && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">
-              {title}
-            </span>
-          )}
-        </div>
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-rose-500")}>
+        {title && (
+          <span className="text-xs font-semibold text-rose-700 dark:text-rose-300">
+            {title}
+          </span>
+        )}
         <div className="flex flex-col divide-y divide-border">
           {allergies.map((a, idx) => (
             <div

@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 
 interface Chat28Props {
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,9 +22,11 @@ const actions = [
   { Icon: MoreHorizontal, label: "More" },
 ];
 
-export const chat28Demo: Chat28Props = {};
+export const chat28Demo: Chat28Props = {
+  bordered: false,
+};
 
-export function Chat28({ className }: Chat28Props) {
+export function Chat28({ bordered = false, className }: Chat28Props) {
   return (
     <div
       className={cn(
@@ -31,7 +34,7 @@ export function Chat28({ className }: Chat28Props) {
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-full border border-border bg-card p-1 shadow-md">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-full bg-card p-1 shadow-md", bordered && "border border-border")}>
         {actions.map(({ Icon, label, destructive }) => (
           <button
             key={label}

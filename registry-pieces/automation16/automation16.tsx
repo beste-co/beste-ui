@@ -47,25 +47,23 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation16Demo: Automation16Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   method: "POST",
   url: "https://api.beste.co/v1/invoices",
-  headersLabel: "Headers",
   headers: [
     { key: "Authorization", value: "Bearer ••••" },
     { key: "Content-Type", value: "application/json" },
-    { key: "Idempotency-Key", value: "{{run.id}}" },
   ],
 };
 
 export function Automation16({
   method = "POST",
   url = "https://example.com",
-  headersLabel = "Headers",
+  headersLabel,
   headers = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation16Props) {
@@ -80,39 +78,43 @@ export function Automation16({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col overflow-hidden rounded-md shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center gap-1.5 border-b border-current/15 px-3 py-2">
+        <div className="flex items-center gap-1.5 px-3 py-2">
           <span
             className={cn(
-              "shrink-0 rounded-sm px-1.5 py-0.5 font-mono text-xs font-bold",
+              "shrink-0 rounded-sm px-1.5 py-0.5 text-xs font-bold",
               methodClasses
             )}
           >
             {method}
           </span>
-          <span className="flex-1 truncate font-mono text-xs">
+          <span className="flex-1 truncate text-xs">
             {url}
           </span>
         </div>
-        <div className="flex flex-col px-3 py-2">
-          <span className="pb-1 text-xs font-semibold uppercase tracking-wide text-current/60">
-            {headersLabel}
-          </span>
-          <ul className="flex flex-col gap-0.5">
-            {headers.map((h, i) => (
-              <li
-                key={i}
-                className="flex items-baseline justify-between gap-2 font-mono text-xs"
-              >
-                <span className="truncate text-current/60">
-                  {h.key}
-                </span>
-                <span className="truncate">
-                  {h.value}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {(headersLabel || headers.length > 0) && (
+          <div className="flex flex-col border-t border-current/15 px-3 py-2">
+            {headersLabel && (
+              <span className="pb-1 text-xs font-medium text-current/60">
+                {headersLabel}
+              </span>
+            )}
+            <ul className="flex flex-col gap-0.5">
+              {headers.map((h, i) => (
+                <li
+                  key={i}
+                  className="flex items-baseline justify-between gap-2 text-xs"
+                >
+                  <span className="truncate text-current/60">
+                    {h.key}
+                  </span>
+                  <span className="truncate">
+                    {h.value}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

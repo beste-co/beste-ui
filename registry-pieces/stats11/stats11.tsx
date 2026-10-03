@@ -60,7 +60,7 @@ export function Stats11({
           {value}
         </span>
         {label && (
-          <span className="text-sm font-semibold uppercase tracking-wider opacity-90">
+          <span className="text-sm font-semibold opacity-90">
             {label}
           </span>
         )}

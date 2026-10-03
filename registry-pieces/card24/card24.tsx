@@ -16,39 +16,42 @@ interface Card24Props {
     image?: string;
   };
   reports?: Report[];
+  bordered?: boolean;
   className?: string;
 }
 
 export const card24Demo: Card24Props = {
   manager: {
-    name: "Kian Okafor",
+    name: "Max Richter",
     role: "VP Engineering",
-    initials: "KO",
+    initials: "MR",
     image:
       "https://images.unsplash.com/photo-1611695434369-a8f5d76ceb7b?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjQ3fHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D",
   },
   reports: [
     {
-      name: "Andrea Kim",
+      name: "Kelly Moran",
       role: "Staff eng",
-      initials: "AK",
+      initials: "KM",
       image:
         "https://images.unsplash.com/photo-1558507652-2d9626c4e67a?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjU5fHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D",
     },
-    { name: "Beste Sözen", role: "Design lead", initials: "BS" },
+    { name: "Peter Broderick", role: "Design lead", initials: "PB" },
     {
-      name: "Jules Park",
+      name: "Anne Müller",
       role: "Sr. PM",
-      initials: "JP",
+      initials: "AM",
       image:
         "https://images.unsplash.com/photo-1674932668403-33398b81c92f?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjYzfHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D",
     },
   ],
+  bordered: false,
 };
 
 export function Card24({
   manager,
   reports = [],
+  bordered = false,
   className,
 }: Card24Props) {
   return (
@@ -58,7 +61,7 @@ export function Card24({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col items-center rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col items-center rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {manager && (
           <div className="flex flex-col items-center gap-1">
             <div className="relative flex size-11 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 text-sm font-bold text-white shadow-md">

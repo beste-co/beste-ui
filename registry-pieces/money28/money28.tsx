@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Nfc } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "primary" | "foreground" | "emerald" | "sky" | "violet";
@@ -72,13 +71,10 @@ export function Money28({
           >
             <span className="h-3 w-5 rounded-sm border border-current/40" />
           </span>
-          <span className="inline-flex items-center gap-2">
-            <Nfc className="size-4 opacity-70" aria-hidden="true" />
-            <span className="text-sm font-semibold tracking-wide">{brand}</span>
-          </span>
+          <span className="text-sm font-semibold">{brand}</span>
         </div>
 
-        <div className="flex items-center gap-3 font-mono text-lg tracking-widest tabular-nums">
+        <div className="flex items-center gap-3 text-lg tabular-nums">
           <span className="sr-only">Card ending {last4}</span>
           {groups.map((group, i) => (
             <span
@@ -100,18 +96,8 @@ export function Money28({
             step > 4 ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
           )}
         >
-          <div className="flex flex-col">
-            <span className="text-xs uppercase tracking-wide opacity-60">
-              Card holder
-            </span>
-            <span className="text-sm font-medium">{holder}</span>
-          </div>
-          <div className="flex flex-col items-end">
-            <span className="text-xs uppercase tracking-wide opacity-60">
-              Expires
-            </span>
-            <span className="text-sm font-medium tabular-nums">{expiry}</span>
-          </div>
+          <span className="text-sm font-medium">{holder}</span>
+          <span className="text-sm font-medium tabular-nums">{expiry}</span>
         </div>
       </div>
     </div>

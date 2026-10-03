@@ -38,7 +38,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar2Demo: Calendar2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   month: "April",
   year: 2026,
@@ -58,7 +58,7 @@ export function Calendar2({
   highlights = [],
   weekdays = DEFAULT_WEEKDAYS,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar2Props) {
@@ -82,7 +82,7 @@ export function Calendar2({
           <span className="text-sm font-semibold">
             {month}
           </span>
-          <span className="text-xs font-mono tabular-nums text-current/60">
+          <span className="text-xs tabular-nums text-current/60">
             {year}
           </span>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowDownLeft, ArrowUpRight, Wallet } from "lucide-react";
+import { Wallet } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "primary" | "foreground" | "emerald" | "sky" | "violet";
@@ -13,15 +13,16 @@ interface Money25Props {
   spending?: number;
   durationMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  emerald: "bg-emerald-500 text-white",
-  sky: "bg-sky-500 text-white",
-  violet: "bg-violet-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  emerald: "text-emerald-500",
+  sky: "text-sky-500",
+  violet: "text-violet-500",
 };
 
 export const money25Demo: Money25Props = {
@@ -29,7 +30,8 @@ export const money25Demo: Money25Props = {
   amount: 12480.5,
   income: 6240,
   spending: 1835.2,
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 function money(value: number, fractionDigits = 0): string {
@@ -49,7 +51,8 @@ export function Money25({
   income = 0,
   spending = 0,
   durationMs = 1200,
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Money25Props) {
   const [elapsed, setElapsed] = useState(0);
@@ -76,8 +79,8 @@ export function Money25({
   const cents = Math.round((amount - Math.floor(amount)) * 100);
 
   const stats = [
-    { label: "Income", value: income, up: true, delay: statDelay },
-    { label: "Spending", value: spending, up: false, delay: statDelay + 220 },
+    { label: "Income", value: income, delay: statDelay },
+    { label: "Spending", value: spending, delay: statDelay + 220 },
   ];
 
   return (
@@ -87,17 +90,9 @@ export function Money25({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-4 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-4 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2.5">
-          <span
-            className={cn(
-              "flex size-8 items-center justify-center rounded-lg",
-              tileClasses[tone]
-            )}
-            aria-hidden="true"
-          >
-            <Wallet className="size-4" />
-          </span>
+          <Wallet className={cn("size-5 shrink-0", iconClasses[tone])} aria-hidden="true" />
           <span className="text-sm text-muted-foreground">{label}</span>
         </div>
 
@@ -141,18 +136,7 @@ export function Money25({
                   started ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
                 )}
               >
-                <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                  {item.up ? (
-                    <ArrowDownLeft
-                      className="size-3 text-emerald-500"
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <ArrowUpRight
-                      className="size-3 text-rose-500"
-                      aria-hidden="true"
-                    />
-                  )}
+                <span className="text-xs text-muted-foreground">
                   {item.label}
                 </span>
                 <span className="text-sm font-medium tabular-nums text-card-foreground">

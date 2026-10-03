@@ -9,6 +9,7 @@ interface Editor14Props {
   suffix?: string;
   message?: string;
   source?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,7 +18,7 @@ export const editor14Demo: Editor14Props = {
   problem: "reduce",
   suffix: "(sum, i) => sum + i.price);",
   message: "Expected 2 arguments, but got 1.",
-  source: "ts(2554)",
+  bordered: false,
 };
 
 export function Editor14({
@@ -26,6 +27,7 @@ export function Editor14({
   suffix = "",
   message,
   source,
+  bordered = false,
   className,
 }: Editor14Props) {
   return (
@@ -36,7 +38,7 @@ export function Editor14({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
-        <div className="rounded-md border border-border bg-card px-3 py-2 font-mono text-xs shadow-sm">
+        <div className={cn("rounded-md bg-card px-3 py-2 text-xs shadow-sm", bordered && "border border-border")}>
           <span className="text-card-foreground">{prefix}</span>
           <span className="text-card-foreground underline decoration-rose-500 decoration-wavy underline-offset-4">
             {problem}
@@ -55,7 +57,7 @@ export function Editor14({
               </span>
             )}
             {source && (
-              <span className="font-mono text-xs text-rose-600/80 dark:text-rose-300/80">
+              <span className="text-xs text-rose-600/80 dark:text-rose-300/80">
                 {source}
               </span>
             )}

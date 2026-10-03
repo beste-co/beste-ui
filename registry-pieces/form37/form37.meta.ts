@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Name, email and company get typed in one after another behind a caret, then the Continue button spins through a loading state and morphs into an emerald check that says you're in.",
   category: "Form",
+  cardScale: 0.75,
   isAnimated: true,
   registryDependencies: ["input"],
 };

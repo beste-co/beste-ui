@@ -13,6 +13,7 @@ interface Browser36Props {
   action?: string;
   loadMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,6 +22,7 @@ export const browser36Demo: Browser36Props = {
   heading: "Welcome back, Nina",
   body: "Three releases shipped this week and every check is green. Your next review is on Thursday.",
   action: "Open workspace",
+  bordered: false,
 };
 
 export function Browser36({
@@ -30,6 +32,7 @@ export function Browser36({
   action = "Continue",
   loadMs = 1400,
   holdMs = 2600,
+  bordered = false,
   className,
 }: Browser36Props) {
   const [phase, setPhase] = useState<Phase>("loading");
@@ -57,7 +60,7 @@ export function Browser36({
       )}
     >
       <style>{`@keyframes browser36-bar { from { width: 0%; } 60% { width: 72%; } to { width: 100%; } } @keyframes browser36-shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } } @keyframes browser36-in { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="w-full max-w-72 overflow-hidden rounded-lg border border-border bg-card shadow-md">
+      <div className={cn("w-full max-w-72 overflow-hidden rounded-lg bg-card shadow-md", bordered && "border border-border")}>
         <div className="flex h-9 items-center gap-2 border-b border-border bg-muted px-3">
           <span className="flex gap-1" aria-hidden="true">
             <span className="size-2 rounded-full bg-muted-foreground/30" />

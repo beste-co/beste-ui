@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -19,6 +18,7 @@ interface Realestate9Props {
   fiveYear?: string;
   series?: number[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -46,9 +46,9 @@ export const realestate9Demo: Realestate9Props = {
   label: "Estimated value",
   current: "$1,240,000",
   oneYear: "+4.2% 1y",
-  fiveYear: "+28.7% 5y",
   series: [960, 980, 1020, 1060, 1080, 1140, 1180, 1240],
   tone: "primary",
+  bordered: false,
 };
 
 export function Realestate9({
@@ -58,6 +58,7 @@ export function Realestate9({
   fiveYear,
   series = [],
   tone = "primary",
+  bordered = false,
   className,
 }: Realestate9Props) {
   const min = Math.min(...series);
@@ -81,27 +82,26 @@ export function Realestate9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
           {label && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {label}
             </span>
           )}
           {oneYear && (
             <span
               className={cn(
-                "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold",
+                "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums",
                 pillClasses[tone]
               )}
             >
-              <TrendingUp className="size-3" aria-hidden="true" />
               {oneYear}
             </span>
           )}
         </div>
         {current && (
-          <span className="font-mono text-2xl font-bold text-card-foreground">
+          <span className="text-2xl font-bold tabular-nums text-card-foreground">
             {current}
           </span>
         )}

@@ -19,18 +19,19 @@ interface Education10Props {
   xp?: number;
   nextLevelXp?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-card-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  violet: "bg-violet-500 text-white",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  neutral: "text-card-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  violet: "text-violet-500",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const levelPillClasses: Record<Tone, string> = {
@@ -61,6 +62,7 @@ export const education10Demo: Education10Props = {
   xp: 4320,
   nextLevelXp: 5000,
   tone: "neutral",
+  bordered: false,
 };
 
 export function Education10({
@@ -69,13 +71,13 @@ export function Education10({
   xp = 0,
   nextLevelXp = 100,
   tone = "neutral",
+  bordered = false,
   className,
 }: Education10Props) {
   const pct = Math.max(
     0,
     Math.min(100, Math.round((xp / Math.max(1, nextLevelXp)) * 100))
   );
-  const xpRemaining = Math.max(0, nextLevelXp - xp);
 
   return (
     <div
@@ -84,27 +86,23 @@ export function Education10({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 shrink-0 items-center justify-center rounded-md",
-              tileClasses[tone]
-            )}
-          >
-            <Sparkles className="size-4" aria-hidden="true" />
-          </div>
+          <Sparkles
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="truncate text-sm font-semibold text-card-foreground">
               {skill}
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs tabular-nums text-muted-foreground">
               {xp.toLocaleString()} / {nextLevelXp.toLocaleString()} XP
             </span>
           </div>
           <span
             className={cn(
-              "shrink-0 rounded-full px-2 py-0.5 text-xs font-bold",
+              "shrink-0 rounded-full px-2 py-0.5 text-xs font-bold tabular-nums",
               levelPillClasses[tone]
             )}
           >
@@ -120,9 +118,6 @@ export function Education10({
             style={{ width: `${pct}%` }}
           />
         </div>
-        <span className="text-xs text-muted-foreground">
-          {xpRemaining.toLocaleString()} XP to Lv {level + 1}
-        </span>
       </div>
     </div>
   );

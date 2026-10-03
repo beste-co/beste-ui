@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle2, ScanLine } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Ticket11Props {
@@ -11,6 +11,7 @@ interface Ticket11Props {
   holder?: string;
   scanMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,7 +19,7 @@ export const ticket11Demo: Ticket11Props = {
   eventName: "Blue Note Sessions",
   venue: "Sat 12 Oct, 20:30",
   seat: "Row C, Seat 14",
-  holder: "Erykah Badu",
+  bordered: false,
 };
 
 const BARS = [1, 2, 1, 3, 1, 1, 2, 1, 3, 2, 1, 1, 2, 3, 1, 2, 1, 1, 3, 1, 2, 2, 1, 3];
@@ -36,6 +37,7 @@ export function Ticket11({
   holder,
   scanMs = 2000,
   holdMs = 2400,
+  bordered = false,
   className,
 }: Ticket11Props) {
   const [valid, setValid] = useState(false);
@@ -57,7 +59,7 @@ export function Ticket11({
 @keyframes ticket11-in { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
 `}</style>
 
-      <div className="w-full max-w-64 overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-64 overflow-hidden rounded-xl bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex flex-col gap-1 p-4">
           <p className="text-sm font-medium text-card-foreground">
             {eventName}
@@ -113,8 +115,7 @@ export function Ticket11({
             )}
           </div>
 
-          <p className="mt-2 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
-            <ScanLine className="size-3.5" aria-hidden="true" />
+          <p className="mt-2 text-center text-xs text-muted-foreground">
             {valid ? "Enjoy the show" : "Hold the code under the scanner"}
           </p>
         </div>

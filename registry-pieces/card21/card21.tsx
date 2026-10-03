@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle, MoreHorizontal } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Card21Props {
@@ -10,17 +10,18 @@ interface Card21Props {
   initials?: string;
   online?: boolean;
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const card21Demo: Card21Props = {
-  name: "Andrea Kim",
+  name: "Hania Rani",
   title: "Staff engineer",
-  department: "Platform · Beste",
-  initials: "AK",
+  initials: "HR",
   online: true,
   image:
     "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjg0fHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D",
+  bordered: false,
 };
 
 export function Card21({
@@ -30,6 +31,7 @@ export function Card21({
   initials = "??",
   online = false,
   image,
+  bordered = false,
   className,
 }: Card21Props) {
   return (
@@ -39,7 +41,7 @@ export function Card21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="relative shrink-0">
           <div className="relative flex size-10 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 text-xs font-bold text-white">
             {image ? (
@@ -76,22 +78,13 @@ export function Card21({
             </span>
           )}
         </div>
-        <div className="flex items-center gap-1">
-          <button
-            type="button"
-            className="flex size-8 items-center justify-center rounded-md bg-muted text-card-foreground hover:bg-muted-foreground/10"
-            aria-label="Message"
-          >
-            <MessageCircle className="size-4" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="flex size-8 items-center justify-center rounded-md text-muted-foreground hover:bg-muted"
-            aria-label="More"
-          >
-            <MoreHorizontal className="size-4" aria-hidden="true" />
-          </button>
-        </div>
+        <button
+          type="button"
+          className="flex size-8 shrink-0 items-center justify-center rounded-md bg-muted text-card-foreground hover:bg-muted-foreground/10"
+          aria-label="Message"
+        >
+          <MessageCircle className="size-4" aria-hidden="true" />
+        </button>
       </div>
     </div>
   );

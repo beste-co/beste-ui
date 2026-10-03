@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Pause, SkipBack, SkipForward } from "lucide-react";
+import { Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Media27Props {
@@ -10,6 +10,7 @@ interface Media27Props {
   cover?: string;
   durationSeconds?: number;
   cycleMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,6 +20,7 @@ export const media27Demo: Media27Props = {
   cover:
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
   durationSeconds: 214,
+  bordered: false,
 };
 
 const PEAKS = [
@@ -56,6 +58,7 @@ export function Media27({
   cover,
   durationSeconds = 200,
   cycleMs = 9000,
+  bordered = false,
   className,
 }: Media27Props) {
   const [ratio, setRatio] = useState(0);
@@ -77,7 +80,7 @@ export function Media27({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           {cover ? (
             <img
@@ -111,29 +114,13 @@ export function Media27({
 
         <div className="flex items-center justify-between text-xs tabular-nums text-muted-foreground">
           <span>{clock(durationSeconds * ratio)}</span>
-          <span className="flex items-center gap-2">
-            <button
-              type="button"
-              className="cursor-pointer text-muted-foreground transition-colors hover:text-card-foreground motion-reduce:transition-none"
-              aria-label="Previous track"
-            >
-              <SkipBack className="size-4 fill-current" aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              className="flex size-8 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-opacity hover:opacity-90 motion-reduce:transition-none"
-              aria-label="Pause"
-            >
-              <Pause className="size-4 fill-current" aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              className="cursor-pointer text-muted-foreground transition-colors hover:text-card-foreground motion-reduce:transition-none"
-              aria-label="Next track"
-            >
-              <SkipForward className="size-4 fill-current" aria-hidden="true" />
-            </button>
-          </span>
+          <button
+            type="button"
+            className="flex size-8 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-opacity hover:opacity-90 motion-reduce:transition-none"
+            aria-label="Pause"
+          >
+            <Pause className="size-4 fill-current" aria-hidden="true" />
+          </button>
           <span>{clock(durationSeconds)}</span>
         </div>
       </div>

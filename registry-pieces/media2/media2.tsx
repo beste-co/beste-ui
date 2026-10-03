@@ -11,6 +11,7 @@ interface Media2Props {
   duration?: string;
   title?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,6 +28,7 @@ export const media2Demo: Media2Props = {
   duration: "2:48",
   title: "Product tour",
   tone: "ocean",
+  bordered: false,
 };
 
 export function Media2({
@@ -35,6 +37,7 @@ export function Media2({
   duration,
   title,
   tone = "primary",
+  bordered = false,
   className,
 }: Media2Props) {
   return (
@@ -46,7 +49,8 @@ export function Media2({
     >
       <div
         className={cn(
-          "relative aspect-video w-full max-w-64 overflow-hidden rounded-lg border border-border shadow-sm",
+          "relative aspect-video w-full max-w-64 overflow-hidden rounded-lg shadow-sm",
+          bordered && "border border-border",
           !src && toneClasses[tone]
         )}
       >
@@ -66,7 +70,7 @@ export function Media2({
           </span>
         </div>
         {duration && (
-          <span className="absolute bottom-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 font-mono text-xs tabular-nums text-white">
+          <span className="absolute bottom-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-xs tabular-nums text-white">
             {duration}
           </span>
         )}

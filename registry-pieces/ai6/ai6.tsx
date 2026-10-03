@@ -33,21 +33,19 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const ai6Demo: Ai6Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   value: 0.7,
   label: "Temperature",
-  lowLabel: "Focused",
-  highLabel: "Creative",
 };
 
 export function Ai6({
   value = 0,
   label = "Temperature",
-  lowLabel = "Focused",
-  highLabel = "Creative",
+  lowLabel,
+  highLabel,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Ai6Props) {
@@ -64,10 +62,10 @@ export function Ai6({
     >
       <div className={cn("flex w-full max-w-64 flex-col gap-2 rounded-md px-3 py-2.5 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
-          <span className="font-mono text-sm font-semibold tabular-nums">
+          <span className="text-sm font-semibold tabular-nums">
             {value.toFixed(1)}
           </span>
         </div>
@@ -81,10 +79,12 @@ export function Ai6({
             style={{ left: `${pct}%` }}
           />
         </div>
-        <div className="flex items-center justify-between text-xs text-current/60">
-          <span>{lowLabel}</span>
-          <span>{highLabel}</span>
-        </div>
+        {(lowLabel || highLabel) && (
+          <div className="flex items-center justify-between text-xs text-current/60">
+            <span>{lowLabel}</span>
+            <span>{highLabel}</span>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const toneClasses: Record<Tone, string> = {
 export const progress5Demo: Progress5Props = {
   segments: 6,
   filled: 4,
-  tone: "emerald",
+  tone: "primary",
   label: "Onboarding",
 };
 

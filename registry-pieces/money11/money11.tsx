@@ -11,16 +11,17 @@ interface Money11Props {
   progress?: number;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  rose: "bg-gradient-to-br from-rose-400 to-pink-500 text-white",
-  emerald: "bg-gradient-to-br from-emerald-400 to-teal-500 text-white",
-  violet: "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white",
-  sunset: "bg-gradient-to-br from-amber-400 to-orange-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  rose: "text-rose-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  sunset: "text-amber-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -37,7 +38,8 @@ export const money11Demo: Money11Props = {
   goal: "$5,000",
   progress: 50,
   label: "Vacation fund",
-  tone: "rose",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Money11({
@@ -45,7 +47,8 @@ export function Money11({
   goal = "$0",
   progress = 0,
   label,
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Money11Props) {
   const pct = Math.max(0, Math.min(100, progress));
@@ -57,19 +60,11 @@ export function Money11({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
-        <div
-          className={cn(
-            "flex size-12 shrink-0 items-center justify-center rounded-full shadow-sm",
-            tileClasses[tone]
-          )}
-          aria-hidden="true"
-        >
-          <PiggyBank className="size-6" aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
+        <PiggyBank className={cn("size-7 shrink-0", iconClasses[tone])} aria-hidden="true" />
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           {label && (
-            <span className="truncate text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="truncate text-xs font-semibold text-muted-foreground">
               {label}
             </span>
           )}

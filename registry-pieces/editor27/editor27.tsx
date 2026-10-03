@@ -3,12 +3,15 @@
 import { cn } from "@/lib/utils";
 
 interface Editor27Props {
+  bordered?: boolean;
   className?: string;
 }
 
-export const editor27Demo: Editor27Props = {};
+export const editor27Demo: Editor27Props = {
+  bordered: false,
+};
 
-export function Editor27({ className }: Editor27Props) {
+export function Editor27({ bordered = false, className }: Editor27Props) {
   return (
     <div
       className={cn(
@@ -16,7 +19,7 @@ export function Editor27({ className }: Editor27Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col gap-0.5 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col gap-0.5 rounded-md bg-card px-3 py-2 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <span className="w-4 text-right text-muted-foreground/60">1</span>
           <code>
@@ -42,13 +45,6 @@ export function Editor27({ className }: Editor27Props) {
               {"}"}
             </span>
           </code>
-        </div>
-        <div className="mt-1 flex items-center gap-1.5 border-t border-border pt-1 text-xs text-muted-foreground">
-          <span
-            className="size-2 rounded-sm bg-primary/30"
-            aria-hidden="true"
-          />
-          <span>Matching bracket on line 3</span>
         </div>
       </pre>
     </div>

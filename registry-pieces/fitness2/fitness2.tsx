@@ -22,18 +22,19 @@ interface Fitness2Props {
   date?: string;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-foreground text-background",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const labelClasses: Record<Tone, string> = {
@@ -61,12 +62,10 @@ const borderClasses: Record<Tone, string> = {
 export const fitness2Demo: Fitness2Props = {
   lift: "Deadlift · 1RM",
   newPr: "180 kg",
-  previous: "170 kg",
-  prevLabel: "Prev",
   delta: "+10 kg",
-  date: "Hit today · Apr 23",
   label: "New PR",
   tone: "primary",
+  bordered: false,
 };
 
 export function Fitness2({
@@ -78,6 +77,7 @@ export function Fitness2({
   date,
   label = "New PR",
   tone = "primary",
+  bordered = false,
   className,
 }: Fitness2Props) {
   return (
@@ -89,23 +89,20 @@ export function Fitness2({
     >
       <div
         className={cn(
-          "flex w-full max-w-80 flex-col gap-2 rounded-xl border bg-card p-3 shadow-sm",
+          "flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm",
+          bordered && "border",
           borderClasses[tone]
         )}
       >
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-9 items-center justify-center rounded-full shadow-md",
-              iconClasses[tone]
-            )}
-          >
-            <Trophy className="size-4" aria-hidden="true" />
-          </div>
+          <Trophy
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex flex-col">
             <span
               className={cn(
-                "text-xs font-semibold uppercase tracking-wide",
+                "text-xs font-semibold",
                 labelClasses[tone]
               )}
             >
@@ -119,7 +116,7 @@ export function Fitness2({
           </div>
         </div>
         <div className="flex items-baseline justify-between">
-          <span className="font-mono text-3xl font-bold text-card-foreground">
+          <span className="text-3xl font-bold tabular-nums text-card-foreground">
             {newPr}
           </span>
           {delta && (
@@ -128,14 +125,16 @@ export function Fitness2({
             </span>
           )}
         </div>
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          {previous && (
-            <span>
-              {prevLabel} {previous}
-            </span>
-          )}
-          {date && <span>{date}</span>}
-        </div>
+        {(previous || date) && (
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            {previous && (
+              <span>
+                {prevLabel} {previous}
+              </span>
+            )}
+            {date && <span>{date}</span>}
+          </div>
+        )}
       </div>
     </div>
   );

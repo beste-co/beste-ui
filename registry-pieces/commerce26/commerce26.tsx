@@ -9,6 +9,7 @@ interface Commerce26Props {
   initials?: string;
   imageSrc?: string;
   alt?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -16,13 +17,12 @@ const defaultImage =
   "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA3fHxwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D";
 
 export const commerce26Demo: Commerce26Props = {
-  buyer: "Mia R.",
-  initials: "MR",
-  city: "Los Angeles",
+  buyer: "Hania Rani",
+  initials: "HR",
   product: "Air Max 90",
-  ago: "3 min ago",
   imageSrc: defaultImage,
-  alt: "Mia R.",
+  alt: "Hania Rani",
+  bordered: false,
 };
 
 export function Commerce26({
@@ -33,11 +33,12 @@ export function Commerce26({
   ago,
   imageSrc = defaultImage,
   alt,
+  bordered = false,
   className,
 }: Commerce26Props) {
   return (
     <div className={cn("relative flex size-full items-center justify-center p-4", className)}>
-      <div className="flex w-full max-w-80 items-center gap-2.5 rounded-md border border-border bg-card p-2.5 shadow-md">
+      <div className={cn("flex w-full max-w-80 items-center gap-2.5 rounded-md bg-card p-2.5 shadow-md", bordered && "border border-border")}>
         <span
           className={cn(
             "relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-semibold text-white",
@@ -57,7 +58,7 @@ export function Commerce26({
             {city && <span className="text-muted-foreground"> in {city}</span>} just bought{" "}
             <span className="font-semibold">{product}</span>
           </p>
-          {ago && <span className="font-mono text-xs text-muted-foreground">{ago}</span>}
+          {ago && <span className="text-xs text-muted-foreground">{ago}</span>}
         </div>
       </div>
     </div>

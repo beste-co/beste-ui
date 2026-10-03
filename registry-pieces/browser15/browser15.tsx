@@ -11,6 +11,7 @@ interface Suggestion {
 interface Browser15Props {
   query?: string;
   suggestions?: Suggestion[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -22,11 +23,13 @@ export const browser15Demo: Browser15Props = {
     { label: "react 19 release notes", recent: true },
     { label: "react suspense patterns" },
   ],
+  bordered: false,
 };
 
 export function Browser15({
   query = "",
   suggestions = [],
+  bordered = false,
   className,
 }: Browser15Props) {
   return (
@@ -36,7 +39,7 @@ export function Browser15({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-md">
+      <div className={cn("flex w-full max-w-72 flex-col overflow-hidden rounded-lg bg-card shadow-md", bordered && "border border-border")}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2">
           <Search
             className="size-3.5 shrink-0 text-muted-foreground"

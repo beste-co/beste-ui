@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "boarding1",
   title: "Boarding Pass",
   description:
-    "Airline boarding card with FROM and TO airport codes, a flight line, and a dashed divider above date, flight, and seat.",
+    "Airline boarding card with the two airport codes joined by a flight line, above a dashed divider with the date and seat.",
   category: "Ticket",
 };

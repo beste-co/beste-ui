@@ -55,12 +55,12 @@ export function Browser16({
           cfg.tint
         )}
       >
-        <span className="font-mono text-xl font-bold tabular-nums">
+        <span className="text-xl font-bold tabular-nums">
           {code}
         </span>
         <div className="flex flex-col">
           {message && (
-            <span className="text-xs font-bold uppercase tracking-wide">
+            <span className="text-xs font-bold">
               {message}
             </span>
           )}

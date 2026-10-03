@@ -36,7 +36,6 @@ const cardClasses: Record<Tone, string> = {
 };
 
 export const travel16Demo: Travel16Props = {
-  program: "Miles & Smiles",
   tier: "Elite Gold",
   miles: "42,180",
   milesLabel: "miles",
@@ -72,18 +71,18 @@ export function Travel16({
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex size-8 items-center justify-center rounded-full bg-current/10 backdrop-blur">
-              <Plane className="size-4" aria-hidden="true" />
-            </div>
+            <Plane className="size-5 shrink-0" aria-hidden="true" />
             <div className="flex flex-col">
-              <span className="text-xs font-medium uppercase tracking-wide opacity-80">
-                {program}
-              </span>
+              {program && (
+                <span className="text-xs font-medium opacity-80">
+                  {program}
+                </span>
+              )}
               <span className="text-sm font-bold">{tier}</span>
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <span className="font-mono text-xl font-bold">{miles}</span>
+            <span className="text-xl font-bold tabular-nums">{miles}</span>
             {milesLabel && (
               <span className="text-xs opacity-80">{milesLabel}</span>
             )}

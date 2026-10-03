@@ -34,30 +34,20 @@ const dotClasses: Record<Level, string> = {
 };
 
 export const terminal15Demo: Terminal15Props = {
-  title: "beste-web / production",
   lines: [
-    { text: "Cloning repository main@8f2c1d" },
+    { text: "Cloning repository" },
     { text: "Installing dependencies" },
-    { text: "Compiling 42 routes" },
-    { text: "Unused env var NEXT_TELEMETRY", level: "warn" },
-    { text: "Build finished in 38s", level: "ok" },
-    { text: "Uploading 312 static assets" },
-    { text: "Provisioning edge functions" },
-    { text: "Warming cache in 12 regions" },
-    { text: "Health check passed", level: "ok" },
+    { text: "Compiling routes" },
+    { text: "Unused env variable", level: "warn" },
+    { text: "Build finished", level: "ok" },
+    { text: "Uploading assets" },
+    { text: "Warming cache" },
     { text: "Deployed to production", level: "ok" },
   ],
 };
 
-function stamp(index: number, intervalMs: number): string {
-  const seconds = 14 * 60 + 2 + Math.floor((index * intervalMs) / 1000);
-  const m = String(Math.floor(seconds / 60)).padStart(2, "0");
-  const s = String(seconds % 60).padStart(2, "0");
-  return `09:${m}:${s}`;
-}
-
 export function Terminal15({
-  title = "deploy.log",
+  title,
   lines = [],
   intervalMs = 500,
   holdMs = 2600,
@@ -97,9 +87,11 @@ export function Terminal15({
           <span className="size-2.5 rounded-full bg-rose-400" aria-hidden="true" />
           <span className="size-2.5 rounded-full bg-amber-400" aria-hidden="true" />
           <span className="size-2.5 rounded-full bg-emerald-400" aria-hidden="true" />
-          <span className="ml-2 truncate font-mono text-xs text-background/50">
-            {title}
-          </span>
+          {title && (
+            <span className="ml-2 truncate font-mono text-xs text-background/50">
+              {title}
+            </span>
+          )}
           <span
             className={cn(
               "ml-auto size-1.5 shrink-0 rounded-full",
@@ -127,9 +119,6 @@ export function Terminal15({
                     className={cn("size-1.5 shrink-0 rounded-full", dotClasses[level])}
                     aria-hidden="true"
                   />
-                  <span className="shrink-0 tabular-nums text-background/40">
-                    {stamp(index, intervalMs)}
-                  </span>
                   <span className={cn("truncate", textClasses[level])}>{line.text}</span>
                 </div>
               );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CalendarDays, Check, Loader2 } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Phase = "scanning" | "confirming" | "booked";
@@ -13,14 +13,15 @@ interface Calendar34Props {
   pickIndex?: number;
   stepMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const calendar34Demo: Calendar34Props = {
   dayLabel: "Thursday, 12 October",
-  timezone: "Europe/Lisbon",
   slots: ["09:00", "10:30", "13:00", "15:30"],
   pickIndex: 2,
+  bordered: false,
 };
 
 export function Calendar34({
@@ -30,6 +31,7 @@ export function Calendar34({
   pickIndex = 0,
   stepMs = 700,
   holdMs = 2400,
+  bordered = false,
   className,
 }: Calendar34Props) {
   const [phase, setPhase] = useState<Phase>("scanning");
@@ -68,20 +70,14 @@ export function Calendar34({
 @keyframes calendar34-in { from { opacity: 0; transform: translateY(0.375rem); } to { opacity: 1; transform: none; } }
 `}</style>
 
-      <div className="flex w-full max-w-64 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
-        <div className="flex items-center gap-2">
-          <CalendarDays
-            className="size-4 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <div className="min-w-0">
-            <p className="truncate text-sm font-medium text-card-foreground">
-              {dayLabel}
-            </p>
-            {timezone && (
-              <p className="text-xs text-muted-foreground">{timezone}</p>
-            )}
-          </div>
+      <div className={cn("flex w-full max-w-64 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium text-card-foreground">
+            {dayLabel}
+          </p>
+          {timezone && (
+            <p className="text-xs text-muted-foreground">{timezone}</p>
+          )}
         </div>
 
         <div className="grid grid-cols-2 gap-2">

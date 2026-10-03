@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "ticket9",
   title: "Sports Ticket",
   description:
-    "League header above a home and away matchup, with a stadium footer of section, row, seat, gate, and tip-off.",
+    "Home and away matchup above a stadium footer with section, row, seat, and tip-off.",
   category: "Ticket",
 };

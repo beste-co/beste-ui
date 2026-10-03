@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "dashboard29",
   title: "Metric Trio",
   description:
-    "Three horizontally divided metric cells in one card, each with a label, value, and semantic delta arrow.",
+    "Three horizontally divided metric cells in one card, each with a label, value, and a signed delta.",
   category: "Dashboard",
 };

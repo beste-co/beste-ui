@@ -5,12 +5,14 @@ import { cn } from "@/lib/utils";
 interface Browser17Props {
   score?: number;
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const browser17Demo: Browser17Props = {
   score: 92,
   label: "Performance",
+  bordered: false,
 };
 
 function scoreTint(score: number) {
@@ -36,6 +38,7 @@ function scoreTint(score: number) {
 export function Browser17({
   score = 0,
   label,
+  bordered = false,
   className,
 }: Browser17Props) {
   const pct = Math.max(0, Math.min(100, score));
@@ -53,7 +56,7 @@ export function Browser17({
         className
       )}
     >
-      <div className="flex items-center gap-3 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex items-center gap-3 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <div className="relative" style={{ width: size, height: size }}>
           <svg
             width={size}
@@ -96,7 +99,7 @@ export function Browser17({
         </div>
         <div className="flex flex-col gap-0.5">
           {label && (
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-medium text-muted-foreground">
               {label}
             </span>
           )}

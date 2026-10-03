@@ -29,7 +29,7 @@ export function Ai7({
     >
       <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-dashed border-border bg-card px-3 py-2.5 shadow-sm">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {title}
           </span>
           <button

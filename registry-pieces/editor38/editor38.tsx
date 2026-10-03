@@ -7,6 +7,7 @@ interface Editor38Props {
   openLine?: string;
   closeLine?: string;
   collapsed?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const editor38Demo: Editor38Props = {
   openLine: "function renderChart(data) {",
   closeLine: "}",
   collapsed: 24,
+  bordered: false,
 };
 
 export function Editor38({
   openLine = "",
   closeLine = "",
   collapsed = 0,
+  bordered = false,
   className,
 }: Editor38Props) {
   return (
@@ -29,7 +32,7 @@ export function Editor38({
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col gap-0.5 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col gap-0.5 rounded-md bg-card px-3 py-2 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline gap-2">
           <span className="w-4 shrink-0 text-right tabular-nums text-muted-foreground/60">
             12

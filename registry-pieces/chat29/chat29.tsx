@@ -1,5 +1,4 @@
 "use client";
-import { Navigation } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Role = "received" | "sent";
@@ -19,8 +18,7 @@ const defaultImage =
 
 export const chat29Demo: Chat29Props = {
   place: "Packer's Coffee",
-  address: "Kuloğlu, Turnacıbaşı Cd. 29, 34433 Beyoğlu/İstanbul",
-  distance: "0.4 km away",
+  address: "29 Mercer Street, New York",
   imageSrc: defaultImage,
   alt: "Packer's Coffee · interior",
   role: "received",
@@ -59,41 +57,28 @@ export function Chat29({
             className="absolute inset-0 size-full object-cover"
           />
         </div>
-        <div className="flex items-start gap-2 px-3 py-2">
-          <Navigation
-            className={cn(
-              "mt-0.5 size-3 shrink-0",
-              isSent ? "text-primary-foreground/70" : "text-muted-foreground"
-            )}
-            aria-hidden="true"
-          />
-          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-            <span className="truncate text-sm font-semibold">{place}</span>
-            {address && (
-              <span
-                className={cn(
-                  "line-clamp-2 text-xs leading-snug",
-                  isSent
-                    ? "text-primary-foreground/80"
-                    : "text-muted-foreground"
-                )}
-              >
-                {address}
-              </span>
-            )}
-            {distance && (
-              <span
-                className={cn(
-                  "text-xs font-medium",
-                  isSent
-                    ? "text-primary-foreground/70"
-                    : "text-muted-foreground"
-                )}
-              >
-                {distance}
-              </span>
-            )}
-          </div>
+        <div className="flex min-w-0 flex-col gap-0.5 px-3 py-2">
+          <span className="truncate text-sm font-semibold">{place}</span>
+          {address && (
+            <span
+              className={cn(
+                "line-clamp-2 text-xs leading-snug",
+                isSent ? "text-primary-foreground/80" : "text-muted-foreground"
+              )}
+            >
+              {address}
+            </span>
+          )}
+          {distance && (
+            <span
+              className={cn(
+                "text-xs font-medium tabular-nums",
+                isSent ? "text-primary-foreground/70" : "text-muted-foreground"
+              )}
+            >
+              {distance}
+            </span>
+          )}
         </div>
       </div>
     </div>

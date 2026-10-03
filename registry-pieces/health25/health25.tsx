@@ -19,18 +19,19 @@ interface Health25Props {
   status?: string;
   history?: number[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -60,7 +61,8 @@ export const health25Demo: Health25Props = {
   value: "68 ms",
   status: "Recovery looks strong",
   history: [54, 58, 62, 60, 66, 72, 68],
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health25({
@@ -68,7 +70,8 @@ export function Health25({
   value,
   status,
   history = [],
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health25Props) {
   const max = Math.max(...history, 1);
@@ -80,24 +83,20 @@ export function Health25({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-7 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <Zap className="size-3.5" aria-hidden="true" />
-          </div>
+          <Zap
+            className={cn("size-4 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
           {metric && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {metric}
             </span>
           )}
         </div>
         <div className="flex items-baseline gap-2">
-          <span className="font-mono text-3xl font-bold text-card-foreground">
+          <span className="text-3xl font-bold text-card-foreground">
             {value}
           </span>
           {status && (

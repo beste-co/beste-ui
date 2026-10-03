@@ -24,7 +24,7 @@ export const stats6Demo: Stats6Props = {
   value: 84,
   label: "NPS",
   caption: "Promoters",
-  tone: "emerald",
+  tone: "primary",
 };
 
 export function Stats6({
@@ -86,7 +86,7 @@ export function Stats6({
         </div>
         <div className="flex flex-col">
           {label && (
-            <span className="text-sm font-semibold uppercase tracking-wide text-card-foreground">
+            <span className="text-sm font-semibold text-card-foreground">
               {label}
             </span>
           )}

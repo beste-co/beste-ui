@@ -9,6 +9,7 @@ interface Tile {
 interface Media22Props {
   tiles?: Tile[];
   label?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -28,9 +29,10 @@ export const media22Demo: Media22Props = {
       alt: "Forest canopy",
     },
   ],
+  bordered: false,
 };
 
-export function Media22({ tiles = [], label, className }: Media22Props) {
+export function Media22({ tiles = [], label, bordered = false, className }: Media22Props) {
   const shown = tiles.slice(0, 3);
 
   return (
@@ -40,7 +42,7 @@ export function Media22({ tiles = [], label, className }: Media22Props) {
         className
       )}
     >
-      <div className="flex flex-col gap-2 rounded-xl border border-border bg-card p-1.5 shadow-sm">
+      <div className={cn("flex flex-col gap-2 rounded-xl bg-card p-1.5 shadow-sm", bordered && "border border-border")}>
         <div className="grid h-28 w-40 grid-cols-3 grid-rows-2 gap-1.5">
           {shown.map((tile, i) => (
             <div

@@ -24,17 +24,17 @@ interface Editor51Props {
 const headingClasses: Record<Character, string> = {
   serif: "font-serif text-lg font-normal leading-snug",
   hairline: "text-lg font-medium leading-snug tracking-tight",
-  mono: "text-base font-medium uppercase leading-snug tracking-wide",
+  mono: "text-base font-medium leading-snug",
   editorial: "font-serif text-lg font-semibold leading-tight",
 };
 
 const eyebrowClasses: Record<Character, string> = {
-  serif: "text-xs uppercase tracking-widest text-current/60",
+  serif: "text-xs text-current/60",
   hairline:
     "rounded-full border border-current/15 px-2 py-0.5 text-xs text-current/60",
-  mono: "font-mono text-xs lowercase text-current/60",
+  mono: "text-xs lowercase text-current/60",
   editorial:
-    "text-xs font-semibold uppercase tracking-wider text-current/60",
+    "text-xs font-semibold text-current/60",
 };
 
 /* The two solid buttons flip with the surface: a foreground fill on a foreground
@@ -45,7 +45,7 @@ const buttonClasses = (inverted: boolean): Record<Character, string> => ({
     inverted
       ? "rounded-full bg-background px-3 py-1 text-xs font-medium text-foreground"
       : "rounded-full bg-foreground px-3 py-1 text-xs font-medium text-background",
-  mono: "rounded-none border border-foreground px-3 py-1 font-mono text-xs uppercase",
+  mono: "rounded-none border border-foreground px-3 py-1 text-xs",
   editorial:
     inverted
       ? "rounded-sm bg-background px-3 py-1 text-xs font-semibold text-foreground"
@@ -80,7 +80,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const editor51Demo: Editor51Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   setName: "Altair",
   heading: "Calm, photographic, serif",
@@ -98,7 +98,7 @@ export function Editor51({
   character = "serif",
   stepMs = 260,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Editor51Props) {

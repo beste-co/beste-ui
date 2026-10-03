@@ -16,6 +16,7 @@ interface Ai26Props {
   dims?: number;
   values?: number[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -36,14 +37,16 @@ export const ai26Demo: Ai26Props = {
     0.42, -0.18, 0.67, 0.05, -0.31, 0.54, 0.22, -0.09, 0.38, -0.48, 0.71, 0.13,
     -0.22, 0.58, -0.05, 0.34,
   ],
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai26({
   label = "vector",
   dims = 1536,
   values = [],
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai26Props) {
   return (
@@ -53,10 +56,10 @@ export function Ai26({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between">
-          <span className="font-mono text-xs text-card-foreground">{label}</span>
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className="text-xs text-card-foreground">{label}</span>
+          <span className="text-xs tabular-nums text-muted-foreground">
             {dims.toLocaleString()} dims
           </span>
         </div>
@@ -91,11 +94,6 @@ export function Ai26({
             className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-border"
             aria-hidden="true"
           />
-        </div>
-        <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
-          <span>[0]</span>
-          <span>cosine similarity ready</span>
-          <span>[{values.length - 1}]</span>
         </div>
       </div>
     </div>

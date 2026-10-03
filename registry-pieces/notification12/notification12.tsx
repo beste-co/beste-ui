@@ -9,15 +9,15 @@ interface Notification12Props {
   location?: string;
   attendees?: number;
   startsIn?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const notification12Demo: Notification12Props = {
   title: "Weekly product sync",
-  time: "Today, 14:00 – 14:30",
-  location: "Google Meet",
-  attendees: 6,
+  time: "Today, 14:00",
   startsIn: "in 10 min",
+  bordered: false,
 };
 
 export function Notification12({
@@ -26,6 +26,7 @@ export function Notification12({
   location,
   attendees,
   startsIn,
+  bordered = false,
   className,
 }: Notification12Props) {
   return (
@@ -35,11 +36,12 @@ export function Notification12({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2.5 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2.5 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-start gap-3">
-          <div className="flex size-10 shrink-0 flex-col items-center justify-center rounded-lg bg-sky-500/10 text-sky-700 dark:text-sky-400">
-            <Calendar className="size-4" aria-hidden="true" />
-          </div>
+          <Calendar
+            className="mt-0.5 size-5 shrink-0 text-sky-700 dark:text-sky-400"
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -58,20 +60,22 @@ export function Notification12({
             </span>
           )}
         </div>
-        <div className="flex items-center gap-3 border-t border-border pt-2 text-xs text-muted-foreground">
-          {location && (
-            <span className="inline-flex items-center gap-1">
-              <Video className="size-3.5" aria-hidden="true" />
-              {location}
-            </span>
-          )}
-          {typeof attendees === "number" && (
-            <span className="inline-flex items-center gap-1">
-              <Users className="size-3.5" aria-hidden="true" />
-              {attendees}
-            </span>
-          )}
-        </div>
+        {(location || typeof attendees === "number") && (
+          <div className="flex items-center gap-3 border-t border-border pt-2 text-xs text-muted-foreground">
+            {location && (
+              <span className="inline-flex items-center gap-1">
+                <Video className="size-3.5" aria-hidden="true" />
+                {location}
+              </span>
+            )}
+            {typeof attendees === "number" && (
+              <span className="inline-flex items-center gap-1 tabular-nums">
+                <Users className="size-3.5" aria-hidden="true" />
+                {attendees}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

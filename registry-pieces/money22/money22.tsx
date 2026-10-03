@@ -35,10 +35,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const money22Demo: Money22Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   name: "Practice",
-  badge: "Popular",
   price: "$79",
   period: "mo",
   items: ["Unlimited members", "Automated billing", "Priority support"],
@@ -51,7 +50,7 @@ export function Money22({
   period,
   items = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Money22Props) {

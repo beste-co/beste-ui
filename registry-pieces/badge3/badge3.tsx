@@ -1,6 +1,5 @@
 "use client";
 
-import { Ticket } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone = "primary" | "foreground" | "rose" | "emerald" | "violet";
@@ -24,14 +23,14 @@ const toneClasses: Record<Tone, string> = {
 
 export const badge3Demo: Badge3Props = {
   code: "BESTE20",
-  discount: "20% OFF",
-  tone: "rose",
+  discount: "20% off",
+  tone: "primary",
 };
 
 export function Badge3({
   code = "CODE",
-  discount = "10% OFF",
-  tone = "rose",
+  discount = "10% off",
+  tone = "primary",
   className,
 }: Badge3Props) {
   return (
@@ -42,12 +41,8 @@ export function Badge3({
       )}
     >
       <div className="inline-flex overflow-hidden rounded-lg border-2 border-dashed border-border bg-card shadow-sm">
-        <div className="flex items-center gap-2 px-3 py-2">
-          <Ticket
-            className="size-4 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <span className="font-mono text-sm font-bold tracking-wider text-card-foreground">
+        <div className="flex items-center px-3 py-2">
+          <span className="text-sm font-bold text-card-foreground">
             {code}
           </span>
         </div>
@@ -57,7 +52,7 @@ export function Badge3({
             toneClasses[tone]
           )}
         >
-          <span className="text-xs font-bold uppercase tracking-wide">
+          <span className="text-xs font-bold">
             {discount}
           </span>
         </div>

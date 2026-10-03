@@ -21,7 +21,7 @@ export function Shapes3({ className }: Shapes3Props) {
         aria-hidden="true"
       >
         <div className="flex items-center gap-2">
-          <span className="h-1.5 w-8 rounded-full bg-emerald-400" />
+          <span className="h-1.5 w-8 rounded-full bg-background" />
           <span className="h-1.5 w-16 rounded-full bg-background/40" />
         </div>
         <span className="h-1.5 w-28 rounded-full bg-background/40" />

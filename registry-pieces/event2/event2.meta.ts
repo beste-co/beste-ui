@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "event2",
   title: "RSVP Row",
   description:
-    "Invitation card with three emerald/amber/rose response buttons and a footer tallying current responses.",
+    "Invitation card with the event, its dates, and three response buttons for going, maybe and no.",
   category: "Event",
 };

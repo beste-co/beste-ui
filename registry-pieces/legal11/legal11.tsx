@@ -13,18 +13,18 @@ interface Legal11Props {
   version?: string;
   clauses?: Clause[];
   agreementStatus?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const legal11Demo: Legal11Props = {
   title: "Terms of service",
-  version: "v4.2 · Apr 2026",
   clauses: [
     { label: "I agree to the updated terms", accepted: true },
     { label: "I consent to data processing", accepted: true },
     { label: "I want product announcements" },
   ],
-  agreementStatus: "Signed on Apr 23, 2026",
+  bordered: false,
 };
 
 export function Legal11({
@@ -32,6 +32,7 @@ export function Legal11({
   version,
   clauses = [],
   agreementStatus,
+  bordered = false,
   className,
 }: Legal11Props) {
   return (
@@ -41,11 +42,9 @@ export function Legal11({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div className="flex size-8 items-center justify-center rounded-md bg-indigo-500/15 text-indigo-500">
-            <ScrollText className="size-4" aria-hidden="true" />
-          </div>
+          <ScrollText className="size-5 shrink-0 text-indigo-500" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             {title && (
               <span className="truncate text-sm font-semibold text-card-foreground">
@@ -53,7 +52,7 @@ export function Legal11({
               </span>
             )}
             {version && (
-              <span className="truncate font-mono text-xs text-muted-foreground">
+              <span className="truncate text-xs text-muted-foreground">
                 {version}
               </span>
             )}

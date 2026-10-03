@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowDownRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -41,7 +40,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const money23Demo: Money23Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Estimated saving",
   amount: "$1,840",
@@ -53,7 +52,7 @@ export const money23Demo: Money23Props = {
   ],
 };
 
-export function Money23({ label, amount, period, delta, rows = [], surface = "card", bordered = true, inverted = false, className }: Money23Props) {
+export function Money23({ label, amount, period, delta, rows = [], surface = "card", bordered = false, inverted = false, className }: Money23Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -71,8 +70,7 @@ export function Money23({ label, amount, period, delta, rows = [], surface = "ca
         </div>
 
         {delta && (
-          <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-            <ArrowDownRight className="size-3" aria-hidden="true" />
+          <span className="mt-2 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary tabular-nums">
             {delta}
           </span>
         )}

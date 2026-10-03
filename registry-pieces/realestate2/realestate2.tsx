@@ -34,13 +34,13 @@ interface Realestate2Props {
 }
 
 const iconClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  primary: "text-primary",
+  foreground: "text-current",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 
@@ -61,14 +61,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const realestate2Demo: Realestate2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   price: "$1,240,000",
   downPayment: "20% · $248,000",
-  rate: "6.25% APR · 30-yr fixed",
-  term: "30 years",
   monthly: "$6,108 / mo",
-  tone: "emerald",
+  tone: "primary",
   eyebrowLabel: "Mortgage estimate",
   priceLabel: "Home price",
   downLabel: "Down",
@@ -83,7 +81,7 @@ export function Realestate2({
   rate,
   term,
   monthly,
-  tone = "emerald",
+  tone = "primary",
   eyebrowLabel = "Mortgage estimate",
   priceLabel = "Home price",
   downLabel = "Down",
@@ -91,7 +89,7 @@ export function Realestate2({
   termLabel = "Term",
   paymentLabel = "Est. payment",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Realestate2Props) {
@@ -106,43 +104,45 @@ export function Realestate2({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-md",
-              iconClasses[tone]
-            )}
-          >
-            <PiggyBank className="size-4" aria-hidden="true" />
-          </div>
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <PiggyBank
+            className={cn("size-5 shrink-0", iconClasses[tone])}
+            aria-hidden="true"
+          />
+          <span className="text-xs font-semibold text-current/60">
             {eyebrowLabel}
           </span>
         </div>
-        <div className="grid grid-cols-2 gap-1.5 rounded-md bg-current/10 p-2 text-xs">
-          <div className="flex flex-col">
-            <span className="text-current/60">{priceLabel}</span>
-            <span className="font-mono font-semibold">
-              {price}
-            </span>
+        {(price || downPayment || rate || term) && (
+          <div className="grid grid-cols-2 gap-1.5 rounded-md bg-current/10 p-2 text-xs">
+            {price && (
+              <div className="flex flex-col">
+                <span className="text-current/60">{priceLabel}</span>
+                <span className="font-semibold tabular-nums">{price}</span>
+              </div>
+            )}
+            {downPayment && (
+              <div className="flex flex-col">
+                <span className="text-current/60">{downLabel}</span>
+                <span className="font-semibold tabular-nums">{downPayment}</span>
+              </div>
+            )}
+            {rate && (
+              <div className="flex flex-col">
+                <span className="text-current/60">{rateLabel}</span>
+                <span>{rate}</span>
+              </div>
+            )}
+            {term && (
+              <div className="flex flex-col">
+                <span className="text-current/60">{termLabel}</span>
+                <span>{term}</span>
+              </div>
+            )}
           </div>
-          <div className="flex flex-col">
-            <span className="text-current/60">{downLabel}</span>
-            <span className="font-mono font-semibold">
-              {downPayment}
-            </span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-current/60">{rateLabel}</span>
-            <span className="font-mono">{rate}</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-current/60">{termLabel}</span>
-            <span className="font-mono">{term}</span>
-          </div>
-        </div>
+        )}
         <div className="flex items-baseline justify-between border-t border-current/15 pt-2">
           <span className="text-sm text-current/60">{paymentLabel}</span>
-          <span className="font-mono text-xl font-bold">
+          <span className="text-xl font-bold tabular-nums">
             {monthly}
           </span>
         </div>

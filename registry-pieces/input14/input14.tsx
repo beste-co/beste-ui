@@ -5,17 +5,20 @@ import { cn } from "@/lib/utils";
 interface Input14Props {
   value?: string;
   placeholder?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const input14Demo: Input14Props = {
   value: "Ready when you are",
   placeholder: "Ask anything",
+  bordered: false,
 };
 
 export function Input14({
   value,
   placeholder,
+  bordered = false,
   className,
 }: Input14Props) {
   return (
@@ -25,7 +28,7 @@ export function Input14({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center rounded-xl border border-border bg-card px-5 py-4 shadow-md">
+      <div className={cn("flex w-full max-w-80 items-center rounded-xl bg-card px-5 py-4 shadow-md", bordered && "border border-border")}>
         <span
           className={cn(
             "flex-1 truncate text-xl font-medium",

@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes63Demo: Shapes63Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes63({ surface = "card", bordered = true, inverted = false, className }: Shapes63Props) {
+export function Shapes63({ surface = "card", bordered = false, inverted = false, className }: Shapes63Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -49,7 +49,7 @@ export function Shapes63({ surface = "card", bordered = true, inverted = false, 
       >
         <div className="relative">
           <span className="size-12 rounded-full bg-current/10" />
-          <span className="absolute bottom-0.5 right-0.5 size-3 rounded-full bg-emerald-500 ring-2 ring-card" />
+          <span className="absolute bottom-0.5 right-0.5 size-3 rounded-full bg-primary ring-2 ring-card" />
         </div>
         <div className="flex flex-col items-center gap-1">
           <span className="h-1.5 w-16 rounded-full bg-current/70" />
@@ -57,7 +57,7 @@ export function Shapes63({ surface = "card", bordered = true, inverted = false, 
         </div>
         <div className="mt-1 flex w-full gap-1.5">
           <span className="h-6 flex-1 rounded-sm bg-current" />
-          <span className="h-6 flex-1 rounded-sm border border-current/15" />
+          <span className={cn("h-6 flex-1 rounded-sm", bordered ? "border border-current/15" : "bg-current/10")} />
         </div>
       </div>
     </div>

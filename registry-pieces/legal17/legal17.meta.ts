@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Horizontal milestone rail with emerald past dots, a primary current halo, and muted future placeholders.",
   category: "Legal",
+  cardScale: 0.75,
 };

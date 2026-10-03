@@ -5,14 +5,16 @@ import { cn } from "@/lib/utils";
 
 interface Toolbar3Props {
   zoom?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const toolbar3Demo: Toolbar3Props = {
   zoom: 125,
+  bordered: false,
 };
 
-export function Toolbar3({ zoom = 100, className }: Toolbar3Props) {
+export function Toolbar3({ zoom = 100, bordered = false, className }: Toolbar3Props) {
   const clamped = Math.max(0, Math.min(999, Math.round(zoom)));
 
   return (
@@ -22,7 +24,7 @@ export function Toolbar3({ zoom = 100, className }: Toolbar3Props) {
         className
       )}
     >
-      <div className="inline-flex items-center overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("inline-flex items-center overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           aria-label="Zoom out"
@@ -31,7 +33,7 @@ export function Toolbar3({ zoom = 100, className }: Toolbar3Props) {
           <Minus className="size-3.5" aria-hidden="true" />
         </button>
         <span
-          className="flex h-8 min-w-12 items-center justify-center border-x border-border bg-card px-2 font-mono text-xs font-semibold tabular-nums text-card-foreground"
+          className="flex h-8 min-w-12 items-center justify-center border-x border-border bg-card px-2 text-xs font-semibold tabular-nums text-card-foreground"
           aria-live="polite"
         >
           {clamped}%

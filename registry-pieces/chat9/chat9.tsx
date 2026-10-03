@@ -12,6 +12,7 @@ interface Chat9Props {
   preview?: string;
   time?: string;
   unread?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -23,6 +24,7 @@ export const chat9Demo: Chat9Props = {
   preview: "Sure, sending the Figma link now",
   time: "09:42",
   unread: 3,
+  bordered: false,
 };
 
 export function Chat9({
@@ -33,6 +35,7 @@ export function Chat9({
   preview,
   time,
   unread,
+  bordered = false,
   className,
 }: Chat9Props) {
   return (
@@ -42,7 +45,7 @@ export function Chat9({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-lg border border-border bg-card px-3 py-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-lg bg-card px-3 py-2.5 shadow-sm", bordered && "border border-border")}>
         <Avatar className="size-11">
           <AvatarImage src={src} alt={alt} className="object-cover" />
           <AvatarFallback className="text-sm font-semibold">
@@ -67,7 +70,7 @@ export function Chat9({
               </span>
             )}
             {typeof unread === "number" && unread > 0 && (
-              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary px-1 font-mono text-xs font-bold text-primary-foreground">
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground">
                 {unread > 9 ? "9+" : unread}
               </span>
             )}

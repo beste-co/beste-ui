@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "money4",
   title: "Transaction Row",
   description:
-    "Directional arrow bubble beside a merchant name, category and date meta, and a signed amount on the right.",
+    "Directional arrow icon beside a merchant name with its category, and a signed amount on the right.",
   category: "Finance",
 };

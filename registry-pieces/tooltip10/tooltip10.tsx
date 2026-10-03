@@ -51,14 +51,13 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const tooltip10Demo: Tooltip10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "hero-dashboard-dark.png",
-  subtitle: "Uploaded by Mira · 2 days ago",
   dimensions: "2560 × 1440",
   imageSrc: defaultImage,
   alt: "hero-dashboard-dark preview",
-  tone: "violet",
+  tone: "primary",
 };
 
 export function Tooltip10({
@@ -67,9 +66,9 @@ export function Tooltip10({
   dimensions,
   imageSrc = defaultImage,
   alt,
-  tone = "violet",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Tooltip10Props) {
@@ -95,7 +94,7 @@ export function Tooltip10({
               <ImageIcon className="size-6 opacity-80" aria-hidden="true" />
             )}
             {dimensions && (
-              <span className="absolute bottom-1 right-1 rounded bg-background/90 px-1.5 py-0.5 font-mono text-xs text-foreground">
+              <span className="absolute bottom-1 right-1 rounded bg-background/90 px-1.5 py-0.5 text-xs text-foreground">
                 {dimensions}
               </span>
             )}

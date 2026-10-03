@@ -13,6 +13,7 @@ type ActionId = "like" | "comment" | "share" | "bookmark";
 interface Toolbar19Props {
   items?: ActionId[];
   active?: ActionId[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,11 +34,13 @@ const labelMap: Record<ActionId, string> = {
 export const toolbar19Demo: Toolbar19Props = {
   items: ["like", "comment", "share", "bookmark"],
   active: ["like"],
+  bordered: false,
 };
 
 export function Toolbar19({
   items = ["like", "comment", "share", "bookmark"],
   active = [],
+  bordered = false,
   className,
 }: Toolbar19Props) {
   return (
@@ -47,7 +50,7 @@ export function Toolbar19({
         className
       )}
     >
-      <div className="inline-flex items-center gap-1 rounded-lg border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-1 rounded-lg bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {items.map((id) => {
           const Icon = iconMap[id];
           const isActive = active.includes(id);

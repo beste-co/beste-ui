@@ -8,12 +8,13 @@ interface Segment {
   departCode: string;
   arrive: string;
   arriveCode: string;
-  duration: string;
+  duration?: string;
 }
 
 interface Travel6Props {
   segments?: Segment[];
   layover?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,22 +25,22 @@ export const travel6Demo: Travel6Props = {
       departCode: "IST",
       arrive: "12:20",
       arriveCode: "CDG",
-      duration: "3h 40m",
     },
     {
       depart: "14:50",
       departCode: "CDG",
       arrive: "17:05",
       arriveCode: "LHR",
-      duration: "1h 15m",
     },
   ],
   layover: "2h 30m layover in Paris",
+  bordered: false,
 };
 
 export function Travel6({
   segments = [],
   layover,
+  bordered = false,
   className,
 }: Travel6Props) {
   return (
@@ -49,12 +50,12 @@ export function Travel6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {segments.map((seg, idx) => (
           <div key={idx} className="flex flex-col gap-1.5">
             <div className="flex items-center gap-3 text-xs">
               <div className="flex flex-col">
-                <span className="font-mono font-semibold text-card-foreground">
+                <span className="font-semibold tabular-nums text-card-foreground">
                   {seg.depart}
                 </span>
                 <span className="text-muted-foreground">{seg.departCode}</span>
@@ -65,15 +66,17 @@ export function Travel6({
                 <span className="h-px flex-1 border-t border-dashed border-border" aria-hidden="true" />
               </div>
               <div className="flex flex-col items-end">
-                <span className="font-mono font-semibold text-card-foreground">
+                <span className="font-semibold tabular-nums text-card-foreground">
                   {seg.arrive}
                 </span>
                 <span className="text-muted-foreground">{seg.arriveCode}</span>
               </div>
             </div>
-            <span className="text-xs text-muted-foreground">
-              {seg.duration}
-            </span>
+            {seg.duration && (
+              <span className="text-xs text-muted-foreground">
+                {seg.duration}
+              </span>
+            )}
             {idx < segments.length - 1 && layover && (
               <div className="flex items-center gap-2 rounded-md bg-muted/60 px-2 py-1 text-xs text-muted-foreground">
                 <span

@@ -6,17 +6,20 @@ import { cn } from "@/lib/utils";
 interface Search15Props {
   scope?: string;
   placeholder?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const search15Demo: Search15Props = {
   scope: "in: workspace",
   placeholder: "Search issues, docs, and threads…",
+  bordered: false,
 };
 
 export function Search15({
   scope = "All",
   placeholder = "Search…",
+  bordered = false,
   className,
 }: Search15Props) {
   return (
@@ -26,7 +29,7 @@ export function Search15({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           className="inline-flex shrink-0 items-center gap-1.5 rounded-l-lg border-r border-border bg-muted/60 px-3 py-2 text-xs font-medium text-card-foreground hover:bg-muted"

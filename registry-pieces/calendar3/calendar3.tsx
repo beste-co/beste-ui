@@ -38,7 +38,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar3Demo: Calendar3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   month: "April",
   year: "2026",
@@ -56,7 +56,7 @@ export function Calendar3({
   daysInMonth = 30,
   weekdays = DEFAULT_WEEKDAYS,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar3Props) {
@@ -100,7 +100,7 @@ export function Calendar3({
           {weekdays.map((w, idx) => (
             <span
               key={idx}
-              className="text-xs font-medium uppercase tracking-wide text-current/60"
+              className="text-xs font-medium text-current/60"
             >
               {w}
             </span>
@@ -117,7 +117,7 @@ export function Calendar3({
                   type="button"
                   aria-current={d === today ? "date" : undefined}
                   className={cn(
-                    "flex size-7 items-center justify-center rounded-full font-mono text-sm tabular-nums",
+                    "flex size-7 items-center justify-center rounded-full text-sm tabular-nums",
                     d === today
                       ? "bg-foreground font-semibold text-background"
                       : "hover:bg-current/10"

@@ -7,6 +7,7 @@ interface Input12Props {
   label?: string;
   value?: string;
   reason?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,12 +15,14 @@ export const input12Demo: Input12Props = {
   label: "Account ID",
   value: "acct_7Z91X2Q",
   reason: "Provided by admin. Contact support to change.",
+  bordered: false,
 };
 
 export function Input12({
   label,
   value,
   reason,
+  bordered = false,
   className,
 }: Input12Props) {
   return (
@@ -35,9 +38,9 @@ export function Input12({
             {label}
           </label>
         )}
-        <div className="flex items-center gap-2 rounded-md border border-border bg-muted px-3 py-2 text-muted-foreground">
+        <div className={cn("flex items-center gap-2 rounded-md bg-muted px-3 py-2 text-muted-foreground", bordered && "border border-border")}>
           <Lock className="size-3.5 shrink-0" aria-hidden="true" />
-          <span className="flex-1 truncate font-mono text-sm">{value}</span>
+          <span className="flex-1 truncate text-sm">{value}</span>
         </div>
         {reason && (
           <span className="text-xs text-muted-foreground">{reason}</span>

@@ -48,12 +48,12 @@ export function Indicator7({
     >
       <div className="flex flex-col items-center gap-1">
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
         )}
         <div
-          className="font-mono text-3xl font-bold tabular-nums text-card-foreground"
+          className="text-3xl font-bold tabular-nums text-card-foreground"
           aria-live="polite"
         >
           {pad(hours)}

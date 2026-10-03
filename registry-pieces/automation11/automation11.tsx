@@ -37,10 +37,9 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const automation11Demo: Automation11Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   placeholder: "Search trigger apps",
-  heading: "Popular",
   apps: [
     { src: "https://oud.pics/sm/l/stripe.jpeg", alt: "Stripe" },
     { src: "https://oud.pics/sm/l/gmail.jpeg", alt: "Gmail" },
@@ -51,10 +50,10 @@ export const automation11Demo: Automation11Props = {
 
 export function Automation11({
   placeholder = "Search",
-  heading = "Popular",
+  heading,
   apps = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Automation11Props) {
@@ -68,7 +67,7 @@ export function Automation11({
       )}
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
-        <div className="flex items-center gap-2 rounded-sm border border-current/15 px-2 py-1.5">
+        <div className={cn("flex items-center gap-2 rounded-sm px-2 py-1.5", bordered ? "border border-current/15" : "bg-current/10")}>
           <Search
             className="size-3.5 text-current/60"
             aria-hidden="true"
@@ -76,13 +75,12 @@ export function Automation11({
           <span className="flex-1 text-xs text-current/60">
             {placeholder}
           </span>
-          <kbd className="rounded-sm border border-current/15 bg-current/10 px-1 font-mono text-xs text-current/60">
-            ⌘K
-          </kbd>
         </div>
-        <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
-          {heading}
-        </span>
+        {heading && (
+          <span className="text-xs font-medium text-current/60">
+            {heading}
+          </span>
+        )}
         <div className="grid grid-cols-4 gap-2">
           {apps.slice(0, 4).map((a, i) => (
             <button

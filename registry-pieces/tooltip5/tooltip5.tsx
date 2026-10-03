@@ -20,6 +20,7 @@ interface Tooltip5Props {
   imageSrc?: string;
   alt?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -48,13 +49,14 @@ const fallbackClasses: Record<Tone, string> = {
 const defaultImage = "https://images.unsplash.com/photo-1733421331070-59ce0b57917a?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D";
 
 export const tooltip5Demo: Tooltip5Props = {
-  name: "Noor Ahmed",
-  role: "Staff engineer · Platform",
-  initials: "NA",
+  name: "Hania Rani",
+  role: "Staff engineer",
+  initials: "HR",
   presence: "online",
   imageSrc: defaultImage,
-  alt: "Noor Ahmed",
-  tone: "violet",
+  alt: "Hania Rani",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Tooltip5({
@@ -64,7 +66,8 @@ export function Tooltip5({
   presence = "online",
   imageSrc = defaultImage,
   alt,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Tooltip5Props) {
   return (
@@ -75,7 +78,7 @@ export function Tooltip5({
       )}
     >
       <div className="relative">
-        <div className="flex w-64 items-center gap-3 rounded-lg border border-border bg-card p-3 shadow-lg">
+        <div className={cn("flex w-64 items-center gap-3 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
           <div className="relative shrink-0">
             <div
               className={cn(

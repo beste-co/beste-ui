@@ -58,22 +58,22 @@ export function Travel9({
         )}
       >
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-widest">
+          <span className="text-xs font-semibold">
             {label}
           </span>
         )}
         {country && (
-          <span className="text-base font-bold uppercase tracking-widest">
+          <span className="text-base font-bold">
             {country}
           </span>
         )}
         {city && (
-          <span className="text-xs font-medium uppercase tracking-wider opacity-80">
+          <span className="text-xs font-medium opacity-80">
             {city}
           </span>
         )}
         {date && (
-          <span className="font-mono text-xs font-semibold">{date}</span>
+          <span className="text-xs font-semibold">{date}</span>
         )}
       </div>
     </div>

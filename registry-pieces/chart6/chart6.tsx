@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Day {
@@ -21,9 +20,7 @@ interface Chart6Props {
 
 export const chart6Demo: Chart6Props = {
   title: "Deployments",
-  rangeLabel: "Wk 24",
   peakLabel: "128 builds",
-  footnote: "92% passing",
   days: [
     { label: "Mon", value: 0.5 },
     { label: "Tue", value: 0.86, active: true },
@@ -49,18 +46,13 @@ export function Chart6({
     >
       <div className="w-full max-w-80 rounded-md bg-foreground p-5 text-background shadow-xl">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1 text-sm font-medium">
-            {title}
-            <ChevronDown className="size-4 text-background/60" aria-hidden="true" />
-          </div>
+          <span className="text-sm font-medium">{title}</span>
           {rangeLabel && (
             <span className="text-sm text-background/60">{rangeLabel}</span>
           )}
         </div>
 
         <div className="relative mt-6 h-32">
-          {/* Threshold line */}
-          
           <div className="flex h-full items-end justify-between gap-3">
             {days.map((day, index) => (
               <div

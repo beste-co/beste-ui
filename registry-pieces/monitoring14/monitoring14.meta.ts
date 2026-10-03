@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "monitoring14",
   title: "Disk I/O",
   description:
-    "Two-line monospace block reporting read and write throughput with arrow glyphs for direction.",
+    "Two-line block reporting read and write throughput.",
   category: "Monitoring",
 };

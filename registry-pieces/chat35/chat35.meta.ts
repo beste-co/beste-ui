@@ -6,5 +6,6 @@ export const meta: ComponentMeta = {
   description:
     "Two-person thread that plays out once: a typing indicator bounces before each incoming reply, bubbles slide up as they land, and the finished conversation stays put.",
   category: "Chat",
+  cardScale: 0.75,
   isAnimated: true,
 };

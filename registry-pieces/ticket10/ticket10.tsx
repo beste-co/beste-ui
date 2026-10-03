@@ -8,15 +8,15 @@ interface Ticket10Props {
   host?: string;
   validDate?: string;
   badgeId?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const ticket10Demo: Ticket10Props = {
-  name: "Ada Lovelace",
-  company: "Algorithm Ltd.",
-  host: "Grace Hopper",
+  name: "Hania Rani",
+  company: "Erased Tapes",
   validDate: "Valid Jun 14",
-  badgeId: "V-0428",
+  bordered: false,
 };
 
 export function Ticket10({
@@ -25,6 +25,7 @@ export function Ticket10({
   host,
   validDate,
   badgeId,
+  bordered = false,
   className,
 }: Ticket10Props) {
   return (
@@ -34,7 +35,7 @@ export function Ticket10({
         className
       )}
     >
-      <div className="w-full max-w-80 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className={cn("w-full max-w-80 overflow-hidden rounded-lg bg-card shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between p-3">
           <div className="flex min-w-0 flex-col gap-0.5">
             {name && (
@@ -49,7 +50,7 @@ export function Ticket10({
             )}
           </div>
           {badgeId && (
-            <span className="shrink-0 font-mono text-xs text-muted-foreground">
+            <span className="shrink-0 text-xs text-muted-foreground">
               {badgeId}
             </span>
           )}
@@ -59,7 +60,7 @@ export function Ticket10({
           aria-hidden="true"
         />
         <div className="flex items-center justify-between gap-3 bg-foreground px-3 py-1.5 text-xs text-background">
-          <span className="font-bold uppercase tracking-widest">Visitor</span>
+          <span className="font-bold">Visitor</span>
           <span className="flex items-center gap-2 truncate opacity-80">
             {host && <span className="truncate">Host: {host}</span>}
             {host && validDate && (

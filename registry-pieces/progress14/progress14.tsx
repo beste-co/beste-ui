@@ -10,18 +10,16 @@ interface Progress14Props {
   current?: number;
   next?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
-const tileClasses: Record<Tone, string> = {
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sunset:
-    "bg-gradient-to-br from-amber-400 to-orange-500 text-white",
-  emerald:
-    "bg-gradient-to-br from-emerald-400 to-teal-500 text-white",
-  violet:
-    "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white",
+const iconClasses: Record<Tone, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sunset: "text-amber-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
 };
 
 const barClasses: Record<Tone, string> = {
@@ -36,14 +34,16 @@ export const progress14Demo: Progress14Props = {
   level: 12,
   current: 1840,
   next: 2500,
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Progress14({
   level = 1,
   current = 0,
   next = 100,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Progress14Props) {
   const pct =
@@ -56,23 +56,18 @@ export function Progress14({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-3 rounded-lg border border-border bg-card px-3 py-3 shadow-sm">
-        <div
-          className={cn(
-            "flex size-12 shrink-0 items-center justify-center rounded-lg shadow-sm",
-            tileClasses[tone]
-          )}
+      <div className={cn("flex w-full max-w-72 items-center gap-3 rounded-lg bg-card px-3 py-3 shadow-sm", bordered && "border border-border")}>
+        <Trophy
+          className={cn("size-6 shrink-0", iconClasses[tone])}
           aria-hidden="true"
-        >
-          <Trophy className="size-5" aria-hidden="true" />
-        </div>
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex items-baseline justify-between">
             <span className="text-sm font-semibold text-card-foreground">
               Level{" "}
               <span className="font-bold tabular-nums">{level}</span>
             </span>
-            <span className="font-mono text-xs tabular-nums text-muted-foreground">
+            <span className="text-xs tabular-nums text-muted-foreground">
               {current} / {next} XP
             </span>
           </div>

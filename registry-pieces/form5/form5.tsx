@@ -8,6 +8,7 @@ interface Form5Props {
   suffix?: string;
   value?: string;
   placeholder?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export const form5Demo: Form5Props = {
   suffix: ".beste.co",
   value: "docs",
   placeholder: "your-subdomain",
+  bordered: false,
 };
 
 export function Form5({
@@ -25,6 +27,7 @@ export function Form5({
   suffix,
   value,
   placeholder,
+  bordered = false,
   className,
 }: Form5Props) {
   return (
@@ -40,7 +43,7 @@ export function Form5({
             {label}
           </label>
         )}
-        <div className="flex items-stretch overflow-hidden rounded-md border border-border bg-card shadow-sm">
+        <div className={cn("flex items-stretch overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
           {prefix && (
             <span className="flex items-center border-r border-border bg-muted px-3 text-sm text-muted-foreground">
               {prefix}

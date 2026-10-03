@@ -7,6 +7,7 @@ interface Ai30Props {
   category?: string;
   reason?: string;
   severity?: "low" | "medium" | "high";
+  bordered?: boolean;
   className?: string;
 }
 
@@ -14,6 +15,7 @@ export const ai30Demo: Ai30Props = {
   category: "Harassment",
   reason: "Response blocked for containing targeted insults.",
   severity: "high",
+  bordered: false,
 };
 
 const SEVERITY: Record<
@@ -38,6 +40,7 @@ export function Ai30({
   category = "Category",
   reason,
   severity = "medium",
+  bordered = false,
   className,
 }: Ai30Props) {
   const s = SEVERITY[severity];
@@ -49,13 +52,11 @@ export function Ai30({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-start gap-2.5 rounded-md border border-border bg-card p-3 shadow-sm">
-        <span
-          className="flex size-7 shrink-0 items-center justify-center rounded-full bg-rose-500/15 text-rose-600 dark:text-rose-400"
+      <div className={cn("flex w-full max-w-80 items-start gap-2.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
+        <ShieldAlert
+          className="mt-0.5 size-5 shrink-0 text-rose-600 dark:text-rose-400"
           aria-hidden="true"
-        >
-          <ShieldAlert className="size-4" />
-        </span>
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <div className="flex items-center justify-between gap-2">
             <span className="truncate text-xs font-semibold text-card-foreground">

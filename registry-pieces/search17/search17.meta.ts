@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "search17",
   title: "People Autocomplete",
   description:
-    "Mention-style popover listing matching people with avatars, role lines, and a presence dot.",
+    "Mention-style popover listing matching people with avatars and role lines.",
   category: "Search",
 };

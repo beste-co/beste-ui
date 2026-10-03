@@ -14,35 +14,33 @@ interface Browser25Props {
   time?: string;
   source?: string;
   message?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 const levelConfig: Record<
   Level,
-  { Icon: typeof Info; text: string; bubble: string }
+  { Icon: typeof Info; text: string }
 > = {
   info: {
     Icon: Info,
     text: "text-sky-400",
-    bubble: "bg-sky-500/20",
   },
   warn: {
     Icon: AlertTriangle,
     text: "text-amber-400",
-    bubble: "bg-amber-500/20",
   },
   error: {
     Icon: TriangleAlert,
     text: "text-rose-400",
-    bubble: "bg-rose-500/20",
   },
 };
 
 export const browser25Demo: Browser25Props = {
   level: "error",
-  time: "12:04:18",
   source: "app.js:247",
   message: "Uncaught TypeError: Cannot read properties of undefined",
+  bordered: false,
 };
 
 export function Browser25({
@@ -50,6 +48,7 @@ export function Browser25({
   time,
   source,
   message,
+  bordered = false,
   className,
 }: Browser25Props) {
   const cfg = levelConfig[level];
@@ -62,22 +61,18 @@ export function Browser25({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-start gap-2 rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 font-mono text-xs text-zinc-100 shadow-md">
-        <div
-          className={cn(
-            "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-sm",
-            cfg.bubble
-          )}
-        >
-          <Icon className={cn("size-3", cfg.text)} aria-hidden="true" />
-        </div>
+      <div className={cn("flex w-full max-w-80 items-start gap-2 rounded-md bg-zinc-950 px-3 py-2 text-xs text-zinc-100 shadow-md", bordered && "border border-zinc-800")}>
+        <Icon
+          className={cn("mt-0.5 size-4 shrink-0", cfg.text)}
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
-            {time && <span className="tabular-nums">{time}</span>}
-            {source && (
-              <span className="truncate">{source}</span>
-            )}
-          </div>
+          {(time || source) && (
+            <div className="flex items-center gap-2 text-xs text-zinc-500">
+              {time && <span className="tabular-nums">{time}</span>}
+              {source && <span className="truncate">{source}</span>}
+            </div>
+          )}
           <span className={cn("leading-snug", cfg.text)}>{message}</span>
         </div>
       </div>

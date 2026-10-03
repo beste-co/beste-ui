@@ -7,21 +7,25 @@ interface Upload14Props {
   filename?: string;
   size?: string;
   ago?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const upload14Demo: Upload14Props = {
   filename: "Q2-forecast-final.xlsx",
   size: "2.1 MB",
-  ago: "Uploaded 2 seconds ago",
+  bordered: false,
 };
 
 export function Upload14({
   filename,
   size,
   ago,
+  bordered = false,
   className,
 }: Upload14Props) {
+  const meta = [size, ago].filter(Boolean).join(" · ");
+
   return (
     <div
       className={cn(
@@ -29,7 +33,7 @@ export function Upload14({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-lg border border-emerald-500 bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-emerald-500")}>
         <div className="relative flex size-10 shrink-0 items-center justify-center rounded-md bg-emerald-500 text-white">
           <FileText className="size-4" aria-hidden="true" />
           <CheckCircle2
@@ -41,9 +45,11 @@ export function Upload14({
           <span className="truncate text-sm font-semibold text-card-foreground">
             {filename}
           </span>
-          <span className="truncate text-xs text-muted-foreground">
-            {size} · {ago}
-          </span>
+          {meta && (
+            <span className="truncate text-xs text-muted-foreground tabular-nums">
+              {meta}
+            </span>
+          )}
         </div>
         <button
           type="button"

@@ -18,6 +18,7 @@ interface Token {
 
 interface Code5Props {
   tokens?: Token[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -34,6 +35,7 @@ export const code5Demo: Code5Props = {
     { kind: "string", text: "\"42\"" },
     { kind: "punct", text: ");" },
   ],
+  bordered: false,
 };
 
 const tokenClasses: Record<TokenKind, string> = {
@@ -46,7 +48,7 @@ const tokenClasses: Record<TokenKind, string> = {
   comment: "italic text-muted-foreground",
 };
 
-export function Code5({ tokens = [], className }: Code5Props) {
+export function Code5({ tokens = [], bordered = false, className }: Code5Props) {
   return (
     <div
       className={cn(
@@ -54,7 +56,7 @@ export function Code5({ tokens = [], className }: Code5Props) {
         className
       )}
     >
-      <div className="w-full max-w-80 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("w-full max-w-80 rounded-lg bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <code className="block truncate font-mono text-sm">
           {tokens.map((token, i) => (
             <span key={i} className={tokenClasses[token.kind]}>

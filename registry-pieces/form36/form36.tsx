@@ -34,15 +34,15 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const form36Demo: Form36Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Get the launch note",
-  placeholder: "you@practice.com",
+  placeholder: "hello@beste.co",
   submitLabel: "Join",
   finePrint: "One email when we open the doors. Nothing else.",
 };
 
-export function Form36({ label, placeholder, submitLabel, finePrint, surface = "card", bordered = true, inverted = false, className }: Form36Props) {
+export function Form36({ label, placeholder, submitLabel, finePrint, surface = "card", bordered = false, inverted = false, className }: Form36Props) {
   const emailId = useId();
 
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];

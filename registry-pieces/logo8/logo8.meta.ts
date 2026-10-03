@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Single brand tile beside a stack that prints the uppercase brand name, a big mono metric, and a supporting line.",
   category: "Logo",
+  cardScale: 0.75,
 };

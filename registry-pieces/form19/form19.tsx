@@ -9,6 +9,7 @@ interface Form19Props {
   dialCode?: string;
   value?: string;
   hint?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -17,7 +18,7 @@ export const form19Demo: Form19Props = {
   flag: "🇹🇷",
   dialCode: "+90",
   value: "532 000 12 34",
-  hint: "We'll text a login code if you enable 2FA.",
+  bordered: false,
 };
 
 export function Form19({
@@ -26,6 +27,7 @@ export function Form19({
   dialCode = "+1",
   value,
   hint,
+  bordered = false,
   className,
 }: Form19Props) {
   return (
@@ -41,7 +43,7 @@ export function Form19({
             {label}
           </label>
         )}
-        <div className="flex items-stretch overflow-hidden rounded-md border border-border bg-card shadow-sm">
+        <div className={cn("flex items-stretch overflow-hidden rounded-md bg-card shadow-sm", bordered && "border border-border")}>
           <button
             type="button"
             className="inline-flex shrink-0 items-center gap-1.5 border-r border-border bg-muted px-2.5 text-sm text-card-foreground hover:bg-muted-foreground/10"
@@ -49,7 +51,7 @@ export function Form19({
             <span className="text-base leading-none" aria-hidden="true">
               {flag}
             </span>
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {dialCode}
             </span>
             <ChevronDown
@@ -57,7 +59,7 @@ export function Form19({
               aria-hidden="true"
             />
           </button>
-          <span className="flex-1 truncate px-3 py-2 font-mono text-sm text-card-foreground">
+          <span className="flex-1 truncate px-3 py-2 text-sm text-card-foreground">
             {value}
           </span>
         </div>

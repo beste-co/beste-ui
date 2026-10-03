@@ -11,6 +11,7 @@ interface Comment {
 
 interface Editor28Props {
   comments?: Comment[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -27,9 +28,10 @@ export const editor28Demo: Editor28Props = {
     { tag: "FIXME", text: "handles null state poorly" },
     { tag: "NOTE", text: "revisit once design lock lands" },
   ],
+  bordered: false,
 };
 
-export function Editor28({ comments = [], className }: Editor28Props) {
+export function Editor28({ comments = [], bordered = false, className }: Editor28Props) {
   return (
     <div
       className={cn(
@@ -37,7 +39,7 @@ export function Editor28({ comments = [], className }: Editor28Props) {
         className
       )}
     >
-      <pre className="flex w-full max-w-80 flex-col gap-0.5 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs leading-relaxed shadow-sm">
+      <pre className={cn("flex w-full max-w-80 flex-col gap-0.5 rounded-md bg-card px-3 py-2 text-xs leading-relaxed shadow-sm", bordered && "border border-border")}>
         {comments.map((c, i) => (
           <div key={i} className="flex items-baseline gap-3">
             <span className="w-4 shrink-0 select-none text-right tabular-nums text-muted-foreground/60">

@@ -39,7 +39,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const progress4Demo: Progress4Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Thinking",
   tone: "primary",
@@ -49,7 +49,7 @@ export function Progress4({
   label,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Progress4Props) {

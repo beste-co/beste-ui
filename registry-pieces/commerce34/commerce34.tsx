@@ -17,6 +17,7 @@ interface Commerce34Props {
   stepMs?: number;
   holdMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -37,15 +38,15 @@ const lineClasses: Record<Tone, string> = {
 };
 
 export const commerce34Demo: Commerce34Props = {
-  orderLabel: "Order 4821",
+  orderLabel: "Your order",
   stops: [
     { label: "Ordered", time: "Mon 09:12" },
-    { label: "Packed", time: "Mon 14:40" },
     { label: "Shipped", time: "Tue 08:05" },
     { label: "Out for delivery", time: "Wed 07:30" },
     { label: "Delivered", time: "Wed 11:52" },
   ],
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Commerce34({
@@ -53,7 +54,8 @@ export function Commerce34({
   stops = [],
   stepMs = 1300,
   holdMs = 2800,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Commerce34Props) {
   const [active, setActive] = useState(0);
@@ -77,9 +79,9 @@ export function Commerce34({
         className
       )}
     >
-      <div className="flex w-full max-w-64 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-64 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span className="font-mono">{orderLabel}</span>
+          <span>{orderLabel}</span>
           <span
             className={cn(
               "rounded-full px-2 py-0.5 font-medium transition-colors duration-300",

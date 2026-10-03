@@ -30,11 +30,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes34Demo: Shapes34Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes34({ surface = "card", bordered = true, inverted = false, className }: Shapes34Props) {
+export function Shapes34({ surface = "card", bordered = false, inverted = false, className }: Shapes34Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -53,11 +53,11 @@ export function Shapes34({ surface = "card", bordered = true, inverted = false, 
           <span className="h-1 w-full rounded-full bg-current/10" />
           <span className="h-1 w-3/4 rounded-full bg-current/10" />
         </div>
-        <div className="flex items-center justify-between gap-2 rounded-md border border-current/15 bg-current/10 px-3 py-2">
+        <div className={cn("flex items-center justify-between gap-2 rounded-md bg-current/10 px-3 py-2", bordered && "border border-current/15")}>
           <span className="h-1.5 w-20 rounded-full bg-current/10" />
           <ChevronDown className="size-3 text-current/60" />
         </div>
-        <div className="flex items-center justify-between gap-2 rounded-md border border-current/15 bg-current/10 px-3 py-2">
+        <div className={cn("flex items-center justify-between gap-2 rounded-md bg-current/10 px-3 py-2", bordered && "border border-current/15")}>
           <span className="h-1.5 w-28 rounded-full bg-current/10" />
           <ChevronDown className="size-3 text-current/60" />
         </div>

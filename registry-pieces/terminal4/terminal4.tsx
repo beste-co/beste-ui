@@ -8,6 +8,7 @@ type Manager = "npm" | "pnpm" | "yarn" | "bun";
 
 interface Terminal4Props {
   packageName?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -20,10 +21,12 @@ function buildCommand(manager: Manager, pkg: string) {
 
 export const terminal4Demo: Terminal4Props = {
   packageName: "beste-ui",
+  bordered: false,
 };
 
 export function Terminal4({
   packageName = "beste-ui",
+  bordered = false,
   className,
 }: Terminal4Props) {
   const [active, setActive] = useState<Manager>("npm");
@@ -47,7 +50,7 @@ export function Terminal4({
         className
       )}
     >
-      <div className="w-full max-w-72 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 shadow-sm">
+      <div className={cn("w-full max-w-72 overflow-hidden rounded-lg bg-zinc-950 shadow-sm", bordered && "border border-zinc-800")}>
         <div className="flex items-center gap-1 border-b border-zinc-800 px-2 py-2">
           {MANAGERS.map((manager) => (
             <button

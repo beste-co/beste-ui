@@ -36,7 +36,7 @@ export function Input2({
             <div
               key={i}
               className={cn(
-                "flex size-9 items-center justify-center rounded-md font-mono text-base font-semibold tabular-nums shadow-sm",
+                "flex size-9 items-center justify-center rounded-md text-base font-semibold tabular-nums shadow-sm",
                 isFilled && "border border-border bg-card text-card-foreground",
                 !isFilled &&
                   !isCursor &&

@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "education15",
   title: "Assignment Card",
   description:
-    "Course assignment card with a violet file tile, status pill, due date, and attachment count footer.",
+    "Course assignment card with a violet file icon, course name, status pill, and due date.",
   category: "Education",
 };

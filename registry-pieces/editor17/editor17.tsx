@@ -14,6 +14,7 @@ interface Editor17Props {
   params?: Param[];
   returnType?: string;
   description?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,7 +25,7 @@ export const editor17Demo: Editor17Props = {
     { name: "locale", type: "Locale" },
   ],
   returnType: "string",
-  description: "Greet the user with a localized message.",
+  bordered: false,
 };
 
 export function Editor17({
@@ -32,6 +33,7 @@ export function Editor17({
   params = [],
   returnType,
   description,
+  bordered = false,
   className,
 }: Editor17Props) {
   return (
@@ -42,7 +44,7 @@ export function Editor17({
       )}
     >
       <div className="flex w-full max-w-80 flex-col gap-1.5">
-        <div className="rounded-md border border-border bg-card px-3 py-2 font-mono text-xs shadow-sm">
+        <div className={cn("rounded-md bg-card px-3 py-2 text-xs shadow-sm", bordered && "border border-border")}>
           <span className="text-violet-600 dark:text-violet-400">{fn}</span>
           <span className="text-card-foreground">(</span>
           <span
@@ -51,8 +53,8 @@ export function Editor17({
           />
           <span className="text-card-foreground">)</span>
         </div>
-        <div className="flex flex-col gap-1 overflow-hidden rounded-md border border-border bg-card px-3 py-2 shadow-md">
-          <div className="break-words font-mono text-xs leading-relaxed">
+        <div className={cn("flex flex-col gap-1 overflow-hidden rounded-md bg-card px-3 py-2 shadow-md", bordered && "border border-border")}>
+          <div className="break-words text-xs leading-relaxed">
             <span className="text-violet-600 dark:text-violet-400">{fn}</span>
             <span className="text-card-foreground">(</span>
             {params.map((p, i) => (

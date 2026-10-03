@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "realestate6",
   title: "Lease Card",
   description:
-    "Rental lease summary with an amber key tile, bold monthly rent, deposit note, and lease start line.",
+    "Rental lease summary with a key icon, the tenant, bold monthly rent, and a deposit note.",
   category: "Realestate",
 };

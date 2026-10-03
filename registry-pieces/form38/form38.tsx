@@ -11,6 +11,7 @@ interface Form38Props {
   stars?: number;
   cursorMs?: number;
   holdMs?: number;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const form38Demo: Form38Props = {
   prompt: "How was your experience?",
   thanks: "Thanks for the feedback!",
   pick: 4,
+  bordered: false,
 };
 
 export function Form38({
@@ -27,6 +29,7 @@ export function Form38({
   stars = 5,
   cursorMs = 260,
   holdMs = 2600,
+  bordered = false,
   className,
 }: Form38Props) {
   // step: -1 idle, 0..pick-1 hovering, pick = chosen, pick+1 = thanks
@@ -75,7 +78,7 @@ export function Form38({
       )}
     >
       <style>{`@keyframes form38-pop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }`}</style>
-      <div className="flex w-full max-w-72 flex-col items-center gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col items-center gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="relative flex h-5 w-full items-center justify-center">
           <p
             className={cn(
@@ -132,10 +135,6 @@ export function Form38({
             <MousePointer2 className="size-4 fill-background" />
           </span>
         </div>
-
-        <p className="h-4 text-xs tabular-nums text-muted-foreground">
-          {picked ? `${target} of ${stars} stars` : "Tap a star to rate"}
-        </p>
       </div>
     </div>
   );

@@ -24,6 +24,7 @@ interface Commerce24Props {
   installments?: Commerce24Installment[];
   fineprint?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -66,8 +67,8 @@ export const commerce24Demo: Commerce24Props = {
     { amount: "$48", date: "May 5" },
     { amount: "$48", date: "May 12" },
   ],
-  fineprint: "0% interest. No fees.",
   tone: "primary",
+  bordered: false,
 };
 
 export function Commerce24({
@@ -76,6 +77,7 @@ export function Commerce24({
   installments = [],
   fineprint,
   tone = "primary",
+  bordered = false,
   className,
 }: Commerce24Props) {
   const firstUnpaid = installments.findIndex((i) => !i.paid);
@@ -88,10 +90,10 @@ export function Commerce24({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-baseline justify-between gap-2">
           <div className="flex items-baseline gap-1.5">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               Pay in {installments.length}
             </span>
             <span className="text-xs text-muted-foreground">·</span>
@@ -100,7 +102,7 @@ export function Commerce24({
             </span>
           </div>
           {total && (
-            <span className="font-mono text-sm font-semibold tabular-nums text-card-foreground">
+            <span className="text-sm font-semibold tabular-nums text-card-foreground">
               {total}
             </span>
           )}
@@ -152,7 +154,7 @@ export function Commerce24({
                 <div className="flex flex-col items-center">
                   <span
                     className={cn(
-                      "font-mono text-xs font-semibold tabular-nums",
+                      "text-xs font-semibold tabular-nums",
                       it.paid
                         ? "text-muted-foreground line-through"
                         : "text-card-foreground"

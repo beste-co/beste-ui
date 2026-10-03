@@ -15,6 +15,7 @@ interface Media4Props {
   title?: string;
   artist?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,6 +34,7 @@ export const media4Demo: Media4Props = {
   title: "Night Drive",
   artist: "Lumen",
   tone: "midnight",
+  bordered: false,
 };
 
 export function Media4({
@@ -41,6 +43,7 @@ export function Media4({
   title,
   artist,
   tone = "sunset",
+  bordered = false,
   className,
 }: Media4Props) {
   return (
@@ -53,7 +56,8 @@ export function Media4({
       <div className="flex w-32 flex-col gap-2">
         <div
           className={cn(
-            "relative aspect-square w-full overflow-hidden rounded-md border border-border shadow-lg shadow-black/20",
+            "relative aspect-square w-full overflow-hidden rounded-md shadow-lg shadow-black/20",
+              bordered && "border border-border",
             !src && toneClasses[tone]
           )}
         >

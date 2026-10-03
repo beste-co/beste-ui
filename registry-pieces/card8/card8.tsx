@@ -9,6 +9,7 @@ interface Card8Props {
   period?: string;
   features?: string[];
   featured?: boolean;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,6 +19,7 @@ export const card8Demo: Card8Props = {
   period: "per month",
   features: ["Unlimited blocks", "Team workspaces", "Priority support"],
   featured: true,
+  bordered: false,
 };
 
 export function Card8({
@@ -26,6 +28,7 @@ export function Card8({
   period = "per month",
   features = [],
   featured = false,
+  bordered = false,
   className,
 }: Card8Props) {
   return (
@@ -37,7 +40,8 @@ export function Card8({
     >
       <div
         className={cn(
-          "flex w-full max-w-60 flex-col gap-3 rounded-xl border p-4 shadow-sm",
+          "flex w-full max-w-60 flex-col gap-3 rounded-xl p-4 shadow-sm",
+          bordered && "border",
           featured
             ? "border-primary bg-primary text-primary-foreground"
             : "border-border bg-card"
@@ -46,7 +50,7 @@ export function Card8({
         <div className="flex flex-col gap-0.5">
           <span
             className={cn(
-              "text-sm font-semibold uppercase tracking-wide",
+              "text-sm font-semibold",
               featured ? "text-primary-foreground/80" : "text-muted-foreground"
             )}
           >

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Surface = "card" | "glass";
@@ -36,7 +36,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const dashboard10Demo: Dashboard10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Conversion rate",
   currentLabel: "This week",
@@ -54,12 +54,11 @@ export function Dashboard10({
   previousValue = "—",
   delta,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Dashboard10Props) {
   const positive = typeof delta === "number" && delta >= 0;
-  const TrendIcon = positive ? TrendingUp : TrendingDown;
 
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
@@ -72,19 +71,18 @@ export function Dashboard10({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-md p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         <div className="flex items-baseline justify-between gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {label}
           </span>
           {typeof delta === "number" && (
             <span
               className={cn(
-                "inline-flex items-center gap-0.5 rounded-sm px-1.5 py-0.5 font-mono text-xs font-medium",
+                "inline-flex items-center rounded-sm px-1.5 py-0.5 text-xs font-medium tabular-nums",
                 positive
                   ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
                   : "bg-rose-500/15 text-rose-600 dark:text-rose-400"
               )}
             >
-              <TrendIcon className="size-3" aria-hidden="true" />
               {positive ? "+" : ""}
               {delta}%
             </span>
@@ -95,7 +93,7 @@ export function Dashboard10({
             <span className="text-xs text-current/60">
               {previousLabel}
             </span>
-            <span className="font-mono text-lg tabular-nums text-current/60">
+            <span className="text-lg tabular-nums text-current/60">
               {previousValue}
             </span>
           </div>
@@ -107,7 +105,7 @@ export function Dashboard10({
             <span className="text-xs text-current/60">
               {currentLabel}
             </span>
-            <span className="font-mono text-lg font-semibold tabular-nums">
+            <span className="text-lg font-semibold tabular-nums">
               {currentValue}
             </span>
           </div>

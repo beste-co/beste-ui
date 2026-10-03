@@ -1,6 +1,6 @@
 "use client";
 
-import { ImageIcon, ScanLine } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -16,6 +16,7 @@ interface Ai28Props {
   dimensions?: string;
   objects?: string[];
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -42,16 +43,17 @@ const scanClasses: Record<Tone, string> = {
 
 export const ai28Demo: Ai28Props = {
   filename: "whiteboard.jpg",
-  dimensions: "1920×1080",
   objects: ["diagram", "text", "arrows"],
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai28({
   filename = "image.png",
   dimensions,
   objects = [],
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai28Props) {
   return (
@@ -62,7 +64,7 @@ export function Ai28({
       )}
     >
       <style>{`@keyframes ai28-scan { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.75rem); } }`}</style>
-      <div className="flex w-full max-w-80 gap-2.5 rounded-md border border-border bg-card p-2.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 gap-2.5 rounded-md bg-card p-2.5 shadow-sm", bordered && "border border-border")}>
         <div
           className={cn(
             "relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-sm ring-1 ring-inset",
@@ -83,24 +85,21 @@ export function Ai28({
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex items-center justify-between gap-2">
-            <span className="truncate font-mono text-xs text-card-foreground">
+            <span className="truncate text-xs text-card-foreground">
               {filename}
             </span>
             {dimensions && (
-              <span className="shrink-0 font-mono text-xs text-muted-foreground">
+              <span className="shrink-0 text-xs text-muted-foreground">
                 {dimensions}
               </span>
             )}
           </div>
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <ScanLine className="size-3" aria-hidden="true" />
-            <span>Analyzing</span>
-          </div>
+          <span className="text-xs text-muted-foreground">Analyzing</span>
           <div className="flex flex-wrap gap-1">
             {objects.map((o) => (
               <span
                 key={o}
-                className="rounded-sm bg-muted px-1.5 py-0.5 font-mono text-xs text-card-foreground"
+                className="rounded-sm bg-muted px-1.5 py-0.5 text-xs text-card-foreground"
               >
                 {o}
               </span>

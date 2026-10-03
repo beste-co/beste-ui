@@ -57,15 +57,14 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const commerce35Demo: Commerce35Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Products",
   products: [
-    { title: "Field Jacket", price: "£180", variants: 8, status: "published" },
-    { title: "Waxed Tote", price: "£95", variants: 3, status: "published" },
+    { title: "Field Jacket", price: "£180", status: "published" },
+    { title: "Waxed Tote", price: "£95", status: "published" },
     { title: "Wool Scarf", price: "£45", status: "draft" },
   ],
-  variantsWord: "variants",
   stepMs: 440,
 };
 
@@ -81,7 +80,7 @@ export function Commerce35({
   variantsWord = "variants",
   stepMs = 440,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Commerce35Props) {

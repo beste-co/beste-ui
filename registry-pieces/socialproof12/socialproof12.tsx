@@ -6,19 +6,21 @@ interface Socialproof12Props {
   name?: string;
   city?: string;
   time?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const socialproof12Demo: Socialproof12Props = {
-  name: "Sarah",
+  name: "Hania",
   city: "Berlin",
-  time: "2 min ago",
+  bordered: false,
 };
 
 export function Socialproof12({
   name = "Someone",
   city,
   time,
+  bordered = false,
   className,
 }: Socialproof12Props) {
   return (
@@ -28,7 +30,7 @@ export function Socialproof12({
         className
       )}
     >
-      <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-card px-3 py-1.5 shadow-sm">
+      <div className={cn("inline-flex items-center gap-2.5 rounded-full bg-card px-3 py-1.5 shadow-sm", bordered && "border border-border")}>
         <span className="relative flex size-2 items-center justify-center">
           <span
             className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-60"

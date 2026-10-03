@@ -37,7 +37,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const socialproof3Demo: Socialproof3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   quote:
     "Shipped our marketing site in a weekend. The blocks feel designed, not generated.",
@@ -57,7 +57,7 @@ export function Socialproof3({
   avatarAlt,
   fallback = "??",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Socialproof3Props) {

@@ -60,21 +60,21 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const media1Demo: Media1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   label: "Voice memo",
   duration: "0:42",
   bars: [30, 55, 70, 40, 85, 65, 90, 50, 75, 45, 80, 60, 35, 70, 55],
-  tone: "indigo",
+  tone: "primary",
 };
 
 export function Media1({
   label,
   duration,
   bars = [],
-  tone = "indigo",
+  tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Media1Props) {
@@ -118,7 +118,7 @@ export function Media1({
           ))}
         </div>
         {duration && (
-          <span className="shrink-0 font-mono text-xs tabular-nums text-current/60">
+          <span className="shrink-0 text-xs tabular-nums text-current/60">
             {duration}
           </span>
         )}

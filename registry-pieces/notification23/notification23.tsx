@@ -12,6 +12,7 @@ interface Notification23Props {
   max?: number;
   intervalMs?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -31,9 +32,10 @@ export const notification23Demo: Notification23Props = {
     "Miles Davis approved your pull request",
     "Your invoice for September is ready",
     "Patti Smith shared a folder with you",
-    "Deploy to production finished",
   ],
-  tone: "rose",
+  max: 4,
+  tone: "primary",
+  bordered: false,
 };
 
 export function Notification23({
@@ -41,7 +43,8 @@ export function Notification23({
   previews = [],
   max = 5,
   intervalMs = 2000,
-  tone = "rose",
+  tone = "primary",
+  bordered = false,
   className,
 }: Notification23Props) {
   const [count, setCount] = useState(0);
@@ -67,12 +70,12 @@ export function Notification23({
       <style>{`@keyframes notification23-ring { 0%, 100% { transform: rotate(0); } 15% { transform: rotate(14deg); } 30% { transform: rotate(-12deg); } 45% { transform: rotate(8deg); } 60% { transform: rotate(-5deg); } 75% { transform: rotate(2deg); } }
 @keyframes notification23-pop { 0% { transform: scale(0.6); } 45% { transform: scale(1.35); } 100% { transform: scale(1); } }
 @keyframes notification23-fade { from { opacity: 0; transform: translateY(0.25rem); } to { opacity: 1; transform: none; } }`}</style>
-      <div className="flex w-full max-w-72 flex-col gap-3 rounded-xl border border-border bg-card p-4 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-3 rounded-xl bg-card p-4 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-3">
           <button
             type="button"
             aria-label={`${count} unread notifications`}
-            className="relative flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-border bg-background text-card-foreground shadow-sm transition-colors hover:bg-muted"
+            className={cn("relative flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-card-foreground shadow-sm transition-colors hover:bg-muted", bordered ? "border border-border bg-background" : "bg-muted hover:bg-muted-foreground/15")}
           >
             <span
               key={beat}
@@ -96,12 +99,7 @@ export function Notification23({
               </span>
             )}
           </button>
-          <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-card-foreground">{label}</p>
-            <p className="text-xs tabular-nums text-muted-foreground">
-              {count > 0 ? `${count} unread` : "All caught up"}
-            </p>
-          </div>
+          <p className="min-w-0 flex-1 truncate text-sm font-medium text-card-foreground">{label}</p>
         </div>
 
         <div className="flex h-8 items-center border-t border-border pt-2">

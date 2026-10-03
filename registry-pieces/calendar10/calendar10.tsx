@@ -46,26 +46,23 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const calendar10Demo: Calendar10Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
-  heading: "Today · Thu 23 Apr",
+  heading: "Today",
   items: [
     {
       time: "09:30",
       title: "Design review",
-      location: "Figma",
       accent: "sky",
     },
     {
       time: "11:00",
-      title: "1:1 with Mira",
-      location: "Meet",
+      title: "1:1 with Hania",
       accent: "emerald",
     },
     {
       time: "14:30",
       title: "Ship room",
-      location: "Office · 4F",
       accent: "violet",
     },
   ],
@@ -75,7 +72,7 @@ export function Calendar10({
   heading,
   items = [],
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Calendar10Props) {
@@ -90,7 +87,7 @@ export function Calendar10({
     >
       <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl p-3 shadow-sm", surfaceTone, bordered && "border border-current/15")}>
         {heading && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {heading}
           </span>
         )}
@@ -103,7 +100,7 @@ export function Calendar10({
                 accentClasses[item.accent]
               )}
             >
-              <span className="font-mono text-sm font-semibold">
+              <span className="text-sm font-semibold tabular-nums">
                 {item.time}
               </span>
               <div className="flex min-w-0 flex-1 flex-col">

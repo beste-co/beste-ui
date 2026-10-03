@@ -32,7 +32,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const tooltip3Demo: Tooltip3Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Monthly recurring revenue",
   description:
@@ -43,7 +43,7 @@ export function Tooltip3({
   title,
   description,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Tooltip3Props) {
@@ -58,9 +58,7 @@ export function Tooltip3({
     >
       <div className="relative">
         <div className={cn("flex w-64 items-start gap-2.5 rounded-lg p-3 shadow-lg", surfaceTone, bordered && "border border-current/15")}>
-          <div className="flex size-6 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400">
-            <Info className="size-3.5" aria-hidden="true" />
-          </div>
+          <Info className="size-4 shrink-0 text-sky-600 dark:text-sky-400" aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col gap-0.5">
             {title && (
               <span className="text-xs font-semibold">

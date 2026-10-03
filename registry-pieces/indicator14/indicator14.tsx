@@ -41,7 +41,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const indicator14Demo: Indicator14Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Booking service",
   uptime: "99.98%",
@@ -95,7 +95,7 @@ export const indicator14Demo: Indicator14Props = {
   ],
 };
 
-export function Indicator14({ title, uptime, range, bars = [], surface = "card", bordered = true, inverted = false, className }: Indicator14Props) {
+export function Indicator14({ title, uptime, range, bars = [], surface = "card", bordered = false, inverted = false, className }: Indicator14Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (

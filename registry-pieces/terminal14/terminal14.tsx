@@ -18,12 +18,10 @@ interface Terminal14Props {
 export const terminal14Demo: Terminal14Props = {
   command: "beste deploy --prod",
   lines: [
-    "Building 42 pages",
-    "Uploading assets (3.1 MB)",
-    "Warming edge cache in 12 regions",
-    "Running smoke tests",
+    "Building pages",
+    "Uploading assets",
   ],
-  success: "Deployed to https://beste.co in 14s",
+  success: "Deployed in 14s",
 };
 
 export function Terminal14({

@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 
 interface Toolbar5Props {
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,9 +34,11 @@ const groups: {
   },
 ];
 
-export const toolbar5Demo: Toolbar5Props = {};
+export const toolbar5Demo: Toolbar5Props = {
+  bordered: false,
+};
 
-export function Toolbar5({ className }: Toolbar5Props) {
+export function Toolbar5({ bordered = false, className }: Toolbar5Props) {
   return (
     <div
       className={cn(
@@ -43,7 +46,7 @@ export function Toolbar5({ className }: Toolbar5Props) {
         className
       )}
     >
-      <div className="inline-flex items-center rounded-lg border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center rounded-lg bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {groups.map((g, gi) => (
           <div key={gi} className="flex items-center">
             {gi > 0 && (

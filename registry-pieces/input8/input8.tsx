@@ -46,7 +46,6 @@ const dotClasses: Record<Tone, string> = {
 export const input8Demo: Input8Props = {
   keys: ["⌘", "Shift", "K"],
   label: "Keyboard shortcut",
-  hint: "Press any combination",
   recording: true,
   tone: "primary",
 };
@@ -68,7 +67,7 @@ export function Input8({
     >
       <div className="flex w-full max-w-72 flex-col gap-2">
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
         )}
@@ -89,7 +88,7 @@ export function Input8({
               keys.map((k, idx) => (
                 <span
                   key={idx}
-                  className="flex min-w-6 items-center justify-center rounded-md border border-b-2 border-border bg-muted px-1.5 py-0.5 font-mono text-xs font-semibold text-card-foreground shadow-[inset_0_-1px_0_var(--border)]"
+                  className="flex min-w-6 items-center justify-center rounded-md border border-b-2 border-border bg-muted px-1.5 py-0.5 text-xs font-semibold text-card-foreground shadow-[inset_0_-1px_0_var(--border)]"
                 >
                   {k}
                 </span>
@@ -98,18 +97,13 @@ export function Input8({
           </div>
           {recording && (
             <span
-              className="inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground"
-              aria-live="polite"
-            >
-              <span
-                className={cn(
-                  "size-1.5 animate-pulse rounded-full",
-                  dotClasses[tone]
-                )}
-                aria-hidden="true"
-              />
-              REC
-            </span>
+              className={cn(
+                "size-1.5 shrink-0 animate-pulse rounded-full",
+                dotClasses[tone]
+              )}
+              role="status"
+              aria-label="Recording"
+            />
           )}
         </div>
         {hint && (

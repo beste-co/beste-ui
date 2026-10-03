@@ -29,11 +29,11 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const shapes48Demo: Shapes48Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
 };
 
-export function Shapes48({ surface = "card", bordered = true, inverted = false, className }: Shapes48Props) {
+export function Shapes48({ surface = "card", bordered = false, inverted = false, className }: Shapes48Props) {
   const surfaceTone = surfaceClasses[surface][inverted ? "inverted" : "plain"];
 
   return (
@@ -45,7 +45,7 @@ export function Shapes48({ surface = "card", bordered = true, inverted = false, 
     >
       <div className="flex w-44 flex-col items-center gap-2" aria-hidden="true">
         <div className={cn("flex h-4 items-center gap-1.5 rounded-full px-2", surfaceTone, bordered && "border border-current/15")}>
-          <span className="size-1 rounded-full bg-emerald-500" />
+          <span className="size-1 rounded-full bg-primary" />
           <span className="h-1 w-8 rounded-full bg-current/10" />
         </div>
         <span className="h-2.5 w-2/3 rounded-full bg-current/70" />

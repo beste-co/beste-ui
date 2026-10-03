@@ -20,14 +20,12 @@ interface Travel2Props {
 }
 
 export const travel2Demo: Travel2Props = {
-  passenger: "Beste Sözen",
-  flight: "TK 1983",
+  passenger: "Hania Rani",
   from: "IST",
   to: "LHR",
   seat: "12A",
   gate: "B22",
   boardingTime: "09:10",
-  headerLabel: "Boarding pass",
   passengerLabel: "Passenger",
   gateLabel: "Gate",
   boardingLabel: "Boarding",
@@ -42,7 +40,7 @@ export function Travel2({
   seat,
   gate,
   boardingTime,
-  headerLabel = "Boarding pass",
+  headerLabel,
   passengerLabel = "Passenger",
   gateLabel = "Gate",
   boardingLabel = "Boarding",
@@ -66,19 +64,21 @@ export function Travel2({
           aria-hidden="true"
         />
         <div className="flex-1 p-3">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            <span>{headerLabel}</span>
-            <span>{flight}</span>
-          </div>
-          <div className="mt-2 flex items-center gap-2">
-            <span className="font-mono text-2xl font-bold text-card-foreground">
+          {(headerLabel || flight) && (
+            <div className="mb-2 flex items-center text-xs font-semibold text-muted-foreground">
+              {headerLabel && <span>{headerLabel}</span>}
+              {flight && <span className="ml-auto">{flight}</span>}
+            </div>
+          )}
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-bold text-card-foreground">
               {from}
             </span>
             <Plane
               className="size-4 text-muted-foreground"
               aria-hidden="true"
             />
-            <span className="font-mono text-2xl font-bold text-card-foreground">
+            <span className="text-2xl font-bold text-card-foreground">
               {to}
             </span>
           </div>
@@ -91,13 +91,13 @@ export function Travel2({
             </div>
             <div className="flex flex-col">
               <span className="text-muted-foreground">{gateLabel}</span>
-              <span className="font-mono font-semibold text-card-foreground">
+              <span className="font-semibold text-card-foreground">
                 {gate}
               </span>
             </div>
             <div className="flex flex-col">
               <span className="text-muted-foreground">{boardingLabel}</span>
-              <span className="font-mono font-semibold text-card-foreground">
+              <span className="font-semibold tabular-nums text-card-foreground">
                 {boardingTime}
               </span>
             </div>
@@ -108,10 +108,10 @@ export function Travel2({
           aria-hidden="false"
         >
           <div className="flex flex-col items-center gap-0.5">
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-medium text-muted-foreground">
               {seatLabel}
             </span>
-            <span className="font-mono text-xl font-bold text-card-foreground">
+            <span className="text-xl font-bold text-card-foreground">
               {seat}
             </span>
           </div>

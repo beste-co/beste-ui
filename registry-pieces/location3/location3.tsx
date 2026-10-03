@@ -9,6 +9,7 @@ interface Location3Props {
   city?: string;
   postal?: string;
   country?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -19,6 +20,7 @@ export const location3Demo: Location3Props = {
   city: "Brooklyn, NY",
   postal: "11201",
   country: "United States",
+  bordered: false,
 };
 
 export function Location3({
@@ -28,6 +30,7 @@ export function Location3({
   city,
   postal,
   country,
+  bordered = false,
   className,
 }: Location3Props) {
   return (
@@ -37,9 +40,9 @@ export function Location3({
         className
       )}
     >
-      <div className="flex w-full max-w-72 flex-col gap-1 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-72 flex-col gap-1 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {label && (
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {label}
           </span>
         )}

@@ -31,7 +31,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const code1Demo: Code1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   code: "const greeting = \"Hello, Beste!\";",
   language: "ts",
@@ -41,7 +41,7 @@ export function Code1({
   code,
   language,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Code1Props) {
@@ -54,12 +54,12 @@ export function Code1({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-2 rounded-lg border border-current/15 bg-current/10 px-3 py-2 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-2 rounded-lg bg-current/10 px-3 py-2 shadow-sm", bordered && "border border-current/15")}>
         <code className="flex-1 truncate font-mono text-sm">
           {code}
         </code>
         {language && (
-          <span className={cn("shrink-0 rounded-md px-1.5 py-0.5 font-mono text-xs font-semibold uppercase text-current/60", surfaceTone, bordered && "border border-current/15")}>
+          <span className={cn("shrink-0 rounded-md px-1.5 py-0.5 font-mono text-xs font-semibold text-current/60", surfaceTone, bordered && "border border-current/15")}>
             {language}
           </span>
         )}

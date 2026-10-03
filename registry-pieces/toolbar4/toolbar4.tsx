@@ -12,6 +12,7 @@ type Align = "left" | "center" | "right" | "justify";
 
 interface Toolbar4Props {
   active?: Align;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -24,9 +25,10 @@ const items: { id: Align; Icon: typeof AlignLeft; label: string }[] = [
 
 export const toolbar4Demo: Toolbar4Props = {
   active: "center",
+  bordered: false,
 };
 
-export function Toolbar4({ active = "left", className }: Toolbar4Props) {
+export function Toolbar4({ active = "left", bordered = false, className }: Toolbar4Props) {
   return (
     <div
       className={cn(
@@ -34,7 +36,7 @@ export function Toolbar4({ active = "left", className }: Toolbar4Props) {
         className
       )}
     >
-      <div className="inline-flex items-center gap-0.5 rounded-lg border border-border bg-card p-1 shadow-sm">
+      <div className={cn("inline-flex items-center gap-0.5 rounded-lg bg-card p-1 shadow-sm", bordered && "border border-border")}>
         {items.map(({ id, Icon, label }) => {
           const isActive = id === active;
           return (

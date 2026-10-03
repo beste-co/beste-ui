@@ -12,6 +12,7 @@ interface CheckItem {
 interface Form22Props {
   legend?: string;
   items?: CheckItem[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -21,23 +22,23 @@ export const form22Demo: Form22Props = {
     {
       label: "Comments on my posts",
       checked: true,
-      hint: "In-app and email",
     },
     {
       label: "Weekly digest",
       checked: true,
-      hint: "Every Monday · 08:00",
     },
     {
       label: "Product announcements",
       checked: false,
     },
   ],
+  bordered: false,
 };
 
 export function Form22({
   legend,
   items = [],
+  bordered = false,
   className,
 }: Form22Props) {
   return (
@@ -47,9 +48,9 @@ export function Form22({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-sm", bordered && "border border-border")}>
         {legend && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {legend}
           </span>
         )}

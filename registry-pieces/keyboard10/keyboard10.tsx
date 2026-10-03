@@ -9,6 +9,7 @@ interface FunctionKey {
 
 interface Keyboard10Props {
   keys?: FunctionKey[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -18,11 +19,11 @@ export const keyboard10Demo: Keyboard10Props = {
     { key: "F2", action: "Rename" },
     { key: "F3", action: "Find next" },
     { key: "F4", action: "Close" },
-    { key: "F5", action: "Reload" },
   ],
+  bordered: false,
 };
 
-export function Keyboard10({ keys = [], className }: Keyboard10Props) {
+export function Keyboard10({ keys = [], bordered = false, className }: Keyboard10Props) {
   return (
     <div
       className={cn(
@@ -30,10 +31,10 @@ export function Keyboard10({ keys = [], className }: Keyboard10Props) {
         className
       )}
     >
-      <div className="flex gap-1.5 rounded-lg border border-border bg-card p-2 shadow-sm">
+      <div className={cn("flex gap-1.5 rounded-lg bg-card p-2 shadow-sm", bordered && "border border-border")}>
         {keys.map((item, idx) => (
           <div key={idx} className="flex flex-col items-center gap-1">
-            <kbd className="flex h-8 min-w-10 items-center justify-center rounded-md border border-border border-b-2 bg-muted px-2 font-mono text-xs font-medium text-card-foreground">
+            <kbd className="flex h-8 min-w-10 items-center justify-center rounded-md border border-border border-b-2 bg-muted px-2 text-xs font-medium text-card-foreground">
               {item.key}
             </kbd>
             {item.action && (

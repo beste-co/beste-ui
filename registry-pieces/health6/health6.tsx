@@ -19,18 +19,19 @@ interface Health6Props {
   mlPerCup?: number;
   label?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const iconClasses: Record<Tone, string> = {
-  neutral: "bg-muted text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  foreground: "bg-foreground text-background",
-  sky: "bg-sky-500 text-white",
-  emerald: "bg-emerald-500 text-white",
-  violet: "bg-violet-500 text-white",
-  amber: "bg-amber-500 text-white",
-  rose: "bg-rose-500 text-white",
+  neutral: "text-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
+  sky: "text-sky-500",
+  emerald: "text-emerald-500",
+  violet: "text-violet-500",
+  amber: "text-amber-500",
+  rose: "text-rose-500",
 };
 
 const cupFillClasses: Record<Tone, string> = {
@@ -49,7 +50,8 @@ export const health6Demo: Health6Props = {
   total: 8,
   mlPerCup: 250,
   label: "Water",
-  tone: "sky",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Health6({
@@ -57,7 +59,8 @@ export function Health6({
   total = 8,
   mlPerCup = 250,
   label = "Water",
-  tone = "sky",
+  tone = "primary",
+  bordered = false,
   className,
 }: Health6Props) {
   const clamped = Math.max(0, Math.min(total, filled));
@@ -71,27 +74,20 @@ export function Health6({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-xl border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
-          <div
-            className={cn(
-              "flex size-8 items-center justify-center rounded-full",
-              iconClasses[tone]
-            )}
-          >
-            <Droplet className="size-4 fill-current" aria-hidden="true" />
-          </div>
+          <Droplet
+            className={cn("size-5 shrink-0 fill-current", iconClasses[tone])}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-semibold text-muted-foreground">
               {label}
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs tabular-nums text-muted-foreground">
               {totalMl} / {goalMl} ml
             </span>
           </div>
-          <span className="font-mono text-sm font-semibold text-card-foreground">
-            {clamped} / {total}
-          </span>
         </div>
         <div className="flex items-end gap-1" aria-hidden="true">
           {Array.from({ length: total }).map((_, idx) => {

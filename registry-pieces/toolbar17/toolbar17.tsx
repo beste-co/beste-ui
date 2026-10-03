@@ -15,6 +15,7 @@ interface Toolbar17Props {
   current?: number;
   total?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -40,6 +41,7 @@ export const toolbar17Demo: Toolbar17Props = {
   current: 42,
   total: 135,
   tone: "foreground",
+  bordered: false,
 };
 
 function fmt(s: number): string {
@@ -54,6 +56,7 @@ export function Toolbar17({
   current = 42,
   total = 135,
   tone = "foreground",
+  bordered = false,
   className,
 }: Toolbar17Props) {
   const pct =
@@ -68,7 +71,7 @@ export function Toolbar17({
         className
       )}
     >
-      <div className="flex w-full max-w-80 items-center gap-3 rounded-full border border-border bg-card px-2 py-1.5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-full bg-card px-2 py-1.5 shadow-sm", bordered && "border border-border")}>
         <button
           type="button"
           aria-label="Play"
@@ -82,7 +85,7 @@ export function Toolbar17({
             aria-hidden="true"
           />
         </button>
-        <span className="font-mono text-xs tabular-nums text-muted-foreground">
+        <span className="text-xs tabular-nums text-muted-foreground">
           {fmt(current)}
         </span>
         <div className="relative flex-1">
@@ -104,7 +107,7 @@ export function Toolbar17({
             aria-hidden="true"
           />
         </div>
-        <span className="font-mono text-xs tabular-nums text-muted-foreground">
+        <span className="text-xs tabular-nums text-muted-foreground">
           {fmt(total)}
         </span>
       </div>

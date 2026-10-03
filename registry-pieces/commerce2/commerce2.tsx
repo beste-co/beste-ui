@@ -60,7 +60,7 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const commerce2Demo: Commerce2Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Color",
   selected: "Tan",
@@ -68,9 +68,7 @@ export const commerce2Demo: Commerce2Props = {
     { color: "black", label: "Black" },
     { color: "white", label: "Ivory" },
     { color: "tan", label: "Tan" },
-    { color: "navy", label: "Navy" },
     { color: "olive", label: "Olive", soldOut: true },
-    { color: "burgundy", label: "Burgundy" },
   ],
 };
 
@@ -79,7 +77,7 @@ export function Commerce2({
   swatches = [],
   selected,
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Commerce2Props) {
@@ -102,7 +100,7 @@ export function Commerce2({
         )}
       >
         <div className="flex items-baseline justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-current/60">
+          <span className="text-xs font-semibold text-current/60">
             {title}
           </span>
           {active && (

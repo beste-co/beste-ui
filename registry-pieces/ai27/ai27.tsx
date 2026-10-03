@@ -17,6 +17,7 @@ interface Ai27Props {
   source?: string;
   score?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -33,9 +34,9 @@ export const ai27Demo: Ai27Props = {
   title: "Implementing rate limits with Redis",
   snippet:
     "Use INCR with an EXPIRE TTL to build a fixed-window limiter that resets every minute.",
-  source: "docs/guides/rate-limits.md",
   score: 0.92,
-  tone: "violet",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Ai27({
@@ -43,7 +44,8 @@ export function Ai27({
   snippet,
   source,
   score,
-  tone = "violet",
+  tone = "primary",
+  bordered = false,
   className,
 }: Ai27Props) {
   return (
@@ -53,7 +55,7 @@ export function Ai27({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-1.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-1.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1.5">
             <FileText
@@ -65,7 +67,7 @@ export function Ai27({
             </span>
           </div>
           {typeof score === "number" && (
-            <span className="shrink-0 rounded-sm bg-emerald-500/15 px-1.5 py-0.5 font-mono text-xs font-medium text-emerald-600 dark:text-emerald-400">
+            <span className="shrink-0 rounded-sm bg-emerald-500/15 px-1.5 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
               {score.toFixed(2)}
             </span>
           )}
@@ -74,7 +76,7 @@ export function Ai27({
           <p className="text-xs leading-snug text-muted-foreground">{snippet}</p>
         )}
         {source && (
-          <span className="truncate font-mono text-xs text-muted-foreground">
+          <span className="truncate text-xs text-muted-foreground">
             {source}
           </span>
         )}

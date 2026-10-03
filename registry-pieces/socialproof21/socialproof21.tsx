@@ -21,6 +21,7 @@ interface Socialproof21Props {
   avatar?: string;
   fallback?: string;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -35,19 +36,19 @@ const textClasses: Record<Tone, string> = {
 };
 
 export const socialproof21Demo: Socialproof21Props = {
-  eyebrow: "Result",
   value: "+312%",
   outcome: "organic signups within the first quarter of launch",
-  name: "Mara Lindqvist",
+  name: "Hania Rani",
   role: "Head of Growth, Northwind",
   avatar:
     "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-  fallback: "ML",
+  fallback: "HR",
   tone: "foreground",
+  bordered: false,
 };
 
 export function Socialproof21({
-  eyebrow = "Result",
+  eyebrow,
   value = "",
   outcome,
   name,
@@ -55,6 +56,7 @@ export function Socialproof21({
   avatar,
   fallback = "",
   tone = "foreground",
+  bordered = false,
   className,
 }: Socialproof21Props) {
   return (
@@ -64,9 +66,9 @@ export function Socialproof21({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-3 rounded-lg border border-border bg-card p-5 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-3 rounded-lg bg-card p-5 shadow-sm", bordered && "border border-border")}>
         {eyebrow && (
-          <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {eyebrow}
           </span>
         )}

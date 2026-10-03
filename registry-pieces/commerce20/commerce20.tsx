@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, RefreshCw } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -18,6 +18,7 @@ interface Commerce20Props {
   savePerOrder?: string;
   savePercent?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -44,9 +45,9 @@ const badgeClasses: Record<Tone, string> = {
 export const commerce20Demo: Commerce20Props = {
   frequency: "Every month",
   next: "May 21, 2026",
-  savePerOrder: "$4.80",
   savePercent: 10,
-  tone: "emerald",
+  tone: "primary",
+  bordered: false,
 };
 
 export function Commerce20({
@@ -54,7 +55,8 @@ export function Commerce20({
   next,
   savePerOrder,
   savePercent,
-  tone = "emerald",
+  tone = "primary",
+  bordered = false,
   className,
 }: Commerce20Props) {
   return (
@@ -64,17 +66,11 @@ export function Commerce20({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2.5 rounded-md border border-border bg-card p-3 shadow-sm">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2.5 rounded-md bg-card p-3 shadow-sm", bordered && "border border-border")}>
         <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5">
-            <RefreshCw
-              className="size-3.5 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <span className="text-xs font-semibold text-card-foreground">
-              Subscribe & save
-            </span>
-          </div>
+          <span className="text-xs font-semibold text-card-foreground">
+            Subscribe & save
+          </span>
           {typeof savePercent === "number" && (
             <span
               className={cn(
@@ -88,7 +84,7 @@ export function Commerce20({
         </div>
         <button
           type="button"
-          className="flex items-center justify-between gap-2 rounded-sm border border-border bg-card px-2.5 py-1.5 text-xs hover:bg-muted"
+          className={cn("flex items-center justify-between gap-2 rounded-sm px-2.5 py-1.5 text-xs hover:bg-muted", bordered ? "border border-border bg-card" : "bg-muted hover:bg-muted-foreground/15")}
         >
           <span className="text-muted-foreground">Frequency</span>
           <span className="flex items-center gap-1 text-card-foreground">
@@ -99,22 +95,24 @@ export function Commerce20({
             />
           </span>
         </button>
-        <div className="flex flex-col gap-0.5 text-xs">
-          {next && (
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Next delivery</span>
-              <span className="font-mono text-card-foreground">{next}</span>
-            </div>
-          )}
-          {savePerOrder && (
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">You save</span>
-              <span className="font-mono font-medium text-emerald-600 dark:text-emerald-400">
-                {savePerOrder} / order
-              </span>
-            </div>
-          )}
-        </div>
+        {(next || savePerOrder) && (
+          <div className="flex flex-col gap-0.5 text-xs">
+            {next && (
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">Next delivery</span>
+                <span className="text-card-foreground">{next}</span>
+              </div>
+            )}
+            {savePerOrder && (
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">You save</span>
+                <span className="font-medium tabular-nums text-emerald-600 dark:text-emerald-400">
+                  {savePerOrder} / order
+                </span>
+              </div>
+            )}
+          </div>
+        )}
         <button
           type="button"
           className={cn(

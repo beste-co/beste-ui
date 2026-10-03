@@ -14,6 +14,7 @@ interface Commerce16Badge {
 
 interface Commerce16Props {
   badges?: Commerce16Badge[];
+  bordered?: boolean;
   className?: string;
 }
 
@@ -26,14 +27,15 @@ const BADGES: Record<Badge, LucideIcon> = {
 
 export const commerce16Demo: Commerce16Props = {
   badges: [
-    { kind: "secure", label: "Secure checkout", hint: "256-bit SSL" },
-    { kind: "returns", label: "Free returns", hint: "30 days" },
-    { kind: "authentic", label: "Authentic", hint: "Brand-verified" },
-    { kind: "support", label: "24/7 support", hint: "Chat or email" },
+    { kind: "secure", label: "Secure checkout" },
+    { kind: "returns", label: "Free returns" },
+    { kind: "authentic", label: "Authentic" },
+    { kind: "support", label: "24/7 support" },
   ],
+  bordered: false,
 };
 
-export function Commerce16({ badges = [], className }: Commerce16Props) {
+export function Commerce16({ badges = [], bordered = false, className }: Commerce16Props) {
   return (
     <div
       className={cn(
@@ -47,14 +49,12 @@ export function Commerce16({ badges = [], className }: Commerce16Props) {
           return (
             <div
               key={b.kind}
-              className="flex items-center gap-2 rounded-md border border-border bg-card p-2.5 shadow-sm"
+              className={cn("flex items-center gap-2 rounded-md bg-card p-2.5 shadow-sm", bordered && "border border-border")}
             >
-              <span
-                className="flex size-7 shrink-0 items-center justify-center rounded-md bg-muted text-foreground"
+              <Icon
+                className="size-4 shrink-0 text-foreground"
                 aria-hidden="true"
-              >
-                <Icon className="size-3.5" />
-              </span>
+              />
               <div className="flex min-w-0 flex-col">
                 <span className="truncate text-xs font-semibold text-card-foreground">
                   {b.label}

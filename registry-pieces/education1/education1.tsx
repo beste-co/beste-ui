@@ -63,13 +63,12 @@ const surfaceClasses: Record<Surface, { plain: string; inverted: string }> = {
 
 export const education1Demo: Education1Props = {
   surface: "card",
-  bordered: true,
+  bordered: false,
   inverted: false,
   title: "Design systems for shipping teams",
-  instructor: "Beste Sözen",
+  instructor: "Hania Rani",
   lessons: 24,
   lessonsLabel: "lessons",
-  hours: "6h 42m",
   progress: 58,
   tone: "primary",
 };
@@ -83,7 +82,7 @@ export function Education1({
   progress = 0,
   tone = "primary",
   surface = "card",
-  bordered = true,
+  bordered = false,
   inverted = false,
   className,
 }: Education1Props) {
@@ -106,9 +105,11 @@ export function Education1({
           )}
         >
           <GraduationCap className="size-8 text-white/80" aria-hidden="true" />
-          <span className="absolute bottom-2 right-2 rounded-md bg-background/80 px-2 py-0.5 font-mono text-xs text-foreground">
-            {lessons} {lessonsLabel}
-          </span>
+          {lessons !== undefined && (
+            <span className="absolute bottom-2 right-2 rounded-md bg-background/80 px-2 py-0.5 text-xs tabular-nums text-foreground">
+              {lessons} {lessonsLabel}
+            </span>
+          )}
         </div>
         <div className="flex flex-col gap-2 p-3">
           {title && (
@@ -125,19 +126,14 @@ export function Education1({
               </>
             )}
           </div>
-          <div className="flex items-center gap-2">
+          <div
+            className="h-1 overflow-hidden rounded-full bg-current/10"
+            aria-hidden="true"
+          >
             <div
-              className="h-1 flex-1 overflow-hidden rounded-full bg-current/10"
-              aria-hidden="true"
-            >
-              <div
-                className={cn("h-full rounded-full", barClasses[tone])}
-                style={{ width: `${pct}%` }}
-              />
-            </div>
-            <span className="font-mono text-xs text-current/60">
-              {pct}%
-            </span>
+              className={cn("h-full rounded-full", barClasses[tone])}
+              style={{ width: `${pct}%` }}
+            />
           </div>
         </div>
       </div>

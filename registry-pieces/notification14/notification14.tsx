@@ -1,6 +1,6 @@
 "use client";
 
-import { CornerDownRight, Heart, Reply } from "lucide-react";
+import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Notification14Props {
@@ -11,19 +11,19 @@ interface Notification14Props {
   likes?: number;
   time?: string;
   image?: string;
+  bordered?: boolean;
   className?: string;
 }
 
 export const notification14Demo: Notification14Props = {
-  author: "Priya Shah",
-  initials: "PS",
+  author: "Agnes Obel",
+  initials: "AO",
   comment:
-    "Love the new onboarding flow! Quick q — does the skip button persist across sessions?",
+    "Love the new onboarding flow. Does the skip button persist across sessions?",
   context: "replied to your comment",
-  likes: 4,
-  time: "8m",
   image:
     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop",
+  bordered: false,
 };
 
 export function Notification14({
@@ -34,6 +34,7 @@ export function Notification14({
   likes,
   time,
   image,
+  bordered = false,
   className,
 }: Notification14Props) {
   return (
@@ -43,7 +44,7 @@ export function Notification14({
         className
       )}
     >
-      <div className="flex w-full max-w-80 flex-col gap-2 rounded-lg border border-border bg-card p-3 shadow-lg">
+      <div className={cn("flex w-full max-w-80 flex-col gap-2 rounded-lg bg-card p-3 shadow-lg", bordered && "border border-border")}>
         <div className="flex items-center gap-2">
           <div className="relative flex size-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-xs font-semibold text-white">
             {image ? (
@@ -71,29 +72,28 @@ export function Notification14({
           )}
         </div>
         {comment && (
-          <div className="ml-3 flex gap-2 border-l-2 border-border pl-2">
-            <CornerDownRight
-              className="mt-0.5 size-3 shrink-0 text-muted-foreground"
-              aria-hidden="true"
-            />
-            <span className="text-sm leading-snug text-card-foreground">
-              {comment}
-            </span>
-          </div>
+          <span className="ml-3 border-l-2 border-border pl-2 text-sm leading-snug text-card-foreground">
+            {comment}
+          </span>
         )}
         <div className="flex items-center gap-3 text-xs text-muted-foreground">
           <button
             type="button"
             className="inline-flex items-center gap-1 hover:text-card-foreground"
           >
-            <Heart className="size-3" aria-hidden="true" />
-            {typeof likes === "number" ? likes : "Like"}
+            {typeof likes === "number" ? (
+              <>
+                <Heart className="size-3" aria-hidden="true" />
+                <span className="tabular-nums">{likes}</span>
+              </>
+            ) : (
+              "Like"
+            )}
           </button>
           <button
             type="button"
             className="inline-flex items-center gap-1 hover:text-card-foreground"
           >
-            <Reply className="size-3" aria-hidden="true" />
             Reply
           </button>
         </div>

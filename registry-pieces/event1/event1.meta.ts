@@ -4,6 +4,6 @@ export const meta: ComponentMeta = {
   name: "event1",
   title: "Event Ticket",
   description:
-    "Notched gradient concert ticket with section, seat, and a vertical mono ticket code on the stub.",
+    "Notched concert ticket with the event name, date, section and seat, plus an optional ticket code on the stub.",
   category: "Event",
 };

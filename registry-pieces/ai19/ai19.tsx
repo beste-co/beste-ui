@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface ModelCard {
   name: string;
-  speed: string;
+  speed?: string;
   cost: string;
   selected?: boolean;
 }
@@ -17,8 +17,8 @@ interface Ai19Props {
 
 export const ai19Demo: Ai19Props = {
   models: [
-    { name: "Fast", speed: "Instant", cost: "$0.10 / Mtok", selected: true },
-    { name: "Smart", speed: "2–4s", cost: "$1.20 / Mtok" },
+    { name: "Fast", cost: "$0.10 / Mtok", selected: true },
+    { name: "Smart", cost: "$1.20 / Mtok" },
   ],
 };
 
@@ -51,10 +51,12 @@ export function Ai19({ models = [], className }: Ai19Props) {
             <span className="text-sm font-semibold text-card-foreground">
               {m.name}
             </span>
-            <span className="text-xs text-muted-foreground">
-              {m.speed}
-            </span>
-            <span className="mt-1 font-mono text-xs tabular-nums text-card-foreground">
+            {m.speed && (
+              <span className="text-xs text-muted-foreground">
+                {m.speed}
+              </span>
+            )}
+            <span className="mt-1 text-xs tabular-nums text-card-foreground">
               {m.cost}
             </span>
           </div>

@@ -33,7 +33,7 @@ export function Tooltip2({
             <span className="flex items-center gap-0.5">
               {keys.map((key, idx) => (
                 <Fragment key={idx}>
-                  <kbd className="inline-flex h-4 min-w-4 items-center justify-center rounded-sm bg-background/15 px-1 font-mono text-xs text-background/80">
+                  <kbd className="inline-flex h-4 min-w-4 items-center justify-center rounded-sm bg-background/15 px-1 text-xs text-background/80">
                     {key}
                   </kbd>
                 </Fragment>

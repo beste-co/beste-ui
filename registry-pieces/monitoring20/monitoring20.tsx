@@ -5,17 +5,20 @@ import { cn } from "@/lib/utils";
 interface Monitoring20Props {
   errors?: number;
   success?: number;
+  bordered?: boolean;
   className?: string;
 }
 
 export const monitoring20Demo: Monitoring20Props = {
   errors: 124,
   success: 876,
+  bordered: false,
 };
 
 export function Monitoring20({
   errors = 0,
   success = 0,
+  bordered = false,
   className,
 }: Monitoring20Props) {
   const total = Math.max(1, errors + success);
@@ -29,7 +32,7 @@ export function Monitoring20({
         className
       )}
     >
-      <div className="flex w-full max-w-72 items-center gap-2 rounded-full border border-border bg-card px-3 py-2 shadow-sm">
+      <div className={cn("flex w-full max-w-72 items-center gap-2 rounded-full bg-card px-3 py-2 shadow-sm", bordered && "border border-border")}>
         <span className="shrink-0 text-xs font-semibold tabular-nums text-rose-700 dark:text-rose-400">
           {errorPct.toFixed(1)}%
         </span>

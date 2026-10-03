@@ -48,7 +48,7 @@ export function Indicator10({
         </span>
         <div className="flex items-baseline gap-1.5 leading-none">
           {network && (
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-card-foreground">
+            <span className="text-xs font-bold text-card-foreground">
               {network}
             </span>
           )}

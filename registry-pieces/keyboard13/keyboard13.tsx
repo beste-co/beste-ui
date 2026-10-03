@@ -30,14 +30,14 @@ export function Keyboard13({
           {sequence.map((key, idx) => (
             <kbd
               key={idx}
-              className="flex size-7 items-center justify-center rounded-md border border-border border-b-2 bg-gradient-to-b from-card to-muted font-mono text-xs font-semibold text-card-foreground shadow-sm"
+              className="flex size-7 items-center justify-center rounded-md border border-border border-b-2 bg-gradient-to-b from-card to-muted text-xs font-semibold text-card-foreground shadow-sm"
             >
               {key}
             </kbd>
           ))}
         </div>
         {caption && (
-          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs font-medium text-muted-foreground">
             {caption}
           </span>
         )}
