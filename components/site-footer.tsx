@@ -1,6 +1,7 @@
 import {
   BLOG_HREF,
   CHANGELOG_HREF,
+  CONTACT_EMAIL,
   DOCS_HREF,
   DOCS_MCP_HREF,
   PAGES_HREF,
@@ -16,6 +17,7 @@ import { BesteText } from "@/components/icons/beste-text";
 import { Button23 } from "@/components/beste/component/button23";
 import { GitHubLogo } from "@/components/icons/github-logo";
 import Link from "next/link";
+import { Mail } from "lucide-react";
 import { LinkedInLogo } from "@/components/icons/linkedin-logo";
 import { XLogo } from "@/components/icons/x-logo";
 import { typography } from "@/lib/typography";
@@ -58,6 +60,8 @@ const COLUMNS: {
       { label: "Pricing", href: PRICING_HREF, hosted: true },
       { label: "Referrals", href: REFERRALS_HREF, hosted: true },
       { label: "License", href: "/license" },
+      { label: "llms.txt", href: "/llms.txt", external: true },
+      { label: "Contact", href: `mailto:${CONTACT_EMAIL}`, external: true },
       { label: "GitHub", href: "https://github.com/beste-co/beste-ui", external: true },
     ],
   },
@@ -138,6 +142,14 @@ export function SiteFooter() {
                 <Link href={PRICING_HREF} {...hostedLinkProps} />
               </Button23>
             </div>
+
+            <p className="mt-8 text-base text-muted-foreground">
+              Questions, feedback or a custom request? Write to{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-foreground hover:underline">
+                {CONTACT_EMAIL}
+              </a>
+              . We answer every email.
+            </p>
           </div>
 
           {/* Columns */}
@@ -153,7 +165,7 @@ export function SiteFooter() {
                       {link.external ? (
                         <a
                           href={link.href}
-                          target="_blank"
+                          target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                           className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                         >
                           {link.label}
@@ -230,6 +242,13 @@ export function SiteFooter() {
               className="flex size-10 items-center justify-center rounded-full border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               <LinkedInLogo width={18} height={18} />
+            </a>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              aria-label={`Email ${CONTACT_EMAIL}`}
+              className="flex size-10 items-center justify-center rounded-full border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <Mail className="size-4" />
             </a>
           </div>
 

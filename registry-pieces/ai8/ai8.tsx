@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface Ai8Props {
   user?: string;
   assistant?: string;
+  bordered?: boolean;
   className?: string;
 }
 
@@ -13,11 +14,13 @@ export const ai8Demo: Ai8Props = {
   user: "What's the capital of Japan?",
   assistant:
     "Tokyo. It's been the capital since 1868, after Kyoto held the title for over a thousand years.",
+  bordered: false,
 };
 
 export function Ai8({
   user,
   assistant,
+  bordered = false,
   className,
 }: Ai8Props) {
   return (
@@ -35,10 +38,8 @@ export function Ai8({
         )}
         {assistant && (
           <div className="flex items-start gap-2">
-            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-sm">
-              <Sparkles className="size-3.5" aria-hidden="true" />
-            </div>
-            <div className="max-w-64 rounded-2xl rounded-bl-md bg-muted px-3 py-2 text-sm leading-snug text-card-foreground shadow-sm">
+            <Sparkles className="mt-2 size-4 shrink-0 text-primary" aria-hidden="true" />
+            <div className={cn("max-w-64 rounded-2xl rounded-bl-md bg-card px-3 py-2 text-sm leading-snug text-card-foreground shadow-sm", bordered && "border border-border")}>
               {assistant}
             </div>
           </div>

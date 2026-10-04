@@ -47,6 +47,7 @@ export const DOCS_HREF = `${HOSTED_SITE}/docs`;
 export const DOCS_INSTALLATION_HREF = `${HOSTED_SITE}/docs/installation`;
 export const DOCS_MCP_HREF = `${HOSTED_SITE}/docs/mcp`;
 export const CHANGELOG_HREF = `${HOSTED_SITE}/changelog`;
+export const CONTACT_EMAIL = "hello@beste.co";
 
 export const HOSTED_LINKS_ARE_EXTERNAL = true;
 
