@@ -606,6 +606,7 @@ Long-form posts at https://beste.dev/blog. Feed: https://beste.dev/blog/feed.xml
 
 The full changelog is at https://beste.dev/changelog; the latest releases:
 
+- v1.34.0 (2026-10-06): ui.beste.co is now beste.dev
 - v1.33.0 (2026-10-04): Blocks built on pieces and components
 - v1.32.0 (2026-10-02): Isometric pieces
 - v1.31.0 (2026-09-28): Gradient heroes
@@ -617,7 +618,6 @@ The full changelog is at https://beste.dev/changelog; the latest releases:
 - v1.25.0 (2026-09-05): Install commands, changelogs and yearly pricing
 - v1.24.0 (2026-09-04): Animated pieces
 - v1.23.0 (2026-09-04): Altair: 108 blocks for a practice that listens
-- v1.22.0 (2026-09-04): Text: 19 ways a line of type can arrive
 
 ## Links
 

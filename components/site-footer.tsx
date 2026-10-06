@@ -10,6 +10,7 @@ import {
   TOOLS_HREF,
   hostedLinkProps,
 } from "@/lib/site-links";
+import { isMetaPixelEnabled, previewConsentInDev } from "@/lib/meta-pixel";
 
 import { Badge7 } from "@/components/beste/component/badge7";
 import { BesteLogo } from "@/components/icons/beste-logo";
@@ -22,6 +23,10 @@ import { LinkedInLogo } from "@/components/icons/linkedin-logo";
 import { XLogo } from "@/components/icons/x-logo";
 import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
+
+// Only where a consent panel exists to open: not in the public build.
+const HAS_COOKIE_SETTINGS =
+  isMetaPixelEnabled || previewConsentInDev || Boolean(process.env.NEXT_PUBLIC_GA_ID);
 
 const COLUMNS: {
   title: string;
@@ -60,6 +65,7 @@ const COLUMNS: {
       { label: "Pricing", href: PRICING_HREF, hosted: true },
       { label: "Referrals", href: REFERRALS_HREF, hosted: true },
       { label: "License", href: "/license" },
+      ...(HAS_COOKIE_SETTINGS ? [{ label: "Cookie settings", href: "#cookie-settings" }] : []),
       { label: "llms.txt", href: "/llms.txt", external: true },
       { label: "Contact", href: `mailto:${CONTACT_EMAIL}`, external: true },
       { label: "GitHub", href: "https://github.com/beste-co/beste-ui", external: true },

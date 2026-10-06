@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withFlavor } from "@/lib/install-command";
+import { trackEvent } from "@/lib/track";
 import { cn } from "@/lib/utils";
 
 type PackageManager = "npx" | "pnpm" | "yarn" | "bun";
@@ -216,17 +217,20 @@ export function Stage({
   const copyCmd = toPackageManager(flavored(installCommand), pm);
 
   const switchTab = (tab: "view" | "code") => {
+    if (tab === "code" && !canViewCode) trackEvent("pro_gate_view");
     setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const handleCopy = async () => {
     if (!canViewCode) {
+      trackEvent("pro_gate_view");
       setProModalOpen(true);
       return;
     }
     try {
       await navigator.clipboard.writeText(copyCmd);
+      trackEvent("copy_install_command");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {

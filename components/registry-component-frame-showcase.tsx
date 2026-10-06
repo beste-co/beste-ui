@@ -27,6 +27,7 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { componentInstallCommand, withFlavor } from "@/lib/install-command";
 import { getRegistryComponent } from "@/lib/registry-components";
+import { trackEvent } from "@/lib/track";
 import { cn } from "@/lib/utils";
 
 type PackageManager = "npx" | "pnpm" | "yarn" | "bun";
@@ -115,6 +116,7 @@ export function RegistryComponentFrameShowcase({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(displayCmd);
+      trackEvent("copy_install_command");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {

@@ -54,6 +54,8 @@ interface ChangelogEntryInput {
   featureSubtitle?: string;
   /** X/Twitter status URL to embed under the entry */
   tweetUrl?: string;
+  /** Image shown under the entry: a path under `public/`, or a full URL */
+  imageUrl?: string;
   /** Video shown under the entry: a video file URL, or a YouTube link */
   videoUrl?: string;
   /** Byline name for this release. Falls back to the site author when unset. */
@@ -112,6 +114,7 @@ export interface ChangelogEntry {
   featureEyebrow?: string;
   featureSubtitle?: string;
   tweetUrl?: string;
+  imageUrl?: string;
   videoUrl?: string;
   author?: string;
   authorUrl?: string;
@@ -119,6 +122,14 @@ export interface ChangelogEntry {
 
 // Simplified changelog data - only name and flags needed
 const _changelog: ChangelogEntryInput[] = [
+  {
+    version: "v1.34.0",
+    date: "2026-10-06",
+    title: "ui.beste.co is now beste.dev",
+    description:
+      "Beste UI has a new home: **beste.dev**. Every page keeps its path, so old **ui.beste.co** links redirect to the same place on the new domain. Install commands that point at the old registry URLs keep working, so nothing in your projects needs to change.",
+    imageUrl: "/assets/images/changelog/beste-dev.webp",
+  },
   {
     version: "v1.33.0",
     date: "2026-10-04",
@@ -3877,6 +3888,7 @@ function enrichChangelog(entries: ChangelogEntryInput[]): ChangelogEntry[] {
       featureEyebrow: entry.featureEyebrow,
       featureSubtitle: entry.featureSubtitle,
       tweetUrl: entry.tweetUrl,
+      imageUrl: entry.imageUrl,
       videoUrl: entry.videoUrl,
       author: entry.author,
       authorUrl: entry.authorUrl,

@@ -6,6 +6,10 @@ import { Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { type ReactNode, Suspense } from "react";
 import { Analytics } from "@/components/analytics";
+import { CookieConsent } from "@/components/cookie-consent";
+import { MetaPixel } from "@/components/meta-pixel";
+import { CONSENT_BOOTSTRAP } from "@/lib/consent";
+import { isMetaPixelEnabled, previewConsentInDev } from "@/lib/meta-pixel";
 import { AuthProvider } from "@/lib/auth-context";
 import { FavoritesProvider } from "@/lib/favorites-context";
 import { LicenseProvider } from "@/lib/license-context";
@@ -53,6 +57,9 @@ export const metadata: Metadata = {
 const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT !== "staging";
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const isTracking = isProduction && Boolean(gaId || isMetaPixelEnabled);
+// Shown in dev too, so the panel can be seen without turning the trackers on.
+const showConsent = isTracking || previewConsentInDev;
 
 // Site-wide entity graph: every page's BreadcrumbList / BlogPosting / Blog
 // nodes reference this Organization by @id.
@@ -110,6 +117,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" href="/fonts/bestesans/web/BesteSans-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {isTracking && (
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static consent defaults, must run before the Google tag.
+          <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOTSTRAP }} />
+        )}
         {isProduction && gaId && <GoogleAnalytics gaId={gaId} />}
       </head>
       <body className={`${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}>
@@ -126,6 +137,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {isProduction && (
           <Suspense fallback={null}>
             <Analytics />
+            {isMetaPixelEnabled && <MetaPixel />}
           </Suspense>
         )}
         <ThemeProvider
@@ -137,6 +149,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <AuthProvider>
             <LicenseProvider>
               <FavoritesProvider>{children}</FavoritesProvider>
+              {showConsent && <CookieConsent />}
             </LicenseProvider>
           </AuthProvider>
         </ThemeProvider>

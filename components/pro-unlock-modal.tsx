@@ -15,6 +15,7 @@ import { BesteLogo } from "@/components/icons/beste-logo";
 import { Button23 } from "@/components/beste/component/button23";
 import { IconButton } from "@/components/icon-button";
 import { ICON_ACTION_CLASS_SM } from "@/components/icon-action";
+import { trackEvent } from "@/lib/track";
 import { typography } from "@/lib/typography";
 
 interface ProUnlockContentProps {
@@ -67,7 +68,10 @@ export function ProUnlockContent({ onGetProAccess }: ProUnlockContentProps) {
         <Button23
           tone="dark"
           label="Get Pro access"
-          onClick={onGetProAccess}
+          onClick={() => {
+            trackEvent("pro_upgrade_click");
+            onGetProAccess?.();
+          }}
           className="w-full justify-between"
         />
         <p className="text-sm text-foreground/50">One-time purchase · Lifetime access</p>

@@ -8,6 +8,7 @@ import { CodeBlock } from "@/components/code-block";
 import { useRegistryFlavor } from "@/components/registry-flavor";
 import { cn } from "@/lib/utils";
 import { typography } from "@/lib/typography";
+import { trackEvent } from "@/lib/track";
 
 interface UsageSectionProps {
   /** The hand-written snippet from the meta, when there is one. */
@@ -25,6 +26,7 @@ function CopyButton({ code }: { code: string }) {
   const handleClick = async () => {
     try {
       await navigator.clipboard.writeText(code);
+      trackEvent("copy_code");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {

@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import { codeToHtml } from "shiki";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/track";
 import { cn } from "@/lib/utils";
 
 interface CodeBlockProps {
@@ -71,6 +72,7 @@ export function CodeBlock({
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
+    trackEvent("copy_code");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
