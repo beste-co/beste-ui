@@ -9,13 +9,13 @@ Campus social-media hub for university marketing pages: a badge, a required head
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/education86"
+npx shadcn add "https://beste.dev/r/education86"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/education86"
+npx shadcn add "https://beste.dev/r-base/education86"
 ```
 
 This installs the block to `components/beste/block/education86.tsx` and the `Badge` and `Button` shadcn/ui primitives declared for it.

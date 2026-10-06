@@ -18,14 +18,14 @@ const geistMono = Geist_Mono({
 const title = "Beste UI";
 const description =
   "Beautiful, accessible shadcn/tailwind blocks for your next project. Install via shadcn cli.";
-const ogImage = `https://ui.beste.co/og?title=${encodeURIComponent(
+const ogImage = `https://beste.dev/og?title=${encodeURIComponent(
   title
 )}&description=${encodeURIComponent(description)}`;
 
 const isStaging = process.env.NEXT_PUBLIC_ENVIRONMENT === "staging";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ui.beste.co"),
+  metadataBase: new URL("https://beste.dev"),
   title: "Beste UI - Production-ready shadcn/tailwind blocks & components",
   description,
   // Keep staging deployments out of the index entirely (duplicate content).
@@ -59,12 +59,12 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://ui.beste.co/#organization",
+  "@id": "https://beste.dev/#organization",
   name: "Beste UI",
-  url: "https://ui.beste.co",
+  url: "https://beste.dev",
   logo: {
     "@type": "ImageObject",
-    url: "https://ui.beste.co/apple-icon",
+    url: "https://beste.dev/apple-icon",
     width: 180,
     height: 180,
   },
@@ -87,11 +87,11 @@ const organizationJsonLd = {
 const webSiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://ui.beste.co/#website",
+  "@id": "https://beste.dev/#website",
   name: "Beste UI",
-  url: "https://ui.beste.co",
+  url: "https://beste.dev",
   inLanguage: "en",
-  publisher: { "@id": "https://ui.beste.co/#organization" },
+  publisher: { "@id": "https://beste.dev/#organization" },
   // Declares the catalogue as queryable rather than only readable: a search
   // engine can offer the box, and an agent can see there is a live endpoint
   // behind the site instead of only a set of documents.
@@ -99,7 +99,7 @@ const webSiteJsonLd = {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://ui.beste.co/search?q={search_term_string}",
+      urlTemplate: "https://beste.dev/search?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },
@@ -109,7 +109,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/fonts/bestesans/web/BesteSans%5Bopsz,wght%5D.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/bestesans/web/BesteSans-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         {isProduction && gaId && <GoogleAnalytics gaId={gaId} />}
       </head>
       <body className={`${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}>

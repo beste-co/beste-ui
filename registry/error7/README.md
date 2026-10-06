@@ -9,13 +9,13 @@ A compact bordered card holding the whole error state: a circular icon, a status
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error7"
+npx shadcn add "https://beste.dev/r/error7"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error7"
+npx shadcn add "https://beste.dev/r-base/error7"
 ```
 
 This installs the block to `components/beste/block/error7.tsx`, plus the `button` shadcn/ui primitive it uses for the stacked action buttons.

@@ -83,7 +83,7 @@ export function Chat35({
           </span>
         </div>
 
-        <div className="flex h-60 flex-col justify-end gap-2 overflow-hidden p-3">
+        <div className="flex h-46 flex-col justify-end gap-2 overflow-hidden p-3">
           {messages.slice(0, shown).map((m, i) => {
             const mine = m.from === "me";
             return (

@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { LEGACY_HOST, legacyRedirectTarget } from "@/lib/legacy-redirect";
 import { markdownAliasPath, markdownHref } from "@/lib/markdown-url";
 
 // RFC 8288 Link header for agent discovery. Applied to every HTML route so
@@ -41,6 +42,29 @@ function prefersMarkdown(accept: string | null): boolean {
 export async function proxy(request: NextRequest) {
   const url = request.nextUrl;
   const pathname = url.pathname;
+  const requestHost = request.headers.get("host") || "";
+
+  // Old-address pages move to beste.dev; LEGACY_HTML_REDIRECT=0 switches it off.
+  const movedTo =
+    process.env.LEGACY_HTML_REDIRECT !== "0" &&
+    request.headers.get(MARKDOWN_BYPASS_HEADER) !== "1"
+      ? legacyRedirectTarget(requestHost, pathname, url.search)
+      : null;
+  if (movedTo) {
+    const redirect = NextResponse.redirect(movedTo, 301);
+    const ref = url.searchParams.get("ref");
+    if (ref && !request.cookies.get("ref")) {
+      redirect.cookies.set("ref", ref, {
+        httpOnly: false,
+        secure: true,
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24 * 30,
+        path: "/",
+        domain: ".beste.co",
+      });
+    }
+    return redirect;
+  }
 
   // Two ways to ask for the Markdown rendering of a page, both landing on
   // /api/markdown, which fetches the HTML version and converts it:
@@ -84,10 +108,12 @@ export async function proxy(request: NextRequest) {
     if (refParam) {
       const host = request.headers.get("host") || "";
       const isAllowedHost =
-        host === "ui.beste.co" || host.startsWith("localhost");
+        host === LEGACY_HOST ||
+        host === "beste.dev" ||
+        host.startsWith("localhost");
       if (isAllowedHost) {
         let cookieDomain: string | undefined;
-        if (host === "ui.beste.co") {
+        if (host === LEGACY_HOST) {
           cookieDomain = ".beste.co";
         }
         response.cookies.set("ref", refParam, {

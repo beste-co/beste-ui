@@ -9,13 +9,13 @@ Responsive product grid for shop and catalog pages: image tile with an optional 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/ecommerce1"
+npx shadcn add "https://beste.dev/r/ecommerce1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/ecommerce1"
+npx shadcn add "https://beste.dev/r-base/ecommerce1"
 ```
 
 This installs the block to `components/beste/block/ecommerce1.tsx` and the `Badge` and `Button` shadcn/ui primitives it uses.

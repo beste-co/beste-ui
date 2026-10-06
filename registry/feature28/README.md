@@ -9,13 +9,13 @@ Sequential step timeline that renders two completely different layouts by breakp
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature28"
+npx shadcn add "https://beste.dev/r/feature28"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature28"
+npx shadcn add "https://beste.dev/r-base/feature28"
 ```
 
 This installs the block to `components/beste/block/feature28.tsx` and the shadcn/ui `badge` and `button` components it depends on.

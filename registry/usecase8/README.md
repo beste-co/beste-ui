@@ -9,13 +9,13 @@ Centered vertical timeline with a connecting line and dot markers; each stage's 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase8"
+npx shadcn add "https://beste.dev/r/usecase8"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase8"
+npx shadcn add "https://beste.dev/r-base/usecase8"
 ```
 
 This installs the block to `components/beste/block/usecase8.tsx` and the `badge` shadcn/ui primitive it depends on.

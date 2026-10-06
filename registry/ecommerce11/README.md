@@ -9,13 +9,13 @@ Measurement chart for clothing product pages: a titled table whose columns (ches
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/ecommerce11"
+npx shadcn add "https://beste.dev/r/ecommerce11"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/ecommerce11"
+npx shadcn add "https://beste.dev/r-base/ecommerce11"
 ```
 
 This installs the block to `components/beste/block/ecommerce11.tsx` and the `Table` shadcn/ui primitive it uses.

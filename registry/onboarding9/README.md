@@ -9,13 +9,13 @@ Multi-step onboarding wizard with square numbered/checkmark step indicators abov
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/onboarding9"
+npx shadcn add "https://beste.dev/r/onboarding9"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/onboarding9"
+npx shadcn add "https://beste.dev/r-base/onboarding9"
 ```
 
 This installs the block to `components/beste/block/onboarding9.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

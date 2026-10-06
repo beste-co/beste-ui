@@ -9,13 +9,13 @@ Long-form editorial layout: a centered eyebrow and heading, a large lead paragra
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/health6"
+npx shadcn add "https://beste.dev/r/health6"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/health6"
+npx shadcn add "https://beste.dev/r-base/health6"
 ```
 
 This installs the block to `components/beste/block/health6.tsx` and the shadcn/ui `button` primitive it depends on.

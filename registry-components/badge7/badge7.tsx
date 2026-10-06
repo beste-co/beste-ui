@@ -14,7 +14,7 @@ const BRACKETS: Record<Badge7Bracket, [open: string, close: string]> = {
 type Tone = "muted" | "foreground" | "primary";
 
 interface Badge7Props {
-  /** Eyebrow label (rendered uppercase) */
+  /** Eyebrow label */
   label: string;
   /** Which characters wrap the label. Limited to the BRACKETS set. */
   bracket?: Badge7Bracket;
@@ -48,7 +48,7 @@ export function Badge7({
   return (
     <span
       className={cn(
-        "font-mono text-base uppercase tracking-[0.25em]",
+        "text-base font-medium",
         toneStyles[tone],
         vertical ? "rotate-180 [writing-mode:vertical-rl]" : "inline-block",
         className

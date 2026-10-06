@@ -38,7 +38,7 @@ export const code16Demo: Code16Props = {
   surface: "card",
   bordered: false,
   inverted: false,
-  command: "npx shadcn@latest add https://ui.beste.co/r/hero181.json",
+  command: "npx shadcn@latest add https://beste.dev/r/hero181.json",
   files: ["components/hero181.tsx", "components/ui/button.tsx"],
   stepMs: 520,
 };

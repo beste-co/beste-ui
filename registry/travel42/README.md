@@ -9,13 +9,13 @@ A destination finder that eliminates in the open. A grid of six photographs sits
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/travel42"
+npx shadcn add "https://beste.dev/r/travel42"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/travel42"
+npx shadcn add "https://beste.dev/r-base/travel42"
 ```
 
 That installs the block file, the `badge23` eyebrow and `button21` action button it is built from, and the `questionnaire` primitive.

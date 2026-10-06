@@ -66,7 +66,7 @@ export function Card12({
           </span>
         )}
         {date && (
-          <span className="font-mono text-sm uppercase tracking-widest text-zinc-400">{date}</span>
+          <span className="text-sm text-zinc-400">{date}</span>
         )}
       </span>
     </>

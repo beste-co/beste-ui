@@ -20,7 +20,7 @@ rather we did not.
 
 **In scope**
 
-- [ui.beste.co](https://ui.beste.co), the hosted registry and site
+- [beste.dev](https://beste.dev), the hosted registry and site
 - this repository: the site code, the registry routes, and the sections
   themselves, including a section that mishandles the data it is given
 

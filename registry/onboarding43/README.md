@@ -9,13 +9,13 @@ A two-column setup section. The left column explains what each answer changes, a
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/onboarding43"
+npx shadcn add "https://beste.dev/r/onboarding43"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/onboarding43"
+npx shadcn add "https://beste.dev/r-base/onboarding43"
 ```
 
 That installs the block file, the `badge7` eyebrow and `button12` pill it is built from, and the `questionnaire` primitive. The flow, the progress bar, and the review panel all live in the block file itself, so there is nothing else to wire up.

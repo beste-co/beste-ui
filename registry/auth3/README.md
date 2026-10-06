@@ -9,13 +9,13 @@ Full-height OTP screen: a centered icon badge, a segmented six-digit code input,
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth3"
+npx shadcn add "https://beste.dev/r/auth3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth3"
+npx shadcn add "https://beste.dev/r-base/auth3"
 ```
 
 This installs the block to `components/beste/block/auth3.tsx` and the `button`, `input-otp`, and `field` shadcn/ui primitives it's built on.

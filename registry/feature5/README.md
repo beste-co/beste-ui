@@ -9,13 +9,13 @@ Left-aligned headline and description above a compact two-column grid of icon-le
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature5"
+npx shadcn add "https://beste.dev/r/feature5"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature5"
+npx shadcn add "https://beste.dev/r-base/feature5"
 ```
 
 This installs the block to `components/beste/block/feature5.tsx` and its dependencies.

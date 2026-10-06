@@ -9,13 +9,13 @@ Centered header with a badge, heading, description, and CTA buttons, above a loo
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature8"
+npx shadcn add "https://beste.dev/r/feature8"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature8"
+npx shadcn add "https://beste.dev/r-base/feature8"
 ```
 
 This installs the block to `components/beste/block/feature8.tsx`, the shadcn/ui `badge`, `button`, and `carousel` components it depends on, and the `ai8`, `ai22`, `code1`, `keyboard1`, `search1`, and `weather2` pieces it embeds as media-slot fillers (installed to `components/beste/piece/{name}.tsx`).

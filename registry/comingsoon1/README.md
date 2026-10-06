@@ -9,13 +9,13 @@ Coming-soon hero with a real, ticking countdown: a `useCountdown` hook recompute
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/comingsoon1"
+npx shadcn add "https://beste.dev/r/comingsoon1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/comingsoon1"
+npx shadcn add "https://beste.dev/r-base/comingsoon1"
 ```
 
 This installs the block to `components/beste/block/comingsoon1.tsx`, plus the `badge` shadcn/ui primitive it uses for the eyebrow badge.

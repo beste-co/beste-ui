@@ -9,13 +9,13 @@ Fully centered, vertically stacked footer: logo, then navigation links, then soc
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/footer11"
+npx shadcn add "https://beste.dev/r/footer11"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/footer11"
+npx shadcn add "https://beste.dev/r-base/footer11"
 ```
 
 This installs the block to `components/beste/block/footer11.tsx` and its dependencies.

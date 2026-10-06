@@ -9,13 +9,13 @@ Post-checkout confirmation screen: an animated success check, a confirmation num
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/booking15"
+npx shadcn add "https://beste.dev/r/booking15"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/booking15"
+npx shadcn add "https://beste.dev/r-base/booking15"
 ```
 
 This installs the block to `components/beste/block/booking15.tsx`, plus the `badge` and `button` shadcn/ui primitives it uses for the status badge and the action buttons.

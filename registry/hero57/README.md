@@ -9,13 +9,13 @@ Vertically centered, near-fullscreen hero (`min-h-[80vh]`) for single-page and l
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero57"
+npx shadcn add "https://beste.dev/r/hero57"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero57"
+npx shadcn add "https://beste.dev/r-base/hero57"
 ```
 
 This installs the block to `components/beste/block/hero57.tsx` and its shadcn/ui dependencies: `Badge`, `Button`.

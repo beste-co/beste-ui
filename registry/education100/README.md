@@ -9,13 +9,13 @@ Centered header above a grid of quick-fact tiles, each pairing a large stat valu
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/education100"
+npx shadcn add "https://beste.dev/r/education100"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/education100"
+npx shadcn add "https://beste.dev/r-base/education100"
 ```
 
 This installs the block to `components/beste/block/education100.tsx` and the shadcn/ui `badge` component it depends on.

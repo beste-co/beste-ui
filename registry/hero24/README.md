@@ -11,13 +11,13 @@ Swap `YOUR_EMAIL` and `YOUR_KEY` for the email and license key on your account. 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero24?email=YOUR_EMAIL&license_key=YOUR_KEY"
+npx shadcn add "https://beste.dev/r/hero24?email=YOUR_EMAIL&license_key=YOUR_KEY"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero24?email=YOUR_EMAIL&license_key=YOUR_KEY"
+npx shadcn add "https://beste.dev/r-base/hero24?email=YOUR_EMAIL&license_key=YOUR_KEY"
 ```
 
 This installs the block to `components/beste/block/hero24.tsx` and the `Badge` and `Button` shadcn/ui primitives it uses.

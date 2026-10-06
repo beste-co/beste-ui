@@ -9,13 +9,13 @@ A programme finder that argues with you. Three questions land on one training bl
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/fitness40"
+npx shadcn add "https://beste.dev/r/fitness40"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/fitness40"
+npx shadcn add "https://beste.dev/r-base/fitness40"
 ```
 
 That installs the block file, the `badge23` eyebrow and `button21` action button it is built from, and the `questionnaire` primitive.

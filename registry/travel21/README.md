@@ -9,13 +9,13 @@ A split-layout promo card for a "build your own trip" offering: an icon badge, h
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/travel21"
+npx shadcn add "https://beste.dev/r/travel21"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/travel21"
+npx shadcn add "https://beste.dev/r-base/travel21"
 ```
 
 This installs the block to `components/beste/block/travel21.tsx` and the `button` and `card` shadcn/ui primitives it depends on.

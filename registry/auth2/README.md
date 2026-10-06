@@ -9,13 +9,13 @@ Two-column registration screen: a form column (social providers, dynamic name/em
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth2"
+npx shadcn add "https://beste.dev/r/auth2"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth2"
+npx shadcn add "https://beste.dev/r-base/auth2"
 ```
 
 This installs the block to `components/beste/block/auth2.tsx` and the `button`, `input`, `field`, `checkbox`, and `avatar` shadcn/ui primitives it's built on.

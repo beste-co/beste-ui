@@ -9,13 +9,13 @@ The smallest error page in the set: the status code and the message sit side by 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error6"
+npx shadcn add "https://beste.dev/r/error6"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error6"
+npx shadcn add "https://beste.dev/r-base/error6"
 ```
 
 This installs the block to `components/beste/block/error6.tsx`, plus the `button` shadcn/ui primitive it uses for the single action.

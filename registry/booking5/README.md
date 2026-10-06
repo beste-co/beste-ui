@@ -9,13 +9,13 @@ Step-two staff picker for a booking flow: provider cards show an avatar with a s
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/booking5"
+npx shadcn add "https://beste.dev/r/booking5"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/booking5"
+npx shadcn add "https://beste.dev/r-base/booking5"
 ```
 
 This installs the block to `components/beste/block/booking5.tsx`, plus the `badge`, `button`, and `avatar` shadcn/ui primitives it uses for the availability badge, footer button, and provider avatars.

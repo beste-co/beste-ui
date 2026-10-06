@@ -9,13 +9,13 @@ Coming-soon hero for a pre-launch social push: a heading and description sit abo
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/comingsoon3"
+npx shadcn add "https://beste.dev/r/comingsoon3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/comingsoon3"
+npx shadcn add "https://beste.dev/r-base/comingsoon3"
 ```
 
 This installs the block to `components/beste/block/comingsoon3.tsx`, plus the `badge` shadcn/ui primitive it uses for the eyebrow badge.

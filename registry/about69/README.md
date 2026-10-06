@@ -9,13 +9,13 @@ Company story section that runs a two-column heading over a wide photo band, the
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/about69"
+npx shadcn add "https://beste.dev/r/about69"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/about69"
+npx shadcn add "https://beste.dev/r-base/about69"
 ```
 
 This installs the block to `components/beste/block/about69.tsx` plus the `badge23` component it uses for the eyebrow.

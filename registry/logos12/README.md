@@ -9,13 +9,13 @@ Client wall that sets six greyscale logos in a hairline cell grid, each lifting 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/logos12"
+npx shadcn add "https://beste.dev/r/logos12"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/logos12"
+npx shadcn add "https://beste.dev/r-base/logos12"
 ```
 
 This installs the block to `components/beste/block/logos12.tsx` plus the `badge23` component it uses for the eyebrow.

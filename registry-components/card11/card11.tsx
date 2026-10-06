@@ -92,7 +92,7 @@ export function Card11({
       {/* Main section */}
       <div className="min-w-0 flex-1 p-5">
         {eyebrow && (
-          <p className={cn("font-mono text-sm uppercase tracking-[0.25em]", styles.muted)}>
+          <p className={cn("text-sm font-medium", styles.muted)}>
             {eyebrow}
           </p>
         )}
@@ -105,7 +105,7 @@ export function Card11({
               <div key={d.label} className="min-w-0">
                 <dt
                   className={cn(
-                    "font-mono text-sm uppercase tracking-widest",
+                    "text-sm",
                     styles.muted
                   )}
                 >
@@ -136,7 +136,7 @@ export function Card11({
           ))}
         </span>
         {code && (
-          <span className="font-mono text-sm tracking-widest [writing-mode:vertical-rl]">
+          <span className="text-sm tabular-nums [writing-mode:vertical-rl]">
             {code}
           </span>
         )}

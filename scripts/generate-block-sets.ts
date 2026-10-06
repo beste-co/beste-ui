@@ -45,7 +45,15 @@ const EXTRA: Record<string, string[]> = {
   auralis: [],
   polaris: [],
   sirius: [],
-  vega: ["feature318", "feature320", "feature322", "feature323", "feature324", "hero198", "hero206"],
+  vega: [
+    "about84", "bento16", "cta106", "cta107", "cta108", "cta109", "cta110", "education105",
+    "faq98", "feature318", "feature320", "feature322", "feature323", "feature324", "feature325", "feature326",
+    "feature327", "feature328", "feature329", "feature330", "feature331", "feature332", "footer128", "health20",
+    "hero198", "hero206", "hero277", "hero278", "hero279", "hero280", "hero281", "hero282",
+    "hero283", "hero284", "hero285", "hero286", "logos20", "podcast55", "pricing84", "pricing85",
+    "pricing86", "settings68", "showcase54", "stats79", "stats80", "stats81", "testimonial55", "testimonial56",
+    "testimonial57", "travel43", "usecase63", "workflow60", "workflow61",
+  ],
 };
 
 /** The registry-components a block declares in its meta. */

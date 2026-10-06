@@ -9,13 +9,13 @@ Responsive card grid for pitching a product at different audiences: each card pa
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase2"
+npx shadcn add "https://beste.dev/r/usecase2"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase2"
+npx shadcn add "https://beste.dev/r-base/usecase2"
 ```
 
 This installs the block to `components/beste/block/usecase2.tsx` and the `badge` shadcn/ui primitive it depends on.

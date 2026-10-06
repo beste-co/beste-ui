@@ -9,13 +9,13 @@ Single two-column card, not a grid of many: one side carries a badge, heading, d
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase10"
+npx shadcn add "https://beste.dev/r/usecase10"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase10"
+npx shadcn add "https://beste.dev/r-base/usecase10"
 ```
 
 This installs the block to `components/beste/block/usecase10.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

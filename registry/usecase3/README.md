@@ -9,13 +9,13 @@ Vertical process walkthrough where each step alternates its image between the le
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase3"
+npx shadcn add "https://beste.dev/r/usecase3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase3"
+npx shadcn add "https://beste.dev/r-base/usecase3"
 ```
 
 This installs the block to `components/beste/block/usecase3.tsx` and the `badge` shadcn/ui primitive it depends on.

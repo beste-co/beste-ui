@@ -9,13 +9,13 @@ Two-column feature section: text content and CTA buttons on one side, a screensh
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/showcase2"
+npx shadcn add "https://beste.dev/r/showcase2"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/showcase2"
+npx shadcn add "https://beste.dev/r-base/showcase2"
 ```
 
 This installs the block to `components/beste/block/showcase2.tsx` and the `badge`, `button`, and `popover` shadcn/ui primitives it depends on.

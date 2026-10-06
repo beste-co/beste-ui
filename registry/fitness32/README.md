@@ -9,13 +9,13 @@ Location section pairing a map image with an info card listing address, hours, p
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/fitness32"
+npx shadcn add "https://beste.dev/r/fitness32"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/fitness32"
+npx shadcn add "https://beste.dev/r-base/fitness32"
 ```
 
 This installs the block to `components/beste/block/fitness32.tsx` and the shadcn/ui `badge` and `button` primitives it depends on.

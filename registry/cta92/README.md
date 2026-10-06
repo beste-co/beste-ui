@@ -9,13 +9,13 @@ A newsletter CTA that asks before it asks for an address: subjects, then cadence
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/cta92"
+npx shadcn add "https://beste.dev/r/cta92"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/cta92"
+npx shadcn add "https://beste.dev/r-base/cta92"
 ```
 
 That installs the block file, the `badge6` eyebrow and `button1` seal CTA it is built from, and the `questionnaire` primitive.

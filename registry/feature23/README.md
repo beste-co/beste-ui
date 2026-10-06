@@ -9,13 +9,13 @@ Card grid built for status dashboards: each card pairs an icon, a title, and a d
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature23"
+npx shadcn add "https://beste.dev/r/feature23"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature23"
+npx shadcn add "https://beste.dev/r-base/feature23"
 ```
 
 This installs the block to `components/beste/block/feature23.tsx` and the shadcn/ui `badge`, `button`, and `progress` components it depends on.

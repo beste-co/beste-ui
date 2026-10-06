@@ -9,13 +9,13 @@ Full-height numeric lock screen: a row of dots that fill in as digits are entere
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth30"
+npx shadcn add "https://beste.dev/r/auth30"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth30"
+npx shadcn add "https://beste.dev/r-base/auth30"
 ```
 
 This installs the block to `components/beste/block/auth30.tsx` and its dependencies.

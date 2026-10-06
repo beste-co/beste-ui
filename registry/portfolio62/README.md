@@ -9,13 +9,13 @@ Responsive grid of outlined pill buttons, one per social platform, each showing 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/portfolio62"
+npx shadcn add "https://beste.dev/r/portfolio62"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/portfolio62"
+npx shadcn add "https://beste.dev/r-base/portfolio62"
 ```
 
 This installs the block to `components/beste/block/portfolio62.tsx` and the `button` shadcn/ui primitive it depends on.

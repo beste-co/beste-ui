@@ -1,53 +1,53 @@
 {
   "linkset": [
     {
-      "anchor": "https://ui.beste.co/r",
+      "anchor": "https://beste.dev/r",
       "service-doc": [
         {
-          "href": "https://ui.beste.co/llms-full.txt",
+          "href": "https://beste.dev/llms-full.txt",
           "type": "text/plain",
           "title": "Full registry documentation in markdown for LLMs"
         },
         {
-          "href": "https://ui.beste.co/llms.txt",
+          "href": "https://beste.dev/llms.txt",
           "type": "text/plain",
           "title": "Compact registry documentation for LLMs"
         }
       ],
       "describedby": [
         {
-          "href": "https://ui.beste.co/r/registry.json",
+          "href": "https://beste.dev/r/registry.json",
           "type": "application/json",
           "title": "shadcn registry index"
         }
       ],
       "item": [
         {
-          "href": "https://ui.beste.co/r/{name}",
+          "href": "https://beste.dev/r/{name}",
           "type": "application/json",
           "title": "Block registry entry by name"
         },
         {
-          "href": "https://ui.beste.co/component/r/{name}",
+          "href": "https://beste.dev/component/r/{name}",
           "type": "application/json",
           "title": "Component registry entry by name"
         }
       ],
       "alternate": [
         {
-          "href": "https://ui.beste.co/sitemap.xml",
+          "href": "https://beste.dev/sitemap.xml",
           "type": "application/xml",
           "title": "Sitemap index"
         },
         {
-          "href": "https://ui.beste.co/{path}.md",
+          "href": "https://beste.dev/{path}.md",
           "type": "text/markdown",
           "title": "Markdown rendition of any page (or send Accept: text/markdown)"
         }
       ],
       "service": [
         {
-          "href": "https://ui.beste.co/api/mcp",
+          "href": "https://beste.dev/api/mcp",
           "type": "application/json",
           "title": "MCP server (Streamable HTTP): search, preview, compose and install blocks"
         }

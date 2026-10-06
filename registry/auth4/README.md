@@ -9,13 +9,13 @@ Full-height password recovery screen: a centered icon badge, heading and descrip
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth4"
+npx shadcn add "https://beste.dev/r/auth4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth4"
+npx shadcn add "https://beste.dev/r-base/auth4"
 ```
 
 This installs the block to `components/beste/block/auth4.tsx` and the `button`, `input`, and `field` shadcn/ui primitives it's built on.

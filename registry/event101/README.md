@@ -9,13 +9,13 @@ A programme picker that builds the day beside the questions. One choice per time
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/event101"
+npx shadcn add "https://beste.dev/r/event101"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/event101"
+npx shadcn add "https://beste.dev/r-base/event101"
 ```
 
 That installs the block file, the `badge23` eyebrow and `button21` action button it is built from, and the `questionnaire` primitive.

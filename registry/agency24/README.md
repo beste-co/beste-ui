@@ -9,13 +9,13 @@ A four-step studio brief where the tall photograph beside it changes with the qu
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/agency24"
+npx shadcn add "https://beste.dev/r/agency24"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/agency24"
+npx shadcn add "https://beste.dev/r-base/agency24"
 ```
 
 That installs the block file, the `badge7` eyebrow and `button12` pill it is built from, and the `questionnaire` primitive.

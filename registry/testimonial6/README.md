@@ -9,13 +9,13 @@ A minimalist single-testimonial block: an optional badge, one large centered blo
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/testimonial6"
+npx shadcn add "https://beste.dev/r/testimonial6"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/testimonial6"
+npx shadcn add "https://beste.dev/r-base/testimonial6"
 ```
 
 This installs the block to `components/beste/block/testimonial6.tsx` and the `badge` shadcn/ui primitive it depends on.

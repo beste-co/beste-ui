@@ -9,13 +9,13 @@ A full-width, single-slide-per-view Embla carousel of customer quotes with optio
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/testimonial1"
+npx shadcn add "https://beste.dev/r/testimonial1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/testimonial1"
+npx shadcn add "https://beste.dev/r-base/testimonial1"
 ```
 
 This installs the block to `components/beste/block/testimonial1.tsx`, its `embla-carousel-react` and `embla-carousel-autoplay` npm dependencies, and the `badge` and `button` shadcn/ui primitives it depends on.

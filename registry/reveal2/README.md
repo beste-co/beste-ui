@@ -9,13 +9,13 @@ Split-layout comparison section pairing a benefits sidebar (badge, heading, desc
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/reveal2"
+npx shadcn add "https://beste.dev/r/reveal2"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/reveal2"
+npx shadcn add "https://beste.dev/r-base/reveal2"
 ```
 
 This installs the block to `components/beste/block/reveal2.tsx` and the `badge` shadcn/ui primitive it depends on.

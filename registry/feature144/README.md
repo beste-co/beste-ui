@@ -9,13 +9,13 @@ A responsive grid of clickable service cards: each card is a full-bleed link pai
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature144"
+npx shadcn add "https://beste.dev/r/feature144"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature144"
+npx shadcn add "https://beste.dev/r-base/feature144"
 ```
 
 This installs the block to `components/beste/block/feature144.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

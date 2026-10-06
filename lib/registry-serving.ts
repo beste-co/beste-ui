@@ -9,7 +9,7 @@ export type { RegistryVariant };
 
 /**
  * shadcn URLs are normally written with a `.json` suffix
- * (`shadcn add https://ui.beste.co/r/hero170.json`), and the route segment
+ * (`shadcn add https://beste.dev/r/hero170.json`), and the route segment
  * carries it through. Both spellings address the same item, so the suffix is
  * stripped before anything is looked up. Without this a Pro block requested as
  * `.json` fell through to a 404 instead of the license error.

@@ -9,13 +9,13 @@ Narrow, centered welcome card built around a single icon tile, heading, descript
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/onboarding3"
+npx shadcn add "https://beste.dev/r/onboarding3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/onboarding3"
+npx shadcn add "https://beste.dev/r-base/onboarding3"
 ```
 
 This installs the block to `components/beste/block/onboarding3.tsx` and the `button` shadcn/ui primitive it depends on.

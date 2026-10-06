@@ -9,13 +9,13 @@ An entry point for a back catalogue. Three questions score the listening paths, 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/podcast54"
+npx shadcn add "https://beste.dev/r/podcast54"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/podcast54"
+npx shadcn add "https://beste.dev/r-base/podcast54"
 ```
 
 That installs the block file, the `badge6` eyebrow and `button1` seal CTA it is built from, and the `questionnaire` primitive.

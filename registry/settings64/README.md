@@ -9,13 +9,13 @@ Billing history table for an account or settings page: a header with a billing b
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/settings64"
+npx shadcn add "https://beste.dev/r/settings64"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/settings64"
+npx shadcn add "https://beste.dev/r-base/settings64"
 ```
 
 This installs the block to `components/beste/block/settings64.tsx` and the `badge`, `button`, and `table` shadcn/ui primitives it depends on.

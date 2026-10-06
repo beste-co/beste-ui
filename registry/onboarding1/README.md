@@ -9,13 +9,13 @@ Centered onboarding hero that pairs a step counter, badge, heading, and hero ima
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/onboarding1"
+npx shadcn add "https://beste.dev/r/onboarding1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/onboarding1"
+npx shadcn add "https://beste.dev/r-base/onboarding1"
 ```
 
 This installs the block to `components/beste/block/onboarding1.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

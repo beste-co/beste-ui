@@ -9,13 +9,13 @@ Centered headline and description above a fixed two-column grid of icon-led feat
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature4"
+npx shadcn add "https://beste.dev/r/feature4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature4"
+npx shadcn add "https://beste.dev/r-base/feature4"
 ```
 
 This installs the block to `components/beste/block/feature4.tsx` and the shadcn/ui `button` component it depends on.

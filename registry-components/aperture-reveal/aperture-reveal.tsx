@@ -258,6 +258,8 @@ export function ApertureReveal({
 
       const n = Math.max(5, Math.min(16, Math.round(s.blades)));
       const Rh = Math.min(W, H) * 0.4;
+      // Too small to draw: the hairline insets below would turn a radius negative
+      if (Rh < 4) return;
       const Rb = Rh * 1.15;
       const halfDiag = Math.hypot(W, H) / 2;
       const open = easeInOut(clamp01(p / 0.7));
@@ -437,7 +439,7 @@ export function ApertureReveal({
       ctx.stroke();
       ctx.globalAlpha = 0.5;
       ctx.beginPath();
-      ctx.arc(0, 0, Rb - 0.8 * px * dpr, 0, TAU);
+      ctx.arc(0, 0, Math.max(0, Rb - 0.8 * px * dpr), 0, TAU);
       ctx.stroke();
       ctx.globalAlpha = 1;
 

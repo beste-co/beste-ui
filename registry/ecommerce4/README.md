@@ -9,13 +9,13 @@ Storefront category browser: full-bleed photo tiles with a dark scrim for text l
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/ecommerce4"
+npx shadcn add "https://beste.dev/r/ecommerce4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/ecommerce4"
+npx shadcn add "https://beste.dev/r-base/ecommerce4"
 ```
 
 This installs the block to `components/beste/block/ecommerce4.tsx` and the `Badge` shadcn/ui primitive it uses.

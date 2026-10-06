@@ -9,13 +9,13 @@ List of features tagged with zero-padded circular numbers ("01", "02", ...) inst
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature34"
+npx shadcn add "https://beste.dev/r/feature34"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature34"
+npx shadcn add "https://beste.dev/r-base/feature34"
 ```
 
 This installs the block to `components/beste/block/feature34.tsx` and the shadcn/ui `badge` and `button` components it depends on.

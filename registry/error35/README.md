@@ -9,13 +9,13 @@ A calm server-error page with a monospace code, an oversized light heading, reco
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error35"
+npx shadcn add "https://beste.dev/r/error35"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error35"
+npx shadcn add "https://beste.dev/r-base/error35"
 ```
 
 This installs the block to `components/beste/block/error35.tsx`, the `indicator14` uptime piece it floats on the tile (installed to `components/beste/piece/indicator14.tsx`), and the `button21` component it uses for the actions.

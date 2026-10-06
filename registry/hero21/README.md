@@ -11,13 +11,13 @@ Swap `YOUR_EMAIL` and `YOUR_KEY` for the email and license key on your account. 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero21?email=YOUR_EMAIL&license_key=YOUR_KEY"
+npx shadcn add "https://beste.dev/r/hero21?email=YOUR_EMAIL&license_key=YOUR_KEY"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero21?email=YOUR_EMAIL&license_key=YOUR_KEY"
+npx shadcn add "https://beste.dev/r-base/hero21?email=YOUR_EMAIL&license_key=YOUR_KEY"
 ```
 
 This installs the block to `components/beste/block/hero21.tsx`, the `Badge` and `Button` shadcn/ui primitives it uses, and `framer-motion` as an npm dependency.

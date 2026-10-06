@@ -9,13 +9,13 @@ Centered footer built around a "follow us" callout: logo, then a heading and des
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/footer23"
+npx shadcn add "https://beste.dev/r/footer23"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/footer23"
+npx shadcn add "https://beste.dev/r-base/footer23"
 ```
 
 This installs the block to `components/beste/block/footer23.tsx` and its dependencies.

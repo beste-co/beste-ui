@@ -9,13 +9,13 @@ Four equal-width cards on a plain background, each centering a large circular ic
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature195"
+npx shadcn add "https://beste.dev/r/feature195"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature195"
+npx shadcn add "https://beste.dev/r-base/feature195"
 ```
 
 This installs the block to `components/beste/block/feature195.tsx` and the `badge` shadcn/ui primitive it depends on.

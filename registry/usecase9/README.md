@@ -9,13 +9,13 @@ CSS-columns masonry layout where each card's height is set by a `size` field (sm
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase9"
+npx shadcn add "https://beste.dev/r/usecase9"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase9"
+npx shadcn add "https://beste.dev/r-base/usecase9"
 ```
 
 This installs the block to `components/beste/block/usecase9.tsx` and the `badge` shadcn/ui primitive it depends on.

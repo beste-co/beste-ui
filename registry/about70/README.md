@@ -9,13 +9,13 @@ A company story told as hairline rows keyed by a light year figure, set against 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/about70"
+npx shadcn add "https://beste.dev/r/about70"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/about70"
+npx shadcn add "https://beste.dev/r-base/about70"
 ```
 
 This installs the block to `components/beste/block/about70.tsx`, the `stats16` growth piece it floats on the tile (installed to `components/beste/piece/stats16.tsx`), and the `badge23` component it uses for the eyebrow.

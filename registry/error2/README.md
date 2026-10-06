@@ -9,13 +9,13 @@ A 404 page that treats search as the primary recovery path: a controlled input w
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error2"
+npx shadcn add "https://beste.dev/r/error2"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error2"
+npx shadcn add "https://beste.dev/r-base/error2"
 ```
 
 This installs the block to `components/beste/block/error2.tsx`, plus the `button` and `input` shadcn/ui primitives it uses for the search form.

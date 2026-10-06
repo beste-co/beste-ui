@@ -10,7 +10,7 @@ import { getPopulatedCategories, tools } from "../lib/tools";
 // script can read it without importing lib/blocks and its 1935 components.
 import { keywordTags, tagSlug } from "../lib/tag-slugs";
 
-const SITE_URL = "https://ui.beste.co";
+const SITE_URL = "https://beste.dev";
 const PUBLIC_DIR = join(import.meta.dirname, "..", "public");
 const REGISTRY_BLOCKS_DIR = join(import.meta.dirname, "..", "registry");
 const REGISTRY_COMPONENTS_DIR = join(import.meta.dirname, "..", "registry-pieces");

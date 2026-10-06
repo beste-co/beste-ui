@@ -9,13 +9,13 @@ Three-column card grid for a blog index or archive page: every card zooms its co
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/blog3"
+npx shadcn add "https://beste.dev/r/blog3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/blog3"
+npx shadcn add "https://beste.dev/r-base/blog3"
 ```
 
 This installs the block to `components/beste/block/blog3.tsx`, plus the `badge` and `avatar` shadcn/ui primitives it uses for tags and author avatars.

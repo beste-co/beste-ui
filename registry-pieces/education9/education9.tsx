@@ -1,6 +1,5 @@
 "use client";
 
-import { Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Tone =
@@ -18,7 +17,8 @@ type DayState = "done" | "missed" | "today" | "future";
 
 interface Education9Props {
   days?: number;
-  caption?: string;
+  /** Words after the day count. */
+  label?: string;
   week?: DayState[];
   tone?: Tone;
   bordered?: boolean;
@@ -27,47 +27,42 @@ interface Education9Props {
 
 export const education9Demo: Education9Props = {
   days: 14,
+  label: "day streak",
   week: ["done", "done", "done", "missed", "done", "today", "future"],
   tone: "primary",
   bordered: false,
 };
 
-const iconClasses: Record<Tone, string> = {
-  neutral: "text-card-foreground",
-  primary: "text-primary",
-  foreground: "text-foreground",
-  orange: "text-orange-500",
-  emerald: "text-emerald-500",
-  sky: "text-sky-500",
-  violet: "text-violet-500",
-  rose: "text-rose-500",
-  amber: "text-amber-500",
+const doneClasses: Record<Tone, string> = {
+  neutral: "bg-card-foreground text-card",
+  primary: "bg-primary text-primary-foreground",
+  foreground: "bg-foreground text-background",
+  orange: "bg-orange-500 text-white",
+  emerald: "bg-emerald-500 text-white",
+  sky: "bg-sky-500 text-white",
+  violet: "bg-violet-500 text-white",
+  rose: "bg-rose-500 text-white",
+  amber: "bg-amber-500 text-white",
 };
 
-const dotActiveClasses: Record<Tone, string> = {
-  neutral: "bg-card-foreground",
-  primary: "bg-primary",
-  foreground: "bg-foreground",
-  orange: "bg-orange-500",
-  emerald: "bg-emerald-500",
-  sky: "bg-sky-500",
-  violet: "bg-violet-500",
-  rose: "bg-rose-500",
-  amber: "bg-amber-500",
-};
-
-const dotSize: Record<DayState, string> = {
-  done: "size-2",
-  missed: "size-2",
-  today: "size-3",
-  future: "size-2",
+// Today is still open: an outline in the tone instead of a fill
+const todayClasses: Record<Tone, string> = {
+  neutral: "border-card-foreground text-card-foreground",
+  primary: "border-primary text-primary",
+  foreground: "border-foreground text-foreground",
+  orange: "border-orange-500 text-orange-500",
+  emerald: "border-emerald-500 text-emerald-500",
+  sky: "border-sky-500 text-sky-500",
+  violet: "border-violet-500 text-violet-500",
+  rose: "border-rose-500 text-rose-500",
+  amber: "border-amber-500 text-amber-500",
 };
 
 const dayLabels = ["M", "T", "W", "T", "F", "S", "S"];
 
 export function Education9({
   days = 0,
-  caption,
+  label = "day streak",
   week = [],
   tone = "primary",
   bordered = false,
@@ -80,41 +75,26 @@ export function Education9({
         className
       )}
     >
-      <div className={cn("flex w-full max-w-80 items-center gap-3 rounded-xl bg-card p-3 shadow-sm", bordered && "border border-border")}>
-        <Flame
-          className={cn("size-6 shrink-0", iconClasses[tone])}
-          aria-hidden="true"
-        />
-        <div className="flex min-w-0 flex-1 flex-col gap-1">
-          <span className="text-sm font-semibold tabular-nums text-card-foreground">
-            {days}-day streak
-          </span>
-          <div className="flex items-center gap-1" aria-hidden="true">
-            {week.map((state, idx) => (
-              <div
-                key={idx}
-                className="flex flex-1 flex-col items-center gap-0.5"
-              >
-                <span className="text-xs text-muted-foreground">
-                  {dayLabels[idx]}
-                </span>
-                <span
-                  className={cn(
-                    "rounded-full",
-                    dotSize[state],
-                    state === "done" || state === "today"
-                      ? dotActiveClasses[tone]
-                      : state === "missed"
-                        ? "bg-muted"
-                        : "border border-dashed border-border bg-muted"
-                  )}
-                />
-              </div>
-            ))}
-          </div>
-          {caption && (
-            <span className="text-xs text-muted-foreground">{caption}</span>
-          )}
+      <div className={cn("flex w-full max-w-80 flex-col gap-5 rounded-xl bg-card p-5 shadow-sm", bordered && "border border-border")}>
+        <div className="flex flex-col">
+          <span className="text-4xl font-semibold leading-none tracking-tight tabular-nums text-card-foreground">{days}</span>
+          <span className="mt-1.5 text-sm text-muted-foreground">{label}</span>
+        </div>
+        <div className="flex items-center gap-1.5" aria-hidden="true">
+          {week.map((state, idx) => (
+            <span
+              key={idx}
+              className={cn(
+                "flex aspect-square flex-1 items-center justify-center rounded-full text-sm font-medium",
+                state === "done" && doneClasses[tone],
+                state === "today" && cn("border-2", todayClasses[tone]),
+                state === "missed" && "bg-muted text-muted-foreground",
+                state === "future" && "text-muted-foreground"
+              )}
+            >
+              {dayLabels[idx]}
+            </span>
+          ))}
         </div>
       </div>
     </div>

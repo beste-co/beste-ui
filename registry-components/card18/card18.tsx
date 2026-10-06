@@ -64,7 +64,7 @@ export function Card18({ text, from, unpinned = false, tone = "yellow", classNam
       >
         <p className="font-serif text-xl italic leading-snug">{text}</p>
         {from && (
-          <p className="mt-4 font-mono text-sm uppercase tracking-widest text-zinc-700/70">
+          <p className="mt-4 text-sm font-medium text-zinc-700/70">
             {from}
           </p>
         )}

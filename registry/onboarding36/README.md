@@ -9,13 +9,13 @@ A first-day agenda held in one bordered panel, with timestamped hairline rows na
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/onboarding36"
+npx shadcn add "https://beste.dev/r/onboarding36"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/onboarding36"
+npx shadcn add "https://beste.dev/r-base/onboarding36"
 ```
 
 This installs the block to `components/beste/block/onboarding36.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the action.

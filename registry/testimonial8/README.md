@@ -9,13 +9,13 @@ A grid of testimonial cards, each with a large decorative quote glyph, an HTML-r
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/testimonial8"
+npx shadcn add "https://beste.dev/r/testimonial8"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/testimonial8"
+npx shadcn add "https://beste.dev/r-base/testimonial8"
 ```
 
 This installs the block to `components/beste/block/testimonial8.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

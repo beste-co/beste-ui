@@ -9,13 +9,13 @@ Full-height reset-password screen: a centered icon badge, new-password and confi
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth5"
+npx shadcn add "https://beste.dev/r/auth5"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth5"
+npx shadcn add "https://beste.dev/r-base/auth5"
 ```
 
 This installs the block to `components/beste/block/auth5.tsx` and the `button`, `input`, and `field` shadcn/ui primitives it's built on.

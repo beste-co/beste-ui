@@ -9,13 +9,13 @@ Centered header above a three-column grid of capability cards, each leading with
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature3"
+npx shadcn add "https://beste.dev/r/feature3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature3"
+npx shadcn add "https://beste.dev/r-base/feature3"
 ```
 
 This installs the block to `components/beste/block/feature3.tsx` and the shadcn/ui `badge` and `button` components it depends on.

@@ -9,13 +9,13 @@ Minimal centered hero built around a single-row email capture form: an icon-pref
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero69"
+npx shadcn add "https://beste.dev/r/hero69"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero69"
+npx shadcn add "https://beste.dev/r-base/hero69"
 ```
 
 This installs the block to `components/beste/block/hero69.tsx` and the shadcn/ui `badge`, `button`, and `input` components it depends on.

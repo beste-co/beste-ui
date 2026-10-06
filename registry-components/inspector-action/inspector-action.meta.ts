@@ -40,5 +40,5 @@ export const meta: ComponentMeta = {
 />
 
 // A link. A plain anchor, since a registry component takes no view on the router.
-<InspectorAction label="Open docs" href="https://ui.beste.co/docs" newTab />`,
+<InspectorAction label="Open docs" href="https://beste.dev/docs" newTab />`,
 };

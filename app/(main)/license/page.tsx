@@ -3,7 +3,7 @@ import { LicenseContent } from "./license-content";
 
 const title = "License";
 const description = "License and terms of use for Beste UI components";
-const ogImage = `https://ui.beste.co/og?title=${encodeURIComponent(
+const ogImage = `https://beste.dev/og?title=${encodeURIComponent(
   title
 )}&description=${encodeURIComponent(description)}`;
 

@@ -9,13 +9,13 @@ Horizontal banner CTA meant to sit inline between content blocks: a bordered, mu
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/cta11"
+npx shadcn add "https://beste.dev/r/cta11"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/cta11"
+npx shadcn add "https://beste.dev/r-base/cta11"
 ```
 
 This installs the block to `components/beste/block/cta11.tsx` and the `Badge` and `Button` shadcn/ui primitives it uses.

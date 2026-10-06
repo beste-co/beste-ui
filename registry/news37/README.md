@@ -9,13 +9,13 @@ A newsroom whose kind pills are derived from the announcements and carry live co
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/news37"
+npx shadcn add "https://beste.dev/r/news37"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/news37"
+npx shadcn add "https://beste.dev/r-base/news37"
 ```
 
 This installs the block to `components/beste/block/news37.tsx` plus the `badge23` component it uses for the eyebrow.

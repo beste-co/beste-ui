@@ -40,4 +40,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://ui.beste.co/sitemap.xml
+Sitemap: https://beste.dev/sitemap.xml

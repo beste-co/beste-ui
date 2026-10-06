@@ -9,13 +9,13 @@ Client proof band for the Auralis set: a parenthetical eyebrow and display headi
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/logos13"
+npx shadcn add "https://beste.dev/r/logos13"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/logos13"
+npx shadcn add "https://beste.dev/r-base/logos13"
 ```
 
 This installs the block to `components/beste/block/logos13.tsx` plus the `badge7` eyebrow and `button12` pill button it uses.

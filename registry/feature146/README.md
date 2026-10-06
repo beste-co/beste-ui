@@ -9,13 +9,13 @@ A checklist-style grid of benefit items, each pairing a circular checkmark badge
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature146"
+npx shadcn add "https://beste.dev/r/feature146"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature146"
+npx shadcn add "https://beste.dev/r-base/feature146"
 ```
 
 This installs the block to `components/beste/block/feature146.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

@@ -9,13 +9,13 @@ Two-column feature section: a single-open shadcn Accordion of capability rows on
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature1"
+npx shadcn add "https://beste.dev/r/feature1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature1"
+npx shadcn add "https://beste.dev/r-base/feature1"
 ```
 
 This installs the block to `components/beste/block/feature1.tsx`, the shadcn/ui `accordion` and `badge` components it depends on, and the `ai43`, `automation1`, `automation2`, `automation8`, and `automation10` pieces it embeds as media-slot fillers (installed to `components/beste/piece/{name}.tsx`).

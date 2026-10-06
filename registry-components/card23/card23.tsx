@@ -77,7 +77,7 @@ export function Card23({
         <span aria-hidden="true" className="h-1.5 w-9 rounded-full bg-muted shadow-inner" />
 
         {company && (
-          <p className="mt-3 font-mono text-sm uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="mt-3 text-sm text-muted-foreground">
             {company}
           </p>
         )}
@@ -94,7 +94,7 @@ export function Card23({
         {role && <p className="text-center text-sm text-muted-foreground">{role}</p>}
         <span
           className={cn(
-            "mt-3 rounded-full px-3 py-0.5 text-sm font-semibold uppercase tracking-wide",
+            "mt-3 rounded-full px-3 py-0.5 text-sm font-semibold",
             styles.tag
           )}
         >
@@ -112,7 +112,7 @@ export function Card23({
           ))}
         </span>
         {code && (
-          <p className="mt-1 font-mono text-sm tracking-[0.25em] text-muted-foreground">{code}</p>
+          <p className="mt-1 text-sm tabular-nums text-muted-foreground">{code}</p>
         )}
       </div>
     </div>

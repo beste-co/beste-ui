@@ -9,13 +9,13 @@ Always-open FAQ: a monospace eyebrow over a hairline rule and a two-column headi
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/faq80"
+npx shadcn add "https://beste.dev/r/faq80"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/faq80"
+npx shadcn add "https://beste.dev/r-base/faq80"
 ```
 
 This installs the block to `components/beste/block/faq80.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the support actions.

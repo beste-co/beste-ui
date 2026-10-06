@@ -9,13 +9,13 @@ Minimal centered icon grid for listing product features or capabilities: each ce
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase5"
+npx shadcn add "https://beste.dev/r/usecase5"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase5"
+npx shadcn add "https://beste.dev/r-base/usecase5"
 ```
 
 This installs the block to `components/beste/block/usecase5.tsx` and the `badge` shadcn/ui primitive it depends on.

@@ -9,13 +9,13 @@ A made-to-order configurator that answers as you go. Every option takes over the
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/product12"
+npx shadcn add "https://beste.dev/r/product12"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/product12"
+npx shadcn add "https://beste.dev/r-base/product12"
 ```
 
 That installs the block file, the `badge7` eyebrow and `button12` pill it is built from, and the `questionnaire` primitive.

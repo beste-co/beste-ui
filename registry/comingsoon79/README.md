@@ -9,13 +9,13 @@ A scheduled downtime notice with a light heading, a hairline table of what is af
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/comingsoon79"
+npx shadcn add "https://beste.dev/r/comingsoon79"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/comingsoon79"
+npx shadcn add "https://beste.dev/r-base/comingsoon79"
 ```
 
 This installs the block to `components/beste/block/comingsoon79.tsx`, the `indicator14` uptime piece it floats on the tile (installed to `components/beste/piece/indicator14.tsx`), and the `badge23` and `button21` components it uses for the eyebrow and the actions.

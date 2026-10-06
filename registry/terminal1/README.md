@@ -9,13 +9,13 @@ A fake terminal window used to demo CLI installation steps: mac-style traffic-li
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/terminal1"
+npx shadcn add "https://beste.dev/r/terminal1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/terminal1"
+npx shadcn add "https://beste.dev/r-base/terminal1"
 ```
 
 This installs the block to `components/beste/block/terminal1.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

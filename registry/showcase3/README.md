@@ -9,13 +9,13 @@ Responsive photo grid for a portfolio or case-study page: up to three columns of
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/showcase3"
+npx shadcn add "https://beste.dev/r/showcase3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/showcase3"
+npx shadcn add "https://beste.dev/r-base/showcase3"
 ```
 
 This installs the block to `components/beste/block/showcase3.tsx` and the `badge` shadcn/ui primitive it depends on.

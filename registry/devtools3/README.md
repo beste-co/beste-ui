@@ -9,13 +9,13 @@ Tabbed code snippet block for API "quick start" sections: a row of language tabs
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/devtools3"
+npx shadcn add "https://beste.dev/r/devtools3"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/devtools3"
+npx shadcn add "https://beste.dev/r-base/devtools3"
 ```
 
 This installs the block to `components/beste/block/devtools3.tsx`, the `Button` shadcn/ui primitive it uses, and the `shiki` npm dependency it needs for syntax highlighting.

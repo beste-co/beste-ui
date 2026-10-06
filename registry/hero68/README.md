@@ -9,13 +9,13 @@ Centered hero with a headline, CTA buttons, and a row of icon-led feature cards 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero68"
+npx shadcn add "https://beste.dev/r/hero68"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero68"
+npx shadcn add "https://beste.dev/r-base/hero68"
 ```
 
 This installs the block to `components/beste/block/hero68.tsx` and the shadcn/ui `badge` and `button` components it depends on.

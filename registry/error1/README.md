@@ -9,13 +9,13 @@ A minimal 404 page built around a single centered column: an oversized error cod
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error1"
+npx shadcn add "https://beste.dev/r/error1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error1"
+npx shadcn add "https://beste.dev/r-base/error1"
 ```
 
 This installs the block to `components/beste/block/error1.tsx`, plus the `button` shadcn/ui primitive it uses for the call-to-action row.

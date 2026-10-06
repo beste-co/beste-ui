@@ -9,13 +9,13 @@ Customer review list for product pages: an average-rating summary with a "Write 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/ecommerce6"
+npx shadcn add "https://beste.dev/r/ecommerce6"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/ecommerce6"
+npx shadcn add "https://beste.dev/r-base/ecommerce6"
 ```
 
 This installs the block to `components/beste/block/ecommerce6.tsx` and the `Badge` and `Button` shadcn/ui primitives it uses.

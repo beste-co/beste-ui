@@ -9,13 +9,13 @@ Careers section with a monospace eyebrow over a hairline rule and a two-column h
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/careers51"
+npx shadcn add "https://beste.dev/r/careers51"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/careers51"
+npx shadcn add "https://beste.dev/r-base/careers51"
 ```
 
 This installs the block to `components/beste/block/careers51.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the closing action.

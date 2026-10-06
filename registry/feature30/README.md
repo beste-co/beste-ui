@@ -9,13 +9,13 @@ Two-column comparison layout that renders a `firstColumn` and `secondColumn` sid
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature30"
+npx shadcn add "https://beste.dev/r/feature30"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature30"
+npx shadcn add "https://beste.dev/r-base/feature30"
 ```
 
 This installs the block to `components/beste/block/feature30.tsx` and the shadcn/ui `badge` and `button` components it depends on.

@@ -9,13 +9,13 @@ Video-tour welcome screen: a badge, heading, and description sit above a video t
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/onboarding4"
+npx shadcn add "https://beste.dev/r/onboarding4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/onboarding4"
+npx shadcn add "https://beste.dev/r-base/onboarding4"
 ```
 
 This installs the block to `components/beste/block/onboarding4.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

@@ -9,13 +9,13 @@ A process sizer that answers with a position rather than a verdict. A photograph
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/workflow55"
+npx shadcn add "https://beste.dev/r/workflow55"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/workflow55"
+npx shadcn add "https://beste.dev/r-base/workflow55"
 ```
 
 That installs the block file, the `badge6` eyebrow and `button1` seal CTA it is built from, the `socialproof24` piece it shows in the banner, and the `questionnaire` primitive.

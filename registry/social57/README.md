@@ -9,13 +9,13 @@ A community gallery laid out as a masonry of customer photographs at mixed heigh
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/social57"
+npx shadcn add "https://beste.dev/r/social57"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/social57"
+npx shadcn add "https://beste.dev/r-base/social57"
 ```
 
 This installs the block to `components/beste/block/social57.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the closing action.

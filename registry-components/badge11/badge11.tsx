@@ -57,7 +57,7 @@ export function Badge11({
       </span>
       <span
         className={cn(
-          "font-mono text-sm uppercase tracking-[0.3em]",
+          "text-sm font-medium",
           hideLabel && "sr-only"
         )}
       >

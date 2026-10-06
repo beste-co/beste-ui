@@ -7,11 +7,11 @@ Symmetrical navbar with the logo centered between two independent groups of nav 
 ## Installation
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/navbar30"
+npx shadcn add "https://beste.dev/r/navbar30"
 ```
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/navbar30"
+npx shadcn add "https://beste.dev/r-base/navbar30"
 ```
 
 This installs the block to `components/beste/block/navbar30.tsx` and the shadcn/ui dependency it needs (`button`).

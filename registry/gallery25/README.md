@@ -9,13 +9,13 @@ A gallery finder whose questions are photographs rather than sentences. Three ro
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/gallery25"
+npx shadcn add "https://beste.dev/r/gallery25"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/gallery25"
+npx shadcn add "https://beste.dev/r-base/gallery25"
 ```
 
 That installs the block file, the `badge7` eyebrow and `button12` pill it is built from, and the `questionnaire` primitive.

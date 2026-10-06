@@ -91,7 +91,7 @@ export function Card15({
           </span>
         </div>
         {location && (
-          <p className="mt-1 text-right font-mono text-sm uppercase tracking-widest text-zinc-400">
+          <p className="mt-1 text-right text-sm text-zinc-400">
             {location}
           </p>
         )}

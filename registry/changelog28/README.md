@@ -9,13 +9,13 @@ A complete changelog grouped by month, each version on a hairline row beside its
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/changelog28"
+npx shadcn add "https://beste.dev/r/changelog28"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/changelog28"
+npx shadcn add "https://beste.dev/r-base/changelog28"
 ```
 
 This installs the block to `components/beste/block/changelog28.tsx` plus the `badge23` component it uses for the eyebrow.

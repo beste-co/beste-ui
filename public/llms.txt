@@ -2,94 +2,94 @@
 
 > Production-ready shadcn/ui blocks, pages, pieces and components for React, Next.js and Tailwind CSS. Install any of them with the shadcn CLI, or let an AI agent search and install them over MCP. Most of the catalog is free; a one-time Pro license unlocks the rest.
 
-Beste UI is made by [beste.co](https://beste.co), an opinionated block-based site builder. This site is the component catalog. Canonical host: https://ui.beste.co. Every page is also readable as Markdown: add `.md` to any address or send `Accept: text/markdown`. The long-form version of this file is https://ui.beste.co/llms-full.txt.
+Beste UI is made by [beste.co](https://beste.co), an opinionated block-based site builder. This site is the component catalog. Canonical host: https://beste.dev. Every page is also readable as Markdown: add `.md` to any address or send `Accept: text/markdown`. The long-form version of this file is https://beste.dev/llms-full.txt.
 
 ## Start here
 
-- [Documentation](https://ui.beste.co/docs): What Beste UI is, the two primitive flavors, how you install, what is free and what is Pro.
-- [Installation](https://ui.beste.co/docs/installation): Initialise shadcn/ui, install a block by URL or by `@beste-ui/name`, unlock Pro with an email and license key.
-- [shadcn CLI reference](https://ui.beste.co/docs/cli): init, add and build, and the predictable registry URLs behind every asset.
-- [Theming](https://ui.beste.co/docs/theming): CSS variables, the background/foreground convention, dark mode, radius and tones.
-- [MCP server](https://ui.beste.co/docs/mcp): Connect Claude Code, Cursor, Windsurf or VS Code to https://ui.beste.co/api/mcp and search, compose and install in plain language.
-- [Pricing and Pro](https://ui.beste.co/docs/pricing): Why Pro exists, what the license covers, the student discount, how to request an asset.
-- [Pricing](https://ui.beste.co/pricing): Plans and checkout.
-- [License](https://ui.beste.co/license): The full license text.
-- [Changelog](https://ui.beste.co/changelog): Every release, newest first.
-- [Blog](https://ui.beste.co/blog): Long-form posts on shadcn, theming, forms, MCP and the catalog.
+- [Documentation](https://beste.dev/docs): What Beste UI is, the two primitive flavors, how you install, what is free and what is Pro.
+- [Installation](https://beste.dev/docs/installation): Initialise shadcn/ui, install a block by URL or by `@beste-ui/name`, unlock Pro with an email and license key.
+- [shadcn CLI reference](https://beste.dev/docs/cli): init, add and build, and the predictable registry URLs behind every asset.
+- [Theming](https://beste.dev/docs/theming): CSS variables, the background/foreground convention, dark mode, radius and tones.
+- [MCP server](https://beste.dev/docs/mcp): Connect Claude Code, Cursor, Windsurf or VS Code to https://beste.dev/api/mcp and search, compose and install in plain language.
+- [Pricing and Pro](https://beste.dev/docs/pricing): Why Pro exists, what the license covers, the student discount, how to request an asset.
+- [Pricing](https://beste.dev/pricing): Plans and checkout.
+- [License](https://beste.dev/license): The full license text.
+- [Changelog](https://beste.dev/changelog): Every release, newest first.
+- [Blog](https://beste.dev/blog): Long-form posts on shadcn, theming, forms, MCP and the catalog.
 
 ## Catalog
 
-- [Blocks](https://ui.beste.co/blocks): 168 full page sections in 41 categories. 168 are free, the rest are Pro.
-- [Pages](https://ui.beste.co/pages): 0 whole pages composed from the blocks. One command installs a page and every block inside it.
-- [Pieces](https://ui.beste.co/pieces): 1,325 small widgets in 46 categories that drop into the media slots of a block. Free.
-- [Components](https://ui.beste.co/components): 291 styled primitives in 40 categories: buttons, badges, cards, text effects, inspector controls. Free.
-- [Search](https://ui.beste.co/search): Search every tier by name or by describing what you need.
+- [Blocks](https://beste.dev/blocks): 168 full page sections in 41 categories. 168 are free, the rest are Pro.
+- [Pages](https://beste.dev/pages): 0 whole pages composed from the blocks. One command installs a page and every block inside it.
+- [Pieces](https://beste.dev/pieces): 1,325 small widgets in 46 categories that drop into the media slots of a block. Free.
+- [Components](https://beste.dev/components): 292 styled primitives in 41 categories: buttons, badges, cards, text effects, inspector controls. Free.
+- [Search](https://beste.dev/search): Search every tier by name or by describing what you need.
 
 ## Block categories
 
-- [Feature](https://ui.beste.co/blocks/feature): 31 blocks. Highlight your product features with stunning layouts.
-- [Hero](https://ui.beste.co/blocks/hero): 11 blocks. Eye-catching hero sections to make a strong first impression.
-- [Auth](https://ui.beste.co/blocks/auth): 10 blocks. Sign in, sign up, and verification screens for authentication flows.
-- [Ecommerce](https://ui.beste.co/blocks/ecommerce): 8 blocks. Shopping cart, product cards, and checkout components.
-- [Error](https://ui.beste.co/blocks/error): 8 blocks. Error pages that give the visitor a way forward: 404, 500, 403, maintenance and expired-link screens with search, suggested destinations, and support links.
-- [Health](https://ui.beste.co/blocks/health): 8 blocks. Health and wellness focused UI components.
-- [Use Case](https://ui.beste.co/blocks/use-case): 8 blocks. Showcase different use cases and applications of your product.
-- [FAQ](https://ui.beste.co/blocks/faq): 6 blocks. Interactive question-answer sections that expand on click. Perfect for support pages, knowledge bases, and product documentation.
-- [Onboarding](https://ui.beste.co/blocks/onboarding): 6 blocks. Onboarding pages and flows.
-- [Blog](https://ui.beste.co/blocks/blog): 5 blocks. Blog list layouts and post grid components.
-- [Coming Soon](https://ui.beste.co/blocks/coming-soon): 5 blocks. Launch countdown pages and pre-launch components.
-- [CTA](https://ui.beste.co/blocks/cta): 5 blocks. Conversion-focused call-to-action sections and banners.
-- [Footer](https://ui.beste.co/blocks/footer): 5 blocks. Footer sections with navigation, social links, and CTAs.
-- [Booking](https://ui.beste.co/blocks/booking): 4 blocks. Reservation flows, calendar pickers, time slot selectors, and booking confirmation components.
-- [Education](https://ui.beste.co/blocks/education): 4 blocks. Educational platforms and learning management components.
-- [Crypto](https://ui.beste.co/blocks/crypto): 3 blocks. Cryptocurrency and Web3 focused UI components.
-- [Portfolio](https://ui.beste.co/blocks/portfolio): 3 blocks. Personal portfolio and resume UI components.
-- [SaaS](https://ui.beste.co/blocks/saas): 3 blocks. SaaS dashboard and application UI components.
-- [Testimonial](https://ui.beste.co/blocks/testimonial): 3 blocks. Customer testimonials and social proof sections.
-- [Travel](https://ui.beste.co/blocks/travel): 3 blocks. Travel and tourism focused UI components.
-- [About](https://ui.beste.co/blocks/about): 2 blocks. Company identity, mission statements, team grids, and trust-building sections.
-- [Careers](https://ui.beste.co/blocks/careers): 2 blocks. Job listings, career pages, and open positions sections.
-- [Fitness](https://ui.beste.co/blocks/fitness): 2 blocks. Fitness and gym focused UI components.
-- [Logos](https://ui.beste.co/blocks/logos): 2 blocks. Trusted-by logo clouds, client walls, and partner strips for social proof.
-- [Reveal](https://ui.beste.co/blocks/reveal): 2 blocks. Before/after comparisons and reveal animations.
-- [Showcase](https://ui.beste.co/blocks/showcase): 2 blocks. Interactive product showcases with hotspots and detailed views.
-- [Social](https://ui.beste.co/blocks/social): 2 blocks. Social media and community UI components.
-- [Stats](https://ui.beste.co/blocks/stats): 2 blocks. Key metrics, counters, and achievement sections for social proof.
-- [Agency](https://ui.beste.co/blocks/agency): 1 blocks. Agency and creative studio UI components.
-- [Changelog](https://ui.beste.co/blocks/changelog): 1 blocks. Release notes, version history, and product update sections.
-- [DevTools](https://ui.beste.co/blocks/devtools): 1 blocks. Developer tools and API response examples.
-- [Event](https://ui.beste.co/blocks/event): 1 blocks. Conference, workshop, and event landing page components.
-- [Gallery](https://ui.beste.co/blocks/gallery): 1 blocks. Photo galleries, masonry grids, lightboxes, and image carousels for visual pages.
-- [Legal](https://ui.beste.co/blocks/legal): 1 blocks. Legal and compliance UI components.
-- [Navigation](https://ui.beste.co/blocks/navigation): 1 blocks. Navbar components and menus.
-- [News](https://ui.beste.co/blocks/news): 1 blocks. Breaking news tickers, headline grids, and live feed sections. Perfect for news sites, dashboards, and content platforms.
-- [Podcast](https://ui.beste.co/blocks/podcast): 1 blocks. Podcast and audio content UI components.
-- [Product](https://ui.beste.co/blocks/product): 1 blocks. Product showcase and introduction sections that present features, details, and value: no cart or checkout.
-- [Settings](https://ui.beste.co/blocks/settings): 1 blocks. Account settings, billing, and preferences components.
-- [Terminal](https://ui.beste.co/blocks/terminal): 1 blocks. Terminal-style components with typewriter animations.
-- [Workflow](https://ui.beste.co/blocks/workflow): 1 blocks. No-code automation and workflow builder UI components with live recipe assets.
+- [Feature](https://beste.dev/blocks/feature): 31 blocks. Highlight your product features with stunning layouts.
+- [Hero](https://beste.dev/blocks/hero): 11 blocks. Eye-catching hero sections to make a strong first impression.
+- [Auth](https://beste.dev/blocks/auth): 10 blocks. Sign in, sign up, and verification screens for authentication flows.
+- [Ecommerce](https://beste.dev/blocks/ecommerce): 8 blocks. Shopping cart, product cards, and checkout components.
+- [Error](https://beste.dev/blocks/error): 8 blocks. Error pages that give the visitor a way forward: 404, 500, 403, maintenance and expired-link screens with search, suggested destinations, and support links.
+- [Health](https://beste.dev/blocks/health): 8 blocks. Health and wellness focused UI components.
+- [Use Case](https://beste.dev/blocks/use-case): 8 blocks. Showcase different use cases and applications of your product.
+- [FAQ](https://beste.dev/blocks/faq): 6 blocks. Interactive question-answer sections that expand on click. Perfect for support pages, knowledge bases, and product documentation.
+- [Onboarding](https://beste.dev/blocks/onboarding): 6 blocks. Onboarding pages and flows.
+- [Blog](https://beste.dev/blocks/blog): 5 blocks. Blog list layouts and post grid components.
+- [Coming Soon](https://beste.dev/blocks/coming-soon): 5 blocks. Launch countdown pages and pre-launch components.
+- [CTA](https://beste.dev/blocks/cta): 5 blocks. Conversion-focused call-to-action sections and banners.
+- [Footer](https://beste.dev/blocks/footer): 5 blocks. Footer sections with navigation, social links, and CTAs.
+- [Booking](https://beste.dev/blocks/booking): 4 blocks. Reservation flows, calendar pickers, time slot selectors, and booking confirmation components.
+- [Education](https://beste.dev/blocks/education): 4 blocks. Educational platforms and learning management components.
+- [Crypto](https://beste.dev/blocks/crypto): 3 blocks. Cryptocurrency and Web3 focused UI components.
+- [Portfolio](https://beste.dev/blocks/portfolio): 3 blocks. Personal portfolio and resume UI components.
+- [SaaS](https://beste.dev/blocks/saas): 3 blocks. SaaS dashboard and application UI components.
+- [Testimonial](https://beste.dev/blocks/testimonial): 3 blocks. Customer testimonials and social proof sections.
+- [Travel](https://beste.dev/blocks/travel): 3 blocks. Travel and tourism focused UI components.
+- [About](https://beste.dev/blocks/about): 2 blocks. Company identity, mission statements, team grids, and trust-building sections.
+- [Careers](https://beste.dev/blocks/careers): 2 blocks. Job listings, career pages, and open positions sections.
+- [Fitness](https://beste.dev/blocks/fitness): 2 blocks. Fitness and gym focused UI components.
+- [Logos](https://beste.dev/blocks/logos): 2 blocks. Trusted-by logo clouds, client walls, and partner strips for social proof.
+- [Reveal](https://beste.dev/blocks/reveal): 2 blocks. Before/after comparisons and reveal animations.
+- [Showcase](https://beste.dev/blocks/showcase): 2 blocks. Interactive product showcases with hotspots and detailed views.
+- [Social](https://beste.dev/blocks/social): 2 blocks. Social media and community UI components.
+- [Stats](https://beste.dev/blocks/stats): 2 blocks. Key metrics, counters, and achievement sections for social proof.
+- [Agency](https://beste.dev/blocks/agency): 1 blocks. Agency and creative studio UI components.
+- [Changelog](https://beste.dev/blocks/changelog): 1 blocks. Release notes, version history, and product update sections.
+- [DevTools](https://beste.dev/blocks/devtools): 1 blocks. Developer tools and API response examples.
+- [Event](https://beste.dev/blocks/event): 1 blocks. Conference, workshop, and event landing page components.
+- [Gallery](https://beste.dev/blocks/gallery): 1 blocks. Photo galleries, masonry grids, lightboxes, and image carousels for visual pages.
+- [Legal](https://beste.dev/blocks/legal): 1 blocks. Legal and compliance UI components.
+- [Navigation](https://beste.dev/blocks/navigation): 1 blocks. Navbar components and menus.
+- [News](https://beste.dev/blocks/news): 1 blocks. Breaking news tickers, headline grids, and live feed sections. Perfect for news sites, dashboards, and content platforms.
+- [Podcast](https://beste.dev/blocks/podcast): 1 blocks. Podcast and audio content UI components.
+- [Product](https://beste.dev/blocks/product): 1 blocks. Product showcase and introduction sections that present features, details, and value: no cart or checkout.
+- [Settings](https://beste.dev/blocks/settings): 1 blocks. Account settings, billing, and preferences components.
+- [Terminal](https://beste.dev/blocks/terminal): 1 blocks. Terminal-style components with typewriter animations.
+- [Workflow](https://beste.dev/blocks/workflow): 1 blocks. No-code automation and workflow builder UI components with live recipe assets.
 
 ## Collections
 
 Sets of blocks that share one design language, so a whole site reads as one piece.
 
-- [Altair](https://ui.beste.co/blocks/collection/altair): 8 blocks. Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care.
-- [Auralis](https://ui.beste.co/blocks/collection/auralis): 12 blocks. Oversized display type on monochrome surfaces, with a monospace parenthetical eyebrow and a pill CTA that carries its own seal. Editorial layouts for studio, agency and portfolio sites.
-- [Polaris](https://ui.beste.co/blocks/collection/polaris): 5 blocks. A square accent eyebrow over bold uppercase labels, hairline rules under every section header, and a two-tone seal button. Structured, high-contrast layouts for creative studios.
-- [Sirius](https://ui.beste.co/blocks/collection/sirius): 27 blocks. Light-weight display headings on white, a single accent colour, and media tiles that float a live piece of product UI. Calm, spacious pages for a modern SaaS.
-- [Vega](https://ui.beste.co/blocks/collection/vega): 7 blocks. Heroes that move: live WebGL and canvas surfaces, photographs that relight and assemble as you scroll, and features that run sideways or reveal word by word. For launches and portfolios that want the first screen to be the thing people remember.
+- [Altair](https://beste.dev/blocks/collection/altair): 8 blocks. Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care.
+- [Auralis](https://beste.dev/blocks/collection/auralis): 12 blocks. Oversized display type on monochrome surfaces, with a monospace parenthetical eyebrow and a pill CTA that carries its own seal. Editorial layouts for studio, agency and portfolio sites.
+- [Polaris](https://beste.dev/blocks/collection/polaris): 5 blocks. A square accent eyebrow over bold uppercase labels, hairline rules under every section header, and a two-tone seal button. Structured, high-contrast layouts for creative studios.
+- [Sirius](https://beste.dev/blocks/collection/sirius): 27 blocks. Light-weight display headings on white, a single accent colour, and media tiles that float a live piece of product UI. Calm, spacious pages for a modern SaaS.
+- [Vega](https://beste.dev/blocks/collection/vega): 53 blocks. Heroes that move: live WebGL and canvas surfaces, photographs that relight and assemble as you scroll, and features that run sideways or reveal word by word. For launches and portfolios that want the first screen to be the thing people remember.
 
 ## For agents
 
-- [MCP endpoint](https://ui.beste.co/api/mcp): Streamable HTTP. Tools: search_blocks, get_block, get_block_source, list_categories, list_collections, install_block, compose_page. No key needed except for Pro sources.
-- [Registry index](https://ui.beste.co/r/registry.json): Every block as a shadcn registry item. Base UI flavor at https://ui.beste.co/r-base/registry.json.
-- [Markdown](https://ui.beste.co/index.md): This site as Markdown, one page at a time.
-- [Full guide](https://ui.beste.co/llms-full.txt): Installation, pricing, MCP and the catalog in detail.
+- [MCP endpoint](https://beste.dev/api/mcp): Streamable HTTP. Tools: search_blocks, get_block, get_block_source, list_categories, list_collections, install_block, compose_page. No key needed except for Pro sources.
+- [Registry index](https://beste.dev/r/registry.json): Every block as a shadcn registry item. Base UI flavor at https://beste.dev/r-base/registry.json.
+- [Markdown](https://beste.dev/index.md): This site as Markdown, one page at a time.
+- [Full guide](https://beste.dev/llms-full.txt): Installation, pricing, MCP and the catalog in detail.
 
 ## Optional
 
-- [Free tools](https://ui.beste.co/tools): 0 browser-based developer tools in 0 categories. No signup, nothing uploaded.
+- [Free tools](https://beste.dev/tools): 0 browser-based developer tools in 0 categories. No signup, nothing uploaded.
 - [GitHub](https://github.com/beste-co/beste-ui): Source and issues.
 - [X](https://x.com/withbeste): Release notes and questions.
-- [RSS](https://ui.beste.co/rss.xml): The changelog as a feed.
-- [Sitemap](https://ui.beste.co/sitemap.xml): Every canonical URL on the site.
+- [RSS](https://beste.dev/rss.xml): The changelog as a feed.
+- [Sitemap](https://beste.dev/sitemap.xml): Every canonical URL on the site.

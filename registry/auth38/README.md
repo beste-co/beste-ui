@@ -9,13 +9,13 @@ Full-height pattern-unlock screen: a heading and description above a tappable 3x
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth38"
+npx shadcn add "https://beste.dev/r/auth38"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth38"
+npx shadcn add "https://beste.dev/r-base/auth38"
 ```
 
 This installs the block to `components/beste/block/auth38.tsx` and the `button` shadcn/ui primitive it's built on.

@@ -72,13 +72,13 @@ export function Card19({ title, author, note, src, href, tone = "ink", className
           aria-hidden="true"
           className="absolute inset-y-0 left-0 w-2.5 bg-gradient-to-r from-black/25 to-transparent"
         />
-        <span className="relative font-mono text-sm uppercase tracking-widest opacity-70">
+        <span className="relative text-sm font-medium opacity-70">
           {author}
         </span>
         <span className="relative">
           <span className="block font-serif text-2xl leading-tight tracking-tight">{title}</span>
           {note && (
-            <span className="mt-3 block border-t border-current/20 pt-2 font-mono text-sm uppercase tracking-widest opacity-60">
+            <span className="mt-3 block border-t border-current/20 pt-2 text-sm opacity-60">
               {note}
             </span>
           )}

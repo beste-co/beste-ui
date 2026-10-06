@@ -8,7 +8,7 @@ interface Card14Item {
 }
 
 interface Card14Props {
-  /** Store or studio name, printed uppercase at the top */
+  /** Store or studio name, printed at the top */
   store: string;
   /** Muted line under the store name (e.g. an invoice number or date) */
   meta?: string;
@@ -75,17 +75,17 @@ export function Card14({
     <div className={cn("w-full max-w-xs", tilted && "-rotate-1", className)}>
       {/* Paper is intentionally fixed white so it reads as a printed receipt
           on both site themes */}
-      <div className="bg-white px-5 pb-6 pt-6 font-mono text-zinc-900 shadow-md">
+      <div className="bg-white px-5 pb-6 pt-6 tabular-nums text-zinc-900 shadow-md">
         <p
           className={cn(
-            "text-center text-base font-bold uppercase tracking-[0.25em]",
+            "text-center text-base font-bold",
             toneStyles[tone]
           )}
         >
           {store}
         </p>
         {meta && (
-          <p className="mt-1 text-center text-sm uppercase tracking-widest text-zinc-500">
+          <p className="mt-1 text-center text-sm text-zinc-500">
             {meta}
           </p>
         )}
@@ -95,7 +95,7 @@ export function Card14({
         <div className="flex flex-col gap-1.5">
           {items.map((item) => (
             <div key={item.label} className="flex items-baseline gap-2 text-sm">
-              <span className="shrink-0 uppercase">{item.label}</span>
+              <span className="shrink-0">{item.label}</span>
               <span
                 aria-hidden="true"
                 className="mb-0.5 min-w-4 flex-1 border-b border-dotted border-zinc-400"
@@ -108,7 +108,7 @@ export function Card14({
         <div className="mt-4 border-t border-dashed border-zinc-300 pt-3">
           <div
             className={cn(
-              "flex items-baseline justify-between text-base font-bold uppercase tracking-wide",
+              "flex items-baseline justify-between text-base font-bold",
               toneStyles[tone]
             )}
           >
@@ -118,7 +118,7 @@ export function Card14({
         </div>
 
         {note && (
-          <p className="mt-4 text-center text-sm uppercase tracking-widest text-zinc-500">
+          <p className="mt-4 text-center text-sm text-zinc-500">
             {note}
           </p>
         )}
@@ -135,7 +135,7 @@ export function Card14({
                 />
               ))}
             </span>
-            <span className="text-sm tracking-[0.3em] text-zinc-500">{code}</span>
+            <span className="text-sm text-zinc-500">{code}</span>
           </div>
         )}
       </div>

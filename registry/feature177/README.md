@@ -9,13 +9,13 @@ Feature cards arranged in a 3-then-2 bento layout: three cards fill a top row an
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature177"
+npx shadcn add "https://beste.dev/r/feature177"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature177"
+npx shadcn add "https://beste.dev/r-base/feature177"
 ```
 
 This installs the block to `components/beste/block/feature177.tsx` and the `badge` shadcn/ui primitive it depends on.

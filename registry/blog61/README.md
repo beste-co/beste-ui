@@ -9,13 +9,13 @@ A dense blog archive whose subject pills are derived from the posts themselves a
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/blog61"
+npx shadcn add "https://beste.dev/r/blog61"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/blog61"
+npx shadcn add "https://beste.dev/r-base/blog61"
 ```
 
 This installs the block to `components/beste/block/blog61.tsx` plus the `badge23` component it uses for the eyebrow.

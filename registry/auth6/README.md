@@ -9,13 +9,13 @@ Full-height passwordless sign-in screen: a centered icon badge, a single email f
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth6"
+npx shadcn add "https://beste.dev/r/auth6"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth6"
+npx shadcn add "https://beste.dev/r-base/auth6"
 ```
 
 This installs the block to `components/beste/block/auth6.tsx` and the `button`, `input`, and `field` shadcn/ui primitives it's built on.

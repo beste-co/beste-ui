@@ -9,13 +9,13 @@ Centered hero built for B2B landing pages: badge, a heading with a gradient-clip
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero36"
+npx shadcn add "https://beste.dev/r/hero36"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero36"
+npx shadcn add "https://beste.dev/r-base/hero36"
 ```
 
 This installs the block to `components/beste/block/hero36.tsx` and the `Badge` and `Button` shadcn/ui primitives it uses.

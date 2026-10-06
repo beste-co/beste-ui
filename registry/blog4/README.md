@@ -9,13 +9,13 @@ Blog index that promotes the first entry in `posts` into a large side-by-side he
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/blog4"
+npx shadcn add "https://beste.dev/r/blog4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/blog4"
+npx shadcn add "https://beste.dev/r-base/blog4"
 ```
 
 This installs the block to `components/beste/block/blog4.tsx`, plus the `badge`, `avatar`, and `button` shadcn/ui primitives it uses for tags, author avatars, and the featured post's "Read more" button.

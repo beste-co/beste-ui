@@ -9,13 +9,13 @@ Six-card feature grid where each card's icon sits in a rounded square that inver
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature26"
+npx shadcn add "https://beste.dev/r/feature26"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature26"
+npx shadcn add "https://beste.dev/r-base/feature26"
 ```
 
 This installs the block to `components/beste/block/feature26.tsx` and the shadcn/ui `badge` component it depends on.

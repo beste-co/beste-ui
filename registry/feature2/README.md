@@ -9,13 +9,13 @@ Header with a badge, heading, description, and CTA buttons, followed by a stack 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature2"
+npx shadcn add "https://beste.dev/r/feature2"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature2"
+npx shadcn add "https://beste.dev/r-base/feature2"
 ```
 
 This installs the block to `components/beste/block/feature2.tsx`, the shadcn/ui `badge` and `button` components it depends on, and the `browser27`, `browser28`, and `calendar19` pieces it embeds as media-slot fillers (installed to `components/beste/piece/{name}.tsx`).

@@ -9,13 +9,13 @@ Centered call-to-action for newsletter and conversion sections: an optional badg
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/cta8"
+npx shadcn add "https://beste.dev/r/cta8"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/cta8"
+npx shadcn add "https://beste.dev/r-base/cta8"
 ```
 
 This installs the block to `components/beste/block/cta8.tsx` and the `Badge` and `Button` shadcn/ui primitives it uses.

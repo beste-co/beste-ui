@@ -9,13 +9,13 @@ A compact FAQ with nothing hidden behind a click: three labelled groups of quest
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/faq84"
+npx shadcn add "https://beste.dev/r/faq84"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/faq84"
+npx shadcn add "https://beste.dev/r-base/faq84"
 ```
 
 This installs the block to `components/beste/block/faq84.tsx` plus the `badge23` component it uses for the eyebrow.

@@ -23,7 +23,7 @@ Open an issue with:
 - a screenshot, if it is visual
 
 A minimal reproduction is worth more than a long description. If the section
-renders correctly on [ui.beste.co](https://ui.beste.co) but not in your project,
+renders correctly on [beste.dev](https://beste.dev) but not in your project,
 say so: that points at a difference in theme tokens or Tailwind config rather
 than at the section.
 

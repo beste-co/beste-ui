@@ -9,13 +9,13 @@ A photo-tile grid for browsing tours by experience style (adventure, cultural, b
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/travel19"
+npx shadcn add "https://beste.dev/r/travel19"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/travel19"
+npx shadcn add "https://beste.dev/r-base/travel19"
 ```
 
 This installs the block to `components/beste/block/travel19.tsx` and the `badge` shadcn/ui primitive it depends on.

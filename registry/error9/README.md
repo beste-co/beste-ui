@@ -9,13 +9,13 @@ A left-aligned 404 for sites where URLs move: the address that failed is printed
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error9"
+npx shadcn add "https://beste.dev/r/error9"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error9"
+npx shadcn add "https://beste.dev/r-base/error9"
 ```
 
 This installs the block to `components/beste/block/error9.tsx`, plus the `button` shadcn/ui primitive it uses for the closing action.

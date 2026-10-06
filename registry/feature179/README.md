@@ -9,13 +9,13 @@ A two-column layout: a sticky left column carries the section header and a 2-up 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature179"
+npx shadcn add "https://beste.dev/r/feature179"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature179"
+npx shadcn add "https://beste.dev/r-base/feature179"
 ```
 
 This installs the block to `components/beste/block/feature179.tsx` and the `badge` shadcn/ui primitive it depends on.

@@ -9,13 +9,13 @@ Journal preview for landing pages: one lead entry carries a wide image, category
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/blog57"
+npx shadcn add "https://beste.dev/r/blog57"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/blog57"
+npx shadcn add "https://beste.dev/r-base/blog57"
 ```
 
 This installs the block to `components/beste/block/blog57.tsx` plus the `badge7` eyebrow and `button12` pill button it uses.

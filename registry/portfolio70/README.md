@@ -9,13 +9,13 @@ Grid of book cards for a reading list, each showing a portrait cover image, titl
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/portfolio70"
+npx shadcn add "https://beste.dev/r/portfolio70"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/portfolio70"
+npx shadcn add "https://beste.dev/r-base/portfolio70"
 ```
 
 This installs the block to `components/beste/block/portfolio70.tsx` and its dependencies.

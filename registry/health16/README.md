@@ -9,13 +9,13 @@ Large-format statistics grid for proof-point numbers like member counts, satisfa
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/health16"
+npx shadcn add "https://beste.dev/r/health16"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/health16"
+npx shadcn add "https://beste.dev/r-base/health16"
 ```
 
 This installs the block to `components/beste/block/health16.tsx` and its dependencies.

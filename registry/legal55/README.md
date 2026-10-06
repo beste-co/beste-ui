@@ -9,13 +9,13 @@ A legal section that sets each binding clause against a plain-language reading o
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/legal55"
+npx shadcn add "https://beste.dev/r/legal55"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/legal55"
+npx shadcn add "https://beste.dev/r-base/legal55"
 ```
 
 This installs the block to `components/beste/block/legal55.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the action.

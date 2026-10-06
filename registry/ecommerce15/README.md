@@ -9,13 +9,13 @@ Row of icon cards summarizing shipping, delivery, tracking, and returns policy, 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/ecommerce15"
+npx shadcn add "https://beste.dev/r/ecommerce15"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/ecommerce15"
+npx shadcn add "https://beste.dev/r-base/ecommerce15"
 ```
 
 This installs the block file and its dependencies.

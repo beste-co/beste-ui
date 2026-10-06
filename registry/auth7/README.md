@@ -9,13 +9,13 @@ Full-height account picker: a heading and description above a bordered list of s
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth7"
+npx shadcn add "https://beste.dev/r/auth7"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth7"
+npx shadcn add "https://beste.dev/r-base/auth7"
 ```
 
 This installs the block to `components/beste/block/auth7.tsx` and the `avatar` and `field` shadcn/ui primitives it's built on.

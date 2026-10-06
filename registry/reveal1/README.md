@@ -9,13 +9,13 @@ Draggable before/after image comparison slider: pointer and touch drag move a cl
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/reveal1"
+npx shadcn add "https://beste.dev/r/reveal1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/reveal1"
+npx shadcn add "https://beste.dev/r-base/reveal1"
 ```
 
 This installs the block to `components/beste/block/reveal1.tsx` and its dependencies.

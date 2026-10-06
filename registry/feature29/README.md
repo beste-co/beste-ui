@@ -9,13 +9,13 @@ Feature grid where each card pairs an icon, title, and description with an optio
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature29"
+npx shadcn add "https://beste.dev/r/feature29"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature29"
+npx shadcn add "https://beste.dev/r-base/feature29"
 ```
 
 This installs the block to `components/beste/block/feature29.tsx` and the shadcn/ui `badge` and `button` components it depends on.

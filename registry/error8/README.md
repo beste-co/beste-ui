@@ -9,13 +9,13 @@ A 404 page that does not wait for the visitor to act: a live countdown runs unde
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error8"
+npx shadcn add "https://beste.dev/r/error8"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error8"
+npx shadcn add "https://beste.dev/r-base/error8"
 ```
 
 This installs the block to `components/beste/block/error8.tsx`, plus the `button` shadcn/ui primitive it uses for the manual and cancel actions.

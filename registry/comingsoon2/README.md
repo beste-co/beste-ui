@@ -9,13 +9,13 @@ Coming-soon hero built around a derived progress bar: overall completion is comp
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/comingsoon2"
+npx shadcn add "https://beste.dev/r/comingsoon2"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/comingsoon2"
+npx shadcn add "https://beste.dev/r-base/comingsoon2"
 ```
 
 This installs the block to `components/beste/block/comingsoon2.tsx`, plus the `badge` and `progress` shadcn/ui primitives it uses for the eyebrow badge and the progress bar.

@@ -9,13 +9,13 @@ A contact section that asks a branching set of questions instead of one long for
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/saas108"
+npx shadcn add "https://beste.dev/r/saas108"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/saas108"
+npx shadcn add "https://beste.dev/r-base/saas108"
 ```
 
 That installs the block file, the `badge6` eyebrow and `button1` seal CTA it is built from, and the `questionnaire` primitive. The rail and the branching live in the block file itself, so there is nothing else to wire up.

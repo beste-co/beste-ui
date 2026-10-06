@@ -2,7 +2,7 @@
 
 > Production-ready shadcn/ui blocks, pages, pieces and components for React, Next.js and Tailwind CSS. Install any of them with the shadcn CLI, or let an AI agent search and install them over MCP. Most of the catalog is free; a one-time Pro license unlocks the rest.
 
-Canonical host: https://ui.beste.co. The short map of this site is https://ui.beste.co/llms.txt. Every page is also readable as Markdown: add `.md` to any address or send `Accept: text/markdown`.
+Canonical host: https://beste.dev. The short map of this site is https://beste.dev/llms.txt. Every page is also readable as Markdown: add `.md` to any address or send `Accept: text/markdown`.
 
 ## What Beste UI is
 
@@ -10,10 +10,10 @@ Beste UI is a catalog of production-ready UI built on shadcn/ui and Tailwind CSS
 
 The catalog has four tiers:
 
-- **Blocks** (https://ui.beste.co/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
-- **Pages** (https://ui.beste.co/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
-- **Pieces** (https://ui.beste.co/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,325 pieces in 46 categories, all free.
-- **Components** (https://ui.beste.co/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 291 components in 40 categories, all free.
+- **Blocks** (https://beste.dev/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
+- **Pages** (https://beste.dev/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
+- **Pieces** (https://beste.dev/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,325 pieces in 46 categories, all free.
+- **Components** (https://beste.dev/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 292 components in 41 categories, all free.
 
 Every asset has a detail page with a live preview, the install command in both flavors, its props and a README. Blocks live at `/block/{name}`, pages at `/page/{name}`, pieces at `/piece/{name}` and components at `/component/{name}`.
 
@@ -48,10 +48,10 @@ Each asset is available at a predictable URL in both flavors:
 
 ```bash
 # Base UI (default)
-npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json"
+npx shadcn@latest add "https://beste.dev/r-base/hero7.json"
 
 # Radix
-npx shadcn@latest add "https://ui.beste.co/r/hero7.json"
+npx shadcn@latest add "https://beste.dev/r/hero7.json"
 ```
 
 Pages, pieces and components follow the same pattern under `/page/r/{name}`, `/piece/r/{name}` and `/component/r/{name}`. Or add the registry once and install by a short name. The namespace currently resolves to the Radix variant only:
@@ -66,18 +66,18 @@ npx shadcn@latest add @beste-ui/hero7
 Pro assets require a license. Add your account email and license key as query parameters and the CLI fetches the real source. Signed-in Pro users get this exact command pre-filled on every asset page; the key lives on the account page.
 
 ```bash
-npx shadcn@latest add "https://ui.beste.co/r-base/hero7.json?email=you@example.com&license_key=YOUR_LICENSE_KEY"
+npx shadcn@latest add "https://beste.dev/r-base/hero7.json?email=you@example.com&license_key=YOUR_LICENSE_KEY"
 ```
 
-Full docs: https://ui.beste.co/docs/installation and the CLI reference at https://ui.beste.co/docs/cli.
+Full docs: https://beste.dev/docs/installation and the CLI reference at https://beste.dev/docs/cli.
 
 ## Theming
 
-Beste assets are styled entirely with shadcn/ui theme tokens, so they inherit your theme. Instead of literal colors, components reference CSS variables such as `--background`, `--foreground`, `--primary` and `--muted` that live in your global stylesheet; change the variables and every block updates with you. Dark mode is the same variables under a `.dark` class, and radius is one token. Some pieces and components expose a `tone` prop (for example `neutral`) that swaps a small set of token classes so the same component can read as quiet or prominent without new CSS. Docs: https://ui.beste.co/docs/theming.
+Beste assets are styled entirely with shadcn/ui theme tokens, so they inherit your theme. Instead of literal colors, components reference CSS variables such as `--background`, `--foreground`, `--primary` and `--muted` that live in your global stylesheet; change the variables and every block updates with you. Dark mode is the same variables under a `.dark` class, and radius is one token. Some pieces and components expose a `tone` prop (for example `neutral`) that swaps a small set of token classes so the same component can read as quiet or prominent without new CSS. Docs: https://beste.dev/docs/theming.
 
 ## MCP server
 
-Beste UI ships a hosted MCP server at https://ui.beste.co/api/mcp over Streamable HTTP, so it drops into any compliant client with a single URL: Claude Code, Cursor, Windsurf, VS Code and others. Searching, previews, metadata, install commands and every free source work with no account. A Pro license is only needed to pull the source of Pro blocks.
+Beste UI ships a hosted MCP server at https://beste.dev/api/mcp over Streamable HTTP, so it drops into any compliant client with a single URL: Claude Code, Cursor, Windsurf, VS Code and others. Searching, previews, metadata, install commands and every free source work with no account. A Pro license is only needed to pull the source of Pro blocks.
 
 ### Setup
 
@@ -86,12 +86,12 @@ Add the server to your MCP config:
 ```json
 {
   "mcpServers": {
-    "beste-ui": { "url": "https://ui.beste.co/api/mcp" }
+    "beste-ui": { "url": "https://beste.dev/api/mcp" }
   }
 }
 ```
 
-Claude Code can add it with one command: `npx shadcn@latest mcp init --client claude`. To let the agent pull Pro sources, put your license on the endpoint: `https://ui.beste.co/api/mcp?email=you@example.com&license_key=YOUR_LICENSE_KEY`.
+Claude Code can add it with one command: `npx shadcn@latest mcp init --client claude`. To let the agent pull Pro sources, put your license on the endpoint: `https://beste.dev/api/mcp?email=you@example.com&license_key=YOUR_LICENSE_KEY`.
 
 ### Tools
 
@@ -115,7 +115,7 @@ Claude Code can add it with one command: `npx shadcn@latest mcp init --client cl
 
 ### How it works
 
-Every block, piece and component is embedded at build time with a small open model, and queries are embedded the same way on the server, so search matches intent rather than keywords. No third-party AI service is in the path. Pro sources use the exact license check the CLI and the site use. Docs: https://ui.beste.co/docs/mcp.
+Every block, piece and component is embedded at build time with a small open model, and queries are embedded the same way on the server, so search matches intent rather than keywords. No third-party AI service is in the path. Pro sources use the exact license check the CLI and the site use. Docs: https://beste.dev/docs/mcp.
 
 ### Questions
 
@@ -125,7 +125,7 @@ Every block, piece and component is embedded at build time with a small open mod
 
 ## Reading this site as Markdown
 
-Every page has a Markdown rendition at the same address with a `.md` suffix, or by sending an `Accept: text/markdown` header. The renditions carry `X-Robots-Tag: noindex` so they stay out of search results. The block registry index is at https://ui.beste.co/r/registry.json (Base UI: https://ui.beste.co/r-base/registry.json), the changelog feed at https://ui.beste.co/rss.xml, and the sitemap at https://ui.beste.co/sitemap.xml. robots.txt allows answer engines to crawl and cite, and declares `ai-train=no`.
+Every page has a Markdown rendition at the same address with a `.md` suffix, or by sending an `Accept: text/markdown` header. The renditions carry `X-Robots-Tag: noindex` so they stay out of search results. The block registry index is at https://beste.dev/r/registry.json (Base UI: https://beste.dev/r-base/registry.json), the changelog feed at https://beste.dev/rss.xml, and the sitemap at https://beste.dev/sitemap.xml. robots.txt allows answer engines to crawl and cite, and declares `ai-train=no`.
 
 ## Pricing and Pro
 
@@ -146,15 +146,15 @@ What a license includes:
 - Typed source you own outright: React and Tailwind copied into your repository, no runtime dependency.
 - Radix and Base UI flavors of every block.
 
-Students: write from a school email address and you get a discount. Missing an asset: tell the team what you are building and request a block, piece or component. Plans and checkout: https://ui.beste.co/pricing. Background: https://ui.beste.co/docs/pricing.
+Students: write from a school email address and you get a discount. Missing an asset: tell the team what you are building and request a block, piece or component. Plans and checkout: https://beste.dev/pricing. Background: https://beste.dev/docs/pricing.
 
 ### License
 
-Permission is granted to use, copy, modify and merge the software in personal and commercial projects, with three restrictions: no resale of the components or derivatives as a standalone product or UI kit, no redistribution of the source on other marketplaces or component stores, and no rebranding. Full text: https://ui.beste.co/license.
+Permission is granted to use, copy, modify and merge the software in personal and commercial projects, with three restrictions: no resale of the components or derivatives as a standalone product or UI kit, no redistribution of the source on other marketplaces or component stores, and no rebranding. Full text: https://beste.dev/license.
 
 ### Referral programme
 
-Signed-in users get a referral link. You earn 30% commission on every payment a referred new user makes for 12 months after they sign up, renewals included. Referrals are tracked for 30 days after the click, commissions are confirmed 30 days after payment, and payouts go out monthly two months in arrears with a $100 minimum. Details: https://ui.beste.co/referrals.
+Signed-in users get a referral link. You earn 30% commission on every payment a referred new user makes for 12 months after they sign up, renewals included. Referrals are tracked for 30 days after the click, commissions are confirmed 30 days after payment, and payouts go out monthly two months in arrears with a $100 minimum. Details: https://beste.dev/referrals.
 
 ## Block categories
 
@@ -162,287 +162,287 @@ Each category has its own page with every block in it. Counts are blocks; "free"
 
 ### Feature
 
-- URL: https://ui.beste.co/blocks/feature
+- URL: https://beste.dev/blocks/feature
 - 31 blocks, 31 free
 - Highlight your product features with stunning layouts.
 - Examples: Accordion With Live Media (feature1), Icon-Centered Grid Cards (feature107), Tabbed Feature Cards (feature112), Impact Stats with Large Numbers (feature126), Integration Logos Grid (feature135)
 
 ### Hero
 
-- URL: https://ui.beste.co/blocks/hero
+- URL: https://beste.dev/blocks/hero
 - 11 blocks, 11 free
 - Eye-catching hero sections to make a strong first impression.
 - Examples: Cinematic Fullscreen Carousel (hero19), Split Carousel with Thumbnails (hero20), Fullscreen Vertical Carousel (hero21), Wellness Hero with Stats Cards (hero24), Centered Hero with Logo Cloud (hero36)
 
 ### Auth
 
-- URL: https://ui.beste.co/blocks/auth
+- URL: https://beste.dev/blocks/auth
 - 10 blocks, 10 free
 - Sign in, sign up, and verification screens for authentication flows.
 - Examples: Centered Sign In Card (auth1), Centered Sign Up Card (auth13), Split-Screen Sign Up (auth2), Email Verification Code (auth3), PIN Keypad Unlock (auth30)
 
 ### Ecommerce
 
-- URL: https://ui.beste.co/blocks/ecommerce
+- URL: https://beste.dev/blocks/ecommerce
 - 8 blocks, 8 free
 - Shopping cart, product cards, and checkout components.
 - Examples: Product Card Grid (ecommerce1), Size Guide Table (ecommerce11), Shipping Info Cards (ecommerce15), Shop by Brand Grid (ecommerce32), Shop by Category Grid (ecommerce4)
 
 ### Error
 
-- URL: https://ui.beste.co/blocks/error
+- URL: https://beste.dev/blocks/error
 - 8 blocks, 8 free
 - Error pages that give the visitor a way forward: 404, 500, 403, maintenance and expired-link screens with search, suggested destinations, and support links.
 - Examples: Centered 404 Message (error1), 404 With Site Search (error2), Editorial Not Found Split (error34), Server Error With Live Status (error35), Inline 404 Line (error6)
 
 ### Health
 
-- URL: https://ui.beste.co/blocks/health
+- URL: https://beste.dev/blocks/health
 - 8 blocks, 8 free
 - Health and wellness focused UI components.
 - Examples: Vitals Dashboard (health1), Health Statistics Display (health16), Care Programme Cards (health18), Wellness Goals Tracker (health2), Medical Specialists Directory (health3)
 
 ### Use Case
 
-- URL: https://ui.beste.co/blocks/use-case
+- URL: https://beste.dev/blocks/use-case
 - 8 blocks, 8 free
 - Showcase different use cases and applications of your product.
 - Examples: Split Content Card (usecase10), Use Case Card Grid (usecase2), Numbered Steps Process (usecase3), Industry Solutions Grid (usecase4), Feature Icon Grid (usecase5)
 
 ### FAQ
 
-- URL: https://ui.beste.co/blocks/faq
+- URL: https://beste.dev/blocks/faq
 - 6 blocks, 6 free
 - Interactive question-answer sections that expand on click. Perfect for support pages, knowledge bases, and product documentation.
 - Examples: Numbered FAQ Index (faq77), Two Column Answer Grid (faq80), Hairline Answer Ledger (faq84), Good Fit Qualifier (faq88), Filterable Glossary (faq89)
 
 ### Onboarding
 
-- URL: https://ui.beste.co/blocks/onboarding
+- URL: https://beste.dev/blocks/onboarding
 - 6 blocks, 6 free
 - Onboarding pages and flows.
 - Examples: Welcome Hero with Step Indicator (onboarding1), Minimal Welcome with Icon (onboarding3), Go-Live Day Agenda (onboarding36), Video Introduction Screen (onboarding4), Guided Workspace Setup (onboarding43)
 
 ### Blog
 
-- URL: https://ui.beste.co/blocks/blog
+- URL: https://beste.dev/blocks/blog
 - 5 blocks, 5 free
 - Blog list layouts and post grid components.
 - Examples: Split Image with List (blog25), Card Grid with Authors (blog3), Featured Hero with Grid (blog4), Journal Lead And Index (blog57), Filterable Archive Index (blog61)
 
 ### Coming Soon
 
-- URL: https://ui.beste.co/blocks/coming-soon
+- URL: https://beste.dev/blocks/coming-soon
 - 5 blocks, 5 free
 - Launch countdown pages and pre-launch components.
 - Examples: Countdown Timer Launch (comingsoon1), Development Progress Milestones (comingsoon2), Social Connect Launch (comingsoon3), Animated Icons Preview (comingsoon4), Maintenance Window Notice (comingsoon79)
 
 ### CTA
 
-- URL: https://ui.beste.co/blocks/cta
+- URL: https://beste.dev/blocks/cta
 - 5 blocks, 5 free
 - Conversion-focused call-to-action sections and banners.
 - Examples: Banner CTA (cta11), Worth Keeping CTA (cta69), Studio Booking Split CTA (cta78), Centered Newsletter CTA (cta8), Tailored Subscription (cta92)
 
 ### Footer
 
-- URL: https://ui.beste.co/blocks/footer
+- URL: https://beste.dev/blocks/footer
 - 5 blocks, 5 free
 - Footer sections with navigation, social links, and CTAs.
 - Examples: Split Brand Footer (footer10), Centered Social Footer (footer11), Compact E-commerce Footer (footer21), Social Media Showcase Footer (footer23), Minimal Inline Footer (footer9)
 
 ### Booking
 
-- URL: https://ui.beste.co/blocks/booking
+- URL: https://beste.dev/blocks/booking
 - 4 blocks, 4 free
 - Reservation flows, calendar pickers, time slot selectors, and booking confirmation components.
 - Examples: Booking Confirmation Receipt (booking15), Appointment Intake Match (booking29), Service Selector (booking4), Provider Picker (booking5)
 
 ### Education
 
-- URL: https://ui.beste.co/blocks/education
+- URL: https://beste.dev/blocks/education
 - 4 blocks, 4 free
 - Educational platforms and learning management components.
 - Examples: Institutional Quick Facts (education100), Lesson Check Quiz (education102), Social Media Links Grid (education86), Global Partnerships Grid (education99)
 
 ### Crypto
 
-- URL: https://ui.beste.co/blocks/crypto
+- URL: https://beste.dev/blocks/crypto
 - 3 blocks, 3 free
 - Cryptocurrency and Web3 focused UI components.
 - Examples: Token Price Hero (crypto1), DAO Governance Proposals (crypto24), Contract Address List (crypto35)
 
 ### Portfolio
 
-- URL: https://ui.beste.co/blocks/portfolio
+- URL: https://beste.dev/blocks/portfolio
 - 3 blocks, 3 free
 - Personal portfolio and resume UI components.
 - Examples: Social Media Connect Grid (portfolio62), Book Recommendations Grid (portfolio70), Work Process Steps (portfolio84)
 
 ### SaaS
 
-- URL: https://ui.beste.co/blocks/saas
+- URL: https://beste.dev/blocks/saas
 - 3 blocks, 3 free
 - SaaS dashboard and application UI components.
 - Examples: Branching Scoping Form (saas108), Changelog Timeline (saas16), Job Listings (saas31)
 
 ### Testimonial
 
-- URL: https://ui.beste.co/blocks/testimonial
+- URL: https://beste.dev/blocks/testimonial
 - 3 blocks, 3 free
 - Customer testimonials and social proof sections.
 - Examples: Carousel Testimonials (testimonial1), Centered Quote (testimonial6), Quote Cards Grid (testimonial8)
 
 ### Travel
 
-- URL: https://ui.beste.co/blocks/travel
+- URL: https://beste.dev/blocks/travel
 - 3 blocks, 3 free
 - Travel and tourism focused UI components.
 - Examples: Tour Type Categories (travel19), Custom Trip Builder CTA (travel21), Narrowing Destination Shortlist (travel42)
 
 ### About
 
-- URL: https://ui.beste.co/blocks/about
+- URL: https://beste.dev/blocks/about
 - 2 blocks, 2 free
 - Company identity, mission statements, team grids, and trust-building sections.
 - Examples: Mission Band With Principles (about69), Company History Rows (about70)
 
 ### Careers
 
-- URL: https://ui.beste.co/blocks/careers
+- URL: https://beste.dev/blocks/careers
 - 2 blocks, 2 free
 - Job listings, career pages, and open positions sections.
 - Examples: Filterable Open Roles List (careers51), Role Fit Finder (careers56)
 
 ### Fitness
 
-- URL: https://ui.beste.co/blocks/fitness
+- URL: https://beste.dev/blocks/fitness
 - 2 blocks, 2 free
 - Fitness and gym focused UI components.
 - Examples: Gym Location Finder (fitness32), Honest Programme Match (fitness40)
 
 ### Logos
 
-- URL: https://ui.beste.co/blocks/logos
+- URL: https://beste.dev/blocks/logos
 - 2 blocks, 2 free
 - Trusted-by logo clouds, client walls, and partner strips for social proof.
 - Examples: Hairline Client Wall (logos12), Ruled Client Roster (logos13)
 
 ### Reveal
 
-- URL: https://ui.beste.co/blocks/reveal
+- URL: https://beste.dev/blocks/reveal
 - 2 blocks, 2 free
 - Before/after comparisons and reveal animations.
 - Examples: Before/After Image Slider (reveal1), Comparison Slider with Highlights (reveal2)
 
 ### Showcase
 
-- URL: https://ui.beste.co/blocks/showcase
+- URL: https://beste.dev/blocks/showcase
 - 2 blocks, 2 free
 - Interactive product showcases with hotspots and detailed views.
 - Examples: Split Hotspot Feature Section (showcase2), Project Gallery Grid (showcase3)
 
 ### Social
 
-- URL: https://ui.beste.co/blocks/social
+- URL: https://beste.dev/blocks/social
 - 2 blocks, 2 free
 - Social media and community UI components.
 - Examples: Community Channels (social48), Community Photo Wall (social57)
 
 ### Stats
 
-- URL: https://ui.beste.co/blocks/stats
+- URL: https://beste.dev/blocks/stats
 - 2 blocks, 2 free
 - Key metrics, counters, and achievement sections for social proof.
 - Examples: Outcome Metric Rows (stats66), Segmented Total Breakdown (stats68)
 
 ### Agency
 
-- URL: https://ui.beste.co/blocks/agency
+- URL: https://beste.dev/blocks/agency
 - 1 blocks, 1 free
 - Agency and creative studio UI components.
 - Examples: Studio Brief With Changing Plate (agency24)
 
 ### Changelog
 
-- URL: https://ui.beste.co/blocks/changelog
+- URL: https://beste.dev/blocks/changelog
 - 1 blocks, 1 free
 - Release notes, version history, and product update sections.
 - Examples: Full Release Notes By Month (changelog28)
 
 ### DevTools
 
-- URL: https://ui.beste.co/blocks/devtools
+- URL: https://beste.dev/blocks/devtools
 - 1 blocks, 1 free
 - Developer tools and API response examples.
 - Examples: Multi-Language Code Tabs (devtools3)
 
 ### Event
 
-- URL: https://ui.beste.co/blocks/event
+- URL: https://beste.dev/blocks/event
 - 1 blocks, 1 free
 - Conference, workshop, and event landing page components.
 - Examples: Slot By Slot Day Builder (event101)
 
 ### Gallery
 
-- URL: https://ui.beste.co/blocks/gallery
+- URL: https://beste.dev/blocks/gallery
 - 1 blocks, 1 free
 - Photo galleries, masonry grids, lightboxes, and image carousels for visual pages.
 - Examples: Pick The Frames Taste Profile (gallery25)
 
 ### Legal
 
-- URL: https://ui.beste.co/blocks/legal
+- URL: https://beste.dev/blocks/legal
 - 1 blocks, 1 free
 - Legal and compliance UI components.
 - Examples: Plain Words Terms Table (legal55)
 
 ### Navigation
 
-- URL: https://ui.beste.co/blocks/navigation
+- URL: https://beste.dev/blocks/navigation
 - 1 blocks, 1 free
 - Navbar components and menus.
 - Examples: Centered Logo Split Nav (navbar30)
 
 ### News
 
-- URL: https://ui.beste.co/blocks/news
+- URL: https://beste.dev/blocks/news
 - 1 blocks, 1 free
 - Breaking news tickers, headline grids, and live feed sections. Perfect for news sites, dashboards, and content platforms.
 - Examples: Filterable Newsroom Index (news37)
 
 ### Podcast
 
-- URL: https://ui.beste.co/blocks/podcast
+- URL: https://beste.dev/blocks/podcast
 - 1 blocks, 1 free
 - Podcast and audio content UI components.
 - Examples: Listening Path Builder (podcast54)
 
 ### Product
 
-- URL: https://ui.beste.co/blocks/product
+- URL: https://beste.dev/blocks/product
 - 1 blocks, 1 free
 - Product showcase and introduction sections that present features, details, and value: no cart or checkout.
 - Examples: Live Made To Order Configurator (product12)
 
 ### Settings
 
-- URL: https://ui.beste.co/blocks/settings
+- URL: https://beste.dev/blocks/settings
 - 1 blocks, 1 free
 - Account settings, billing, and preferences components.
 - Examples: Invoice History Table (settings64)
 
 ### Terminal
 
-- URL: https://ui.beste.co/blocks/terminal
+- URL: https://beste.dev/blocks/terminal
 - 1 blocks, 1 free
 - Terminal-style components with typewriter animations.
 - Examples: CLI Installation Typewriter (terminal1)
 
 ### Workflow
 
-- URL: https://ui.beste.co/blocks/workflow
+- URL: https://beste.dev/blocks/workflow
 - 1 blocks, 1 free
 - No-code automation and workflow builder UI components with live recipe assets.
 - Examples: Process Weight Spectrum (workflow55)
@@ -451,13 +451,13 @@ Each category has its own page with every block in it. Counts are blocks; "free"
 
 Cross-category tag pages, each collecting the blocks across the catalog that share one purpose:
 
-- [Articles](https://ui.beste.co/blocks/tag/articles)
-- [Dashboard](https://ui.beste.co/blocks/tag/dashboard)
-- [Header](https://ui.beste.co/blocks/tag/header)
-- [Posts](https://ui.beste.co/blocks/tag/posts)
-- [Product](https://ui.beste.co/blocks/tag/product)
-- [Questionnaire](https://ui.beste.co/blocks/tag/questionnaire)
-- [Showcase](https://ui.beste.co/blocks/tag/showcase)
+- [Articles](https://beste.dev/blocks/tag/articles)
+- [Dashboard](https://beste.dev/blocks/tag/dashboard)
+- [Header](https://beste.dev/blocks/tag/header)
+- [Posts](https://beste.dev/blocks/tag/posts)
+- [Product](https://beste.dev/blocks/tag/product)
+- [Questionnaire](https://beste.dev/blocks/tag/questionnaire)
+- [Showcase](https://beste.dev/blocks/tag/showcase)
 
 ## Collections
 
@@ -465,146 +465,148 @@ Studio collections are sets of blocks that share one design language: type, spac
 
 ### Altair
 
-- URL: https://ui.beste.co/blocks/collection/altair
+- URL: https://beste.dev/blocks/collection/altair
 - 8 blocks
 - Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care.
 
 ### Auralis
 
-- URL: https://ui.beste.co/blocks/collection/auralis
+- URL: https://beste.dev/blocks/collection/auralis
 - 12 blocks
 - Oversized display type on monochrome surfaces, with a monospace parenthetical eyebrow and a pill CTA that carries its own seal. Editorial layouts for studio, agency and portfolio sites.
 
 ### Polaris
 
-- URL: https://ui.beste.co/blocks/collection/polaris
+- URL: https://beste.dev/blocks/collection/polaris
 - 5 blocks
 - A square accent eyebrow over bold uppercase labels, hairline rules under every section header, and a two-tone seal button. Structured, high-contrast layouts for creative studios.
 
 ### Sirius
 
-- URL: https://ui.beste.co/blocks/collection/sirius
+- URL: https://beste.dev/blocks/collection/sirius
 - 27 blocks
 - Light-weight display headings on white, a single accent colour, and media tiles that float a live piece of product UI. Calm, spacious pages for a modern SaaS.
 
 ### Vega
 
-- URL: https://ui.beste.co/blocks/collection/vega
-- 7 blocks
+- URL: https://beste.dev/blocks/collection/vega
+- 53 blocks
 - Heroes that move: live WebGL and canvas surfaces, photographs that relight and assemble as you scroll, and features that run sideways or reveal word by word. For launches and portfolios that want the first screen to be the thing people remember.
 
 ## Pages
 
-Complete, ready-to-ship screens composed from the block catalog. Install a page and get every block, piece and primitive behind it in one command. Listing: https://ui.beste.co/pages. Each page also belongs to a collection, at `/pages/collection/{slug}`.
+Complete, ready-to-ship screens composed from the block catalog. Install a page and get every block, piece and primitive behind it in one command. Listing: https://beste.dev/pages. Each page also belongs to a collection, at `/pages/collection/{slug}`.
 
 
 
 ## Pieces
 
-1,325 small widgets, all free. Listing: https://ui.beste.co/pieces. Each category page lists every piece in it.
+1,325 small widgets, all free. Listing: https://beste.dev/pieces. Each category page lists every piece in it.
 
-- [Isometric](https://ui.beste.co/pieces/isometric): 250 pieces
-- [Shapes](https://ui.beste.co/pieces/shapes): 80 pieces
-- [Editor](https://ui.beste.co/pieces/editor): 56 pieces
-- [AI](https://ui.beste.co/pieces/ai): 52 pieces
-- [Form](https://ui.beste.co/pieces/form): 40 pieces
-- [Chat](https://ui.beste.co/pieces/chat): 39 pieces
-- [Browser](https://ui.beste.co/pieces/browser): 38 pieces
-- [Card](https://ui.beste.co/pieces/card): 37 pieces
-- [Commerce](https://ui.beste.co/pieces/commerce): 35 pieces
-- [Dashboard](https://ui.beste.co/pieces/dashboard): 35 pieces
-- [Calendar](https://ui.beste.co/pieces/calendar): 34 pieces
-- [Input](https://ui.beste.co/pieces/input): 33 pieces
-- [Upload](https://ui.beste.co/pieces/upload): 33 pieces
-- [Health](https://ui.beste.co/pieces/health): 31 pieces
-- [Nav](https://ui.beste.co/pieces/nav): 31 pieces
-- [Travel](https://ui.beste.co/pieces/travel): 31 pieces
-- [Education](https://ui.beste.co/pieces/education): 30 pieces
-- [Legal](https://ui.beste.co/pieces/legal): 30 pieces
-- [Media](https://ui.beste.co/pieces/media): 27 pieces
-- [Search](https://ui.beste.co/pieces/search): 25 pieces
-- [Monitoring](https://ui.beste.co/pieces/monitoring): 24 pieces
-- [Notification](https://ui.beste.co/pieces/notification): 23 pieces
-- [Social Proof](https://ui.beste.co/pieces/social-proof): 23 pieces
-- [Toolbar](https://ui.beste.co/pieces/toolbar): 22 pieces
-- [Automation](https://ui.beste.co/pieces/automation): 21 pieces
-- [Finance](https://ui.beste.co/pieces/finance): 21 pieces
-- [Stats](https://ui.beste.co/pieces/stats): 19 pieces
-- [Progress](https://ui.beste.co/pieces/progress): 18 pieces
-- [Code](https://ui.beste.co/pieces/code): 17 pieces
-- [Keyboard](https://ui.beste.co/pieces/keyboard): 17 pieces
-- [Indicator](https://ui.beste.co/pieces/indicator): 15 pieces
-- [Terminal](https://ui.beste.co/pieces/terminal): 15 pieces
-- [Ticket](https://ui.beste.co/pieces/ticket): 14 pieces
-- [Event](https://ui.beste.co/pieces/event): 13 pieces
-- [Food](https://ui.beste.co/pieces/food): 11 pieces
-- [Tooltip](https://ui.beste.co/pieces/tooltip): 11 pieces
-- [Weather](https://ui.beste.co/pieces/weather): 11 pieces
-- [Fitness](https://ui.beste.co/pieces/fitness): 10 pieces
-- [Logo](https://ui.beste.co/pieces/logo): 10 pieces
-- [Realestate](https://ui.beste.co/pieces/realestate): 10 pieces
-- [Location](https://ui.beste.co/pieces/location): 9 pieces
-- [Money](https://ui.beste.co/pieces/money): 7 pieces
-- [Tag](https://ui.beste.co/pieces/tag): 5 pieces
-- [Socialproof](https://ui.beste.co/pieces/socialproof): 5 pieces
-- [Chart](https://ui.beste.co/pieces/chart): 4 pieces
-- [Receipt](https://ui.beste.co/pieces/receipt): 3 pieces
+- [Isometric](https://beste.dev/pieces/isometric): 250 pieces
+- [Shapes](https://beste.dev/pieces/shapes): 80 pieces
+- [Editor](https://beste.dev/pieces/editor): 56 pieces
+- [AI](https://beste.dev/pieces/ai): 52 pieces
+- [Form](https://beste.dev/pieces/form): 40 pieces
+- [Chat](https://beste.dev/pieces/chat): 39 pieces
+- [Browser](https://beste.dev/pieces/browser): 38 pieces
+- [Card](https://beste.dev/pieces/card): 37 pieces
+- [Commerce](https://beste.dev/pieces/commerce): 35 pieces
+- [Dashboard](https://beste.dev/pieces/dashboard): 35 pieces
+- [Calendar](https://beste.dev/pieces/calendar): 34 pieces
+- [Input](https://beste.dev/pieces/input): 33 pieces
+- [Upload](https://beste.dev/pieces/upload): 33 pieces
+- [Health](https://beste.dev/pieces/health): 31 pieces
+- [Nav](https://beste.dev/pieces/nav): 31 pieces
+- [Travel](https://beste.dev/pieces/travel): 31 pieces
+- [Education](https://beste.dev/pieces/education): 30 pieces
+- [Legal](https://beste.dev/pieces/legal): 30 pieces
+- [Media](https://beste.dev/pieces/media): 27 pieces
+- [Search](https://beste.dev/pieces/search): 25 pieces
+- [Monitoring](https://beste.dev/pieces/monitoring): 24 pieces
+- [Notification](https://beste.dev/pieces/notification): 23 pieces
+- [Social Proof](https://beste.dev/pieces/social-proof): 23 pieces
+- [Toolbar](https://beste.dev/pieces/toolbar): 22 pieces
+- [Automation](https://beste.dev/pieces/automation): 21 pieces
+- [Finance](https://beste.dev/pieces/finance): 21 pieces
+- [Stats](https://beste.dev/pieces/stats): 19 pieces
+- [Progress](https://beste.dev/pieces/progress): 18 pieces
+- [Code](https://beste.dev/pieces/code): 17 pieces
+- [Keyboard](https://beste.dev/pieces/keyboard): 17 pieces
+- [Indicator](https://beste.dev/pieces/indicator): 15 pieces
+- [Terminal](https://beste.dev/pieces/terminal): 15 pieces
+- [Ticket](https://beste.dev/pieces/ticket): 14 pieces
+- [Event](https://beste.dev/pieces/event): 13 pieces
+- [Food](https://beste.dev/pieces/food): 11 pieces
+- [Tooltip](https://beste.dev/pieces/tooltip): 11 pieces
+- [Weather](https://beste.dev/pieces/weather): 11 pieces
+- [Fitness](https://beste.dev/pieces/fitness): 10 pieces
+- [Logo](https://beste.dev/pieces/logo): 10 pieces
+- [Realestate](https://beste.dev/pieces/realestate): 10 pieces
+- [Location](https://beste.dev/pieces/location): 9 pieces
+- [Money](https://beste.dev/pieces/money): 7 pieces
+- [Tag](https://beste.dev/pieces/tag): 5 pieces
+- [Socialproof](https://beste.dev/pieces/socialproof): 5 pieces
+- [Chart](https://beste.dev/pieces/chart): 4 pieces
+- [Receipt](https://beste.dev/pieces/receipt): 3 pieces
 
 ## Components
 
-291 styled primitives, all free. Listing: https://ui.beste.co/components.
+292 styled primitives, all free. Listing: https://beste.dev/components.
 
-- [Background](https://ui.beste.co/components/background): 46 components
-- [Inspector](https://ui.beste.co/components/inspector): 46 components
-- [Card](https://ui.beste.co/components/card): 28 components
-- [Text](https://ui.beste.co/components/text): 27 components
-- [Media](https://ui.beste.co/components/media): 26 components
-- [Button](https://ui.beste.co/components/button): 21 components
-- [Badge](https://ui.beste.co/components/badge): 18 components
-- [Filter](https://ui.beste.co/components/filter): 14 components
-- [Dashboard](https://ui.beste.co/components/dashboard): 8 components
-- [Chart](https://ui.beste.co/components/chart): 6 components
-- [Confirm](https://ui.beste.co/components/confirm): 3 components
-- [Field](https://ui.beste.co/components/field): 3 components
-- [Nav](https://ui.beste.co/components/nav): 3 components
-- [Reaction](https://ui.beste.co/components/reaction): 3 components
-- [Code](https://ui.beste.co/components/code): 2 components
-- [File](https://ui.beste.co/components/file): 2 components
-- [Heatmap](https://ui.beste.co/components/heatmap): 2 components
-- [Loupe](https://ui.beste.co/components/loupe): 2 components
-- [Keyboard](https://ui.beste.co/components/keyboard): 2 components
-- [List](https://ui.beste.co/components/list): 2 components
-- [Meter](https://ui.beste.co/components/meter): 2 components
-- [Player](https://ui.beste.co/components/player): 2 components
-- [Price](https://ui.beste.co/components/price): 2 components
-- [Readout](https://ui.beste.co/components/readout): 2 components
-- [Steps](https://ui.beste.co/components/steps): 2 components
-- [Time](https://ui.beste.co/components/time): 2 components
-- [Tree](https://ui.beste.co/components/tree): 2 components
-- [Activity](https://ui.beste.co/components/activity): 1 components
-- [Chat](https://ui.beste.co/components/chat): 1 components
-- [Dock](https://ui.beste.co/components/dock): 1 components
-- [Marquee](https://ui.beste.co/components/marquee): 1 components
-- [Composer](https://ui.beste.co/components/composer): 1 components
-- [Notice](https://ui.beste.co/components/notice): 1 components
-- [Pager](https://ui.beste.co/components/pager): 1 components
-- [Scroll](https://ui.beste.co/components/scroll): 1 components
-- [Draw](https://ui.beste.co/components/draw): 1 components
-- [Snippet](https://ui.beste.co/components/snippet): 1 components
-- [Status](https://ui.beste.co/components/status): 1 components
-- [Toolbar](https://ui.beste.co/components/toolbar): 1 components
-- [Tour](https://ui.beste.co/components/tour): 1 components
+- [Background](https://beste.dev/components/background): 46 components
+- [Inspector](https://beste.dev/components/inspector): 46 components
+- [Card](https://beste.dev/components/card): 28 components
+- [Text](https://beste.dev/components/text): 27 components
+- [Media](https://beste.dev/components/media): 26 components
+- [Button](https://beste.dev/components/button): 21 components
+- [Badge](https://beste.dev/components/badge): 18 components
+- [Filter](https://beste.dev/components/filter): 14 components
+- [Dashboard](https://beste.dev/components/dashboard): 8 components
+- [Chart](https://beste.dev/components/chart): 6 components
+- [Confirm](https://beste.dev/components/confirm): 3 components
+- [Field](https://beste.dev/components/field): 3 components
+- [Nav](https://beste.dev/components/nav): 3 components
+- [Reaction](https://beste.dev/components/reaction): 3 components
+- [Code](https://beste.dev/components/code): 2 components
+- [File](https://beste.dev/components/file): 2 components
+- [Heatmap](https://beste.dev/components/heatmap): 2 components
+- [Loupe](https://beste.dev/components/loupe): 2 components
+- [Keyboard](https://beste.dev/components/keyboard): 2 components
+- [List](https://beste.dev/components/list): 2 components
+- [Meter](https://beste.dev/components/meter): 2 components
+- [Player](https://beste.dev/components/player): 2 components
+- [Price](https://beste.dev/components/price): 2 components
+- [Readout](https://beste.dev/components/readout): 2 components
+- [Steps](https://beste.dev/components/steps): 2 components
+- [Time](https://beste.dev/components/time): 2 components
+- [Tree](https://beste.dev/components/tree): 2 components
+- [Activity](https://beste.dev/components/activity): 1 components
+- [Carousel](https://beste.dev/components/carousel): 1 components
+- [Chat](https://beste.dev/components/chat): 1 components
+- [Dock](https://beste.dev/components/dock): 1 components
+- [Marquee](https://beste.dev/components/marquee): 1 components
+- [Composer](https://beste.dev/components/composer): 1 components
+- [Notice](https://beste.dev/components/notice): 1 components
+- [Pager](https://beste.dev/components/pager): 1 components
+- [Scroll](https://beste.dev/components/scroll): 1 components
+- [Draw](https://beste.dev/components/draw): 1 components
+- [Snippet](https://beste.dev/components/snippet): 1 components
+- [Status](https://beste.dev/components/status): 1 components
+- [Toolbar](https://beste.dev/components/toolbar): 1 components
+- [Tour](https://beste.dev/components/tour): 1 components
 
 ## Blog
 
-Long-form posts at https://ui.beste.co/blog. Feed: https://ui.beste.co/blog/feed.xml.
+Long-form posts at https://beste.dev/blog. Feed: https://beste.dev/blog/feed.xml.
 
 
 
 ## Recent releases
 
-The full changelog is at https://ui.beste.co/changelog; the latest releases:
+The full changelog is at https://beste.dev/changelog; the latest releases:
 
+- v1.33.0 (2026-10-04): Blocks built on pieces and components
 - v1.32.0 (2026-10-02): Isometric pieces
 - v1.31.0 (2026-09-28): Gradient heroes
 - v1.30.0 (2026-09-28): Gradient backgrounds and interface components
@@ -616,12 +618,11 @@ The full changelog is at https://ui.beste.co/changelog; the latest releases:
 - v1.24.0 (2026-09-04): Animated pieces
 - v1.23.0 (2026-09-04): Altair: 108 blocks for a practice that listens
 - v1.22.0 (2026-09-04): Text: 19 ways a line of type can arrive
-- v1.21.0 (2026-08-12): Polaris: 45 blocks for a site that publishes
 
 ## Links
 
-- Homepage: https://ui.beste.co
+- Homepage: https://beste.dev
 - Site builder: https://beste.co
 - GitHub: https://github.com/beste-co/beste-ui
 - X: https://x.com/withbeste
-- Short map: https://ui.beste.co/llms.txt
+- Short map: https://beste.dev/llms.txt

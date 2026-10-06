@@ -9,13 +9,13 @@ Career-page list of open roles, each rendered as one full-width clickable row: a
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/saas31"
+npx shadcn add "https://beste.dev/r/saas31"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/saas31"
+npx shadcn add "https://beste.dev/r-base/saas31"
 ```
 
 This installs the block to `components/beste/block/saas31.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

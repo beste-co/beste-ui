@@ -9,13 +9,13 @@ Centered changelog hero: a headline and intro copy sit above a bordered card tha
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero63"
+npx shadcn add "https://beste.dev/r/hero63"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero63"
+npx shadcn add "https://beste.dev/r-base/hero63"
 ```
 
 This installs the block to `components/beste/block/hero63.tsx` and the shadcn/ui `badge` and `button` components it depends on.

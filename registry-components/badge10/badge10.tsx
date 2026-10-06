@@ -31,7 +31,7 @@ export const badge10Demo: Badge10Props = {
 };
 
 /**
- * An editorial rotating seal: monospace text runs around a circle with an
+ * An editorial rotating seal: text runs around a circle with an
  * icon at the center. Rotation pauses entirely under prefers-reduced-motion.
  */
 export function Badge10({
@@ -68,8 +68,11 @@ export function Badge10({
         </defs>
         <text
           fill="currentColor"
-          fontSize="10.5"
-          className="font-mono uppercase tracking-[0.18em]"
+          fontSize="11.5"
+          // Spread to the full circumference so the ring closes whatever the text length
+          textLength={232}
+          lengthAdjust="spacing"
+          className="font-medium"
         >
           <textPath href={`#${pathId}`}>{text}</textPath>
         </text>

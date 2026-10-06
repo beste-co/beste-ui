@@ -12,6 +12,7 @@ import { ApertureReveal, apertureRevealDemo } from "@/registry-components/apertu
 import { AreaChart, areaChartDemo } from "@/registry-components/area-chart/area-chart";
 import { AsciiRender, asciiRenderDemo } from "@/registry-components/ascii-render/ascii-render";
 import { AuroraSky, auroraSkyDemo } from "@/registry-components/aurora-sky/aurora-sky";
+import { AutoCarousel, autoCarouselDemo } from "@/registry-components/auto-carousel/auto-carousel";
 import { Badge6, badge6Demo } from "@/registry-components/badge6/badge6";
 import { Badge7, badge7Demo } from "@/registry-components/badge7/badge7";
 import { Badge8, badge8Demo } from "@/registry-components/badge8/badge8";
@@ -693,6 +694,16 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: auroraSkyPlayground,
   },
   {
+    name: "auto-carousel",
+    title: "Auto Carousel",
+    description: "A carousel that plays on its own: slides crossfade slowly, and a ring in the bottom right corner fills with the time the current slide has left, then the next one fades in. The ring is the timer, so pausing it pauses the carousel: it holds under the pointer and on keyboard focus, and pressing it moves on at once. A slide can be a link. Only the active slide and the one fading out are mounted, so heavy slides stay cheap, and reduced motion turns the timer off.",
+    category: "Carousel",
+    component: AutoCarousel,
+    demoProps: autoCarouselDemo,
+    variants: { tone: ["muted", "ghost"] },
+    usage: "import { AutoCarousel } from \"@/components/beste/component/auto-carousel\";\n\n// Five slides, six seconds each, a slow crossfade between them\n<AutoCarousel\n  className=\"aspect-video w-full rounded-xl\"\n  duration={6000}\n  transition={1200}\n  slides={[\n    { label: \"Live at Town Hall\", href: \"/albums/town-hall\", content: <img src=\"/covers/town-hall.jpg\" alt=\"\" className=\"size-full object-cover\" /> },\n    { label: \"Kind of Blue\", href: \"/albums/kind-of-blue\", content: <img src=\"/covers/kind-of-blue.jpg\" alt=\"\" className=\"size-full object-cover\" /> },\n  ]}\n/>\n\n// Controlled, with a bare ring over a plain slide\n<AutoCarousel\n  slides={slides}\n  value={slide}\n  onValueChange={(index) => console.log(\"showing\", index)}\n  tone=\"ghost\"\n  pauseOnHover={false}\n/>",
+  },
+  {
     name: "badge6",
     title: "Eyebrow Badge",
     description: "An eyebrow kicker badge with an accent square and uppercase, letter spaced label for section headings.",
@@ -706,7 +717,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
   {
     name: "badge7",
     title: "Parenthetical Eyebrow",
-    description: "A monospace eyebrow badge that wraps its label in brackets, with a vertical orientation option.",
+    description: "An eyebrow badge that wraps its label in brackets, with a vertical orientation option.",
     category: "Badge",
     component: Badge7,
     demoProps: badge7Demo,
@@ -750,7 +761,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
   {
     name: "badge11",
     title: "Barcode Badge",
-    description: "A decorative barcode badge with a monospace caption for editorial and print inspired sections.",
+    description: "A decorative barcode badge with a caption for editorial and print inspired sections.",
     category: "Badge",
     component: Badge11,
     demoProps: badge11Demo,
@@ -883,8 +894,8 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
   },
   {
     name: "badge23",
-    title: "Mono Eyebrow Badge",
-    description: "A hairline, softly rounded eyebrow pill with an uppercase, letter-spaced monospace label for section kickers.",
+    title: "Hairline Eyebrow Badge",
+    description: "A hairline, softly rounded eyebrow pill with a compact label for section kickers.",
     category: "Badge",
     component: Badge23,
     demoProps: badge23Demo,
@@ -2155,7 +2166,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     component: InspectorAction,
     demoProps: inspectorActionDemo,
     variants: { tone: ["muted", "outline", "ghost"] },
-    usage: "import { InspectorAction } from \"@/components/beste/component/inspector-action\";\n\n// Opens something: an imperative verb, and the chevron that comes by default\n<InspectorAction label=\"Open asset library\" onClick={() => console.log(\"open the library\")} />\n\n// The description is a second line for a consequence the verb cannot carry, and it\n// makes the row two lines tall, which is worth it for that and not for restating the label\n<InspectorAction\n  label=\"Replace image\"\n  description=\"The current one is used in three other places\"\n  onClick={() => console.log(\"replace\")}\n/>\n\n// Acts in place: no chevron, and a spinner while it runs\n<InspectorAction\n  label=\"Regenerate key\"\n  icon={RefreshCwIcon}\n  trailingIcon={null}\n  busy={regenerating}\n  hint=\"Last rotated in March\"\n  onClick={() => console.log(\"rotate\")}\n/>\n\n<InspectorAction\n  label=\"Delete section\"\n  description=\"This cannot be undone\"\n  destructive\n  trailingIcon={Trash2Icon}\n  onClick={() => console.log(\"delete\")}\n  tone=\"ghost\"          // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"             // \"sm\" | \"default\" | \"lg\"\n/>\n\n// A link. A plain anchor, since a registry component takes no view on the router.\n<InspectorAction label=\"Open docs\" href=\"https://ui.beste.co/docs\" newTab />",
+    usage: "import { InspectorAction } from \"@/components/beste/component/inspector-action\";\n\n// Opens something: an imperative verb, and the chevron that comes by default\n<InspectorAction label=\"Open asset library\" onClick={() => console.log(\"open the library\")} />\n\n// The description is a second line for a consequence the verb cannot carry, and it\n// makes the row two lines tall, which is worth it for that and not for restating the label\n<InspectorAction\n  label=\"Replace image\"\n  description=\"The current one is used in three other places\"\n  onClick={() => console.log(\"replace\")}\n/>\n\n// Acts in place: no chevron, and a spinner while it runs\n<InspectorAction\n  label=\"Regenerate key\"\n  icon={RefreshCwIcon}\n  trailingIcon={null}\n  busy={regenerating}\n  hint=\"Last rotated in March\"\n  onClick={() => console.log(\"rotate\")}\n/>\n\n<InspectorAction\n  label=\"Delete section\"\n  description=\"This cannot be undone\"\n  destructive\n  trailingIcon={Trash2Icon}\n  onClick={() => console.log(\"delete\")}\n  tone=\"ghost\"          // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"             // \"sm\" | \"default\" | \"lg\"\n/>\n\n// A link. A plain anchor, since a registry component takes no view on the router.\n<InspectorAction label=\"Open docs\" href=\"https://beste.dev/docs\" newTab />",
     playground: inspectorActionPlayground,
   },
   {
@@ -3486,7 +3497,10 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { StarTrails } from \"@/components/beste/component/star-trails\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <StarTrails className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<StarTrails\n  className=\"min-h-[32rem]\"\n  skyColor=\"#060510\"      // any CSS color, tokens included\n  glowColor=\"#2a1e3a\"\n  horizonColor=\"#d08040\"\n  exposure={0.8}          // longer trails\n  poleX={0.5}\n  poleY={0.3}             // the pole inside the frame draws full circles\n  silhouette=\"ridges\"     // \"forest\", \"ridges\" or \"none\"\n/>",
     isAnimated: true,
     playground: starTrailsPlayground,
-  },
+  }
+];
+
+const _allRegistryComponents_1: RegistryComponentMeta[] = [
   {
     name: "status-uptime",
     title: "Status Uptime",
@@ -3498,10 +3512,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { StatusUptime } from \"@/components/beste/component/status-uptime\";\n\n<StatusUptime\n  name=\"Public API\"\n  days={[\n    { date: \"2026-09-25\", status: \"operational\" },\n    { date: \"2026-09-26\", status: \"degraded\", uptime: 99.82, incidents: [{ title: \"Elevated latency\" }] },\n    { date: \"2026-09-27\", status: \"operational\" },\n  ]}\n  range={90}             // most days shown; narrow rows show fewer\n/>\n\n// The current status defaults to the last day; set it to override\n<StatusUptime\n  name=\"Webhooks\"\n  status=\"partial\"       // \"operational\" | \"maintenance\" | \"degraded\" | \"partial\" | \"major\"\n  days={history}\n  showPercent={false}\n  tone=\"outline\"         // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"              // \"sm\" | \"default\" | \"lg\"\n/>\n\n// Siblings share the same words and colors\nimport { statusMeta } from \"@/components/beste/component/status-uptime\";\nconsole.log(statusMeta.degraded.label);",
     cardScale: 0.6,
     playground: statusUptimePlayground,
-  }
-];
-
-const _allRegistryComponents_1: RegistryComponentMeta[] = [
+  },
   {
     name: "steps-checklist",
     title: "Steps Checklist",

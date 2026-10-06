@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type Tone = "muted" | "foreground" | "primary";
 
 interface Badge23Props {
-  /** Eyebrow label (rendered uppercase) */
+  /** Eyebrow label */
   label: string;
   /** Text/border tone */
   tone?: Tone;
@@ -27,7 +27,7 @@ export function Badge23({ label, tone = "muted", className }: Badge23Props) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md border bg-transparent px-2.5 py-1 font-mono text-sm uppercase leading-none tracking-widest",
+        "inline-flex items-center rounded-md border bg-transparent px-2.5 py-1 text-sm font-medium leading-none",
         toneStyles[tone],
         className
       )}

@@ -9,13 +9,13 @@ Three feature cards where the usual icon slot is swapped for a real, live micro-
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature194"
+npx shadcn add "https://beste.dev/r/feature194"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature194"
+npx shadcn add "https://beste.dev/r-base/feature194"
 ```
 
 This installs the block to `components/beste/block/feature194.tsx`, the `chart1`, `stats5`, and `terminal1` registry pieces used as media-slot fillers (a bar chart card, a before/after stat pair, and a terminal prompt line, respectively), and the `badge` and `button` shadcn/ui primitives it depends on.

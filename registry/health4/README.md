@@ -9,13 +9,13 @@ Split hero pairing large serif-scale typography with a full-bleed image, plus an
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/health4"
+npx shadcn add "https://beste.dev/r/health4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/health4"
+npx shadcn add "https://beste.dev/r-base/health4"
 ```
 
 This installs the block to `components/beste/block/health4.tsx` and the shadcn/ui `button` primitive it depends on.

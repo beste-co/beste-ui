@@ -9,13 +9,13 @@ Single-open accordion where each row expands into a two-column panel with a scre
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase7"
+npx shadcn add "https://beste.dev/r/usecase7"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase7"
+npx shadcn add "https://beste.dev/r-base/usecase7"
 ```
 
 This installs the block to `components/beste/block/usecase7.tsx` and the `badge` shadcn/ui primitive it depends on.

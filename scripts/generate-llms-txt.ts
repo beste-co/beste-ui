@@ -16,7 +16,7 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT = join(import.meta.dirname, "..");
-const SITE = "https://ui.beste.co";
+const SITE = "https://beste.dev";
 const url = (path: string) => `${SITE}${path}`;
 const read = (...parts: string[]) => readFileSync(join(ROOT, ...parts), "utf-8");
 const kebab = (title: string) => title.toLowerCase().replace(/\s+/g, "-");

@@ -9,13 +9,13 @@ A community section listing four linked places to join as full-width hairline ro
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/social48"
+npx shadcn add "https://beste.dev/r/social48"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/social48"
+npx shadcn add "https://beste.dev/r-base/social48"
 ```
 
 This installs the block to `components/beste/block/social48.tsx` plus the `badge23` component it uses for the eyebrow.

@@ -79,6 +79,8 @@ function isLocal(host: string): boolean {
 function isOwnHost(host: string): boolean {
   if (isLocal(host)) return true;
   if (host === new URL(SITE_ORIGIN).host) return true;
+  // The previous address keeps serving installs and agents.
+  if (host === "ui.beste.co") return true;
   return /^[a-z0-9-]+\.vercel\.app$/i.test(host);
 }
 

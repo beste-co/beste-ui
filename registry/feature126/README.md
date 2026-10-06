@@ -9,13 +9,13 @@ Stat grid where each card shows a large bold number (like "500+" or "99.9%") abo
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature126"
+npx shadcn add "https://beste.dev/r/feature126"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature126"
+npx shadcn add "https://beste.dev/r-base/feature126"
 ```
 
 This installs the block to `components/beste/block/feature126.tsx` and the shadcn/ui `badge` and `button` components it depends on.

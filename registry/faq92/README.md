@@ -9,13 +9,13 @@ A help section that asks two questions instead of offering a search box. The ans
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/faq92"
+npx shadcn add "https://beste.dev/r/faq92"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/faq92"
+npx shadcn add "https://beste.dev/r-base/faq92"
 ```
 
 That installs the block file, the `badge23` eyebrow and `button21` action button it is built from, the `chat34` piece it floats over the image, and the `questionnaire` primitive.

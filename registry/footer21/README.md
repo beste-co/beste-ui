@@ -9,13 +9,13 @@ Centered, checkout-focused footer: a horizontal nav row on top, then a divider i
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/footer21"
+npx shadcn add "https://beste.dev/r/footer21"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/footer21"
+npx shadcn add "https://beste.dev/r-base/footer21"
 ```
 
 This installs the block to `components/beste/block/footer21.tsx` and its dependencies.

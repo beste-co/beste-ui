@@ -81,13 +81,13 @@ export function Card17({ title, artist, catalog, src, tone = "ink", className }:
             />
           </>
         )}
-        <div className="relative flex items-start justify-between gap-2 font-mono text-sm uppercase tracking-widest opacity-70">
+        <div className="relative flex items-start justify-between gap-2 text-sm font-medium opacity-70">
           <span className="truncate">{artist}</span>
           {catalog && <span className="shrink-0">{catalog}</span>}
         </div>
         <div className="relative">
           <h3 className="font-serif text-2xl leading-tight tracking-tight">{title}</h3>
-          <p className="mt-2 font-mono text-sm uppercase tracking-widest opacity-60">
+          <p className="mt-2 text-sm opacity-60">
             Stereo / 33 RPM
           </p>
         </div>

@@ -9,13 +9,13 @@ Coming-soon hero with a decorative floating-icon field driven by CSS keyframes, 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/comingsoon4"
+npx shadcn add "https://beste.dev/r/comingsoon4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/comingsoon4"
+npx shadcn add "https://beste.dev/r-base/comingsoon4"
 ```
 
 This installs the block to `components/beste/block/comingsoon4.tsx`, plus the `badge` shadcn/ui primitive it uses for the eyebrow badge.

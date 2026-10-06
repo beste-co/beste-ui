@@ -9,13 +9,13 @@ Two-column onboarding layout: a list of status-tagged setup steps on the left (e
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature22"
+npx shadcn add "https://beste.dev/r/feature22"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature22"
+npx shadcn add "https://beste.dev/r-base/feature22"
 ```
 
 This installs the block to `components/beste/block/feature22.tsx` and the shadcn/ui `badge`, `button`, and `progress` components it depends on.

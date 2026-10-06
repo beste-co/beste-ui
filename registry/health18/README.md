@@ -9,13 +9,13 @@ Three hairline programme cards, each pairing a light programme name with a muted
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/health18"
+npx shadcn add "https://beste.dev/r/health18"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/health18"
+npx shadcn add "https://beste.dev/r-base/health18"
 ```
 
 This installs the block to `components/beste/block/health18.tsx` plus the `badge23` component it uses for the eyebrow.

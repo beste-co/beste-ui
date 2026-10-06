@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "badge11",
   title: "Barcode Badge",
   description:
-    "A decorative barcode badge with a monospace caption for editorial and print inspired sections.",
+    "A decorative barcode badge with a caption for editorial and print inspired sections.",
   category: "Badge",
   usage: `import { Badge11 } from "@/components/beste/component/badge11";
 

@@ -9,13 +9,13 @@ A hiring section that asks three questions instead of listing a job board. The a
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/careers56"
+npx shadcn add "https://beste.dev/r/careers56"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/careers56"
+npx shadcn add "https://beste.dev/r-base/careers56"
 ```
 
 That installs the block file, the `badge6` eyebrow and `button1` seal CTA it is built from, and the `questionnaire` primitive.

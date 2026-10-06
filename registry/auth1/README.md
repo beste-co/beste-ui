@@ -9,13 +9,13 @@ Single-column sign-in screen centered in the viewport: a stack of social provide
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth1"
+npx shadcn add "https://beste.dev/r/auth1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth1"
+npx shadcn add "https://beste.dev/r-base/auth1"
 ```
 
 This installs the block to `components/beste/block/auth1.tsx` and the `button`, `input`, `field`, and `checkbox` shadcn/ui primitives it's built on.

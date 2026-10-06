@@ -9,13 +9,13 @@ A jargon glossary whose letter filter is derived from the terms themselves, narr
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/faq89"
+npx shadcn add "https://beste.dev/r/faq89"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/faq89"
+npx shadcn add "https://beste.dev/r-base/faq89"
 ```
 
 This installs the block to `components/beste/block/faq89.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the closing action.

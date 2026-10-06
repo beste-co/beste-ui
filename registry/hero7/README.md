@@ -9,13 +9,13 @@ Centered, text-first hero: badge, heading, description, and up to two CTA button
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero7"
+npx shadcn add "https://beste.dev/r/hero7"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero7"
+npx shadcn add "https://beste.dev/r-base/hero7"
 ```
 
 This installs the block to `components/beste/block/hero7.tsx` and the `Badge` and `Button` shadcn/ui primitives it uses.

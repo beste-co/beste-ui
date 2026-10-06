@@ -9,13 +9,13 @@ Grid of health metric cards (heart rate, blood oxygen, activity, sleep, and simi
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/health1"
+npx shadcn add "https://beste.dev/r/health1"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/health1"
+npx shadcn add "https://beste.dev/r-base/health1"
 ```
 
 This installs the block to `components/beste/block/health1.tsx` and the shadcn/ui `badge` and `button` primitives it depends on.

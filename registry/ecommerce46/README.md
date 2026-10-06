@@ -9,13 +9,13 @@ A finder that replaces a filter sidebar. Three questions score every product aga
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/ecommerce46"
+npx shadcn add "https://beste.dev/r/ecommerce46"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/ecommerce46"
+npx shadcn add "https://beste.dev/r-base/ecommerce46"
 ```
 
 That installs the block file, the `badge7` eyebrow and `button12` pill it is built from, and the `questionnaire` primitive.

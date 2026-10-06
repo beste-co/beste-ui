@@ -168,14 +168,14 @@
    optical size follows the font size on its own, so large type gets the display cut */
 @font-face {
   font-family: "Beste Sans";
-  src: url("/fonts/bestesans/web/BesteSans%5Bopsz,wght%5D.woff2") format("woff2");
+  src: url("/fonts/bestesans/web/BesteSans-Variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Beste Sans";
-  src: url("/fonts/bestesans/web/BesteSans-Italic%5Bopsz,wght%5D.woff2") format("woff2");
+  src: url("/fonts/bestesans/web/BesteSans-Italic-Variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;

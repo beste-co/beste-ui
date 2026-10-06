@@ -9,13 +9,13 @@ Centered header (badge, heading, description) followed by an inline row of headl
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/education99"
+npx shadcn add "https://beste.dev/r/education99"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/education99"
+npx shadcn add "https://beste.dev/r-base/education99"
 ```
 
 This installs the block to `components/beste/block/education99.tsx` and the shadcn/ui `badge` component it depends on.

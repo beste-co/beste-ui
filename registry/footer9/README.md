@@ -9,13 +9,13 @@ Compact single-row footer that packs a logo, a run of horizontal nav links, and 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/footer9"
+npx shadcn add "https://beste.dev/r/footer9"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/footer9"
+npx shadcn add "https://beste.dev/r-base/footer9"
 ```
 
 This installs the block to `components/beste/block/footer9.tsx` and its dependencies.

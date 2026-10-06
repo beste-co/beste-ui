@@ -9,13 +9,13 @@ Closing call to action that puts a tall photo against the pitch: a parenthetical
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/cta78"
+npx shadcn add "https://beste.dev/r/cta78"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/cta78"
+npx shadcn add "https://beste.dev/r-base/cta78"
 ```
 
 This installs the block to `components/beste/block/cta78.tsx` plus the `badge7` eyebrow and `button12` pill button it uses.

@@ -18,10 +18,9 @@ import { typography } from "@/lib/typography";
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
 const SITE_DESCRIPTION =
   "A curated collection of React blocks and components built with Tailwind CSS and shadcn/ui. Copy, install, and ship beautiful interfaces with confidence.";
-const CANONICAL = "https://ui.beste.co/";
-const OG_IMAGE = `https://ui.beste.co/og?title=${encodeURIComponent(
-  "Beste UI"
-)}&description=${encodeURIComponent(SITE_DESCRIPTION)}`;
+const CANONICAL = "https://beste.dev/";
+// The home page shares the fixed brand image, not a generated one.
+const OG_IMAGE = "https://beste.dev/assets/images/beste-ui.png";
 
 export const metadata: Metadata = {
   title: SITE_TITLE,
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
     url: CANONICAL,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: [{ url: OG_IMAGE, width: 1200, height: 628 }],
+    images: [{ url: OG_IMAGE, width: 2560, height: 1440 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -212,8 +211,10 @@ export default async function HomePage() {
    * scripts/generate-block-sets.ts, and rerun it when a set grows. A new set is
    * live the moment that script has run; nothing here names one.
    */
+  // Navbars and footers are page chrome: thin strips that look empty in a card
+  const hiddenCategories = new Set(["Coming Soon", "Navigation", "Navbar", "Footer"]);
   const blockPool = blocks.filter(
-    (b) => b.category !== "Coming Soon" && STUDIO_SET_BLOCKS.has(b.name)
+    (b) => !hiddenCategories.has(b.category) && STUDIO_SET_BLOCKS.has(b.name)
   );
   const sixBlocks = pickSixAcrossSets(blockPool, seed);
   const sixRegistryComponents = seededShuffle(registryComponents, seed).slice(0, 6);
@@ -224,7 +225,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      {/* Full bleed, pulled up over the layout's top padding so it starts flush under the bar. */}
+      {/* Pulled up over the layout's top padding so it starts flush under the bar. */}
       <HomeHero
         className="-mt-12 md:-mt-16"
         blocks={blocks.length}

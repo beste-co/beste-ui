@@ -9,13 +9,13 @@ Centered header above three side-by-side step cards, each with its media surface
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature9"
+npx shadcn add "https://beste.dev/r/feature9"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature9"
+npx shadcn add "https://beste.dev/r-base/feature9"
 ```
 
 This installs the block to `components/beste/block/feature9.tsx`, the shadcn/ui `badge` component it depends on, and the `calendar1`, `terminal2`, and `upload1` pieces it embeds as media-slot fillers (installed to `components/beste/piece/{name}.tsx`).

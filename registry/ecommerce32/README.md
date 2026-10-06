@@ -9,13 +9,13 @@ Brand-discovery grid for multi-brand storefronts: grayscale logo tiles that turn
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/ecommerce32"
+npx shadcn add "https://beste.dev/r/ecommerce32"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/ecommerce32"
+npx shadcn add "https://beste.dev/r-base/ecommerce32"
 ```
 
 This installs the block to `components/beste/block/ecommerce32.tsx` and the `Badge` shadcn/ui primitive it uses.

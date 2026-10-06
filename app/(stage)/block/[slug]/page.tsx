@@ -53,13 +53,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    alternates: { canonical: `https://ui.beste.co/block/${slug}` },
+    alternates: { canonical: `https://beste.dev/block/${slug}` },
     openGraph: {
       title,
       description,
       images: [
         {
-          url: `https://ui.beste.co/og?title=${encodeURIComponent(
+          url: `https://beste.dev/og?title=${encodeURIComponent(
             ogTitle
           )}&description=${encodeURIComponent(description)}`,
           width: 1200,
@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       images: [
-        `https://ui.beste.co/og?title=${encodeURIComponent(
+        `https://beste.dev/og?title=${encodeURIComponent(
           ogTitle
         )}&description=${encodeURIComponent(description)}`,
       ],

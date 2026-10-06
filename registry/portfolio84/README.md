@@ -9,13 +9,13 @@ Four-column numbered process section: a large faded index number sits above each
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/portfolio84"
+npx shadcn add "https://beste.dev/r/portfolio84"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/portfolio84"
+npx shadcn add "https://beste.dev/r-base/portfolio84"
 ```
 
 This installs the block to `components/beste/block/portfolio84.tsx` and its dependencies.

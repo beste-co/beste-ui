@@ -9,13 +9,13 @@ Two-column footer with the brand identity (logo, tagline, copyright) stacked on 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/footer10"
+npx shadcn add "https://beste.dev/r/footer10"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/footer10"
+npx shadcn add "https://beste.dev/r-base/footer10"
 ```
 
 This installs the block to `components/beste/block/footer10.tsx` and its dependencies.

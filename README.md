@@ -15,13 +15,13 @@
 </p>
 
 <p align="center">
-  <a href="https://ui.beste.co"><b>Browse the library</b></a>
+  <a href="https://beste.dev"><b>Browse the library</b></a>
   &nbsp;·&nbsp;
-  <a href="https://ui.beste.co/docs/mcp"><b>Connect your agent</b></a>
+  <a href="https://beste.dev/docs/mcp"><b>Connect your agent</b></a>
   &nbsp;·&nbsp;
-  <a href="https://ui.beste.co/docs">Docs</a>
+  <a href="https://beste.dev/docs">Docs</a>
   &nbsp;·&nbsp;
-  <a href="https://ui.beste.co/blog">Blog</a>
+  <a href="https://beste.dev/blog">Blog</a>
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@
   <img alt="MCP" src="https://img.shields.io/badge/MCP-ready-black" />
   <img alt="Blocks" src="https://img.shields.io/badge/blocks-168-black" />
   <img alt="Pieces" src="https://img.shields.io/badge/pieces-1325-black" />
-  <img alt="Components" src="https://img.shields.io/badge/components-295-black" />
+  <img alt="Components" src="https://img.shields.io/badge/components-296-black" />
   <img alt="Tailwind" src="https://img.shields.io/badge/Tailwind-v4-black" />
   <img alt="React" src="https://img.shields.io/badge/React-19-black" />
 </p>
@@ -53,7 +53,7 @@ it into your project. No names to memorize, no docs to open.
 **Or run the command yourself.** No package to add, no provider to wrap your app in:
 
 ```bash
-npx shadcn@latest add https://ui.beste.co/r/hero7
+npx shadcn@latest add https://beste.dev/r/hero7
 ```
 
 Either way, the files land in your project. Edit them, delete half of them,
@@ -66,14 +66,14 @@ The MCP server lives at one URL and speaks the standard Streamable HTTP
 transport, so there is no plugin to install and no API key to create:
 
 ```
-https://ui.beste.co/api/mcp
+https://beste.dev/api/mcp
 ```
 
 <details open>
 <summary><b>Claude Code</b></summary>
 
 ```bash
-claude mcp add --transport http beste-ui https://ui.beste.co/api/mcp
+claude mcp add --transport http beste-ui https://beste.dev/api/mcp
 ```
 
 </details>
@@ -85,7 +85,7 @@ Add to `~/.codex/config.toml`:
 
 ```toml
 [mcp_servers.beste-ui]
-url = "https://ui.beste.co/api/mcp"
+url = "https://beste.dev/api/mcp"
 ```
 
 </details>
@@ -99,7 +99,7 @@ Add to `.cursor/mcp.json` in your project, or `~/.cursor/mcp.json` for every pro
 {
   "mcpServers": {
     "beste-ui": {
-      "url": "https://ui.beste.co/api/mcp"
+      "url": "https://beste.dev/api/mcp"
     }
   }
 }
@@ -116,7 +116,7 @@ Add to `~/.codeium/windsurf/mcp_config.json`:
 {
   "mcpServers": {
     "beste-ui": {
-      "serverUrl": "https://ui.beste.co/api/mcp"
+      "serverUrl": "https://beste.dev/api/mcp"
     }
   }
 }
@@ -134,7 +134,7 @@ Add to `.vscode/mcp.json`:
   "servers": {
     "beste-ui": {
       "type": "http",
-      "url": "https://ui.beste.co/api/mcp"
+      "url": "https://beste.dev/api/mcp"
     }
   }
 }
@@ -151,7 +151,7 @@ Add to `~/.gemini/settings.json`:
 {
   "mcpServers": {
     "beste-ui": {
-      "httpUrl": "https://ui.beste.co/api/mcp"
+      "httpUrl": "https://beste.dev/api/mcp"
     }
   }
 }
@@ -163,7 +163,7 @@ Add to `~/.gemini/settings.json`:
 <summary><b>Claude Desktop and claude.ai</b></summary>
 
 Settings → Connectors → Add custom connector, then paste
-`https://ui.beste.co/api/mcp`.
+`https://beste.dev/api/mcp`.
 
 </details>
 
@@ -174,11 +174,11 @@ Any client that supports remote MCP servers works with the same URL. That
 includes Cline, Roo Code, Kilo Code, Continue, Zed, JetBrains AI Assistant and
 Junie, Amp, Kiro, Warp, Goose, OpenCode, Augment Code, Trae, Factory, Qodo and
 LM Studio. If a client only speaks stdio, bridge it with
-`npx mcp-remote https://ui.beste.co/api/mcp`.
+`npx mcp-remote https://beste.dev/api/mcp`.
 
 </details>
 
-Full setup, license options and example prompts: [ui.beste.co/docs/mcp](https://ui.beste.co/docs/mcp).
+Full setup, license options and example prompts: [beste.dev/docs/mcp](https://beste.dev/docs/mcp).
 
 ### What your agent can do
 
@@ -206,8 +206,8 @@ The MCP server is the fastest path, not the only one:
 - **Markdown content negotiation.** Send `Accept: text/markdown` to any page on
   the site, or add `.md` to its URL, and you get markdown instead of HTML.
 - **`llms.txt`.** A machine-readable index of the whole catalog at
-  [`/llms.txt`](https://ui.beste.co/llms.txt) and
-  [`/llms-full.txt`](https://ui.beste.co/llms-full.txt).
+  [`/llms.txt`](https://beste.dev/llms.txt) and
+  [`/llms-full.txt`](https://beste.dev/llms-full.txt).
 - **A README per item.** Every section in this repository carries one, written
   for the agent that will install it as much as for the person reading it.
 - **Plain shadcn registry URLs.** shadcn&rsquo;s own MCP server and CLI work with
@@ -219,7 +219,7 @@ The MCP server is the fastest path, not the only one:
 | --- | --- | --- |
 | **Blocks** | 168 | Full page sections: heroes, pricing tables, FAQs, footers, auth screens |
 | **Pieces** | 1325 | Small visual widgets that sit inside a block's media slot: mini cards, charts, stat tiles, terminals |
-| **Components** | 295 | Design-system primitives: buttons, badges, filters, inspector controls |
+| **Components** | 296 | Design-system primitives: buttons, badges, filters, inspector controls |
 
 The distinction matters when you compose them, and it is the same distinction
 your agent works with. A block is a section you drop on a page. A piece is an
@@ -228,9 +228,9 @@ asset that belongs inside one. A component is a primitive you build with.
 Every free item installs the same way, by name:
 
 ```bash
-npx shadcn@latest add https://ui.beste.co/r/pricing12
-npx shadcn@latest add https://ui.beste.co/piece/r/code12
-npx shadcn@latest add https://ui.beste.co/component/r/button12
+npx shadcn@latest add https://beste.dev/r/pricing12
+npx shadcn@latest add https://beste.dev/piece/r/code12
+npx shadcn@latest add https://beste.dev/component/r/button12
 ```
 
 ### Blocks by category
@@ -246,7 +246,7 @@ npx shadcn@latest add https://ui.beste.co/component/r/button12
 | Education | 3 | CTA | 3 | Reveal | 2 |
 
 Plus navbar, FAQ, settings, fitness, devtools and terminal sections.
-[See them all](https://ui.beste.co/blocks).
+[See them all](https://beste.dev/blocks).
 
 ## Theming
 
@@ -295,7 +295,7 @@ This repository holds every **free** item in the catalog, the site that
 renders them, the registry that serves them and the MCP server that finds them.
 
 The Pro catalog (over a thousand more sections), accounts, plans and the
-Base UI variant of the registry live on [ui.beste.co](https://ui.beste.co).
+Base UI variant of the registry live on [beste.dev](https://beste.dev).
 Your agent can search the Pro catalog over MCP too; pulling Pro source needs a
 license key in the server URL. Links in this build point to the hosted site
 rather than pretending those pages are missing.
@@ -334,7 +334,7 @@ up a repository first.
 <p align="center">
   <a href="https://beste.co"><b>beste.co</b></a>
   &nbsp;·&nbsp;
-  <a href="https://ui.beste.co">ui.beste.co</a>
+  <a href="https://beste.dev">beste.dev</a>
   &nbsp;·&nbsp;
   <a href="https://x.com/withbeste">@withbeste</a>
 </p>

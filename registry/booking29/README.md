@@ -9,13 +9,13 @@ Three intake questions that land on a real appointment type instead of a drop-do
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/booking29"
+npx shadcn add "https://beste.dev/r/booking29"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/booking29"
+npx shadcn add "https://beste.dev/r-base/booking29"
 ```
 
 That installs the block file, the `badge23` eyebrow and `button21` action button it is built from, the `card31` piece it floats over the image, and the `questionnaire` primitive.

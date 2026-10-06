@@ -92,7 +92,7 @@ export function Card7({
       </div>
       <div className="flex flex-col gap-1.5 p-5">
         {eyebrow && (
-          <span className={cn("font-mono text-sm uppercase tracking-[0.2em]", toneStyles[tone])}>
+          <span className={cn("text-sm font-medium", toneStyles[tone])}>
             {eyebrow}
           </span>
         )}

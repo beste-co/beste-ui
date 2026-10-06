@@ -9,13 +9,13 @@ A results section that leads on one oversized total, splits it across a segmente
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/stats68"
+npx shadcn add "https://beste.dev/r/stats68"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/stats68"
+npx shadcn add "https://beste.dev/r-base/stats68"
 ```
 
 This installs the block to `components/beste/block/stats68.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the action.

@@ -9,13 +9,13 @@ Results section that gives every metric a hairline row of its own: an oversized 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/stats66"
+npx shadcn add "https://beste.dev/r/stats66"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/stats66"
+npx shadcn add "https://beste.dev/r-base/stats66"
 ```
 
 This installs the block to `components/beste/block/stats66.tsx` plus the `badge23` component it uses for the eyebrow.

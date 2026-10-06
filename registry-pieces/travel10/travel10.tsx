@@ -21,11 +21,12 @@ interface Travel10Props {
   detail?: string;
   progress?: number;
   tone?: Tone;
+  bordered?: boolean;
   className?: string;
 }
 
 const cardClasses: Record<Tone, string> = {
-  neutral: "border border-border bg-card text-card-foreground",
+  neutral: "bg-card text-card-foreground",
   primary: "bg-primary text-primary-foreground",
   foreground: "bg-foreground text-background",
   sky: "bg-gradient-to-br from-sky-500 to-indigo-500 text-white",
@@ -41,6 +42,7 @@ export const travel10Demo: Travel10Props = {
   daysLabel: "days to go",
   progress: 84,
   tone: "neutral",
+  bordered: false,
 };
 
 export function Travel10({
@@ -51,6 +53,7 @@ export function Travel10({
   detail,
   progress = 0,
   tone = "neutral",
+  bordered = false,
   className,
 }: Travel10Props) {
   const pct = Math.max(0, Math.min(100, progress));
@@ -65,7 +68,8 @@ export function Travel10({
       <div
         className={cn(
           "flex w-full max-w-80 flex-col gap-3 rounded-xl p-4 shadow-sm",
-          cardClasses[tone]
+          cardClasses[tone],
+          bordered && "border border-border"
         )}
       >
         <div className="flex items-center gap-3">

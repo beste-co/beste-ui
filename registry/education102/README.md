@@ -9,13 +9,13 @@ An end-of-lesson knowledge check: a two-column header, a three-figure strip for 
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/education102"
+npx shadcn add "https://beste.dev/r/education102"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/education102"
+npx shadcn add "https://beste.dev/r-base/education102"
 ```
 
 That installs the block file, the `badge23` eyebrow and `button21` action button it is built from, and the `questionnaire` primitive. The quiz, the grading, and the review all live in the block file itself, so there is nothing else to wire up.

@@ -9,13 +9,13 @@ Card grid built for vertical/industry pitches: each card leads with a wide image
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/usecase4"
+npx shadcn add "https://beste.dev/r/usecase4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/usecase4"
+npx shadcn add "https://beste.dev/r-base/usecase4"
 ```
 
 This installs the block to `components/beste/block/usecase4.tsx` and the `badge` shadcn/ui primitive it depends on.

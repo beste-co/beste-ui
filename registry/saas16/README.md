@@ -9,13 +9,13 @@ Static changelog/release-notes list: a centered header sits above a stack of ver
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/saas16"
+npx shadcn add "https://beste.dev/r/saas16"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/saas16"
+npx shadcn add "https://beste.dev/r-base/saas16"
 ```
 
 This installs the block to `components/beste/block/saas16.tsx` and the `badge` shadcn/ui primitive it depends on.

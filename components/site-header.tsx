@@ -111,9 +111,8 @@ function initials(name?: string | null, email?: string | null) {
 }
 
 /**
- * The site's top bar, in the shape navbar68 gave the catalogue: a tall bar, the
- * search as the centrepiece rather than an afterthought in the corner, the sections
- * on the right, and one round control that opens everything else.
+ * The site's top bar: the logo on the left, the sections on the true center, and
+ * on the right a compact search, GitHub and one round control that opens everything else.
  *
  * What it does not carry, on purpose: the old bar's hand-animated logo spin (sixty
  * lines of Web Animations code for a hover), and its ProUnlockModal, which nothing
@@ -204,10 +203,10 @@ export function SiteHeader() {
     <button
       type="button"
       onClick={() => setCommandOpen(true)}
-      className="group/search flex h-10 w-full cursor-pointer items-center gap-2.5 rounded-full bg-muted/60 pl-4 pr-1.5 text-left transition-colors hover:bg-muted"
+      className="group/search flex h-9 w-full cursor-pointer items-center gap-2 rounded-full bg-muted/60 pl-3.5 pr-1 text-left transition-colors hover:bg-muted"
     >
       <HugeiconsIcon icon={Search01Icon} size={14} strokeWidth={2} className="shrink-0 text-foreground/50" aria-hidden="true" />
-      <span className="w-full text-sm text-foreground/50">Search blocks, pieces and components…</span>
+      <span className="w-full truncate text-sm text-foreground/50">Search…</span>
       <span className="flex h-7 shrink-0 items-center gap-1 rounded-full bg-background px-2">
         <Kbd>⌘</Kbd>
         <Kbd>K</Kbd>
@@ -219,40 +218,41 @@ export function SiteHeader() {
     <>
       {/* Chrome, not content: the Markdown rendition drops it and opens with
           the site preamble instead. See lib/html-to-markdown.ts. */}
-      <header data-md-omit="" className="w-full border-b bg-background">
-        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-5 px-4 md:px-6">
+      <header data-md-omit="" className={cn("w-full bg-background", pathname !== "/" && "border-b")}>
+        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-5 px-4 md:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           <Link
             href="/"
             aria-label="Beste UI home"
-            className="flex shrink-0 items-center gap-0 text-[#FF7322]"
+            className="flex shrink-0 items-center gap-0 justify-self-start text-[#FF7322]"
           >
             <BesteLogo width={24} height={24} color="currentColor" />
             <BesteText height={16} className="text-foreground" />
           </Link>
 
-          <div className="hidden max-w-md flex-1 md:block">{search}</div>
+          {/* Equal side columns keep the sections on the bar's true center. */}
+          <div className="hidden items-center gap-6 lg:flex">
+            {NAV.map((item) => {
+              const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  {...(item.hosted ? hostedLinkProps : {})}
+                  aria-current={active ? "page" : undefined}
+                  // Text8's line, drawn on hover instead of on view; the current section keeps it.
+                  className={cn(
+                    "relative cursor-pointer text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 motion-reduce:after:transition-none",
+                    active ? "text-foreground after:scale-x-100" : "text-foreground/70 after:scale-x-0 hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
 
-          <div className="flex items-center gap-2">
-            <div className="hidden items-center gap-5 lg:flex">
-              {NAV.map((item) => {
-                const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    {...(item.hosted ? hostedLinkProps : {})}
-                    aria-current={active ? "page" : undefined}
-                    // Text8's line, drawn on hover instead of on view; the current section keeps it.
-                    className={cn(
-                      "relative cursor-pointer text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 motion-reduce:after:transition-none",
-                      active ? "text-foreground after:scale-x-100" : "text-foreground/70 after:scale-x-0 hover:text-foreground",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
+          <div className="flex items-center gap-1.5 justify-self-end">
+            <div className="hidden w-48 md:block xl:w-56">{search}</div>
 
             {/*
               The round controls are one cluster: GitHub, search on a phone, and the

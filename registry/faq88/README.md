@@ -9,13 +9,13 @@ A qualifying FAQ that sets a checked good-fit column against a crossed not-for-y
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/faq88"
+npx shadcn add "https://beste.dev/r/faq88"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/faq88"
+npx shadcn add "https://beste.dev/r-base/faq88"
 ```
 
 This installs the block to `components/beste/block/faq88.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the closing action.

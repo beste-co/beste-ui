@@ -20,7 +20,7 @@ export async function GET() {
   const categoryData: CategoryData[] = categories.map((category) => {
     const slug = toSlug(category);
     return {
-      url: `https://ui.beste.co/blocks/${slug}`,
+      url: `https://beste.dev/blocks/${slug}`,
       title: `${category} blocks`,
       keywords: categoryInfoMap[slug]?.keywords || [],
     };

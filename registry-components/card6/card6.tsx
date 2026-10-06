@@ -61,7 +61,7 @@ export function Card6({ src, title, subtitle, href, tone = "light", className }:
 
       <span className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-5">
         {subtitle && (
-          <span className="font-mono text-sm uppercase tracking-[0.2em] text-white/70">
+          <span className="text-sm font-medium text-white/70">
             {subtitle}
           </span>
         )}

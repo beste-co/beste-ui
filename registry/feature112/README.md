@@ -9,13 +9,13 @@ Client-side tabbed feature showcase: a row of toggle buttons switches between na
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature112"
+npx shadcn add "https://beste.dev/r/feature112"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature112"
+npx shadcn add "https://beste.dev/r-base/feature112"
 ```
 
 This installs the block to `components/beste/block/feature112.tsx` and the shadcn/ui `badge` and `button` components it depends on.

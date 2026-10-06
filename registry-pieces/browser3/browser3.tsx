@@ -34,7 +34,7 @@ export const browser3Demo: Browser3Props = {
   surface: "card",
   bordered: false,
   inverted: false,
-  url: "ui.beste.co/components",
+  url: "beste.dev/components",
   title: "Beste UI",
 };
 

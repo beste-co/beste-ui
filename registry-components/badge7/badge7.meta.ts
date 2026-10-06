@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "badge7",
   title: "Parenthetical Eyebrow",
   description:
-    "A monospace eyebrow badge that wraps its label in brackets, with a vertical orientation option.",
+    "An eyebrow badge that wraps its label in brackets, with a vertical orientation option.",
   category: "Badge",
   usage: `import { Badge7 } from "@/components/beste/component/badge7";
 

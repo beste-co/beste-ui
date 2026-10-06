@@ -318,7 +318,7 @@ async function generateRegistryJson(metas: CollectedMeta[]): Promise<string> {
   const registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     name: "beste-ui",
-    homepage: "https://ui.beste.co",
+    homepage: "https://beste.dev",
     items,
   };
 

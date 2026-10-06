@@ -9,13 +9,13 @@ A centered, flex-wrapped row of customer or partner logos with a grayscale-to-co
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature135"
+npx shadcn add "https://beste.dev/r/feature135"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature135"
+npx shadcn add "https://beste.dev/r-base/feature135"
 ```
 
 This installs the block to `components/beste/block/feature135.tsx` and the `badge` and `button` shadcn/ui primitives it depends on.

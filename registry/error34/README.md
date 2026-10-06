@@ -9,13 +9,13 @@ Calm not-found page: an error eyebrow over an oversized light heading, a reassur
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/error34"
+npx shadcn add "https://beste.dev/r/error34"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/error34"
+npx shadcn add "https://beste.dev/r-base/error34"
 ```
 
 This installs the block to `components/beste/block/error34.tsx` plus the `badge23` and `button21` components it uses for the eyebrow and the actions.

@@ -9,13 +9,13 @@ Grid of full-bleed photo cards, each a fixed 3:2 tile with a dark scrim and titl
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature63"
+npx shadcn add "https://beste.dev/r/feature63"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature63"
+npx shadcn add "https://beste.dev/r-base/feature63"
 ```
 
 This installs the block to `components/beste/block/feature63.tsx` and the shadcn/ui `badge` and `button` components it depends on.

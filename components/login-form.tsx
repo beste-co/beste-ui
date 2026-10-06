@@ -48,13 +48,13 @@ export function LoginForm({
         <EmptyDescription>
           Every block in this repository is free and needs no account. Sign-in,
           favorites that follow you between devices, and the Pro catalogue are
-          part of ui.beste.co.
+          part of beste.dev.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <Button asChild variant="outline">
-          <a href="https://ui.beste.co" rel="noreferrer" target="_blank">
-            Open ui.beste.co
+          <a href="https://beste.dev" rel="noreferrer" target="_blank">
+            Open beste.dev
             <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} strokeWidth={2} />
           </a>
         </Button>

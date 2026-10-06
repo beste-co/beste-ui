@@ -14,7 +14,7 @@ interface Registry {
   items: RegistryItem[];
 }
 
-const SITE_URL = "https://ui.beste.co";
+const SITE_URL = "https://beste.dev";
 
 /**
  * Build a map of block names to their creation dates from changelog.

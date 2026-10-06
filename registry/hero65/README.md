@@ -9,13 +9,13 @@ Two-column hero pairing a headline, copy, and CTA buttons on one side with a res
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/hero65"
+npx shadcn add "https://beste.dev/r/hero65"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/hero65"
+npx shadcn add "https://beste.dev/r-base/hero65"
 ```
 
 This installs the block to `components/beste/block/hero65.tsx` and the shadcn/ui `badge` and `button` components it depends on.

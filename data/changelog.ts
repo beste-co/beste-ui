@@ -20,12 +20,16 @@ interface ChangelogComponentInput {
   isUpdated?: boolean;
 }
 
+export type ChangelogFeatured = string | { kind: "piece" | "component"; name: string };
+
 interface ChangelogEntryInput {
   version?: string;
   date: string;
   title: string;
   description?: string;
   blocks?: ChangelogBlockInput[];
+  /** Items that rotate in the carousel above the entry's list. A bare name is a block. */
+  featured?: ChangelogFeatured[];
   pieces?: ChangelogPieceInput[];
   components?: ChangelogComponentInput[];
   /**
@@ -98,6 +102,8 @@ export interface ChangelogEntry {
   components: ChangelogComponent[];
   /** Page names; resolved by the changelog route, not here. See ChangelogEntryInput. */
   pages: string[];
+  /** Items that rotate in the carousel above the entry's list. A bare name is a block. */
+  featured: ChangelogFeatured[];
   isCategoryLaunch?: boolean;
   categoryCount?: number;
   categoryName?: string;
@@ -114,12 +120,69 @@ export interface ChangelogEntry {
 // Simplified changelog data - only name and flags needed
 const _changelog: ChangelogEntryInput[] = [
   {
+    version: "v1.33.0",
+    date: "2026-10-04",
+    title: "Blocks built on pieces and components",
+    description:
+      "**47** new **Pro** blocks for landing pages. Each one is built on the pieces and components already in the library.",
+    featured: ["hero281", "feature328", "hero283", "testimonial55", "cta107"],
+    blocks: [
+      { name: "hero279", isNew: true },
+      { name: "feature329", isNew: true },
+      { name: "cta108", isNew: true },
+      { name: "hero280", isNew: true },
+      { name: "stats80", isNew: true },
+      { name: "pricing86", isNew: true },
+      { name: "hero281", isNew: true },
+      { name: "feature330", isNew: true },
+      { name: "testimonial56", isNew: true },
+      { name: "hero282", isNew: true },
+      { name: "showcase54", isNew: true },
+      { name: "about84", isNew: true },
+      { name: "hero283", isNew: true },
+      { name: "stats81", isNew: true },
+      { name: "cta109", isNew: true },
+      { name: "hero284", isNew: true },
+      { name: "feature331", isNew: true },
+      { name: "faq98", isNew: true },
+      { name: "hero285", isNew: true },
+      { name: "usecase63", isNew: true },
+      { name: "logos20", isNew: true },
+      { name: "testimonial57", isNew: true },
+      { name: "hero286", isNew: true },
+      { name: "feature332", isNew: true },
+      { name: "cta110", isNew: true },
+      { name: "hero278", isNew: true },
+      { name: "feature328", isNew: true },
+      { name: "stats79", isNew: true },
+      { name: "testimonial55", isNew: true },
+      { name: "cta107", isNew: true },
+      { name: "bento16", isNew: true },
+      { name: "feature325", isNew: true },
+      { name: "workflow60", isNew: true },
+      { name: "hero277", isNew: true },
+      { name: "feature326", isNew: true },
+      { name: "workflow61", isNew: true },
+      { name: "pricing84", isNew: true },
+      { name: "feature327", isNew: true },
+      { name: "podcast55", isNew: true },
+      { name: "health20", isNew: true },
+      { name: "travel43", isNew: true },
+      { name: "education105", isNew: true },
+      { name: "cta106", isNew: true },
+      { name: "pricing85", isNew: true },
+      { name: "footer128", isNew: true },
+      { name: "dashboard14", isNew: true },
+      { name: "settings68", isNew: true },
+    ],
+  },
+  {
     version: "v1.32.0",
     date: "2026-10-02",
     title: "Isometric pieces",
     description:
       "**250** isometric pieces for feature cards and bento grids, drawn in SVG with calm looping motion. Each one takes a tone or any hex color.",
-    videoUrl: "https://cdn.beste.app/changelog/export-1790938070760.mp4",
+    videoUrl: "https://oud.pics/changelog/export-1790938070760.mp4",
     pieces: Array.from({ length: 250 }, (_, index) => ({ name: `isometric${index + 1}`, isNew: true })),
   },
   {
@@ -128,6 +191,7 @@ const _changelog: ChangelogEntryInput[] = [
     title: "Gradient heroes",
     description:
       "**16** new **Pro** heroes, each built on one of the new gradient backgrounds: mesh, wave, conic, smoke, prism, bokeh and more.",
+    featured: ["hero265", "hero268", "hero271", "hero274", "hero276"],
     blocks: [
       { name: "hero261", isNew: true },
       { name: "hero262", isNew: true },
@@ -153,6 +217,13 @@ const _changelog: ChangelogEntryInput[] = [
     title: "Gradient backgrounds and interface components",
     description:
       "**66** new components: **16** animated gradient backgrounds and **50** interface pieces for real product screens, from fields, confirms and reactions to a kanban list, a JSON tree, a QR code and a signature pad.",
+    featured: [
+      { kind: "component", name: "mesh-gradient" },
+      { kind: "component", name: "wave-gradient" },
+      { kind: "component", name: "prism-gradient" },
+      { kind: "component", name: "orb-gradient" },
+      { kind: "component", name: "fluid-gradient" },
+    ],
     components: [
       { name: "activity-feed", isNew: true },
       { name: "blob-gradient", isNew: true },
@@ -228,6 +299,7 @@ const _changelog: ChangelogEntryInput[] = [
     title: "Motion heroes and scroll features",
     description:
       "**78** new **Pro** blocks: **65** heroes built on WebGL, canvas and scroll-driven motion, and **13** features that tell a story as you scroll.",
+    featured: ["hero205", "hero221", "hero241", "hero250", "hero196"],
     blocks: [
       { name: "feature312", isNew: true },
       { name: "feature313", isNew: true },
@@ -315,6 +387,13 @@ const _changelog: ChangelogEntryInput[] = [
     title: "Backgrounds, media and motion components",
     description:
       "**67** new components: live backgrounds, scroll-driven media, animated type, a marquee, a scroll rail and two buttons.",
+    featured: [
+      { kind: "component", name: "aurora-sky" },
+      { kind: "component", name: "koi-pond" },
+      { kind: "component", name: "paper-landscape" },
+      { kind: "component", name: "liquid-chrome" },
+      { kind: "component", name: "wheat-field" },
+    ],
     components: [
       { name: "anamorphic-type", isNew: true },
       { name: "aperture-reveal", isNew: true },
@@ -391,6 +470,13 @@ const _changelog: ChangelogEntryInput[] = [
     title: "Pieces drop: settings, consent, catalogue, tools",
     description:
       "**17** new drop-ins taken from the screens a site is run from: settings panels, an integrations list, consent, a password gate, a catalogue and tool annotations. Each plays once on mount and switches between solid, frosted and inverted.",
+    featured: [
+      { kind: "piece", name: "ai52" },
+      { kind: "piece", name: "browser38" },
+      { kind: "piece", name: "commerce35" },
+      { kind: "piece", name: "code16" },
+      { kind: "piece", name: "search26" },
+    ],
     pieces: [
       { name: "ai52", isNew: true },
       { name: "browser38", isNew: true },
@@ -3782,6 +3868,7 @@ function enrichChangelog(entries: ChangelogEntryInput[]): ChangelogEntry[] {
       pieces: enrichedPieces,
       components: enrichedComponents,
       pages: entry.pages ?? [],
+      featured: entry.featured ?? [],
       isCategoryLaunch: entry.isCategoryLaunch,
       categoryCount: entry.categoryCount,
       categoryName: entry.categoryName,

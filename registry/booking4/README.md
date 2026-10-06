@@ -9,13 +9,13 @@ Step-one service picker for a booking flow: a pill-style category filter narrows
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/booking4"
+npx shadcn add "https://beste.dev/r/booking4"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/booking4"
+npx shadcn add "https://beste.dev/r-base/booking4"
 ```
 
 This installs the block to `components/beste/block/booking4.tsx`, plus the `badge` and `button` shadcn/ui primitives it uses for the service badges and footer button.

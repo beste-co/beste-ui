@@ -9,13 +9,13 @@ Single-column registration screen centered in the viewport: a two-up row of soci
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/auth13"
+npx shadcn add "https://beste.dev/r/auth13"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/auth13"
+npx shadcn add "https://beste.dev/r-base/auth13"
 ```
 
 This installs the block to `components/beste/block/auth13.tsx` and the `button`, `input`, `field`, and `checkbox` shadcn/ui primitives it's built on.

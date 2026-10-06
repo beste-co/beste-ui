@@ -9,13 +9,13 @@ Two-column blog module: a heading and description sit above a single featured im
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/blog25"
+npx shadcn add "https://beste.dev/r/blog25"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/blog25"
+npx shadcn add "https://beste.dev/r-base/blog25"
 ```
 
 This installs the block to `components/beste/block/blog25.tsx`, plus the `badge` shadcn/ui primitive it uses for the section badge.

@@ -1,7 +1,7 @@
 /**
  * Public-build auth client.
  *
- * Accounts live on ui.beste.co, not here. The shape is kept so the components
+ * Accounts live on beste.dev, not here. The shape is kept so the components
  * that call `authClient.signOut()` compile and behave sensibly; there is simply
  * never a session to end.
  */

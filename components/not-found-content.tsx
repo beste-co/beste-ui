@@ -66,13 +66,13 @@ export function NotFoundContent() {
             <EmptyDescription className={DESCRIPTION}>
               You are looking at the open-source build: every free block, piece and
               component, with the previews and the registry that serve them. The Pro
-              catalogue, plans, accounts, the docs and the blog belong to ui.beste.co, and
+              catalogue, plans, accounts, the docs and the blog belong to beste.dev, and
               the page you asked for is waiting there.
             </EmptyDescription>
           </EmptyHeader>
           <EmptyContent className={CONTENT}>
             {/* The address is carried over, so /block/error19 lands on /block/error19. */}
-            <Button23 size="sm" tone="dark" asChild label="Continue on ui.beste.co">
+            <Button23 size="sm" tone="dark" asChild label="Continue on beste.dev">
               <a href={`${HOSTED_SITE}${pathname}`} rel="noreferrer" target="_blank" />
             </Button23>
             <Button23 size="sm" asChild label="Browse the blocks" tone="outline" icon={ArrowRight}>

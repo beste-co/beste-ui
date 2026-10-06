@@ -9,13 +9,13 @@ A two-column benefits section: a left column with the section header and an opti
 **Radix flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r/feature178"
+npx shadcn add "https://beste.dev/r/feature178"
 ```
 
 **Base UI flavor**
 
 ```bash
-npx shadcn add "https://ui.beste.co/r-base/feature178"
+npx shadcn add "https://beste.dev/r-base/feature178"
 ```
 
 This installs the block to `components/beste/block/feature178.tsx` and the `badge` shadcn/ui primitive it depends on.
