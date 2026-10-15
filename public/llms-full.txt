@@ -12,8 +12,8 @@ The catalog has four tiers:
 
 - **Blocks** (https://beste.dev/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
 - **Pages** (https://beste.dev/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
-- **Pieces** (https://beste.dev/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,325 pieces in 46 categories, all free.
-- **Components** (https://beste.dev/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 292 components in 41 categories, all free.
+- **Pieces** (https://beste.dev/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,326 pieces in 47 categories, all free.
+- **Components** (https://beste.dev/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 294 components in 41 categories, all free.
 
 Every asset has a detail page with a live preview, the install command in both flavors, its props and a README. Blocks live at `/block/{name}`, pages at `/page/{name}`, pieces at `/piece/{name}` and components at `/component/{name}`.
 
@@ -466,8 +466,8 @@ Studio collections are sets of blocks that share one design language: type, spac
 ### Altair
 
 - URL: https://beste.dev/blocks/collection/altair
-- 8 blocks
-- Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care.
+- 34 blocks
+- Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care, and for small hotels.
 
 ### Auralis
 
@@ -480,6 +480,12 @@ Studio collections are sets of blocks that share one design language: type, spac
 - URL: https://beste.dev/blocks/collection/polaris
 - 5 blocks
 - A square accent eyebrow over bold uppercase labels, hairline rules under every section header, and a two-tone seal button. Structured, high-contrast layouts for creative studios.
+
+### Rigel
+
+- URL: https://beste.dev/blocks/collection/rigel
+- 2 blocks
+- Architectural photography that opens from the top, light sans figures, hairline rules and quiet pill buttons. Clear, considered pages for property developments, agencies and new homes.
 
 ### Sirius
 
@@ -501,7 +507,7 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 
 ## Pieces
 
-1,325 small widgets, all free. Listing: https://beste.dev/pieces. Each category page lists every piece in it.
+1,326 small widgets, all free. Listing: https://beste.dev/pieces. Each category page lists every piece in it.
 
 - [Isometric](https://beste.dev/pieces/isometric): 250 pieces
 - [Shapes](https://beste.dev/pieces/shapes): 80 pieces
@@ -549,18 +555,19 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 - [Socialproof](https://beste.dev/pieces/socialproof): 5 pieces
 - [Chart](https://beste.dev/pieces/chart): 4 pieces
 - [Receipt](https://beste.dev/pieces/receipt): 3 pieces
+- [Mascot](https://beste.dev/pieces/mascot): 1 pieces
 
 ## Components
 
-292 styled primitives, all free. Listing: https://beste.dev/components.
+294 styled primitives, all free. Listing: https://beste.dev/components.
 
 - [Background](https://beste.dev/components/background): 46 components
 - [Inspector](https://beste.dev/components/inspector): 46 components
 - [Card](https://beste.dev/components/card): 28 components
 - [Text](https://beste.dev/components/text): 27 components
 - [Media](https://beste.dev/components/media): 26 components
-- [Button](https://beste.dev/components/button): 21 components
-- [Badge](https://beste.dev/components/badge): 18 components
+- [Button](https://beste.dev/components/button): 22 components
+- [Badge](https://beste.dev/components/badge): 19 components
 - [Filter](https://beste.dev/components/filter): 14 components
 - [Dashboard](https://beste.dev/components/dashboard): 8 components
 - [Chart](https://beste.dev/components/chart): 6 components
@@ -606,6 +613,9 @@ Long-form posts at https://beste.dev/blog. Feed: https://beste.dev/blog/feed.xml
 
 The full changelog is at https://beste.dev/changelog; the latest releases:
 
+- v1.37.0 (2026-10-15): Real Estate: category unlocked
+- v1.36.0 (2026-10-15): 35 new navbars
+- v1.35.0 (2026-10-15): Hotel: category unlocked
 - v1.34.0 (2026-10-06): ui.beste.co is now beste.dev
 - v1.33.0 (2026-10-04): Blocks built on pieces and components
 - v1.32.0 (2026-10-02): Isometric pieces
@@ -615,9 +625,6 @@ The full changelog is at https://beste.dev/changelog; the latest releases:
 - v1.28.0 (2026-09-26): Backgrounds, media and motion components
 - v1.27.0 (2026-09-10): Pieces drop: settings, consent, catalogue, tools
 - v1.26.0 (2026-09-08): Blocks where the card is the link
-- v1.25.0 (2026-09-05): Install commands, changelogs and yearly pricing
-- v1.24.0 (2026-09-04): Animated pieces
-- v1.23.0 (2026-09-04): Altair: 108 blocks for a practice that listens
 
 ## Links
 

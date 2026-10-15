@@ -35,15 +35,22 @@ const SETS = [
   { key: "altair", brand: "Altair", components: ["button22"] },
   { key: "auralis", brand: "Auralis", components: ["badge7", "button12"] },
   { key: "polaris", brand: "Polaris", components: ["badge6", "button1"] },
+  { key: "rigel", brand: null, components: ["badge24", "button25"] },
   { key: "sirius", brand: "Sirius", components: ["badge23", "button21"] },
   { key: "vega", brand: null, components: ["button23", "button24"] },
 ] as const;
 
 /** Blocks that belong to a set but carry neither its components nor its name. */
 const EXTRA: Record<string, string[]> = {
-  altair: ["hero188", "feature294", "feature295", "feature298", "post89", "feature306", "usecase62", "showcase53"],
+  altair: [
+    "hero188", "feature294", "feature295", "feature298", "post89", "feature306", "usecase62", "showcase53",
+    // Hotel blocks built in the same language without a button22 in them
+    "hotel3", "hotel8", "hotel10", "hotel11", "hotel16", "hotel24", "hotel25", "hotel26", "hotel27", "hotel29", "hotel30", "hotel31", "hotel32", "hotel33", "hotel35", "hotel39", "hotel40", "hotel41", "hotel42", "hotel43", "hotel44", "hotel46", "hotel47", "hotel48", "hotel49", "hotel50",
+  ],
   auralis: [],
   polaris: [],
+  // Real estate footers built in the same language from plain markup
+  rigel: ["realestate77", "realestate78"],
   sirius: [],
   vega: [
     "about84", "bento16", "cta106", "cta107", "cta108", "cta109", "cta110", "education105",

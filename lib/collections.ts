@@ -29,10 +29,10 @@ const COLLECTION_COPY: Record<BlockSet, Omit<CollectionInfo, "slug" | "count">> 
   altair: {
     label: "Altair",
     description:
-      "Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care.",
+      "Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care, and for small hotels.",
     metaTitle: "Altair collection - Beste UI",
     metaDescription:
-      "The Altair collection: calm, motion-led shadcn/tailwind blocks with parallax photography, serif display type and soft pill buttons. Heroes and sections for therapy, wellness and care practices.",
+      "The Altair collection: calm, motion-led shadcn/tailwind blocks with parallax photography, serif display type and soft pill buttons. Heroes and sections for therapy, wellness and care practices, and for boutique hotels.",
   },
   auralis: {
     label: "Auralis",
@@ -49,6 +49,14 @@ const COLLECTION_COPY: Record<BlockSet, Omit<CollectionInfo, "slug" | "count">> 
     metaTitle: "Polaris collection - Beste UI",
     metaDescription:
       "The Polaris collection: high-contrast shadcn/tailwind blocks with accent eyebrows, hairline section rules and seal buttons. Navbars, heroes, workflows, careers and more.",
+  },
+  rigel: {
+    label: "Rigel",
+    description:
+      "Architectural photography that opens from the top, light sans figures, hairline rules and quiet pill buttons. Clear, considered pages for property developments, agencies and new homes.",
+    metaTitle: "Rigel collection - Beste UI",
+    metaDescription:
+      "The Rigel collection: calm, architectural shadcn/tailwind blocks for real estate. Development heroes, floor plans, availability, calculators, maps, forms, navbars and footers in one design language.",
   },
   sirius: {
     label: "Sirius",

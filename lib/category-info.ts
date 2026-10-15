@@ -454,6 +454,28 @@ export const categoryInfoMap: Record<string, CategoryInfo> = {
     icon: "CalendarCheck",
     isNew: true,
   },
+  hotel: {
+    title: "Hotel",
+    description:
+      "Boutique hotel sections for stays, rooms, rate calendars, dining, spa, offers, weddings and the coast around you.",
+    metaTitle: "Hotel shadcn blocks - Beste UI",
+    metaDescription:
+      "Premium shadcn/tailwind hotel blocks for boutique stays: booking bars, room collections, rate calendars, restaurant menus, spa rituals, offers and event spaces.",
+    keywords: ["hospitality", "boutique hotel"],
+    icon: "BedDouble",
+    isNew: true,
+  },
+  realestate: {
+    title: "Real Estate",
+    description:
+      "Development and agency sections for new homes: project heroes, floor plans and residences, availability, payment estimators and the neighbourhood around them.",
+    metaTitle: "Real Estate shadcn blocks - Beste UI",
+    metaDescription:
+      "Premium shadcn/tailwind real estate blocks for property developments and agencies: project heroes, floor plan pickers, residence lists, payment estimators and location sections.",
+    keywords: ["property", "new homes"],
+    icon: "Building2",
+    isNew: true,
+  },
   about: {
     title: "About",
     description:

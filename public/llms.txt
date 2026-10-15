@@ -21,8 +21,8 @@ Beste UI is made by [beste.co](https://beste.co), an opinionated block-based sit
 
 - [Blocks](https://beste.dev/blocks): 168 full page sections in 41 categories. 168 are free, the rest are Pro.
 - [Pages](https://beste.dev/pages): 0 whole pages composed from the blocks. One command installs a page and every block inside it.
-- [Pieces](https://beste.dev/pieces): 1,325 small widgets in 46 categories that drop into the media slots of a block. Free.
-- [Components](https://beste.dev/components): 292 styled primitives in 41 categories: buttons, badges, cards, text effects, inspector controls. Free.
+- [Pieces](https://beste.dev/pieces): 1,326 small widgets in 47 categories that drop into the media slots of a block. Free.
+- [Components](https://beste.dev/components): 294 styled primitives in 41 categories: buttons, badges, cards, text effects, inspector controls. Free.
 - [Search](https://beste.dev/search): Search every tier by name or by describing what you need.
 
 ## Block categories
@@ -73,9 +73,10 @@ Beste UI is made by [beste.co](https://beste.co), an opinionated block-based sit
 
 Sets of blocks that share one design language, so a whole site reads as one piece.
 
-- [Altair](https://beste.dev/blocks/collection/altair): 8 blocks. Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care.
+- [Altair](https://beste.dev/blocks/collection/altair): 34 blocks. Full-height photography that drifts under the page, serif headlines that settle in word by word, soft light and film grain, and gently rounded pills. Calm, fluid pages for practices built on care, and for small hotels.
 - [Auralis](https://beste.dev/blocks/collection/auralis): 12 blocks. Oversized display type on monochrome surfaces, with a monospace parenthetical eyebrow and a pill CTA that carries its own seal. Editorial layouts for studio, agency and portfolio sites.
 - [Polaris](https://beste.dev/blocks/collection/polaris): 5 blocks. A square accent eyebrow over bold uppercase labels, hairline rules under every section header, and a two-tone seal button. Structured, high-contrast layouts for creative studios.
+- [Rigel](https://beste.dev/blocks/collection/rigel): 2 blocks. Architectural photography that opens from the top, light sans figures, hairline rules and quiet pill buttons. Clear, considered pages for property developments, agencies and new homes.
 - [Sirius](https://beste.dev/blocks/collection/sirius): 27 blocks. Light-weight display headings on white, a single accent colour, and media tiles that float a live piece of product UI. Calm, spacious pages for a modern SaaS.
 - [Vega](https://beste.dev/blocks/collection/vega): 53 blocks. Heroes that move: live WebGL and canvas surfaces, photographs that relight and assemble as you scroll, and features that run sideways or reveal word by word. For launches and portfolios that want the first screen to be the thing people remember.
 

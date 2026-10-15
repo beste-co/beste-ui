@@ -157,7 +157,7 @@ interface StageProps {
   flavor?: { kind: "block" | "piece" | "component"; name: string };
   /** Round actions after the theme picker: favourite, previous, next. */
   actions?: ReactNode;
-  /** Pin a "Get access" button to the top right for visitors without Pro. */
+  /** Show a "Get Pro access" button at the end of the bottom bar for visitors without Pro. */
   accessCta?: boolean;
   /** The label on the sheet's edge, e.g. "About this block". */
   detailsLabel?: string;
@@ -288,15 +288,6 @@ export function Stage({
         <SiteFooter />
       </div>
 
-      {/* The same floating shell as the bar below, holding the library's own button */}
-      {accessCta && isPro && !isUserPro && (
-        <div className="fixed top-4 right-4 z-40 rounded-full bg-background p-1.5 shadow-[0_10px_40px_-12px] shadow-foreground/25">
-          <Button23 asChild size="sm" tone="dark" label="Get Pro access">
-            <Link href="/pricing" />
-          </Button23>
-        </div>
-      )}
-
       <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
         <div className="pointer-events-auto flex max-w-full items-center gap-1 rounded-full bg-background p-1.5 shadow-[0_10px_40px_-12px] shadow-foreground/25">
           {/* The catalogue, not "back": the arrows on the right already walk
@@ -389,6 +380,18 @@ export function Stage({
 
           {/* Page actions (favorite, prev, next) take the same solid pill as the rest of the bar */}
           {actions && <div className="flex items-center gap-1 [&>a]:bg-muted [&>button]:bg-muted [&>span>*]:bg-muted">{actions}</div>}
+
+          {accessCta && isPro && !isUserPro && (
+            <>
+              {/* Short label on phones so the bar still fits beside the tabs and arrows */}
+              <Button23 asChild size="sm" tone="dark" label="Get Pro" className="shrink-0 sm:hidden">
+                <Link href="/pricing" />
+              </Button23>
+              <Button23 asChild size="sm" tone="dark" label="Get Pro access" className="hidden shrink-0 sm:inline-flex">
+                <Link href="/pricing" />
+              </Button23>
+            </>
+          )}
         </div>
       </div>
 

@@ -263,6 +263,13 @@
   }
 }
 
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
 @keyframes scroll-slow {
   0% {
     transform: translateY(0);

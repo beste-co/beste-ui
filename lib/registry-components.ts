@@ -31,6 +31,7 @@ import { Badge20, badge20Demo } from "@/registry-components/badge20/badge20";
 import { Badge21, badge21Demo } from "@/registry-components/badge21/badge21";
 import { Badge22, badge22Demo } from "@/registry-components/badge22/badge22";
 import { Badge23, badge23Demo } from "@/registry-components/badge23/badge23";
+import { Badge24, badge24Demo } from "@/registry-components/badge24/badge24";
 import { BarChart, barChartDemo } from "@/registry-components/bar-chart/bar-chart";
 import { BauhausComposition, bauhausCompositionDemo } from "@/registry-components/bauhaus-composition/bauhaus-composition";
 import { BlobGradient, blobGradientDemo } from "@/registry-components/blob-gradient/blob-gradient";
@@ -57,6 +58,7 @@ import { Button21, button21Demo } from "@/registry-components/button21/button21"
 import { Button22, button22Demo } from "@/registry-components/button22/button22";
 import { Button23, button23Demo } from "@/registry-components/button23/button23";
 import { Button24, button24Demo } from "@/registry-components/button24/button24";
+import { Button25, button25Demo } from "@/registry-components/button25/button25";
 import { CalendarMonth, calendarMonthDemo } from "@/registry-components/calendar-month/calendar-month";
 import { CandleFlame, candleFlameDemo } from "@/registry-components/candle-flame/candle-flame";
 import { Card1, card1Demo } from "@/registry-components/card1/card1";
@@ -323,6 +325,7 @@ import { playground as badge20Playground } from "@/registry-components/badge20/b
 import { playground as badge21Playground } from "@/registry-components/badge21/badge21.playground";
 import { playground as badge22Playground } from "@/registry-components/badge22/badge22.playground";
 import { playground as badge23Playground } from "@/registry-components/badge23/badge23.playground";
+import { playground as badge24Playground } from "@/registry-components/badge24/badge24.playground";
 import { playground as barChartPlayground } from "@/registry-components/bar-chart/bar-chart.playground";
 import { playground as bauhausCompositionPlayground } from "@/registry-components/bauhaus-composition/bauhaus-composition.playground";
 import { playground as blobGradientPlayground } from "@/registry-components/blob-gradient/blob-gradient.playground";
@@ -348,6 +351,7 @@ import { playground as button20Playground } from "@/registry-components/button20
 import { playground as button21Playground } from "@/registry-components/button21/button21.playground";
 import { playground as button23Playground } from "@/registry-components/button23/button23.playground";
 import { playground as button24Playground } from "@/registry-components/button24/button24.playground";
+import { playground as button25Playground } from "@/registry-components/button25/button25.playground";
 import { playground as candleFlamePlayground } from "@/registry-components/candle-flame/candle-flame.playground";
 import { playground as card1Playground } from "@/registry-components/card1/card1.playground";
 import { playground as card2Playground } from "@/registry-components/card2/card2.playground";
@@ -904,6 +908,18 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: badge23Playground,
   },
   {
+    name: "badge24",
+    title: "Rule Eyebrow",
+    description: "A sentence-case eyebrow with a short rule in front of it. The rule draws from the left and the text rises in behind it, on scroll by default or at once for heroes. Both take the current text color, so one class puts it on a photograph.",
+    category: "Badge",
+    component: Badge24,
+    demoProps: badge24Demo,
+    dependencies: ["framer-motion"],
+    usage: "import { Badge24 } from \"@/components/beste/component/badge24\";\n\n<Badge24 text=\"Alder Row, Riverside\" />\n\n<Badge24\n  text=\"The residences\"\n  as=\"span\"            // \"p\" (default) | \"span\" | \"div\"\n  trigger=\"mount\"      // \"view\" (default) | \"mount\" | \"none\"\n  delay={0.2}          // seconds before the rule draws\n  className=\"text-background/80\"   // color for dark or photographic surfaces\n/>",
+    isAnimated: true,
+    playground: badge24Playground,
+  },
+  {
     name: "bar-chart",
     title: "Bar Chart",
     description: "Recharts bar chart on the shadcn ChartContainer: grouped or stacked multi-series bars with rounded corners, optional grid, y-axis, legend, and a dashed-indicator tooltip. Config-driven colors via --chart tokens.",
@@ -1212,6 +1228,19 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { Button24 } from \"@/components/beste/component/button24\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button24 asChild label=\"Get a festival pass\">\n  <Link href=\"/passes\" />\n</Button24>\n\n<Button24\n  label=\"See the program\"\n  tone=\"primary\"   // \"dark\" (default) | \"primary\" | \"light\"\n  onClick={() => console.log(\"clicked\")}\n/>",
     usageBase: "import { Button24 } from \"@/components/beste/component/button24\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button24 label=\"Get a festival pass\" render={<Link href=\"/passes\" />} nativeButton={false} />\n\n<Button24\n  label=\"See the program\"\n  tone=\"primary\"   // \"dark\" (default) | \"primary\" | \"light\"\n  onClick={() => console.log(\"clicked\")}\n/>",
     playground: button24Playground,
+  },
+  {
+    name: "button25",
+    title: "Quiet Pill",
+    description: "A plain sentence-case pill with no tricks: a dark fill for light pages, a hairline outline that takes the surface's text color, the accent, or a paper pill for photographs. An optional icon sits after the label and nudges right on hover.",
+    category: "Button",
+    component: Button25,
+    demoProps: button25Demo,
+    registryDependencies: ["button"],
+    variants: { tone: ["dark", "outline", "primary", "neutral"] },
+    usage: "import { Button25 } from \"@/components/beste/component/button25\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button25 asChild label=\"Register your interest\" icon={ArrowRight}>\n  <Link href=\"/register\" />\n</Button25>\n\n<Button25\n  label=\"View the residences\"\n  tone=\"outline\"   // \"dark\" (default) | \"outline\" | \"primary\" | \"neutral\"\n  size=\"sm\"        // \"default\" | \"sm\"\n  onClick={() => console.log(\"clicked\")}\n/>\n\n// Inside a form\n<Button25 label=\"Send\" type=\"submit\" />",
+    usageBase: "import { Button25 } from \"@/components/beste/component/button25\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button25 label=\"Register your interest\" icon={ArrowRight} render={<Link href=\"/register\" />} nativeButton={false} />\n\n<Button25\n  label=\"View the residences\"\n  tone=\"outline\"   // \"dark\" (default) | \"outline\" | \"primary\" | \"neutral\"\n  size=\"sm\"        // \"default\" | \"sm\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    playground: button25Playground,
   },
   {
     name: "calendar-month",
@@ -3474,7 +3503,10 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { SnippetInstall } from \"@/components/beste/component/snippet-install\";\n\n// Installs, with the command written for each manager\n<SnippetInstall packages={[\"motion\", \"lucide-react\"]} />\n\n// A dev dependency\n<SnippetInstall packages=\"@biomejs/biome\" dev />\n\n// Run once without installing: npx, pnpm dlx, yarn dlx, bunx\n<SnippetInstall kind=\"exec\" packages=\"shadcn@latest add button\" />\n\n// Exact commands where the derived ones do not fit\n<SnippetInstall\n  managers={[\"pnpm\", \"bun\"]}\n  commands={{ pnpm: \"pnpm create next-app@latest\", bun: \"bun create next-app\" }}\n/>\n\n<SnippetInstall\n  packages=\"zod\"\n  defaultManager=\"pnpm\"   // shown until the reader picks\n  remember={false}        // keep this snippet's pick to itself\n  prompt={false}          // no $ before the command\n  tone=\"outline\"          // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"               // \"sm\" | \"default\" | \"lg\"\n  onCopy={(command) => console.log(\"Copied\", command)}\n/>",
     cardScale: 0.7,
     playground: snippetInstallPlayground,
-  },
+  }
+];
+
+const _allRegistryComponents_1: RegistryComponentMeta[] = [
   {
     name: "split-flap",
     title: "Split-Flap Board",
@@ -3497,10 +3529,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { StarTrails } from \"@/components/beste/component/star-trails\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <StarTrails className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<StarTrails\n  className=\"min-h-[32rem]\"\n  skyColor=\"#060510\"      // any CSS color, tokens included\n  glowColor=\"#2a1e3a\"\n  horizonColor=\"#d08040\"\n  exposure={0.8}          // longer trails\n  poleX={0.5}\n  poleY={0.3}             // the pole inside the frame draws full circles\n  silhouette=\"ridges\"     // \"forest\", \"ridges\" or \"none\"\n/>",
     isAnimated: true,
     playground: starTrailsPlayground,
-  }
-];
-
-const _allRegistryComponents_1: RegistryComponentMeta[] = [
+  },
   {
     name: "status-uptime",
     title: "Status Uptime",
