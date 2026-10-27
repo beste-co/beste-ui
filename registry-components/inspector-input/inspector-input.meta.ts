@@ -6,6 +6,7 @@ export const meta: ComponentMeta = {
   description:
     "Settings row with a label on the left and a plain text field on the right, sharing the family's pill: the whole row is the label, so pressing anywhere puts the caret in the field.",
   category: "Inspector",
+  registryDependencies: ["tooltip"],
   usage: `import { InspectorInput } from "@/components/beste/component/inspector-input";
 
 // Uncontrolled
@@ -21,6 +22,9 @@ export const meta: ComponentMeta = {
 
 // A number with its unit; spinners are hidden and the value goes monospace
 <InspectorInput label="Offset" type="number" suffix="px" defaultValue="24" />
+
+// A note behind an info mark, for what the label has no room for
+<InspectorInput label="Measurement ID" info="Required. Without it Analytics does not load." />
 
 <InspectorInput
   label="Link"

@@ -25,6 +25,7 @@ import {
   JusticeScale01Icon,
   LayoutBottomIcon,
   LayoutLeftIcon,
+  Mail01Icon,
   Menu01Icon,
   Message01Icon,
   Mic01Icon,
@@ -87,6 +88,7 @@ const iconMap: Record<string, IconSvgElement> = {
   MessageSquare: Message01Icon,
   Building2: Building03Icon,
   CalendarCheck: CalendarCheckIn01Icon,
+  Mail: Mail01Icon,
   ScrollText: DocumentValidationIcon,
   SearchX: SearchRemoveIcon,
 };

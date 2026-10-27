@@ -454,6 +454,17 @@ export const categoryInfoMap: Record<string, CategoryInfo> = {
     icon: "CalendarCheck",
     isNew: true,
   },
+  contact: {
+    title: "Contact",
+    description:
+      "Contact sections with address, phone and email details, contact forms, and embedded maps.",
+    metaTitle: "Contact shadcn blocks - Beste UI",
+    metaDescription:
+      "Production-ready shadcn/tailwind contact blocks with contact details, contact forms, and embedded Google Maps.",
+    keywords: ["contact form", "map"],
+    icon: "Mail",
+    isNew: true,
+  },
   hotel: {
     title: "Hotel",
     description:

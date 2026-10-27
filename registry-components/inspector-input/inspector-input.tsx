@@ -1,7 +1,8 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import { InfoIcon, type LucideIcon } from "lucide-react";
 import * as React from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 /** Surface treatment of the row. Mirrors inspector-slider. */
@@ -12,6 +13,10 @@ type Size = "sm" | "default" | "lg";
 
 /** The subset of input types that reads sensibly as a settings row. */
 type InspectorInputType = "text" | "number" | "email" | "url" | "tel" | "password" | "search";
+
+/** The look of the info mark. Mirrors inspector-group. */
+const INFO_MARK =
+  "shrink-0 cursor-help text-foreground/40 transition-colors hover:text-foreground/70";
 
 const toneStyles: Record<Tone, string> = {
   muted: "border border-transparent bg-muted",
@@ -37,6 +42,11 @@ interface InspectorInputProps {
   label: string;
   /** Optional leading icon shown before the label. */
   icon?: LucideIcon;
+  /**
+   * A note the label does not have room for, behind a mark after it: whether the
+   * field is required, where its value comes from, what leaving it empty does.
+   */
+  info?: string;
 
   /** Controlled value. Pair it with `onValueChange`. */
   value?: string;
@@ -99,6 +109,7 @@ export const inspectorInputDemo: InspectorInputProps = {
 
 export function InspectorInput({
   label,
+  info,
   icon: Icon,
   value: valueProp,
   defaultValue,
@@ -170,6 +181,17 @@ export function InspectorInput({
       >
         {Icon ? <Icon className="size-4 shrink-0" /> : null}
         <span className="truncate">{label}</span>
+        {info ? (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span data-slot="inspector-input-info" className={INFO_MARK}>
+                <InfoIcon className="size-3.5" />
+              </span>
+            </TooltipTrigger>
+            {/* text-wrap overrides the tooltip's text-balance, which pads the box with empty width */}
+            <TooltipContent className="max-w-64 text-wrap">{info}</TooltipContent>
+          </Tooltip>
+        ) : null}
       </span>
 
       <input
