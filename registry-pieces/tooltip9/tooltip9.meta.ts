@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Green success tooltip with a check mark, used for copy-to-clipboard confirmation.",
   category: "Tooltip",
+  backdrop: "none",
 };

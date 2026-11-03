@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Single horizontal bar divided into tinted segments by percentage, with a legend row below.",
   category: "Progress",
+  backdrop: "none",
 };

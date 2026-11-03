@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Centered contact card with an avatar, name, short bio, and a Message button.",
   category: "Chat",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

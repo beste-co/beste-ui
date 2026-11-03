@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Four-way directional pad with a pressed state that highlights one key at a time.",
   category: "Keyboard",
+  backdrop: "none",
 };

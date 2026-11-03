@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Voice note bubble with a fine waveform that swells to full height near the end, taking the accent color bar by bar as the playhead and timer advance.",
   category: "Chat",
+  backdrop: "none",
 };

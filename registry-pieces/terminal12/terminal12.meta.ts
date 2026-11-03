@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Test run output with pass and fail markers and a totals bar.",
   category: "Terminal",
+  backdrop: "none",
 };

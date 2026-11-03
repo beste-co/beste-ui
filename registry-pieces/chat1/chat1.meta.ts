@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Chat bubble with an avatar and timestamp. Role flips alignment and color.",
   category: "Chat",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

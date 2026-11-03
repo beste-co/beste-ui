@@ -632,6 +632,18 @@ export const fontDefinitions: Record<FontName, FontDefinition> = {
   },
 
   // Serif fonts (15)
+  "geist-serif": {
+    name: "geist-serif",
+    displayName: "Geist Serif",
+    category: "serif",
+    weights: [400],
+    isCustomFont: true,
+    customFontPath: "/fonts/geist-serif",
+    fontFileExtension: "woff2",
+    fallback: "ui-serif, Georgia, serif",
+    description: "High-contrast display serif by Vercel with sharp hairlines",
+  },
+
   "playfair-display": {
     name: "playfair-display",
     displayName: "Playfair Display",

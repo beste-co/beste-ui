@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Uppercase caption above a row of muted press wordmarks. No icons or logos — just typography.",
   category: "Social Proof",
+  backdrop: "none",
 };

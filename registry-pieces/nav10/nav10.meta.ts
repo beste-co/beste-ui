@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Breadcrumb that hides middle crumbs behind a dropdown chip so the trail stays on a single row.",
   category: "Nav",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Image frame with arrow controls and position dots.",
   category: "Media",
+  backdrop: "none",
 };

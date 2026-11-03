@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Rose-tinted banner with a Wi-Fi-off icon, bold offline title, and a short reconnect hint.",
   category: "Browser",
+  backdrop: "none",
 };

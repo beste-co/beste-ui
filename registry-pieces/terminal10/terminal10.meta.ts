@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Single indeterminate line with a spinner and a label.",
   category: "Terminal",
+  backdrop: "none",
 };

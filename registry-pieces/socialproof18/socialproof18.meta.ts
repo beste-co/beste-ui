@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Single line invite with a bold subscriber count above a dark pill CTA.",
   category: "Social Proof",
+  backdrop: "none",
 };

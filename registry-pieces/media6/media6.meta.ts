@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Classic cassette silhouette with a colored label strip, two spoked hubs, and a tape window.",
   category: "Media",
+  backdrop: "none",
 };

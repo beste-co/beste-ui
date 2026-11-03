@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Window-chrome shell showing a command and its output ending in a success line.",
   category: "Terminal",
+  backdrop: "none",
 };

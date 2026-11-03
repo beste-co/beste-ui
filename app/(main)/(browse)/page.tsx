@@ -1,19 +1,12 @@
-import { BlocksGrid } from "@/components/blocks-grid";
-import { Button23 } from "@/components/beste/component/button23";
-import { COLLECTION_BY_BLOCK } from "@/lib/collections";
-import { ComponentDemo } from "@/components/component-demo";
-import { HomeHero } from "@/components/home-hero";
-import { HomeCta, HomeFaq, HomeSteps } from "@/components/home-sections";
-import Link from "next/link";
 import type { Metadata } from "next";
-import { RegistryComponentDemo } from "@/components/registry-component-demo";
-import { STUDIO_SET_BLOCKS } from "@/lib/block-sets";
-import { components as allComponents } from "@/lib/components";
-import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
+import { HomeHero } from "@/components/home-hero";
+import { HomeLibrary } from "@/components/home-library";
+import { HomeCta, HomeFaq } from "@/components/home-sections";
 import { changelog } from "@/data/changelog";
-import { recentBlockDates } from "@/lib/changelog-dates";
+import { BLOCK_SETS } from "@/lib/block-sets";
+import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
+import { components as allComponents } from "@/lib/components";
 import { registryComponents } from "@/lib/registry-components";
-import { typography } from "@/lib/typography";
 
 const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
 const SITE_DESCRIPTION =
@@ -62,51 +55,6 @@ function seededShuffle<T>(array: readonly T[], seed: number): T[] {
 }
 
 // Rotates every 3 hours so the homepage stays fresh without re-deploys
-/**
- * Six blocks that show every studio set, rather than six from whichever set
- * happens to cover the most categories.
- *
- * `pickSix` walks categories, so a set is picked in proportion to how many
- * categories it spans: Altair covers 25 where Auralis covers 60, and it turned
- * up in about half the slots its share of the catalogue deserved. This walks the
- * sets first and the categories second, so every set is represented before any
- * set takes a second slot, and no two blocks share a category.
- */
-function pickSixAcrossSets<T extends { name: string; category: string }>(
-  items: readonly T[],
-  seed: number
-): T[] {
-  const bySet = new Map<string, T[]>();
-  for (const item of items) {
-    const set = COLLECTION_BY_BLOCK.get(item.name);
-    if (!set) continue;
-    const pool = bySet.get(set) ?? [];
-    pool.push(item);
-    bySet.set(set, pool);
-  }
-
-  const sets = seededShuffle(Array.from(bySet.keys()), seed);
-  const picked: T[] = [];
-  const usedCategories = new Set<string>();
-
-  // Round-robin: one from each set, then round again for the remaining slots.
-  // The round cap is a floor guard for when a set runs out of fresh categories.
-  for (let round = 0; picked.length < 6 && round < 6; round++) {
-    for (const set of sets) {
-      if (picked.length === 6) break;
-      const pool = (bySet.get(set) ?? []).filter(
-        (block) => !usedCategories.has(block.category)
-      );
-      const choice = seededShuffle(pool, seed + picked.length)[0];
-      if (!choice) continue;
-      picked.push(choice);
-      usedCategories.add(choice.category);
-    }
-  }
-
-  return picked;
-}
-
 function getRotatingSeed(): number {
   const now = new Date();
   const threeHourBlock = Math.floor(now.getUTCHours() / 3);
@@ -118,34 +66,43 @@ function getRotatingSeed(): number {
   );
 }
 
-function pickSix<T extends { category: string }>(
-  items: readonly T[],
-  seed: number,
-  category: string | null
-): T[] {
-  if (category) {
-    const filtered = items.filter((i) => i.category === category);
-    return seededShuffle(filtered, seed).slice(0, 6);
-  }
-  const byCategory = new Map<string, T[]>();
-  for (const item of items) {
-    const arr = byCategory.get(item.category) ?? [];
-    arr.push(item);
-    byCategory.set(item.category, arr);
-  }
-  const cats = Array.from(byCategory.keys());
-  const shuffledCats = seededShuffle(cats, seed);
-  const picked: T[] = [];
-  for (const cat of shuffledCats) {
-    const pool = byCategory.get(cat);
-    if (pool && pool.length) {
-      const top = seededShuffle(pool, seed + picked.length)[0];
-      if (top) picked.push(top);
-    }
-    if (picked.length === 6) break;
-  }
-  return picked;
-}
+/*
+ * Hand-picked for the library bento: pieces whose motion reads at tile size (none
+ * of them in the hero's rotation) and components that look finished in a card.
+ * The seed rotates which of them show.
+ */
+const LIBRARY_PIECES = [
+  "ai53",
+  "money29",
+  "monitoring27",
+  "browser39",
+  "upload34",
+  "isometric240",
+  "search27",
+  "socialproof29",
+  "calendar38",
+  "automation22",
+  "progress19",
+  "dashboard39",
+  "realestate1",
+  "notification21",
+];
+// Blocks that do not read well at tile size
+const LIBRARY_SKIP_BLOCKS = new Set(["cta89"]);
+// Blocks shown in another's place when the rotation picks them: the slot stays, the block changes
+const LIBRARY_BLOCK_SWAPS: Record<string, string> = { cta91: "ecommerce46", cta88: "hotel51" };
+// Where a wide strip looks into a block, 0 its top and 1 its bottom; the default is the middle
+const LIBRARY_BLOCK_FOCUS: Record<string, number> = { ecommerce46: 0.45, hotel51: 0.15 };
+const LIBRARY_COMPONENTS = [
+  "talent-card",
+  "player-waveform",
+  "split-flap",
+  "meter-ring",
+  "time-countdown",
+  "notice-stack",
+  "heatmap-calendar",
+  "reaction-picker",
+];
 
 const FAQS = [
   {
@@ -202,22 +159,43 @@ const faqJsonLd = {
 export default async function HomePage() {
   const seed = getRotatingSeed();
 
-  const sixComponents = pickSix(allComponents, seed, null);
   /*
-   * The blocks strip shows the studio sets and nothing else: six blocks pulled at
-   * random from the whole catalogue read as six unrelated screenshots, while six
-   * from the sets read as a design language someone thought about. The
-   * membership list is generated from the sets' own demo copy — see
-   * scripts/generate-block-sets.ts, and rerun it when a set grows. A new set is
-   * live the moment that script has run; nothing here names one.
+   * The library's blocks come from the Auralis and Sirius sets: heroes, features
+   * and abouts fill the large squares, CTAs and testimonials the wide strips,
+   * since their shapes fit those.
    */
-  // Navbars and footers are page chrome: thin strips that look empty in a card
-  const hiddenCategories = new Set(["Coming Soon", "Navigation", "Navbar", "Footer"]);
-  const blockPool = blocks.filter(
-    (b) => !hiddenCategories.has(b.category) && STUDIO_SET_BLOCKS.has(b.name)
-  );
-  const sixBlocks = pickSixAcrossSets(blockPool, seed);
-  const sixRegistryComponents = seededShuffle(registryComponents, seed).slice(0, 6);
+  const setBlocks = new Set([...BLOCK_SETS.auralis, ...BLOCK_SETS.sirius]);
+  const fromSets = blocks.filter((b) => setBlocks.has(b.name) && !LIBRARY_SKIP_BLOCKS.has(b.name));
+  const toItem = (picked: (typeof blocks)[number]) => {
+    const b = blocks.find((other) => other.name === LIBRARY_BLOCK_SWAPS[picked.name]) ?? picked;
+    return { name: b.name, title: b.title, focus: LIBRARY_BLOCK_FOCUS[b.name] };
+  };
+  const libraryBlocks = {
+    large: seededShuffle(
+      fromSets.filter((b) => /^(hero|feature|about)\d/.test(b.name)),
+      seed
+    )
+      .slice(0, 2)
+      .map(toItem),
+    wide: seededShuffle(
+      fromSets.filter((b) => /^(cta|testimonial)\d/.test(b.name)),
+      seed
+    )
+      .slice(0, 2)
+      .map(toItem),
+  };
+
+  const libraryPieces = seededShuffle(LIBRARY_PIECES, seed)
+    .map((name) => allComponents.find((piece) => piece.name === name))
+    .filter((piece) => piece !== undefined)
+    .slice(0, 8)
+    .map((piece) => ({ name: piece.name, title: piece.title }));
+
+  const libraryComponents = seededShuffle(LIBRARY_COMPONENTS, seed)
+    .map((name) => registryComponents.find((c) => c.name === name))
+    .filter((c) => c !== undefined)
+    .slice(0, 4)
+    .map((c) => ({ name: c.name, title: c.title }));
 
   // The newest release, shown as a short pill in the hero.
   const newest = changelog[0];
@@ -234,170 +212,20 @@ export default async function HomePage() {
         release={latestRelease}
       />
 
-      <div className="mx-auto w-full max-w-6xl px-4 pt-16 md:px-6 md:pt-20">
-        {/* Blocks preview */}
-        <section className="mb-14">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className={typography.h2}>
-              <span className="font-medium">Full-page blocks</span>, production-ready
-            </h2>
-            <Button23
-              size="sm"
-              asChild
-              label="Browse all blocks"
-              tone="outline"
-              // The section is one tap from the top of the grid on a phone, and
-              // the first card under it goes to the same place; a full-width seal
-              // button there was a second front door taking a screenful.
-              className="hidden shrink-0 sm:inline-flex"
-            >
-              <Link href="/blocks" />
-            </Button23>
-          </div>
+      <div className="mx-auto w-full max-w-6xl px-4 pt-16 md:px-6 md:pt-24">
+        <HomeLibrary
+          className="mb-20 md:mb-28"
+          blocks={libraryBlocks}
+          pieces={libraryPieces}
+          components={libraryComponents}
+          counts={{
+            blocks: blocks.length,
+            pieces: allComponents.length,
+            components: registryComponents.length,
+          }}
+        />
 
-          <BlocksGrid blocks={sixBlocks} addedDates={recentBlockDates()} skeletonCount={6} />
-        </section>
-
-        {/* Components preview */}
-        <section className="mb-14">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className={typography.h2}>
-              <span className="font-medium">Components</span>, the primitives behind it all
-            </h2>
-            <Button23
-              size="sm"
-              asChild
-              label="Browse all components"
-              tone="outline"
-              // The section is one tap from the top of the grid on a phone, and
-              // the first card under it goes to the same place; a full-width seal
-              // button there was a second front door taking a screenful.
-              className="hidden shrink-0 sm:inline-flex"
-            >
-              <Link href="/components" />
-            </Button23>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {sixRegistryComponents.map((c) => (
-              <article
-                key={c.name}
-                className="group relative flex flex-col gap-3 rounded-xl bg-muted p-3 transition-colors hover:bg-muted-foreground/15 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-ring"
-              >
-                {/*
-                The preview is a picture of the component, not the component: these
-                demos are live, so a slider dragged and a switch flipped here left the
-                card looking clicked without ever going anywhere. `inert` takes the
-                whole subtree out of the tab order and the accessibility tree, and
-                `pointer-events-none` lets the click fall through to the link that
-                covers the card.
-              */}
-                <div
-                  inert
-                  className="pointer-events-none relative flex aspect-[4/3] select-none items-center justify-center overflow-hidden rounded-md bg-background"
-                >
-                  <RegistryComponentDemo name={c.name} />
-                </div>
-                <Link
-                  href={`/component/${c.name}`}
-                  aria-label={c.title}
-                  className="absolute inset-0 z-10 rounded-xl outline-none"
-                />
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Pieces preview */}
-        <section className="mb-14">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className={typography.h2}>
-              <span className="font-medium">Small pieces</span>, ready to drop in
-            </h2>
-            <Button23
-              size="sm"
-              asChild
-              label="Browse all pieces"
-              tone="outline"
-              // The section is one tap from the top of the grid on a phone, and
-              // the first card under it goes to the same place; a full-width seal
-              // button there was a second front door taking a screenful.
-              className="hidden shrink-0 sm:inline-flex"
-            >
-              <Link href="/pieces" />
-            </Button23>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {sixComponents.map((c) => (
-              <article
-                key={c.name}
-                className="group relative flex flex-col gap-3 rounded-xl bg-muted p-3 transition-colors hover:bg-muted-foreground/15 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-ring"
-              >
-                {/*
-                The preview is a picture of the component, not the component: these
-                demos are live, so a slider dragged and a switch flipped here left the
-                card looking clicked without ever going anywhere. `inert` takes the
-                whole subtree out of the tab order and the accessibility tree, and
-                `pointer-events-none` lets the click fall through to the link that
-                covers the card.
-              */}
-                <div
-                  inert
-                  className="pointer-events-none relative flex aspect-[4/3] select-none items-center justify-center overflow-hidden rounded-md"
-                >
-                  <ComponentDemo name={c.name} />
-                </div>
-                <Link
-                  href={`/piece/${c.name}`}
-                  aria-label={c.title}
-                  className="absolute inset-0 z-10 rounded-xl outline-none"
-                />
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Bottom sections (preserved from previous design) */}
         <div className="border-t pt-12 lg:pt-16">
-          <HomeSteps
-            className="pt-0"
-            heading="From browse to"
-            headingMuted="build in seconds."
-            button={{ label: "Start browsing", href: "/blocks" }}
-            items={[
-              {
-                title: "Browse",
-                description: `Explore ${blocks.length}+ blocks and ${allComponents.length}+ pieces across dozens of categories.`,
-                // The block's own photographs, kept as they are. Empty alt on purpose:
-                // beside "Browse" a description of an interior is a sentence a screen
-                // reader has to sit through for no reason.
-                image: {
-                  src: "https://images.unsplash.com/photo-1562146398-1b732c203bc4?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  alt: "",
-                },
-              },
-              {
-                title: "Copy",
-                description:
-                  "Click to copy the install command. Each piece is self-contained with all required styles and logic.",
-                image: {
-                  src: "https://images.unsplash.com/photo-1536185752-9dc80dd63510?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  alt: "",
-                },
-              },
-              {
-                title: "Customize",
-                description:
-                  "Tailwind CSS makes it easy to adjust colors, spacing, and typography to match your brand.",
-                image: {
-                  src: "https://images.unsplash.com/photo-1516247524857-8dc5f4786cb3?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  alt: "",
-                },
-              },
-            ]}
-          />
-
           {/* The structured data is emitted from the same FAQS array the section renders. */}
           <section className="mb-8 lg:mb-12">
             <script

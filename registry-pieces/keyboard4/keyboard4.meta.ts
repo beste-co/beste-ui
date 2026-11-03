@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Large tactile keycap with subtle shadow and a caption reading underneath.",
   category: "Keyboard",
+  backdrop: "none",
 };

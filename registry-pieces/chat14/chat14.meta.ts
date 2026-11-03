@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Thin horizontal rule with a muted date pill in the middle, used to break up chat days.",
   category: "Chat",
+  backdrop: "none",
 };

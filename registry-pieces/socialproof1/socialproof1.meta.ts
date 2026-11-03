@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Overlapping avatars with an optional +N tail for spillover members.",
   category: "Social Proof",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

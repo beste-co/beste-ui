@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Unified diff with added and removed lines tinted green and red.",
   category: "Terminal",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Chat bubble with a question and voting options. Each row fills proportionally to its vote count.",
   category: "Chat",
+  stageFit: true,
 };

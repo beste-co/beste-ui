@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Circular SVG ring with a centered percentage. Tone sets the stroke color.",
   category: "Progress",
+  backdrop: "none",
 };

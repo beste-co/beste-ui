@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Three headline stats side by side with uppercase labels. Clean, no chrome.",
   category: "Social Proof",
+  backdrop: "none",
 };

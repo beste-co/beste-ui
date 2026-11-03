@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Minimal focus card with a focus icon and the current filename.",
   category: "Editor",
+  backdrop: "none",
 };

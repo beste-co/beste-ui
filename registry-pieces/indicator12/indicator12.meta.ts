@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Stock status chip with a dot and auto-phrased copy across in-stock, low, out, and preorder states.",
   category: "Indicator",
+  backdrop: "none",
 };

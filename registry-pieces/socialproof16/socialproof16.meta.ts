@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Three-avatar stack sitting next to an inline invitation line.",
   category: "Social Proof",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

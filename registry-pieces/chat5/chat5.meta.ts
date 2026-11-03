@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Message bubble with a small floating reaction chip tucked into the bottom corner.",
   category: "Chat",
+  stageFit: true,
 };

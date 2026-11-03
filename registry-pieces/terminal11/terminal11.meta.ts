@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Interactive prompt showing an evaluated expression and its result.",
   category: "Terminal",
+  backdrop: "none",
 };

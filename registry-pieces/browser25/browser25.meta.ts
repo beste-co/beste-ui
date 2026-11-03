@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Dark console row with a colored level icon, the source, and the log message.",
   category: "Browser",
+  backdrop: "none",
 };

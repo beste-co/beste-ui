@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Gradient card with a flame glyph beside a big day count and its label.",
   category: "Progress",
+  backdrop: "none",
 };

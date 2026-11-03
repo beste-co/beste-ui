@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Row of round color swatches where the selected one picks up an outer contrast ring.",
   category: "Form",
+  backdrop: "none",
 };

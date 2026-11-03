@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Horizontal pipeline diagram with tone-tinted stage nodes connected by arrows, showing the path from query to answer.",
   category: "AI",
+  backdrop: "none",
 };

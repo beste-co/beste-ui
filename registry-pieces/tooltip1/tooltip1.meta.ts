@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Dark tooltip bubble with a small triangular arrow. Direction points the tail up or down.",
   category: "Tooltip",
+  backdrop: "none",
 };

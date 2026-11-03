@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Row of tactile transport keycaps with the center play/pause lit in primary and the track name above.",
   category: "Keyboard",
+  backdrop: "none",
 };

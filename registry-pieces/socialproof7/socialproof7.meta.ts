@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Single avatar beside a one-line quoted review and an author caption.",
   category: "Social Proof",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

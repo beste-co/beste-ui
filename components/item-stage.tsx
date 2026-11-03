@@ -6,6 +6,7 @@ import { BackgroundDemoContent, type DemoContentTone } from "@/components/backgr
 import { activeStage, signature } from "@/components/component-playground";
 import { DemoContentSwitch } from "@/components/demo-content-switch";
 import { FitScale } from "@/components/fit-scale";
+import { PieceBackdrop } from "@/components/piece-backdrop";
 import { ReplayButton } from "@/components/replay-button";
 import { StageCustomizer } from "@/components/stage-customizer";
 import { StageMesh } from "@/components/stage-mesh";
@@ -45,10 +46,28 @@ interface ItemStageProps {
   playground?: PlaygroundConfig;
   /** Card art fills its box, so it is shown inside a card the size it will be used at. */
   cardFrame?: boolean;
+  /** Image the item sits on, for frosted pieces whose see-through rim needs something behind it. */
+  backdrop?: string;
+  /** Customizing updates the running demo in place; only a change in the props' structure remounts it. */
+  liveProps?: boolean;
+  /** A box as wide as the item, for pieces that push themselves to one side of a wide row. */
+  stageFit?: boolean;
 }
 
 // Choices that follow the reader from one item to the next, by control family
 const carried = new Map<string, Record<string, unknown>>();
+
+/** The props' structure only: keys, array lengths and value types, never the values themselves. */
+function shape(value: unknown, seen = new WeakSet<object>()): string {
+  if (Array.isArray(value)) return `[${value.map((item) => shape(item, seen)).join(",")}]`;
+  if (value && typeof value === "object") {
+    if ("$$typeof" in value || seen.has(value)) return "node";
+    seen.add(value);
+    const entries = Object.entries(value as Record<string, unknown>).sort(([a], [b]) => a.localeCompare(b));
+    return `{${entries.map(([key, item]) => `${key}:${shape(item, seen)}`).join(",")}}`;
+  }
+  return typeof value;
+}
 
 /** The demo props with whatever was chosen on a sibling laid over them; null when nothing was. */
 function withCarried(playground: PlaygroundConfig | undefined, base: Record<string, unknown>) {
@@ -79,6 +98,9 @@ export function ItemStage({
   demoContentOff = false,
   playground,
   cardFrame = false,
+  backdrop,
+  liveProps = false,
+  stageFit = false,
 }: ItemStageProps) {
   const [showContent, setShowContent] = useState(!demoContentOff);
   const [toneOverride, setToneOverride] = useState<string | undefined>(undefined);
@@ -114,8 +136,20 @@ export function ItemStage({
     setToneOverride(undefined);
   };
 
-  // A customized preview is keyed by its props, so structural changes land; backgrounds read props live instead
-  const previewKey = `${replay}-${custom ? signature(custom) : ""}`;
+  // A customized preview is keyed by its props, so structural changes land; backgrounds read props live instead.
+  // Live-prop items are keyed by structure alone, so a running animation keeps going through value edits.
+  const previewKey = liveProps
+    ? `${replay}-${shape(custom ?? base)}`
+    : `${replay}-${custom ? signature(custom) : ""}`;
+
+  // A box the item's own width leaves a side-aligned bubble no room to drift into
+  const demo = stageFit ? (
+    <div className="w-fit max-w-full">
+      <Component key={previewKey} {...props} />
+    </div>
+  ) : (
+    <Component key={previewKey} {...props} />
+  );
 
   const controls = isAnimated || background || (tones && tones.length > 0) || Boolean(playground);
 
@@ -153,8 +187,13 @@ export function ItemStage({
           {activeStage(playground, props)?.effect === "mesh-gradient" && <StageMesh />}
           <Component key={previewKey} {...props} />
         </div>
+      ) : backdrop ? (
+        <div className="relative aspect-square w-full max-w-5xl overflow-hidden rounded-3xl md:aspect-[16/10]">
+          <PieceBackdrop value={backdrop} sizes="(min-width: 1024px) 1024px, 100vw" />
+          <div className="absolute inset-0 flex items-center justify-center p-6 md:p-12">{demo}</div>
+        </div>
       ) : (
-        <Component key={previewKey} {...props} />
+        demo
       )}
 
       {controls && (

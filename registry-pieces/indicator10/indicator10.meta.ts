@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Four ascending bars that fill with the current reception level, paired with a network name and label.",
   category: "Indicator",
+  backdrop: "none",
 };

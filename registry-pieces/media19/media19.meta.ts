@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Perforated stamp with a pictorial frame, a value badge, and a serif country line.",
   category: "Media",
+  backdrop: "none",
 };

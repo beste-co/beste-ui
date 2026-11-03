@@ -6,4 +6,6 @@ export const meta: ComponentMeta = {
   description:
     "Quoted message block inside a bubble, with the replying author and the reply text beneath.",
   category: "Chat",
+  backdrop: "none",
+  stageFit: true,
 };

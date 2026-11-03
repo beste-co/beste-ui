@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Compact breadcrumb trail with chevron separators and the trailing crumb rendered in bold.",
   category: "Nav",
+  backdrop: "none",
 };

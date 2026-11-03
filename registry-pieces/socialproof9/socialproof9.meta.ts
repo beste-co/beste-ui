@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Centered long-form testimonial with author and company beneath. No quote marks icon, just typography.",
   category: "Social Proof",
+  backdrop: "none",
 };

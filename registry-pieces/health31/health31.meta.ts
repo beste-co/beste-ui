@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "A bpm figure drifting the way a real reading does, a heart glyph beating beside it, and an ECG line scrolling past underneath without a seam.",
   category: "Health",
+  backdrop: "none",
 };

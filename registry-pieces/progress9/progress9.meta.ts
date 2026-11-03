@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Emerald filled circle with a bold check inside, a soft pinging ring, and a title plus description beneath.",
   category: "Progress",
+  backdrop: "none",
 };

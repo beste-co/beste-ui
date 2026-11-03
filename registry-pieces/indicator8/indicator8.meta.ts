@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Inline percent change with a directional arrow, green for up and rose for down, beside a compare period.",
   category: "Indicator",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Two-by-two grid of AI-generated image variants. The selected tile gets a primary border.",
   category: "AI",
+  backdrop: "none",
 };

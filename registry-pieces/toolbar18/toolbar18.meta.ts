@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Dark presenter toolbar with prev / play-pause / next, a slide counter, and a fullscreen button.",
   category: "Toolbar",
+  backdrop: "none",
 };

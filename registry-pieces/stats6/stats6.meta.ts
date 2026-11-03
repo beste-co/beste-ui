@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Small progress ring with a centered score paired with a short label and caption.",
   category: "Stats",
+  backdrop: "none",
 };

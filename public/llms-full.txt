@@ -12,8 +12,8 @@ The catalog has four tiers:
 
 - **Blocks** (https://beste.dev/blocks): full page sections such as heroes, pricing, features, testimonials and footers. Drop one in and you have a finished section, wired with realistic demo content. 168 blocks in 41 categories; 168 are free and 0 are Pro.
 - **Pages** (https://beste.dev/pages): whole screens composed from the blocks. Installing a page installs every block, piece and primitive behind it in one command. 0 pages.
-- **Pieces** (https://beste.dev/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,326 pieces in 47 categories, all free.
-- **Components** (https://beste.dev/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 294 components in 41 categories, all free.
+- **Pieces** (https://beste.dev/pieces): small, self-contained UI parts such as stat cards, prompt inputs and media rows. They drop into the media slots inside a block or into your own layouts. 1,397 pieces in 47 categories, all free.
+- **Components** (https://beste.dev/components): styled primitives built on shadcn/ui, with extra variants and tones beyond the defaults: buttons, badges, cards, text effects, chart and inspector controls. 295 components in 41 categories, all free.
 
 Every asset has a detail page with a live preview, the install command in both flavors, its props and a README. Blocks live at `/block/{name}`, pages at `/page/{name}`, pieces at `/piece/{name}` and components at `/component/{name}`.
 
@@ -507,59 +507,59 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 
 ## Pieces
 
-1,326 small widgets, all free. Listing: https://beste.dev/pieces. Each category page lists every piece in it.
+1,397 small widgets, all free. Listing: https://beste.dev/pieces. Each category page lists every piece in it.
 
 - [Isometric](https://beste.dev/pieces/isometric): 250 pieces
-- [Shapes](https://beste.dev/pieces/shapes): 80 pieces
-- [Editor](https://beste.dev/pieces/editor): 56 pieces
-- [AI](https://beste.dev/pieces/ai): 52 pieces
-- [Form](https://beste.dev/pieces/form): 40 pieces
-- [Chat](https://beste.dev/pieces/chat): 39 pieces
-- [Browser](https://beste.dev/pieces/browser): 38 pieces
-- [Card](https://beste.dev/pieces/card): 37 pieces
-- [Commerce](https://beste.dev/pieces/commerce): 35 pieces
-- [Dashboard](https://beste.dev/pieces/dashboard): 35 pieces
-- [Calendar](https://beste.dev/pieces/calendar): 34 pieces
-- [Input](https://beste.dev/pieces/input): 33 pieces
-- [Upload](https://beste.dev/pieces/upload): 33 pieces
-- [Health](https://beste.dev/pieces/health): 31 pieces
+- [Shapes](https://beste.dev/pieces/shapes): 83 pieces
+- [Editor](https://beste.dev/pieces/editor): 59 pieces
+- [AI](https://beste.dev/pieces/ai): 57 pieces
+- [Chat](https://beste.dev/pieces/chat): 44 pieces
+- [Form](https://beste.dev/pieces/form): 42 pieces
+- [Browser](https://beste.dev/pieces/browser): 40 pieces
+- [Dashboard](https://beste.dev/pieces/dashboard): 40 pieces
+- [Calendar](https://beste.dev/pieces/calendar): 39 pieces
+- [Card](https://beste.dev/pieces/card): 39 pieces
+- [Commerce](https://beste.dev/pieces/commerce): 36 pieces
+- [Input](https://beste.dev/pieces/input): 34 pieces
+- [Upload](https://beste.dev/pieces/upload): 34 pieces
+- [Health](https://beste.dev/pieces/health): 32 pieces
+- [Travel](https://beste.dev/pieces/travel): 32 pieces
+- [Education](https://beste.dev/pieces/education): 31 pieces
 - [Nav](https://beste.dev/pieces/nav): 31 pieces
-- [Travel](https://beste.dev/pieces/travel): 31 pieces
-- [Education](https://beste.dev/pieces/education): 30 pieces
 - [Legal](https://beste.dev/pieces/legal): 30 pieces
-- [Media](https://beste.dev/pieces/media): 27 pieces
-- [Search](https://beste.dev/pieces/search): 25 pieces
-- [Monitoring](https://beste.dev/pieces/monitoring): 24 pieces
-- [Notification](https://beste.dev/pieces/notification): 23 pieces
-- [Social Proof](https://beste.dev/pieces/social-proof): 23 pieces
-- [Toolbar](https://beste.dev/pieces/toolbar): 22 pieces
-- [Automation](https://beste.dev/pieces/automation): 21 pieces
+- [Media](https://beste.dev/pieces/media): 28 pieces
+- [Social Proof](https://beste.dev/pieces/social-proof): 28 pieces
+- [Monitoring](https://beste.dev/pieces/monitoring): 27 pieces
+- [Search](https://beste.dev/pieces/search): 27 pieces
+- [Notification](https://beste.dev/pieces/notification): 26 pieces
+- [Automation](https://beste.dev/pieces/automation): 24 pieces
+- [Stats](https://beste.dev/pieces/stats): 23 pieces
+- [Toolbar](https://beste.dev/pieces/toolbar): 23 pieces
 - [Finance](https://beste.dev/pieces/finance): 21 pieces
-- [Stats](https://beste.dev/pieces/stats): 19 pieces
-- [Progress](https://beste.dev/pieces/progress): 18 pieces
-- [Code](https://beste.dev/pieces/code): 17 pieces
+- [Progress](https://beste.dev/pieces/progress): 21 pieces
+- [Code](https://beste.dev/pieces/code): 20 pieces
 - [Keyboard](https://beste.dev/pieces/keyboard): 17 pieces
 - [Indicator](https://beste.dev/pieces/indicator): 15 pieces
 - [Terminal](https://beste.dev/pieces/terminal): 15 pieces
 - [Ticket](https://beste.dev/pieces/ticket): 14 pieces
 - [Event](https://beste.dev/pieces/event): 13 pieces
 - [Food](https://beste.dev/pieces/food): 11 pieces
+- [Location](https://beste.dev/pieces/location): 11 pieces
 - [Tooltip](https://beste.dev/pieces/tooltip): 11 pieces
 - [Weather](https://beste.dev/pieces/weather): 11 pieces
 - [Fitness](https://beste.dev/pieces/fitness): 10 pieces
 - [Logo](https://beste.dev/pieces/logo): 10 pieces
 - [Realestate](https://beste.dev/pieces/realestate): 10 pieces
-- [Location](https://beste.dev/pieces/location): 9 pieces
-- [Money](https://beste.dev/pieces/money): 7 pieces
+- [Money](https://beste.dev/pieces/money): 9 pieces
 - [Tag](https://beste.dev/pieces/tag): 5 pieces
 - [Socialproof](https://beste.dev/pieces/socialproof): 5 pieces
 - [Chart](https://beste.dev/pieces/chart): 4 pieces
-- [Receipt](https://beste.dev/pieces/receipt): 3 pieces
+- [Receipt](https://beste.dev/pieces/receipt): 4 pieces
 - [Mascot](https://beste.dev/pieces/mascot): 1 pieces
 
 ## Components
 
-294 styled primitives, all free. Listing: https://beste.dev/components.
+295 styled primitives, all free. Listing: https://beste.dev/components.
 
 - [Background](https://beste.dev/components/background): 46 components
 - [Inspector](https://beste.dev/components/inspector): 46 components
@@ -567,7 +567,7 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 - [Text](https://beste.dev/components/text): 27 components
 - [Media](https://beste.dev/components/media): 26 components
 - [Button](https://beste.dev/components/button): 22 components
-- [Badge](https://beste.dev/components/badge): 19 components
+- [Badge](https://beste.dev/components/badge): 20 components
 - [Filter](https://beste.dev/components/filter): 14 components
 - [Dashboard](https://beste.dev/components/dashboard): 8 components
 - [Chart](https://beste.dev/components/chart): 6 components
@@ -613,6 +613,7 @@ Long-form posts at https://beste.dev/blog. Feed: https://beste.dev/blog/feed.xml
 
 The full changelog is at https://beste.dev/changelog; the latest releases:
 
+- v1.38.0 (2026-11-02): 32 new blocks with live product cards
 - v1.37.0 (2026-10-15): Real Estate: category unlocked
 - v1.36.0 (2026-10-15): 35 new navbars
 - v1.35.0 (2026-10-15): Hotel: category unlocked
@@ -624,7 +625,6 @@ The full changelog is at https://beste.dev/changelog; the latest releases:
 - v1.29.0 (2026-09-26): Motion heroes and scroll features
 - v1.28.0 (2026-09-26): Backgrounds, media and motion components
 - v1.27.0 (2026-09-10): Pieces drop: settings, consent, catalogue, tools
-- v1.26.0 (2026-09-08): Blocks where the card is the link
 
 ## Links
 

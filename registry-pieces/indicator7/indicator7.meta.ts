@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Minimal HH:MM:SS countdown that ticks every second toward a target date, defaulting to three hours out.",
   category: "Indicator",
+  backdrop: "none",
 };

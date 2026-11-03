@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "A kitchen order walks itself from received to ready, swapping the status pill and puffing steam over the tile while it cooks.",
   category: "Food",
+  backdrop: "none",
 };

@@ -4,6 +4,7 @@ import { ItemStage } from "@/components/item-stage";
 import { UsageSection } from "@/components/usage-section";
 import { components } from "@/lib/components";
 import { autoPiecePlayground } from "@/lib/piece-auto-playground";
+import { pieceBackdrop } from "@/lib/piece-backdrop";
 import type { PlaygroundConfig } from "@/lib/playground-types";
 import { usageSnippet } from "@/lib/usage-snippet";
 
@@ -39,6 +40,9 @@ export function PieceStageView({ name }: { name: string }) {
       isAnimated={entry.isAnimated}
       playground={entry.playground ?? playgroundFor(name, entry.demoProps)}
       cardFrame={CARD_ART_CATEGORIES.has(entry.category)}
+      backdrop={pieceBackdrop(entry)}
+      liveProps
+      stageFit={entry.stageFit}
     />
   );
 }

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Gradient thumbnail with a circled play button and duration badge.",
   category: "Media",
+  backdrop: "none",
 };

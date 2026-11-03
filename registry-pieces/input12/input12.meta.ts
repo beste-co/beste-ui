@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Locked field with a muted fill, padlock icon, and a why-locked helper line underneath.",
   category: "Input",
+  backdrop: "none",
 };

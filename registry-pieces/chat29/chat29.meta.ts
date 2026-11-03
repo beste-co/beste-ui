@@ -6,4 +6,6 @@ export const meta: ComponentMeta = {
   description:
     "Chat bubble with a location photo and the place name and address beneath.",
   category: "Chat",
+  backdrop: "none",
+  stageFit: true,
 };

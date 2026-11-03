@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Serif masthead and issue line set over the top of a portrait cover photo.",
   category: "Media",
+  backdrop: "none",
 };

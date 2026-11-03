@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Row of N equal chunks with the first K filled in the chosen tone. Trailing fraction count.",
   category: "Progress",
+  backdrop: "none",
 };

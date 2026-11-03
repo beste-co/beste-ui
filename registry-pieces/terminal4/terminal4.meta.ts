@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Package manager tabs that swap the install command, with a copy button.",
   category: "Terminal",
+  backdrop: "none",
 };

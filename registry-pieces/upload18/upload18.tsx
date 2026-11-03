@@ -14,7 +14,7 @@ interface Upload18Props {
 }
 
 const defaultImage =
-  "https://images.unsplash.com/photo-1776757845431-87e426f718a4?w=300&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2Nnx8fGVufDB8fHx8fA%3D%3D";
+  "https://oud.pics/b/gradients/gradient-dunes-dawn.webp";
 
 export const upload18Demo: Upload18Props = {
   filename: "brand-hero.jpg",

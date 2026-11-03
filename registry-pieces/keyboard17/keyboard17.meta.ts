@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Keycaps press down one after another, their shadows shrinking as they sink, and the matching action label fades in beside them before the next shortcut takes a turn.",
   category: "Keyboard",
+  backdrop: "none",
 };

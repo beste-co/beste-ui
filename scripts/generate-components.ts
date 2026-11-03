@@ -267,6 +267,8 @@ function buildEntries(metas: CollectedMeta[], withPlayground = false): string[] 
       if (m.fullBleed) props.push(`    fullBleed: true`);
       if (m.demoContentOff) props.push(`    demoContentOff: true`);
       if (m.cardScale) props.push(`    cardScale: ${m.cardScale}`);
+      if (m.backdrop) props.push(`    backdrop: ${JSON.stringify(m.backdrop)}`);
+      if (m.stageFit) props.push(`    stageFit: true`);
       // Both generated files import their playgrounds now, so both may name one.
       // The flag stays because an entry may only name an identifier the file it
       // lands in actually imported.
@@ -341,6 +343,10 @@ export interface ComponentMeta {
   demoContentOff?: boolean;
   /** Scale of the demo inside its listing card */
   cardScale?: number;
+  /** Image the piece is shown on in its stage and the changelog preview */
+  backdrop?: string;
+  /** Previewed in a box as wide as the piece, for pieces that push to one side */
+  stageFit?: boolean;
   /** Props the documentation page lets a reader turn, if the piece ships a config */
   playground?: PlaygroundConfig;
 }
@@ -423,6 +429,10 @@ export interface RegistryComponentMeta {
   demoContentOff?: boolean;
   /** Scale of the demo inside its listing card */
   cardScale?: number;
+  /** Image the piece is shown on in its stage and the changelog preview */
+  backdrop?: string;
+  /** Previewed in a box as wide as the piece, for pieces that push to one side */
+  stageFit?: boolean;
   /** Docs playground, from {name}.playground.ts beside the component */
   playground?: PlaygroundConfig;
 }

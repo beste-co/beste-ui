@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "35mm negative strip with sprocket holes framing a row of photo cells.",
   category: "Media",
+  backdrop: "none",
 };

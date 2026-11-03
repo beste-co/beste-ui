@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "1.586 aspect payment card with a gradient body, gold chip, masked digits, holder name, and expiry.",
   category: "Finance",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Dark editor card with three traffic-light dots, a filename tab, and line-numbered code.",
   category: "Code",
+  backdrop: "none",
 };

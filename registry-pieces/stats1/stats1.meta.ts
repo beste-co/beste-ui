@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Large headline number with an uppercase label and an optional tiny hint line.",
   category: "Stats",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Thermal receipt with a merchant header, itemized lines, a total row, and a jagged torn edge at the bottom.",
   category: "Ticket",
+  backdrop: "none",
 };

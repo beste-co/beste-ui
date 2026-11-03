@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Five filled amber stars over a numeric score and review count.",
   category: "Social Proof",
+  backdrop: "none",
 };

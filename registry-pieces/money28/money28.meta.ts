@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Payment card that swings in from a slight 3D angle, uncovers its masked number one group at a time, and fades in the holder name and expiry last.",
   category: "Money",
   isAnimated: true,
+  backdrop: "none",
 };

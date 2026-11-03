@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Chat bubble with three bouncing dots signaling that the assistant is composing a reply.",
   category: "AI",
+  backdrop: "none",
 };

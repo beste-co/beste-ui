@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Log lines tagged by level in info, warn, error, and ok colors.",
   category: "Terminal",
+  backdrop: "none",
 };

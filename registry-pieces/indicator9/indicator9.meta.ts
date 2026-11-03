@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Timestamp indicator with a dot that pings when live, holds sky when recent, or glows amber when stale.",
   category: "Indicator",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Wrapping row of tinted tags in five tones, each optionally removable.",
   category: "Tag",
+  backdrop: "none",
 };

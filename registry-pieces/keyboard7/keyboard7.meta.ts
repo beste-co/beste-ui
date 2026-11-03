@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Lit-up key with a pinging halo behind it and a caption beneath to cue the user.",
   category: "Keyboard",
+  backdrop: "none",
 };

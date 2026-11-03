@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Stacked task list with done, running, and pending status markers.",
   category: "Terminal",
+  backdrop: "none",
 };

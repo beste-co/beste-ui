@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Phone-style number pad with tactile keycaps and a row of filled dots tracking how many digits are entered.",
   category: "Keyboard",
+  backdrop: "none",
 };

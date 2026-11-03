@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Monospace install line with a segmented progress meter and percentage.",
   category: "Terminal",
+  backdrop: "none",
 };

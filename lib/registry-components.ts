@@ -32,6 +32,7 @@ import { Badge21, badge21Demo } from "@/registry-components/badge21/badge21";
 import { Badge22, badge22Demo } from "@/registry-components/badge22/badge22";
 import { Badge23, badge23Demo } from "@/registry-components/badge23/badge23";
 import { Badge24, badge24Demo } from "@/registry-components/badge24/badge24";
+import { Badge25, badge25Demo } from "@/registry-components/badge25/badge25";
 import { BarChart, barChartDemo } from "@/registry-components/bar-chart/bar-chart";
 import { BauhausComposition, bauhausCompositionDemo } from "@/registry-components/bauhaus-composition/bauhaus-composition";
 import { BlobGradient, blobGradientDemo } from "@/registry-components/blob-gradient/blob-gradient";
@@ -326,6 +327,7 @@ import { playground as badge21Playground } from "@/registry-components/badge21/b
 import { playground as badge22Playground } from "@/registry-components/badge22/badge22.playground";
 import { playground as badge23Playground } from "@/registry-components/badge23/badge23.playground";
 import { playground as badge24Playground } from "@/registry-components/badge24/badge24.playground";
+import { playground as badge25Playground } from "@/registry-components/badge25/badge25.playground";
 import { playground as barChartPlayground } from "@/registry-components/bar-chart/bar-chart.playground";
 import { playground as bauhausCompositionPlayground } from "@/registry-components/bauhaus-composition/bauhaus-composition.playground";
 import { playground as blobGradientPlayground } from "@/registry-components/blob-gradient/blob-gradient.playground";
@@ -623,6 +625,10 @@ export interface RegistryComponentMeta {
   demoContentOff?: boolean;
   /** Scale of the demo inside its listing card */
   cardScale?: number;
+  /** Image the piece is shown on in its stage and the changelog preview */
+  backdrop?: string;
+  /** Previewed in a box as wide as the piece, for pieces that push to one side */
+  stageFit?: boolean;
   /** Docs playground, from {name}.playground.ts beside the component */
   playground?: PlaygroundConfig;
 }
@@ -918,6 +924,16 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { Badge24 } from \"@/components/beste/component/badge24\";\n\n<Badge24 text=\"Alder Row, Riverside\" />\n\n<Badge24\n  text=\"The residences\"\n  as=\"span\"            // \"p\" (default) | \"span\" | \"div\"\n  trigger=\"mount\"      // \"view\" (default) | \"mount\" | \"none\"\n  delay={0.2}          // seconds before the rule draws\n  className=\"text-background/80\"   // color for dark or photographic surfaces\n/>",
     isAnimated: true,
     playground: badge24Playground,
+  },
+  {
+    name: "badge25",
+    title: "Asterisk Eyebrow",
+    description: "A quiet sentence-case eyebrow led by a small asterisk in the primary color. Sits above a section heading; swap the icon or render it as a span.",
+    category: "Badge",
+    component: Badge25,
+    demoProps: badge25Demo,
+    usage: "import { Badge25 } from \"@/components/beste/component/badge25\";\nimport { Sparkle } from \"lucide-react\";\n\n<Badge25 text=\"AI inbox for small teams\" />\n\n<Badge25\n  text=\"Early access\"\n  icon={Sparkle}               // leading icon (default: Asterisk)\n  as=\"span\"                    // \"p\" (default) | \"span\" | \"div\"\n  className=\"mb-5 justify-center\"\n/>",
+    playground: badge25Playground,
   },
   {
     name: "bar-chart",
@@ -3492,7 +3508,10 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { SmokeGradient } from \"@/components/beste/component/smoke-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <SmokeGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Pale incense on a light page\n<SmokeGradient\n  className=\"min-h-[32rem]\"\n  baseColor=\"#f4f1ec\"\n  colors={[\"#d9d2c8\", \"#b7a6c9\", \"#8f7fb0\"]}\n  plumes={1}\n  curl={0.8}\n  softness={0.8}\n/>",
     isAnimated: true,
     playground: smokeGradientPlayground,
-  },
+  }
+];
+
+const _allRegistryComponents_1: RegistryComponentMeta[] = [
   {
     name: "snippet-install",
     title: "Snippet Install",
@@ -3504,10 +3523,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { SnippetInstall } from \"@/components/beste/component/snippet-install\";\n\n// Installs, with the command written for each manager\n<SnippetInstall packages={[\"motion\", \"lucide-react\"]} />\n\n// A dev dependency\n<SnippetInstall packages=\"@biomejs/biome\" dev />\n\n// Run once without installing: npx, pnpm dlx, yarn dlx, bunx\n<SnippetInstall kind=\"exec\" packages=\"shadcn@latest add button\" />\n\n// Exact commands where the derived ones do not fit\n<SnippetInstall\n  managers={[\"pnpm\", \"bun\"]}\n  commands={{ pnpm: \"pnpm create next-app@latest\", bun: \"bun create next-app\" }}\n/>\n\n<SnippetInstall\n  packages=\"zod\"\n  defaultManager=\"pnpm\"   // shown until the reader picks\n  remember={false}        // keep this snippet's pick to itself\n  prompt={false}          // no $ before the command\n  tone=\"outline\"          // \"muted\" (default) | \"outline\" | \"ghost\"\n  size=\"sm\"               // \"sm\" | \"default\" | \"lg\"\n  onCopy={(command) => console.log(\"Copied\", command)}\n/>",
     cardScale: 0.7,
     playground: snippetInstallPlayground,
-  }
-];
-
-const _allRegistryComponents_1: RegistryComponentMeta[] = [
+  },
   {
     name: "split-flap",
     title: "Split-Flap Board",

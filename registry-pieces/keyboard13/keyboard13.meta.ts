@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Row of small tactile keycaps laid out in order, great for Konami-style cheat codes or macro combos.",
   category: "Keyboard",
+  backdrop: "none",
 };

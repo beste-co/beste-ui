@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Matted gallery frame with a serif plaque caption beneath the print.",
   category: "Media",
+  backdrop: "none",
 };

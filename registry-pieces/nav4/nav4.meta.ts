@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Horizontal tabs with a thin bottom rail and a primary underline under the active label.",
   category: "Nav",
+  backdrop: "none",
 };

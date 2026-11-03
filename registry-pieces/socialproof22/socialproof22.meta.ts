@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Overlapping member avatars above a bold trust line and an inline star rating.",
   category: "Social Proof",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

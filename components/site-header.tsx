@@ -25,6 +25,7 @@ import { BesteText } from "@/components/icons/beste-text";
 import { GitHubLogo } from "@/components/icons/github-logo";
 import { XLogo } from "@/components/icons/x-logo";
 import { LoginModal } from "@/components/login-modal";
+import { SiteMegaMenu } from "@/components/site-mega-menu";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Kbd } from "@/components/ui/kbd";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
@@ -127,6 +128,9 @@ export function SiteHeader() {
 
   const [mounted, setMounted] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
+  // Desktop opens the mega menu into the hero; below lg the same control opens the side panel
+  const [megaOpen, setMegaOpen] = React.useState(false);
+  const closeMega = React.useCallback(() => setMegaOpen(false), []);
   const [loginOpen, setLoginOpen] = React.useState(false);
   const [avatarGradient, setAvatarGradient] = React.useState<{
     fromColor: string;
@@ -137,7 +141,10 @@ export function SiteHeader() {
   React.useEffect(() => setMounted(true), []);
 
   // The mobile panel is part of the page, not a route: a navigation has to close it.
-  React.useEffect(() => setMenuOpen(false), [pathname]);
+  React.useEffect(() => {
+    setMenuOpen(false);
+    setMegaOpen(false);
+  }, [pathname]);
 
   const user = session?.user;
 
@@ -218,7 +225,7 @@ export function SiteHeader() {
     <>
       {/* Chrome, not content: the Markdown rendition drops it and opens with
           the site preamble instead. See lib/html-to-markdown.ts. */}
-      <header data-md-omit="" className={cn("w-full bg-background", pathname !== "/" && "border-b")}>
+      <header data-md-omit="" className={cn("relative z-50 w-full bg-background", pathname !== "/" && "border-b")}>
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-5 px-4 md:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           <Link
             href="/"
@@ -279,16 +286,25 @@ export function SiteHeader() {
               */}
               <button
                 type="button"
-                aria-label="Menu"
-                aria-expanded={menuOpen}
-                onClick={() => setMenuOpen(true)}
-                className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-muted/60 text-foreground transition-colors hover:bg-muted"
+                aria-label={megaOpen ? "Close menu" : "Menu"}
+                aria-expanded={menuOpen || megaOpen}
+                aria-controls={megaOpen ? "site-mega-menu" : undefined}
+                onClick={() => {
+                  if (window.matchMedia("(min-width: 1024px)").matches) setMegaOpen((open) => !open);
+                  else setMenuOpen(true);
+                }}
+                className={cn(
+                  "flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors",
+                  megaOpen ? "bg-foreground text-background" : "bg-muted/60 hover:bg-muted",
+                )}
               >
                 {/*
                   The avatar keeps a margin inside the 36px control: edge to edge
                   it reads larger than the GitHub mark beside it.
                 */}
-                {user ? (
+                {megaOpen ? (
+                  <HugeiconsIcon icon={Cancel01Icon} size={16} strokeWidth={2} />
+                ) : user ? (
                   avatar("size-7 text-xs")
                 ) : (
                   <HugeiconsIcon icon={Menu01Icon} size={16} strokeWidth={2} />
@@ -297,6 +313,23 @@ export function SiteHeader() {
             </div>
           </div>
         </nav>
+
+        <SiteMegaMenu
+          open={megaOpen}
+          onClose={closeMega}
+          pathname={pathname}
+          user={user}
+          hasPro={hasPro}
+          avatar={avatar("size-10 shrink-0 text-sm")}
+          onSignIn={() => {
+            setMegaOpen(false);
+            setLoginOpen(true);
+          }}
+          onLogout={logout}
+          theme={mounted ? (theme as "light" | "dark" | "paper") : undefined}
+          onThemeChange={setTheme}
+          githubRepo={GITHUB_REPO}
+        />
       </header>
 
       {/*

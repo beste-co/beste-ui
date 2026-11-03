@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Three-column footer link grid with uppercase section headings and plain-text links underneath each.",
   category: "Nav",
+  backdrop: "none",
 };

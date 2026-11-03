@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "A large headline number over a short caption. Minimal, text-only proof of scale.",
   category: "Social Proof",
+  backdrop: "none",
 };

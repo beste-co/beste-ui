@@ -6,4 +6,6 @@ export const meta: ComponentMeta = {
   description:
     "Standard chat bubble with a subtle italic edited caption beneath.",
   category: "Chat",
+  backdrop: "none",
+  stageFit: true,
 };

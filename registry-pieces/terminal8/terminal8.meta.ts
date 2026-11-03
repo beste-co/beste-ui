@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Shell prompt with a git branch segment and a clean or dirty status marker.",
   category: "Terminal",
+  backdrop: "none",
 };

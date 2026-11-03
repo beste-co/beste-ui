@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Five stacked rows mapping 5–1 stars to amber fill bars and the percentage for each tier.",
   category: "Progress",
+  backdrop: "none",
 };

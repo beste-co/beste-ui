@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Build-result banner with an emerald success state showing the duration, or a rose error state with the error count.",
   category: "Editor",
+  backdrop: "none",
 };

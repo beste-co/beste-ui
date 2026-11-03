@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Gaming movement cluster with W on top and A S D on the second row, lighting the active key in primary.",
   category: "Keyboard",
+  backdrop: "none",
 };

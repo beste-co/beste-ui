@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Money request bubble with a large amount, an optional note, and Pay and Decline actions.",
   category: "Chat",
+  stageFit: true,
 };

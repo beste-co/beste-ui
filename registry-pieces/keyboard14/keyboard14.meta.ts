@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Long-format spacebar keycap with a soft shadow and a prompt above it.",
   category: "Keyboard",
+  backdrop: "none",
 };

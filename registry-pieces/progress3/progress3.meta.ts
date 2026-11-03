@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Labelled progress bar with a percent readout above and a tonal fill.",
   category: "Progress",
+  backdrop: "none",
 };

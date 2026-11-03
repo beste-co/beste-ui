@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Poster-style destination tile with a warm gradient, corner save heart, category tag, and city label.",
   category: "Travel",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Row of small dots showing progress through N steps, with a trailing fraction count.",
   category: "Indicator",
+  backdrop: "none",
 };

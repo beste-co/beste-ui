@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Muted centered pill with an icon, used for joins, role changes, and other neutral system events.",
   category: "Chat",
+  backdrop: "none",
 };

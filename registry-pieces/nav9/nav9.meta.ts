@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Breadcrumb where each crumb wears a home or folder icon chip and the final crumb has a muted fill.",
   category: "Nav",
+  backdrop: "none",
 };

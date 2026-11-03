@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Flat-fill pie beside a legend. Each slice picks a tone from a fixed six-color palette.",
   category: "Card",
+  backdrop: "none",
 };

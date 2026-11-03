@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "The unlock line rises into place while the points count up beside it and the bar fills toward the next level, then everything holds.",
   category: "Tag",
   isAnimated: true,
+  backdrop: "none",
 };

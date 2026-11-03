@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Partial assistant reply bubble with a blinking block cursor on the trailing character.",
   category: "AI",
+  backdrop: "none",
 };

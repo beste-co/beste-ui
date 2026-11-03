@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Avatar beside the author name with the message body beneath, plus an optional role chip and timestamp.",
   category: "Chat",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

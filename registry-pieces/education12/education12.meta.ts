@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Quiz outcome card with a trophy icon, pass or fail tint, the score, and elapsed time.",
   category: "Education",
+  backdrop: "none",
 };

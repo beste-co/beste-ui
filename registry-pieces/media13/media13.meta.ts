@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Viewfinder with rule-of-thirds grid, four corner brackets, a focus ring, and an exposure readout.",
   category: "Media",
+  backdrop: "none",
 };

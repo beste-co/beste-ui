@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Video thumbnail with a pulsing Live pill and a title caption at the bottom.",
   category: "Media",
+  backdrop: "none",
 };

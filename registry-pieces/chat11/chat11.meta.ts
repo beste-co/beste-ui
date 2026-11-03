@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Oversized emoji as a standalone sticker message with a small timestamp beneath it.",
   category: "Chat",
+  backdrop: "none",
 };

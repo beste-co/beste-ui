@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Dark private-browsing card with a masked-face icon and a short note.",
   category: "Browser",
+  backdrop: "none",
 };

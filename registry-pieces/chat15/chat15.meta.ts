@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Chat bubble with a file icon tile, filename, size, and a download button.",
   category: "Chat",
+  stageFit: true,
 };

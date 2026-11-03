@@ -7,4 +7,5 @@ export const meta: ComponentMeta = {
     "Chat bubble with three staggered dots. Signals that the other side is typing.",
   category: "Chat",
   registryDependencies: ["avatar"],
+  backdrop: "none",
 };

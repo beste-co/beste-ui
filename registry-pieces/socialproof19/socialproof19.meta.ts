@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Captioned grid of grayscale client logos for a quiet trust band beneath a hero.",
   category: "Social Proof",
+  backdrop: "none",
 };

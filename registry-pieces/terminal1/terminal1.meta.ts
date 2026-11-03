@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Dark shell line with an emerald prompt, command text, and a blinking block cursor.",
   category: "Terminal",
+  backdrop: "none",
 };

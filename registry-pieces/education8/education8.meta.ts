@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Resume-the-lesson banner with a play icon, title, time remaining, and a Resume button.",
   category: "Education",
+  backdrop: "none",
 };

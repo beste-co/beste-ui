@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Five dots carry the whole assistant: they breathe softly while listening, bob in sequence while thinking, and stretch into dashes while speaking.",
   category: "AI",
+  backdrop: "none",
 };

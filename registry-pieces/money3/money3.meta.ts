@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Gradient wallet card with an uppercase label, big balance, and currency code.",
   category: "Finance",
+  backdrop: "none",
 };

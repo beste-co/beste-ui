@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Hardcover book with a spine shade and page edge, titled over the artwork.",
   category: "Media",
+  backdrop: "none",
 };

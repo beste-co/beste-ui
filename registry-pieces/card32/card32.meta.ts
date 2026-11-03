@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Payment card that turns on its axis every few seconds to show the magnetic stripe and security code, then turns back to the front.",
   category: "Card",
+  backdrop: "none",
 };

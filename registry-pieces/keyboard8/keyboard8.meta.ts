@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "macOS modifier symbols laid out side by side with their names printed below.",
   category: "Keyboard",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Live-call banner with a pinging video glyph, caller name, running duration, mute toggle, and end-call button.",
   category: "Chat",
+  backdrop: "none",
 };

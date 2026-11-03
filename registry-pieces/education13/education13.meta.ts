@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Amber-trimmed completion certificate with an award icon, italic recipient line, course name, and issuer footer.",
   category: "Education",
+  backdrop: "none",
 };

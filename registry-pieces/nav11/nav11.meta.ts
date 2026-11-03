@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Underline tabs that print a pill count next to the label, with the active count filled in primary.",
   category: "Nav",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "A dark terminal card with traffic-light dots, a prompted command, and a success output line.",
   category: "Terminal",
+  backdrop: "none",
 };

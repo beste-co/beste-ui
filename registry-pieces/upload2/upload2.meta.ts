@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Dashed upload surface centered on a cloud icon, with headline, subtitle, and a select button.",
   category: "Upload",
+  backdrop: "none",
 };

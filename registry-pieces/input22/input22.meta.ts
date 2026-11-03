@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Five-star rater with filled amber stars in muted tiles under a question label.",
   category: "Input",
+  backdrop: "none",
 };

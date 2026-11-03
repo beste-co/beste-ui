@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "White-bordered photo frame with a gradient still and an italic caption below. Tilts slightly left.",
   category: "Media",
+  backdrop: "none",
 };

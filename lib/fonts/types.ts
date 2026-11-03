@@ -52,6 +52,7 @@ export type FontName =
   | "newsreader"
   | "macondo"
   | "barriecito"
+  | "geist-serif"
   | "playfair-display"
   | "merriweather"
   | "crimson-text"

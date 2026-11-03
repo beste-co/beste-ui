@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Portrait thumbnail with a play circle overlay, plus customer name and role beneath.",
   category: "Social Proof",
+  backdrop: "none",
 };

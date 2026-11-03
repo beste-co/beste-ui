@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Minimal star row over a large average score and review count.",
   category: "Social Proof",
+  backdrop: "none",
 };

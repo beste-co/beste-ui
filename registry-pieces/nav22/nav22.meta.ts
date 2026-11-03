@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Docs-style on-this-page list with left borders and a primary active rail on the current section.",
   category: "Nav",
+  backdrop: "none",
 };

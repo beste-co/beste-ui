@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Half-circle speedometer arc with a centered value, unit, and caption.",
   category: "Progress",
+  backdrop: "none",
 };

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Circular avatar with a dark camera button on the corner that invites a new profile photo.",
   category: "Upload",
+  backdrop: "none",
 };

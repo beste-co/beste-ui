@@ -39,8 +39,8 @@ export const defaultTheme: Theme = {
     sidebarRing: "oklch(0.239 0 0)",
   },
   fonts: {
-    sans: "inter",
-    serif: "inter",
+    sans: "geist",
+    serif: "geist-serif",
     mono: "geist-mono",
   },
   radius: "0.5rem",

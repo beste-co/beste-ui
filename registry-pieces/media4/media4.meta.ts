@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Square artwork with a bold title and artist name below. Gradient tone fallback when no image.",
   category: "Media",
+  backdrop: "none",
 };

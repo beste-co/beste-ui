@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Thick donut ring with a centered percent, paired with a short label on the side.",
   category: "Card",
+  backdrop: "none",
 };

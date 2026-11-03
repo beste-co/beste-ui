@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Event invite bubble with title, date, time, and Join / Maybe actions.",
   category: "Chat",
+  stageFit: true,
 };

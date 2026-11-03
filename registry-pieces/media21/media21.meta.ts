@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Chat bubble voice note with a play toggle, a played and unplayed waveform, and a duration.",
   category: "Media",
+  backdrop: "none",
 };

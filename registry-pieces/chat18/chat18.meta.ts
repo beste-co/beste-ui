@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Rose horizontal rule flanking an unread-count pill. Signals where new messages begin.",
   category: "Chat",
+  backdrop: "none",
 };

@@ -98,6 +98,21 @@ export interface ComponentMeta {
    * itself: natural size when it fits, shrunk when it does not.
    */
   cardScale?: number;
+
+  /**
+   * Image URL the piece is shown on in its showcase stage and the changelog preview.
+   * For pieces whose frosted, see-through rim only reads on a photo or gradient.
+   * Other pieces get one from the gradient library; "none" keeps the plain stage,
+   * for pieces that draw text straight on the stage without a card behind it.
+   */
+  backdrop?: string;
+
+  /**
+   * Show the piece in a box as wide as the piece itself instead of the whole stage.
+   * For pieces that push themselves to one side of a wide row, like chat bubbles
+   * aligned left or right for a thread; on a wide stage they would hug an edge.
+   */
+  stageFit?: boolean;
 }
 
 /**

@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Pulsing status dot in four tints: live, beta, paused, offline.",
   category: "Indicator",
+  backdrop: "none",
 };

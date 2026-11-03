@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Spinning black disc with concentric grooves and a round album label at the center. Gradient fallback when no image.",
   category: "Media",
+  backdrop: "none",
 };

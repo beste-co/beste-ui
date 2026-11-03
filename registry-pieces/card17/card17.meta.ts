@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Vibrant gradient voucher with a denomination, a brand name, and a redemption code chip.",
   category: "Card",
+  backdrop: "none",
 };

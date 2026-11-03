@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Gradient banner placeholder that prompts a cover image with size hint and inset dashed border.",
   category: "Upload",
+  backdrop: "none",
 };

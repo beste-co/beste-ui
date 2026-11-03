@@ -6,4 +6,5 @@ export const meta: ComponentMeta = {
   description:
     "Sidebar-style stack of icon + label rows where the active row gets a muted fill and bolder text.",
   category: "Nav",
+  backdrop: "none",
 };
