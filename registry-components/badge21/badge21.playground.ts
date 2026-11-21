@@ -12,6 +12,7 @@ export const playground: PlaygroundConfig = {
   controls: [
     { prop: "tag", label: "Tag", kind: "text", placeholder: "New" },
     { prop: "text", label: "Text", kind: "text", placeholder: "The Auralis studio set is live" },
-    { prop: "tone", label: "Tone", kind: "select", options: ["primary", "foreground"], default: "primary", group: "Surface" },
+    { prop: "tone", label: "Tone", kind: "select", options: ["primary", "foreground", "secondary"], default: "primary", group: "Surface" },
+    { prop: "surface", label: "Surface", kind: "segmented", options: ["solid", "glass"], default: "solid", group: "Surface" },
   ],
 };

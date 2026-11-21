@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, useMemo } from "react";
+import { useEffect, useId, useMemo } from "react";
+import { loadFontSet } from "@/components/fonts/preview-font-provider";
 import { cn } from "@/lib/utils";
 import {
   generateThemeCSSVariables,
@@ -31,6 +32,11 @@ export function ThemedPreview({ children, className }: ThemedPreviewProps) {
     return generateThemeCSSVariables(theme);
   }, [theme]);
 
+  // Browse pages have no font provider, so the frame fetches the theme's fonts itself
+  useEffect(() => {
+    loadFontSet(fontSet);
+  }, [fontSet]);
+
   const fontCSSVariables = useMemo(() => {
     return generateFontCSSVariables(fontSet, previewFont);
   }, [fontSet, previewFont]);
@@ -39,12 +45,8 @@ export function ThemedPreview({ children, className }: ThemedPreviewProps) {
 
   // Scoped styles for fonts and shadows
   const scopedStyles = `
-    #${containerId} h1,
-    #${containerId} h2,
-    #${containerId} h3,
-    #${containerId} h4,
-    #${containerId} h5,
-    #${containerId} h6 {
+    /* Only h1 and h2 take the display font; zero specificity, so a heading that asks for font-sans keeps it */
+    :where(#${containerId}) :where(h1, h2) {
       font-family: var(--font-serif);
     }
     #${containerId} code,
@@ -74,7 +76,8 @@ export function ThemedPreview({ children, className }: ThemedPreviewProps) {
         id={containerId}
         className={cn(
           "themed-preview w-full min-h-full transition-colors duration-300",
-          isDark && "dark",
+          // A light scope says so, so a dark preview wrapped around it cannot leak its dark: styles in
+          isDark ? "dark" : "theme-light",
           className
         )}
         style={{

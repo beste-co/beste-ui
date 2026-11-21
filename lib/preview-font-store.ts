@@ -1,7 +1,9 @@
 "use client";
 
 import type { FontDefinition, FontName, FontSet } from "@/lib/fonts";
+import type { Theme } from "@/lib/themes";
 import { createContext, useContext } from "react";
+import { usePreviewTheme } from "@/lib/preview-theme-store";
 import {
   fontDefinitions as sharedFontDefinitions,
   getMonospaceFonts,
@@ -9,8 +11,8 @@ import {
   getSerifFonts,
 } from "@/lib/fonts";
 
-// Bumped when the default typeface changed, so earlier picks start over
-const STORAGE_KEY = "blocks-preview-fonts-v2";
+// Bumped when fonts started following the theme: a stored set is now an explicit override, so earlier picks start over
+const STORAGE_KEY = "blocks-preview-fonts-v4";
 
 /** The site's own typeface; it is loaded by globals.css and only exists in this app. */
 export const BESTE_SANS = {
@@ -27,62 +29,91 @@ export const BESTE_SANS = {
 
 const fontDefinitions = { ...sharedFontDefinitions, "beste-sans": BESTE_SANS } as Record<FontName | "beste-sans", FontDefinition>;
 const getSansSerifFonts = () => [BESTE_SANS, ...getSharedSansSerifFonts()];
+const FIGTREE = fontDefinitions.figtree;
 
 export interface PreviewFontContextType {
   fontSet: FontSet;
-  setFontSet: (fonts: Partial<FontSet>) => void;
+  setFontSet: (fonts: Partial<FontSet>, options?: { persist?: boolean }) => void;
   previewFont: { family: "sans" | "serif" | "mono"; fontName: string } | null;
   setPreviewFont: (font: { family: "sans" | "serif" | "mono"; fontName: string } | null) => void;
+  /** Bumped on every pick the reader makes, never on the stored-set restore. */
+  pickVersion: number;
 }
 
 export const PreviewFontContext = createContext<PreviewFontContextType | null>(null);
 
 const defaultContext: PreviewFontContextType = {
   fontSet: {
-    sans: BESTE_SANS,
-    serif: BESTE_SANS,
+    sans: FIGTREE,
+    serif: FIGTREE,
     mono: fontDefinitions["geist-mono"] || fontDefinitions.inter,
   },
   setFontSet: () => {},
   previewFont: null,
   setPreviewFont: () => {},
+  pickVersion: 0,
 };
 
+/** Without a font provider the preview simply wears the current theme's fonts. */
 export function usePreviewFont() {
   const context = useContext(PreviewFontContext);
-  return context ?? defaultContext;
+  const theme = usePreviewTheme().getResolvedTheme();
+  return context ?? { ...defaultContext, fontSet: getThemeFontSet(theme) };
+}
+
+/** A theme names its fonts; resolve them against the catalogue, falling back to the site default. */
+export function getThemeFontSet(theme: Theme | null | undefined): FontSet {
+  const fallback = getDefaultFontSet();
+  if (!theme?.fonts) return fallback;
+  const resolve = (font: Theme["fonts"]["sans"] | undefined, base: FontDefinition) => {
+    if (!font) return base;
+    if (typeof font !== "string") return font;
+    return (fontDefinitions as Record<string, FontDefinition>)[font] ?? base;
+  };
+  return {
+    sans: resolve(theme.fonts.sans, fallback.sans),
+    serif: resolve(theme.fonts.serif, fallback.serif),
+    mono: resolve(theme.fonts.mono, fallback.mono),
+  };
 }
 
 export function getDefaultFontSet(): FontSet {
   return {
-    sans: BESTE_SANS,
-    serif: BESTE_SANS,
+    sans: FIGTREE,
+    serif: FIGTREE,
     mono: fontDefinitions["geist-mono"] || fontDefinitions.inter,
   };
 }
 
-export function loadStoredFonts(): FontSet {
-  if (typeof window === "undefined") {
-    return getDefaultFontSet();
-  }
+/** The reader's explicit font pick, or null to follow the theme. */
+export function loadStoredFonts(): FontSet | null {
+  if (typeof window === "undefined") return null;
 
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored);
+      const fallback = getDefaultFontSet();
       return {
-        sans: fontDefinitions[parsed.sans as keyof typeof fontDefinitions] || BESTE_SANS,
-        serif: fontDefinitions[parsed.serif as keyof typeof fontDefinitions] || BESTE_SANS,
-        mono:
-          fontDefinitions[parsed.mono as keyof typeof fontDefinitions] ||
-          fontDefinitions["geist-mono"],
+        sans: fontDefinitions[parsed.sans as keyof typeof fontDefinitions] || fallback.sans,
+        serif: fontDefinitions[parsed.serif as keyof typeof fontDefinitions] || fallback.serif,
+        mono: fontDefinitions[parsed.mono as keyof typeof fontDefinitions] || fallback.mono,
       };
     }
   } catch (error) {
     console.warn("Failed to load stored fonts:", error);
   }
 
-  return getDefaultFontSet();
+  return null;
+}
+
+export function clearStoredFonts(): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Storage can be blocked; nothing to clear then.
+  }
 }
 
 export function saveFontsToStorage(fontSet: FontSet): void {

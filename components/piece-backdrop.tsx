@@ -5,13 +5,26 @@ import { FluidGradient } from "@/components/beste/component/fluid-gradient";
 import { FrostedGradient } from "@/components/beste/component/frosted-gradient";
 import { InkFluid } from "@/components/beste/component/ink-fluid";
 import { MeshGradient } from "@/components/beste/component/mesh-gradient";
+import { SkyGradient, type SkyPreset, skyPresets } from "@/components/beste/component/sky-gradient";
 import { WaveGradient } from "@/components/beste/component/wave-gradient";
 import { isAnimatedBackdrop } from "@/lib/piece-backdrop";
 
 const FILL = "absolute! inset-0 h-full min-h-0";
 
+// The cloud stage photos, drawn live by the matching SkyGradient preset instead
+const SKY_STAGES: Record<string, SkyPreset> = {
+  "https://oud.pics/b/beste/stage-dawn.webp": "dawn",
+  "https://oud.pics/b/beste/stage-haze.webp": "haze",
+  "https://oud.pics/b/beste/stage-sand.webp": "azure",
+  "https://oud.pics/b/beste/stage-dusk.webp": "dusk",
+  "https://oud.pics/b/beste/stage-mist.webp": "mist",
+};
+
 /** The surface behind a piece on its stage: a gradient image, or one of the live backgrounds in light colors. */
 export function PieceBackdrop({ value, sizes }: { value: string; sizes: string }) {
+  // A sky look named outright (backdrop: "dawn"), or one of the stage photos it replaces
+  const sky = Object.hasOwn(skyPresets, value) ? (value as SkyPreset) : SKY_STAGES[value];
+  if (sky) return <SkyGradient preset={sky} className={FILL} />;
   if (!isAnimatedBackdrop(value)) {
     return <Image src={value} alt="" fill sizes={sizes} className="object-cover" />;
   }

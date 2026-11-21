@@ -49,6 +49,12 @@ import { stellaDarkTheme } from "./stella-dark";
 import { stellaTheme } from "./stella";
 import { styreneDarkTheme } from "./styrene-dark";
 import { styreneTheme } from "./styrene";
+import { besteDarkTheme } from "./beste-dark";
+import { besteTheme } from "./beste";
+import { miraDarkTheme } from "./mira-dark";
+import { miraTheme } from "./mira";
+import { sunleafDarkTheme } from "./sunleaf-dark";
+import { sunleafTheme } from "./sunleaf";
 import { supabaseTheme } from "./supabase";
 import { terminalTheme } from "./terminal";
 import { theme10Theme } from "./theme10";
@@ -192,6 +198,12 @@ export const themes: Record<ThemeName, Theme> = {
   "lime-green-dark": limeGreenDarkTheme,
   "claude-plus": claudePlusTheme,
   "claude-plus-dark": claudePlusDarkTheme,
+  sunleaf: sunleafTheme,
+  "sunleaf-dark": sunleafDarkTheme,
+  mira: miraTheme,
+  "mira-dark": miraDarkTheme,
+  beste: besteTheme,
+  "beste-dark": besteDarkTheme,
 };
 
 // Export individual themes for direct access
@@ -291,4 +303,10 @@ export {
   limeGreenDarkTheme,
   claudePlusTheme,
   claudePlusDarkTheme,
+  sunleafTheme,
+  sunleafDarkTheme,
+  miraTheme,
+  miraDarkTheme,
+  besteTheme,
+  besteDarkTheme,
 };

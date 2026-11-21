@@ -42,7 +42,7 @@ function collect(dir: string): Item[] {
     const metaPath = join(base, entry.name, `${entry.name}.meta.ts`);
     if (!existsSync(metaPath)) continue;
     const source = readFileSync(metaPath, "utf-8");
-    if (/hidden:\s*true/.test(source)) continue;
+    if (/(hidden|internal):\s*true/.test(source)) continue;
     const name = source.match(/name:\s*["']([^"']+)["']/)?.[1];
     const title = source.match(/title:\s*["']([^"']+)["']/)?.[1];
     const description = (

@@ -79,7 +79,7 @@ function EmbedClientInner({ children }: EmbedClientProps) {
       }
 
       if (data.type === "FONT_UPDATE" && data.fontSet) {
-        setFontSet(data.fontSet);
+        setFontSet(data.fontSet, { persist: false });
       }
 
       if (data.type === "VARIANT_UPDATE" && data.variants) {

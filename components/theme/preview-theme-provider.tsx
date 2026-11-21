@@ -34,6 +34,7 @@ export function PreviewThemeProvider({
   );
   const [customTheme, setCustomThemeState] = useState<Theme | null>(null);
   const [previewTheme, setPreviewTheme] = useState<Theme | null>(null);
+  const [pickVersion, setPickVersion] = useState(0);
 
   // A cookie-provided initial pick means the first site-mode resolve must not
   // overwrite it.
@@ -89,6 +90,7 @@ export function PreviewThemeProvider({
   const setThemeName = useCallback(
     (name: ThemeName) => {
       setThemeNameState(name);
+      setPickVersion((version) => version + 1);
       saveThemeToStorage({ themeName: name, customTheme });
     },
     [customTheme]
@@ -105,6 +107,7 @@ export function PreviewThemeProvider({
       if (theme) {
         setThemeNameState("custom");
       }
+      setPickVersion((version) => version + 1);
       saveThemeToStorage({ themeName: newThemeName, customTheme: theme });
     },
     [themeName]
@@ -123,8 +126,9 @@ export function PreviewThemeProvider({
       setCustomTheme,
       setPreviewTheme,
       getResolvedTheme,
+      pickVersion,
     }),
-    [themeName, customTheme, previewTheme, setThemeName, setCustomTheme, getResolvedTheme]
+    [themeName, customTheme, previewTheme, setThemeName, setCustomTheme, getResolvedTheme, pickVersion]
   );
 
   return (

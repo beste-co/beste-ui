@@ -1,9 +1,10 @@
 "use client";
 
-import { Cancel01Icon, Tick02Icon } from "@hugeicons/core-free-icons";
+import { Cancel01Icon, Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { useEffect, useState } from "react";
+import { StageBackdrop } from "@/components/beste/component/stage-panel";
 import { typography } from "@/lib/typography";
-import { cn } from "@/lib/utils";
 
 const permissions = [
   "Use in personal projects",
@@ -50,47 +51,57 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.`;
 
 export function LicenseContent() {
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (!copied) return;
+    const id = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(id);
+  }, [copied]);
+
+  const copy = () => {
+    // Clipboard can be blocked (iframes, permissions); the label still confirms the click.
+    navigator.clipboard?.writeText(LICENSE_TEXT).catch(() => {});
+    setCopied(true);
+  };
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
-      <header className="mb-10 md:mb-12">
-        <h1 className={typography.h1}>License</h1>
-        <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
-          The Beste UI license lets you use these components freely in your own projects, with a
-          few restrictions on passing them on.
+    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      {/* The sky is light in every theme, so the ink on it is fixed dark */}
+      <header className="relative isolate overflow-hidden rounded-4xl bg-white px-7 py-12 text-neutral-950 md:px-12 md:py-16">
+        <StageBackdrop src="sage" className="-z-10" />
+        <p className="text-base font-medium text-neutral-950/70">License</p>
+        <h1 className="mt-3 max-w-2xl text-balance text-4xl leading-none font-medium tracking-tighter md:text-6xl">Build anything with it. Just do not resell it.</h1>
+        <p className="mt-5 max-w-xl text-base text-neutral-950/70 md:text-lg">
+          The Beste UI license lets you use these components freely in your own projects, with a few restrictions on
+          passing them on.
         </p>
       </header>
 
-      {/*
-        Two panels on the page's own surface rather than a green box and a red
-        one. The tint said "good news / bad news" before either heading was read,
-        which is the wrong first impression for a licence: both lists are simply
-        what the terms say. The tone survives in the icons, where it belongs.
-      */}
-      <div className="mb-4 grid gap-4 sm:grid-cols-2">
-        <section className="rounded-xl bg-muted/60 p-6">
-          <h2 className={cn(typography.h3, "flex items-center gap-2")}>
-            <HugeiconsIcon icon={Tick02Icon} size={20} strokeWidth={2} className="text-teal-600 dark:text-teal-400" aria-hidden="true" />
-            Permissions
-          </h2>
-          <ul className="mt-5 flex flex-col gap-3">
+      {/* Both lists are simply what the terms say, so neither is tinted; the mark in front says which is which */}
+      <div className="mt-2.5 grid gap-2.5 md:grid-cols-2">
+        <section className="rounded-4xl bg-muted p-7 md:p-10">
+          <h2 className="text-2xl font-medium tracking-tight md:text-3xl">You can</h2>
+          <ul className="mt-8 flex flex-col gap-4">
             {permissions.map((item) => (
-              <li key={item} className="flex items-center gap-2.5 text-base text-foreground/70">
-                <HugeiconsIcon icon={Tick02Icon} size={16} strokeWidth={2} className="shrink-0 text-teal-600 dark:text-teal-400" aria-hidden="true" />
+              <li key={item} className="flex items-center gap-3.5 text-lg">
+                <span aria-hidden="true" className="flex size-7 shrink-0 items-center justify-center rounded-full bg-foreground text-background">
+                  <HugeiconsIcon icon={Tick02Icon} size={14} strokeWidth={3} />
+                </span>
                 {item}
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="rounded-xl bg-muted/60 p-6">
-          <h2 className={cn(typography.h3, "flex items-center gap-2")}>
-            <HugeiconsIcon icon={Cancel01Icon} size={20} strokeWidth={2} className="text-destructive" aria-hidden="true" />
-            Restrictions
-          </h2>
-          <ul className="mt-5 flex flex-col gap-3">
+        <section className="rounded-4xl bg-muted p-7 md:p-10">
+          <h2 className="text-2xl font-medium tracking-tight md:text-3xl">You cannot</h2>
+          <ul className="mt-8 flex flex-col gap-4">
             {restrictions.map((item) => (
-              <li key={item} className="flex items-center gap-2.5 text-base text-foreground/70">
-                <HugeiconsIcon icon={Cancel01Icon} size={16} strokeWidth={2} className="shrink-0 text-destructive" aria-hidden="true" />
+              <li key={item} className="flex items-center gap-3.5 text-lg">
+                <span aria-hidden="true" className="flex size-7 shrink-0 items-center justify-center rounded-full bg-background text-foreground">
+                  <HugeiconsIcon icon={Cancel01Icon} size={14} strokeWidth={2.5} />
+                </span>
                 {item}
               </li>
             ))}
@@ -98,32 +109,37 @@ export function LicenseContent() {
         </section>
       </div>
 
-      <section className="rounded-xl bg-muted/60 p-6">
-        <h2 className={typography.h3}>Full license</h2>
-        {/* The terms as written, on a lighter surface: a legal text is quoted
-            here, not laid out, so it keeps its own line breaks and its own
-            monospace column. It scrolls sideways rather than widening the page. */}
-        <div className="mt-5 overflow-x-auto rounded-lg bg-background p-5">
-          <pre className="m-0 whitespace-pre-wrap bg-transparent p-0 font-mono text-sm leading-7 text-foreground/70">
-            {LICENSE_TEXT}
-          </pre>
+      <section className="mt-16 md:mt-24">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className={typography.h2}>The full license</h2>
+          <button
+            type="button"
+            onClick={copy}
+            aria-live="polite"
+            className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-muted px-4 text-sm font-medium transition-colors hover:bg-foreground/10"
+          >
+            <HugeiconsIcon icon={copied ? Tick02Icon : Copy01Icon} size={14} strokeWidth={2} aria-hidden="true" />
+            {copied ? "Copied" : "Copy text"}
+          </button>
+        </div>
+        {/* The terms as written: a legal text is quoted here, not laid out, so it keeps its own line breaks */}
+        <div className="mt-6 rounded-4xl bg-muted p-2.5">
+          <pre className="m-0 overflow-x-auto rounded-3xl bg-background p-6 font-sans text-base leading-7 whitespace-pre-wrap text-foreground/80 md:p-10">{LICENSE_TEXT}</pre>
         </div>
       </section>
 
-      <footer className="mt-10 text-center">
-        <p className="text-base text-foreground/70">
-          Questions about the license? Reach out on{" "}
-          <a
-            href="https://x.com/withbeste"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-foreground underline underline-offset-4 transition-colors hover:text-foreground/70"
-          >
-            X
-          </a>
-          .
-        </p>
-      </footer>
+      <p className="mt-10 text-center text-base text-muted-foreground">
+        Questions about the license? Reach out on{" "}
+        <a
+          href="https://x.com/withbeste"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-foreground underline underline-offset-4 transition-opacity hover:opacity-70"
+        >
+          X
+        </a>
+        .
+      </p>
     </div>
   );
 }

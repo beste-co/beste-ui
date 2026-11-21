@@ -11,10 +11,10 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import { Button23 } from "@/components/beste/component/button23";
+import { StageBackdrop } from "@/components/beste/component/stage-panel";
 import { GitHubLogo } from "@/components/icons/github-logo";
 import { XLogo } from "@/components/icons/x-logo";
 import { ThemeSwitcher, type ThemeSwitcherValue } from "@/components/theme-switcher";
@@ -162,12 +162,16 @@ export function SiteMegaMenu({
 
   return (
     <>
-      {/* The page under the panel steps back; a click on it closes the menu */}
+      {/*
+        The page under the panel steps back; a click on it closes the menu. It covers the whole
+        viewport from behind the bar's own content, so it never ends at a line: not when the page
+        is scrolled, and not when a band sits above the bar.
+      */}
       <div
         aria-hidden="true"
         onClick={onClose}
         className={cn(
-          "fixed inset-0 top-16 z-40 hidden bg-background/40 transition-opacity duration-500 lg:block",
+          "fixed inset-0 -z-10 hidden bg-background/60 transition-opacity duration-500 lg:block",
           open ? "opacity-100" : "pointer-events-none opacity-0"
         )}
       />
@@ -298,27 +302,21 @@ export function SiteMegaMenu({
                   href={hasPro ? CHANGELOG_HREF : PRICING_HREF}
                   {...hostedLinkProps}
                   onClick={onClose}
-                  className="group/pro relative isolate flex min-h-52 cursor-pointer flex-col justify-end overflow-hidden rounded-2xl p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group/pro relative isolate flex min-h-52 cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-white p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <Image
-                    src="https://images.unsplash.com/photo-1793571737300-407dcf2a831b?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
-                    alt=""
-                    fill
-                    sizes="400px"
-                    // The photo is tall: anchored at the bottom, the dark land sits under the copy and the glow above it
-                    className={cn("-z-10 object-cover object-bottom transition-transform duration-1000 group-hover/pro:scale-105", EASE)}
-                  />
-                  <span className="text-2xl font-medium tracking-[-0.03em] text-white">
+                  {/* A light sky in every theme, so the copy on it keeps a fixed dark ink */}
+                  <StageBackdrop src="dawn" className={cn("-z-10 transition-transform duration-1000 group-hover/pro:scale-105", EASE)} />
+                  <span className="text-2xl font-medium tracking-[-0.03em] text-neutral-950">
                     {hasPro ? "You have Pro" : "Beste Pro"}
                   </span>
-                  <span className="mt-1 max-w-64 text-sm text-white/80">
+                  <span className="mt-1 max-w-64 text-sm text-neutral-950/70">
                     {hasPro
                       ? "See what landed in the library this week."
                       : "Every block, piece and page, with the full source and a commercial license."}
                   </span>
                   {/* The whole card is the link, so the button is drawn as a span inside it */}
                   <span className="mt-5">
-                    <Button23 size="sm" tone="light" label={hasPro ? "What's new" : "See plans"} asChild>
+                    <Button23 size="sm" tone="dark" label={hasPro ? "What's new" : "See plans"} className="bg-neutral-950 text-white hover:bg-neutral-800" asChild>
                       <span />
                     </Button23>
                   </span>

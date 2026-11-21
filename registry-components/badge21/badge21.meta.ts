@@ -4,7 +4,7 @@ export const meta: ComponentMeta = {
   name: "badge21",
   title: "Announcement Badge",
   description:
-    "An announcement pill badge with a bold tag, message, and optional link arrow for hero sections.",
+    "An announcement pill badge with a bold tag, message, and optional link arrow for hero sections, solid on light pages or frosted on dark heroes.",
   category: "Badge",
   usage: `import { Badge21 } from "@/components/beste/component/badge21";
 import Link from "next/link";
@@ -18,7 +18,8 @@ import Link from "next/link";
 <Badge21
   tag="v2.0"
   text="Now with 1,400+ blocks"
-  tone="foreground"   // tag chip: "primary" (default) | "foreground"
+  tone="foreground"   // tag chip: "primary" (default) | "foreground" | "secondary"
+  surface="solid"     // "solid" (default) | "glass" for dark heroes
 />`,
   usageBase: `import { Badge21 } from "@/components/beste/component/badge21";
 import Link from "next/link";
@@ -30,6 +31,7 @@ import Link from "next/link";
 <Badge21
   tag="v2.0"
   text="Now with 1,400+ blocks"
-  tone="foreground"   // tag chip: "primary" (default) | "foreground"
+  tone="foreground"   // tag chip: "primary" (default) | "foreground" | "secondary"
+  surface="solid"     // "solid" (default) | "glass" for dark heroes
 />`,
 };

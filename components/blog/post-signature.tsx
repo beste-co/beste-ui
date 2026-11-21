@@ -10,7 +10,7 @@ import { XLogo } from "@/components/icons/x-logo";
  */
 export function PostSignature() {
   return (
-    <div className="mt-6 flex items-center gap-4">
+    <div className="flex items-center gap-4">
       <Image
         src="/assets/images/zieg.jpg"
         alt="uğur"

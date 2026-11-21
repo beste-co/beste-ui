@@ -6,9 +6,11 @@ import { getRegistryComponent } from "@/lib/registry-components";
 
 interface RegistryComponentDemoProps {
   name: string;
+  /** Laid over the demo props, for a surface that needs the demo to differ a little. */
+  props?: Record<string, unknown>;
 }
 
-export function RegistryComponentDemo({ name }: RegistryComponentDemoProps) {
+export function RegistryComponentDemo({ name, props }: RegistryComponentDemoProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,5 +22,5 @@ export function RegistryComponentDemo({ name }: RegistryComponentDemoProps) {
   const meta = getRegistryComponent(name);
   if (!meta) return null;
 
-  return <CardDemo entry={meta} />;
+  return <CardDemo entry={props ? { ...meta, demoProps: { ...meta.demoProps, ...props } } : meta} />;
 }

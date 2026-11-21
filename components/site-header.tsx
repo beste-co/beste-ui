@@ -49,7 +49,7 @@ import {
 import { cn } from "@/lib/utils";
 
 /**
- * The bar's own links: the four things you can browse. Everything else lives in
+ * The bar's own links: the four things you can browse, then pricing. Everything else lives in
  * the menu, and the blog lives in the footer — the bar's last slot pays for
  * itself better as the Pro call to action.
  */
@@ -58,6 +58,7 @@ const NAV: { href: string; label: string; hosted?: boolean }[] = [
   { href: PAGES_HREF, label: "Pages", hosted: true },
   { href: "/pieces", label: "Pieces" },
   { href: "/components", label: "Components" },
+  { href: PRICING_HREF, label: "Pricing", hosted: true },
 ];
 
 /** The rest, shown in the menu and in the mobile panel. */
@@ -212,8 +213,8 @@ export function SiteHeader() {
       onClick={() => setCommandOpen(true)}
       className="group/search flex h-9 w-full cursor-pointer items-center gap-2 rounded-full bg-muted/60 pl-3.5 pr-1 text-left transition-colors hover:bg-muted"
     >
-      <HugeiconsIcon icon={Search01Icon} size={14} strokeWidth={2} className="shrink-0 text-foreground/50" aria-hidden="true" />
-      <span className="w-full truncate text-sm text-foreground/50">Search…</span>
+      <HugeiconsIcon icon={Search01Icon} size={14} strokeWidth={2} className="shrink-0 text-foreground/70" aria-hidden="true" />
+      <span className="w-full truncate text-sm text-foreground/70">Search…</span>
       <span className="flex h-7 shrink-0 items-center gap-1 rounded-full bg-background px-2">
         <Kbd>⌘</Kbd>
         <Kbd>K</Kbd>
@@ -225,7 +226,7 @@ export function SiteHeader() {
     <>
       {/* Chrome, not content: the Markdown rendition drops it and opens with
           the site preamble instead. See lib/html-to-markdown.ts. */}
-      <header data-md-omit="" className={cn("relative z-50 w-full bg-background", pathname !== "/" && "border-b")}>
+      <header data-md-omit="" className="relative z-50 w-full bg-background">
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-5 px-4 md:px-6 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           <Link
             href="/"
@@ -233,7 +234,11 @@ export function SiteHeader() {
             className="flex shrink-0 items-center gap-0 justify-self-start text-[#FF7322]"
           >
             <BesteLogo width={24} height={24} color="currentColor" />
-            <BesteText height={16} className="text-foreground" />
+            {/* Written like a path: the section of the product this site is */}
+            <span className="flex items-center">
+              <BesteText height={16} className="text-foreground" />
+              <span className="ml-1 text-lg leading-none text-muted-foreground">/dev</span>
+            </span>
           </Link>
 
           {/* Equal side columns keep the sections on the bar's true center. */}
@@ -248,7 +253,7 @@ export function SiteHeader() {
                   aria-current={active ? "page" : undefined}
                   // Text8's line, drawn on hover instead of on view; the current section keeps it.
                   className={cn(
-                    "relative cursor-pointer text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 motion-reduce:after:transition-none",
+                    "relative cursor-pointer text-base font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:scale-x-100 motion-reduce:after:transition-none",
                     active ? "text-foreground after:scale-x-100" : "text-foreground/70 after:scale-x-0 hover:text-foreground",
                   )}
                 >
@@ -259,7 +264,7 @@ export function SiteHeader() {
           </div>
 
           <div className="flex items-center gap-1.5 justify-self-end">
-            <div className="hidden w-48 md:block xl:w-56">{search}</div>
+            <div className="hidden w-36 md:block xl:w-40">{search}</div>
 
             {/*
               The round controls are one cluster: GitHub, search on a phone, and the
@@ -357,7 +362,11 @@ export function SiteHeader() {
               className="flex shrink-0 items-center text-[#FF7322]"
             >
               <BesteLogo width={24} height={24} color="currentColor" />
-              <BesteText height={16} className="text-foreground" />
+              {/* Written like a path: the section of the product this site is */}
+              <span className="flex items-center">
+                <BesteText height={16} className="text-foreground" />
+                <span className="ml-1 text-lg leading-none text-muted-foreground">/dev</span>
+              </span>
             </Link>
             <button
               type="button"
@@ -433,20 +442,14 @@ export function SiteHeader() {
           </div>
 
           <div className="flex flex-col gap-4 border-t px-6 py-6">
-            {/*
-              Anyone without a licence gets the way to one, signed in or not: a
-              reader who has not signed in is the likeliest person in the panel to
-              want the price, and it used to be the one person it was hidden from.
-              The wording follows who is asking — you cannot upgrade an account
-              you do not have yet.
-            */}
-            {!hasPro && (
+            {/* Pricing is one of the bar's links now; a signed-in reader without a licence also gets the way to one */}
+            {user && !hasPro && (
               <Link
                 href={PRICING_HREF}
                 {...hostedLinkProps}
                 className="flex items-center justify-between text-base font-medium text-foreground/70 transition-colors hover:text-foreground"
               >
-                {user ? "Upgrade to Pro" : "Pricing"}
+                Upgrade to Pro
                 <HugeiconsIcon icon={CrownIcon} size={16} strokeWidth={2} />
               </Link>
             )}

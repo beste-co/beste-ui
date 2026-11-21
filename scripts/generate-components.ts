@@ -97,10 +97,12 @@ function kebabToCamel(name: string): string {
 /**
  * Extract the exported component name from a .tsx file.
  */
-function extractComponentName(filePath: string): string | undefined {
+function extractComponentName(filePath: string, dir: string): string | undefined {
   const content = readFileSync(filePath, "utf-8");
-  const match = content.match(/^export\s+(?:function|const)\s+([A-Z][a-zA-Z0-9]+)(?:\s*[(:=])/m);
-  return match?.[1];
+  const names = [...content.matchAll(/^export\s+(?:function|const)\s+([A-Z][a-zA-Z0-9]+)(?:\s*[(:=])/gm)].map((match) => match[1]);
+  // A file can export helpers before its main component; the one named after the folder wins
+  const named = kebabToPascal(dir);
+  return names.includes(named) ? named : names[0];
 }
 
 /** Import meta files concurrently in batches to avoid fd exhaustion. */
@@ -177,7 +179,7 @@ async function collectMetadata(registryDir: string): Promise<CollectedMeta[]> {
 
           let componentName = meta.componentName;
           if (!componentName && existsSync(componentPath)) {
-            componentName = extractComponentName(componentPath);
+            componentName = extractComponentName(componentPath, dir);
           }
           if (!componentName) {
             componentName = kebabToPascal(dir);

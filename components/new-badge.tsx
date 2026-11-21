@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /** How long a card wears the badge, from the day the thing shipped. */
-const NEW_FOR_MS = 3 * 24 * 60 * 60 * 1000;
+const NEW_FOR_DAYS = 3;
 
 /**
  * `isNew(name)` for a grid, from the ship dates a server component handed it
@@ -15,14 +15,14 @@ const NEW_FOR_MS = 3 * 24 * 60 * 60 * 1000;
  * until the effect runs, which is also what keeps the first client render
  * identical to the server's.
  */
-export function useIsNew(addedDates?: Readonly<Record<string, string>>) {
+export function useIsNew(addedDates?: Readonly<Record<string, string>>, days: number = NEW_FOR_DAYS) {
   const [now, setNow] = useState<number | null>(null);
   useEffect(() => setNow(Date.now()), []);
 
   return (name: string): boolean => {
     const date = addedDates?.[name];
     if (!date || now === null) return false;
-    return now - Date.parse(date) < NEW_FOR_MS;
+    return now - Date.parse(date) < days * 24 * 60 * 60 * 1000;
   };
 }
 

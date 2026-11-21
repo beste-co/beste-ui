@@ -2,9 +2,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-// Static cuts, since the image renderer cannot read a variable font: the text
-// cut for body copy and the display cut for the title
-const FONT_DIR = join(process.cwd(), "public/fonts/bestesans/static/ttf");
+// Static cuts, since the image renderer cannot read a variable font
+const FONT_DIR = join(process.cwd(), "public/fonts/figtree");
 const BACKGROUND = join(process.cwd(), "public/assets/images/beste-ui-og-bg.jpg");
 
 const WIDTH = 1200;
@@ -16,16 +15,16 @@ const DEFAULT_DESCRIPTION =
   "Blocks, pieces and components for shadcn/ui and Tailwind. Install one with a command, or let your agent pull it in over MCP.";
 
 async function loadAssets() {
-  const [regular, display, background] = await Promise.all([
-    readFile(join(FONT_DIR, "BesteSans-Regular.ttf")),
-    readFile(join(FONT_DIR, "BesteSansDisplay-Medium.ttf")),
+  const [regular, medium, background] = await Promise.all([
+    readFile(join(FONT_DIR, "Figtree-400.woff")),
+    readFile(join(FONT_DIR, "Figtree-500.woff")),
     readFile(BACKGROUND),
   ]);
 
   return {
     fonts: [
-      { name: "Beste Sans", data: regular, weight: 400 as const, style: "normal" as const },
-      { name: "Beste Sans", data: display, weight: 500 as const, style: "normal" as const },
+      { name: "Figtree", data: regular, weight: 400 as const, style: "normal" as const },
+      { name: "Figtree", data: medium, weight: 500 as const, style: "normal" as const },
     ],
     background: `data:image/jpeg;base64,${background.toString("base64")}`,
   };
@@ -59,7 +58,7 @@ export async function GET(request: Request) {
     (
       <div
         tw="flex h-full w-full"
-        style={{ fontFamily: "Beste Sans", color: INK, backgroundColor: "#eef6ff" }}
+        style={{ fontFamily: "Figtree", color: INK, backgroundColor: "#eef6ff" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={background} alt="" width={WIDTH} height={HEIGHT} tw="absolute inset-0" />

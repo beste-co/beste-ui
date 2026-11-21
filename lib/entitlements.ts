@@ -16,6 +16,12 @@ export interface Viewer {
 
 const ANONYMOUS: Viewer = { isPro: false, email: null, licenseKey: null };
 
+export function isDevProEmail(_email: string | null | undefined): boolean {
+  return false;
+}
+
+export const DEV_LICENSE_KEY = "";
+
 export async function getViewer(_options: { withLicenseKey?: boolean } = {}): Promise<Viewer> {
   return ANONYMOUS;
 }

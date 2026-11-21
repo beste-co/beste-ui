@@ -7,6 +7,7 @@ import type { ComponentType } from "react";
 import type { PlaygroundConfig } from "@/lib/playground-types";
 
 import { ActivityFeed, activityFeedDemo } from "@/registry-components/activity-feed/activity-feed";
+import { AiMark, aiMarkDemo } from "@/registry-components/ai-mark/ai-mark";
 import { AnamorphicType, anamorphicTypeDemo } from "@/registry-components/anamorphic-type/anamorphic-type";
 import { ApertureReveal, apertureRevealDemo } from "@/registry-components/aperture-reveal/aperture-reveal";
 import { AreaChart, areaChartDemo } from "@/registry-components/area-chart/area-chart";
@@ -33,6 +34,7 @@ import { Badge22, badge22Demo } from "@/registry-components/badge22/badge22";
 import { Badge23, badge23Demo } from "@/registry-components/badge23/badge23";
 import { Badge24, badge24Demo } from "@/registry-components/badge24/badge24";
 import { Badge25, badge25Demo } from "@/registry-components/badge25/badge25";
+import { Badge26, badge26Demo } from "@/registry-components/badge26/badge26";
 import { BarChart, barChartDemo } from "@/registry-components/bar-chart/bar-chart";
 import { BauhausComposition, bauhausCompositionDemo } from "@/registry-components/bauhaus-composition/bauhaus-composition";
 import { BlobGradient, blobGradientDemo } from "@/registry-components/blob-gradient/blob-gradient";
@@ -60,6 +62,8 @@ import { Button22, button22Demo } from "@/registry-components/button22/button22"
 import { Button23, button23Demo } from "@/registry-components/button23/button23";
 import { Button24, button24Demo } from "@/registry-components/button24/button24";
 import { Button25, button25Demo } from "@/registry-components/button25/button25";
+import { Button26, button26Demo } from "@/registry-components/button26/button26";
+import { Button27, button27Demo } from "@/registry-components/button27/button27";
 import { CalendarMonth, calendarMonthDemo } from "@/registry-components/calendar-month/calendar-month";
 import { CandleFlame, candleFlameDemo } from "@/registry-components/candle-flame/candle-flame";
 import { Card1, card1Demo } from "@/registry-components/card1/card1";
@@ -104,6 +108,7 @@ import { CrtScreen, crtScreenDemo } from "@/registry-components/crt-screen/crt-s
 import { CurtainReveal, curtainRevealDemo } from "@/registry-components/curtain-reveal/curtain-reveal";
 import { Cyanotype, cyanotypeDemo } from "@/registry-components/cyanotype/cyanotype";
 import { DataTable, dataTableDemo } from "@/registry-components/data-table/data-table";
+import { DeviceFrame, deviceFrameDemo } from "@/registry-components/device-frame/device-frame";
 import { DitherForm, ditherFormDemo } from "@/registry-components/dither-form/dither-form";
 import { DockMagnify, dockMagnifyDemo } from "@/registry-components/dock-magnify/dock-magnify";
 import { DuneField, duneFieldDemo } from "@/registry-components/dune-field/dune-field";
@@ -220,8 +225,10 @@ import { NotificationsMenu, notificationsMenuDemo } from "@/registry-components/
 import { OceanHorizon, oceanHorizonDemo } from "@/registry-components/ocean-horizon/ocean-horizon";
 import { OpArt, opArtDemo } from "@/registry-components/op-art/op-art";
 import { OrbGradient, orbGradientDemo } from "@/registry-components/orb-gradient/orb-gradient";
+import { PageReveal, pageRevealDemo } from "@/registry-components/page-reveal/page-reveal";
 import { PagerDots, pagerDotsDemo } from "@/registry-components/pager-dots/pager-dots";
 import { PaperLandscape, paperLandscapeDemo } from "@/registry-components/paper-landscape/paper-landscape";
+import { PhotoDrift, photoDriftDemo } from "@/registry-components/photo-drift/photo-drift";
 import { PhotoDust, photoDustDemo } from "@/registry-components/photo-dust/photo-dust";
 import { PhotoRelight, photoRelightDemo } from "@/registry-components/photo-relight/photo-relight";
 import { PhotoRing, photoRingDemo } from "@/registry-components/photo-ring/photo-ring";
@@ -250,17 +257,23 @@ import { RippleGradient, rippleGradientDemo } from "@/registry-components/ripple
 import { ScheduleTimeline, scheduleTimelineDemo } from "@/registry-components/schedule-timeline/schedule-timeline";
 import { ScrollRail, scrollRailDemo } from "@/registry-components/scroll-rail/scroll-rail";
 import { ScrollToc, scrollTocDemo } from "@/registry-components/scroll-toc/scroll-toc";
+import { SectionHeading, sectionHeadingDemo } from "@/registry-components/section-heading/section-heading";
 import { SidebarNav, sidebarNavDemo } from "@/registry-components/sidebar-nav/sidebar-nav";
 import { SignaturePad, signaturePadDemo } from "@/registry-components/signature-pad/signature-pad";
 import { SilkDrape, silkDrapeDemo } from "@/registry-components/silk-drape/silk-drape";
 import { SketchToPhoto, sketchToPhotoDemo } from "@/registry-components/sketch-to-photo/sketch-to-photo";
+import { SkyGradient, skyGradientDemo } from "@/registry-components/sky-gradient/sky-gradient";
 import { SliceAssembly, sliceAssemblyDemo } from "@/registry-components/slice-assembly/slice-assembly";
 import { SmokeGradient, smokeGradientDemo } from "@/registry-components/smoke-gradient/smoke-gradient";
 import { SnippetInstall, snippetInstallDemo } from "@/registry-components/snippet-install/snippet-install";
 import { SplitFlap, splitFlapDemo } from "@/registry-components/split-flap/split-flap";
+import { StageCard, stageCardDemo } from "@/registry-components/stage-card/stage-card";
+import { StagePanel, stagePanelDemo } from "@/registry-components/stage-panel/stage-panel";
+import { StageStack, stageStackDemo } from "@/registry-components/stage-stack/stage-stack";
 import { StarTrails, starTrailsDemo } from "@/registry-components/star-trails/star-trails";
 import { StatusUptime, statusUptimeDemo } from "@/registry-components/status-uptime/status-uptime";
 import { StepsChecklist, stepsChecklistDemo } from "@/registry-components/steps-checklist/steps-checklist";
+import { StepsRuled, stepsRuledDemo } from "@/registry-components/steps-ruled/steps-ruled";
 import { StepsTrack, stepsTrackDemo } from "@/registry-components/steps-track/steps-track";
 import { StringArt, stringArtDemo } from "@/registry-components/string-art/string-art";
 import { SunBlinds, sunBlindsDemo } from "@/registry-components/sun-blinds/sun-blinds";
@@ -303,6 +316,7 @@ import { WaveGradient, waveGradientDemo } from "@/registry-components/wave-gradi
 import { WheatField, wheatFieldDemo } from "@/registry-components/wheat-field/wheat-field";
 import { ZoomParallax, zoomParallaxDemo } from "@/registry-components/zoom-parallax/zoom-parallax";
 import { playground as activityFeedPlayground } from "@/registry-components/activity-feed/activity-feed.playground";
+import { playground as aiMarkPlayground } from "@/registry-components/ai-mark/ai-mark.playground";
 import { playground as anamorphicTypePlayground } from "@/registry-components/anamorphic-type/anamorphic-type.playground";
 import { playground as apertureRevealPlayground } from "@/registry-components/aperture-reveal/aperture-reveal.playground";
 import { playground as areaChartPlayground } from "@/registry-components/area-chart/area-chart.playground";
@@ -328,6 +342,7 @@ import { playground as badge22Playground } from "@/registry-components/badge22/b
 import { playground as badge23Playground } from "@/registry-components/badge23/badge23.playground";
 import { playground as badge24Playground } from "@/registry-components/badge24/badge24.playground";
 import { playground as badge25Playground } from "@/registry-components/badge25/badge25.playground";
+import { playground as badge26Playground } from "@/registry-components/badge26/badge26.playground";
 import { playground as barChartPlayground } from "@/registry-components/bar-chart/bar-chart.playground";
 import { playground as bauhausCompositionPlayground } from "@/registry-components/bauhaus-composition/bauhaus-composition.playground";
 import { playground as blobGradientPlayground } from "@/registry-components/blob-gradient/blob-gradient.playground";
@@ -354,6 +369,8 @@ import { playground as button21Playground } from "@/registry-components/button21
 import { playground as button23Playground } from "@/registry-components/button23/button23.playground";
 import { playground as button24Playground } from "@/registry-components/button24/button24.playground";
 import { playground as button25Playground } from "@/registry-components/button25/button25.playground";
+import { playground as button26Playground } from "@/registry-components/button26/button26.playground";
+import { playground as button27Playground } from "@/registry-components/button27/button27.playground";
 import { playground as candleFlamePlayground } from "@/registry-components/candle-flame/candle-flame.playground";
 import { playground as card1Playground } from "@/registry-components/card1/card1.playground";
 import { playground as card2Playground } from "@/registry-components/card2/card2.playground";
@@ -514,6 +531,7 @@ import { playground as opArtPlayground } from "@/registry-components/op-art/op-a
 import { playground as orbGradientPlayground } from "@/registry-components/orb-gradient/orb-gradient.playground";
 import { playground as pagerDotsPlayground } from "@/registry-components/pager-dots/pager-dots.playground";
 import { playground as paperLandscapePlayground } from "@/registry-components/paper-landscape/paper-landscape.playground";
+import { playground as photoDriftPlayground } from "@/registry-components/photo-drift/photo-drift.playground";
 import { playground as photoDustPlayground } from "@/registry-components/photo-dust/photo-dust.playground";
 import { playground as photoRelightPlayground } from "@/registry-components/photo-relight/photo-relight.playground";
 import { playground as photoRingPlayground } from "@/registry-components/photo-ring/photo-ring.playground";
@@ -540,16 +558,21 @@ import { playground as ridgelinesPlayground } from "@/registry-components/ridgel
 import { playground as rippleGradientPlayground } from "@/registry-components/ripple-gradient/ripple-gradient.playground";
 import { playground as scrollRailPlayground } from "@/registry-components/scroll-rail/scroll-rail.playground";
 import { playground as scrollTocPlayground } from "@/registry-components/scroll-toc/scroll-toc.playground";
+import { playground as sectionHeadingPlayground } from "@/registry-components/section-heading/section-heading.playground";
 import { playground as signaturePadPlayground } from "@/registry-components/signature-pad/signature-pad.playground";
 import { playground as silkDrapePlayground } from "@/registry-components/silk-drape/silk-drape.playground";
 import { playground as sketchToPhotoPlayground } from "@/registry-components/sketch-to-photo/sketch-to-photo.playground";
+import { playground as skyGradientPlayground } from "@/registry-components/sky-gradient/sky-gradient.playground";
 import { playground as sliceAssemblyPlayground } from "@/registry-components/slice-assembly/slice-assembly.playground";
 import { playground as smokeGradientPlayground } from "@/registry-components/smoke-gradient/smoke-gradient.playground";
 import { playground as snippetInstallPlayground } from "@/registry-components/snippet-install/snippet-install.playground";
 import { playground as splitFlapPlayground } from "@/registry-components/split-flap/split-flap.playground";
+import { playground as stageCardPlayground } from "@/registry-components/stage-card/stage-card.playground";
+import { playground as stagePanelPlayground } from "@/registry-components/stage-panel/stage-panel.playground";
 import { playground as starTrailsPlayground } from "@/registry-components/star-trails/star-trails.playground";
 import { playground as statusUptimePlayground } from "@/registry-components/status-uptime/status-uptime.playground";
 import { playground as stepsChecklistPlayground } from "@/registry-components/steps-checklist/steps-checklist.playground";
+import { playground as stepsRuledPlayground } from "@/registry-components/steps-ruled/steps-ruled.playground";
 import { playground as stepsTrackPlayground } from "@/registry-components/steps-track/steps-track.playground";
 import { playground as stringArtPlayground } from "@/registry-components/string-art/string-art.playground";
 import { playground as sunBlindsPlayground } from "@/registry-components/sun-blinds/sun-blinds.playground";
@@ -644,6 +667,16 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { MessageSquare, Upload } from \"lucide-react\";\nimport { ActivityFeed } from \"@/components/beste/component/activity-feed\";\n\n<ActivityFeed\n  events={[\n    {\n      id: \"1\",\n      actor: { name: \"Hania Rani\" },\n      action: \"uploaded\",\n      target: \"Esja (piano take 4).wav\",\n      time: \"2026-09-27T09:41:00Z\",\n      icon: Upload,\n      tone: \"info\",                 // \"neutral\" | \"info\" | \"success\" | \"warning\" | \"danger\"\n      detail: \"48 kHz, 24 bit, 6 min 12 s.\",\n    },\n    { id: \"2\", actor: { name: \"Nils Frahm\" }, action: \"commented on\", target: \"Says, mix 7\", time: Date.now() - 60_000, icon: MessageSquare },\n  ]}\n  hasMore\n  onLoadMore={async () => console.log(\"fetch the next page\")}\n  locale=\"en-GB\"\n  tone=\"outline\"                    // \"muted\" | \"outline\" | \"ghost\" (default)\n  className=\"max-h-96 overflow-y-auto\"  // a scroll area makes the day headers stick\n/>",
     playground: activityFeedPlayground,
+  },
+  {
+    name: "ai-mark",
+    title: "AI Brand Mark",
+    description: "The marks of the assistants people build with, Claude, ChatGPT, Cursor, Grok and Gemini, plus the Beste and WordPress marks, drawn as one inline SVG that follows the text color. Each carries its name for screen readers unless a label sits beside it.",
+    category: "Logo",
+    component: AiMark,
+    demoProps: aiMarkDemo,
+    usage: "import { AiMark } from \"@/components/beste/component/ai-mark\";\n\n<AiMark brand=\"claude\" className=\"size-5 text-foreground/75\" />\n<AiMark brand=\"beste\" />            // orange by default\n<AiMark brand=\"openai\" label=\"\" />  // decorative, a label sits beside it",
+    playground: aiMarkPlayground,
   },
   {
     name: "anamorphic-type",
@@ -882,13 +915,13 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
   {
     name: "badge21",
     title: "Announcement Badge",
-    description: "An announcement pill badge with a bold tag, message, and optional link arrow for hero sections.",
+    description: "An announcement pill badge with a bold tag, message, and optional link arrow for hero sections, solid on light pages or frosted on dark heroes.",
     category: "Badge",
     component: Badge21,
     demoProps: badge21Demo,
-    variants: { tone: ["primary", "foreground"] },
-    usage: "import { Badge21 } from \"@/components/beste/component/badge21\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the pill (and it shows\n// the trailing arrow); the badge content is injected as its children.\n<Badge21 asChild tag=\"New\" text=\"The Auralis studio set is live\">\n  <Link href=\"/changelog\" />\n</Badge21>\n\n<Badge21\n  tag=\"v2.0\"\n  text=\"Now with 1,400+ blocks\"\n  tone=\"foreground\"   // tag chip: \"primary\" (default) | \"foreground\"\n/>",
-    usageBase: "import { Badge21 } from \"@/components/beste/component/badge21\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the pill (and it\n// shows the trailing arrow); the badge content stays as its children.\n<Badge21 tag=\"New\" text=\"The Auralis studio set is live\" render={<Link href=\"/changelog\" />} />\n\n<Badge21\n  tag=\"v2.0\"\n  text=\"Now with 1,400+ blocks\"\n  tone=\"foreground\"   // tag chip: \"primary\" (default) | \"foreground\"\n/>",
+    variants: { tone: ["primary", "foreground", "secondary"] },
+    usage: "import { Badge21 } from \"@/components/beste/component/badge21\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the pill (and it shows\n// the trailing arrow); the badge content is injected as its children.\n<Badge21 asChild tag=\"New\" text=\"The Auralis studio set is live\">\n  <Link href=\"/changelog\" />\n</Badge21>\n\n<Badge21\n  tag=\"v2.0\"\n  text=\"Now with 1,400+ blocks\"\n  tone=\"foreground\"   // tag chip: \"primary\" (default) | \"foreground\" | \"secondary\"\n  surface=\"solid\"     // \"solid\" (default) | \"glass\" for dark heroes\n/>",
+    usageBase: "import { Badge21 } from \"@/components/beste/component/badge21\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the pill (and it\n// shows the trailing arrow); the badge content stays as its children.\n<Badge21 tag=\"New\" text=\"The Auralis studio set is live\" render={<Link href=\"/changelog\" />} />\n\n<Badge21\n  tag=\"v2.0\"\n  text=\"Now with 1,400+ blocks\"\n  tone=\"foreground\"   // tag chip: \"primary\" (default) | \"foreground\" | \"secondary\"\n  surface=\"solid\"     // \"solid\" (default) | \"glass\" for dark heroes\n/>",
     playground: badge21Playground,
   },
   {
@@ -934,6 +967,17 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: badge25Demo,
     usage: "import { Badge25 } from \"@/components/beste/component/badge25\";\nimport { Sparkle } from \"lucide-react\";\n\n<Badge25 text=\"AI inbox for small teams\" />\n\n<Badge25\n  text=\"Early access\"\n  icon={Sparkle}               // leading icon (default: Asterisk)\n  as=\"span\"                    // \"p\" (default) | \"span\" | \"div\"\n  className=\"mb-5 justify-center\"\n/>",
     playground: badge25Playground,
+  },
+  {
+    name: "badge26",
+    title: "Tone Pill",
+    description: "A small filled pill for plan flags, offers and mode chips: the bright secondary, the primary, the soft accent, or a translucent pill that takes the current text color on dark cards.",
+    category: "Badge",
+    component: Badge26,
+    demoProps: badge26Demo,
+    variants: { tone: ["secondary", "primary", "accent", "glass"] },
+    usage: "import { Badge26 } from \"@/components/beste/component/badge26\";\n\n<Badge26 label=\"Most chosen\" />\n\n<Badge26\n  label=\"2 months free\"\n  tone=\"glass\"   // \"secondary\" (default) | \"primary\" | \"accent\" | \"glass\"\n/>",
+    playground: badge26Playground,
   },
   {
     name: "bar-chart",
@@ -1257,6 +1301,32 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { Button25 } from \"@/components/beste/component/button25\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button25 asChild label=\"Register your interest\" icon={ArrowRight}>\n  <Link href=\"/register\" />\n</Button25>\n\n<Button25\n  label=\"View the residences\"\n  tone=\"outline\"   // \"dark\" (default) | \"outline\" | \"primary\" | \"neutral\"\n  size=\"sm\"        // \"default\" | \"sm\"\n  onClick={() => console.log(\"clicked\")}\n/>\n\n// Inside a form\n<Button25 label=\"Send\" type=\"submit\" />",
     usageBase: "import { Button25 } from \"@/components/beste/component/button25\";\nimport { ArrowRight } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button25 label=\"Register your interest\" icon={ArrowRight} render={<Link href=\"/register\" />} nativeButton={false} />\n\n<Button25\n  label=\"View the residences\"\n  tone=\"outline\"   // \"dark\" (default) | \"outline\" | \"primary\" | \"neutral\"\n  size=\"sm\"        // \"default\" | \"sm\"\n  onClick={() => console.log(\"clicked\")}\n/>",
     playground: button25Playground,
+  },
+  {
+    name: "button26",
+    title: "Lift Pill",
+    description: "A sentence-case pill that lifts a little on hover: the bright secondary fill, the primary fill, a hairline outline in the surface's text color, or a frosted pill for dark grounds. Three heights, and an optional icon that nudges forward after the label or sits before it.",
+    category: "Button",
+    component: Button26,
+    demoProps: button26Demo,
+    registryDependencies: ["button"],
+    variants: { tone: ["secondary", "primary", "outline", "glass"] },
+    usage: "import { Button26 } from \"@/components/beste/component/button26\";\nimport { ArrowRight, Play } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with asChild: your Link becomes the rendered element\n// and the button content is injected as its children.\n<Button26 asChild label=\"Start free\" icon={ArrowRight} size=\"lg\">\n  <Link href=\"/signup\" />\n</Button26>\n\n<Button26\n  label=\"See how it works\"\n  tone=\"glass\"          // \"secondary\" (default) | \"primary\" | \"outline\" | \"glass\"\n  size=\"lg\"             // \"sm\" | \"default\" | \"lg\"\n  icon={Play}\n  iconPosition=\"start\"  // \"end\" (default) | \"start\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    usageBase: "import { Button26 } from \"@/components/beste/component/button26\";\nimport { ArrowRight, Play } from \"lucide-react\";\nimport Link from \"next/link\";\n\n// Compose the link with the render prop: your Link becomes the rendered\n// element and the button content stays as its children.\n<Button26 label=\"Start free\" icon={ArrowRight} size=\"lg\" render={<Link href=\"/signup\" />} nativeButton={false} />\n\n<Button26\n  label=\"See how it works\"\n  tone=\"glass\"          // \"secondary\" (default) | \"primary\" | \"outline\" | \"glass\"\n  size=\"lg\"             // \"sm\" | \"default\" | \"lg\"\n  icon={Play}\n  iconPosition=\"start\"  // \"end\" (default) | \"start\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    playground: button26Playground,
+  },
+  {
+    name: "button27",
+    title: "Quiet Pill",
+    description: "A plain sentence-case pill with no motion of its own: the ink fill, a hairline outline on the card color, a frosted pill for photos, the reversed pill for ink panels, a hairline in the current text color, or a fixed dark pill for light pictures in any theme. Two heights.",
+    category: "Button",
+    component: Button27,
+    demoProps: button27Demo,
+    registryDependencies: ["button"],
+    variants: { tone: ["primary", "outline", "soft", "inverse", "ghost", "ink"] },
+    usage: "import { Button27 } from \"@/components/beste/component/button27\";\nimport Link from \"next/link\";\n\n<Button27 asChild label=\"Start free\">\n  <Link href=\"/signup\" />\n</Button27>\n\n<Button27\n  label=\"Login\"\n  tone=\"outline\"   // \"primary\" (default) | \"outline\" | \"soft\" | \"inverse\" | \"ghost\" | \"ink\"\n  size=\"sm\"        // \"sm\" | \"default\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    usageBase: "import { Button27 } from \"@/components/beste/component/button27\";\nimport Link from \"next/link\";\n\n<Button27 label=\"Start free\" render={<Link href=\"/signup\" />} nativeButton={false} />\n\n<Button27\n  label=\"Login\"\n  tone=\"outline\"   // \"primary\" (default) | \"outline\" | \"soft\" | \"inverse\" | \"ghost\" | \"ink\"\n  size=\"sm\"        // \"sm\" | \"default\"\n  onClick={() => console.log(\"clicked\")}\n/>",
+    playground: button27Playground,
   },
   {
     name: "calendar-month",
@@ -1606,6 +1676,8 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: cloudSkyDemo,
     usage: "import { CloudSky } from \"@/components/beste/component/cloud-sky\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <CloudSky className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n<CloudSky\n  className=\"min-h-[32rem]\"\n  skyTop=\"#3d4f7a\"       // any CSS color, tokens included\n  skyHorizon=\"#f7b88a\"\n  sunX={0.3}             // sun position, 0 to 1\n  sunY={0.25}\n  coverage={0.7}         // more of the sky under cloud\n  softness={0.8}         // mistier edges\n  layers={3}             // depth layers, 1 to 4\n/>",
     isAnimated: true,
+    demoContentTone: "plain",
+    demoContentOff: true,
     playground: cloudSkyPlayground,
   },
   {
@@ -1745,6 +1817,15 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     demoProps: dataTableDemo,
     registryDependencies: ["table", "input", "button", "badge", "avatar", "checkbox", "dropdown-menu"],
     usage: "import { DataTable, type DataTableColumn } from \"@/components/beste/component/data-table\";\nimport { Eye, Trash2 } from \"lucide-react\";\n\ntype Row = { id: string; name: string; spend: number };\n\nconst columns: DataTableColumn<Row>[] = [\n  { id: \"name\", header: \"Name\", sortable: true, value: (r) => r.name },\n  { id: \"spend\", header: \"Spend\", sortable: true, align: \"right\", value: (r) => r.spend },\n];\n\n<DataTable\n  columns={columns}\n  data={rows}\n  searchable\n  selectable\n  pageSize={8}\n  rowActions={[\n    { id: \"view\", label: \"View\", icon: Eye },\n    { id: \"delete\", label: \"Delete\", icon: Trash2, destructive: true },\n  ]}\n  onRowAction={(action, row) => console.log(action, row.id)}\n/>",
+  },
+  {
+    name: "device-frame",
+    title: "Device Frame",
+    description: "Puts any piece on a screen: a laptop with a slim base, a phone with an island, a tablet, or a browser window with an address pill. The screen follows the theme and the frame carries a soft layered shadow.",
+    category: "Device",
+    component: DeviceFrame,
+    demoProps: deviceFrameDemo,
+    usage: "import { DeviceFrame } from \"@/components/beste/component/device-frame\";\n\n<DeviceFrame device=\"browser\" address=\"pratabakery.com\">\n  <div />                               // any piece, it fills the screen\n</DeviceFrame>\n\n<DeviceFrame device=\"laptop\" className=\"max-w-3xl\"><div /></DeviceFrame>\n<DeviceFrame device=\"phone\" className=\"w-56\"><div /></DeviceFrame>",
   },
   {
     name: "dither-form",
@@ -3100,6 +3181,16 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: orbGradientPlayground,
   },
   {
+    name: "page-reveal",
+    title: "Page Reveal",
+    description: "A page wrapper that blurs every marked section into focus as it scrolls in, its headings, paragraphs and cards one after another. Nothing inside the blocks is marked: it walks each section down to the pieces a reader sees as one thing, and respects reduced motion.",
+    category: "Motion",
+    component: PageReveal,
+    demoProps: pageRevealDemo,
+    hidden: true,
+    usage: "import { PageReveal } from \"@/components/beste/component/page-reveal\";\n\n<PageReveal className=\"w-full bg-background\">\n  <div data-reveal-nav=\"\">{/* fades in on load */}</div>\n  <div data-reveal=\"\">{/* a section */}</div>\n  <div data-reveal=\"\">{/* another section */}</div>\n</PageReveal>",
+  },
+  {
     name: "pager-dots",
     title: "Pager Dots",
     description: "Slide dots for carousels and stories: the active dot stretches into a pill on a spring, and with a duration the pill fills as its page plays, then autoplay moves on. Autoplay pauses under the pointer, on keyboard focus, on a hidden tab and offscreen, and toggling it never restarts the fill. Long sets slide a window along the dots and shrink the ones at its edges, the way story apps do. It is a tablist: one tab stop, arrow keys, Home and End. Row or column, three sizes, and a bare tone that takes the text color for use over a photo.",
@@ -3122,6 +3213,17 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     isAnimated: true,
     demoContentTone: "plain",
     playground: paperLandscapePlayground,
+  },
+  {
+    name: "photo-drift",
+    title: "Photo Drift",
+    description: "A photograph in a fixed frame that drifts a little slower than the page as it scrolls past, and blurs into focus from a slight zoom once it has loaded. The frame takes any size, ratio and radius from its classes, the drift is one number, and reduced motion holds the photo still.",
+    category: "Media",
+    component: PhotoDrift,
+    demoProps: photoDriftDemo,
+    usage: "import { PhotoDrift } from \"@/components/beste/component/photo-drift\";\n\n<PhotoDrift\n  src=\"https://oud.pics/b/dental/mira-reception.webp\"\n  alt=\"A calm reception lounge\"\n  className=\"aspect-4/3 w-full rounded-4xl\"\n  drift={0.08}     // share of the frame height, 0 holds it still\n  priority         // above the fold: load straight away\n/>",
+    isAnimated: true,
+    playground: photoDriftPlayground,
   },
   {
     name: "photo-dust",
@@ -3431,7 +3533,10 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { ScrollRail } from \"@/components/beste/component/scroll-rail\";\n\n<ScrollRail className=\"h-[32rem]\" gap={48}>\n  <div className=\"w-[26rem]\">\n    <span data-rail-depth=\"0.3\" className=\"text-7xl\">01</span>\n    <h3 data-rail-focus=\"0.4\">Listen first</h3>\n  </div>\n  <div className=\"w-[26rem]\">\n    <span data-rail-depth=\"0.3\" className=\"text-7xl\">02</span>\n    <h3 data-rail-focus=\"0.4\">Draw by hand</h3>\n  </div>\n</ScrollRail>\n\n// Driven by scroll: pass a framer-motion MotionValue (or any { get() }) as progress\nconst { scrollYProgress } = useScroll({ target: ref, offset: [\"start start\", \"end end\"] });\n<ScrollRail progress={scrollYProgress} autoplay={false}>{panels}</ScrollRail>",
     isAnimated: true,
     playground: scrollRailPlayground,
-  },
+  }
+];
+
+const _allRegistryComponents_1: RegistryComponentMeta[] = [
   {
     name: "scroll-toc",
     title: "Scroll TOC",
@@ -3443,6 +3548,17 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { ScrollToc } from \"@/components/beste/component/scroll-toc\";\n\n// Beside an article on the page: headings are collected from it\n<aside className=\"sticky top-24\">\n  <ScrollToc containerSelector=\"article\" offset={96} />\n</aside>\n\n// Explicit entries, inside a scroll container\n<ScrollToc\n  root=\"#docs-scroller\"\n  items={[\n    { id: \"install\", title: \"Install\", level: 2 },\n    { id: \"props\", title: \"Props\", level: 2 },\n    { id: \"events\", title: \"Events\", level: 3 },\n  ]}\n  collapse          // deeper levels only under the current section\n  updateHash\n/>\n\n// Content and contents together, in one scroll area\n<ScrollToc className=\"h-[32rem]\">\n  <article>...</article>\n</ScrollToc>",
     cardScale: 0.6,
     playground: scrollTocPlayground,
+  },
+  {
+    name: "section-heading",
+    title: "Section Heading",
+    description: "The heading row a section opens with: a large medium-weight heading with the copy beside it on wide screens, or under it. Underlined links or a row of pills can follow the copy, or stand alone where there is none.",
+    category: "Text",
+    component: SectionHeading,
+    demoProps: sectionHeadingDemo,
+    registryComponents: ["button27"],
+    usage: "import { SectionHeading } from \"@/components/beste/component/section-heading\";\n\n<SectionHeading\n  heading=\"Guides from the blog\"\n  link={{ label: \"All guides\", href: \"/blog\" }}\n  layout=\"split\"   // \"split\" (default) | \"stack\"\n/>",
+    playground: sectionHeadingPlayground,
   },
   {
     name: "sidebar-nav",
@@ -3488,6 +3604,19 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     playground: sketchToPhotoPlayground,
   },
   {
+    name: "sky-gradient",
+    title: "Sky Gradient",
+    description: "A soft painted sky in code: a sky gradient from the top down, a warm haze rising from a lower corner, one or two banks of blurred cloud and loose puffs that drift slowly, under a fine film grain. Its opacity lets the page ground show through, lightening the sky on light themes and deepening it on dark ones. Ten looks come ready, from a blue dawn and a lilac dusk to a stone and a night sky. Every sky on a page shares one WebGL context and draws at a quarter of its size, so dozens can sit in cards without weighing the page down. Skies pause offscreen and in background tabs, hold still for reduced motion, show a CSS gradient until WebGL is ready, and keep their last frame if the browser drops the context, picking up again when it returns.",
+    category: "Background",
+    component: SkyGradient,
+    demoProps: skyGradientDemo,
+    usage: "import { SkyGradient } from \"@/components/beste/component/sky-gradient\";\n\n// Behind a card's content\n<SkyGradient\n  preset=\"dusk\"   // dawn, haze, azure, dusk, mist, apricot, lilac, sage, stone, night\n  className=\"rounded-3xl p-7\"\n>\n  <div>...</div>\n</SkyGradient>\n\n// Tuned by hand\n<SkyGradient\n  colors={[\"#93b8e8\", \"#b7cfee\", \"#dfe0e6\", \"#f5e4d8\"]}\n  cloudX={0.7}\n  cloudY={0.3}\n  clouds={0.8}\n  scatter={0.3}\n  opacity={0.7}   // let the page ground through\n  speed={2.5}\n  className=\"aspect-5/4 w-full\"\n/>",
+    isAnimated: true,
+    demoContentTone: "plain",
+    demoContentOff: true,
+    playground: skyGradientPlayground,
+  },
+  {
     name: "slice-assembly",
     title: "Slice Assembly",
     description: "A photograph cut into vertical strips that float apart in 3D space, each turned toward or away from the light with its own soft shadow, then settle one after another into the whole picture with no seams left behind. Progress can come from a number or a live scroll value, or the strips loop on their own. Strip count, depth, scatter, stagger, shading, shadow, pace and a gentle cursor lean are all props. Reduced motion shows the whole photograph.",
@@ -3508,10 +3637,7 @@ const _allRegistryComponents_0: RegistryComponentMeta[] = [
     usage: "import { SmokeGradient } from \"@/components/beste/component/smoke-gradient\";\n\n// As a layer behind content\n<section className=\"relative min-h-[40rem]\">\n  <SmokeGradient className=\"absolute inset-0\" />\n  <div className=\"relative\">...</div>\n</section>\n\n// Pale incense on a light page\n<SmokeGradient\n  className=\"min-h-[32rem]\"\n  baseColor=\"#f4f1ec\"\n  colors={[\"#d9d2c8\", \"#b7a6c9\", \"#8f7fb0\"]}\n  plumes={1}\n  curl={0.8}\n  softness={0.8}\n/>",
     isAnimated: true,
     playground: smokeGradientPlayground,
-  }
-];
-
-const _allRegistryComponents_1: RegistryComponentMeta[] = [
+  },
   {
     name: "snippet-install",
     title: "Snippet Install",
@@ -3535,6 +3661,37 @@ const _allRegistryComponents_1: RegistryComponentMeta[] = [
     isAnimated: true,
     cardScale: 0.5,
     playground: splitFlapPlayground,
+  },
+  {
+    name: "stage-card",
+    title: "Stage Card",
+    description: "A rounded feature card on a stone tint or a gradient: a piece up top or a photograph filling it with white copy over a dark fade, a quiet label, a sentence and an optional ticked list at the foot. Without media it becomes a short tile with an icon, stacked or beside the copy, and an optional arrow link.",
+    category: "Card",
+    component: StageCard,
+    demoProps: stageCardDemo,
+    registryComponents: ["stage-panel"],
+    usage: "import { StageCard } from \"@/components/beste/component/stage-card\";\nimport { Store } from \"lucide-react\";\n\n<StageCard\n  size=\"lg\"\n  backdrop=\"mist\"\n  media={<div />}                      // any piece\n  label=\"More than 50 languages\"\n  description=\"Each language gets its own URL and hreflang tags.\"\n/>\n\n<StageCard icon={Store} label=\"Small businesses\" description=\"Change a price yourself.\" link={{ label: \"Read the page\", href: \"/solutions\" }} />\n<StageCard layout=\"inline\" size=\"sm\" icon={Store} label=\"Edit in a side panel\" description=\"The page stays next to it.\" />",
+    playground: stageCardPlayground,
+  },
+  {
+    name: "stage-panel",
+    title: "Stage Panel",
+    description: "A large rounded panel for showing a product piece off: a soft stone tint with a hairline, a soft sky drawn in code from one of ten looks, or any photograph filling it edge to edge. It sizes from its classes and centers nothing on its own, so the caller decides the layout.",
+    category: "Card",
+    component: StagePanel,
+    demoProps: stagePanelDemo,
+    registryComponents: ["sky-gradient"],
+    usage: "import { StagePanel } from \"@/components/beste/component/stage-panel\";\n\n<StagePanel\n  surface=\"sky\"\n  sky=\"dawn\"   // dawn, haze, azure, dusk, mist, apricot, lilac, sage, stone, night\n  className=\"flex h-110 items-center justify-center p-7\"\n>\n  {/* a piece */}\n</StagePanel>\n\n<StagePanel surface=\"image\" image={{ src: \"https://images.unsplash.com/photo-1781708897820-e1cda3d96180?q=80&w=2400&auto=format&fit=crop\" }} className=\"p-7\">\n  {/* a piece */}\n</StagePanel>\n\n<StagePanel className=\"p-7\">{/* surface \"muted\" is the default */}</StagePanel>",
+    playground: stagePanelPlayground,
+  },
+  {
+    name: "stage-stack",
+    title: "Stage Stack",
+    description: "One piece in the middle with smaller ones resting on its corners, half outside it. The small ones drift on their own beat, and the whole group can lean toward the pointer. On phones the corners tuck in.",
+    category: "Layout",
+    component: StageStack,
+    demoProps: stageStackDemo,
+    usage: "import { StageStack } from \"@/components/beste/component/stage-stack\";\n\n<StageStack\n  main={<div />}                                  // e.g. a device frame holding a piece\n  satellites={[\n    { node: <div />, position: \"top-right\" },    // top-left, top-right, bottom-left, bottom-right\n    { node: <div />, position: \"bottom-left\", width: \"32%\" },\n  ]}\n  float\n  tilt\n  className=\"mx-auto w-full max-w-3xl\"\n/>",
   },
   {
     name: "star-trails",
@@ -3569,6 +3726,16 @@ const _allRegistryComponents_1: RegistryComponentMeta[] = [
     variants: { tone: ["muted", "outline", "ghost"] },
     usage: "import { StepsChecklist } from \"@/components/beste/component/steps-checklist\";\n\n<StepsChecklist\n  title=\"Set up your workspace\"\n  items={[\n    { id: \"profile\", title: \"Complete your profile\", description: \"A photo and a short bio.\" },\n    { id: \"invite\", title: \"Invite the band\", action: { label: \"Invite\", href: \"/invite\" } },\n    { id: \"first\", title: \"Publish the first page\", action: { label: \"Open the editor\", onClick: () => console.log(\"open\") } },\n  ]}\n  defaultCompleted={[\"profile\"]}\n  onToggle={(id, done) => console.log(id, done)}\n  finishedDescription=\"Your workspace is ready.\"\n  onDismiss={() => console.log(\"dismissed\")}\n  tone=\"muted\"          // \"muted\" | \"outline\" (default) | \"ghost\"\n  size=\"sm\"             // \"sm\" | \"default\" | \"lg\"\n/>",
     playground: stepsChecklistPlayground,
+  },
+  {
+    name: "steps-ruled",
+    title: "Ruled Steps",
+    description: "An ordered list of short points between hairline rules: a serif numeral, in roman or plain figures, beside a title and a line of detail. A large size sets bigger figures and roomier rows for process steps. Rules and quiet text take the surface's text color, so the same list sits on a light ground or a deep band.",
+    category: "Steps",
+    component: StepsRuled,
+    demoProps: stepsRuledDemo,
+    usage: "import { StepsRuled } from \"@/components/beste/component/steps-ruled\";\n\n<StepsRuled\n  items={[\n    { title: \"Time to talk\", description: \"First visits are 45 minutes.\" },\n    { title: \"Clear plans and prices\", description: \"A written quote before anything starts.\" },\n  ]}\n  numbering=\"roman\"   // \"roman\" (default) | \"decimal\" | \"none\"\n  size=\"default\"      // \"default\" | \"lg\"\n  markerTone=\"primary\" // \"primary\" | \"secondary\" | \"current\"\n/>",
+    playground: stepsRuledPlayground,
   },
   {
     name: "steps-track",

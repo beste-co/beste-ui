@@ -102,6 +102,7 @@ export interface ComponentMeta {
   /**
    * Image URL the piece is shown on in its showcase stage and the changelog preview.
    * For pieces whose frosted, see-through rim only reads on a photo or gradient.
+   * A sky look name (dawn, haze, azure, dusk, mist, apricot, lilac, sage, stone, night) draws that sky live.
    * Other pieces get one from the gradient library; "none" keeps the plain stage,
    * for pieces that draw text straight on the stage without a card behind it.
    */

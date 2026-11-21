@@ -92,7 +92,7 @@ export function HomeFaq({ heading, note, button, items, expanded = false, classN
           )}
         </div>
 
-        <Accordion {...accordion} className="w-full border-t">
+        <Accordion {...accordion} className="w-full">
           {items.map((item, index) => (
             <AccordionItem key={item.question} value={`faq-${index}`} className="group/faq border-t-0 border-b">
               <AccordionTrigger className="cursor-pointer gap-6 py-5 text-left hover:no-underline [&>svg]:mt-1 [&>svg]:size-4">

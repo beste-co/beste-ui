@@ -53,6 +53,8 @@ export interface PreviewThemeContextType {
   setCustomTheme: (theme: Theme | null) => void;
   setPreviewTheme: (theme: Theme | null) => void;
   getResolvedTheme: () => Theme;
+  /** Bumped on every pick the reader makes, never on restores or mode syncs. */
+  pickVersion: number;
 }
 
 export const PreviewThemeContext = createContext<PreviewThemeContextType | null>(null);
@@ -65,6 +67,7 @@ const defaultContext: PreviewThemeContextType = {
   setCustomTheme: () => {},
   setPreviewTheme: () => {},
   getResolvedTheme: () => themes[DEFAULT_LIGHT_PREVIEW_THEME] as Theme,
+  pickVersion: 0,
 };
 
 export function usePreviewTheme() {

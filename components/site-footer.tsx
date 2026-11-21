@@ -129,7 +129,11 @@ export function SiteFooter() {
           <div className="max-w-md">
             <Link href="/" aria-label="Beste UI home" className="flex items-center text-[#FF7322]">
               <BesteLogo width={24} height={24} color="currentColor" />
-              <BesteText height={16} className="text-foreground" />
+              {/* Written like a path: the section of the product this site is */}
+              <span className="flex items-center">
+                <BesteText height={16} className="text-foreground" />
+                <span className="ml-1 text-lg leading-none text-muted-foreground">/dev</span>
+              </span>
             </Link>
 
             <h2 className={cn(typography.h2, "mt-6 text-foreground")}>

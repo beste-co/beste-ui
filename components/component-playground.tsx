@@ -150,7 +150,7 @@ export function snippetFor(name: string, props: Record<string, unknown>, config:
 
   const lines: string[] = [];
   for (const [key, value] of Object.entries(props)) {
-    if (typeof value === "function") continue;
+    if (typeof value === "function" || key === "children") continue;
     if (idle.has(key)) continue;
     if (defaults.has(key) && defaults.get(key) === value) continue;
     if (value === "") continue;
@@ -224,18 +224,21 @@ function renderControl(control: PlaygroundControl, props: Record<string, unknown
         />
       );
     case "select":
+    case "segmented":
+      // A segmented row only fits two choices; anything more is a select
+      if (control.kind === "segmented" && optionList(control).length <= 2) {
+        return (
+          <InspectorSegmented
+            key={control.prop}
+            {...common}
+            options={optionList(control)}
+            value={stringFor(control, value)}
+            onValueChange={(next) => set(control.prop, next)}
+          />
+        );
+      }
       return (
         <InspectorSelect
-          key={control.prop}
-          {...common}
-          options={optionList(control)}
-          value={stringFor(control, value)}
-          onValueChange={(next) => set(control.prop, next)}
-        />
-      );
-    case "segmented":
-      return (
-        <InspectorSegmented
           key={control.prop}
           {...common}
           options={optionList(control)}

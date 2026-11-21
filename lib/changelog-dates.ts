@@ -14,7 +14,7 @@ type DateMap = Map<string, string>;
 
 interface Maps {
   changed: { blocks: DateMap; pieces: DateMap; components: DateMap };
-  added: { blocks: DateMap; pieces: DateMap; components: DateMap };
+  added: { blocks: DateMap; pieces: DateMap; components: DateMap; pages: DateMap };
 }
 
 let cached: Maps | null = null;
@@ -29,9 +29,11 @@ function build(): Maps {
     blocks: new Map() as DateMap,
     pieces: new Map() as DateMap,
     components: new Map() as DateMap,
+    pages: new Map() as DateMap,
   };
 
   for (const entry of changelog) {
+    for (const name of entry.pages) added.pages.set(name, entry.date);
     for (const b of entry.blocks) {
       if (!changed.blocks.has(b.name)) changed.blocks.set(b.name, entry.date);
       added.blocks.set(b.name, entry.date);
@@ -114,4 +116,8 @@ export function recentPieceDates(days = 14, today: Date = new Date()): Record<st
 
 export function recentComponentDates(days = 14, today: Date = new Date()): Record<string, string> {
   return recentDates(maps().added.components, days, today);
+}
+
+export function recentPageDates(days = 14, today: Date = new Date()): Record<string, string> {
+  return recentDates(maps().added.pages, days, today);
 }

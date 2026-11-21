@@ -2,7 +2,7 @@ import "./globals.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Figtree, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { type ReactNode, Suspense } from "react";
 import { Analytics } from "@/components/analytics";
@@ -13,6 +13,11 @@ import { isMetaPixelEnabled, previewConsentInDev } from "@/lib/meta-pixel";
 import { AuthProvider } from "@/lib/auth-context";
 import { FavoritesProvider } from "@/lib/favorites-context";
 import { LicenseProvider } from "@/lib/license-context";
+
+const figtree = Figtree({
+  variable: "--font-figtree",
+  subsets: ["latin", "latin-ext"],
+});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -114,16 +119,15 @@ const webSiteJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${figtree.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/fonts/bestesans/web/BesteSans-Variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         {isTracking && (
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static consent defaults, must run before the Google tag.
           <script dangerouslySetInnerHTML={{ __html: CONSENT_BOOTSTRAP }} />
         )}
         {isProduction && gaId && <GoogleAnalytics gaId={gaId} />}
       </head>
-      <body className={`${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}>
+      <body className={`min-h-screen bg-background text-foreground antialiased`}>
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static structured data.

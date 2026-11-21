@@ -337,6 +337,7 @@ export function CloudSky({
     };
     const onLost = (event: Event) => {
       event.preventDefault();
+      stop();
       setFailed(true);
     };
     const onVisibility = () => play();
@@ -353,20 +354,26 @@ export function CloudSky({
     window.addEventListener("pointermove", onMove, { passive: true });
     canvas.addEventListener("webglcontextlost", onLost);
     document.addEventListener("visibilitychange", onVisibility);
-    recolor();
-    resize();
-    setReady(true);
-    play();
-
-    return () => {
+    // Everything that keeps the sky moving, stopped on unmount and when the context is lost
+    function stop() {
       cancelAnimationFrame(frame);
       redraw.current = () => {};
       ro.disconnect();
       io.disconnect();
       mo.disconnect();
       window.removeEventListener("pointermove", onMove);
-      canvas.removeEventListener("webglcontextlost", onLost);
+      canvas?.removeEventListener("webglcontextlost", onLost);
       document.removeEventListener("visibilitychange", onVisibility);
+    }
+
+    recolor();
+    resize();
+    setReady(true);
+    play();
+
+    return () => {
+      stop();
+      if (gl.isContextLost()) return;
       gl.deleteBuffer(buffer);
       gl.deleteProgram(program);
       gl.deleteShader(vs);

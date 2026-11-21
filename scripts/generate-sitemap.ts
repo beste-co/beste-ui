@@ -54,6 +54,7 @@ function collectMeta(registryDir: string): MetaItem[] {
     const metaPath = join(registryDir, dirName, `${dirName}.meta.ts`);
     if (!existsSync(metaPath)) continue;
     const source = readFileSync(metaPath, "utf-8");
+    if (/internal:\s*true/.test(source)) continue;
     const name = source.match(/name:\s*["']([^"']+)["']/)?.[1];
     const category = source.match(/category:\s*["']([^"']+)["']/)?.[1];
     const tagsBlock = source.match(/tags:\s*\[([^\]]*)\]/)?.[1] ?? "";

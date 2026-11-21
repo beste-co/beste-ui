@@ -3,7 +3,8 @@ import { ArrowRight } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-type Tone = "primary" | "foreground";
+type Tone = "primary" | "foreground" | "secondary";
+type Surface = "solid" | "glass";
 
 interface Badge21Props {
   /** The small emphasized tag (e.g. "New") */
@@ -25,6 +26,8 @@ interface Badge21Props {
   href?: string;
   /** Tag chip color */
   tone?: Tone;
+  /** A solid pill for light pages, or a frosted one in the current text color for dark heroes */
+  surface?: Surface;
   /** Additional classes merged onto the root */
   className?: string;
 }
@@ -32,6 +35,12 @@ interface Badge21Props {
 const toneStyles: Record<Tone, string> = {
   primary: "bg-primary text-primary-foreground",
   foreground: "bg-foreground text-background",
+  secondary: "bg-secondary text-secondary-foreground",
+};
+
+const surfaceStyles: Record<Surface, string> = {
+  solid: "border bg-background",
+  glass: "border border-current/20 bg-current/10",
 };
 
 export const badge21Demo: Badge21Props = {
@@ -51,14 +60,16 @@ export function Badge21({
   children,
   href,
   tone = "primary",
+  surface = "solid",
   className,
 }: Badge21Props) {
   const isLink = Boolean(href) || (asChild && React.isValidElement(children));
 
   const classes = cn(
-    "group/badge21 inline-flex w-fit items-center gap-2 rounded-full border bg-background py-1 pl-1.5 pr-3 text-sm",
+    "group/badge21 inline-flex w-fit items-center gap-2 rounded-full py-1 pl-1.5 pr-3 text-sm",
+    surfaceStyles[surface],
     isLink &&
-      "cursor-pointer transition-colors hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      "cursor-pointer transition-colors hover:border-current/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     className
   );
 
@@ -72,11 +83,11 @@ export function Badge21({
       >
         {tag}
       </span>
-      <span className="text-foreground">{text}</span>
+      <span className={surface === "glass" ? "text-current" : "text-foreground"}>{text}</span>
       {isLink && (
         <ArrowRight
           aria-hidden="true"
-          className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-300 ease-out motion-safe:group-hover/badge21:translate-x-0.5"
+          className="size-3.5 shrink-0 opacity-60 transition-transform duration-300 ease-out motion-safe:group-hover/badge21:translate-x-0.5"
         />
       )}
     </>

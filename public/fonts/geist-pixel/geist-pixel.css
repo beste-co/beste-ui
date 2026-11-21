@@ -1,0 +1,44 @@
+/* Geist Pixel - Triangle */
+@font-face {
+  font-family: "Geist Pixel Triangle";
+  src: url("/fonts/geist-pixel/GeistPixelTriangle-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Pixel - Square */
+@font-face {
+  font-family: "Geist Pixel Square";
+  src: url("/fonts/geist-pixel/GeistPixelSquare-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Pixel - Grid */
+@font-face {
+  font-family: "Geist Pixel Grid";
+  src: url("/fonts/geist-pixel/GeistPixelGrid-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Pixel - Line */
+@font-face {
+  font-family: "Geist Pixel Line";
+  src: url("/fonts/geist-pixel/GeistPixelLine-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Pixel - Circle */
+@font-face {
+  font-family: "Geist Pixel Circle";
+  src: url("/fonts/geist-pixel/GeistPixelCircle-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

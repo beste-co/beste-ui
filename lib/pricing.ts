@@ -41,3 +41,15 @@ export function salePercent(plan: PricingPlan): number {
   const { original, discounted } = PRICING[plan];
   return original > 0 ? Math.floor((1 - discounted / original) * 100) : 0;
 }
+
+/** Never on sale: nothing here has a price. */
+export function isPlanOnSale(plan: PricingPlan, now: number = Date.now()): boolean {
+  const { original, discounted, discountId } = PRICING[plan];
+  return isSaleActive(now) && discounted < original && Boolean(discountId);
+}
+
+/** Zero, since no plan is on sale. */
+export function maxSalePercent(): number {
+  const onSale = (Object.keys(PRICING) as PricingPlan[]).filter((plan) => isPlanOnSale(plan));
+  return onSale.length > 0 ? Math.max(...onSale.map(salePercent)) : 0;
+}

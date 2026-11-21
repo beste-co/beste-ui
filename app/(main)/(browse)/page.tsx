@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { HomeHero } from "@/components/home-hero";
 import { HomeLibrary } from "@/components/home-library";
 import { HomeCta, HomeFaq } from "@/components/home-sections";
-import { changelog } from "@/data/changelog";
-import { BLOCK_SETS } from "@/lib/block-sets";
 import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { components as allComponents } from "@/lib/components";
 import { registryComponents } from "@/lib/registry-components";
@@ -34,75 +32,28 @@ export const metadata: Metadata = {
   },
 };
 
-// Seeded random so the rotating preview is stable for a given seed
-function seededShuffle<T>(array: readonly T[], seed: number): T[] {
-  const result = [...array];
-  let currentSeed = seed;
-  const random = () => {
-    currentSeed = (currentSeed * 9301 + 49297) % 233281;
-    return currentSeed / 233280;
-  };
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(random() * (i + 1));
-    const temp = result[i];
-    const swap = result[j];
-    if (temp !== undefined && swap !== undefined) {
-      result[i] = swap;
-      result[j] = temp;
-    }
-  }
-  return result;
-}
-
-// Rotates every 3 hours so the homepage stays fresh without re-deploys
-function getRotatingSeed(): number {
-  const now = new Date();
-  const threeHourBlock = Math.floor(now.getUTCHours() / 3);
-  return (
-    now.getUTCFullYear() * 1000000 +
-    (now.getUTCMonth() + 1) * 10000 +
-    now.getUTCDate() * 100 +
-    threeHourBlock
-  );
-}
-
 /*
- * Hand-picked for the library bento: pieces whose motion reads at tile size (none
- * of them in the hero's rotation) and components that look finished in a card.
- * The seed rotates which of them show.
+ * The library bento, picked by hand and shown in this order: the newest blocks
+ * take turns in the wide tile that opens it, blocks fill the large square and
+ * wide strips, pieces and components the small tiles.
  */
-const LIBRARY_PIECES = [
-  "ai53",
-  "money29",
-  "monitoring27",
-  "browser39",
-  "upload34",
-  "isometric240",
-  "search27",
-  "socialproof29",
-  "calendar38",
-  "automation22",
-  "progress19",
-  "dashboard39",
-  "realestate1",
-  "notification21",
-];
-// Blocks that do not read well at tile size
-const LIBRARY_SKIP_BLOCKS = new Set(["cta89"]);
-// Blocks shown in another's place when the rotation picks them: the slot stays, the block changes
-const LIBRARY_BLOCK_SWAPS: Record<string, string> = { cta91: "ecommerce46", cta88: "hotel51" };
+const LIBRARY_FEATURED = ["hero314", "hero317", "hero316", "hero326", "hero331"];
+const LIBRARY_BLOCKS = {
+  large: ["pricing92"],
+  wide: ["cta121", "feature376"],
+};
 // Where a wide strip looks into a block, 0 its top and 1 its bottom; the default is the middle
-const LIBRARY_BLOCK_FOCUS: Record<string, number> = { ecommerce46: 0.45, hotel51: 0.15 };
-const LIBRARY_COMPONENTS = [
-  "talent-card",
-  "player-waveform",
-  "split-flap",
-  "meter-ring",
-  "time-countdown",
-  "notice-stack",
-  "heatmap-calendar",
-  "reaction-picker",
+const LIBRARY_BLOCK_FOCUS: Record<string, number> = {};
+const LIBRARY_PIECES = [
+  "isometric240",
+  "notification31",
+  "progress21",
+  "ai62",
+  "search30",
+  "ai53",
+  "monitoring27",
 ];
+const LIBRARY_COMPONENTS = ["anamorphic-type", "split-flap", "glass-lens"];
 
 const FAQS = [
   {
@@ -157,49 +108,23 @@ const faqJsonLd = {
 };
 
 export default async function HomePage() {
-  const seed = getRotatingSeed();
-
-  /*
-   * The library's blocks come from the Auralis and Sirius sets: heroes, features
-   * and abouts fill the large squares, CTAs and testimonials the wide strips,
-   * since their shapes fit those.
-   */
-  const setBlocks = new Set([...BLOCK_SETS.auralis, ...BLOCK_SETS.sirius]);
-  const fromSets = blocks.filter((b) => setBlocks.has(b.name) && !LIBRARY_SKIP_BLOCKS.has(b.name));
-  const toItem = (picked: (typeof blocks)[number]) => {
-    const b = blocks.find((other) => other.name === LIBRARY_BLOCK_SWAPS[picked.name]) ?? picked;
-    return { name: b.name, title: b.title, focus: LIBRARY_BLOCK_FOCUS[b.name] };
-  };
+  const toBlocks = (names: string[]) =>
+    names
+      .map((name) => blocks.find((b) => b.name === name))
+      .filter((b) => b !== undefined)
+      .map((b) => ({ name: b.name, title: b.title, focus: LIBRARY_BLOCK_FOCUS[b.name] }));
   const libraryBlocks = {
-    large: seededShuffle(
-      fromSets.filter((b) => /^(hero|feature|about)\d/.test(b.name)),
-      seed
-    )
-      .slice(0, 2)
-      .map(toItem),
-    wide: seededShuffle(
-      fromSets.filter((b) => /^(cta|testimonial)\d/.test(b.name)),
-      seed
-    )
-      .slice(0, 2)
-      .map(toItem),
+    large: toBlocks(LIBRARY_BLOCKS.large),
+    wide: toBlocks(LIBRARY_BLOCKS.wide),
   };
 
-  const libraryPieces = seededShuffle(LIBRARY_PIECES, seed)
-    .map((name) => allComponents.find((piece) => piece.name === name))
+  const libraryPieces = LIBRARY_PIECES.map((name) => allComponents.find((piece) => piece.name === name))
     .filter((piece) => piece !== undefined)
-    .slice(0, 8)
     .map((piece) => ({ name: piece.name, title: piece.title }));
 
-  const libraryComponents = seededShuffle(LIBRARY_COMPONENTS, seed)
-    .map((name) => registryComponents.find((c) => c.name === name))
+  const libraryComponents = LIBRARY_COMPONENTS.map((name) => registryComponents.find((c) => c.name === name))
     .filter((c) => c !== undefined)
-    .slice(0, 4)
     .map((c) => ({ name: c.name, title: c.title }));
-
-  // The newest release, shown as a short pill in the hero.
-  const newest = changelog[0];
-  const latestRelease = newest ? { title: newest.title } : undefined;
 
   return (
     <div>
@@ -209,12 +134,12 @@ export default async function HomePage() {
         blocks={blocks.length}
         pieces={allComponents.length}
         components={registryComponents.length}
-        release={latestRelease}
       />
 
       <div className="mx-auto w-full max-w-6xl px-4 pt-16 md:px-6 md:pt-24">
         <HomeLibrary
           className="mb-20 md:mb-28"
+          featured={toBlocks(LIBRARY_FEATURED)}
           blocks={libraryBlocks}
           pieces={libraryPieces}
           components={libraryComponents}
