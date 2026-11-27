@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
+import { inSentence, namesList } from "@/lib/seo-copy";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft01Icon, ArrowRight01Icon, Home01Icon } from "@hugeicons/core-free-icons";
+import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { ListingHeading } from "@/components/listing-heading";
 import { Button } from "@/components/ui/button";
 import { BlocksGrid } from "@/components/blocks-grid";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
@@ -42,14 +36,16 @@ export async function generateMetadata({ params, searchParams }: TagPageProps): 
   const canonical =
     page > 1 ? `${SITE_URL}/blocks/tag/${slug}?page=${page}` : `${SITE_URL}/blocks/tag/${slug}`;
 
-  const title = `${tag.label} shadcn blocks - Beste UI`;
+  const count = getBlocksForTag(slug).length;
+  const label = `${tag.label[0]!.toUpperCase()}${tag.label.slice(1)}`;
+  const title = `Shadcn ${label} Blocks: ${count} Sections - Beste UI`;
   // A curated tag spans too many categories to list one by one, and the list
   // would push the description past what a search result shows anyway.
-  const description = tag.blocks
-    ? `Production-ready shadcn/tailwind ${tag.label} blocks, spread across ${tag.categories.length} categories. Copy, paste, and customize.`
-    : `Production-ready shadcn/tailwind ${tag.label} blocks across ${tag.categories
-        .map((c) => getCategoryInfo(c).title)
-        .join(", ")}. Copy, paste, and customize.`;
+  const from =
+    tag.blocks || tag.categories.length > 3
+      ? `${tag.categories.length} categories`
+      : `the ${namesList(tag.categories.map((c) => getCategoryInfo(c).title))} categories`;
+  const description = `${count} shadcn/ui ${tag.label} blocks from ${from}, built with React and Tailwind CSS. Copy the code or install them with the shadcn CLI.`;
   const ogImage = `/og?title=${encodeURIComponent(`${tag.label} blocks`)}&description=${encodeURIComponent(description)}`;
 
   return {
@@ -103,33 +99,13 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
 
-      <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-12">
-        <Breadcrumb className="mb-6">
-          <BreadcrumbList className="text-base sm:gap-1.5">
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/" aria-label="Home">
-                  <HugeiconsIcon icon={Home01Icon} size={14} strokeWidth={2} aria-hidden="true" />
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/blocks">Blocks</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="capitalize">{tag.label}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-
+      <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <header className="mb-10 md:mb-12">
-          <h1 className={cn(typography.h1, "capitalize")}>
-            {tag.label} blocks
-          </h1>
+          <ListingHeading
+            heading={`Shadcn ${inSentence(tag.label)} blocks`}
+            count={page.totalItems}
+            crumbs={[{ label: "Blocks", href: "/blocks" }, { label: tag.label }]}
+          />
           {/* A curated tag lists the blocks that declared it, so naming its
               categories would promise a sweep that never happened. A keyword
               tag really is the union of its categories, and links to them. */}

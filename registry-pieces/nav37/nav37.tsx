@@ -28,9 +28,9 @@ interface Nav37Props {
 export const nav37Demo: Nav37Props = {
   title: "Hero",
   languages: [
-    { code: "EN", flag: "https://flagcdn.com/gb.svg", text: "Skin care without the rush" },
-    { code: "PT", flag: "https://flagcdn.com/pt.svg", text: "Cuidados de pele sem pressa" },
-    { code: "ES", flag: "https://flagcdn.com/es.svg", text: "Cuidado de la piel sin prisa" },
+    { code: "EN", flag: "https://oud.pics/b/beste/flags/gb.svg", text: "Skin care without the rush" },
+    { code: "PT", flag: "https://oud.pics/b/beste/flags/pt.svg", text: "Cuidados de pele sem pressa" },
+    { code: "ES", flag: "https://oud.pics/b/beste/flags/es.webp", text: "Cuidado de la piel sin prisa" },
   ],
   framed: true,
 };

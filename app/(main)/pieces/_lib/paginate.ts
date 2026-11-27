@@ -1,6 +1,6 @@
 import type { ComponentMeta } from "@/lib/components";
 
-export const PAGE_SIZE = 24;
+export const PAGE_SIZE = 12;
 
 export interface CategoryCount {
   category: string;

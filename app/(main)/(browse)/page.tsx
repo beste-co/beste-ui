@@ -5,10 +5,10 @@ import { HomeCta, HomeFaq } from "@/components/home-sections";
 import { blocksObfuscated as blocks } from "@/lib/blocks-obfuscated";
 import { components as allComponents } from "@/lib/components";
 import { registryComponents } from "@/lib/registry-components";
+import { formatCount } from "@/lib/seo-copy";
 
-const SITE_TITLE = "Beste UI - Production-ready shadcn/tailwind blocks & components";
-const SITE_DESCRIPTION =
-  "A curated collection of React blocks and components built with Tailwind CSS and shadcn/ui. Copy, install, and ship beautiful interfaces with confidence.";
+const SITE_TITLE = "Beste UI: Shadcn Blocks, Components and Page Templates for React";
+const SITE_DESCRIPTION = `${formatCount(blocks.length)} shadcn/ui blocks, ${formatCount(registryComponents.length)} free components and full page templates for React, Next.js and Tailwind CSS. Install any of them with the shadcn CLI or the Beste UI MCP server.`;
 const CANONICAL = "https://beste.dev/";
 // The home page shares the fixed brand image, not a generated one.
 const OG_IMAGE = "https://beste.dev/assets/images/beste-ui.png";

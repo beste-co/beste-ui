@@ -174,14 +174,15 @@ export function CategoriesListing({ categories, addedDates }: CategoriesListingP
       <header className="mb-10 md:mb-12">
         {/* Baseline row rather than a smaller inline span — see blocks-listing. */}
         <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
-          <span>Blocks</span>
+          <span>Shadcn blocks</span>
           <span className="text-2xl font-medium text-primary md:text-3xl">
             ({blocksObfuscated.length})
           </span>
         </h1>
         <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
-          Production-ready React blocks for Tailwind CSS and shadcn/ui. Copy, paste, and ship your
-          next project faster.
+          Page sections for React and Next.js in {categories.length} categories, built with
+          shadcn/ui and Tailwind CSS: heroes, pricing tables, features, dashboards and more. Each
+          one installs with a single shadcn command.
         </p>
       </header>
 

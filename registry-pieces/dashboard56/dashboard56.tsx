@@ -41,9 +41,9 @@ interface Dashboard56Props {
 export const dashboard56Demo: Dashboard56Props = {
   title: "Integrations",
   groups: [
-    { name: "Google Analytics", logo: "https://cdn.simpleicons.org/googleanalytics", value: "G-4kx7q2m9pl", status: "Active", typing: true },
-    { name: "Tawk.to", logo: "https://www.tawk.to/icon.png", placeholder: "Property ID" },
-    { name: "WhatsApp", logo: "https://cdn.simpleicons.org/whatsapp", value: "+351 912 345 678", status: "Active" },
+    { name: "Google Analytics", logo: "https://oud.pics/b/beste/logos/googleanalytics.svg", value: "G-4kx7q2m9pl", status: "Active", typing: true },
+    { name: "Tawk.to", logo: "https://oud.pics/b/beste/logos/tawkto.webp", placeholder: "Property ID" },
+    { name: "WhatsApp", logo: "https://oud.pics/b/beste/logos/whatsapp.svg", value: "+351 912 345 678", status: "Active" },
   ],
   idleLabel: "Not connected",
   framed: true,

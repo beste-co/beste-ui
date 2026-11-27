@@ -605,13 +605,6 @@ Complete, ready-to-ship screens composed from the block catalog. Install a page 
 - [Status](https://beste.dev/components/status): 1 components
 - [Toolbar](https://beste.dev/components/toolbar): 1 components
 - [Tour](https://beste.dev/components/tour): 1 components
-
-## Blog
-
-Long-form posts at https://beste.dev/blog. Feed: https://beste.dev/blog/feed.xml.
-
-
-
 ## Recent releases
 
 The full changelog is at https://beste.dev/changelog; the latest releases:

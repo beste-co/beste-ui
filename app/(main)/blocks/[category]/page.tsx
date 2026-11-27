@@ -4,6 +4,8 @@ import { blocks } from "@/lib/blocks";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
 import { parseSort, sortByAdded } from "@/lib/browse-sort";
 import { getBlockAddedDate, recentBlockDates } from "@/lib/changelog-dates";
+import { CategoryGuide } from "@/components/category-guide";
+import { getBlockCategoryGuide } from "@/lib/category-guides";
 import { getCategoryInfo } from "@/lib/category-info";
 import {
   buildCategoryCounts,
@@ -35,20 +37,23 @@ export async function generateMetadata({
   const canonical =
     page > 1 ? `${SITE_URL}/blocks/${category}?page=${page}` : `${SITE_URL}/blocks/${category}`;
 
-  const ogImageUrl = `/og?title=${encodeURIComponent(info.metaTitle)}&description=${encodeURIComponent(info.metaDescription)}`;
+  // The count says how deep the category is before the click, and follows the catalog
+  const count = filterByCategorySlug(blocks, category).length;
+  const title = count > 0 ? `Shadcn ${info.title} Blocks: ${count} Sections - Beste UI` : info.metaTitle;
+  const ogImageUrl = `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(info.metaDescription)}`;
 
   return {
-    title: `${info.metaTitle}${pageSuffix}`,
+    title: `${title}${pageSuffix}`,
     description: info.metaDescription,
     alternates: { canonical },
     openGraph: {
-      title: info.metaTitle,
+      title,
       description: info.metaDescription,
       images: [ogImageUrl],
     },
     twitter: {
       card: "summary_large_image",
-      title: info.metaTitle,
+      title,
       description: info.metaDescription,
       images: [ogImageUrl],
     },
@@ -89,6 +94,7 @@ export default async function CategoryPage({
    * written to be read on the page.
    */
   const info = getCategoryInfo(slug);
+  const guide = page.currentPage === 1 ? getBlockCategoryGuide(slug) : undefined;
 
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Home", url: `${SITE_URL}/` },
@@ -124,6 +130,7 @@ export default async function CategoryPage({
         pageSize={PAGE_SIZE}
         description={info.description}
       />
+      {guide && <CategoryGuide guide={guide} />}
     </>
   );
 }

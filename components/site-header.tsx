@@ -12,7 +12,6 @@ import {
   Settings01Icon,
   SparklesIcon,
   TerminalIcon,
-  Wrench01Icon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
@@ -43,7 +42,6 @@ import {
   PAGES_HREF,
   PRICING_HREF,
   REFERRALS_HREF,
-  TOOLS_HREF,
   hostedLinkProps,
 } from "@/lib/site-links";
 import { cn } from "@/lib/utils";
@@ -73,7 +71,6 @@ const MORE: {
   { href: CHANGELOG_HREF, label: "What's new?", icon: <HugeiconsIcon icon={SparklesIcon} size={16} strokeWidth={2} />, hosted: true },
   { href: DOCS_HREF, label: "Docs", icon: <HugeiconsIcon icon={Book02Icon} size={16} strokeWidth={2} />, hosted: true },
   { href: DOCS_MCP_HREF, label: "AI & MCP", icon: <HugeiconsIcon icon={TerminalIcon} size={16} strokeWidth={2} />, hosted: true },
-  { href: TOOLS_HREF, label: "Free tools", icon: <HugeiconsIcon icon={Wrench01Icon} size={16} strokeWidth={2} />, hosted: true },
   { href: REFERRALS_HREF, label: "Referrals", icon: <HugeiconsIcon icon={GiftIcon} size={16} strokeWidth={2} />, hosted: true },
 ];
 
@@ -236,7 +233,7 @@ export function SiteHeader() {
             <BesteLogo width={24} height={24} color="currentColor" />
             {/* Written like a path: the section of the product this site is */}
             <span className="flex items-center">
-              <BesteText height={16} className="text-foreground" />
+              <BesteText width={53.3} height={16} className="ml-1 text-foreground" />
               <span className="ml-1 text-lg leading-none text-muted-foreground">/dev</span>
             </span>
           </Link>
@@ -364,7 +361,7 @@ export function SiteHeader() {
               <BesteLogo width={24} height={24} color="currentColor" />
               {/* Written like a path: the section of the product this site is */}
               <span className="flex items-center">
-                <BesteText height={16} className="text-foreground" />
+                <BesteText width={53.3} height={16} className="ml-1 text-foreground" />
                 <span className="ml-1 text-lg leading-none text-muted-foreground">/dev</span>
               </span>
             </Link>

@@ -45,9 +45,9 @@ export const dashboard46Demo: Dashboard46Props = {
   ],
   columns: { post: "Post", author: "Author", languages: "Languages", status: "Status", date: "Date" },
   posts: [
-    { image: "https://oud.pics/b/beste/oriel-facial.webp", title: "What a calming facial does for reactive skin", author: "Norah Jones", languages: [{ code: "EN", flag: "https://flagcdn.com/gb.svg" }, { code: "PT", flag: "https://flagcdn.com/pt.svg" }], status: "Published", published: true, date: "Oct 28, 2026", active: true },
-    { image: "https://oud.pics/b/beste/oriel-serum.webp", title: "How to layer a serum under your day cream", author: "Laura Marling", languages: [{ code: "EN", flag: "https://flagcdn.com/gb.svg" }, { code: "PT", flag: "https://flagcdn.com/pt.svg" }], status: "Published", published: true, date: "Oct 14, 2026" },
-    { image: "https://oud.pics/b/beste/oriel-consultation.webp", title: "Your first visit to the studio, step by step", author: "Norah Jones", languages: [{ code: "EN", flag: "https://flagcdn.com/gb.svg" }], status: "Draft", date: "Nov 3, 2026" },
+    { image: "https://oud.pics/b/beste/oriel-facial.webp", title: "What a calming facial does for reactive skin", author: "Norah Jones", languages: [{ code: "EN", flag: "https://oud.pics/b/beste/flags/gb.svg" }, { code: "PT", flag: "https://oud.pics/b/beste/flags/pt.svg" }], status: "Published", published: true, date: "Oct 28, 2026", active: true },
+    { image: "https://oud.pics/b/beste/oriel-serum.webp", title: "How to layer a serum under your day cream", author: "Laura Marling", languages: [{ code: "EN", flag: "https://oud.pics/b/beste/flags/gb.svg" }, { code: "PT", flag: "https://oud.pics/b/beste/flags/pt.svg" }], status: "Published", published: true, date: "Oct 14, 2026" },
+    { image: "https://oud.pics/b/beste/oriel-consultation.webp", title: "Your first visit to the studio, step by step", author: "Norah Jones", languages: [{ code: "EN", flag: "https://oud.pics/b/beste/flags/gb.svg" }], status: "Draft", date: "Nov 3, 2026" },
   ],
   framed: true,
 };

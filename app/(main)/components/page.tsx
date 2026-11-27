@@ -3,6 +3,7 @@ import { buildBreadcrumbJsonLd, buildItemListJsonLd, SITE_URL } from "@/lib/brea
 import { parseSort, sortByAdded } from "@/lib/browse-sort";
 import { getComponentAddedDate, recentComponentDates } from "@/lib/changelog-dates";
 import { registryComponents } from "@/lib/registry-components";
+import { formatCount } from "@/lib/seo-copy";
 import { buildCategoryCounts, PAGE_SIZE, paginate, parsePage } from "./_lib/paginate";
 import { RegistryComponentsContent } from "./registry-components-content";
 
@@ -10,10 +11,10 @@ interface PageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-const componentsTitle = "Components - Beste UI";
-const componentsDescription =
-  "Design system primitives: buttons, badges and other building blocks our sections are composed from.";
-const componentsOgImage = `/og?title=${encodeURIComponent("Components")}&description=${encodeURIComponent(componentsDescription)}`;
+const componentCategoryCount = new Set(registryComponents.map((c) => c.category)).size;
+const componentsTitle = `${formatCount(registryComponents.length)} Free Shadcn Components for React and Tailwind - Beste UI`;
+const componentsDescription = `Free shadcn/ui components in ${componentCategoryCount} categories: buttons, badges, WebGL backgrounds, charts, filters, inspector controls and more. Copy the code or add them with the shadcn CLI.`;
+const componentsOgImage = `/og?title=${encodeURIComponent("Free Shadcn Components")}&description=${encodeURIComponent(componentsDescription)}`;
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const sp = await searchParams;

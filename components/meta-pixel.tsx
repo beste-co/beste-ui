@@ -12,7 +12,7 @@ export function MetaPixel() {
   // biome-ignore lint/correctness/useExhaustiveDependencies: a query change is a page view too.
   useEffect(() => {
     // Embeds run inside other people's pages; they are not visits to this site.
-    if (pathname.startsWith("/embed")) return;
+    if (pathname.startsWith("/embed") || pathname.startsWith("/capture")) return;
 
     trackMeta("PageView");
   }, [pathname, searchParams]);

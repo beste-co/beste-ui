@@ -28,9 +28,9 @@ interface Nav39Props {
 export const nav39Demo: Nav39Props = {
   brand: "Lumen",
   languages: [
-    { code: "EN", flag: "https://flagcdn.com/gb.svg", text: "Hello", url: "lumenlanguages.com" },
-    { code: "ES", flag: "https://flagcdn.com/es.svg", text: "Hola", url: "lumenlanguages.com/es" },
-    { code: "JA", flag: "https://flagcdn.com/jp.svg", text: "こんにちは", url: "lumenlanguages.com/ja" },
+    { code: "EN", flag: "https://oud.pics/b/beste/flags/gb.svg", text: "Hello", url: "lumenlanguages.com" },
+    { code: "ES", flag: "https://oud.pics/b/beste/flags/es.webp", text: "Hola", url: "lumenlanguages.com/es" },
+    { code: "JA", flag: "https://oud.pics/b/beste/flags/jp.svg", text: "こんにちは", url: "lumenlanguages.com/ja" },
   ],
   framed: true,
 };

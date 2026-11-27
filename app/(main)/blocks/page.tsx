@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { blocks } from "@/lib/blocks";
+import { formatCount } from "@/lib/seo-copy";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
 import { getCategoryInfo } from "@/lib/category-info";
 import { DEFAULT_SORT, sortByAdded } from "@/lib/browse-sort";
@@ -7,10 +8,10 @@ import { getBlockAddedDate, recentBlockDates } from "@/lib/changelog-dates";
 import { CategoriesListing, type CategoryCard } from "./categories-listing";
 import { buildCategoryCounts, categorySlug } from "./_lib/paginate";
 
-const blocksTitle = "All Blocks - Beste UI";
-const blocksDescription =
-  "Browse all production-ready React components built with Tailwind CSS and shadcn/ui. Copy, paste, and customize for your next project.";
-const blocksOgImage = `/og?title=${encodeURIComponent("All Blocks")}&description=${encodeURIComponent(blocksDescription)}`;
+const blockCategoryCount = new Set(blocks.map((b) => b.category)).size;
+const blocksTitle = `Shadcn Blocks: ${formatCount(blocks.length)} React and Tailwind Sections - Beste UI`;
+const blocksDescription = `Browse ${formatCount(blocks.length)} shadcn/ui blocks in ${blockCategoryCount} categories: heroes, pricing tables, features, testimonials, dashboards and more. Built with React and Tailwind CSS, in Base UI and Radix versions.`;
+const blocksOgImage = `/og?title=${encodeURIComponent("Shadcn Blocks")}&description=${encodeURIComponent(blocksDescription)}`;
 
 export const metadata: Metadata = {
   title: blocksTitle,

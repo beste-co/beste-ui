@@ -19,6 +19,7 @@ import { FavoriteButton } from "@/components/favorite-button";
 import Link from "next/link";
 import { Mdx } from "@/components/blog/mdx";
 import type { Metadata } from "next";
+import { getPreviewMedia } from "@/lib/preview-media";
 import { RelatedBlocksGrid } from "@/components/related-blocks-grid";
 import { RelatedSection } from "@/components/related-section";
 import { blockInstallCommand, personalizeDocs } from "@/lib/install-command";
@@ -50,18 +51,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = block.description;
   const ogTitle = `${block.title}`;
 
+  const ogImage =
+    getPreviewMedia("block", slug)?.og ??
+    `https://beste.dev/og?title=${encodeURIComponent(ogTitle)}&description=${encodeURIComponent(description)}`;
+
   return {
     title,
     description,
     alternates: { canonical: `https://beste.dev/block/${slug}` },
+    // Blocks are found through their category pages; only components are indexed one by one
+    robots: { index: false, follow: true },
     openGraph: {
       title,
       description,
       images: [
         {
-          url: `https://beste.dev/og?title=${encodeURIComponent(
-            ogTitle
-          )}&description=${encodeURIComponent(description)}`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -74,9 +79,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       images: [
-        `https://beste.dev/og?title=${encodeURIComponent(
-          ogTitle
-        )}&description=${encodeURIComponent(description)}`,
+        ogImage,
       ],
     },
   };

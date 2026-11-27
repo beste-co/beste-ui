@@ -33,9 +33,9 @@ interface Nav38Props {
 export const nav38Demo: Nav38Props = {
   title: "Languages",
   languages: [
-    { name: "English", flag: "https://flagcdn.com/gb.svg", status: "Default", pill: "neutral" },
-    { name: "Português", flag: "https://flagcdn.com/pt.svg", status: "Editing now", pill: "plain", active: true },
-    { name: "Español", flag: "https://flagcdn.com/es.svg", status: "Filling in over time", pill: "accent" },
+    { name: "English", flag: "https://oud.pics/b/beste/flags/gb.svg", status: "Default", pill: "neutral" },
+    { name: "Português", flag: "https://oud.pics/b/beste/flags/pt.svg", status: "Editing now", pill: "plain", active: true },
+    { name: "Español", flag: "https://oud.pics/b/beste/flags/es.webp", status: "Filling in over time", pill: "accent" },
   ],
   framed: true,
 };

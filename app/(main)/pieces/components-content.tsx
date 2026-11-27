@@ -19,6 +19,8 @@ import { type ComponentMeta, components } from "@/lib/components";
 import type { CategoryCount } from "./_lib/paginate";
 import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
+import { ListingHeading } from "@/components/listing-heading";
+import { inSentence } from "@/lib/seo-copy";
 
 /** The category picks the route; the sort is only ever a query. */
 function browseHref(category: string | null, sort: BrowseSort = DEFAULT_SORT): string {
@@ -45,6 +47,8 @@ interface ComponentsContentProps {
    * description says — instead of the one line every category shared.
    */
   description?: string;
+  /** The page's h1; the listing's own words when left out. */
+  heading?: string;
 }
 
 function buildPageHref(basePath: string, page: number): string {
@@ -65,6 +69,7 @@ export function ComponentsContent({
   categories,
   pageSize,
   description,
+  heading,
 }: ComponentsContentProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -109,30 +114,11 @@ export function ComponentsContent({
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <header className="mb-10 md:mb-12">
-        {/*
-          The count is centred against the title rather than sat on its baseline:
-          its parentheses are drawn taller than the digits and hang below the
-          line, so a shared baseline left the whole group reading as dropped.
-        */}
-        <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
-          <span>
-            {currentCategory ? (
-              <>
-                <Link
-                  href="/pieces"
-                  className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Pieces
-                </Link>
-                <span className="mx-2 text-muted-foreground">/</span>
-                {currentCategory}
-              </>
-            ) : (
-              "Pieces"
-            )}
-          </span>
-          <span className="text-2xl font-medium text-primary md:text-3xl">({totalItems})</span>
-        </h1>
+        <ListingHeading
+          heading={heading ?? (currentCategory ? `Shadcn ${inSentence(currentCategory)} widgets` : "Shadcn UI widgets")}
+          count={totalItems}
+          crumbs={[{ label: "Pieces", href: "/pieces" }, ...(currentCategory ? [{ label: currentCategory }] : [])]}
+        />
         <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           {description ??
             "Compact, self-contained widgets that behave like assets. Drop them into any block, card, or page to add a small touch of polish without rewriting the surrounding UI."}

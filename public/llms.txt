@@ -15,7 +15,6 @@ Beste UI is made by [beste.co](https://beste.co), an opinionated block-based sit
 - [Pricing](https://beste.dev/pricing): Plans and checkout.
 - [License](https://beste.dev/license): The full license text.
 - [Changelog](https://beste.dev/changelog): Every release, newest first.
-- [Blog](https://beste.dev/blog): Long-form posts on shadcn, theming, forms, MCP and the catalog.
 
 ## Catalog
 
@@ -89,7 +88,6 @@ Sets of blocks that share one design language, so a whole site reads as one piec
 
 ## Optional
 
-- [Free tools](https://beste.dev/tools): 0 browser-based developer tools in 0 categories. No signup, nothing uploaded.
 - [GitHub](https://github.com/beste-co/beste-ui): Source and issues.
 - [X](https://x.com/withbeste): Release notes and questions.
 - [RSS](https://beste.dev/rss.xml): The changelog as a feed.

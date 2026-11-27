@@ -29,7 +29,7 @@ export function CookieConsent() {
     return () => document.removeEventListener("click", onClick, true);
   }, []);
 
-  if (!open || pathname.startsWith("/embed")) return null;
+  if (!open || pathname.startsWith("/embed") || pathname.startsWith("/capture")) return null;
 
   const choose = (consent: Consent) => {
     setConsent(consent);

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { components } from "@/lib/components";
+import { formatCount } from "@/lib/seo-copy";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
 import { parseSort, sortByAdded } from "@/lib/browse-sort";
 import { getPieceAddedDate, recentPieceDates } from "@/lib/changelog-dates";
@@ -15,10 +16,9 @@ interface PageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-const piecesTitle = "Pieces - Beste UI";
-const piecesDescription =
-  "Small composable widgets: URL pills, indicators, mini cards, designed to drop into block media slots.";
-const piecesOgImage = `/og?title=${encodeURIComponent("Pieces")}&description=${encodeURIComponent(piecesDescription)}`;
+const piecesTitle = `Shadcn UI Widgets: ${formatCount(components.length)} Pieces for React and Tailwind - Beste UI`;
+const piecesDescription = `${formatCount(components.length)} small shadcn/ui widgets: AI prompts, charts, calendars, notifications, receipts, isometric art and more. Drop them into the media slot of a section or use them on their own.`;
+const piecesOgImage = `/og?title=${encodeURIComponent("Shadcn UI Widgets")}&description=${encodeURIComponent(piecesDescription)}`;
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const sp = await searchParams;

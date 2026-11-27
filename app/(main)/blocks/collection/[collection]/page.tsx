@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BLOCK_SETS, type BlockSet } from "@/lib/block-sets";
 import { notFound } from "next/navigation";
 import { blocks } from "@/lib/blocks";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
@@ -61,20 +62,22 @@ export async function generateMetadata({
   const canonical = category ? path : page > 1 ? `${path}?page=${page}` : path;
   const pageSuffix = page > 1 ? ` - Page ${page}` : "";
 
+  const count = BLOCK_SETS[slug as BlockSet]?.length ?? 0;
+  const metaTitle = count ? `${collection.label} Shadcn Blocks: ${count} Sections - Beste UI` : collection.metaTitle;
   const ogImage = `/og?title=${encodeURIComponent(`${collection.label} collection`)}&description=${encodeURIComponent(collection.metaDescription)}`;
 
   return {
-    title: `${collection.metaTitle}${pageSuffix}`,
+    title: `${metaTitle}${pageSuffix}`,
     description: collection.metaDescription,
     alternates: { canonical },
     openGraph: {
-      title: collection.metaTitle,
+      title: metaTitle,
       description: collection.metaDescription,
       images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
-      title: collection.metaTitle,
+      title: metaTitle,
       description: collection.metaDescription,
       images: [ogImage],
     },

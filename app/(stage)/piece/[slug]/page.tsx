@@ -18,6 +18,7 @@ import { Stage } from "@/components/stage";
 import { pieceInstallCommand } from "@/lib/install-command";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getPreviewMedia } from "@/lib/preview-media";
 import { RelatedSection } from "@/components/related-section";
 import { RelatedPreviewByName } from "@/components/related-preview-by-name";
 import { buildSoftwareSourceCodeJsonLd } from "@/lib/breadcrumb-jsonld";
@@ -56,18 +57,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${component.title} - Beste UI Piece`;
   const description = component.description;
 
+  const ogImage =
+    getPreviewMedia("piece", slug)?.og ??
+    `https://beste.dev/og?title=${encodeURIComponent(component.title)}&description=${encodeURIComponent(description)}`;
+
   return {
     title,
     description,
     alternates: { canonical: `https://beste.dev/piece/${slug}` },
+    robots: { index: false, follow: true },
     openGraph: {
       title,
       description,
       images: [
         {
-          url: `https://beste.dev/og?title=${encodeURIComponent(
-            component.title
-          )}&description=${encodeURIComponent(description)}`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -79,6 +83,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title,
       description,
+      images: [ogImage],
     },
   };
 }

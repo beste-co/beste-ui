@@ -1,5 +1,4 @@
 import {
-  BLOG_HREF,
   CHANGELOG_HREF,
   CONTACT_EMAIL,
   DOCS_HREF,
@@ -7,7 +6,6 @@ import {
   PAGES_HREF,
   PRICING_HREF,
   REFERRALS_HREF,
-  TOOLS_HREF,
   hostedLinkProps,
 } from "@/lib/site-links";
 import { isMetaPixelEnabled, previewConsentInDev } from "@/lib/meta-pixel";
@@ -21,6 +19,7 @@ import Link from "next/link";
 import { Mail } from "lucide-react";
 import { LinkedInLogo } from "@/components/icons/linkedin-logo";
 import { XLogo } from "@/components/icons/x-logo";
+import { getCategoryInfo } from "@/lib/category-info";
 import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
 
@@ -53,8 +52,6 @@ const COLUMNS: {
     links: [
       { label: "Docs", href: DOCS_HREF, hosted: true },
       { label: "AI & MCP", href: DOCS_MCP_HREF, hosted: true },
-      { label: "Blog", href: BLOG_HREF, hosted: true },
-      { label: "Free tools", href: TOOLS_HREF, hosted: true },
       { label: "What's new?", href: CHANGELOG_HREF, hosted: true },
       { label: "Website Builder", href: "https://beste.co", external: true },
     ],
@@ -73,43 +70,22 @@ const COLUMNS: {
   },
 ];
 
-/**
- * The catalogue's own categories, spelled the way someone searching for them would.
- *
- * The twenty largest, four columns of five: every one of these is a real page with
- * real blocks behind it, because a footer full of links to categories that turn out
- * to be empty is the kind of thing a reader only checks once.
- */
-const BLOCK_CATEGORIES: { label: string; href: string }[][] = [
-  [
-    { label: "Shadcn Hero Blocks", href: "/blocks/hero" },
-    { label: "Shadcn Feature Blocks", href: "/blocks/feature" },
-    { label: "Shadcn Pricing Blocks", href: "/blocks/pricing" },
-    { label: "Shadcn CTA Blocks", href: "/blocks/cta" },
-    { label: "Shadcn FAQ Blocks", href: "/blocks/faq" },
-  ],
-  [
-    { label: "Shadcn About Blocks", href: "/blocks/about" },
-    { label: "Shadcn Stats Blocks", href: "/blocks/stats" },
-    { label: "Shadcn Footer Blocks", href: "/blocks/footer" },
-    { label: "Shadcn Navigation Blocks", href: "/blocks/navigation" },
-    { label: "Shadcn Auth Blocks", href: "/blocks/auth" },
-  ],
-  [
-    { label: "Shadcn Ecommerce Blocks", href: "/blocks/ecommerce" },
-    { label: "Shadcn Portfolio Blocks", href: "/blocks/portfolio" },
-    { label: "Shadcn Showcase Blocks", href: "/blocks/showcase" },
-    { label: "Shadcn Careers Blocks", href: "/blocks/careers" },
-    { label: "Shadcn Onboarding Blocks", href: "/blocks/onboarding" },
-  ],
-  [
-    { label: "Shadcn Coming Soon Blocks", href: "/blocks/coming-soon" },
-    { label: "Shadcn Post Blocks", href: "/blocks/post" },
-    { label: "Shadcn Legal Blocks", href: "/blocks/legal" },
-    { label: "Shadcn Workflow Blocks", href: "/blocks/workflow" },
-    { label: "Shadcn News Blocks", href: "/blocks/news" },
-  ],
+// A spread of the catalog rather than only its largest categories; each is a real, non-empty page
+const FOOTER_BLOCKS = [
+  "hero", "feature", "pricing", "testimonial", "cta", "faq",
+  "navigation", "footer", "dashboard", "auth", "ecommerce", "blog",
+  "portfolio", "saas", "real-estate", "hotel", "booking", "gallery",
 ];
+const FOOTER_COMPONENTS = ["background", "button", "badge", "card", "chart", "inspector"];
+
+const blockLinks = FOOTER_BLOCKS.map((slug) => ({
+  label: `${getCategoryInfo(slug).title} blocks`,
+  href: `/blocks/${slug}`,
+}));
+const componentLinks = FOOTER_COMPONENTS.map((slug) => ({
+  label: `${slug[0]!.toUpperCase()}${slug.slice(1)} components`,
+  href: `/components/${slug}`,
+}));
 
 /**
  * The site footer, in footer104's shape and the Auralis set's language: a lead panel
@@ -131,7 +107,7 @@ export function SiteFooter() {
               <BesteLogo width={24} height={24} color="currentColor" />
               {/* Written like a path: the section of the product this site is */}
               <span className="flex items-center">
-                <BesteText height={16} className="text-foreground" />
+                <BesteText width={53.3} height={16} className="ml-1 text-foreground" />
                 <span className="ml-1 text-lg leading-none text-muted-foreground">/dev</span>
               </span>
             </Link>
@@ -197,28 +173,30 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/*
-          One heading over three columns rather than three headings: it is one idea
-          (the categories), and repeating "Shadcn Blocks" above each column would only
-          be the layout talking.
-        */}
-        <div className="mt-14 border-t pt-10">
-          <h3 className="text-sm font-medium text-foreground">Shadcn Blocks</h3>
-          <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3 lg:grid-cols-4">
-            {BLOCK_CATEGORIES.map((column) => (
-              <ul key={column[0]?.href} className="flex flex-col gap-3">
-                {column.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ))}
+        <div className="mt-14 grid gap-10 border-t pt-10 lg:grid-cols-4 lg:gap-8">
+          <div className="lg:col-span-3">
+            <h3 className="text-sm font-medium text-foreground">Blocks</h3>
+            <ul className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3">
+              {blockLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-foreground">Components</h3>
+            <ul className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3 lg:grid-cols-1">
+              {componentLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

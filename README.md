@@ -20,8 +20,6 @@
   <a href="https://beste.dev/docs/mcp"><b>Connect your agent</b></a>
   &nbsp;·&nbsp;
   <a href="https://beste.dev/docs">Docs</a>
-  &nbsp;·&nbsp;
-  <a href="https://beste.dev/blog">Blog</a>
 </p>
 
 <p align="center">
@@ -237,15 +235,15 @@ npx shadcn@latest add https://beste.dev/component/r/button12
 
 | Category | | Category | | Category | |
 | --- | --- | --- | --- | --- | --- |
-| Feature | 31 | Error | 6 | Crypto | 3 |
-| Hero | 11 | Footer | 5 | Booking | 3 |
-| Auth | 10 | Onboarding | 4 | Blog | 3 |
-| Use case | 8 | Coming soon | 4 | Travel | 2 |
-| Health | 7 | Testimonial | 3 | Showcase | 2 |
-| Ecommerce | 7 | Portfolio | 3 | SaaS | 2 |
-| Education | 3 | CTA | 3 | Reveal | 2 |
+| Feature | 31 | FAQ | 6 | Education | 4 |
+| Hero | 11 | Onboarding | 6 | Crypto | 3 |
+| Auth | 10 | Blog | 5 | Portfolio | 3 |
+| Ecommerce | 8 | Coming soon | 5 | SaaS | 3 |
+| Error | 8 | CTA | 5 | Testimonial | 3 |
+| Health | 8 | Footer | 5 | Travel | 3 |
+| Use case | 8 | Booking | 4 | Showcase | 2 |
 
-Plus navbar, FAQ, settings, fitness, devtools and terminal sections.
+Plus about, careers, stats, logos, settings, fitness, devtools and terminal sections.
 [See them all](https://beste.dev/blocks).
 
 ## Theming

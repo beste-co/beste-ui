@@ -13,8 +13,8 @@ function withoutTrailingSlash(pathname: string): string {
 }
 
 /**
- * The `.md` address of a page: `/tools/tailwind-class-sorter` ->
- * `/tools/tailwind-class-sorter.md`. The home page has no name to hang the
+ * The `.md` address of a page: `/blocks/hero` ->
+ * `/blocks/hero.md`. The home page has no name to hang the
  * suffix on, so it gets `/index.md` rather than a bare `/.md`.
  */
 export function markdownHref(pathname: string): string {

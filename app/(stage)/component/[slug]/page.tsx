@@ -16,6 +16,7 @@ import { NavArrowButton } from "@/components/nav-arrow-button";
 import { FavoriteButton } from "@/components/favorite-button";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getPreviewMedia } from "@/lib/preview-media";
 import { PlaygroundKeys } from "@/components/component-playground";
 import { ComponentPropsTable } from "@/components/component-props-table";
 import { type DocsSection, DocsSideRail } from "@/components/docs-side-rail";
@@ -63,8 +64,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Component not found - Beste UI" };
   }
 
-  const title = `${component.title} - Beste UI Component`;
+  const title = `${component.title}: Free Shadcn ${component.category} Component - Beste UI`;
   const description = component.description;
+
+  const ogImage =
+    getPreviewMedia("component", slug)?.og ??
+    `https://beste.dev/og?title=${encodeURIComponent(component.title)}&description=${encodeURIComponent(description)}`;
 
   return {
     title,
@@ -75,9 +80,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       images: [
         {
-          url: `https://beste.dev/og?title=${encodeURIComponent(
-            component.title
-          )}&description=${encodeURIComponent(description)}`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -89,6 +92,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title,
       description,
+      images: [ogImage],
     },
   };
 }

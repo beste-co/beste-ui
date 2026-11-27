@@ -8,7 +8,7 @@ interface BesteTextProps {
 }
 
 export const BesteText: React.FC<BesteTextProps> = ({
-  width = 62,
+  width = 70,
   height = 21,
   className = "",
   color = "currentColor",
@@ -17,7 +17,7 @@ export const BesteText: React.FC<BesteTextProps> = ({
     <svg
       width={width}
       height={height}
-      viewBox="0 0 62 21"
+      viewBox="0 0 70 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}

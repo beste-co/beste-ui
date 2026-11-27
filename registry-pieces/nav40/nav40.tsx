@@ -32,12 +32,12 @@ interface Nav40Props {
 export const nav40Demo: Nav40Props = {
   brand: "Oriel",
   languages: [
-    { code: "EN", flag: "https://flagcdn.com/gb.svg", name: "English", heading: "Skin care that starts with listening", lang: "en" },
-    { code: "DE", flag: "https://flagcdn.com/de.svg", name: "Deutsch", heading: "Hautpflege, die mit Zuhören beginnt", lang: "de" },
-    { code: "FR", flag: "https://flagcdn.com/fr.svg", name: "Français", heading: "Des soins qui commencent par l'écoute", lang: "fr" },
-    { code: "ES", flag: "https://flagcdn.com/es.svg", name: "Español", heading: "Cuidado de la piel que empieza escuchando", lang: "es" },
-    { code: "IT", flag: "https://flagcdn.com/it.svg", name: "Italiano", heading: "Cura della pelle che inizia dall'ascolto", lang: "it" },
-    { code: "JA", flag: "https://flagcdn.com/jp.svg", name: "日本語", heading: "耳を傾けることから始まるスキンケア", lang: "ja" },
+    { code: "EN", flag: "https://oud.pics/b/beste/flags/gb.svg", name: "English", heading: "Skin care that starts with listening", lang: "en" },
+    { code: "DE", flag: "https://oud.pics/b/beste/flags/de.svg", name: "Deutsch", heading: "Hautpflege, die mit Zuhören beginnt", lang: "de" },
+    { code: "FR", flag: "https://oud.pics/b/beste/flags/fr.svg", name: "Français", heading: "Des soins qui commencent par l'écoute", lang: "fr" },
+    { code: "ES", flag: "https://oud.pics/b/beste/flags/es.webp", name: "Español", heading: "Cuidado de la piel que empieza escuchando", lang: "es" },
+    { code: "IT", flag: "https://oud.pics/b/beste/flags/it.svg", name: "Italiano", heading: "Cura della pelle che inizia dall'ascolto", lang: "it" },
+    { code: "JA", flag: "https://oud.pics/b/beste/flags/jp.svg", name: "日本語", heading: "耳を傾けることから始まるスキンケア", lang: "ja" },
   ],
   interval: 2.6,
   framed: true,

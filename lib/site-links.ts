@@ -41,8 +41,6 @@ export const ACCOUNT_HREF = `${HOSTED_SITE}/account`;
 export const FAVORITES_HREF = `${HOSTED_SITE}/favorites`;
 
 export const PAGES_HREF = `${HOSTED_SITE}/pages`;
-export const BLOG_HREF = `${HOSTED_SITE}/blog`;
-export const TOOLS_HREF = `${HOSTED_SITE}/tools`;
 export const DOCS_HREF = `${HOSTED_SITE}/docs`;
 export const DOCS_INSTALLATION_HREF = `${HOSTED_SITE}/docs/installation`;
 export const DOCS_MCP_HREF = `${HOSTED_SITE}/docs/mcp`;
@@ -63,9 +61,6 @@ export const HOSTED_ONLY_PATHS: readonly string[] = [
   "/favorites",
   "/docs",
   "/changelog",
-  "/blog",
-  // The free tools are a hosted traffic surface, not part of the library.
-  "/tools",
   // The pages tier composes Pro blocks, so it is hosted-only in full: the
   // listing, the detail route and the embed all live on beste.dev.
   "/pages",

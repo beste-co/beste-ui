@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Fragment, useCallback, useMemo, useTransition } from "react";
+import { useCallback, useMemo, useTransition } from "react";
 import { BlocksGrid } from "@/components/blocks-grid";
 import {
   BrowseFilters,
@@ -16,6 +15,8 @@ import { COLLECTIONS, COLLECTION_BY_BLOCK, getCollection } from "@/lib/collectio
 import { type CategoryCount, categorySlug } from "./_lib/paginate";
 import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
+import { ListingHeading } from "@/components/listing-heading";
+import { inSentence } from "@/lib/seo-copy";
 
 interface BlocksListingProps {
   itemNames: readonly string[];
@@ -38,6 +39,8 @@ interface BlocksListingProps {
    * description says — instead of the one line every category shared.
    */
   description?: string;
+  /** The page's h1; the listing's own words when left out. */
+  heading?: string;
 }
 
 /**
@@ -79,6 +82,7 @@ export function BlocksListing({
   categories,
   pageSize,
   description,
+  heading,
 }: BlocksListingProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -182,45 +186,11 @@ export function BlocksListing({
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <header className="mb-10 md:mb-12">
-        {/*
-          The count is centred against the title rather than sat on its baseline:
-          its parentheses are drawn taller than the digits and hang below the
-          line, so a shared baseline left the whole group reading as dropped.
-        */}
-        <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
-          <span>
-            {trail.length > 0 ? (
-              <>
-                <Link
-                  href="/blocks"
-                  className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Blocks
-                </Link>
-                {trail.map((segment, index) => (
-                  <Fragment key={segment.href}>
-                    <span className="mx-2 text-muted-foreground">/</span>
-                    {/* Only the ones you can still step back to are links; the
-                        last segment is where you already are. */}
-                    {index < trail.length - 1 ? (
-                      <Link
-                        href={segment.href}
-                        className="text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {segment.label}
-                      </Link>
-                    ) : (
-                      segment.label
-                    )}
-                  </Fragment>
-                ))}
-              </>
-            ) : (
-              "Blocks"
-            )}
-          </span>
-          <span className="text-2xl font-medium text-primary md:text-3xl">({totalItems})</span>
-        </h1>
+        <ListingHeading
+          heading={heading ?? (trail.length > 0 ? `Shadcn ${inSentence(trail[trail.length - 1]!.label)} blocks` : "Shadcn blocks")}
+          count={totalItems}
+          crumbs={[{ label: "Blocks", href: "/blocks" }, ...trail]}
+        />
         <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           {description ??
             "A library of production-ready React blocks built with Tailwind CSS and shadcn/ui. Copy, paste, and customize for your next project."}

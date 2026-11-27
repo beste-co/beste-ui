@@ -476,7 +476,7 @@ export const categoryInfoMap: Record<string, CategoryInfo> = {
     icon: "BedDouble",
     isNew: true,
   },
-  realestate: {
+  "real-estate": {
     title: "Real Estate",
     description:
       "Development and agency sections for new homes: project heroes, floor plans and residences, availability, payment estimators and the neighbourhood around them.",

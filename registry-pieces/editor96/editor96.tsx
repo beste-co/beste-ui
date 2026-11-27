@@ -35,7 +35,7 @@ interface Editor96Props {
 export const editor96Demo: Editor96Props = {
   domain: "orielstudio.pt",
   page: "Home",
-  languages: [{ code: "EN", flag: "https://flagcdn.com/gb.svg" }, { code: "PT", flag: "https://flagcdn.com/pt.svg" }],
+  languages: [{ code: "EN", flag: "https://oud.pics/b/beste/flags/gb.svg" }, { code: "PT", flag: "https://oud.pics/b/beste/flags/pt.svg" }],
   panel: {
     title: "Hero",
     fields: [

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { namesList } from "@/lib/seo-copy";
 import { notFound } from "next/navigation";
 import { components } from "@/lib/components";
 import { SITE_URL, buildBreadcrumbJsonLd, buildItemListJsonLd } from "@/lib/breadcrumb-jsonld";
@@ -18,9 +19,10 @@ import {
  * The one sentence this category gets, in the metadata and under the title
  * alike. Written once so a reader and a search result are told the same thing.
  */
-function categoryDescription(categoryName: string | undefined): string {
+function categoryDescription(categoryName: string | undefined, items: readonly { title: string }[] = []): string {
   if (!categoryName) return "Small composable widgets designed to drop into block media slots.";
-  return `${categoryName} pieces from Beste UI, drop-in widgets built with shadcn/ui and Tailwind CSS.`;
+  const examples = namesList(items.map((item) => item.title));
+  return `${items.length} ${categoryName.toLowerCase()} widgets for shadcn/ui and Tailwind CSS${examples ? `, including ${examples}` : ""}. Copy the code or add them with the shadcn CLI.`;
 }
 
 interface CategoryPageProps {
@@ -37,9 +39,11 @@ export async function generateMetadata({
   const page = parsePage(sp.page);
   const filtered = filterByCategorySlug(components, slug);
   const categoryName = filtered[0]?.category;
-  const baseTitle = categoryName ? `${categoryName} pieces - Beste UI` : "Pieces - Beste UI";
+  const baseTitle = categoryName
+    ? `Shadcn ${categoryName} Widgets: ${filtered.length} Pieces - Beste UI`
+    : "Pieces - Beste UI";
   const title = page > 1 ? `${baseTitle} - Page ${page}` : baseTitle;
-  const description = categoryDescription(categoryName);
+  const description = categoryDescription(categoryName, filtered);
   const canonical =
     page > 1 ? `${SITE_URL}/pieces/${slug}?page=${page}` : `${SITE_URL}/pieces/${slug}`;
   const ogImageUrl = `/og?title=${encodeURIComponent(baseTitle)}&description=${encodeURIComponent(description)}`;
@@ -115,7 +119,7 @@ export default async function ComponentsCategoryPage({
         currentCategorySlug={slug}
         currentSort={sort}
         addedDates={recentPieceDates()}
-        description={categoryDescription(currentCategory)}
+        description={categoryDescription(currentCategory, filtered)}
         categories={buildCategoryCounts(components)}
         pageSize={PAGE_SIZE}
       />

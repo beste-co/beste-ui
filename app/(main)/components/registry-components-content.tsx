@@ -19,6 +19,8 @@ import { type RegistryComponentMeta, registryComponents } from "@/lib/registry-c
 import type { CategoryCount } from "./_lib/paginate";
 import { typography } from "@/lib/typography";
 import { cn } from "@/lib/utils";
+import { ListingHeading } from "@/components/listing-heading";
+import { inSentence } from "@/lib/seo-copy";
 
 /** The category picks the route; the sort is only ever a query. */
 function browseHref(category: string | null, sort: BrowseSort = DEFAULT_SORT): string {
@@ -45,6 +47,8 @@ interface RegistryComponentsContentProps {
    * description says — instead of the one line every category shared.
    */
   description?: string;
+  /** The page's h1; the listing's own words when left out. */
+  heading?: string;
 }
 
 function buildPageHref(basePath: string, page: number): string {
@@ -65,6 +69,7 @@ export function RegistryComponentsContent({
   categories,
   pageSize,
   description,
+  heading,
 }: RegistryComponentsContentProps) {
   const router = useRouter();
   // Bumping a card's counter remounts its demo, replaying a one-shot animation
@@ -109,30 +114,11 @@ export function RegistryComponentsContent({
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       <header className="mb-10 md:mb-12">
-        {/*
-          The count is centred against the title rather than sat on its baseline:
-          its parentheses are drawn taller than the digits and hang below the
-          line, so a shared baseline left the whole group reading as dropped.
-        */}
-        <h1 className={cn(typography.h1, "flex flex-wrap items-center gap-x-3")}>
-          <span>
-            {currentCategory ? (
-              <>
-                <Link
-                  href="/components"
-                  className="text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Components
-                </Link>
-                <span className="mx-2 text-muted-foreground">/</span>
-                {currentCategory}
-              </>
-            ) : (
-              "Components"
-            )}
-          </span>
-          <span className="text-2xl font-medium text-primary md:text-3xl">({totalItems})</span>
-        </h1>
+        <ListingHeading
+          heading={heading ?? (currentCategory ? `Free shadcn ${inSentence(currentCategory)} components` : "Free shadcn components")}
+          count={totalItems}
+          crumbs={[{ label: "Components", href: "/components" }, ...(currentCategory ? [{ label: currentCategory }] : [])]}
+        />
         <p className={cn(typography.lead, "mt-3 max-w-2xl")}>
           {description ??
             "Design system primitives: buttons, badges and other building blocks our sections are composed from. Install one and reuse it across your whole project."}

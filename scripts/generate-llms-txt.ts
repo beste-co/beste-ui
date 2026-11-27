@@ -66,7 +66,7 @@ function byCategory(items: Item[]): Map<string, Item[]> {
 }
 
 // ---------------------------------------------------------------------------
-// Category copy, collections, tools, posts, changelog, pricing
+// Category copy, collections, changelog, pricing
 
 const categoryInfo = new Map<string, { title: string; description: string }>();
 {
@@ -104,57 +104,6 @@ function collections(): Collection[] {
     });
   }
   return out;
-}
-
-interface Tool {
-  slug: string;
-  title: string;
-  description: string;
-  category: string;
-}
-function tools(): { categories: { id: string; title: string }[]; tools: Tool[] } {
-  if (!existsSync(join(ROOT, "lib", "tools.ts"))) return { categories: [], tools: [] };
-  const source = read("lib", "tools.ts");
-  const categories = [...source.matchAll(/id: "([^"]+)",\s*\n\s*title: "([^"]+)"/g)].map((m) => ({
-    id: m[1],
-    title: m[2],
-  }));
-  const list: Tool[] = [];
-  const body = source.slice(source.indexOf("export const tools"));
-  for (const chunk of body.split(/\n {2}\{\n/).slice(1)) {
-    const slug = chunk.match(/slug: "([^"]+)"/)?.[1];
-    const title = chunk.match(/title: "([^"]+)"/)?.[1];
-    const description = chunk.match(/description:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1];
-    const category = chunk.match(/category: "([^"]+)"/)?.[1];
-    if (slug && title && description && category) list.push({ slug, title, description, category });
-  }
-  return { categories, tools: list };
-}
-
-interface Post {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-}
-function posts(): Post[] {
-  const dir = join(ROOT, "data", "posts");
-  if (!existsSync(dir)) return [];
-  return readdirSync(dir)
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => {
-      const fm = readFileSync(join(dir, f), "utf-8").split("---")[1] ?? "";
-      const pick = (key: string) =>
-        fm.match(new RegExp(`\\n${key}:\\s*"?([^"\\n]+)"?`))?.[1]?.trim() ?? "";
-      return {
-        slug: f.replace(/\.mdx$/, ""),
-        title: pick("title"),
-        description: pick("description"),
-        date: pick("date"),
-      };
-    })
-    .filter((p) => p.title)
-    .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 interface Release {
@@ -220,8 +169,6 @@ function main() {
   const componentCats = byCategory(components);
   const pageCats = byCategory(pages);
   const cols = collections();
-  const { categories: toolCats, tools: toolList } = tools();
-  const postList = posts();
   const tagList = tags();
   const price = pricing();
   const freeBlocks = blocks.filter((b) => !b.isPro).length;
@@ -256,7 +203,6 @@ Beste UI is made by [beste.co](https://beste.co), an opinionated block-based sit
 - [Pricing](${url("/pricing")}): Plans and checkout.
 - [License](${url("/license")}): The full license text.
 - [Changelog](${url("/changelog")}): Every release, newest first.
-- [Blog](${url("/blog")}): Long-form posts on shadcn, theming, forms, MCP and the catalog.
 
 ## Catalog
 
@@ -290,7 +236,6 @@ ${cols.map((c) => `- [${c.label}](${url(`/blocks/collection/${c.slug}`)}): ${c.c
 
 ## Optional
 
-- [Free tools](${url("/tools")}): ${toolList.length} browser-based developer tools in ${toolCats.length} categories. No signup, nothing uploaded.
 - [GitHub](https://github.com/beste-co/beste-ui): Source and issues.
 - [X](https://x.com/withbeste): Release notes and questions.
 - [RSS](${url("/rss.xml")}): The changelog as a feed.
@@ -530,32 +475,6 @@ ${[...componentCats.entries()]
       `- [${category}](${url(`/components/${kebab(category)}`)}): ${items.length} components`
   )
   .join("\n")}
-${
-  toolList.length > 0
-    ? `
-## Free tools
-
-${toolList.length} browser-based developer tools at ${url("/tools")}. Every tool runs in the browser, is free and needs no account; nothing is uploaded.
-
-${toolCats
-  .map((cat) => {
-    const list = toolList.filter((t) => t.category === cat.id);
-    if (list.length === 0) return "";
-    return `### ${cat.title}\n\n${list
-      .map((t) => `- [${t.title}](${url(`/tools/${t.slug}`)}): ${t.description}`)
-      .join("\n")}`;
-  })
-  .filter(Boolean)
-  .join("\n\n")}
-`
-    : ""
-}
-## Blog
-
-Long-form posts at ${url("/blog")}. Feed: ${url("/blog/feed.xml")}.
-
-${postList.map((p) => `- [${p.title}](${url(`/blog/${p.slug}`)}) (${p.date}): ${p.description}`).join("\n")}
-
 ## Recent releases
 
 The full changelog is at ${url("/changelog")}; the latest releases:
@@ -579,7 +498,7 @@ ${releases(12)
   console.log(
     `Generated llms.txt (${short.split("\n").length} lines) and llms-full.txt (${full.split("\n").length} lines): ` +
       `${blocks.length} blocks in ${blockCats.size} categories, ${pages.length} pages, ${pieces.length} pieces, ` +
-      `${components.length} components, ${cols.length} collections, ${toolList.length} tools, ${postList.length} posts`
+      `${components.length} components, ${cols.length} collections`
   );
 }
 

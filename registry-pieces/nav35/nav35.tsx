@@ -38,7 +38,7 @@ export const nav35Demo: Nav35Props = {
   languages: [
     {
       code: "EN",
-      flag: "https://flagcdn.com/gb.svg",
+      flag: "https://oud.pics/b/beste/flags/gb.svg",
       label: "English",
       path: "/",
       url: "orielstudio.pt/treatments",
@@ -48,7 +48,7 @@ export const nav35Demo: Nav35Props = {
     },
     {
       code: "ES",
-      flag: "https://flagcdn.com/es.svg",
+      flag: "https://oud.pics/b/beste/flags/es.webp",
       label: "Español",
       path: "/es",
       url: "orielstudio.pt/es/tratamientos",
@@ -57,7 +57,7 @@ export const nav35Demo: Nav35Props = {
       button: "Reserva un tratamiento",
     },
   ],
-  moreLanguages: [{ code: "DE", flag: "https://flagcdn.com/de.svg", label: "Deutsch", path: "/de" }],
+  moreLanguages: [{ code: "DE", flag: "https://oud.pics/b/beste/flags/de.svg", label: "Deutsch", path: "/de" }],
   addLabel: "+ Add language",
 };
 

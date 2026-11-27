@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { LicenseContent } from "./license-content";
 
 const title = "License";
-const description = "License and terms of use for Beste UI components";
+const description =
+  "The license and terms of use for Beste UI shadcn/ui blocks, components, pieces and page templates, free and Pro.";
 const ogImage = `https://beste.dev/og?title=${encodeURIComponent(
   title
 )}&description=${encodeURIComponent(description)}`;
 
 export const metadata: Metadata = {
-  title: "License - Beste UI",
+  title: "License: Using Beste UI Shadcn Blocks and Components - Beste UI",
   description,
   openGraph: {
     title,
